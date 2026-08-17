@@ -2,6 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>Morley Kert · Influint</title>
 <link rel="icon" href="../assets/brand/influint-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +52,9 @@ a{color:var(--teal)}
 .ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
 .ch .n{font-weight:600; font-size:17px}
 .ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 
 /* profile header */
 .profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
@@ -87,11 +91,123 @@ a{color:var(--teal)}
 .v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
 .legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
 .empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
        border-radius:14px; padding:26px; font-size:14.5px}
 footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
        border-top:1px solid var(--line)}
 @media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -104,119 +220,356 @@ footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
   <img class="av" src="https://yt3.ggpht.com/rUcPlBi8IaRx4R8THfYMi-67x-tZ50Fiqt_ybTXwVoQtKepxgsD94XfF4zkfImU0yeailBF7=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Morley Kert</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@MorleyKert" target="_blank" rel="noopener">@MorleyKert</a> · 1.1M subscribers · knowledge base last updated 2026-08-10</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@MorleyKert" target="_blank" rel="noopener">@MorleyKert</a> · 1.1M subscribers · knowledge base last updated 2026-08-17</p>
   </div>
 </div>
 <div class="stats">
   <div class="stat"><div class="v">10</div><div class="k">Videos tracked</div></div>
-  <div class="stat"><div class="v">2.2M</div><div class="k">Median views</div></div>
+  <div class="stat"><div class="v">988K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">3</div><div class="k">Breakouts (2×+)</div></div>
   <div class="stat"><div class="v">1</div><div class="k">Analyses on file</div></div>
 </div>
 
+<h2>Data freshness</h2>
+<div class="freshness">
+<div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">11 days ago</span></div>
+</div>
 <h2>Analyses</h2>
-<p class="empty">1 analysis is on file for this channel — findings and the linked decks are private to the Influint team.</p>
+<div class="outs"><div class="out">
+  <div class="top">
+    <span class="tool">Video Regression</span>
+    <span class="when">2026-08-06 · 10 videos</span>
+    <span class="links"><a href="https://docs.google.com/presentation/d/1S-wXRvDFBQxK6giUz5mze4aksbGOKuOizoWLLtKDYN4/edit" target="_blank" rel="noopener">Slides</a><a href="https://docs.google.com/spreadsheets/d/1SQvZkRvCWJyuq6Ux-pnAgFYZ3kmEtHId61qodghreE0/edit" target="_blank" rel="noopener">Data</a></span>
+  </div>
+  <ul><li>Retention is improving: the newest uploads sit ABOVE the older ones through the first third.</li><li>A 35-second stretch at 12:23 in &quot;I Hate Modern Desks&quot; loses viewers at ten times the channel&#39;s normal rate for that position.</li></ul>
+  
+</div></div>
+<h2>Retention overlay</h2>
+<p class="legend">Every analysed video's retention curve on one pair of axes. Both switches are live — change what the x-axis measures, or what the colour encodes, and the same data answers a different question.</p>
+<div class="cohort">
+  <div class="bar">
+    <span class="grp"><span class="lab">X axis</span>
+      <button class="tgl" data-cx="percent" aria-pressed="true" type="button">% of video</button>
+      <button class="tgl" data-cx="clock" aria-pressed="false" type="button">Clock time</button>
+    </span>
+    <span class="spacer"></span>
+    <span class="grp"><span class="lab">Colour by</span>
+      <button class="tgl" data-col="none" aria-pressed="true" type="button">None</button>
+      <button class="tgl" data-col="recency" aria-pressed="false" type="button">Recency</button>
+      <button class="tgl" data-col="views" aria-pressed="false" type="button">Views</button>
+      <button class="tgl" data-col="ret" aria-pressed="false" type="button">Retention</button>
+    </span>
+  </div>
+  <svg class="cohortsvg" id="cohortsvg" role="img" aria-label="Retention curves for 10 videos"></svg>
+  <div class="ramp" id="ramp" style="display:none"><span class="lo"></span><i></i><span class="hi"></span></div>
+  <p class="cap"><strong>% of video</strong> normalises length, so structural habits line up — a sag every video shares shows as one shared dip. <strong>Clock time</strong> lets each curve stop where its video stops, so length and endurance become visible. On the % axis the dashed white line is this channel's own median — the bar every video is judged against; clock time has no shared x, so no median is drawn. Click a curve to isolate it, or a title below to open its viewer.</p>
+  <div class="clegend"><a href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener" data-i="0" title="I Hate Modern Desks... So I Built This."><b></b><span>I Hate Modern Desks... So I Built This.</span></a><a href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener" data-i="1" title="I Built an Over-Engineered Door for My Wobbly Cat"><b></b><span>I Built an Over-Engineered Door for My Wobbly Cat</span></a><a href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener" data-i="2" title="I Built a Puzzle Door to Trick My Wife"><b></b><span>I Built a Puzzle Door to Trick My Wife</span></a><a href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener" data-i="3" title="They stole my invention... so I got revenge."><b></b><span>They stole my invention... so I got revenge.</span></a><a href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener" data-i="4" title="I Built a Secret Door to Trick my Landlord"><b></b><span>I Built a Secret Door to Trick my Landlord</span></a><a href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener" data-i="5" title="Secretly Building my Wife&#39;s Dream Office"><b></b><span>Secretly Building my Wife&#39;s Dream Office</span></a><a href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener" data-i="6" title="I 3D Printed a $3,500 Chair"><b></b><span>I 3D Printed a $3,500 Chair</span></a><a href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener" data-i="7" title="I Built a Tiny Library on my Stairs"><b></b><span>I Built a Tiny Library on my Stairs</span></a><a href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener" data-i="8" title="I Built a $1,224 Chair (the right way)"><b></b><span>I Built a $1,224 Chair (the right way)</span></a><a href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener" data-i="9" title="I Built a Sleep Pod in a Suitcase"><b></b><span>I Built a Sleep Pod in a Suitcase</span></a></div>
+</div>
+<script>window.__COHORT__={"videos":[{"videoId":"R1ul9iBhpVM","title":"I Hate Modern Desks... So I Built This.","durationSec":1729,"pub":1781976718000,"views":2413245,"r50":0.324,"curve":[{"p":1,"w":0.926},{"p":2,"w":0.68},{"p":3,"w":0.568},{"p":4,"w":0.492},{"p":5,"w":0.465},{"p":6,"w":0.449},{"p":7,"w":0.44},{"p":8,"w":0.432},{"p":9,"w":0.426},{"p":10,"w":0.435},{"p":11,"w":0.429},{"p":12,"w":0.413},{"p":13,"w":0.406},{"p":14,"w":0.401},{"p":15,"w":0.4},{"p":16,"w":0.397},{"p":17,"w":0.394},{"p":18,"w":0.392},{"p":19,"w":0.387},{"p":20,"w":0.385},{"p":21,"w":0.382},{"p":22,"w":0.38},{"p":23,"w":0.374},{"p":24,"w":0.37},{"p":25,"w":0.363},{"p":26,"w":0.361},{"p":27,"w":0.356},{"p":28,"w":0.369},{"p":29,"w":0.352},{"p":30,"w":0.352},{"p":31,"w":0.35},{"p":32,"w":0.347},{"p":33,"w":0.344},{"p":34,"w":0.34},{"p":35,"w":0.34},{"p":36,"w":0.343},{"p":37,"w":0.345},{"p":38,"w":0.341},{"p":39,"w":0.339},{"p":40,"w":0.339},{"p":41,"w":0.34},{"p":42,"w":0.341},{"p":43,"w":0.343},{"p":44,"w":0.295},{"p":45,"w":0.262},{"p":46,"w":0.262},{"p":47,"w":0.314},{"p":48,"w":0.32},{"p":49,"w":0.318},{"p":50,"w":0.324},{"p":51,"w":0.322},{"p":52,"w":0.323},{"p":53,"w":0.324},{"p":54,"w":0.322},{"p":55,"w":0.332},{"p":56,"w":0.339},{"p":57,"w":0.322},{"p":58,"w":0.319},{"p":59,"w":0.32},{"p":60,"w":0.318},{"p":61,"w":0.32},{"p":62,"w":0.322},{"p":63,"w":0.318},{"p":64,"w":0.318},{"p":65,"w":0.327},{"p":66,"w":0.338},{"p":67,"w":0.323},{"p":68,"w":0.322},{"p":69,"w":0.323},{"p":70,"w":0.325},{"p":71,"w":0.325},{"p":72,"w":0.325},{"p":73,"w":0.326},{"p":74,"w":0.335},{"p":75,"w":0.343},{"p":76,"w":0.328},{"p":77,"w":0.328},{"p":78,"w":0.326},{"p":79,"w":0.325},{"p":80,"w":0.325},{"p":81,"w":0.325},{"p":82,"w":0.326},{"p":83,"w":0.329},{"p":84,"w":0.333},{"p":85,"w":0.335},{"p":86,"w":0.333},{"p":87,"w":0.334},{"p":88,"w":0.337},{"p":89,"w":0.349},{"p":90,"w":0.348},{"p":91,"w":0.344},{"p":92,"w":0.347},{"p":93,"w":0.343},{"p":94,"w":0.339},{"p":95,"w":0.337},{"p":96,"w":0.337},{"p":97,"w":0.338},{"p":98,"w":0.333},{"p":99,"w":0.312},{"p":100,"w":0.266}]},{"videoId":"XAycw099agw","title":"I Built an Over-Engineered Door for My Wobbly Cat","durationSec":1328,"pub":1775831667000,"views":574312,"r50":0.442,"curve":[{"p":1,"w":0.93},{"p":2,"w":0.786},{"p":3,"w":0.729},{"p":4,"w":0.678},{"p":5,"w":0.655},{"p":6,"w":0.639},{"p":7,"w":0.621},{"p":8,"w":0.608},{"p":9,"w":0.6},{"p":10,"w":0.569},{"p":11,"w":0.559},{"p":12,"w":0.552},{"p":13,"w":0.547},{"p":14,"w":0.544},{"p":15,"w":0.538},{"p":16,"w":0.532},{"p":17,"w":0.525},{"p":18,"w":0.52},{"p":19,"w":0.515},{"p":20,"w":0.513},{"p":21,"w":0.511},{"p":22,"w":0.508},{"p":23,"w":0.507},{"p":24,"w":0.506},{"p":25,"w":0.504},{"p":26,"w":0.497},{"p":27,"w":0.492},{"p":28,"w":0.489},{"p":29,"w":0.482},{"p":30,"w":0.477},{"p":31,"w":0.483},{"p":32,"w":0.488},{"p":33,"w":0.492},{"p":34,"w":0.458},{"p":35,"w":0.456},{"p":36,"w":0.458},{"p":37,"w":0.46},{"p":38,"w":0.461},{"p":39,"w":0.453},{"p":40,"w":0.415},{"p":41,"w":0.403},{"p":42,"w":0.407},{"p":43,"w":0.415},{"p":44,"w":0.447},{"p":45,"w":0.449},{"p":46,"w":0.448},{"p":47,"w":0.447},{"p":48,"w":0.442},{"p":49,"w":0.443},{"p":50,"w":0.442},{"p":51,"w":0.439},{"p":52,"w":0.437},{"p":53,"w":0.437},{"p":54,"w":0.437},{"p":55,"w":0.436},{"p":56,"w":0.438},{"p":57,"w":0.439},{"p":58,"w":0.433},{"p":59,"w":0.434},{"p":60,"w":0.435},{"p":61,"w":0.432},{"p":62,"w":0.432},{"p":63,"w":0.43},{"p":64,"w":0.428},{"p":65,"w":0.423},{"p":66,"w":0.422},{"p":67,"w":0.422},{"p":68,"w":0.423},{"p":69,"w":0.421},{"p":70,"w":0.42},{"p":71,"w":0.42},{"p":72,"w":0.419},{"p":73,"w":0.419},{"p":74,"w":0.42},{"p":75,"w":0.424},{"p":76,"w":0.421},{"p":77,"w":0.421},{"p":78,"w":0.422},{"p":79,"w":0.421},{"p":80,"w":0.438},{"p":81,"w":0.419},{"p":82,"w":0.419},{"p":83,"w":0.418},{"p":84,"w":0.417},{"p":85,"w":0.416},{"p":86,"w":0.416},{"p":87,"w":0.418},{"p":88,"w":0.416},{"p":89,"w":0.413},{"p":90,"w":0.414},{"p":91,"w":0.418},{"p":92,"w":0.423},{"p":93,"w":0.421},{"p":94,"w":0.421},{"p":95,"w":0.421},{"p":96,"w":0.42},{"p":97,"w":0.423},{"p":98,"w":0.423},{"p":99,"w":0.415},{"p":100,"w":0.395}]},{"videoId":"Ig0UVe5jXic","title":"I Built a Puzzle Door to Trick My Wife","durationSec":2587,"pub":1773772580000,"views":714344,"r50":0.374,"curve":[{"p":1,"w":0.898},{"p":2,"w":0.612},{"p":3,"w":0.542},{"p":4,"w":0.515},{"p":5,"w":0.508},{"p":6,"w":0.487},{"p":7,"w":0.476},{"p":8,"w":0.465},{"p":9,"w":0.455},{"p":10,"w":0.452},{"p":11,"w":0.444},{"p":12,"w":0.438},{"p":13,"w":0.441},{"p":14,"w":0.434},{"p":15,"w":0.43},{"p":16,"w":0.445},{"p":17,"w":0.424},{"p":18,"w":0.414},{"p":19,"w":0.413},{"p":20,"w":0.41},{"p":21,"w":0.413},{"p":22,"w":0.408},{"p":23,"w":0.402},{"p":24,"w":0.4},{"p":25,"w":0.402},{"p":26,"w":0.396},{"p":27,"w":0.388},{"p":28,"w":0.387},{"p":29,"w":0.384},{"p":30,"w":0.384},{"p":31,"w":0.391},{"p":32,"w":0.404},{"p":33,"w":0.376},{"p":34,"w":0.375},{"p":35,"w":0.37},{"p":36,"w":0.37},{"p":37,"w":0.368},{"p":38,"w":0.365},{"p":39,"w":0.365},{"p":40,"w":0.366},{"p":41,"w":0.376},{"p":42,"w":0.368},{"p":43,"w":0.361},{"p":44,"w":0.359},{"p":45,"w":0.359},{"p":46,"w":0.359},{"p":47,"w":0.361},{"p":48,"w":0.361},{"p":49,"w":0.369},{"p":50,"w":0.374},{"p":51,"w":0.357},{"p":52,"w":0.354},{"p":53,"w":0.354},{"p":54,"w":0.355},{"p":55,"w":0.353},{"p":56,"w":0.351},{"p":57,"w":0.351},{"p":58,"w":0.349},{"p":59,"w":0.349},{"p":60,"w":0.348},{"p":61,"w":0.348},{"p":62,"w":0.348},{"p":63,"w":0.346},{"p":64,"w":0.346},{"p":65,"w":0.345},{"p":66,"w":0.344},{"p":67,"w":0.343},{"p":68,"w":0.343},{"p":69,"w":0.345},{"p":70,"w":0.347},{"p":71,"w":0.368},{"p":72,"w":0.349},{"p":73,"w":0.349},{"p":74,"w":0.347},{"p":75,"w":0.347},{"p":76,"w":0.346},{"p":77,"w":0.35},{"p":78,"w":0.345},{"p":79,"w":0.343},{"p":80,"w":0.34},{"p":81,"w":0.345},{"p":82,"w":0.349},{"p":83,"w":0.345},{"p":84,"w":0.346},{"p":85,"w":0.345},{"p":86,"w":0.345},{"p":87,"w":0.346},{"p":88,"w":0.346},{"p":89,"w":0.348},{"p":90,"w":0.354},{"p":91,"w":0.37},{"p":92,"w":0.353},{"p":93,"w":0.354},{"p":94,"w":0.358},{"p":95,"w":0.365},{"p":96,"w":0.366},{"p":97,"w":0.377},{"p":98,"w":0.374},{"p":99,"w":0.344},{"p":100,"w":0.312}]},{"videoId":"wCD6KecZhM0","title":"They stole my invention... so I got revenge.","durationSec":1351,"pub":1770651946000,"views":618363,"r50":0.394,"curve":[{"p":1,"w":0.91},{"p":2,"w":0.836},{"p":3,"w":0.8},{"p":4,"w":0.641},{"p":5,"w":0.625},{"p":6,"w":0.592},{"p":7,"w":0.582},{"p":8,"w":0.579},{"p":9,"w":0.579},{"p":10,"w":0.576},{"p":11,"w":0.573},{"p":12,"w":0.57},{"p":13,"w":0.565},{"p":14,"w":0.562},{"p":15,"w":0.549},{"p":16,"w":0.544},{"p":17,"w":0.539},{"p":18,"w":0.536},{"p":19,"w":0.535},{"p":20,"w":0.529},{"p":21,"w":0.518},{"p":22,"w":0.516},{"p":23,"w":0.509},{"p":24,"w":0.503},{"p":25,"w":0.5},{"p":26,"w":0.491},{"p":27,"w":0.483},{"p":28,"w":0.48},{"p":29,"w":0.479},{"p":30,"w":0.48},{"p":31,"w":0.475},{"p":32,"w":0.473},{"p":33,"w":0.474},{"p":34,"w":0.468},{"p":35,"w":0.484},{"p":36,"w":0.444},{"p":37,"w":0.439},{"p":38,"w":0.426},{"p":39,"w":0.37},{"p":40,"w":0.299},{"p":41,"w":0.296},{"p":42,"w":0.304},{"p":43,"w":0.362},{"p":44,"w":0.392},{"p":45,"w":0.396},{"p":46,"w":0.395},{"p":47,"w":0.394},{"p":48,"w":0.395},{"p":49,"w":0.397},{"p":50,"w":0.394},{"p":51,"w":0.393},{"p":52,"w":0.39},{"p":53,"w":0.387},{"p":54,"w":0.387},{"p":55,"w":0.385},{"p":56,"w":0.382},{"p":57,"w":0.378},{"p":58,"w":0.377},{"p":59,"w":0.376},{"p":60,"w":0.377},{"p":61,"w":0.377},{"p":62,"w":0.375},{"p":63,"w":0.376},{"p":64,"w":0.375},{"p":65,"w":0.373},{"p":66,"w":0.373},{"p":67,"w":0.372},{"p":68,"w":0.373},{"p":69,"w":0.373},{"p":70,"w":0.375},{"p":71,"w":0.378},{"p":72,"w":0.371},{"p":73,"w":0.37},{"p":74,"w":0.375},{"p":75,"w":0.379},{"p":76,"w":0.394},{"p":77,"w":0.383},{"p":78,"w":0.383},{"p":79,"w":0.378},{"p":80,"w":0.375},{"p":81,"w":0.374},{"p":82,"w":0.374},{"p":83,"w":0.376},{"p":84,"w":0.377},{"p":85,"w":0.376},{"p":86,"w":0.377},{"p":87,"w":0.376},{"p":88,"w":0.38},{"p":89,"w":0.381},{"p":90,"w":0.377},{"p":91,"w":0.374},{"p":92,"w":0.372},{"p":93,"w":0.373},{"p":94,"w":0.372},{"p":95,"w":0.372},{"p":96,"w":0.368},{"p":97,"w":0.36},{"p":98,"w":0.349},{"p":99,"w":0.314},{"p":100,"w":0.297}]},{"videoId":"rG0cGccTCgk","title":"I Built a Secret Door to Trick my Landlord","durationSec":1972,"pub":1767207075000,"views":2668240,"r50":0.28,"curve":[{"p":1,"w":0.957},{"p":2,"w":0.661},{"p":3,"w":0.5},{"p":4,"w":0.444},{"p":5,"w":0.428},{"p":6,"w":0.42},{"p":7,"w":0.405},{"p":8,"w":0.395},{"p":9,"w":0.389},{"p":10,"w":0.382},{"p":11,"w":0.371},{"p":12,"w":0.359},{"p":13,"w":0.35},{"p":14,"w":0.352},{"p":15,"w":0.343},{"p":16,"w":0.343},{"p":17,"w":0.347},{"p":18,"w":0.338},{"p":19,"w":0.331},{"p":20,"w":0.333},{"p":21,"w":0.331},{"p":22,"w":0.341},{"p":23,"w":0.321},{"p":24,"w":0.319},{"p":25,"w":0.311},{"p":26,"w":0.309},{"p":27,"w":0.308},{"p":28,"w":0.307},{"p":29,"w":0.306},{"p":30,"w":0.306},{"p":31,"w":0.308},{"p":32,"w":0.305},{"p":33,"w":0.304},{"p":34,"w":0.299},{"p":35,"w":0.256},{"p":36,"w":0.224},{"p":37,"w":0.227},{"p":38,"w":0.254},{"p":39,"w":0.28},{"p":40,"w":0.281},{"p":41,"w":0.283},{"p":42,"w":0.282},{"p":43,"w":0.283},{"p":44,"w":0.288},{"p":45,"w":0.287},{"p":46,"w":0.287},{"p":47,"w":0.281},{"p":48,"w":0.282},{"p":49,"w":0.281},{"p":50,"w":0.28},{"p":51,"w":0.281},{"p":52,"w":0.28},{"p":53,"w":0.282},{"p":54,"w":0.286},{"p":55,"w":0.282},{"p":56,"w":0.283},{"p":57,"w":0.282},{"p":58,"w":0.279},{"p":59,"w":0.281},{"p":60,"w":0.289},{"p":61,"w":0.285},{"p":62,"w":0.282},{"p":63,"w":0.283},{"p":64,"w":0.282},{"p":65,"w":0.284},{"p":66,"w":0.293},{"p":67,"w":0.284},{"p":68,"w":0.286},{"p":69,"w":0.283},{"p":70,"w":0.288},{"p":71,"w":0.291},{"p":72,"w":0.292},{"p":73,"w":0.295},{"p":74,"w":0.3},{"p":75,"w":0.304},{"p":76,"w":0.307},{"p":77,"w":0.304},{"p":78,"w":0.302},{"p":79,"w":0.302},{"p":80,"w":0.306},{"p":81,"w":0.307},{"p":82,"w":0.313},{"p":83,"w":0.318},{"p":84,"w":0.318},{"p":85,"w":0.321},{"p":86,"w":0.325},{"p":87,"w":0.331},{"p":88,"w":0.332},{"p":89,"w":0.336},{"p":90,"w":0.345},{"p":91,"w":0.373},{"p":92,"w":0.356},{"p":93,"w":0.354},{"p":94,"w":0.353},{"p":95,"w":0.352},{"p":96,"w":0.351},{"p":97,"w":0.364},{"p":98,"w":0.353},{"p":99,"w":0.326},{"p":100,"w":0.314}]},{"videoId":"mRiHfEAACZw","title":"Secretly Building my Wife's Dream Office","durationSec":1861,"pub":1764786497000,"views":942605,"r50":0.443,"curve":[{"p":1,"w":0.951},{"p":2,"w":0.696},{"p":3,"w":0.616},{"p":4,"w":0.582},{"p":5,"w":0.566},{"p":6,"w":0.562},{"p":7,"w":0.535},{"p":8,"w":0.528},{"p":9,"w":0.522},{"p":10,"w":0.52},{"p":11,"w":0.517},{"p":12,"w":0.514},{"p":13,"w":0.507},{"p":14,"w":0.502},{"p":15,"w":0.505},{"p":16,"w":0.504},{"p":17,"w":0.493},{"p":18,"w":0.489},{"p":19,"w":0.484},{"p":20,"w":0.485},{"p":21,"w":0.485},{"p":22,"w":0.482},{"p":23,"w":0.476},{"p":24,"w":0.475},{"p":25,"w":0.501},{"p":26,"w":0.473},{"p":27,"w":0.469},{"p":28,"w":0.469},{"p":29,"w":0.453},{"p":30,"w":0.453},{"p":31,"w":0.455},{"p":32,"w":0.459},{"p":33,"w":0.459},{"p":34,"w":0.459},{"p":35,"w":0.456},{"p":36,"w":0.455},{"p":37,"w":0.453},{"p":38,"w":0.455},{"p":39,"w":0.454},{"p":40,"w":0.454},{"p":41,"w":0.455},{"p":42,"w":0.458},{"p":43,"w":0.449},{"p":44,"w":0.445},{"p":45,"w":0.444},{"p":46,"w":0.445},{"p":47,"w":0.442},{"p":48,"w":0.441},{"p":49,"w":0.442},{"p":50,"w":0.443},{"p":51,"w":0.474},{"p":52,"w":0.445},{"p":53,"w":0.434},{"p":54,"w":0.432},{"p":55,"w":0.429},{"p":56,"w":0.426},{"p":57,"w":0.427},{"p":58,"w":0.424},{"p":59,"w":0.422},{"p":60,"w":0.422},{"p":61,"w":0.422},{"p":62,"w":0.425},{"p":63,"w":0.423},{"p":64,"w":0.421},{"p":65,"w":0.421},{"p":66,"w":0.422},{"p":67,"w":0.421},{"p":68,"w":0.426},{"p":69,"w":0.448},{"p":70,"w":0.45},{"p":71,"w":0.424},{"p":72,"w":0.423},{"p":73,"w":0.425},{"p":74,"w":0.428},{"p":75,"w":0.429},{"p":76,"w":0.432},{"p":77,"w":0.437},{"p":78,"w":0.437},{"p":79,"w":0.435},{"p":80,"w":0.435},{"p":81,"w":0.443},{"p":82,"w":0.436},{"p":83,"w":0.441},{"p":84,"w":0.447},{"p":85,"w":0.448},{"p":86,"w":0.443},{"p":87,"w":0.44},{"p":88,"w":0.445},{"p":89,"w":0.447},{"p":90,"w":0.452},{"p":91,"w":0.458},{"p":92,"w":0.484},{"p":93,"w":0.496},{"p":94,"w":0.488},{"p":95,"w":0.486},{"p":96,"w":0.479},{"p":97,"w":0.47},{"p":98,"w":0.459},{"p":99,"w":0.449},{"p":100,"w":0.434}]},{"videoId":"hISwQHHBCTk","title":"I 3D Printed a $3,500 Chair","durationSec":1709,"pub":1761237856000,"views":1012676,"r50":0.353,"curve":[{"p":1,"w":0.943},{"p":2,"w":0.775},{"p":3,"w":0.647},{"p":4,"w":0.575},{"p":5,"w":0.535},{"p":6,"w":0.526},{"p":7,"w":0.517},{"p":8,"w":0.51},{"p":9,"w":0.505},{"p":10,"w":0.499},{"p":11,"w":0.496},{"p":12,"w":0.49},{"p":13,"w":0.487},{"p":14,"w":0.483},{"p":15,"w":0.48},{"p":16,"w":0.472},{"p":17,"w":0.467},{"p":18,"w":0.462},{"p":19,"w":0.448},{"p":20,"w":0.441},{"p":21,"w":0.436},{"p":22,"w":0.436},{"p":23,"w":0.441},{"p":24,"w":0.419},{"p":25,"w":0.408},{"p":26,"w":0.374},{"p":27,"w":0.376},{"p":28,"w":0.386},{"p":29,"w":0.395},{"p":30,"w":0.395},{"p":31,"w":0.397},{"p":32,"w":0.394},{"p":33,"w":0.393},{"p":34,"w":0.389},{"p":35,"w":0.383},{"p":36,"w":0.376},{"p":37,"w":0.375},{"p":38,"w":0.374},{"p":39,"w":0.374},{"p":40,"w":0.387},{"p":41,"w":0.37},{"p":42,"w":0.368},{"p":43,"w":0.366},{"p":44,"w":0.368},{"p":45,"w":0.368},{"p":46,"w":0.359},{"p":47,"w":0.359},{"p":48,"w":0.363},{"p":49,"w":0.36},{"p":50,"w":0.353},{"p":51,"w":0.352},{"p":52,"w":0.352},{"p":53,"w":0.353},{"p":54,"w":0.349},{"p":55,"w":0.353},{"p":56,"w":0.347},{"p":57,"w":0.357},{"p":58,"w":0.35},{"p":59,"w":0.344},{"p":60,"w":0.341},{"p":61,"w":0.342},{"p":62,"w":0.346},{"p":63,"w":0.353},{"p":64,"w":0.482},{"p":65,"w":0.344},{"p":66,"w":0.345},{"p":67,"w":0.344},{"p":68,"w":0.346},{"p":69,"w":0.346},{"p":70,"w":0.346},{"p":71,"w":0.343},{"p":72,"w":0.342},{"p":73,"w":0.343},{"p":74,"w":0.345},{"p":75,"w":0.346},{"p":76,"w":0.349},{"p":77,"w":0.349},{"p":78,"w":0.343},{"p":79,"w":0.338},{"p":80,"w":0.34},{"p":81,"w":0.34},{"p":82,"w":0.344},{"p":83,"w":0.348},{"p":84,"w":0.35},{"p":85,"w":0.357},{"p":86,"w":0.352},{"p":87,"w":0.352},{"p":88,"w":0.36},{"p":89,"w":0.359},{"p":90,"w":0.353},{"p":91,"w":0.351},{"p":92,"w":0.356},{"p":93,"w":0.37},{"p":94,"w":0.357},{"p":95,"w":0.357},{"p":96,"w":0.355},{"p":97,"w":0.34},{"p":98,"w":0.332},{"p":99,"w":0.319},{"p":100,"w":0.186}]},{"videoId":"rwZLV5Kda3Q","title":"I Built a Tiny Library on my Stairs","durationSec":1695,"pub":1757100187000,"views":1134487,"r50":0.37,"curve":[{"p":1,"w":0.951},{"p":2,"w":0.742},{"p":3,"w":0.645},{"p":4,"w":0.6},{"p":5,"w":0.578},{"p":6,"w":0.552},{"p":7,"w":0.527},{"p":8,"w":0.504},{"p":9,"w":0.493},{"p":10,"w":0.481},{"p":11,"w":0.477},{"p":12,"w":0.481},{"p":13,"w":0.475},{"p":14,"w":0.465},{"p":15,"w":0.455},{"p":16,"w":0.438},{"p":17,"w":0.444},{"p":18,"w":0.445},{"p":19,"w":0.448},{"p":20,"w":0.452},{"p":21,"w":0.449},{"p":22,"w":0.444},{"p":23,"w":0.442},{"p":24,"w":0.436},{"p":25,"w":0.426},{"p":26,"w":0.424},{"p":27,"w":0.419},{"p":28,"w":0.417},{"p":29,"w":0.417},{"p":30,"w":0.435},{"p":31,"w":0.406},{"p":32,"w":0.4},{"p":33,"w":0.399},{"p":34,"w":0.395},{"p":35,"w":0.391},{"p":36,"w":0.389},{"p":37,"w":0.389},{"p":38,"w":0.383},{"p":39,"w":0.382},{"p":40,"w":0.38},{"p":41,"w":0.379},{"p":42,"w":0.381},{"p":43,"w":0.38},{"p":44,"w":0.378},{"p":45,"w":0.376},{"p":46,"w":0.376},{"p":47,"w":0.379},{"p":48,"w":0.379},{"p":49,"w":0.376},{"p":50,"w":0.37},{"p":51,"w":0.368},{"p":52,"w":0.368},{"p":53,"w":0.374},{"p":54,"w":0.385},{"p":55,"w":0.364},{"p":56,"w":0.36},{"p":57,"w":0.362},{"p":58,"w":0.365},{"p":59,"w":0.369},{"p":60,"w":0.371},{"p":61,"w":0.356},{"p":62,"w":0.351},{"p":63,"w":0.35},{"p":64,"w":0.344},{"p":65,"w":0.345},{"p":66,"w":0.343},{"p":67,"w":0.344},{"p":68,"w":0.341},{"p":69,"w":0.344},{"p":70,"w":0.345},{"p":71,"w":0.348},{"p":72,"w":0.349},{"p":73,"w":0.365},{"p":74,"w":0.352},{"p":75,"w":0.346},{"p":76,"w":0.35},{"p":77,"w":0.354},{"p":78,"w":0.361},{"p":79,"w":0.363},{"p":80,"w":0.363},{"p":81,"w":0.356},{"p":82,"w":0.358},{"p":83,"w":0.354},{"p":84,"w":0.361},{"p":85,"w":0.365},{"p":86,"w":0.369},{"p":87,"w":0.36},{"p":88,"w":0.353},{"p":89,"w":0.355},{"p":90,"w":0.364},{"p":91,"w":0.361},{"p":92,"w":0.363},{"p":93,"w":0.369},{"p":94,"w":0.38},{"p":95,"w":0.392},{"p":96,"w":0.39},{"p":97,"w":0.381},{"p":98,"w":0.3},{"p":99,"w":0.254},{"p":100,"w":0.223}]},{"videoId":"HFTrzJ_9QzM","title":"I Built a $1,224 Chair (the right way)","durationSec":1328,"pub":1755354290000,"views":963861,"r50":0.391,"curve":[{"p":1,"w":0.944},{"p":2,"w":0.756},{"p":3,"w":0.714},{"p":4,"w":0.661},{"p":5,"w":0.617},{"p":6,"w":0.605},{"p":7,"w":0.575},{"p":8,"w":0.562},{"p":9,"w":0.547},{"p":10,"w":0.536},{"p":11,"w":0.527},{"p":12,"w":0.511},{"p":13,"w":0.498},{"p":14,"w":0.49},{"p":15,"w":0.485},{"p":16,"w":0.482},{"p":17,"w":0.476},{"p":18,"w":0.467},{"p":19,"w":0.462},{"p":20,"w":0.459},{"p":21,"w":0.456},{"p":22,"w":0.452},{"p":23,"w":0.448},{"p":24,"w":0.444},{"p":25,"w":0.437},{"p":26,"w":0.432},{"p":27,"w":0.431},{"p":28,"w":0.43},{"p":29,"w":0.429},{"p":30,"w":0.427},{"p":31,"w":0.425},{"p":32,"w":0.424},{"p":33,"w":0.424},{"p":34,"w":0.448},{"p":35,"w":0.413},{"p":36,"w":0.41},{"p":37,"w":0.408},{"p":38,"w":0.407},{"p":39,"w":0.406},{"p":40,"w":0.407},{"p":41,"w":0.404},{"p":42,"w":0.402},{"p":43,"w":0.402},{"p":44,"w":0.4},{"p":45,"w":0.398},{"p":46,"w":0.398},{"p":47,"w":0.397},{"p":48,"w":0.398},{"p":49,"w":0.395},{"p":50,"w":0.391},{"p":51,"w":0.362},{"p":52,"w":0.332},{"p":53,"w":0.329},{"p":54,"w":0.328},{"p":55,"w":0.325},{"p":56,"w":0.323},{"p":57,"w":0.325},{"p":58,"w":0.338},{"p":59,"w":0.37},{"p":60,"w":0.373},{"p":61,"w":0.373},{"p":62,"w":0.372},{"p":63,"w":0.371},{"p":64,"w":0.37},{"p":65,"w":0.369},{"p":66,"w":0.368},{"p":67,"w":0.368},{"p":68,"w":0.367},{"p":69,"w":0.378},{"p":70,"w":0.383},{"p":71,"w":0.366},{"p":72,"w":0.365},{"p":73,"w":0.365},{"p":74,"w":0.361},{"p":75,"w":0.36},{"p":76,"w":0.363},{"p":77,"w":0.364},{"p":78,"w":0.359},{"p":79,"w":0.359},{"p":80,"w":0.358},{"p":81,"w":0.359},{"p":82,"w":0.359},{"p":83,"w":0.362},{"p":84,"w":0.361},{"p":85,"w":0.36},{"p":86,"w":0.36},{"p":87,"w":0.361},{"p":88,"w":0.362},{"p":89,"w":0.356},{"p":90,"w":0.346},{"p":91,"w":0.338},{"p":92,"w":0.327},{"p":93,"w":0.32},{"p":94,"w":0.317},{"p":95,"w":0.31},{"p":96,"w":0.308},{"p":97,"w":0.307},{"p":98,"w":0.303},{"p":99,"w":0.295},{"p":100,"w":0.252}]},{"videoId":"DUHQ_lLD0n0","title":"I Built a Sleep Pod in a Suitcase","durationSec":1468,"pub":1750345754000,"views":3659219,"r50":0.258,"curve":[{"p":1,"w":0.913},{"p":2,"w":0.803},{"p":3,"w":0.638},{"p":4,"w":0.512},{"p":5,"w":0.488},{"p":6,"w":0.461},{"p":7,"w":0.442},{"p":8,"w":0.437},{"p":9,"w":0.432},{"p":10,"w":0.413},{"p":11,"w":0.4},{"p":12,"w":0.4},{"p":13,"w":0.396},{"p":14,"w":0.39},{"p":15,"w":0.374},{"p":16,"w":0.366},{"p":17,"w":0.359},{"p":18,"w":0.355},{"p":19,"w":0.344},{"p":20,"w":0.341},{"p":21,"w":0.329},{"p":22,"w":0.354},{"p":23,"w":0.317},{"p":24,"w":0.316},{"p":25,"w":0.313},{"p":26,"w":0.314},{"p":27,"w":0.316},{"p":28,"w":0.312},{"p":29,"w":0.3},{"p":30,"w":0.297},{"p":31,"w":0.296},{"p":32,"w":0.291},{"p":33,"w":0.289},{"p":34,"w":0.289},{"p":35,"w":0.284},{"p":36,"w":0.281},{"p":37,"w":0.281},{"p":38,"w":0.276},{"p":39,"w":0.277},{"p":40,"w":0.275},{"p":41,"w":0.275},{"p":42,"w":0.274},{"p":43,"w":0.276},{"p":44,"w":0.273},{"p":45,"w":0.289},{"p":46,"w":0.273},{"p":47,"w":0.271},{"p":48,"w":0.257},{"p":49,"w":0.246},{"p":50,"w":0.258},{"p":51,"w":0.263},{"p":52,"w":0.266},{"p":53,"w":0.276},{"p":54,"w":0.283},{"p":55,"w":0.27},{"p":56,"w":0.271},{"p":57,"w":0.272},{"p":58,"w":0.271},{"p":59,"w":0.27},{"p":60,"w":0.27},{"p":61,"w":0.269},{"p":62,"w":0.271},{"p":63,"w":0.268},{"p":64,"w":0.272},{"p":65,"w":0.275},{"p":66,"w":0.28},{"p":67,"w":0.278},{"p":68,"w":0.276},{"p":69,"w":0.284},{"p":70,"w":0.294},{"p":71,"w":0.283},{"p":72,"w":0.285},{"p":73,"w":0.293},{"p":74,"w":0.294},{"p":75,"w":0.302},{"p":76,"w":0.305},{"p":77,"w":0.307},{"p":78,"w":0.295},{"p":79,"w":0.294},{"p":80,"w":0.301},{"p":81,"w":0.309},{"p":82,"w":0.315},{"p":83,"w":0.321},{"p":84,"w":0.333},{"p":85,"w":0.339},{"p":86,"w":0.341},{"p":87,"w":0.342},{"p":88,"w":0.355},{"p":89,"w":0.366},{"p":90,"w":0.372},{"p":91,"w":0.375},{"p":92,"w":0.37},{"p":93,"w":0.36},{"p":94,"w":0.352},{"p":95,"w":0.352},{"p":96,"w":0.331},{"p":97,"w":0.309},{"p":98,"w":0.291},{"p":99,"w":0.276},{"p":100,"w":0.242}]}]}</script>
+<script>
+(function(){
+  var D = window.__COHORT__; if(!D || !D.videos.length) return;
+  var svg = document.getElementById('cohortsvg');
+  var W = 1000, H = 420, L = 46, R = 14, T = 14, B = 30;
+  var axis = 'percent', colour = 'none', sel = null;
+  var maxDur = Math.max.apply(null, D.videos.map(function(v){ return v.durationSec||1; }));
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function rgb(r,g,b){ return 'rgb('+Math.round(r)+','+Math.round(g)+','+Math.round(b)+')'; }
+  // white (oldest) -> blue (newest); single hue on purpose, so age reads as one axis
+  function recency(t){ return rgb(lerp(255,74,t), lerp(255,150,t), lerp(255,246,t)); }
+  // red (fewest views) -> green (most)
+  function views(t){ return t<.5 ? rgb(lerp(255,246,t*2), lerp(90,195,t*2), lerp(90,68,t*2))
+                                 : rgb(lerp(246,90,(t-.5)*2), lerp(195,216,(t-.5)*2), lerp(68,130,(t-.5)*2)); }
+  function ret(t){ return rgb(lerp(255,90,t), lerp(107,216,t), lerp(107,150,t)); }
+
+  /**
+   * Percentile RANK, not min-max. Views are heavy-tailed: on this channel one
+   * 1.6M breakout sits five times above the pack, and a linear ramp spends its
+   * whole range on that one video while painting the other twenty-nine the same
+   * red. Rank spreads the ramp evenly over the set, so the colour answers
+   * "where does this sit among its siblings" — the question actually being
+   * asked. Same reasoning as scoring outliers against the median.
+   */
+  var rankCache = {};
+  function rankOf(v, key){
+    if (v[key] == null) return .5;
+    if (!rankCache[key]){
+      var sorted = D.videos.filter(function(x){ return x[key]!=null; })
+                           .sort(function(a,b){ return a[key]-b[key]; });
+      var m = {};
+      sorted.forEach(function(x,i){ m[x.videoId] = sorted.length>1 ? i/(sorted.length-1) : .5; });
+      rankCache[key] = m;
+    }
+    var r = rankCache[key][v.videoId];
+    return r == null ? .5 : r;
+  }
+  function colOf(v){
+    if (colour === 'recency') return recency(rankOf(v,'pub'));
+    if (colour === 'views')   return views(rankOf(v,'views'));
+    if (colour === 'ret')     return ret(rankOf(v,'r50'));
+    return '#7ee3f5';
+  }
+
+  function xOf(v, p){
+    var frac = axis === 'percent' ? p/100 : (p/100 * (v.durationSec||1)) / maxDur;
+    return L + Math.min(1, frac) * (W - L - R);
+  }
+  function yOf(w){ return T + (1 - Math.max(0, Math.min(1, w))) * (H - T - B); }
+  function fmtT(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60);
+    return (m>=60 ? Math.floor(m/60)+':'+String(m%60).padStart(2,'0') : String(m))+':'+String(s%60).padStart(2,'0'); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function pathFor(v){
+    var d='';
+    for (var i=0;i<v.curve.length;i++){
+      var pt=v.curve[i];
+      d += (i?'L':'M')+xOf(v,pt.p).toFixed(1)+' '+yOf(pt.w).toFixed(1)+' ';
+    }
+    return d;
+  }
+
+  /** Cohort median at each percent step — the line every video is judged against. */
+  function medianPath(){
+    var d='';
+    for (var p=0; p<=100; p+=2){
+      var vals=[];
+      for (var i=0;i<D.videos.length;i++){
+        var c=D.videos[i].curve, best=null, bd=1e9;
+        for (var j=0;j<c.length;j++){ var dd=Math.abs(c[j].p-p); if(dd<bd){bd=dd;best=c[j].w;} }
+        if (best!=null && bd<=3) vals.push(best);
+      }
+      if (vals.length < 3) continue;
+      vals.sort(function(a,b){return a-b;});
+      var m = vals.length%2 ? vals[vals.length>>1] : (vals[(vals.length>>1)-1]+vals[vals.length>>1])/2;
+      // Median is a structural statement, so it always lives on the percent axis.
+      var x = L + (p/100)*(W-L-R);
+      d += (d?'L':'M')+x.toFixed(1)+' '+yOf(m).toFixed(1)+' ';
+    }
+    return d;
+  }
+
+  function draw(){
+    var parts=[];
+    for (var g=0; g<=100; g+=25){
+      var y=yOf(g/100);
+      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>');
+      parts.push('<text class="tick" x="'+(L-9)+'" y="'+(y+4)+'" text-anchor="end">'+g+'%</text>');
+    }
+    for (var i=0;i<=5;i++){
+      var f=i/5, x=L+f*(W-L-R);
+      parts.push('<text class="tick" x="'+x+'" y="'+(H-8)+'" text-anchor="middle">'+
+        (axis==='percent' ? Math.round(f*100)+'%' : fmtT(f*maxDur))+'</text>');
+    }
+    D.videos.forEach(function(v,i){
+      if (!v.curve.length) return;
+      var d = pathFor(v);
+      parts.push('<path class="hit" data-i="'+i+'" d="'+d+'"><title>'+esc(v.title)+'</title></path>');
+      parts.push('<path class="cv'+(sel===i?' on':'')+'" data-i="'+i+'" d="'+d+'" stroke="'+colOf(v)+'"/>');
+    });
+    if (axis === 'percent'){
+      var md = medianPath();
+      if (md){
+        parts.push('<path class="medcase" d="'+md+'"/>');
+        parts.push('<path class="med" d="'+md+'"/>');
+        var last = md.trim().split('L').pop().trim().split(' ');
+        parts.push('<text class="medlab" x="'+(Number(last[0])-6)+'" y="'+(Number(last[1])-11)+
+          '" text-anchor="end">MEDIAN</text>');
+      }
+    }
+    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0)+'" x2="'+(W-R)+'" y2="'+yOf(0)+'"/>');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.innerHTML = parts.join('');
+    svg.classList.toggle('hasel', sel!==null);
+    document.querySelectorAll('.clegend a').forEach(function(a,i){
+      var sw=a.querySelector('b'); if(sw) sw.style.background = colOf(D.videos[i]);
+    });
+    var ramp = document.getElementById('ramp');
+    if (ramp){
+      var stops = { none:'', recency:'#ffffff,#4a96f6', views:'#ff5a5a,#f6c344,#5ad8a6', ret:'#ff6b6b,#5ad8a6' }[colour];
+      ramp.style.display = stops ? '' : 'none';
+      if (stops){
+        ramp.querySelector('i').style.background='linear-gradient(90deg,'+stops+')';
+        var lo=ramp.querySelector('.lo'), hi=ramp.querySelector('.hi');
+        var txt={ recency:['oldest','newest'], views:['fewest views','most views'], ret:['weakest at half','strongest at half'] }[colour];
+        lo.textContent=txt[0]; hi.textContent=txt[1];
+      }
+    }
+  }
+
+  function pick(i){ sel = (sel===i ? null : i); draw(); }
+  svg.addEventListener('click', function(e){
+    var p=e.target.closest('.hit'); if(p) pick(Number(p.dataset.i));
+    else { sel=null; draw(); }
+  });
+  document.querySelectorAll('.clegend a').forEach(function(a){
+    a.addEventListener('mouseenter', function(){ sel=Number(a.dataset.i); draw(); });
+    a.addEventListener('mouseleave', function(){ sel=null; draw(); });
+  });
+  document.querySelectorAll('[data-cx]').forEach(function(b){
+    b.addEventListener('click', function(){
+      axis=b.dataset.cx;
+      document.querySelectorAll('[data-cx]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.cx===axis)); });
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-col]').forEach(function(b){
+    b.addEventListener('click', function(){
+      colour=b.dataset.col;
+      document.querySelectorAll('[data-col]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.col===colour)); });
+      draw();
+    });
+  });
+  draw();
+})();
+</script>
 <h2>Video wall</h2>
 <p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
-<div class="wall"><a class="v" href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener">
+<div class="wallbar">
+  <span class="lab">Sort</span>
+  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
+  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
+  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
+  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
+  <span class="spacer"></span>
+  
+  <span class="count" id="wallcount">10 videos</span>
+</div><div class="wall" id="wall"><a class="v" href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener" data-pub="1781976718000" data-views="2413245" data-out="2.44" data-r50="0.324" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/R1ul9iBhpVM/mqdefault.jpg" alt="">
     <span class="score out-hot">2.44×</span>
     <span class="len">28:49</span>
   </div>
   <div class="t">I Hate Modern Desks... So I Built This.</div>
-  <div class="meta">2.8M views · 1 month ago</div>
+  <div class="meta">2.4M views (28d) · 1 month ago · 32% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener" data-pub="1775831667000" data-views="574312" data-out="0.58" data-r50="0.442" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/XAycw099agw/mqdefault.jpg" alt="">
     <span class="score out-down">0.58×</span>
     <span class="len">22:08</span>
   </div>
   <div class="t">I Built an Over-Engineered Door for My Wobbly Cat</div>
-  <div class="meta">869K views · 4 months ago</div>
+  <div class="meta">574K views (28d) · 4 months ago · 44% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener" data-pub="1773772580000" data-views="714344" data-out="0.72" data-r50="0.374" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/Ig0UVe5jXic/mqdefault.jpg" alt="">
     <span class="score out-down">0.72×</span>
     <span class="len">43:07</span>
   </div>
   <div class="t">I Built a Puzzle Door to Trick My Wife</div>
-  <div class="meta">1.1M views · 4 months ago</div>
+  <div class="meta">714K views (28d) · 5 months ago · 37% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener" data-pub="1770651946000" data-views="618363" data-out="0.63" data-r50="0.394" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/wCD6KecZhM0/mqdefault.jpg" alt="">
     <span class="score out-down">0.63×</span>
     <span class="len">22:31</span>
   </div>
   <div class="t">They stole my invention... so I got revenge.</div>
-  <div class="meta">865K views · 6 months ago</div>
+  <div class="meta">618K views (28d) · 6 months ago · 39% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener" data-pub="1767207075000" data-views="2668240" data-out="2.7" data-r50="0.28" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/rG0cGccTCgk/mqdefault.jpg" alt="">
     <span class="score out-hot">2.70×</span>
     <span class="len">32:52</span>
   </div>
   <div class="t">I Built a Secret Door to Trick my Landlord</div>
-  <div class="meta">3.8M views · 7 months ago</div>
+  <div class="meta">2.7M views (28d) · 7 months ago · 28% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener" data-pub="1764786497000" data-views="942605" data-out="0.95" data-r50="0.443" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/mRiHfEAACZw/mqdefault.jpg" alt="">
     <span class="score out-mid">0.95×</span>
     <span class="len">31:01</span>
   </div>
   <div class="t">Secretly Building my Wife&#39;s Dream Office</div>
-  <div class="meta">2.0M views · 8 months ago</div>
+  <div class="meta">943K views (28d) · 8 months ago · 44% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener" data-pub="1761237856000" data-views="1012676" data-out="1.02" data-r50="0.353" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/hISwQHHBCTk/mqdefault.jpg" alt="">
     <span class="score out-mid">1.02×</span>
     <span class="len">28:29</span>
   </div>
   <div class="t">I 3D Printed a $3,500 Chair</div>
-  <div class="meta">1.5M views · 9 months ago</div>
+  <div class="meta">1.0M views (28d) · 9 months ago · 35% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener" data-pub="1757100187000" data-views="1134487" data-out="1.15" data-r50="0.37" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/rwZLV5Kda3Q/mqdefault.jpg" alt="">
     <span class="score out-mid">1.15×</span>
     <span class="len">28:15</span>
   </div>
   <div class="t">I Built a Tiny Library on my Stairs</div>
-  <div class="meta">3.0M views · 11 months ago</div>
+  <div class="meta">1.1M views (28d) · 11 months ago · 37% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener" data-pub="1755354290000" data-views="963861" data-out="0.98" data-r50="0.391" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/HFTrzJ_9QzM/mqdefault.jpg" alt="">
     <span class="score out-mid">0.98×</span>
     <span class="len">22:08</span>
   </div>
   <div class="t">I Built a $1,224 Chair (the right way)</div>
-  <div class="meta">2.3M views · 11 months ago</div>
+  <div class="meta">964K views (28d) · 1 year ago · 39% at half</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener">
+<a class="v" href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener" data-pub="1750345754000" data-views="3659219" data-out="3.7" data-r50="0.258" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/DUHQ_lLD0n0/mqdefault.jpg" alt="">
     <span class="score out-hot">3.70×</span>
     <span class="len">24:28</span>
   </div>
   <div class="t">I Built a Sleep Pod in a Suitcase</div>
-  <div class="meta">7.3M views · 1 year ago</div>
+  <div class="meta">3.7M views (28d) · 1 year ago · 26% at half</div>
   
 </a></div>
-<footer>Generated from the yt-audit pipeline · public view: figures here come from data YouTube already shows publicly.</footer>
+<script>
+(function(){
+  var wall=document.getElementById('wall'); if(!wall) return;
+  var cards=[].slice.call(wall.querySelectorAll('.v'));
+  var count=document.getElementById('wallcount'), key='pub', only=false;
+  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
+  function apply(){
+    var arr=cards.slice().sort(function(a,b){
+      var x=num(a,key), y=num(b,key);
+      if (x==null && y==null) return 0;
+      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
+      if (y==null) return -1;
+      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
+    });
+    arr.forEach(function(el){ wall.appendChild(el); });
+    var shown=0;
+    cards.forEach(function(el){
+      var hide = only && el.dataset.analysed !== '1';
+      el.classList.toggle('hide', hide);
+      if(!hide) shown++;
+    });
+    if(count) count.textContent = shown + (shown===1?' video':' videos');
+  }
+  document.querySelectorAll('[data-sort]').forEach(function(b){
+    b.addEventListener('click', function(){
+      key=b.dataset.sort;
+      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
+      apply();
+    });
+  });
+  document.querySelectorAll('[data-only]').forEach(function(b){
+    b.addEventListener('click', function(){
+      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
+    });
+  });
+})();
+</script>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

@@ -122,6 +122,14 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
 .fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
 .fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
 .fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
@@ -248,19 +256,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   </div>
 </div>
 <div class="stats">
-  <div class="stat"><div class="v">30</div><div class="k">Videos tracked</div></div>
   <div class="stat"><div class="v">248K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">1</div><div class="k">Breakouts (2×+)</div></div>
   <div class="stat"><div class="v">0</div><div class="k">Analyses on file</div></div>
 </div>
 <h2>Notes</h2><p class="lede">Public data only — no analytics grant for this channel yet, so there are no retention curves, first-28-day windows or written findings here. Outlier scores below divide lifetime views by the median of these 30 recent long-form uploads, which is a fair comparison only because the window is narrow; it is not the same measure as the first-28-day score used on analysed channels.</p>
-<h2>Data freshness</h2>
-<div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div>
-</div>
-<h2>Analyses</h2>
-<p class="empty">No tool outputs recorded yet.</p>
-
 
 <h2>Video wall</h2>
 <p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
@@ -610,5 +610,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   });
 })();
 </script>
+
+
+
+<h2>Analyses</h2>
+<p class="empty">No tool outputs recorded yet.</p>
+
+
+<!-- Freshness is provenance, not headline: it answers "how current is this?"
+     only once the reader has decided to trust something. Collapsed by default
+     so it stops competing with the work itself. -->
+<details class="freshbox">
+  <summary>Data freshness — when each of these was last pulled</summary>
+  <div class="freshness">
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div>
+  </div>
+</details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

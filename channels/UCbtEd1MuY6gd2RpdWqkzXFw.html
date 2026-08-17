@@ -122,6 +122,14 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
 .fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
 .fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
 .fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
@@ -248,16 +256,163 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   </div>
 </div>
 <div class="stats">
-  <div class="stat"><div class="v">10</div><div class="k">Videos tracked</div></div>
   <div class="stat"><div class="v">988K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">3</div><div class="k">Breakouts (2×+)</div></div>
   <div class="stat"><div class="v">1</div><div class="k">Analyses on file</div></div>
 </div>
 
-<h2>Data freshness</h2>
-<div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">11 days ago</span></div>
-</div>
+
+<h2>Video wall</h2>
+<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
+<div class="wallbar">
+  <span class="lab">Sort</span>
+  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
+  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
+  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
+  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
+  <span class="spacer"></span>
+  
+  <span class="count" id="wallcount">10 videos</span>
+</div><div class="wall" id="wall"><a class="v" href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener" data-pub="1781976718000" data-views="2413245" data-out="2.44" data-r50="0.324" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/R1ul9iBhpVM/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.44×</span>
+    <span class="len">28:49</span>
+  </div>
+  <div class="t">I Hate Modern Desks... So I Built This.</div>
+  <div class="meta">2.4M views (28d) · 1 month ago · 32% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener" data-pub="1775831667000" data-views="574312" data-out="0.58" data-r50="0.442" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XAycw099agw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.58×</span>
+    <span class="len">22:08</span>
+  </div>
+  <div class="t">I Built an Over-Engineered Door for My Wobbly Cat</div>
+  <div class="meta">574K views (28d) · 4 months ago · 44% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener" data-pub="1773772580000" data-views="714344" data-out="0.72" data-r50="0.374" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ig0UVe5jXic/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">43:07</span>
+  </div>
+  <div class="t">I Built a Puzzle Door to Trick My Wife</div>
+  <div class="meta">714K views (28d) · 5 months ago · 37% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener" data-pub="1770651946000" data-views="618363" data-out="0.63" data-r50="0.394" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/wCD6KecZhM0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.63×</span>
+    <span class="len">22:31</span>
+  </div>
+  <div class="t">They stole my invention... so I got revenge.</div>
+  <div class="meta">618K views (28d) · 6 months ago · 39% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener" data-pub="1767207075000" data-views="2668240" data-out="2.7" data-r50="0.28" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rG0cGccTCgk/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.70×</span>
+    <span class="len">32:52</span>
+  </div>
+  <div class="t">I Built a Secret Door to Trick my Landlord</div>
+  <div class="meta">2.7M views (28d) · 7 months ago · 28% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener" data-pub="1764786497000" data-views="942605" data-out="0.95" data-r50="0.443" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mRiHfEAACZw/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">31:01</span>
+  </div>
+  <div class="t">Secretly Building my Wife&#39;s Dream Office</div>
+  <div class="meta">943K views (28d) · 8 months ago · 44% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener" data-pub="1761237856000" data-views="1012676" data-out="1.02" data-r50="0.353" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hISwQHHBCTk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">28:29</span>
+  </div>
+  <div class="t">I 3D Printed a $3,500 Chair</div>
+  <div class="meta">1.0M views (28d) · 9 months ago · 35% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener" data-pub="1757100187000" data-views="1134487" data-out="1.15" data-r50="0.37" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rwZLV5Kda3Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">28:15</span>
+  </div>
+  <div class="t">I Built a Tiny Library on my Stairs</div>
+  <div class="meta">1.1M views (28d) · 11 months ago · 37% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener" data-pub="1755354290000" data-views="963861" data-out="0.98" data-r50="0.391" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HFTrzJ_9QzM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">22:08</span>
+  </div>
+  <div class="t">I Built a $1,224 Chair (the right way)</div>
+  <div class="meta">964K views (28d) · 1 year ago · 39% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener" data-pub="1750345754000" data-views="3659219" data-out="3.7" data-r50="0.258" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DUHQ_lLD0n0/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.70×</span>
+    <span class="len">24:28</span>
+  </div>
+  <div class="t">I Built a Sleep Pod in a Suitcase</div>
+  <div class="meta">3.7M views (28d) · 1 year ago · 26% at half</div>
+  
+</a></div>
+<script>
+(function(){
+  var wall=document.getElementById('wall'); if(!wall) return;
+  var cards=[].slice.call(wall.querySelectorAll('.v'));
+  var count=document.getElementById('wallcount'), key='pub', only=false;
+  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
+  function apply(){
+    var arr=cards.slice().sort(function(a,b){
+      var x=num(a,key), y=num(b,key);
+      if (x==null && y==null) return 0;
+      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
+      if (y==null) return -1;
+      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
+    });
+    arr.forEach(function(el){ wall.appendChild(el); });
+    var shown=0;
+    cards.forEach(function(el){
+      var hide = only && el.dataset.analysed !== '1';
+      el.classList.toggle('hide', hide);
+      if(!hide) shown++;
+    });
+    if(count) count.textContent = shown + (shown===1?' video':' videos');
+  }
+  document.querySelectorAll('[data-sort]').forEach(function(b){
+    b.addEventListener('click', function(){
+      key=b.dataset.sort;
+      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
+      apply();
+    });
+  });
+  document.querySelectorAll('[data-only]').forEach(function(b){
+    b.addEventListener('click', function(){
+      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
+    });
+  });
+})();
+</script>
+
+
+
 <h2>Analyses</h2>
 <div class="outs"><div class="out">
   <div class="top">
@@ -268,7 +423,6 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <ul><li>Retention is improving: the newest uploads sit ABOVE the older ones through the first third.</li><li>A 35-second stretch at 12:23 in &quot;I Hate Modern Desks&quot; loses viewers at ten times the channel&#39;s normal rate for that position.</li></ul>
   
 </div></div>
-
 <h2>Retention overlay</h2>
 <p class="legend">Every analysed video's retention curve on one pair of axes. Both switches are live — change what the x-axis measures, or what the colour encodes, and the same data answers a different question.</p>
 <div class="cohort">
@@ -448,153 +602,15 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   draw();
 })();
 </script>
-<h2>Video wall</h2>
-<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
-<div class="wallbar">
-  <span class="lab">Sort</span>
-  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
-  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
-  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
-  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
-  <span class="spacer"></span>
-  
-  <span class="count" id="wallcount">10 videos</span>
-</div><div class="wall" id="wall"><a class="v" href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener" data-pub="1781976718000" data-views="2413245" data-out="2.44" data-r50="0.324" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/R1ul9iBhpVM/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.44×</span>
-    <span class="len">28:49</span>
+
+<!-- Freshness is provenance, not headline: it answers "how current is this?"
+     only once the reader has decided to trust something. Collapsed by default
+     so it stops competing with the work itself. -->
+<details class="freshbox">
+  <summary>Data freshness — when each of these was last pulled</summary>
+  <div class="freshness">
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">11 days ago</span></div>
   </div>
-  <div class="t">I Hate Modern Desks... So I Built This.</div>
-  <div class="meta">2.4M views (28d) · 1 month ago · 32% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener" data-pub="1775831667000" data-views="574312" data-out="0.58" data-r50="0.442" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/XAycw099agw/mqdefault.jpg" alt="">
-    <span class="score out-down">0.58×</span>
-    <span class="len">22:08</span>
-  </div>
-  <div class="t">I Built an Over-Engineered Door for My Wobbly Cat</div>
-  <div class="meta">574K views (28d) · 4 months ago · 44% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener" data-pub="1773772580000" data-views="714344" data-out="0.72" data-r50="0.374" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/Ig0UVe5jXic/mqdefault.jpg" alt="">
-    <span class="score out-down">0.72×</span>
-    <span class="len">43:07</span>
-  </div>
-  <div class="t">I Built a Puzzle Door to Trick My Wife</div>
-  <div class="meta">714K views (28d) · 5 months ago · 37% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener" data-pub="1770651946000" data-views="618363" data-out="0.63" data-r50="0.394" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/wCD6KecZhM0/mqdefault.jpg" alt="">
-    <span class="score out-down">0.63×</span>
-    <span class="len">22:31</span>
-  </div>
-  <div class="t">They stole my invention... so I got revenge.</div>
-  <div class="meta">618K views (28d) · 6 months ago · 39% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener" data-pub="1767207075000" data-views="2668240" data-out="2.7" data-r50="0.28" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/rG0cGccTCgk/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.70×</span>
-    <span class="len">32:52</span>
-  </div>
-  <div class="t">I Built a Secret Door to Trick my Landlord</div>
-  <div class="meta">2.7M views (28d) · 7 months ago · 28% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener" data-pub="1764786497000" data-views="942605" data-out="0.95" data-r50="0.443" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/mRiHfEAACZw/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.95×</span>
-    <span class="len">31:01</span>
-  </div>
-  <div class="t">Secretly Building my Wife&#39;s Dream Office</div>
-  <div class="meta">943K views (28d) · 8 months ago · 44% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener" data-pub="1761237856000" data-views="1012676" data-out="1.02" data-r50="0.353" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/hISwQHHBCTk/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.02×</span>
-    <span class="len">28:29</span>
-  </div>
-  <div class="t">I 3D Printed a $3,500 Chair</div>
-  <div class="meta">1.0M views (28d) · 9 months ago · 35% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener" data-pub="1757100187000" data-views="1134487" data-out="1.15" data-r50="0.37" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/rwZLV5Kda3Q/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.15×</span>
-    <span class="len">28:15</span>
-  </div>
-  <div class="t">I Built a Tiny Library on my Stairs</div>
-  <div class="meta">1.1M views (28d) · 11 months ago · 37% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener" data-pub="1755354290000" data-views="963861" data-out="0.98" data-r50="0.391" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/HFTrzJ_9QzM/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.98×</span>
-    <span class="len">22:08</span>
-  </div>
-  <div class="t">I Built a $1,224 Chair (the right way)</div>
-  <div class="meta">964K views (28d) · 1 year ago · 39% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener" data-pub="1750345754000" data-views="3659219" data-out="3.7" data-r50="0.258" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/DUHQ_lLD0n0/mqdefault.jpg" alt="">
-    <span class="score out-hot">3.70×</span>
-    <span class="len">24:28</span>
-  </div>
-  <div class="t">I Built a Sleep Pod in a Suitcase</div>
-  <div class="meta">3.7M views (28d) · 1 year ago · 26% at half</div>
-  
-</a></div>
-<script>
-(function(){
-  var wall=document.getElementById('wall'); if(!wall) return;
-  var cards=[].slice.call(wall.querySelectorAll('.v'));
-  var count=document.getElementById('wallcount'), key='pub', only=false;
-  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
-  function apply(){
-    var arr=cards.slice().sort(function(a,b){
-      var x=num(a,key), y=num(b,key);
-      if (x==null && y==null) return 0;
-      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
-      if (y==null) return -1;
-      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
-    });
-    arr.forEach(function(el){ wall.appendChild(el); });
-    var shown=0;
-    cards.forEach(function(el){
-      var hide = only && el.dataset.analysed !== '1';
-      el.classList.toggle('hide', hide);
-      if(!hide) shown++;
-    });
-    if(count) count.textContent = shown + (shown===1?' video':' videos');
-  }
-  document.querySelectorAll('[data-sort]').forEach(function(b){
-    b.addEventListener('click', function(){
-      key=b.dataset.sort;
-      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
-      apply();
-    });
-  });
-  document.querySelectorAll('[data-only]').forEach(function(b){
-    b.addEventListener('click', function(){
-      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
-    });
-  });
-})();
-</script>
+</details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

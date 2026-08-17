@@ -122,6 +122,14 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
 .fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
 .fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
 .fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
@@ -248,16 +256,163 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   </div>
 </div>
 <div class="stats">
-  <div class="stat"><div class="v">10</div><div class="k">Videos tracked</div></div>
   <div class="stat"><div class="v">454K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">2</div><div class="k">Breakouts (2×+)</div></div>
   <div class="stat"><div class="v">1</div><div class="k">Analyses on file</div></div>
 </div>
 
-<h2>Data freshness</h2>
-<div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">11 days ago</span></div>
-</div>
+
+<h2>Video wall</h2>
+<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
+<div class="wallbar">
+  <span class="lab">Sort</span>
+  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
+  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
+  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
+  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
+  <span class="spacer"></span>
+  
+  <span class="count" id="wallcount">10 videos</span>
+</div><div class="wall" id="wall"><a class="v" href="https://www.youtube.com/watch?v=KwyH7tsytbA" target="_blank" rel="noopener" data-pub="1783699224000" data-views="952195" data-out="2.1" data-r50="0.411" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KwyH7tsytbA/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.10×</span>
+    <span class="len">26:35</span>
+  </div>
+  <div class="t">I built a MODERN XBOX...</div>
+  <div class="meta">952K views (28d) · 1 month ago · 41% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=XQ9vIJqwiC0" target="_blank" rel="noopener" data-pub="1779465633000" data-views="340255" data-out="0.75" data-r50="0.457" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XQ9vIJqwiC0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">23:32</span>
+  </div>
+  <div class="t">I built &quot;the world&#39;s best speakers&quot;...</div>
+  <div class="meta">340K views (28d) · 2 months ago · 46% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=sljz1teGoEk" target="_blank" rel="noopener" data-pub="1776106362000" data-views="367785" data-out="0.81" data-r50="0.376" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sljz1teGoEk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">24:52</span>
+  </div>
+  <div class="t">I can&#39;t believe I beat Valve to it...</div>
+  <div class="meta">368K views (28d) · 4 months ago · 38% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=Nmngtp1AJZQ" target="_blank" rel="noopener" data-pub="1771866033000" data-views="641106" data-out="1.41" data-r50="0.368" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Nmngtp1AJZQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.41×</span>
+    <span class="len">18:58</span>
+  </div>
+  <div class="t">I cooled my PC with OUTSIDE...</div>
+  <div class="meta">641K views (28d) · 5 months ago · 37% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=KLfTWyskU4Q" target="_blank" rel="noopener" data-pub="1770656426000" data-views="271613" data-out="0.6" data-r50="0.357" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KLfTWyskU4Q/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">27:57</span>
+  </div>
+  <div class="t">Title: I STILL can&#39;t believe more people don&#39;t do this...</div>
+  <div class="meta">272K views (28d) · 6 months ago · 36% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=CIrT5t-nL6s" target="_blank" rel="noopener" data-pub="1764176422000" data-views="422453" data-out="0.93" data-r50="0.448" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/CIrT5t-nL6s/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">25:41</span>
+  </div>
+  <div class="t">I built a MODERN iMac...</div>
+  <div class="meta">422K views (28d) · 8 months ago · 45% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=LJlWwaF-KGc" target="_blank" rel="noopener" data-pub="1760976038000" data-views="969743" data-out="2.14" data-r50="0.407" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LJlWwaF-KGc/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.14×</span>
+    <span class="len">23:44</span>
+  </div>
+  <div class="t">Pushing a Playstation 3 to the LIMIT....</div>
+  <div class="meta">970K views (28d) · 10 months ago · 41% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=banc9b1zcNM" target="_blank" rel="noopener" data-pub="1757952067000" data-views="345628" data-out="0.76" data-r50="0.375" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/banc9b1zcNM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">23:51</span>
+  </div>
+  <div class="t">I built a MODERN Vita...</div>
+  <div class="meta">346K views (28d) · 11 months ago · 38% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=aSUcNWWdg8Y" target="_blank" rel="noopener" data-pub="1751904002000" data-views="571398" data-out="1.26" data-r50="0.356" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aSUcNWWdg8Y/mqdefault.jpg" alt="">
+    <span class="score out-up">1.26×</span>
+    <span class="len">27:14</span>
+  </div>
+  <div class="t">I can&#39;t believe more people aren&#39;t doing this...</div>
+  <div class="meta">571K views (28d) · 1 year ago · 36% at half</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=rePOAoxBdRQ" target="_blank" rel="noopener" data-pub="1746720086000" data-views="485039" data-out="1.07" data-r50="0.403" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rePOAoxBdRQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">27:38</span>
+  </div>
+  <div class="t">I built a NEW New Nintendo 3DS....</div>
+  <div class="meta">485K views (28d) · 1 year ago · 40% at half</div>
+  
+</a></div>
+<script>
+(function(){
+  var wall=document.getElementById('wall'); if(!wall) return;
+  var cards=[].slice.call(wall.querySelectorAll('.v'));
+  var count=document.getElementById('wallcount'), key='pub', only=false;
+  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
+  function apply(){
+    var arr=cards.slice().sort(function(a,b){
+      var x=num(a,key), y=num(b,key);
+      if (x==null && y==null) return 0;
+      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
+      if (y==null) return -1;
+      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
+    });
+    arr.forEach(function(el){ wall.appendChild(el); });
+    var shown=0;
+    cards.forEach(function(el){
+      var hide = only && el.dataset.analysed !== '1';
+      el.classList.toggle('hide', hide);
+      if(!hide) shown++;
+    });
+    if(count) count.textContent = shown + (shown===1?' video':' videos');
+  }
+  document.querySelectorAll('[data-sort]').forEach(function(b){
+    b.addEventListener('click', function(){
+      key=b.dataset.sort;
+      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
+      apply();
+    });
+  });
+  document.querySelectorAll('[data-only]').forEach(function(b){
+    b.addEventListener('click', function(){
+      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
+    });
+  });
+})();
+</script>
+
+
+
 <h2>Analyses</h2>
 <div class="outs"><div class="out">
   <div class="top">
@@ -268,7 +423,6 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <ul><li>The 0:00–0:30 intro template costs 1,250,948 excess viewers across 10 of 10 videos.</li><li>A 40–45% collapse repeats in 8 of 10 videos and is the real ceiling on the channel.</li><li>The finale reveal earns genuine rewinds — front-loading it into the cold open is the highest-value change.</li></ul>
   
 </div></div>
-
 <h2>Retention overlay</h2>
 <p class="legend">Every analysed video's retention curve on one pair of axes. Both switches are live — change what the x-axis measures, or what the colour encodes, and the same data answers a different question.</p>
 <div class="cohort">
@@ -448,153 +602,15 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   draw();
 })();
 </script>
-<h2>Video wall</h2>
-<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
-<div class="wallbar">
-  <span class="lab">Sort</span>
-  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
-  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
-  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
-  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
-  <span class="spacer"></span>
-  
-  <span class="count" id="wallcount">10 videos</span>
-</div><div class="wall" id="wall"><a class="v" href="https://www.youtube.com/watch?v=KwyH7tsytbA" target="_blank" rel="noopener" data-pub="1783699224000" data-views="952195" data-out="2.1" data-r50="0.411" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/KwyH7tsytbA/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.10×</span>
-    <span class="len">26:35</span>
+
+<!-- Freshness is provenance, not headline: it answers "how current is this?"
+     only once the reader has decided to trust something. Collapsed by default
+     so it stops competing with the work itself. -->
+<details class="freshbox">
+  <summary>Data freshness — when each of these was last pulled</summary>
+  <div class="freshness">
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">11 days ago</span></div>
   </div>
-  <div class="t">I built a MODERN XBOX...</div>
-  <div class="meta">952K views (28d) · 1 month ago · 41% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=XQ9vIJqwiC0" target="_blank" rel="noopener" data-pub="1779465633000" data-views="340255" data-out="0.75" data-r50="0.457" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/XQ9vIJqwiC0/mqdefault.jpg" alt="">
-    <span class="score out-down">0.75×</span>
-    <span class="len">23:32</span>
-  </div>
-  <div class="t">I built &quot;the world&#39;s best speakers&quot;...</div>
-  <div class="meta">340K views (28d) · 2 months ago · 46% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=sljz1teGoEk" target="_blank" rel="noopener" data-pub="1776106362000" data-views="367785" data-out="0.81" data-r50="0.376" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/sljz1teGoEk/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.81×</span>
-    <span class="len">24:52</span>
-  </div>
-  <div class="t">I can&#39;t believe I beat Valve to it...</div>
-  <div class="meta">368K views (28d) · 4 months ago · 38% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=Nmngtp1AJZQ" target="_blank" rel="noopener" data-pub="1771866033000" data-views="641106" data-out="1.41" data-r50="0.368" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/Nmngtp1AJZQ/mqdefault.jpg" alt="">
-    <span class="score out-up">1.41×</span>
-    <span class="len">18:58</span>
-  </div>
-  <div class="t">I cooled my PC with OUTSIDE...</div>
-  <div class="meta">641K views (28d) · 5 months ago · 37% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=KLfTWyskU4Q" target="_blank" rel="noopener" data-pub="1770656426000" data-views="271613" data-out="0.6" data-r50="0.357" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/KLfTWyskU4Q/mqdefault.jpg" alt="">
-    <span class="score out-down">0.60×</span>
-    <span class="len">27:57</span>
-  </div>
-  <div class="t">Title: I STILL can&#39;t believe more people don&#39;t do this...</div>
-  <div class="meta">272K views (28d) · 6 months ago · 36% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=CIrT5t-nL6s" target="_blank" rel="noopener" data-pub="1764176422000" data-views="422453" data-out="0.93" data-r50="0.448" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/CIrT5t-nL6s/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">25:41</span>
-  </div>
-  <div class="t">I built a MODERN iMac...</div>
-  <div class="meta">422K views (28d) · 8 months ago · 45% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=LJlWwaF-KGc" target="_blank" rel="noopener" data-pub="1760976038000" data-views="969743" data-out="2.14" data-r50="0.407" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/LJlWwaF-KGc/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.14×</span>
-    <span class="len">23:44</span>
-  </div>
-  <div class="t">Pushing a Playstation 3 to the LIMIT....</div>
-  <div class="meta">970K views (28d) · 10 months ago · 41% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=banc9b1zcNM" target="_blank" rel="noopener" data-pub="1757952067000" data-views="345628" data-out="0.76" data-r50="0.375" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/banc9b1zcNM/mqdefault.jpg" alt="">
-    <span class="score out-down">0.76×</span>
-    <span class="len">23:51</span>
-  </div>
-  <div class="t">I built a MODERN Vita...</div>
-  <div class="meta">346K views (28d) · 11 months ago · 38% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=aSUcNWWdg8Y" target="_blank" rel="noopener" data-pub="1751904002000" data-views="571398" data-out="1.26" data-r50="0.356" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/aSUcNWWdg8Y/mqdefault.jpg" alt="">
-    <span class="score out-up">1.26×</span>
-    <span class="len">27:14</span>
-  </div>
-  <div class="t">I can&#39;t believe more people aren&#39;t doing this...</div>
-  <div class="meta">571K views (28d) · 1 year ago · 36% at half</div>
-  
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=rePOAoxBdRQ" target="_blank" rel="noopener" data-pub="1746720086000" data-views="485039" data-out="1.07" data-r50="0.403" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/rePOAoxBdRQ/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.07×</span>
-    <span class="len">27:38</span>
-  </div>
-  <div class="t">I built a NEW New Nintendo 3DS....</div>
-  <div class="meta">485K views (28d) · 1 year ago · 40% at half</div>
-  
-</a></div>
-<script>
-(function(){
-  var wall=document.getElementById('wall'); if(!wall) return;
-  var cards=[].slice.call(wall.querySelectorAll('.v'));
-  var count=document.getElementById('wallcount'), key='pub', only=false;
-  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
-  function apply(){
-    var arr=cards.slice().sort(function(a,b){
-      var x=num(a,key), y=num(b,key);
-      if (x==null && y==null) return 0;
-      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
-      if (y==null) return -1;
-      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
-    });
-    arr.forEach(function(el){ wall.appendChild(el); });
-    var shown=0;
-    cards.forEach(function(el){
-      var hide = only && el.dataset.analysed !== '1';
-      el.classList.toggle('hide', hide);
-      if(!hide) shown++;
-    });
-    if(count) count.textContent = shown + (shown===1?' video':' videos');
-  }
-  document.querySelectorAll('[data-sort]').forEach(function(b){
-    b.addEventListener('click', function(){
-      key=b.dataset.sort;
-      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
-      apply();
-    });
-  });
-  document.querySelectorAll('[data-only]').forEach(function(b){
-    b.addEventListener('click', function(){
-      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
-    });
-  });
-})();
-</script>
+</details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

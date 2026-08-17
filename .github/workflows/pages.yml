@@ -1,0 +1,35 @@
+# Deploy the generated knowledge-base site.
+#
+# The legacy "build from branch" path hung indefinitely on a publish with ~30
+# nested pages, leaving a week-old site live while reporting "building". This
+# workflow uploads the repo as-is and deploys it, which fails loudly instead.
+name: Deploy Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      # The site is already static HTML — there is nothing to build.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

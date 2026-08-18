@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Her Two Wheels · Influint</title>
+<link rel="icon" href="../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../index.html">All channels</a></nav>
+</header>
+
+<div class="profile">
+  <img class="av" src="https://yt3.ggpht.com/ruFTxxLdXGIton3HFKqTZfsg7cxk0q3cTYtr9FQw9EHupONQnQvgXE_2eCn8do52Jd8ikpY2=s800-c-k-c0x00ffffff-no-rj" alt="">
+  <div>
+    <h1>Her Two Wheels</h1>
+    <p class="lede" style="margin:0">knowledge base last updated 2026-08-18</p>
+  </div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="v">54K</div><div class="k">Median views</div></div>
+  <div class="stat"><div class="v">1</div><div class="k">Breakouts (2×+)</div></div>
+  <div class="stat"><div class="v">1</div><div class="k">Analyses on file</div></div>
+</div>
+
+
+<h2>Video wall</h2>
+<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
+<div class="wallbar">
+  <span class="lab">Sort</span>
+  <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
+  <button class="tgl" data-sort="views" aria-pressed="false" type="button">Most views</button>
+  <button class="tgl" data-sort="out" aria-pressed="false" type="button">Outlier score</button>
+  <button class="tgl" data-sort="r50" aria-pressed="false" type="button">Weakest at half</button>
+  <span class="spacer"></span>
+  <button class="tgl" data-only="analysed" aria-pressed="false" type="button">Analysed only (30)</button>
+  <span class="count" id="wallcount">30 videos</span>
+</div><div class="wall" id="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/FgxKgypUl4Q.html" data-pub="1783266891000" data-views="64912" data-out="1.2" data-r50="0.3045" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FgxKgypUl4Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">21:38</span>
+  </div>
+  <div class="t">I Wasn&#39;t Ready For What Happened....</div>
+  <div class="meta">65K views (28d) · 1 month ago · 30% at half</div>
+  <div class="verdict">12 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/aj78y8k_P5I.html" data-pub="1782662093000" data-views="77230" data-out="1.43" data-r50="0.1583" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aj78y8k_P5I/mqdefault.jpg" alt="">
+    <span class="score out-up">1.43×</span>
+    <span class="len">34:20</span>
+  </div>
+  <div class="t">What Happened To Me?</div>
+  <div class="meta">77K views (28d) · 1 month ago · 16% at half</div>
+  <div class="verdict">13 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/0O9nm01P77M.html" data-pub="1781195421000" data-views="56110" data-out="1.04" data-r50="0.2223" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0O9nm01P77M/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">16:10</span>
+  </div>
+  <div class="t">Harley-Davidson Has a Problem... This Bike Is Too Cheap! 2026 Super Glide</div>
+  <div class="meta">56K views (28d) · 2 months ago · 22% at half</div>
+  <div class="verdict">11 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/dL0wmiCPmlw.html" data-pub="1779635380000" data-views="65205" data-out="1.21" data-r50="0.1895" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dL0wmiCPmlw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.21×</span>
+    <span class="len">34:48</span>
+  </div>
+  <div class="t">I Thought It Was Just a Campout… I Was Wrong</div>
+  <div class="meta">65K views (28d) · 2 months ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/elxhrjhFQK0.html" data-pub="1774796388000" data-views="49950" data-out="0.92" data-r50="0.2138" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/elxhrjhFQK0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">25:19</span>
+  </div>
+  <div class="t">I Hope I Don&#39;t Regret This</div>
+  <div class="meta">50K views (28d) · 4 months ago · 21% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/iYWt5O4mHUs.html" data-pub="1774191597000" data-views="51942" data-out="0.96" data-r50="0.35869999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iYWt5O4mHUs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">39:33</span>
+  </div>
+  <div class="t">Everyone told me NOT to buy a RAM...</div>
+  <div class="meta">52K views (28d) · 4 months ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/489q_roSgug.html" data-pub="1772987391000" data-views="46133" data-out="0.85" data-r50="0.2047" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/489q_roSgug/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">23:02</span>
+  </div>
+  <div class="t">Why is NOBODY talking about this Motorcycle??</div>
+  <div class="meta">46K views (28d) · 5 months ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/5kxjq2Wx1Lc.html" data-pub="1771781402000" data-views="43880" data-out="0.81" data-r50="0.2677" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5kxjq2Wx1Lc/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">25:05</span>
+  </div>
+  <div class="t">This is why I DIDN&#39;T buy a Harley-Davidson Street Glide</div>
+  <div class="meta">44K views (28d) · 5 months ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ngFza89vOqs.html" data-pub="1768436731000" data-views="33506" data-out="0.62" data-r50="0.35609999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ngFza89vOqs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">16:03</span>
+  </div>
+  <div class="t">Is This the Right Touring Bike for You? 2026 Harley-Davidson Limited Test Ride</div>
+  <div class="meta">34K views (28d) · 7 months ago · 36% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/S0QRIC1XVEI.html" data-pub="1765747811000" data-views="100487" data-out="1.86" data-r50="0.2462" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/S0QRIC1XVEI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.86×</span>
+    <span class="len">48:58</span>
+  </div>
+  <div class="t">Trapped on the Mountain on our Motorcycles. Ep. 14</div>
+  <div class="meta">100K views (28d) · 8 months ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/dLXx8xq2iMo.html" data-pub="1762216199000" data-views="48139" data-out="0.89" data-r50="0.2817" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dLXx8xq2iMo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">21:33</span>
+  </div>
+  <div class="t">I Think I Bought the Wrong Harley-Davidson 😭 / NEW 2026 Motorcycles</div>
+  <div class="meta">48K views (28d) · 9 months ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/IhfwCa8W-IM.html" data-pub="1758834031000" data-views="56081" data-out="1.04" data-r50="0.3249" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IhfwCa8W-IM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">18:19</span>
+  </div>
+  <div class="t">Hundreds of miles riding in the Smoky Mountains... when IT happened...</div>
+  <div class="meta">56K views (28d) · 10 months ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ZimcVcKzsro.html" data-pub="1757879996000" data-views="50289" data-out="0.93" data-r50="0.42719999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZimcVcKzsro/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">28:07</span>
+  </div>
+  <div class="t">Stranded on East Coast. Hopefully this fixes my Harley-Davidson! Ep: 03</div>
+  <div class="meta">50K views (28d) · 11 months ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oxkBGZLwRtQ.html" data-pub="1757275192000" data-views="80701" data-out="1.49" data-r50="0.3106" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oxkBGZLwRtQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.49×</span>
+    <span class="len">28:38</span>
+  </div>
+  <div class="t">Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</div>
+  <div class="meta">81K views (28d) · 11 months ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/4JG_DnMdyso.html" data-pub="1756065589000" data-views="58953" data-out="1.09" data-r50="0.31920000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4JG_DnMdyso/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">24:03</span>
+  </div>
+  <div class="t">Life Update, New Motorcycle, Big Changes, Cross Country Trip...</div>
+  <div class="meta">59K views (28d) · 11 months ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Z9S50JNKx6k.html" data-pub="1754506842000" data-views="85471" data-out="1.58" data-r50="0.2871" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Z9S50JNKx6k/mqdefault.jpg" alt="">
+    <span class="score out-up">1.58×</span>
+    <span class="len">26:46</span>
+  </div>
+  <div class="t">Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</div>
+  <div class="meta">85K views (28d) · 1 year ago · 29% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/WckzxtkQM6Y.html" data-pub="1751832241000" data-views="105960" data-out="1.96" data-r50="0.2429" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WckzxtkQM6Y/mqdefault.jpg" alt="">
+    <span class="score out-up">1.96×</span>
+    <span class="len">24:14</span>
+  </div>
+  <div class="t">I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05</div>
+  <div class="meta">106K views (28d) · 1 year ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/_DM2Tb7As8c.html" data-pub="1748195989000" data-views="50375" data-out="0.93" data-r50="0.2621" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_DM2Tb7As8c/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">37:15</span>
+  </div>
+  <div class="t">I Survived the Most Chaotic Motorcycle Campout in Tennessee | TMMR 2025</div>
+  <div class="meta">50K views (28d) · 1 year ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/s41Q7wg_Svs.html" data-pub="1745531637000" data-views="62555" data-out="1.16" data-r50="0.1589" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/s41Q7wg_Svs/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">18:51</span>
+  </div>
+  <div class="t">DO NOT WASTE YOUR MONEY! Watch this first! Insta360 X5 Review</div>
+  <div class="meta">63K views (28d) · 1 year ago · 16% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/FBxliFPkhoM.html" data-pub="1745161189000" data-views="48143" data-out="0.89" data-r50="0.30820000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FBxliFPkhoM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">21:13</span>
+  </div>
+  <div class="t">I Wish I Knew This BEFORE Ripping Open My Motorcycle 😰</div>
+  <div class="meta">48K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oDNvykBXItU.html" data-pub="1744556387000" data-views="87087" data-out="1.61" data-r50="0.1417" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oDNvykBXItU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.61×</span>
+    <span class="len">28:29</span>
+  </div>
+  <div class="t">Last hope for my Harley-Davidson Road Glide.</div>
+  <div class="meta">87K views (28d) · 1 year ago · 14% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/8FZiY3PRiFE.html" data-pub="1743951598000" data-views="39736" data-out="0.74" data-r50="0.3331" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8FZiY3PRiFE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">32:49</span>
+  </div>
+  <div class="t">Spontaneous 1,000+ mile motorcycle trip!</div>
+  <div class="meta">40K views (28d) · 1 year ago · 33% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ZUC9MH4tEkA.html" data-pub="1741982391000" data-views="49296" data-out="0.91" data-r50="0.3173" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZUC9MH4tEkA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.91×</span>
+    <span class="len">15:39</span>
+  </div>
+  <div class="t">H-D made a BIG mistake with the 2025 Low Rider ST...</div>
+  <div class="meta">49K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Rn4YrtJW0wI.html" data-pub="1740326407000" data-views="67420" data-out="1.25" data-r50="0.22219999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Rn4YrtJW0wI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.25×</span>
+    <span class="len">24:04</span>
+  </div>
+  <div class="t">Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</div>
+  <div class="meta">67K views (28d) · 1 year ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/j9v1ukNOhE4.html" data-pub="1738184391000" data-views="25386" data-out="0.47" data-r50="0.2914" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j9v1ukNOhE4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.47×</span>
+    <span class="len">16:31</span>
+  </div>
+  <div class="t">The Biggest Mistakes New Motorcycle Campers Make</div>
+  <div class="meta">25K views (28d) · 1 year ago · 29% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/gMSXiH20qV4.html" data-pub="1735246791000" data-views="45608" data-out="0.84" data-r50="0.3469" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gMSXiH20qV4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">21:19</span>
+  </div>
+  <div class="t">I Joined a Motorcycle Crew. Then Rode 1,134 miles – Here’s What Went Down</div>
+  <div class="meta">46K views (28d) · 1 year ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/-dVZv1gy5VM.html" data-pub="1728940791000" data-views="39254" data-out="0.73" data-r50="0.2828" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-dVZv1gy5VM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.73×</span>
+    <span class="len">11:58</span>
+  </div>
+  <div class="t">Critical failure comparing the DJI Action 5 Pro vs. GoPro 13 Action Camera</div>
+  <div class="meta">39K views (28d) · 1 year ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/spl7XTtthoY.html" data-pub="1728595796000" data-views="119721" data-out="2.22" data-r50="0.1935" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/spl7XTtthoY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.22×</span>
+    <span class="len">15:42</span>
+  </div>
+  <div class="t">The Blue Ridge Parkway was destroyed after this 😢</div>
+  <div class="meta">120K views (28d) · 1 year ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ompeGJRoIzc.html" data-pub="1727125189000" data-views="84582" data-out="1.57" data-r50="0.25420000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ompeGJRoIzc/mqdefault.jpg" alt="">
+    <span class="score out-up">1.57×</span>
+    <span class="len">16:32</span>
+  </div>
+  <div class="t">I&#39;ve been saying it for years... But this was the final straw.</div>
+  <div class="meta">85K views (28d) · 1 year ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/qpHiv4noMxc.html" data-pub="1725310792000" data-views="19805" data-out="0.37" data-r50="0.3215" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qpHiv4noMxc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.37×</span>
+    <span class="len">16:03</span>
+  </div>
+  <div class="t">2024 Pan America... Is it ACTUALLY Better?</div>
+  <div class="meta">20K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a></div>
+<script>
+(function(){
+  var wall=document.getElementById('wall'); if(!wall) return;
+  var cards=[].slice.call(wall.querySelectorAll('.v'));
+  var count=document.getElementById('wallcount'), key='pub', only=false;
+  function num(el,k){ var v=el.dataset[k]; return v===''||v==null ? null : Number(v); }
+  function apply(){
+    var arr=cards.slice().sort(function(a,b){
+      var x=num(a,key), y=num(b,key);
+      if (x==null && y==null) return 0;
+      if (x==null) return 1;          // videos without the metric sink, never pretend to be zero
+      if (y==null) return -1;
+      return key==='r50' ? x-y : y-x; // weakest-at-half is the only ascending sort
+    });
+    arr.forEach(function(el){ wall.appendChild(el); });
+    var shown=0;
+    cards.forEach(function(el){
+      var hide = only && el.dataset.analysed !== '1';
+      el.classList.toggle('hide', hide);
+      if(!hide) shown++;
+    });
+    if(count) count.textContent = shown + (shown===1?' video':' videos');
+  }
+  document.querySelectorAll('[data-sort]').forEach(function(b){
+    b.addEventListener('click', function(){
+      key=b.dataset.sort;
+      document.querySelectorAll('[data-sort]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.sort===key)); });
+      apply();
+    });
+  });
+  document.querySelectorAll('[data-only]').forEach(function(b){
+    b.addEventListener('click', function(){
+      only=!only; b.setAttribute('aria-pressed', String(only)); apply();
+    });
+  });
+})();
+</script>
+
+<h2>Video ideas</h2>
+<p class="legend">Concepts, not commissioned videos — the thumbnails are placeholders and every view count is a <strong>projection</strong>, computed from this channel's own median multiplied by the observed lift of the format each idea uses. Open <em>Why this idea</em> on any card to see the real videos it was built from.</p>
+<div class="ideas"><div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(358 62% 22%),hsl(46 68% 12%))">
+    <b>HARLEY CAMPING KIT</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~126K projected</span>
+  </div>
+  <div class="t">Our Recommended Harley Touring Motorcycle Camping Kit</div>
+  <div class="d">A full camping loadout dialed in for big American touring baggers — what fits, what stays home, and what actually survives a cross-country run.</div>
+  <div class="meta">90K–162K projected · Recommended Camping Kit by Bike Tier</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Moto Camp Nerd&#39;s &#39;Our Recommended &lt;class&gt; Kit&#39; shape runs 2.33x on 3 matches and this channel already proved camping+Harley pulls (Sturgis Z9S50JNKx6k at 1.58x, campout dL0wmiCPmlw at 1.21x); the seed subject &#39;Allen Millyard&#39; doesn&#39;t fit a female Harley tourer&#39;s voice, so the seed&#39;s real value is the Bike-Tier shape — filled with the tier she actually rides.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. The &quot;Recommended Camping Kit by Bike Tier&quot; format runs 2.33x its channels&#39; medians across 3 observed videos, so the midpoint is 54K x 2.33. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.58x</b><a href="https://www.youtube.com/watch?v=Z9S50JNKx6k" target="_blank" rel="noopener">Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</a></li><li><b>1.21x</b><a href="https://www.youtube.com/watch?v=dL0wmiCPmlw" target="_blank" rel="noopener">I Thought It Was Just a Campout… I Was Wrong</a></li><li><b>1.49x</b><a href="https://www.youtube.com/watch?v=oxkBGZLwRtQ" target="_blank" rel="noopener">Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</a></li><li><b>2.33x</b><a href="https://www.youtube.com/watch?v=sROuRX9DbpM" target="_blank" rel="noopener">Our Recommended Dual Sport Motorcycle Camping Kit · Moto Camp Nerd</a></li><li><b>4.56x</b><a href="https://www.youtube.com/watch?v=IvXFWBHRsAk" target="_blank" rel="noopener">Our Smallest-Packing Motorcycle Camping Kit (25 Liters and 15 Pounds) · Moto Camp Nerd</a></li><li><b>6.61x</b><a href="https://www.youtube.com/watch?v=cUS8kpIIA-I" target="_blank" rel="noopener">Our Favorite Motorcycle Camping Gear of 2025 · Moto Camp Nerd</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(15 62% 22%),hsl(63 68% 12%))">
+    <b>GS CAMPING KIT</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~126K projected</span>
+  </div>
+  <div class="t">Our Recommended BMW GS Motorcycle Camping Kit</div>
+  <div class="d">A packed-and-ready BMW adventure camping kit built for the GS platform, walking through every bag, every bracket, and every compromise.</div>
+  <div class="meta">90K–162K projected · Recommended Motorcycle Camping Kit by Bike Class</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">The seed shape (2.33x, 3 matches) plus surging BMW (1.75x median) hits her demographic of women shopping bigger ADV bikes; FortNine&#39;s R1300GSA cHe0po6Ahw0 hit 2.30x showing GS-curious appetite, and she&#39;s already reviewed competing tourers (Rn4YrtJW0wI) so the credibility is banked.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. The &quot;Recommended Motorcycle Camping Kit by Bike Class&quot; format runs 2.33x its channels&#39; medians across 3 observed videos, so the midpoint is 54K x 2.33. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.25x</b><a href="https://www.youtube.com/watch?v=Rn4YrtJW0wI" target="_blank" rel="noopener">Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</a></li><li><b>1.21x</b><a href="https://www.youtube.com/watch?v=dL0wmiCPmlw" target="_blank" rel="noopener">I Thought It Was Just a Campout… I Was Wrong</a></li><li><b>1.58x</b><a href="https://www.youtube.com/watch?v=Z9S50JNKx6k" target="_blank" rel="noopener">Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</a></li><li><b>2.33x</b><a href="https://www.youtube.com/watch?v=sROuRX9DbpM" target="_blank" rel="noopener">Our Recommended Dual Sport Motorcycle Camping Kit · Moto Camp Nerd</a></li><li><b>4.56x</b><a href="https://www.youtube.com/watch?v=IvXFWBHRsAk" target="_blank" rel="noopener">Our Smallest-Packing Motorcycle Camping Kit (25 Liters and 15 Pounds) · Moto Camp Nerd</a></li><li><b>2.30x</b><a href="https://www.youtube.com/watch?v=cHe0po6Ahw0" target="_blank" rel="noopener">Forget COG - This is Why the BMW R1300GSA Rides like Nothing Else · FortNine</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(149 62% 22%),hsl(197 68% 12%))">
+    <b>KAWASAKI TRIP RUINED</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~80K projected</span>
+  </div>
+  <div class="t">The Kawasaki That Almost Killed My Trip 🇺🇸 - (USA #01)</div>
+  <div class="d">A borrowed Kawasaki tourer replaces the Harley for a long-haul U.S. loop and pilot-episode disaster strikes on day one.</div>
+  <div class="meta">57K–103K projected · Country Series Episode Tag</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Country Series tag runs 1.48x on 6 matches (Itchy Boots), Kawasaki is hot at 1.48x, and this channel&#39;s own Great Lakes Ep. 05 (WckzxtkQM6Y, 1.96x) and Ep. 02 (oxkBGZLwRtQ, 1.49x) proved numbered trip episodes are her best-tested shape.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. The &quot;Country Series Episode Tag&quot; format runs 1.48x its channels&#39; medians across 6 observed videos, so the midpoint is 54K x 1.48. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.49x</b><a href="https://www.youtube.com/watch?v=oxkBGZLwRtQ" target="_blank" rel="noopener">Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</a></li><li><b>1.96x</b><a href="https://www.youtube.com/watch?v=WckzxtkQM6Y" target="_blank" rel="noopener">I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05</a></li><li><b>1.61x</b><a href="https://www.youtube.com/watch?v=oDNvykBXItU" target="_blank" rel="noopener">Last hope for my Harley-Davidson Road Glide.</a></li><li><b>1.75x</b><a href="https://www.youtube.com/watch?v=A7gy01GQt1s" target="_blank" rel="noopener">Totally misjudged this, and now I&#39;m paying the price 🇲🇳 |S8, EP130 · Itchy Boots</a></li><li><b>1.58x</b><a href="https://www.youtube.com/watch?v=bIWePbdc4HM" target="_blank" rel="noopener">Loneliness hits different in Mongolia 🇲🇳 |S8, EP128 · Itchy Boots</a></li><li><b>1.55x</b><a href="https://www.youtube.com/watch?v=J_hjyw_LCVk" target="_blank" rel="noopener">Crossing the CHINA 🇨🇳- MONGOLIA 🇲🇳 border |S8, EP126 · Itchy Boots</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(327 62% 22%),hsl(15 68% 12%))">
+    <b>IT&#39;S BACK 😢</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">The Blue Ridge Parkway Reopened. I Went Back.</div>
+  <div class="d">A return ride to the Parkway one year after the flood, riding the sections that were destroyed to see what was rebuilt and what&#39;s gone forever.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Her single biggest hit was the Blue Ridge destruction video (120K, 2.22x); the natural iteration is the return, which lets her reuse the emotional cold-open pattern that worked while offering fresh visuals — and Trapped on the Mountain (S0QRIC1XVEI) already proved she can hold outros on serious mountain-riding stories (ended 3rd of 30).</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>2.22x</b><a href="https://www.youtube.com/watch?v=spl7XTtthoY" target="_blank" rel="noopener">The Blue Ridge Parkway was destroyed after this 😢</a></li><li><b>1.20x</b><a href="https://www.youtube.com/watch?v=FgxKgypUl4Q" target="_blank" rel="noopener">I Wasn&#39;t Ready For What Happened....</a></li><li><b>1.86x</b><a href="https://www.youtube.com/watch?v=S0QRIC1XVEI" target="_blank" rel="noopener">Trapped on the Mountain on our Motorcycles. Ep. 14</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(170 62% 22%),hsl(218 68% 12%))">
+    <b>IT GOT WORSE</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">The Blue Ridge Parkway Broke Me Again... Here&#39;s What Nobody Is Talking About</div>
+  <div class="d">A second Parkway ride uncovers a quieter, uglier problem than the storm damage — one the news cycle already forgot.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">spl7XTtthoY (2.22x, #1 on channel) plus her proven &#39;nobody is talking about this&#39; emotional-hook voice (ompeGJRoIzc 1.57x, aj78y8k_P5I 1.43x) — escalate the same road with a second issue, load the reveal at the 60-65% mark specifically to fix the biggest body-leak on the channel.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>2.22x</b><a href="https://www.youtube.com/watch?v=spl7XTtthoY" target="_blank" rel="noopener">The Blue Ridge Parkway was destroyed after this 😢</a></li><li><b>1.57x</b><a href="https://www.youtube.com/watch?v=ompeGJRoIzc" target="_blank" rel="noopener">I&#39;ve been saying it for years... But this was the final straw.</a></li><li><b>1.43x</b><a href="https://www.youtube.com/watch?v=aj78y8k_P5I" target="_blank" rel="noopener">What Happened To Me?</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(348 62% 22%),hsl(36 68% 12%))">
+    <b>HE FIXED IT?!</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">Allen Millyard Rebuilt My Harley — And I Didn&#39;t See This Coming</div>
+  <div class="d">The legendary engineer takes a look at her problem Road Glide and the diagnosis changes everything she thought she knew about the bike.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Allen Millyard is the single hottest name in the niche (2.86x median, 3 in-corpus videos SgFWI3KpnJo/kC_Hs4e5ErI/4FxQVf0YOkU) and this channel already has a running Harley-problem saga (oDNvykBXItU, oxkBGZLwRtQ) — pouring the hot subject into her existing project-bike arc is the highest-signal recombination available.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.61x</b><a href="https://www.youtube.com/watch?v=oDNvykBXItU" target="_blank" rel="noopener">Last hope for my Harley-Davidson Road Glide.</a></li><li><b>1.49x</b><a href="https://www.youtube.com/watch?v=oxkBGZLwRtQ" target="_blank" rel="noopener">Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</a></li><li><b>1.57x</b><a href="https://www.youtube.com/watch?v=ompeGJRoIzc" target="_blank" rel="noopener">I&#39;ve been saying it for years... But this was the final straw.</a></li><li><b>5.38x</b><a href="https://www.youtube.com/watch?v=SgFWI3KpnJo" target="_blank" rel="noopener">I Called in Allen Millyard... Bad News for the KH250? · TheMissendenFlyer</a></li><li><b>2.86x</b><a href="https://www.youtube.com/watch?v=kC_Hs4e5ErI" target="_blank" rel="noopener">Allen Millyard fixes my Kawasaki KH250!!  (Part 2) · TheMissendenFlyer</a></li><li><b>2.34x</b><a href="https://www.youtube.com/watch?v=4FxQVf0YOkU" target="_blank" rel="noopener">Allen Millyard fixed it, then this happened! · TheMissendenFlyer</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(87 62% 22%),hsl(135 68% 12%))">
+    <b>WOMEN SAY NO</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">Why 67% Of Women Refuse Harley-Davidson</div>
+  <div class="d">A rider&#39;s-eye breakdown of the specific reasons female riders keep walking past Harley showrooms — and which of them she actually agrees with.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Yammie Noob&#39;s &#39;Why 67% of Riders Refuse Harley&#39; (mE9jF24BqBE) did 2.61x with the same statistic hook — she owns the female-Harley-rider POV that makes the same subject uniquely credible from her, and her Indian test-ride (Rn4YrtJW0wI, 1.25x) already primed viewers for anti-Harley content.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.25x</b><a href="https://www.youtube.com/watch?v=Rn4YrtJW0wI" target="_blank" rel="noopener">Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</a></li><li><b>1.57x</b><a href="https://www.youtube.com/watch?v=ompeGJRoIzc" target="_blank" rel="noopener">I&#39;ve been saying it for years... But this was the final straw.</a></li><li><b>1.43x</b><a href="https://www.youtube.com/watch?v=aj78y8k_P5I" target="_blank" rel="noopener">What Happened To Me?</a></li><li><b>2.61x</b><a href="https://www.youtube.com/watch?v=mE9jF24BqBE" target="_blank" rel="noopener">Why 67% of Riders Refuse Harley Davidson · Yammie Noob</a></li><li><b>2.45x</b><a href="https://www.youtube.com/watch?v=3ORzU_JD7hQ" target="_blank" rel="noopener">Ranking All Motorcycle Manufacturers in 2026 · Yammie Noob</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(230 62% 22%),hsl(278 68% 12%))">
+    <b>I LOST THIS</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">10 Things I Lost Switching From Harley To A Modern Motorcycle</div>
+  <div class="d">A personal accounting of the details, sounds, and rituals that quietly disappeared when she moved off the Road Glide.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">FortNine&#39;s &#39;10 Things We Lost on Modern Motorcycles&#39; (Fr1z5f10Kak) hit 2.58x on 891K views with a list-essay shape this channel has never used; her personal Harley-vs-modern arc (oDNvykBXItU, Rn4YrtJW0wI) makes the same shape a first-person confession instead of a lecture.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.61x</b><a href="https://www.youtube.com/watch?v=oDNvykBXItU" target="_blank" rel="noopener">Last hope for my Harley-Davidson Road Glide.</a></li><li><b>1.57x</b><a href="https://www.youtube.com/watch?v=ompeGJRoIzc" target="_blank" rel="noopener">I&#39;ve been saying it for years... But this was the final straw.</a></li><li><b>1.25x</b><a href="https://www.youtube.com/watch?v=Rn4YrtJW0wI" target="_blank" rel="noopener">Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</a></li><li><b>2.58x</b><a href="https://www.youtube.com/watch?v=Fr1z5f10Kak" target="_blank" rel="noopener">10 Things We Lost on Modern Motorcycles · FortNine</a></li><li><b>2.45x</b><a href="https://www.youtube.com/watch?v=S7pzkSmNqag" target="_blank" rel="noopener">Why I Hate Tech on Motorcycles - Honda Africa Twin Review · FortNine</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(98 62% 22%),hsl(146 68% 12%))">
+    <b>I HATE THIS</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~54K projected</span>
+  </div>
+  <div class="t">6 Things I Hate About Motorcycle Camping As A Woman</div>
+  <div class="d">The unspoken hassles, safety math, and logistical annoyances that nobody mentions when they sell you on solo moto camping.</div>
+  <div class="meta">38K–70K projected</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Moto Camp Nerd&#39;s &#39;Six Things We HATE About Motorcycle Camping&#39; (1R6Eay8Vkic) did 1.72x with a shape this channel has never touched; her Sturgis solo-camp video (Z9S50JNKx6k, 1.58x) and campout (dL0wmiCPmlw, 1.21x) proved she owns the female-solo-camper voice that makes each complaint feel earned.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. No mined format is attached, so this is projected as a typical upload rather than an outlier. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.58x</b><a href="https://www.youtube.com/watch?v=Z9S50JNKx6k" target="_blank" rel="noopener">Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</a></li><li><b>1.21x</b><a href="https://www.youtube.com/watch?v=dL0wmiCPmlw" target="_blank" rel="noopener">I Thought It Was Just a Campout… I Was Wrong</a></li><li><b>1.20x</b><a href="https://www.youtube.com/watch?v=FgxKgypUl4Q" target="_blank" rel="noopener">I Wasn&#39;t Ready For What Happened....</a></li><li><b>1.72x</b><a href="https://www.youtube.com/watch?v=1R6Eay8Vkic" target="_blank" rel="noopener">Six Things We HATE About Motorcycle Camping · Moto Camp Nerd</a></li><li><b>2.68x</b><a href="https://www.youtube.com/watch?v=w_jv1uNS3bE" target="_blank" rel="noopener">Motorcycle Camping Tips: How to STOP Overpacking · Moto Camp Nerd</a></li><li><b>2.08x</b><a href="https://www.youtube.com/watch?v=4yrfxF1rdxg" target="_blank" rel="noopener">What Kind of Motorcycle Camper Are YOU? · Moto Camp Nerd</a></li></ul>
+  </details>
+</div>
+<div class="idea">
+  <div class="thumb" style="background:linear-gradient(135deg,hsl(302 62% 22%),hsl(350 68% 12%))">
+    <b>SOLO WOMAN. DEEP SOUTH.</b>
+    <span class="tag">Concept</span>
+    <span class="proj">~87K projected</span>
+  </div>
+  <div class="t">What Happens When A Solo Woman Rides Into The Deep South</div>
+  <div class="d">A long ride through small-town Alabama and Mississippi on a Harley, documenting every gas station, diner, and back road reception she gets.</div>
+  <div class="meta">62K–112K projected · Solo Woman Rides Into Rural &lt;Region&gt;</div>
+  <details><summary>Why this idea →</summary>
+    <p class="basis">Meike&#39;s &#39;What Happens When a Solo Woman Rides Into Rural Punjab&#39; (lEfnUeK2_zQ) did 4.30x/1.4M and Swati Rojha&#39;s Manali ride (F0VvB8dTDFk) hit 1.79x/1.6M — the Solo Woman In Risky Place shape runs 1.61x and this channel has never used it explicitly, but she is uniquely positioned to bring it home to America where her existing audience already lives.</p>
+    <p class="basis">This channel&#39;s median upload does 54K views. The &quot;Solo Woman Rides Into Rural &lt;Region&gt;&quot; format runs 1.61x its channels&#39; medians across 3 observed videos, so the midpoint is 54K x 1.61. The range is this channel&#39;s own spread between its quartiles, not a fixed margin.</p>
+    <ul class="ev"><li><b>1.96x</b><a href="https://www.youtube.com/watch?v=WckzxtkQM6Y" target="_blank" rel="noopener">I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05</a></li><li><b>2.22x</b><a href="https://www.youtube.com/watch?v=spl7XTtthoY" target="_blank" rel="noopener">The Blue Ridge Parkway was destroyed after this 😢</a></li><li><b>1.86x</b><a href="https://www.youtube.com/watch?v=S0QRIC1XVEI" target="_blank" rel="noopener">Trapped on the Mountain on our Motorcycles. Ep. 14</a></li><li><b>4.30x</b><a href="https://www.youtube.com/watch?v=lEfnUeK2_zQ" target="_blank" rel="noopener">What Happens When a Solo Woman Rides Into Rural Punjab?! 🇮🇳 - (India #9) · Meike - Solo Female Travel</a></li><li><b>1.61x</b><a href="https://www.youtube.com/watch?v=zd7hG2ynqUY" target="_blank" rel="noopener">&#39;&#39;It’s Not Safe Here&#39;&#39; - Solo Woman Riding in Rural Punjab 🇮🇳 - (India #10) · Meike - Solo Female Travel</a></li><li><b>1.79x</b><a href="https://www.youtube.com/watch?v=F0VvB8dTDFk" target="_blank" rel="noopener">Delhi To Manali - 500kms in 10hrs | Manali’s Endless Whispers · Swati Rojha</a></li></ul>
+  </details>
+</div></div>
+
+<h2>Analyses</h2>
+<div class="outs"><div class="out">
+  <div class="top">
+    <span class="tool">Video Regression</span>
+    <span class="when">2026-08-18 · 30 videos</span>
+    <span class="links"><a href="https://docs.google.com/presentation/d/1x-vbI4bOc-xZGhoa9SYaRPe9KQ41649rNW31uUttE8M/edit" target="_blank" rel="noopener">Slides</a><a href="https://docs.google.com/spreadsheets/d/1r0tCO7KkpbTpmOgNCmsKQ11KoeF5A5CoiRmBjzT-oyc/edit" target="_blank" rel="noopener">Data</a></span>
+  </div>
+  <ul><li>The intro leak is a rounding error next to the mid-video collapse — 60-65% through is bleeding four times more viewers than the outro.</li><li>0-5% through fires on 30 of 30 videos at 4.8x surrounding hazard, costing 458,323 viewers beyond baseline.</li><li>60-65% through fires on 20 of 30 videos at 7.5x surrounding hazard, costing 58,830 viewers beyond baseline — the single largest body leak on the channel.</li></ul>
+  <div class="warn">⚠ APP_PUBLIC_URL (https://expenditures-ooo-wrapped-myers.trycloudflare.com) is unreachable (fetch failed), so Google can&#39;t fetch generated images — slides that need them fall back to native tables. In local dev this usually means the tunnel died and its URL rotated.</div>
+</div></div>
+<h2>Retention overlay</h2>
+<p class="legend">Every analysed video's retention curve on one pair of axes. Both switches are live — change what the x-axis measures, or what the colour encodes, and the same data answers a different question.</p>
+<div class="cohort">
+  <div class="bar">
+    <span class="grp"><span class="lab">X axis</span>
+      <button class="tgl" data-cx="percent" aria-pressed="true" type="button">% of video</button>
+      <button class="tgl" data-cx="clock" aria-pressed="false" type="button">Clock time</button>
+    </span>
+    <span class="spacer"></span>
+    <span class="grp"><span class="lab">Colour by</span>
+      <button class="tgl" data-col="none" aria-pressed="true" type="button">None</button>
+      <button class="tgl" data-col="recency" aria-pressed="false" type="button">Recency</button>
+      <button class="tgl" data-col="views" aria-pressed="false" type="button">Views</button>
+      <button class="tgl" data-col="ret" aria-pressed="false" type="button">Retention</button>
+    </span>
+  </div>
+  <svg class="cohortsvg" id="cohortsvg" role="img" aria-label="Retention curves for 30 videos"></svg>
+  <div class="ramp" id="ramp" style="display:none"><span class="lo"></span><i></i><span class="hi"></span></div>
+  <p class="cap"><strong>% of video</strong> normalises length, so structural habits line up — a sag every video shares shows as one shared dip. <strong>Clock time</strong> lets each curve stop where its video stops, so length and endurance become visible. On the % axis the dashed white line is this channel's own median — the bar every video is judged against; clock time has no shared x, so no median is drawn. Click a curve to isolate it, or a title below to open its viewer.</p>
+  <div class="clegend"><a href="UCzMAG_9ikEm6P60GBpDIqqg/FgxKgypUl4Q.html" data-i="0" title="I Wasn&#39;t Ready For What Happened...."><b></b><span>I Wasn&#39;t Ready For What Happened....</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/aj78y8k_P5I.html" data-i="1" title="What Happened To Me?"><b></b><span>What Happened To Me?</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/0O9nm01P77M.html" data-i="2" title="Harley-Davidson Has a Problem... This Bike Is Too Cheap! 2026 Super Glide"><b></b><span>Harley-Davidson Has a Problem... This Bike Is Too Cheap! 2026 Super Glide</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/dL0wmiCPmlw.html" data-i="3" title="I Thought It Was Just a Campout… I Was Wrong"><b></b><span>I Thought It Was Just a Campout… I Was Wrong</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/elxhrjhFQK0.html" data-i="4" title="I Hope I Don&#39;t Regret This"><b></b><span>I Hope I Don&#39;t Regret This</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/iYWt5O4mHUs.html" data-i="5" title="Everyone told me NOT to buy a RAM..."><b></b><span>Everyone told me NOT to buy a RAM...</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/489q_roSgug.html" data-i="6" title="Why is NOBODY talking about this Motorcycle??"><b></b><span>Why is NOBODY talking about this Motorcycle??</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/5kxjq2Wx1Lc.html" data-i="7" title="This is why I DIDN&#39;T buy a Harley-Davidson Street Glide"><b></b><span>This is why I DIDN&#39;T buy a Harley-Davidson Street Glide</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/ngFza89vOqs.html" data-i="8" title="Is This the Right Touring Bike for You? 2026 Harley-Davidson Limited Test Ride"><b></b><span>Is This the Right Touring Bike for You? 2026 Harley-Davidson Limited Test Ride</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/S0QRIC1XVEI.html" data-i="9" title="Trapped on the Mountain on our Motorcycles. Ep. 14"><b></b><span>Trapped on the Mountain on our Motorcycles. Ep. 14</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/dLXx8xq2iMo.html" data-i="10" title="I Think I Bought the Wrong Harley-Davidson 😭 / NEW 2026 Motorcycles"><b></b><span>I Think I Bought the Wrong Harley-Davidson 😭 / NEW 2026 Motorcycles</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/IhfwCa8W-IM.html" data-i="11" title="Hundreds of miles riding in the Smoky Mountains... when IT happened..."><b></b><span>Hundreds of miles riding in the Smoky Mountains... when IT happened...</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/ZimcVcKzsro.html" data-i="12" title="Stranded on East Coast. Hopefully this fixes my Harley-Davidson! Ep: 03"><b></b><span>Stranded on East Coast. Hopefully this fixes my Harley-Davidson! Ep: 03</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/oxkBGZLwRtQ.html" data-i="13" title="Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02"><b></b><span>Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/4JG_DnMdyso.html" data-i="14" title="Life Update, New Motorcycle, Big Changes, Cross Country Trip..."><b></b><span>Life Update, New Motorcycle, Big Changes, Cross Country Trip...</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/Z9S50JNKx6k.html" data-i="15" title="Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year..."><b></b><span>Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/WckzxtkQM6Y.html" data-i="16" title="I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05"><b></b><span>I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/_DM2Tb7As8c.html" data-i="17" title="I Survived the Most Chaotic Motorcycle Campout in Tennessee | TMMR 2025"><b></b><span>I Survived the Most Chaotic Motorcycle Campout in Tennessee | TMMR 2025</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/s41Q7wg_Svs.html" data-i="18" title="DO NOT WASTE YOUR MONEY! Watch this first! Insta360 X5 Review"><b></b><span>DO NOT WASTE YOUR MONEY! Watch this first! Insta360 X5 Review</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/FBxliFPkhoM.html" data-i="19" title="I Wish I Knew This BEFORE Ripping Open My Motorcycle 😰"><b></b><span>I Wish I Knew This BEFORE Ripping Open My Motorcycle 😰</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/oDNvykBXItU.html" data-i="20" title="Last hope for my Harley-Davidson Road Glide."><b></b><span>Last hope for my Harley-Davidson Road Glide.</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/8FZiY3PRiFE.html" data-i="21" title="Spontaneous 1,000+ mile motorcycle trip!"><b></b><span>Spontaneous 1,000+ mile motorcycle trip!</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/ZUC9MH4tEkA.html" data-i="22" title="H-D made a BIG mistake with the 2025 Low Rider ST..."><b></b><span>H-D made a BIG mistake with the 2025 Low Rider ST...</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/Rn4YrtJW0wI.html" data-i="23" title="Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review"><b></b><span>Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/j9v1ukNOhE4.html" data-i="24" title="The Biggest Mistakes New Motorcycle Campers Make"><b></b><span>The Biggest Mistakes New Motorcycle Campers Make</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/gMSXiH20qV4.html" data-i="25" title="I Joined a Motorcycle Crew. Then Rode 1,134 miles – Here’s What Went Down"><b></b><span>I Joined a Motorcycle Crew. Then Rode 1,134 miles – Here’s What Went Down</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/-dVZv1gy5VM.html" data-i="26" title="Critical failure comparing the DJI Action 5 Pro vs. GoPro 13 Action Camera"><b></b><span>Critical failure comparing the DJI Action 5 Pro vs. GoPro 13 Action Camera</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/spl7XTtthoY.html" data-i="27" title="The Blue Ridge Parkway was destroyed after this 😢"><b></b><span>The Blue Ridge Parkway was destroyed after this 😢</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/ompeGJRoIzc.html" data-i="28" title="I&#39;ve been saying it for years... But this was the final straw."><b></b><span>I&#39;ve been saying it for years... But this was the final straw.</span></a><a href="UCzMAG_9ikEm6P60GBpDIqqg/qpHiv4noMxc.html" data-i="29" title="2024 Pan America... Is it ACTUALLY Better?"><b></b><span>2024 Pan America... Is it ACTUALLY Better?</span></a></div>
+</div>
+<script>window.__COHORT__={"videos":[{"videoId":"FgxKgypUl4Q","title":"I Wasn't Ready For What Happened....","durationSec":1298,"pub":1783266891000,"views":64912,"r50":0.3045,"curve":[{"p":1,"w":0.924},{"p":2,"w":0.797},{"p":3,"w":0.665},{"p":4,"w":0.556},{"p":5,"w":0.49},{"p":6,"w":0.475},{"p":7,"w":0.459},{"p":8,"w":0.453},{"p":9,"w":0.448},{"p":10,"w":0.432},{"p":11,"w":0.424},{"p":12,"w":0.413},{"p":13,"w":0.41},{"p":14,"w":0.412},{"p":15,"w":0.418},{"p":16,"w":0.421},{"p":17,"w":0.426},{"p":18,"w":0.424},{"p":19,"w":0.422},{"p":20,"w":0.417},{"p":21,"w":0.417},{"p":22,"w":0.41},{"p":23,"w":0.402},{"p":24,"w":0.395},{"p":25,"w":0.391},{"p":26,"w":0.395},{"p":27,"w":0.382},{"p":28,"w":0.378},{"p":29,"w":0.374},{"p":30,"w":0.363},{"p":31,"w":0.359},{"p":32,"w":0.359},{"p":33,"w":0.365},{"p":34,"w":0.356},{"p":35,"w":0.355},{"p":36,"w":0.355},{"p":37,"w":0.353},{"p":38,"w":0.339},{"p":39,"w":0.332},{"p":40,"w":0.32},{"p":41,"w":0.311},{"p":42,"w":0.305},{"p":43,"w":0.298},{"p":44,"w":0.297},{"p":45,"w":0.3},{"p":46,"w":0.302},{"p":47,"w":0.305},{"p":48,"w":0.309},{"p":49,"w":0.31},{"p":50,"w":0.305},{"p":51,"w":0.3},{"p":52,"w":0.295},{"p":53,"w":0.292},{"p":54,"w":0.292},{"p":55,"w":0.29},{"p":56,"w":0.288},{"p":57,"w":0.296},{"p":58,"w":0.271},{"p":59,"w":0.271},{"p":60,"w":0.272},{"p":61,"w":0.275},{"p":62,"w":0.273},{"p":63,"w":0.269},{"p":64,"w":0.268},{"p":65,"w":0.272},{"p":66,"w":0.269},{"p":67,"w":0.266},{"p":68,"w":0.266},{"p":69,"w":0.265},{"p":70,"w":0.266},{"p":71,"w":0.267},{"p":72,"w":0.269},{"p":73,"w":0.266},{"p":74,"w":0.267},{"p":75,"w":0.258},{"p":76,"w":0.257},{"p":77,"w":0.257},{"p":78,"w":0.256},{"p":79,"w":0.252},{"p":80,"w":0.25},{"p":81,"w":0.249},{"p":82,"w":0.251},{"p":83,"w":0.255},{"p":84,"w":0.244},{"p":85,"w":0.237},{"p":86,"w":0.232},{"p":87,"w":0.229},{"p":88,"w":0.228},{"p":89,"w":0.226},{"p":90,"w":0.232},{"p":91,"w":0.228},{"p":92,"w":0.229},{"p":93,"w":0.225},{"p":94,"w":0.222},{"p":95,"w":0.22},{"p":96,"w":0.221},{"p":97,"w":0.223},{"p":98,"w":0.224},{"p":99,"w":0.217},{"p":100,"w":0.192}]},{"videoId":"aj78y8k_P5I","title":"What Happened To Me?","durationSec":2060,"pub":1782662093000,"views":77230,"r50":0.1583,"curve":[{"p":1,"w":0.925},{"p":2,"w":0.771},{"p":3,"w":0.636},{"p":4,"w":0.602},{"p":5,"w":0.585},{"p":6,"w":0.569},{"p":7,"w":0.535},{"p":8,"w":0.493},{"p":9,"w":0.468},{"p":10,"w":0.456},{"p":11,"w":0.439},{"p":12,"w":0.432},{"p":13,"w":0.434},{"p":14,"w":0.476},{"p":15,"w":0.47},{"p":16,"w":0.446},{"p":17,"w":0.431},{"p":18,"w":0.42},{"p":19,"w":0.411},{"p":20,"w":0.401},{"p":21,"w":0.396},{"p":22,"w":0.409},{"p":23,"w":0.353},{"p":24,"w":0.364},{"p":25,"w":0.351},{"p":26,"w":0.34},{"p":27,"w":0.324},{"p":28,"w":0.311},{"p":29,"w":0.301},{"p":30,"w":0.288},{"p":31,"w":0.295},{"p":32,"w":0.294},{"p":33,"w":0.276},{"p":34,"w":0.282},{"p":35,"w":0.28},{"p":36,"w":0.258},{"p":37,"w":0.238},{"p":38,"w":0.225},{"p":39,"w":0.225},{"p":40,"w":0.21},{"p":41,"w":0.195},{"p":42,"w":0.18},{"p":43,"w":0.173},{"p":44,"w":0.17},{"p":45,"w":0.162},{"p":46,"w":0.158},{"p":47,"w":0.177},{"p":48,"w":0.166},{"p":49,"w":0.162},{"p":50,"w":0.158},{"p":51,"w":0.156},{"p":52,"w":0.152},{"p":53,"w":0.166},{"p":54,"w":0.155},{"p":55,"w":0.157},{"p":56,"w":0.147},{"p":57,"w":0.147},{"p":58,"w":0.145},{"p":59,"w":0.145},{"p":60,"w":0.143},{"p":61,"w":0.142},{"p":62,"w":0.142},{"p":63,"w":0.146},{"p":64,"w":0.159},{"p":65,"w":0.147},{"p":66,"w":0.14},{"p":67,"w":0.137},{"p":68,"w":0.135},{"p":69,"w":0.133},{"p":70,"w":0.133},{"p":71,"w":0.132},{"p":72,"w":0.147},{"p":73,"w":0.141},{"p":74,"w":0.141},{"p":75,"w":0.132},{"p":76,"w":0.132},{"p":77,"w":0.131},{"p":78,"w":0.131},{"p":79,"w":0.131},{"p":80,"w":0.142},{"p":81,"w":0.141},{"p":82,"w":0.137},{"p":83,"w":0.134},{"p":84,"w":0.132},{"p":85,"w":0.134},{"p":86,"w":0.127},{"p":87,"w":0.131},{"p":88,"w":0.124},{"p":89,"w":0.122},{"p":90,"w":0.119},{"p":91,"w":0.117},{"p":92,"w":0.122},{"p":93,"w":0.124},{"p":94,"w":0.114},{"p":95,"w":0.112},{"p":96,"w":0.11},{"p":97,"w":0.115},{"p":98,"w":0.11},{"p":99,"w":0.107},{"p":100,"w":0.103}]},{"videoId":"0O9nm01P77M","title":"Harley-Davidson Has a Problem... This Bike Is Too Cheap! 2026 Super Glide","durationSec":970,"pub":1781195421000,"views":56110,"r50":0.2223,"curve":[{"p":1,"w":0.94},{"p":2,"w":0.879},{"p":3,"w":0.763},{"p":4,"w":0.678},{"p":5,"w":0.61},{"p":6,"w":0.549},{"p":7,"w":0.537},{"p":8,"w":0.52},{"p":9,"w":0.509},{"p":10,"w":0.494},{"p":11,"w":0.485},{"p":12,"w":0.478},{"p":13,"w":0.467},{"p":14,"w":0.457},{"p":15,"w":0.45},{"p":16,"w":0.443},{"p":17,"w":0.436},{"p":18,"w":0.425},{"p":19,"w":0.415},{"p":20,"w":0.403},{"p":21,"w":0.394},{"p":22,"w":0.388},{"p":23,"w":0.375},{"p":24,"w":0.363},{"p":25,"w":0.354},{"p":26,"w":0.35},{"p":27,"w":0.349},{"p":28,"w":0.345},{"p":29,"w":0.341},{"p":30,"w":0.334},{"p":31,"w":0.331},{"p":32,"w":0.327},{"p":33,"w":0.324},{"p":34,"w":0.32},{"p":35,"w":0.316},{"p":36,"w":0.309},{"p":37,"w":0.308},{"p":38,"w":0.306},{"p":39,"w":0.301},{"p":40,"w":0.295},{"p":41,"w":0.29},{"p":42,"w":0.285},{"p":43,"w":0.28},{"p":44,"w":0.286},{"p":45,"w":0.279},{"p":46,"w":0.241},{"p":47,"w":0.236},{"p":48,"w":0.231},{"p":49,"w":0.227},{"p":50,"w":0.222},{"p":51,"w":0.219},{"p":52,"w":0.216},{"p":53,"w":0.216},{"p":54,"w":0.216},{"p":55,"w":0.217},{"p":56,"w":0.22},{"p":57,"w":0.219},{"p":58,"w":0.218},{"p":59,"w":0.214},{"p":60,"w":0.214},{"p":61,"w":0.196},{"p":62,"w":0.191},{"p":63,"w":0.188},{"p":64,"w":0.187},{"p":65,"w":0.187},{"p":66,"w":0.186},{"p":67,"w":0.186},{"p":68,"w":0.184},{"p":69,"w":0.183},{"p":70,"w":0.182},{"p":71,"w":0.181},{"p":72,"w":0.181},{"p":73,"w":0.182},{"p":74,"w":0.181},{"p":75,"w":0.18},{"p":76,"w":0.179},{"p":77,"w":0.177},{"p":78,"w":0.175},{"p":79,"w":0.174},{"p":80,"w":0.18},{"p":81,"w":0.184},{"p":82,"w":0.175},{"p":83,"w":0.174},{"p":84,"w":0.169},{"p":85,"w":0.166},{"p":86,"w":0.166},{"p":87,"w":0.165},{"p":88,"w":0.164},{"p":89,"w":0.165},{"p":90,"w":0.166},{"p":91,"w":0.168},{"p":92,"w":0.169},{"p":93,"w":0.167},{"p":94,"w":0.166},{"p":95,"w":0.166},{"p":96,"w":0.166},{"p":97,"w":0.166},{"p":98,"w":0.163},{"p":99,"w":0.147},{"p":100,"w":0.135}]},{"videoId":"dL0wmiCPmlw","title":"I Thought It Was Just a Campout… I Was Wrong","durationSec":2088,"pub":1779635380000,"views":65205,"r50":0.1895,"curve":[{"p":1,"w":0.926},{"p":2,"w":0.672},{"p":3,"w":0.445},{"p":4,"w":0.408},{"p":5,"w":0.382},{"p":6,"w":0.353},{"p":7,"w":0.349},{"p":8,"w":0.346},{"p":9,"w":0.352},{"p":10,"w":0.338},{"p":11,"w":0.332},{"p":12,"w":0.324},{"p":13,"w":0.319},{"p":14,"w":0.317},{"p":15,"w":0.317},{"p":16,"w":0.299},{"p":17,"w":0.295},{"p":18,"w":0.311},{"p":19,"w":0.29},{"p":20,"w":0.284},{"p":21,"w":0.275},{"p":22,"w":0.268},{"p":23,"w":0.261},{"p":24,"w":0.262},{"p":25,"w":0.248},{"p":26,"w":0.243},{"p":27,"w":0.239},{"p":28,"w":0.233},{"p":29,"w":0.229},{"p":30,"w":0.227},{"p":31,"w":0.227},{"p":32,"w":0.228},{"p":33,"w":0.234},{"p":34,"w":0.27},{"p":35,"w":0.253},{"p":36,"w":0.243},{"p":37,"w":0.231},{"p":38,"w":0.227},{"p":39,"w":0.218},{"p":40,"w":0.209},{"p":41,"w":0.203},{"p":42,"w":0.199},{"p":43,"w":0.197},{"p":44,"w":0.195},{"p":45,"w":0.195},{"p":46,"w":0.197},{"p":47,"w":0.193},{"p":48,"w":0.192},{"p":49,"w":0.186},{"p":50,"w":0.19},{"p":51,"w":0.183},{"p":52,"w":0.187},{"p":53,"w":0.187},{"p":54,"w":0.193},{"p":55,"w":0.212},{"p":56,"w":0.191},{"p":57,"w":0.177},{"p":58,"w":0.176},{"p":59,"w":0.177},{"p":60,"w":0.176},{"p":61,"w":0.174},{"p":62,"w":0.178},{"p":63,"w":0.176},{"p":64,"w":0.174},{"p":65,"w":0.187},{"p":66,"w":0.178},{"p":67,"w":0.177},{"p":68,"w":0.172},{"p":69,"w":0.182},{"p":70,"w":0.197},{"p":71,"w":0.207},{"p":72,"w":0.215},{"p":73,"w":0.215},{"p":74,"w":0.209},{"p":75,"w":0.181},{"p":76,"w":0.164},{"p":77,"w":0.16},{"p":78,"w":0.157},{"p":79,"w":0.154},{"p":80,"w":0.154},{"p":81,"w":0.162},{"p":82,"w":0.15},{"p":83,"w":0.139},{"p":84,"w":0.133},{"p":85,"w":0.132},{"p":86,"w":0.131},{"p":87,"w":0.133},{"p":88,"w":0.133},{"p":89,"w":0.138},{"p":90,"w":0.139},{"p":91,"w":0.137},{"p":92,"w":0.135},{"p":93,"w":0.137},{"p":94,"w":0.131},{"p":95,"w":0.126},{"p":96,"w":0.12},{"p":97,"w":0.116},{"p":98,"w":0.114},{"p":99,"w":0.11},{"p":100,"w":0.107}]},{"videoId":"elxhrjhFQK0","title":"I Hope I Don't Regret This","durationSec":1519,"pub":1774796388000,"views":49950,"r50":0.2138,"curve":[{"p":1,"w":0.922},{"p":2,"w":0.8},{"p":3,"w":0.712},{"p":4,"w":0.605},{"p":5,"w":0.569},{"p":6,"w":0.538},{"p":7,"w":0.503},{"p":8,"w":0.479},{"p":9,"w":0.466},{"p":10,"w":0.47},{"p":11,"w":0.454},{"p":12,"w":0.437},{"p":13,"w":0.424},{"p":14,"w":0.419},{"p":15,"w":0.41},{"p":16,"w":0.4},{"p":17,"w":0.401},{"p":18,"w":0.395},{"p":19,"w":0.386},{"p":20,"w":0.379},{"p":21,"w":0.374},{"p":22,"w":0.383},{"p":23,"w":0.348},{"p":24,"w":0.338},{"p":25,"w":0.345},{"p":26,"w":0.339},{"p":27,"w":0.33},{"p":28,"w":0.321},{"p":29,"w":0.315},{"p":30,"w":0.31},{"p":31,"w":0.305},{"p":32,"w":0.302},{"p":33,"w":0.3},{"p":34,"w":0.287},{"p":35,"w":0.283},{"p":36,"w":0.281},{"p":37,"w":0.287},{"p":38,"w":0.277},{"p":39,"w":0.269},{"p":40,"w":0.261},{"p":41,"w":0.255},{"p":42,"w":0.249},{"p":43,"w":0.242},{"p":44,"w":0.238},{"p":45,"w":0.247},{"p":46,"w":0.249},{"p":47,"w":0.252},{"p":48,"w":0.223},{"p":49,"w":0.218},{"p":50,"w":0.214},{"p":51,"w":0.208},{"p":52,"w":0.205},{"p":53,"w":0.202},{"p":54,"w":0.201},{"p":55,"w":0.198},{"p":56,"w":0.21},{"p":57,"w":0.201},{"p":58,"w":0.196},{"p":59,"w":0.19},{"p":60,"w":0.19},{"p":61,"w":0.192},{"p":62,"w":0.181},{"p":63,"w":0.179},{"p":64,"w":0.176},{"p":65,"w":0.177},{"p":66,"w":0.18},{"p":67,"w":0.2},{"p":68,"w":0.196},{"p":69,"w":0.193},{"p":70,"w":0.189},{"p":71,"w":0.187},{"p":72,"w":0.183},{"p":73,"w":0.18},{"p":74,"w":0.176},{"p":75,"w":0.174},{"p":76,"w":0.173},{"p":77,"w":0.18},{"p":78,"w":0.171},{"p":79,"w":0.182},{"p":80,"w":0.186},{"p":81,"w":0.178},{"p":82,"w":0.174},{"p":83,"w":0.176},{"p":84,"w":0.177},{"p":85,"w":0.173},{"p":86,"w":0.181},{"p":87,"w":0.174},{"p":88,"w":0.171},{"p":89,"w":0.164},{"p":90,"w":0.159},{"p":91,"w":0.159},{"p":92,"w":0.155},{"p":93,"w":0.174},{"p":94,"w":0.17},{"p":95,"w":0.165},{"p":96,"w":0.157},{"p":97,"w":0.154},{"p":98,"w":0.153},{"p":99,"w":0.149},{"p":100,"w":0.142}]},{"videoId":"iYWt5O4mHUs","title":"Everyone told me NOT to buy a RAM...","durationSec":2373,"pub":1774191597000,"views":51942,"r50":0.35869999999999996,"curve":[{"p":1,"w":0.881},{"p":2,"w":0.648},{"p":3,"w":0.518},{"p":4,"w":0.499},{"p":5,"w":0.488},{"p":6,"w":0.478},{"p":7,"w":0.485},{"p":8,"w":0.477},{"p":9,"w":0.468},{"p":10,"w":0.477},{"p":11,"w":0.465},{"p":12,"w":0.46},{"p":13,"w":0.451},{"p":14,"w":0.441},{"p":15,"w":0.432},{"p":16,"w":0.434},{"p":17,"w":0.42},{"p":18,"w":0.418},{"p":19,"w":0.398},{"p":20,"w":0.396},{"p":21,"w":0.403},{"p":22,"w":0.402},{"p":23,"w":0.398},{"p":24,"w":0.388},{"p":25,"w":0.38},{"p":26,"w":0.381},{"p":27,"w":0.365},{"p":28,"w":0.358},{"p":29,"w":0.37},{"p":30,"w":0.37},{"p":31,"w":0.382},{"p":32,"w":0.376},{"p":33,"w":0.383},{"p":34,"w":0.396},{"p":35,"w":0.391},{"p":36,"w":0.371},{"p":37,"w":0.369},{"p":38,"w":0.358},{"p":39,"w":0.342},{"p":40,"w":0.367},{"p":41,"w":0.353},{"p":42,"w":0.341},{"p":43,"w":0.338},{"p":44,"w":0.338},{"p":45,"w":0.346},{"p":46,"w":0.35},{"p":47,"w":0.366},{"p":48,"w":0.363},{"p":49,"w":0.37},{"p":50,"w":0.359},{"p":51,"w":0.36},{"p":52,"w":0.356},{"p":53,"w":0.361},{"p":54,"w":0.353},{"p":55,"w":0.345},{"p":56,"w":0.34},{"p":57,"w":0.334},{"p":58,"w":0.328},{"p":59,"w":0.323},{"p":60,"w":0.325},{"p":61,"w":0.329},{"p":62,"w":0.319},{"p":63,"w":0.311},{"p":64,"w":0.314},{"p":65,"w":0.307},{"p":66,"w":0.322},{"p":67,"w":0.319},{"p":68,"w":0.312},{"p":69,"w":0.317},{"p":70,"w":0.306},{"p":71,"w":0.309},{"p":72,"w":0.3},{"p":73,"w":0.286},{"p":74,"w":0.286},{"p":75,"w":0.301},{"p":76,"w":0.289},{"p":77,"w":0.282},{"p":78,"w":0.279},{"p":79,"w":0.28},{"p":80,"w":0.295},{"p":81,"w":0.292},{"p":82,"w":0.279},{"p":83,"w":0.278},{"p":84,"w":0.299},{"p":85,"w":0.296},{"p":86,"w":0.298},{"p":87,"w":0.298},{"p":88,"w":0.294},{"p":89,"w":0.289},{"p":90,"w":0.282},{"p":91,"w":0.28},{"p":92,"w":0.274},{"p":93,"w":0.279},{"p":94,"w":0.278},{"p":95,"w":0.276},{"p":96,"w":0.271},{"p":97,"w":0.267},{"p":98,"w":0.256},{"p":99,"w":0.222},{"p":100,"w":0.193}]},{"videoId":"489q_roSgug","title":"Why is NOBODY talking about this Motorcycle??","durationSec":1382,"pub":1772987391000,"views":46133,"r50":0.2047,"curve":[{"p":1,"w":0.919},{"p":2,"w":0.779},{"p":3,"w":0.655},{"p":4,"w":0.573},{"p":5,"w":0.541},{"p":6,"w":0.528},{"p":7,"w":0.497},{"p":8,"w":0.479},{"p":9,"w":0.465},{"p":10,"w":0.446},{"p":11,"w":0.429},{"p":12,"w":0.416},{"p":13,"w":0.4},{"p":14,"w":0.399},{"p":15,"w":0.384},{"p":16,"w":0.373},{"p":17,"w":0.358},{"p":18,"w":0.347},{"p":19,"w":0.337},{"p":20,"w":0.326},{"p":21,"w":0.313},{"p":22,"w":0.304},{"p":23,"w":0.298},{"p":24,"w":0.291},{"p":25,"w":0.285},{"p":26,"w":0.289},{"p":27,"w":0.274},{"p":28,"w":0.273},{"p":29,"w":0.273},{"p":30,"w":0.274},{"p":31,"w":0.269},{"p":32,"w":0.254},{"p":33,"w":0.252},{"p":34,"w":0.243},{"p":35,"w":0.235},{"p":36,"w":0.228},{"p":37,"w":0.222},{"p":38,"w":0.222},{"p":39,"w":0.221},{"p":40,"w":0.213},{"p":41,"w":0.231},{"p":42,"w":0.227},{"p":43,"w":0.224},{"p":44,"w":0.223},{"p":45,"w":0.222},{"p":46,"w":0.218},{"p":47,"w":0.215},{"p":48,"w":0.211},{"p":49,"w":0.208},{"p":50,"w":0.205},{"p":51,"w":0.201},{"p":52,"w":0.198},{"p":53,"w":0.21},{"p":54,"w":0.206},{"p":55,"w":0.192},{"p":56,"w":0.189},{"p":57,"w":0.187},{"p":58,"w":0.192},{"p":59,"w":0.186},{"p":60,"w":0.188},{"p":61,"w":0.191},{"p":62,"w":0.191},{"p":63,"w":0.2},{"p":64,"w":0.198},{"p":65,"w":0.187},{"p":66,"w":0.184},{"p":67,"w":0.18},{"p":68,"w":0.175},{"p":69,"w":0.174},{"p":70,"w":0.172},{"p":71,"w":0.168},{"p":72,"w":0.166},{"p":73,"w":0.164},{"p":74,"w":0.174},{"p":75,"w":0.168},{"p":76,"w":0.164},{"p":77,"w":0.162},{"p":78,"w":0.16},{"p":79,"w":0.161},{"p":80,"w":0.161},{"p":81,"w":0.152},{"p":82,"w":0.151},{"p":83,"w":0.151},{"p":84,"w":0.153},{"p":85,"w":0.159},{"p":86,"w":0.156},{"p":87,"w":0.149},{"p":88,"w":0.145},{"p":89,"w":0.14},{"p":90,"w":0.14},{"p":91,"w":0.138},{"p":92,"w":0.145},{"p":93,"w":0.138},{"p":94,"w":0.135},{"p":95,"w":0.131},{"p":96,"w":0.129},{"p":97,"w":0.127},{"p":98,"w":0.124},{"p":99,"w":0.115},{"p":100,"w":0.105}]},{"videoId":"5kxjq2Wx1Lc","title":"This is why I DIDN'T buy a Harley-Davidson Street Glide","durationSec":1505,"pub":1771781402000,"views":43880,"r50":0.2677,"curve":[{"p":1,"w":0.929},{"p":2,"w":0.714},{"p":3,"w":0.547},{"p":4,"w":0.447},{"p":5,"w":0.424},{"p":6,"w":0.398},{"p":7,"w":0.389},{"p":8,"w":0.382},{"p":9,"w":0.371},{"p":10,"w":0.348},{"p":11,"w":0.332},{"p":12,"w":0.322},{"p":13,"w":0.333},{"p":14,"w":0.322},{"p":15,"w":0.319},{"p":16,"w":0.32},{"p":17,"w":0.318},{"p":18,"w":0.313},{"p":19,"w":0.311},{"p":20,"w":0.309},{"p":21,"w":0.309},{"p":22,"w":0.317},{"p":23,"w":0.363},{"p":24,"w":0.369},{"p":25,"w":0.377},{"p":26,"w":0.361},{"p":27,"w":0.344},{"p":28,"w":0.322},{"p":29,"w":0.321},{"p":30,"w":0.318},{"p":31,"w":0.318},{"p":32,"w":0.321},{"p":33,"w":0.318},{"p":34,"w":0.31},{"p":35,"w":0.306},{"p":36,"w":0.305},{"p":37,"w":0.309},{"p":38,"w":0.293},{"p":39,"w":0.287},{"p":40,"w":0.281},{"p":41,"w":0.297},{"p":42,"w":0.285},{"p":43,"w":0.282},{"p":44,"w":0.282},{"p":45,"w":0.278},{"p":46,"w":0.273},{"p":47,"w":0.269},{"p":48,"w":0.266},{"p":49,"w":0.27},{"p":50,"w":0.268},{"p":51,"w":0.264},{"p":52,"w":0.262},{"p":53,"w":0.256},{"p":54,"w":0.253},{"p":55,"w":0.256},{"p":56,"w":0.238},{"p":57,"w":0.233},{"p":58,"w":0.227},{"p":59,"w":0.225},{"p":60,"w":0.22},{"p":61,"w":0.218},{"p":62,"w":0.217},{"p":63,"w":0.208},{"p":64,"w":0.204},{"p":65,"w":0.201},{"p":66,"w":0.196},{"p":67,"w":0.191},{"p":68,"w":0.191},{"p":69,"w":0.188},{"p":70,"w":0.191},{"p":71,"w":0.192},{"p":72,"w":0.183},{"p":73,"w":0.176},{"p":74,"w":0.173},{"p":75,"w":0.169},{"p":76,"w":0.165},{"p":77,"w":0.172},{"p":78,"w":0.166},{"p":79,"w":0.162},{"p":80,"w":0.161},{"p":81,"w":0.16},{"p":82,"w":0.159},{"p":83,"w":0.157},{"p":84,"w":0.155},{"p":85,"w":0.152},{"p":86,"w":0.153},{"p":87,"w":0.155},{"p":88,"w":0.154},{"p":89,"w":0.148},{"p":90,"w":0.145},{"p":91,"w":0.142},{"p":92,"w":0.139},{"p":93,"w":0.137},{"p":94,"w":0.149},{"p":95,"w":0.142},{"p":96,"w":0.138},{"p":97,"w":0.137},{"p":98,"w":0.134},{"p":99,"w":0.132},{"p":100,"w":0.124}]},{"videoId":"ngFza89vOqs","title":"Is This the Right Touring Bike for You? 2026 Harley-Davidson Limited Test Ride","durationSec":963,"pub":1768436731000,"views":33506,"r50":0.35609999999999997,"curve":[{"p":1,"w":0.903},{"p":2,"w":0.8},{"p":3,"w":0.674},{"p":4,"w":0.604},{"p":5,"w":0.577},{"p":6,"w":0.534},{"p":7,"w":0.533},{"p":8,"w":0.549},{"p":9,"w":0.535},{"p":10,"w":0.523},{"p":11,"w":0.511},{"p":12,"w":0.507},{"p":13,"w":0.501},{"p":14,"w":0.512},{"p":15,"w":0.507},{"p":16,"w":0.507},{"p":17,"w":0.505},{"p":18,"w":0.495},{"p":19,"w":0.484},{"p":20,"w":0.475},{"p":21,"w":0.476},{"p":22,"w":0.47},{"p":23,"w":0.466},{"p":24,"w":0.475},{"p":25,"w":0.465},{"p":26,"w":0.459},{"p":27,"w":0.454},{"p":28,"w":0.455},{"p":29,"w":0.454},{"p":30,"w":0.442},{"p":31,"w":0.448},{"p":32,"w":0.444},{"p":33,"w":0.439},{"p":34,"w":0.436},{"p":35,"w":0.435},{"p":36,"w":0.433},{"p":37,"w":0.419},{"p":38,"w":0.42},{"p":39,"w":0.416},{"p":40,"w":0.409},{"p":41,"w":0.405},{"p":42,"w":0.403},{"p":43,"w":0.4},{"p":44,"w":0.395},{"p":45,"w":0.392},{"p":46,"w":0.41},{"p":47,"w":0.367},{"p":48,"w":0.363},{"p":49,"w":0.358},{"p":50,"w":0.356},{"p":51,"w":0.354},{"p":52,"w":0.354},{"p":53,"w":0.35},{"p":54,"w":0.347},{"p":55,"w":0.344},{"p":56,"w":0.341},{"p":57,"w":0.347},{"p":58,"w":0.34},{"p":59,"w":0.325},{"p":60,"w":0.315},{"p":61,"w":0.31},{"p":62,"w":0.304},{"p":63,"w":0.298},{"p":64,"w":0.311},{"p":65,"w":0.307},{"p":66,"w":0.304},{"p":67,"w":0.3},{"p":68,"w":0.298},{"p":69,"w":0.294},{"p":70,"w":0.293},{"p":71,"w":0.288},{"p":72,"w":0.285},{"p":73,"w":0.283},{"p":74,"w":0.28},{"p":75,"w":0.278},{"p":76,"w":0.276},{"p":77,"w":0.282},{"p":78,"w":0.278},{"p":79,"w":0.276},{"p":80,"w":0.274},{"p":81,"w":0.272},{"p":82,"w":0.265},{"p":83,"w":0.261},{"p":84,"w":0.259},{"p":85,"w":0.26},{"p":86,"w":0.259},{"p":87,"w":0.251},{"p":88,"w":0.253},{"p":89,"w":0.247},{"p":90,"w":0.244},{"p":91,"w":0.243},{"p":92,"w":0.241},{"p":93,"w":0.244},{"p":94,"w":0.239},{"p":95,"w":0.231},{"p":96,"w":0.225},{"p":97,"w":0.215},{"p":98,"w":0.205},{"p":99,"w":0.193},{"p":100,"w":0.177}]},{"videoId":"S0QRIC1XVEI","title":"Trapped on the Mountain on our Motorcycles. Ep. 14","durationSec":2938,"pub":1765747811000,"views":100487,"r50":0.2462,"curve":[{"p":1,"w":0.911},{"p":2,"w":0.609},{"p":3,"w":0.44},{"p":4,"w":0.406},{"p":5,"w":0.385},{"p":6,"w":0.349},{"p":7,"w":0.35},{"p":8,"w":0.342},{"p":9,"w":0.337},{"p":10,"w":0.327},{"p":11,"w":0.33},{"p":12,"w":0.32},{"p":13,"w":0.313},{"p":14,"w":0.309},{"p":15,"w":0.321},{"p":16,"w":0.307},{"p":17,"w":0.305},{"p":18,"w":0.3},{"p":19,"w":0.296},{"p":20,"w":0.306},{"p":21,"w":0.303},{"p":22,"w":0.301},{"p":23,"w":0.306},{"p":24,"w":0.301},{"p":25,"w":0.294},{"p":26,"w":0.308},{"p":27,"w":0.287},{"p":28,"w":0.279},{"p":29,"w":0.279},{"p":30,"w":0.269},{"p":31,"w":0.267},{"p":32,"w":0.266},{"p":33,"w":0.27},{"p":34,"w":0.272},{"p":35,"w":0.271},{"p":36,"w":0.268},{"p":37,"w":0.266},{"p":38,"w":0.269},{"p":39,"w":0.257},{"p":40,"w":0.247},{"p":41,"w":0.246},{"p":42,"w":0.248},{"p":43,"w":0.247},{"p":44,"w":0.245},{"p":45,"w":0.254},{"p":46,"w":0.243},{"p":47,"w":0.24},{"p":48,"w":0.239},{"p":49,"w":0.244},{"p":50,"w":0.246},{"p":51,"w":0.268},{"p":52,"w":0.262},{"p":53,"w":0.24},{"p":54,"w":0.239},{"p":55,"w":0.249},{"p":56,"w":0.261},{"p":57,"w":0.27},{"p":58,"w":0.271},{"p":59,"w":0.297},{"p":60,"w":0.295},{"p":61,"w":0.298},{"p":62,"w":0.297},{"p":63,"w":0.301},{"p":64,"w":0.309},{"p":65,"w":0.304},{"p":66,"w":0.32},{"p":67,"w":0.318},{"p":68,"w":0.322},{"p":69,"w":0.331},{"p":70,"w":0.343},{"p":71,"w":0.344},{"p":72,"w":0.344},{"p":73,"w":0.344},{"p":74,"w":0.353},{"p":75,"w":0.348},{"p":76,"w":0.354},{"p":77,"w":0.343},{"p":78,"w":0.353},{"p":79,"w":0.346},{"p":80,"w":0.358},{"p":81,"w":0.37},{"p":82,"w":0.383},{"p":83,"w":0.39},{"p":84,"w":0.357},{"p":85,"w":0.352},{"p":86,"w":0.344},{"p":87,"w":0.344},{"p":88,"w":0.345},{"p":89,"w":0.337},{"p":90,"w":0.344},{"p":91,"w":0.347},{"p":92,"w":0.344},{"p":93,"w":0.332},{"p":94,"w":0.324},{"p":95,"w":0.319},{"p":96,"w":0.319},{"p":97,"w":0.293},{"p":98,"w":0.278},{"p":99,"w":0.218},{"p":100,"w":0.205}]},{"videoId":"dLXx8xq2iMo","title":"I Think I Bought the Wrong Harley-Davidson 😭 / NEW 2026 Motorcycles","durationSec":1293,"pub":1762216199000,"views":48139,"r50":0.2817,"curve":[{"p":1,"w":0.898},{"p":2,"w":0.763},{"p":3,"w":0.618},{"p":4,"w":0.548},{"p":5,"w":0.45},{"p":6,"w":0.42},{"p":7,"w":0.408},{"p":8,"w":0.398},{"p":9,"w":0.396},{"p":10,"w":0.405},{"p":11,"w":0.416},{"p":12,"w":0.415},{"p":13,"w":0.409},{"p":14,"w":0.409},{"p":15,"w":0.408},{"p":16,"w":0.41},{"p":17,"w":0.408},{"p":18,"w":0.395},{"p":19,"w":0.398},{"p":20,"w":0.392},{"p":21,"w":0.39},{"p":22,"w":0.384},{"p":23,"w":0.378},{"p":24,"w":0.375},{"p":25,"w":0.373},{"p":26,"w":0.369},{"p":27,"w":0.365},{"p":28,"w":0.362},{"p":29,"w":0.359},{"p":30,"w":0.364},{"p":31,"w":0.373},{"p":32,"w":0.381},{"p":33,"w":0.383},{"p":34,"w":0.369},{"p":35,"w":0.364},{"p":36,"w":0.355},{"p":37,"w":0.34},{"p":38,"w":0.337},{"p":39,"w":0.33},{"p":40,"w":0.33},{"p":41,"w":0.332},{"p":42,"w":0.33},{"p":43,"w":0.326},{"p":44,"w":0.321},{"p":45,"w":0.32},{"p":46,"w":0.324},{"p":47,"w":0.309},{"p":48,"w":0.308},{"p":49,"w":0.283},{"p":50,"w":0.282},{"p":51,"w":0.284},{"p":52,"w":0.284},{"p":53,"w":0.281},{"p":54,"w":0.275},{"p":55,"w":0.271},{"p":56,"w":0.273},{"p":57,"w":0.27},{"p":58,"w":0.267},{"p":59,"w":0.264},{"p":60,"w":0.261},{"p":61,"w":0.257},{"p":62,"w":0.253},{"p":63,"w":0.26},{"p":64,"w":0.242},{"p":65,"w":0.236},{"p":66,"w":0.232},{"p":67,"w":0.23},{"p":68,"w":0.227},{"p":69,"w":0.224},{"p":70,"w":0.222},{"p":71,"w":0.223},{"p":72,"w":0.224},{"p":73,"w":0.226},{"p":74,"w":0.222},{"p":75,"w":0.219},{"p":76,"w":0.218},{"p":77,"w":0.216},{"p":78,"w":0.214},{"p":79,"w":0.213},{"p":80,"w":0.209},{"p":81,"w":0.205},{"p":82,"w":0.204},{"p":83,"w":0.201},{"p":84,"w":0.2},{"p":85,"w":0.199},{"p":86,"w":0.202},{"p":87,"w":0.202},{"p":88,"w":0.197},{"p":89,"w":0.195},{"p":90,"w":0.204},{"p":91,"w":0.202},{"p":92,"w":0.205},{"p":93,"w":0.202},{"p":94,"w":0.197},{"p":95,"w":0.191},{"p":96,"w":0.18},{"p":97,"w":0.169},{"p":98,"w":0.165},{"p":99,"w":0.154},{"p":100,"w":0.141}]},{"videoId":"IhfwCa8W-IM","title":"Hundreds of miles riding in the Smoky Mountains... when IT happened...","durationSec":1099,"pub":1758834031000,"views":56081,"r50":0.3249,"curve":[{"p":1,"w":0.915},{"p":2,"w":0.854},{"p":3,"w":0.697},{"p":4,"w":0.626},{"p":5,"w":0.546},{"p":6,"w":0.525},{"p":7,"w":0.506},{"p":8,"w":0.49},{"p":9,"w":0.478},{"p":10,"w":0.463},{"p":11,"w":0.445},{"p":12,"w":0.433},{"p":13,"w":0.424},{"p":14,"w":0.421},{"p":15,"w":0.418},{"p":16,"w":0.418},{"p":17,"w":0.416},{"p":18,"w":0.426},{"p":19,"w":0.419},{"p":20,"w":0.415},{"p":21,"w":0.415},{"p":22,"w":0.409},{"p":23,"w":0.402},{"p":24,"w":0.396},{"p":25,"w":0.401},{"p":26,"w":0.399},{"p":27,"w":0.385},{"p":28,"w":0.377},{"p":29,"w":0.403},{"p":30,"w":0.391},{"p":31,"w":0.384},{"p":32,"w":0.371},{"p":33,"w":0.364},{"p":34,"w":0.36},{"p":35,"w":0.354},{"p":36,"w":0.35},{"p":37,"w":0.344},{"p":38,"w":0.343},{"p":39,"w":0.339},{"p":40,"w":0.333},{"p":41,"w":0.329},{"p":42,"w":0.327},{"p":43,"w":0.338},{"p":44,"w":0.323},{"p":45,"w":0.323},{"p":46,"w":0.32},{"p":47,"w":0.315},{"p":48,"w":0.314},{"p":49,"w":0.316},{"p":50,"w":0.325},{"p":51,"w":0.344},{"p":52,"w":0.347},{"p":53,"w":0.344},{"p":54,"w":0.34},{"p":55,"w":0.34},{"p":56,"w":0.347},{"p":57,"w":0.339},{"p":58,"w":0.348},{"p":59,"w":0.355},{"p":60,"w":0.337},{"p":61,"w":0.334},{"p":62,"w":0.339},{"p":63,"w":0.336},{"p":64,"w":0.334},{"p":65,"w":0.332},{"p":66,"w":0.317},{"p":67,"w":0.308},{"p":68,"w":0.304},{"p":69,"w":0.301},{"p":70,"w":0.303},{"p":71,"w":0.305},{"p":72,"w":0.338},{"p":73,"w":0.351},{"p":74,"w":0.351},{"p":75,"w":0.36},{"p":76,"w":0.344},{"p":77,"w":0.327},{"p":78,"w":0.322},{"p":79,"w":0.315},{"p":80,"w":0.309},{"p":81,"w":0.31},{"p":82,"w":0.312},{"p":83,"w":0.315},{"p":84,"w":0.321},{"p":85,"w":0.325},{"p":86,"w":0.324},{"p":87,"w":0.321},{"p":88,"w":0.319},{"p":89,"w":0.32},{"p":90,"w":0.316},{"p":91,"w":0.356},{"p":92,"w":0.368},{"p":93,"w":0.374},{"p":94,"w":0.373},{"p":95,"w":0.369},{"p":96,"w":0.367},{"p":97,"w":0.364},{"p":98,"w":0.362},{"p":99,"w":0.357},{"p":100,"w":0.342}]},{"videoId":"ZimcVcKzsro","title":"Stranded on East Coast. Hopefully this fixes my Harley-Davidson! Ep: 03","durationSec":1687,"pub":1757879996000,"views":50289,"r50":0.42719999999999997,"curve":[{"p":1,"w":0.919},{"p":2,"w":0.727},{"p":3,"w":0.589},{"p":4,"w":0.546},{"p":5,"w":0.519},{"p":6,"w":0.51},{"p":7,"w":0.492},{"p":8,"w":0.489},{"p":9,"w":0.496},{"p":10,"w":0.483},{"p":11,"w":0.46},{"p":12,"w":0.443},{"p":13,"w":0.436},{"p":14,"w":0.426},{"p":15,"w":0.433},{"p":16,"w":0.431},{"p":17,"w":0.437},{"p":18,"w":0.456},{"p":19,"w":0.49},{"p":20,"w":0.482},{"p":21,"w":0.475},{"p":22,"w":0.47},{"p":23,"w":0.479},{"p":24,"w":0.478},{"p":25,"w":0.483},{"p":26,"w":0.474},{"p":27,"w":0.461},{"p":28,"w":0.475},{"p":29,"w":0.502},{"p":30,"w":0.498},{"p":31,"w":0.483},{"p":32,"w":0.476},{"p":33,"w":0.459},{"p":34,"w":0.461},{"p":35,"w":0.44},{"p":36,"w":0.441},{"p":37,"w":0.443},{"p":38,"w":0.452},{"p":39,"w":0.443},{"p":40,"w":0.442},{"p":41,"w":0.443},{"p":42,"w":0.439},{"p":43,"w":0.446},{"p":44,"w":0.436},{"p":45,"w":0.435},{"p":46,"w":0.437},{"p":47,"w":0.437},{"p":48,"w":0.437},{"p":49,"w":0.435},{"p":50,"w":0.427},{"p":51,"w":0.427},{"p":52,"w":0.423},{"p":53,"w":0.421},{"p":54,"w":0.419},{"p":55,"w":0.423},{"p":56,"w":0.432},{"p":57,"w":0.395},{"p":58,"w":0.384},{"p":59,"w":0.399},{"p":60,"w":0.392},{"p":61,"w":0.392},{"p":62,"w":0.387},{"p":63,"w":0.378},{"p":64,"w":0.375},{"p":65,"w":0.379},{"p":66,"w":0.355},{"p":67,"w":0.35},{"p":68,"w":0.342},{"p":69,"w":0.333},{"p":70,"w":0.33},{"p":71,"w":0.326},{"p":72,"w":0.323},{"p":73,"w":0.316},{"p":74,"w":0.31},{"p":75,"w":0.304},{"p":76,"w":0.304},{"p":77,"w":0.336},{"p":78,"w":0.332},{"p":79,"w":0.332},{"p":80,"w":0.328},{"p":81,"w":0.324},{"p":82,"w":0.321},{"p":83,"w":0.32},{"p":84,"w":0.317},{"p":85,"w":0.316},{"p":86,"w":0.326},{"p":87,"w":0.328},{"p":88,"w":0.326},{"p":89,"w":0.32},{"p":90,"w":0.317},{"p":91,"w":0.317},{"p":92,"w":0.316},{"p":93,"w":0.309},{"p":94,"w":0.31},{"p":95,"w":0.313},{"p":96,"w":0.315},{"p":97,"w":0.312},{"p":98,"w":0.314},{"p":99,"w":0.315},{"p":100,"w":0.315}]},{"videoId":"oxkBGZLwRtQ","title":"Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02","durationSec":1718,"pub":1757275192000,"views":80701,"r50":0.3106,"curve":[{"p":1,"w":0.922},{"p":2,"w":0.733},{"p":3,"w":0.59},{"p":4,"w":0.5},{"p":5,"w":0.468},{"p":6,"w":0.432},{"p":7,"w":0.417},{"p":8,"w":0.406},{"p":9,"w":0.412},{"p":10,"w":0.413},{"p":11,"w":0.393},{"p":12,"w":0.394},{"p":13,"w":0.384},{"p":14,"w":0.375},{"p":15,"w":0.364},{"p":16,"w":0.368},{"p":17,"w":0.358},{"p":18,"w":0.348},{"p":19,"w":0.342},{"p":20,"w":0.33},{"p":21,"w":0.335},{"p":22,"w":0.34},{"p":23,"w":0.346},{"p":24,"w":0.329},{"p":25,"w":0.323},{"p":26,"w":0.346},{"p":27,"w":0.34},{"p":28,"w":0.326},{"p":29,"w":0.323},{"p":30,"w":0.317},{"p":31,"w":0.311},{"p":32,"w":0.314},{"p":33,"w":0.312},{"p":34,"w":0.325},{"p":35,"w":0.367},{"p":36,"w":0.383},{"p":37,"w":0.38},{"p":38,"w":0.373},{"p":39,"w":0.368},{"p":40,"w":0.366},{"p":41,"w":0.365},{"p":42,"w":0.367},{"p":43,"w":0.362},{"p":44,"w":0.344},{"p":45,"w":0.339},{"p":46,"w":0.33},{"p":47,"w":0.313},{"p":48,"w":0.322},{"p":49,"w":0.32},{"p":50,"w":0.311},{"p":51,"w":0.309},{"p":52,"w":0.304},{"p":53,"w":0.303},{"p":54,"w":0.302},{"p":55,"w":0.288},{"p":56,"w":0.285},{"p":57,"w":0.288},{"p":58,"w":0.282},{"p":59,"w":0.281},{"p":60,"w":0.275},{"p":61,"w":0.286},{"p":62,"w":0.273},{"p":63,"w":0.271},{"p":64,"w":0.26},{"p":65,"w":0.257},{"p":66,"w":0.255},{"p":67,"w":0.255},{"p":68,"w":0.252},{"p":69,"w":0.247},{"p":70,"w":0.248},{"p":71,"w":0.245},{"p":72,"w":0.243},{"p":73,"w":0.244},{"p":74,"w":0.239},{"p":75,"w":0.234},{"p":76,"w":0.229},{"p":77,"w":0.229},{"p":78,"w":0.23},{"p":79,"w":0.244},{"p":80,"w":0.254},{"p":81,"w":0.25},{"p":82,"w":0.241},{"p":83,"w":0.231},{"p":84,"w":0.234},{"p":85,"w":0.231},{"p":86,"w":0.229},{"p":87,"w":0.23},{"p":88,"w":0.229},{"p":89,"w":0.234},{"p":90,"w":0.235},{"p":91,"w":0.239},{"p":92,"w":0.255},{"p":93,"w":0.241},{"p":94,"w":0.235},{"p":95,"w":0.231},{"p":96,"w":0.236},{"p":97,"w":0.234},{"p":98,"w":0.212},{"p":99,"w":0.193},{"p":100,"w":0.155}]},{"videoId":"4JG_DnMdyso","title":"Life Update, New Motorcycle, Big Changes, Cross Country Trip...","durationSec":1443,"pub":1756065589000,"views":58953,"r50":0.31920000000000004,"curve":[{"p":1,"w":0.929},{"p":2,"w":0.792},{"p":3,"w":0.68},{"p":4,"w":0.594},{"p":5,"w":0.575},{"p":6,"w":0.542},{"p":7,"w":0.515},{"p":8,"w":0.495},{"p":9,"w":0.474},{"p":10,"w":0.467},{"p":11,"w":0.488},{"p":12,"w":0.502},{"p":13,"w":0.515},{"p":14,"w":0.503},{"p":15,"w":0.496},{"p":16,"w":0.49},{"p":17,"w":0.484},{"p":18,"w":0.467},{"p":19,"w":0.452},{"p":20,"w":0.447},{"p":21,"w":0.447},{"p":22,"w":0.466},{"p":23,"w":0.436},{"p":24,"w":0.433},{"p":25,"w":0.431},{"p":26,"w":0.423},{"p":27,"w":0.419},{"p":28,"w":0.416},{"p":29,"w":0.414},{"p":30,"w":0.415},{"p":31,"w":0.419},{"p":32,"w":0.414},{"p":33,"w":0.405},{"p":34,"w":0.405},{"p":35,"w":0.411},{"p":36,"w":0.438},{"p":37,"w":0.424},{"p":38,"w":0.413},{"p":39,"w":0.398},{"p":40,"w":0.378},{"p":41,"w":0.37},{"p":42,"w":0.366},{"p":43,"w":0.363},{"p":44,"w":0.361},{"p":45,"w":0.361},{"p":46,"w":0.356},{"p":47,"w":0.364},{"p":48,"w":0.341},{"p":49,"w":0.335},{"p":50,"w":0.319},{"p":51,"w":0.314},{"p":52,"w":0.305},{"p":53,"w":0.297},{"p":54,"w":0.292},{"p":55,"w":0.288},{"p":56,"w":0.284},{"p":57,"w":0.28},{"p":58,"w":0.277},{"p":59,"w":0.266},{"p":60,"w":0.26},{"p":61,"w":0.255},{"p":62,"w":0.251},{"p":63,"w":0.247},{"p":64,"w":0.242},{"p":65,"w":0.241},{"p":66,"w":0.238},{"p":67,"w":0.234},{"p":68,"w":0.23},{"p":69,"w":0.228},{"p":70,"w":0.234},{"p":71,"w":0.212},{"p":72,"w":0.205},{"p":73,"w":0.199},{"p":74,"w":0.197},{"p":75,"w":0.195},{"p":76,"w":0.194},{"p":77,"w":0.192},{"p":78,"w":0.194},{"p":79,"w":0.193},{"p":80,"w":0.193},{"p":81,"w":0.201},{"p":82,"w":0.196},{"p":83,"w":0.197},{"p":84,"w":0.194},{"p":85,"w":0.193},{"p":86,"w":0.191},{"p":87,"w":0.188},{"p":88,"w":0.184},{"p":89,"w":0.173},{"p":90,"w":0.166},{"p":91,"w":0.163},{"p":92,"w":0.164},{"p":93,"w":0.154},{"p":94,"w":0.151},{"p":95,"w":0.147},{"p":96,"w":0.142},{"p":97,"w":0.139},{"p":98,"w":0.135},{"p":99,"w":0.131},{"p":100,"w":0.128}]},{"videoId":"Z9S50JNKx6k","title":"Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It's Different This Year...","durationSec":1606,"pub":1754506842000,"views":85471,"r50":0.2871,"curve":[{"p":1,"w":0.917},{"p":2,"w":0.801},{"p":3,"w":0.703},{"p":4,"w":0.542},{"p":5,"w":0.482},{"p":6,"w":0.458},{"p":7,"w":0.437},{"p":8,"w":0.403},{"p":9,"w":0.383},{"p":10,"w":0.382},{"p":11,"w":0.397},{"p":12,"w":0.414},{"p":13,"w":0.413},{"p":14,"w":0.405},{"p":15,"w":0.402},{"p":16,"w":0.396},{"p":17,"w":0.388},{"p":18,"w":0.393},{"p":19,"w":0.399},{"p":20,"w":0.38},{"p":21,"w":0.379},{"p":22,"w":0.371},{"p":23,"w":0.363},{"p":24,"w":0.359},{"p":25,"w":0.359},{"p":26,"w":0.356},{"p":27,"w":0.355},{"p":28,"w":0.362},{"p":29,"w":0.353},{"p":30,"w":0.357},{"p":31,"w":0.356},{"p":32,"w":0.35},{"p":33,"w":0.347},{"p":34,"w":0.347},{"p":35,"w":0.347},{"p":36,"w":0.346},{"p":37,"w":0.342},{"p":38,"w":0.34},{"p":39,"w":0.35},{"p":40,"w":0.325},{"p":41,"w":0.325},{"p":42,"w":0.325},{"p":43,"w":0.324},{"p":44,"w":0.321},{"p":45,"w":0.317},{"p":46,"w":0.311},{"p":47,"w":0.305},{"p":48,"w":0.301},{"p":49,"w":0.293},{"p":50,"w":0.287},{"p":51,"w":0.292},{"p":52,"w":0.29},{"p":53,"w":0.296},{"p":54,"w":0.291},{"p":55,"w":0.286},{"p":56,"w":0.283},{"p":57,"w":0.282},{"p":58,"w":0.281},{"p":59,"w":0.278},{"p":60,"w":0.267},{"p":61,"w":0.258},{"p":62,"w":0.263},{"p":63,"w":0.275},{"p":64,"w":0.285},{"p":65,"w":0.292},{"p":66,"w":0.277},{"p":67,"w":0.274},{"p":68,"w":0.266},{"p":69,"w":0.265},{"p":70,"w":0.263},{"p":71,"w":0.258},{"p":72,"w":0.262},{"p":73,"w":0.267},{"p":74,"w":0.265},{"p":75,"w":0.262},{"p":76,"w":0.257},{"p":77,"w":0.251},{"p":78,"w":0.255},{"p":79,"w":0.251},{"p":80,"w":0.25},{"p":81,"w":0.244},{"p":82,"w":0.24},{"p":83,"w":0.237},{"p":84,"w":0.231},{"p":85,"w":0.229},{"p":86,"w":0.226},{"p":87,"w":0.226},{"p":88,"w":0.225},{"p":89,"w":0.227},{"p":90,"w":0.235},{"p":91,"w":0.233},{"p":92,"w":0.238},{"p":93,"w":0.24},{"p":94,"w":0.24},{"p":95,"w":0.235},{"p":96,"w":0.23},{"p":97,"w":0.223},{"p":98,"w":0.217},{"p":99,"w":0.211},{"p":100,"w":0.186}]},{"videoId":"WckzxtkQM6Y","title":"I didn't know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05","durationSec":1454,"pub":1751832241000,"views":105960,"r50":0.2429,"curve":[{"p":1,"w":0.928},{"p":2,"w":0.735},{"p":3,"w":0.528},{"p":4,"w":0.42},{"p":5,"w":0.397},{"p":6,"w":0.393},{"p":7,"w":0.379},{"p":8,"w":0.371},{"p":9,"w":0.368},{"p":10,"w":0.368},{"p":11,"w":0.372},{"p":12,"w":0.361},{"p":13,"w":0.37},{"p":14,"w":0.369},{"p":15,"w":0.357},{"p":16,"w":0.342},{"p":17,"w":0.334},{"p":18,"w":0.328},{"p":19,"w":0.328},{"p":20,"w":0.33},{"p":21,"w":0.345},{"p":22,"w":0.358},{"p":23,"w":0.376},{"p":24,"w":0.385},{"p":25,"w":0.388},{"p":26,"w":0.392},{"p":27,"w":0.395},{"p":28,"w":0.394},{"p":29,"w":0.392},{"p":30,"w":0.391},{"p":31,"w":0.378},{"p":32,"w":0.374},{"p":33,"w":0.356},{"p":34,"w":0.351},{"p":35,"w":0.352},{"p":36,"w":0.348},{"p":37,"w":0.332},{"p":38,"w":0.312},{"p":39,"w":0.304},{"p":40,"w":0.3},{"p":41,"w":0.295},{"p":42,"w":0.284},{"p":43,"w":0.287},{"p":44,"w":0.292},{"p":45,"w":0.273},{"p":46,"w":0.268},{"p":47,"w":0.266},{"p":48,"w":0.26},{"p":49,"w":0.252},{"p":50,"w":0.243},{"p":51,"w":0.237},{"p":52,"w":0.233},{"p":53,"w":0.23},{"p":54,"w":0.231},{"p":55,"w":0.242},{"p":56,"w":0.235},{"p":57,"w":0.228},{"p":58,"w":0.224},{"p":59,"w":0.224},{"p":60,"w":0.224},{"p":61,"w":0.225},{"p":62,"w":0.224},{"p":63,"w":0.222},{"p":64,"w":0.219},{"p":65,"w":0.222},{"p":66,"w":0.232},{"p":67,"w":0.22},{"p":68,"w":0.213},{"p":69,"w":0.213},{"p":70,"w":0.211},{"p":71,"w":0.21},{"p":72,"w":0.211},{"p":73,"w":0.209},{"p":74,"w":0.208},{"p":75,"w":0.204},{"p":76,"w":0.205},{"p":77,"w":0.205},{"p":78,"w":0.207},{"p":79,"w":0.206},{"p":80,"w":0.199},{"p":81,"w":0.197},{"p":82,"w":0.196},{"p":83,"w":0.2},{"p":84,"w":0.204},{"p":85,"w":0.203},{"p":86,"w":0.195},{"p":87,"w":0.193},{"p":88,"w":0.189},{"p":89,"w":0.195},{"p":90,"w":0.19},{"p":91,"w":0.191},{"p":92,"w":0.19},{"p":93,"w":0.187},{"p":94,"w":0.18},{"p":95,"w":0.177},{"p":96,"w":0.177},{"p":97,"w":0.171},{"p":98,"w":0.17},{"p":99,"w":0.152},{"p":100,"w":0.136}]},{"videoId":"_DM2Tb7As8c","title":"I Survived the Most Chaotic Motorcycle Campout in Tennessee | TMMR 2025","durationSec":2235,"pub":1748195989000,"views":50375,"r50":0.2621,"curve":[{"p":1,"w":0.93},{"p":2,"w":0.663},{"p":3,"w":0.489},{"p":4,"w":0.462},{"p":5,"w":0.445},{"p":6,"w":0.443},{"p":7,"w":0.434},{"p":8,"w":0.422},{"p":9,"w":0.413},{"p":10,"w":0.419},{"p":11,"w":0.42},{"p":12,"w":0.411},{"p":13,"w":0.398},{"p":14,"w":0.391},{"p":15,"w":0.385},{"p":16,"w":0.38},{"p":17,"w":0.384},{"p":18,"w":0.365},{"p":19,"w":0.356},{"p":20,"w":0.346},{"p":21,"w":0.346},{"p":22,"w":0.32},{"p":23,"w":0.305},{"p":24,"w":0.312},{"p":25,"w":0.326},{"p":26,"w":0.328},{"p":27,"w":0.325},{"p":28,"w":0.322},{"p":29,"w":0.319},{"p":30,"w":0.315},{"p":31,"w":0.309},{"p":32,"w":0.299},{"p":33,"w":0.292},{"p":34,"w":0.284},{"p":35,"w":0.276},{"p":36,"w":0.272},{"p":37,"w":0.268},{"p":38,"w":0.279},{"p":39,"w":0.272},{"p":40,"w":0.27},{"p":41,"w":0.264},{"p":42,"w":0.261},{"p":43,"w":0.259},{"p":44,"w":0.262},{"p":45,"w":0.268},{"p":46,"w":0.271},{"p":47,"w":0.267},{"p":48,"w":0.266},{"p":49,"w":0.269},{"p":50,"w":0.262},{"p":51,"w":0.261},{"p":52,"w":0.262},{"p":53,"w":0.264},{"p":54,"w":0.266},{"p":55,"w":0.272},{"p":56,"w":0.272},{"p":57,"w":0.272},{"p":58,"w":0.269},{"p":59,"w":0.267},{"p":60,"w":0.264},{"p":61,"w":0.26},{"p":62,"w":0.262},{"p":63,"w":0.257},{"p":64,"w":0.257},{"p":65,"w":0.256},{"p":66,"w":0.256},{"p":67,"w":0.251},{"p":68,"w":0.25},{"p":69,"w":0.255},{"p":70,"w":0.243},{"p":71,"w":0.241},{"p":72,"w":0.242},{"p":73,"w":0.239},{"p":74,"w":0.234},{"p":75,"w":0.23},{"p":76,"w":0.229},{"p":77,"w":0.225},{"p":78,"w":0.218},{"p":79,"w":0.214},{"p":80,"w":0.211},{"p":81,"w":0.21},{"p":82,"w":0.208},{"p":83,"w":0.209},{"p":84,"w":0.211},{"p":85,"w":0.213},{"p":86,"w":0.213},{"p":87,"w":0.218},{"p":88,"w":0.212},{"p":89,"w":0.212},{"p":90,"w":0.209},{"p":91,"w":0.207},{"p":92,"w":0.206},{"p":93,"w":0.208},{"p":94,"w":0.198},{"p":95,"w":0.186},{"p":96,"w":0.174},{"p":97,"w":0.149},{"p":98,"w":0.139},{"p":99,"w":0.131},{"p":100,"w":0.127}]},{"videoId":"s41Q7wg_Svs","title":"DO NOT WASTE YOUR MONEY! Watch this first! Insta360 X5 Review","durationSec":1131,"pub":1745531637000,"views":62555,"r50":0.1589,"curve":[{"p":1,"w":0.94},{"p":2,"w":0.8},{"p":3,"w":0.669},{"p":4,"w":0.586},{"p":5,"w":0.526},{"p":6,"w":0.52},{"p":7,"w":0.493},{"p":8,"w":0.462},{"p":9,"w":0.408},{"p":10,"w":0.404},{"p":11,"w":0.376},{"p":12,"w":0.364},{"p":13,"w":0.361},{"p":14,"w":0.35},{"p":15,"w":0.346},{"p":16,"w":0.333},{"p":17,"w":0.33},{"p":18,"w":0.336},{"p":19,"w":0.312},{"p":20,"w":0.311},{"p":21,"w":0.302},{"p":22,"w":0.294},{"p":23,"w":0.281},{"p":24,"w":0.282},{"p":25,"w":0.278},{"p":26,"w":0.269},{"p":27,"w":0.262},{"p":28,"w":0.25},{"p":29,"w":0.237},{"p":30,"w":0.246},{"p":31,"w":0.234},{"p":32,"w":0.227},{"p":33,"w":0.225},{"p":34,"w":0.224},{"p":35,"w":0.219},{"p":36,"w":0.208},{"p":37,"w":0.206},{"p":38,"w":0.203},{"p":39,"w":0.213},{"p":40,"w":0.204},{"p":41,"w":0.198},{"p":42,"w":0.182},{"p":43,"w":0.183},{"p":44,"w":0.194},{"p":45,"w":0.187},{"p":46,"w":0.18},{"p":47,"w":0.177},{"p":48,"w":0.173},{"p":49,"w":0.164},{"p":50,"w":0.159},{"p":51,"w":0.155},{"p":52,"w":0.174},{"p":53,"w":0.175},{"p":54,"w":0.174},{"p":55,"w":0.171},{"p":56,"w":0.171},{"p":57,"w":0.166},{"p":58,"w":0.168},{"p":59,"w":0.169},{"p":60,"w":0.167},{"p":61,"w":0.168},{"p":62,"w":0.166},{"p":63,"w":0.162},{"p":64,"w":0.159},{"p":65,"w":0.157},{"p":66,"w":0.157},{"p":67,"w":0.156},{"p":68,"w":0.153},{"p":69,"w":0.168},{"p":70,"w":0.163},{"p":71,"w":0.166},{"p":72,"w":0.16},{"p":73,"w":0.158},{"p":74,"w":0.153},{"p":75,"w":0.148},{"p":76,"w":0.144},{"p":77,"w":0.14},{"p":78,"w":0.154},{"p":79,"w":0.152},{"p":80,"w":0.15},{"p":81,"w":0.147},{"p":82,"w":0.147},{"p":83,"w":0.146},{"p":84,"w":0.148},{"p":85,"w":0.147},{"p":86,"w":0.141},{"p":87,"w":0.142},{"p":88,"w":0.145},{"p":89,"w":0.144},{"p":90,"w":0.138},{"p":91,"w":0.134},{"p":92,"w":0.132},{"p":93,"w":0.138},{"p":94,"w":0.136},{"p":95,"w":0.121},{"p":96,"w":0.108},{"p":97,"w":0.097},{"p":98,"w":0.085},{"p":99,"w":0.075},{"p":100,"w":0.064}]},{"videoId":"FBxliFPkhoM","title":"I Wish I Knew This BEFORE Ripping Open My Motorcycle 😰","durationSec":1273,"pub":1745161189000,"views":48143,"r50":0.30820000000000003,"curve":[{"p":1,"w":0.912},{"p":2,"w":0.823},{"p":3,"w":0.748},{"p":4,"w":0.67},{"p":5,"w":0.597},{"p":6,"w":0.572},{"p":7,"w":0.551},{"p":8,"w":0.533},{"p":9,"w":0.52},{"p":10,"w":0.503},{"p":11,"w":0.497},{"p":12,"w":0.478},{"p":13,"w":0.473},{"p":14,"w":0.461},{"p":15,"w":0.455},{"p":16,"w":0.45},{"p":17,"w":0.441},{"p":18,"w":0.439},{"p":19,"w":0.438},{"p":20,"w":0.441},{"p":21,"w":0.442},{"p":22,"w":0.435},{"p":23,"w":0.43},{"p":24,"w":0.437},{"p":25,"w":0.439},{"p":26,"w":0.44},{"p":27,"w":0.442},{"p":28,"w":0.443},{"p":29,"w":0.438},{"p":30,"w":0.432},{"p":31,"w":0.418},{"p":32,"w":0.415},{"p":33,"w":0.406},{"p":34,"w":0.409},{"p":35,"w":0.411},{"p":36,"w":0.406},{"p":37,"w":0.402},{"p":38,"w":0.391},{"p":39,"w":0.382},{"p":40,"w":0.37},{"p":41,"w":0.36},{"p":42,"w":0.348},{"p":43,"w":0.341},{"p":44,"w":0.336},{"p":45,"w":0.331},{"p":46,"w":0.327},{"p":47,"w":0.325},{"p":48,"w":0.323},{"p":49,"w":0.316},{"p":50,"w":0.308},{"p":51,"w":0.299},{"p":52,"w":0.291},{"p":53,"w":0.285},{"p":54,"w":0.277},{"p":55,"w":0.272},{"p":56,"w":0.271},{"p":57,"w":0.263},{"p":58,"w":0.26},{"p":59,"w":0.257},{"p":60,"w":0.241},{"p":61,"w":0.238},{"p":62,"w":0.238},{"p":63,"w":0.239},{"p":64,"w":0.238},{"p":65,"w":0.237},{"p":66,"w":0.236},{"p":67,"w":0.234},{"p":68,"w":0.235},{"p":69,"w":0.232},{"p":70,"w":0.227},{"p":71,"w":0.222},{"p":72,"w":0.219},{"p":73,"w":0.217},{"p":74,"w":0.214},{"p":75,"w":0.211},{"p":76,"w":0.209},{"p":77,"w":0.208},{"p":78,"w":0.209},{"p":79,"w":0.206},{"p":80,"w":0.205},{"p":81,"w":0.203},{"p":82,"w":0.203},{"p":83,"w":0.205},{"p":84,"w":0.212},{"p":85,"w":0.22},{"p":86,"w":0.21},{"p":87,"w":0.204},{"p":88,"w":0.199},{"p":89,"w":0.196},{"p":90,"w":0.195},{"p":91,"w":0.186},{"p":92,"w":0.181},{"p":93,"w":0.178},{"p":94,"w":0.176},{"p":95,"w":0.174},{"p":96,"w":0.169},{"p":97,"w":0.168},{"p":98,"w":0.164},{"p":99,"w":0.161},{"p":100,"w":0.157}]},{"videoId":"oDNvykBXItU","title":"Last hope for my Harley-Davidson Road Glide.","durationSec":1709,"pub":1744556387000,"views":87087,"r50":0.1417,"curve":[{"p":1,"w":1.005},{"p":2,"w":0.757},{"p":3,"w":0.536},{"p":4,"w":0.429},{"p":5,"w":0.417},{"p":6,"w":0.405},{"p":7,"w":0.387},{"p":8,"w":0.363},{"p":9,"w":0.345},{"p":10,"w":0.335},{"p":11,"w":0.321},{"p":12,"w":0.318},{"p":13,"w":0.315},{"p":14,"w":0.312},{"p":15,"w":0.312},{"p":16,"w":0.309},{"p":17,"w":0.309},{"p":18,"w":0.31},{"p":19,"w":0.312},{"p":20,"w":0.314},{"p":21,"w":0.329},{"p":22,"w":0.348},{"p":23,"w":0.309},{"p":24,"w":0.276},{"p":25,"w":0.259},{"p":26,"w":0.245},{"p":27,"w":0.236},{"p":28,"w":0.228},{"p":29,"w":0.224},{"p":30,"w":0.216},{"p":31,"w":0.198},{"p":32,"w":0.189},{"p":33,"w":0.183},{"p":34,"w":0.178},{"p":35,"w":0.171},{"p":36,"w":0.168},{"p":37,"w":0.164},{"p":38,"w":0.161},{"p":39,"w":0.158},{"p":40,"w":0.156},{"p":41,"w":0.155},{"p":42,"w":0.155},{"p":43,"w":0.16},{"p":44,"w":0.152},{"p":45,"w":0.15},{"p":46,"w":0.148},{"p":47,"w":0.147},{"p":48,"w":0.145},{"p":49,"w":0.144},{"p":50,"w":0.142},{"p":51,"w":0.14},{"p":52,"w":0.137},{"p":53,"w":0.136},{"p":54,"w":0.133},{"p":55,"w":0.132},{"p":56,"w":0.131},{"p":57,"w":0.13},{"p":58,"w":0.128},{"p":59,"w":0.13},{"p":60,"w":0.136},{"p":61,"w":0.147},{"p":62,"w":0.148},{"p":63,"w":0.149},{"p":64,"w":0.151},{"p":65,"w":0.152},{"p":66,"w":0.155},{"p":67,"w":0.154},{"p":68,"w":0.147},{"p":69,"w":0.14},{"p":70,"w":0.134},{"p":71,"w":0.13},{"p":72,"w":0.128},{"p":73,"w":0.127},{"p":74,"w":0.124},{"p":75,"w":0.122},{"p":76,"w":0.121},{"p":77,"w":0.119},{"p":78,"w":0.117},{"p":79,"w":0.117},{"p":80,"w":0.117},{"p":81,"w":0.115},{"p":82,"w":0.115},{"p":83,"w":0.114},{"p":84,"w":0.116},{"p":85,"w":0.118},{"p":86,"w":0.116},{"p":87,"w":0.107},{"p":88,"w":0.105},{"p":89,"w":0.102},{"p":90,"w":0.101},{"p":91,"w":0.099},{"p":92,"w":0.099},{"p":93,"w":0.099},{"p":94,"w":0.1},{"p":95,"w":0.101},{"p":96,"w":0.099},{"p":97,"w":0.098},{"p":98,"w":0.097},{"p":99,"w":0.094},{"p":100,"w":0.092}]},{"videoId":"8FZiY3PRiFE","title":"Spontaneous 1,000+ mile motorcycle trip!","durationSec":1969,"pub":1743951598000,"views":39736,"r50":0.3331,"curve":[{"p":1,"w":0.948},{"p":2,"w":0.765},{"p":3,"w":0.619},{"p":4,"w":0.568},{"p":5,"w":0.544},{"p":6,"w":0.521},{"p":7,"w":0.506},{"p":8,"w":0.499},{"p":9,"w":0.494},{"p":10,"w":0.492},{"p":11,"w":0.487},{"p":12,"w":0.481},{"p":13,"w":0.482},{"p":14,"w":0.468},{"p":15,"w":0.461},{"p":16,"w":0.458},{"p":17,"w":0.457},{"p":18,"w":0.452},{"p":19,"w":0.449},{"p":20,"w":0.443},{"p":21,"w":0.432},{"p":22,"w":0.433},{"p":23,"w":0.422},{"p":24,"w":0.418},{"p":25,"w":0.414},{"p":26,"w":0.411},{"p":27,"w":0.408},{"p":28,"w":0.397},{"p":29,"w":0.389},{"p":30,"w":0.381},{"p":31,"w":0.374},{"p":32,"w":0.369},{"p":33,"w":0.37},{"p":34,"w":0.371},{"p":35,"w":0.366},{"p":36,"w":0.379},{"p":37,"w":0.363},{"p":38,"w":0.358},{"p":39,"w":0.357},{"p":40,"w":0.354},{"p":41,"w":0.354},{"p":42,"w":0.352},{"p":43,"w":0.349},{"p":44,"w":0.346},{"p":45,"w":0.344},{"p":46,"w":0.34},{"p":47,"w":0.339},{"p":48,"w":0.34},{"p":49,"w":0.334},{"p":50,"w":0.333},{"p":51,"w":0.333},{"p":52,"w":0.331},{"p":53,"w":0.331},{"p":54,"w":0.328},{"p":55,"w":0.327},{"p":56,"w":0.324},{"p":57,"w":0.321},{"p":58,"w":0.323},{"p":59,"w":0.314},{"p":60,"w":0.316},{"p":61,"w":1.083},{"p":62,"w":0.314},{"p":63,"w":0.312},{"p":64,"w":0.311},{"p":65,"w":0.309},{"p":66,"w":0.307},{"p":67,"w":0.306},{"p":68,"w":0.305},{"p":69,"w":0.307},{"p":70,"w":0.304},{"p":71,"w":0.304},{"p":72,"w":0.303},{"p":73,"w":0.3},{"p":74,"w":0.298},{"p":75,"w":0.302},{"p":76,"w":0.291},{"p":77,"w":0.29},{"p":78,"w":0.282},{"p":79,"w":0.282},{"p":80,"w":0.282},{"p":81,"w":0.284},{"p":82,"w":0.287},{"p":83,"w":0.286},{"p":84,"w":0.285},{"p":85,"w":0.286},{"p":86,"w":0.278},{"p":87,"w":0.277},{"p":88,"w":0.278},{"p":89,"w":0.275},{"p":90,"w":0.27},{"p":91,"w":0.266},{"p":92,"w":0.265},{"p":93,"w":0.268},{"p":94,"w":0.264},{"p":95,"w":0.26},{"p":96,"w":0.257},{"p":97,"w":0.256},{"p":98,"w":0.257},{"p":99,"w":0.254},{"p":100,"w":0.252}]},{"videoId":"ZUC9MH4tEkA","title":"H-D made a BIG mistake with the 2025 Low Rider ST...","durationSec":939,"pub":1741982391000,"views":49296,"r50":0.3173,"curve":[{"p":1,"w":0.92},{"p":2,"w":0.854},{"p":3,"w":0.685},{"p":4,"w":0.594},{"p":5,"w":0.547},{"p":6,"w":0.508},{"p":7,"w":0.506},{"p":8,"w":0.505},{"p":9,"w":0.504},{"p":10,"w":0.496},{"p":11,"w":0.491},{"p":12,"w":0.481},{"p":13,"w":0.475},{"p":14,"w":0.471},{"p":15,"w":0.467},{"p":16,"w":0.456},{"p":17,"w":0.445},{"p":18,"w":0.442},{"p":19,"w":0.445},{"p":20,"w":0.445},{"p":21,"w":0.437},{"p":22,"w":0.437},{"p":23,"w":0.437},{"p":24,"w":0.436},{"p":25,"w":0.434},{"p":26,"w":0.423},{"p":27,"w":0.42},{"p":28,"w":0.423},{"p":29,"w":0.427},{"p":30,"w":0.418},{"p":31,"w":0.414},{"p":32,"w":0.404},{"p":33,"w":0.394},{"p":34,"w":0.393},{"p":35,"w":0.39},{"p":36,"w":0.387},{"p":37,"w":0.386},{"p":38,"w":0.382},{"p":39,"w":0.378},{"p":40,"w":0.378},{"p":41,"w":0.372},{"p":42,"w":0.369},{"p":43,"w":0.37},{"p":44,"w":0.371},{"p":45,"w":0.385},{"p":46,"w":0.348},{"p":47,"w":0.34},{"p":48,"w":0.327},{"p":49,"w":0.323},{"p":50,"w":0.317},{"p":51,"w":0.316},{"p":52,"w":0.312},{"p":53,"w":0.308},{"p":54,"w":0.305},{"p":55,"w":0.302},{"p":56,"w":0.299},{"p":57,"w":0.295},{"p":58,"w":0.29},{"p":59,"w":0.29},{"p":60,"w":0.289},{"p":61,"w":0.285},{"p":62,"w":0.285},{"p":63,"w":0.284},{"p":64,"w":0.285},{"p":65,"w":0.288},{"p":66,"w":0.291},{"p":67,"w":0.282},{"p":68,"w":0.278},{"p":69,"w":0.278},{"p":70,"w":0.277},{"p":71,"w":0.275},{"p":72,"w":0.278},{"p":73,"w":0.28},{"p":74,"w":0.278},{"p":75,"w":0.279},{"p":76,"w":0.28},{"p":77,"w":0.287},{"p":78,"w":0.29},{"p":79,"w":0.279},{"p":80,"w":0.274},{"p":81,"w":0.273},{"p":82,"w":0.27},{"p":83,"w":0.264},{"p":84,"w":0.261},{"p":85,"w":0.247},{"p":86,"w":0.242},{"p":87,"w":0.24},{"p":88,"w":0.234},{"p":89,"w":0.23},{"p":90,"w":0.227},{"p":91,"w":0.223},{"p":92,"w":0.213},{"p":93,"w":0.207},{"p":94,"w":0.201},{"p":95,"w":0.196},{"p":96,"w":0.192},{"p":97,"w":0.185},{"p":98,"w":0.168},{"p":99,"w":0.147},{"p":100,"w":0.131}]},{"videoId":"Rn4YrtJW0wI","title":"Better than my Harley? 2025 Indian Challenger & Chieftain Test Ride & Review","durationSec":1444,"pub":1740326407000,"views":67420,"r50":0.22219999999999998,"curve":[{"p":1,"w":0.929},{"p":2,"w":0.763},{"p":3,"w":0.64},{"p":4,"w":0.535},{"p":5,"w":0.514},{"p":6,"w":0.491},{"p":7,"w":0.439},{"p":8,"w":0.429},{"p":9,"w":0.422},{"p":10,"w":0.429},{"p":11,"w":0.424},{"p":12,"w":0.418},{"p":13,"w":0.41},{"p":14,"w":0.397},{"p":15,"w":0.39},{"p":16,"w":0.387},{"p":17,"w":0.383},{"p":18,"w":0.38},{"p":19,"w":0.366},{"p":20,"w":0.373},{"p":21,"w":0.367},{"p":22,"w":0.358},{"p":23,"w":0.352},{"p":24,"w":0.343},{"p":25,"w":0.335},{"p":26,"w":0.336},{"p":27,"w":0.329},{"p":28,"w":0.312},{"p":29,"w":0.313},{"p":30,"w":0.311},{"p":31,"w":0.291},{"p":32,"w":0.283},{"p":33,"w":0.277},{"p":34,"w":0.284},{"p":35,"w":0.278},{"p":36,"w":0.269},{"p":37,"w":0.263},{"p":38,"w":0.256},{"p":39,"w":0.253},{"p":40,"w":0.247},{"p":41,"w":0.243},{"p":42,"w":0.24},{"p":43,"w":0.246},{"p":44,"w":0.247},{"p":45,"w":0.244},{"p":46,"w":0.237},{"p":47,"w":0.229},{"p":48,"w":0.223},{"p":49,"w":0.218},{"p":50,"w":0.222},{"p":51,"w":0.216},{"p":52,"w":0.211},{"p":53,"w":0.215},{"p":54,"w":0.213},{"p":55,"w":0.214},{"p":56,"w":0.208},{"p":57,"w":0.204},{"p":58,"w":0.203},{"p":59,"w":0.216},{"p":60,"w":0.204},{"p":61,"w":0.201},{"p":62,"w":0.201},{"p":63,"w":0.201},{"p":64,"w":0.196},{"p":65,"w":0.194},{"p":66,"w":0.19},{"p":67,"w":0.194},{"p":68,"w":0.191},{"p":69,"w":0.192},{"p":70,"w":0.2},{"p":71,"w":0.196},{"p":72,"w":0.202},{"p":73,"w":0.202},{"p":74,"w":0.202},{"p":75,"w":0.2},{"p":76,"w":0.199},{"p":77,"w":0.214},{"p":78,"w":0.208},{"p":79,"w":0.204},{"p":80,"w":0.203},{"p":81,"w":0.201},{"p":82,"w":0.198},{"p":83,"w":0.196},{"p":84,"w":0.192},{"p":85,"w":0.191},{"p":86,"w":0.19},{"p":87,"w":0.208},{"p":88,"w":0.175},{"p":89,"w":0.169},{"p":90,"w":0.167},{"p":91,"w":0.165},{"p":92,"w":0.162},{"p":93,"w":0.159},{"p":94,"w":0.157},{"p":95,"w":0.154},{"p":96,"w":0.151},{"p":97,"w":0.148},{"p":98,"w":0.144},{"p":99,"w":0.139},{"p":100,"w":0.129}]},{"videoId":"j9v1ukNOhE4","title":"The Biggest Mistakes New Motorcycle Campers Make","durationSec":991,"pub":1738184391000,"views":25386,"r50":0.2914,"curve":[{"p":1,"w":0.937},{"p":2,"w":0.841},{"p":3,"w":0.691},{"p":4,"w":0.631},{"p":5,"w":0.574},{"p":6,"w":0.532},{"p":7,"w":0.535},{"p":8,"w":0.517},{"p":9,"w":0.505},{"p":10,"w":0.489},{"p":11,"w":0.476},{"p":12,"w":0.475},{"p":13,"w":0.471},{"p":14,"w":0.449},{"p":15,"w":0.432},{"p":16,"w":0.426},{"p":17,"w":0.418},{"p":18,"w":0.413},{"p":19,"w":0.406},{"p":20,"w":0.401},{"p":21,"w":0.394},{"p":22,"w":0.39},{"p":23,"w":0.383},{"p":24,"w":0.373},{"p":25,"w":0.365},{"p":26,"w":0.379},{"p":27,"w":0.377},{"p":28,"w":0.376},{"p":29,"w":0.373},{"p":30,"w":0.361},{"p":31,"w":0.354},{"p":32,"w":0.346},{"p":33,"w":0.343},{"p":34,"w":0.337},{"p":35,"w":0.343},{"p":36,"w":0.34},{"p":37,"w":0.338},{"p":38,"w":0.328},{"p":39,"w":0.323},{"p":40,"w":0.32},{"p":41,"w":0.32},{"p":42,"w":0.315},{"p":43,"w":0.311},{"p":44,"w":0.304},{"p":45,"w":0.3},{"p":46,"w":0.295},{"p":47,"w":0.291},{"p":48,"w":0.287},{"p":49,"w":0.288},{"p":50,"w":0.291},{"p":51,"w":0.281},{"p":52,"w":0.293},{"p":53,"w":0.272},{"p":54,"w":0.262},{"p":55,"w":0.254},{"p":56,"w":0.251},{"p":57,"w":0.248},{"p":58,"w":0.246},{"p":59,"w":0.245},{"p":60,"w":0.254},{"p":61,"w":0.252},{"p":62,"w":0.25},{"p":63,"w":0.247},{"p":64,"w":0.244},{"p":65,"w":0.241},{"p":66,"w":0.239},{"p":67,"w":0.239},{"p":68,"w":0.237},{"p":69,"w":0.231},{"p":70,"w":0.235},{"p":71,"w":0.228},{"p":72,"w":0.223},{"p":73,"w":0.22},{"p":74,"w":0.217},{"p":75,"w":0.215},{"p":76,"w":0.217},{"p":77,"w":0.218},{"p":78,"w":0.216},{"p":79,"w":0.214},{"p":80,"w":0.212},{"p":81,"w":0.209},{"p":82,"w":0.205},{"p":83,"w":0.201},{"p":84,"w":0.201},{"p":85,"w":0.198},{"p":86,"w":0.196},{"p":87,"w":0.184},{"p":88,"w":0.173},{"p":89,"w":0.16},{"p":90,"w":0.148},{"p":91,"w":0.136},{"p":92,"w":0.119},{"p":93,"w":0.114},{"p":94,"w":0.108},{"p":95,"w":0.104},{"p":96,"w":0.099},{"p":97,"w":0.095},{"p":98,"w":0.093},{"p":99,"w":0.091},{"p":100,"w":0.084}]},{"videoId":"gMSXiH20qV4","title":"I Joined a Motorcycle Crew. Then Rode 1,134 miles – Here’s What Went Down","durationSec":1279,"pub":1735246791000,"views":45608,"r50":0.3469,"curve":[{"p":1,"w":0.932},{"p":2,"w":0.805},{"p":3,"w":0.642},{"p":4,"w":0.561},{"p":5,"w":0.503},{"p":6,"w":0.491},{"p":7,"w":0.483},{"p":8,"w":0.47},{"p":9,"w":0.457},{"p":10,"w":0.451},{"p":11,"w":0.454},{"p":12,"w":0.444},{"p":13,"w":0.425},{"p":14,"w":0.422},{"p":15,"w":0.416},{"p":16,"w":0.408},{"p":17,"w":0.411},{"p":18,"w":0.409},{"p":19,"w":0.407},{"p":20,"w":0.406},{"p":21,"w":0.403},{"p":22,"w":0.403},{"p":23,"w":0.401},{"p":24,"w":0.401},{"p":25,"w":0.393},{"p":26,"w":0.391},{"p":27,"w":0.388},{"p":28,"w":0.389},{"p":29,"w":0.401},{"p":30,"w":0.435},{"p":31,"w":0.463},{"p":32,"w":0.437},{"p":33,"w":0.408},{"p":34,"w":0.388},{"p":35,"w":0.379},{"p":36,"w":0.375},{"p":37,"w":0.368},{"p":38,"w":0.365},{"p":39,"w":0.359},{"p":40,"w":0.359},{"p":41,"w":0.357},{"p":42,"w":0.356},{"p":43,"w":0.356},{"p":44,"w":0.359},{"p":45,"w":0.365},{"p":46,"w":0.364},{"p":47,"w":0.364},{"p":48,"w":0.355},{"p":49,"w":0.348},{"p":50,"w":0.347},{"p":51,"w":0.34},{"p":52,"w":0.333},{"p":53,"w":0.334},{"p":54,"w":0.339},{"p":55,"w":0.351},{"p":56,"w":0.339},{"p":57,"w":0.336},{"p":58,"w":0.332},{"p":59,"w":0.335},{"p":60,"w":0.325},{"p":61,"w":0.322},{"p":62,"w":0.318},{"p":63,"w":0.319},{"p":64,"w":0.318},{"p":65,"w":0.317},{"p":66,"w":0.311},{"p":67,"w":0.309},{"p":68,"w":0.305},{"p":69,"w":0.305},{"p":70,"w":0.302},{"p":71,"w":0.302},{"p":72,"w":0.301},{"p":73,"w":0.297},{"p":74,"w":0.293},{"p":75,"w":0.286},{"p":76,"w":0.281},{"p":77,"w":0.278},{"p":78,"w":0.271},{"p":79,"w":0.265},{"p":80,"w":0.263},{"p":81,"w":0.257},{"p":82,"w":0.259},{"p":83,"w":0.267},{"p":84,"w":0.271},{"p":85,"w":0.273},{"p":86,"w":0.274},{"p":87,"w":0.266},{"p":88,"w":0.266},{"p":89,"w":0.254},{"p":90,"w":0.247},{"p":91,"w":0.238},{"p":92,"w":0.227},{"p":93,"w":0.218},{"p":94,"w":0.212},{"p":95,"w":0.206},{"p":96,"w":0.203},{"p":97,"w":0.2},{"p":98,"w":0.196},{"p":99,"w":0.192},{"p":100,"w":0.18}]},{"videoId":"-dVZv1gy5VM","title":"Critical failure comparing the DJI Action 5 Pro vs. GoPro 13 Action Camera","durationSec":718,"pub":1728940791000,"views":39254,"r50":0.2828,"curve":[{"p":1,"w":0.954},{"p":2,"w":0.848},{"p":3,"w":0.737},{"p":4,"w":0.653},{"p":5,"w":0.606},{"p":6,"w":0.564},{"p":7,"w":0.528},{"p":8,"w":0.51},{"p":9,"w":0.494},{"p":10,"w":0.492},{"p":11,"w":0.49},{"p":12,"w":0.453},{"p":13,"w":0.441},{"p":14,"w":0.424},{"p":15,"w":0.407},{"p":16,"w":0.41},{"p":17,"w":0.404},{"p":18,"w":0.403},{"p":19,"w":0.411},{"p":20,"w":0.396},{"p":21,"w":0.392},{"p":22,"w":0.388},{"p":23,"w":0.38},{"p":24,"w":0.382},{"p":25,"w":0.374},{"p":26,"w":0.378},{"p":27,"w":0.378},{"p":28,"w":0.375},{"p":29,"w":0.374},{"p":30,"w":0.363},{"p":31,"w":0.356},{"p":32,"w":0.354},{"p":33,"w":0.349},{"p":34,"w":0.341},{"p":35,"w":0.335},{"p":36,"w":0.331},{"p":37,"w":0.33},{"p":38,"w":0.322},{"p":39,"w":0.319},{"p":40,"w":0.309},{"p":41,"w":0.314},{"p":42,"w":0.305},{"p":43,"w":0.296},{"p":44,"w":0.296},{"p":45,"w":0.297},{"p":46,"w":0.296},{"p":47,"w":0.29},{"p":48,"w":0.284},{"p":49,"w":0.29},{"p":50,"w":0.283},{"p":51,"w":0.282},{"p":52,"w":0.28},{"p":53,"w":0.274},{"p":54,"w":0.263},{"p":55,"w":0.258},{"p":56,"w":0.257},{"p":57,"w":0.267},{"p":58,"w":0.269},{"p":59,"w":0.266},{"p":60,"w":0.26},{"p":61,"w":0.251},{"p":62,"w":0.25},{"p":63,"w":0.251},{"p":64,"w":0.25},{"p":65,"w":0.238},{"p":66,"w":0.236},{"p":67,"w":0.242},{"p":68,"w":0.245},{"p":69,"w":0.242},{"p":70,"w":0.241},{"p":71,"w":0.234},{"p":72,"w":0.236},{"p":73,"w":0.237},{"p":74,"w":0.234},{"p":75,"w":0.231},{"p":76,"w":0.233},{"p":77,"w":0.237},{"p":78,"w":0.238},{"p":79,"w":0.232},{"p":80,"w":0.224},{"p":81,"w":0.22},{"p":82,"w":0.218},{"p":83,"w":0.219},{"p":84,"w":0.219},{"p":85,"w":0.22},{"p":86,"w":0.216},{"p":87,"w":0.214},{"p":88,"w":0.211},{"p":89,"w":0.207},{"p":90,"w":0.205},{"p":91,"w":0.202},{"p":92,"w":0.2},{"p":93,"w":0.203},{"p":94,"w":0.204},{"p":95,"w":0.213},{"p":96,"w":0.224},{"p":97,"w":0.232},{"p":98,"w":0.229},{"p":99,"w":0.222},{"p":100,"w":0.189}]},{"videoId":"spl7XTtthoY","title":"The Blue Ridge Parkway was destroyed after this 😢","durationSec":942,"pub":1728595796000,"views":119721,"r50":0.1935,"curve":[{"p":1,"w":0.993},{"p":2,"w":0.872},{"p":3,"w":0.695},{"p":4,"w":0.602},{"p":5,"w":0.537},{"p":6,"w":0.46},{"p":7,"w":0.434},{"p":8,"w":0.416},{"p":9,"w":0.385},{"p":10,"w":0.368},{"p":11,"w":0.361},{"p":12,"w":0.358},{"p":13,"w":0.351},{"p":14,"w":0.342},{"p":15,"w":0.338},{"p":16,"w":0.333},{"p":17,"w":0.319},{"p":18,"w":0.315},{"p":19,"w":0.311},{"p":20,"w":0.294},{"p":21,"w":0.284},{"p":22,"w":0.281},{"p":23,"w":0.274},{"p":24,"w":0.271},{"p":25,"w":0.264},{"p":26,"w":0.259},{"p":27,"w":0.255},{"p":28,"w":0.253},{"p":29,"w":0.247},{"p":30,"w":0.245},{"p":31,"w":0.238},{"p":32,"w":0.232},{"p":33,"w":0.226},{"p":34,"w":0.221},{"p":35,"w":0.216},{"p":36,"w":0.217},{"p":37,"w":0.215},{"p":38,"w":0.196},{"p":39,"w":0.189},{"p":40,"w":0.188},{"p":41,"w":0.187},{"p":42,"w":0.185},{"p":43,"w":0.184},{"p":44,"w":0.186},{"p":45,"w":0.194},{"p":46,"w":0.199},{"p":47,"w":0.198},{"p":48,"w":0.198},{"p":49,"w":0.196},{"p":50,"w":0.194},{"p":51,"w":0.185},{"p":52,"w":0.179},{"p":53,"w":0.173},{"p":54,"w":0.169},{"p":55,"w":0.165},{"p":56,"w":0.163},{"p":57,"w":0.161},{"p":58,"w":0.161},{"p":59,"w":0.163},{"p":60,"w":0.163},{"p":61,"w":0.158},{"p":62,"w":0.155},{"p":63,"w":0.153},{"p":64,"w":0.152},{"p":65,"w":0.155},{"p":66,"w":0.157},{"p":67,"w":0.154},{"p":68,"w":0.153},{"p":69,"w":0.153},{"p":70,"w":0.153},{"p":71,"w":0.152},{"p":72,"w":0.152},{"p":73,"w":0.15},{"p":74,"w":0.146},{"p":75,"w":0.146},{"p":76,"w":0.144},{"p":77,"w":0.145},{"p":78,"w":0.151},{"p":79,"w":0.146},{"p":80,"w":0.151},{"p":81,"w":0.156},{"p":82,"w":0.167},{"p":83,"w":0.185},{"p":84,"w":0.187},{"p":85,"w":0.172},{"p":86,"w":0.17},{"p":87,"w":0.172},{"p":88,"w":0.176},{"p":89,"w":0.181},{"p":90,"w":0.182},{"p":91,"w":0.182},{"p":92,"w":0.181},{"p":93,"w":0.177},{"p":94,"w":0.163},{"p":95,"w":0.16},{"p":96,"w":0.158},{"p":97,"w":0.159},{"p":98,"w":0.159},{"p":99,"w":0.158},{"p":100,"w":0.153}]},{"videoId":"ompeGJRoIzc","title":"I've been saying it for years... But this was the final straw.","durationSec":992,"pub":1727125189000,"views":84582,"r50":0.25420000000000004,"curve":[{"p":1,"w":0.968},{"p":2,"w":0.866},{"p":3,"w":0.716},{"p":4,"w":0.624},{"p":5,"w":0.563},{"p":6,"w":0.492},{"p":7,"w":0.452},{"p":8,"w":0.403},{"p":9,"w":0.396},{"p":10,"w":0.376},{"p":11,"w":0.36},{"p":12,"w":0.359},{"p":13,"w":0.362},{"p":14,"w":0.361},{"p":15,"w":0.362},{"p":16,"w":0.358},{"p":17,"w":0.348},{"p":18,"w":0.339},{"p":19,"w":0.329},{"p":20,"w":0.321},{"p":21,"w":0.315},{"p":22,"w":0.311},{"p":23,"w":0.31},{"p":24,"w":0.302},{"p":25,"w":0.298},{"p":26,"w":0.301},{"p":27,"w":0.298},{"p":28,"w":0.298},{"p":29,"w":0.289},{"p":30,"w":0.281},{"p":31,"w":0.274},{"p":32,"w":0.261},{"p":33,"w":0.262},{"p":34,"w":0.273},{"p":35,"w":0.256},{"p":36,"w":0.252},{"p":37,"w":0.25},{"p":38,"w":0.242},{"p":39,"w":0.24},{"p":40,"w":0.237},{"p":41,"w":0.231},{"p":42,"w":0.236},{"p":43,"w":0.244},{"p":44,"w":0.24},{"p":45,"w":0.24},{"p":46,"w":0.237},{"p":47,"w":0.237},{"p":48,"w":0.243},{"p":49,"w":0.249},{"p":50,"w":0.254},{"p":51,"w":0.259},{"p":52,"w":0.267},{"p":53,"w":0.268},{"p":54,"w":0.276},{"p":55,"w":0.283},{"p":56,"w":0.284},{"p":57,"w":0.285},{"p":58,"w":0.279},{"p":59,"w":0.29},{"p":60,"w":0.279},{"p":61,"w":0.282},{"p":62,"w":0.276},{"p":63,"w":0.277},{"p":64,"w":0.271},{"p":65,"w":0.264},{"p":66,"w":0.263},{"p":67,"w":0.264},{"p":68,"w":0.266},{"p":69,"w":0.268},{"p":70,"w":0.267},{"p":71,"w":0.262},{"p":72,"w":0.257},{"p":73,"w":0.255},{"p":74,"w":0.25},{"p":75,"w":0.245},{"p":76,"w":0.24},{"p":77,"w":0.24},{"p":78,"w":0.235},{"p":79,"w":0.232},{"p":80,"w":0.235},{"p":81,"w":0.233},{"p":82,"w":0.234},{"p":83,"w":0.234},{"p":84,"w":0.236},{"p":85,"w":0.235},{"p":86,"w":0.237},{"p":87,"w":0.237},{"p":88,"w":0.235},{"p":89,"w":0.234},{"p":90,"w":0.232},{"p":91,"w":0.228},{"p":92,"w":0.217},{"p":93,"w":0.207},{"p":94,"w":0.2},{"p":95,"w":0.194},{"p":96,"w":0.182},{"p":97,"w":0.175},{"p":98,"w":0.173},{"p":99,"w":0.167},{"p":100,"w":0.153}]},{"videoId":"qpHiv4noMxc","title":"2024 Pan America... Is it ACTUALLY Better?","durationSec":963,"pub":1725310792000,"views":19805,"r50":0.3215,"curve":[{"p":1,"w":0.925},{"p":2,"w":0.823},{"p":3,"w":0.708},{"p":4,"w":0.659},{"p":5,"w":0.608},{"p":6,"w":0.562},{"p":7,"w":0.544},{"p":8,"w":0.534},{"p":9,"w":0.527},{"p":10,"w":0.526},{"p":11,"w":0.523},{"p":12,"w":0.508},{"p":13,"w":0.494},{"p":14,"w":0.491},{"p":15,"w":0.488},{"p":16,"w":0.477},{"p":17,"w":0.468},{"p":18,"w":0.466},{"p":19,"w":0.461},{"p":20,"w":0.452},{"p":21,"w":0.441},{"p":22,"w":0.429},{"p":23,"w":0.418},{"p":24,"w":0.411},{"p":25,"w":0.406},{"p":26,"w":0.405},{"p":27,"w":0.396},{"p":28,"w":0.387},{"p":29,"w":0.38},{"p":30,"w":0.373},{"p":31,"w":0.368},{"p":32,"w":0.363},{"p":33,"w":0.359},{"p":34,"w":0.358},{"p":35,"w":0.358},{"p":36,"w":0.354},{"p":37,"w":0.352},{"p":38,"w":0.347},{"p":39,"w":0.344},{"p":40,"w":0.343},{"p":41,"w":0.339},{"p":42,"w":0.337},{"p":43,"w":0.335},{"p":44,"w":0.329},{"p":45,"w":0.325},{"p":46,"w":0.323},{"p":47,"w":0.32},{"p":48,"w":0.316},{"p":49,"w":0.316},{"p":50,"w":0.322},{"p":51,"w":0.33},{"p":52,"w":0.31},{"p":53,"w":0.308},{"p":54,"w":0.31},{"p":55,"w":0.314},{"p":56,"w":0.31},{"p":57,"w":0.306},{"p":58,"w":0.3},{"p":59,"w":0.294},{"p":60,"w":0.287},{"p":61,"w":0.285},{"p":62,"w":0.281},{"p":63,"w":0.278},{"p":64,"w":0.275},{"p":65,"w":0.272},{"p":66,"w":0.273},{"p":67,"w":0.267},{"p":68,"w":0.264},{"p":69,"w":0.257},{"p":70,"w":0.257},{"p":71,"w":0.251},{"p":72,"w":0.244},{"p":73,"w":0.24},{"p":74,"w":0.24},{"p":75,"w":0.241},{"p":76,"w":0.239},{"p":77,"w":0.236},{"p":78,"w":0.233},{"p":79,"w":0.231},{"p":80,"w":0.228},{"p":81,"w":0.225},{"p":82,"w":0.222},{"p":83,"w":0.221},{"p":84,"w":0.223},{"p":85,"w":0.224},{"p":86,"w":0.217},{"p":87,"w":0.214},{"p":88,"w":0.214},{"p":89,"w":0.213},{"p":90,"w":0.211},{"p":91,"w":0.208},{"p":92,"w":0.204},{"p":93,"w":0.202},{"p":94,"w":0.198},{"p":95,"w":0.191},{"p":96,"w":0.182},{"p":97,"w":0.167},{"p":98,"w":0.159},{"p":99,"w":0.145},{"p":100,"w":0.131}]}]}</script>
+<script>
+(function(){
+  var D = window.__COHORT__; if(!D || !D.videos.length) return;
+  var svg = document.getElementById('cohortsvg');
+  var W = 1000, H = 420, L = 46, R = 14, T = 14, B = 30;
+  var axis = 'percent', colour = 'none', sel = null;
+  var maxDur = Math.max.apply(null, D.videos.map(function(v){ return v.durationSec||1; }));
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function rgb(r,g,b){ return 'rgb('+Math.round(r)+','+Math.round(g)+','+Math.round(b)+')'; }
+  // white (oldest) -> blue (newest); single hue on purpose, so age reads as one axis
+  function recency(t){ return rgb(lerp(255,74,t), lerp(255,150,t), lerp(255,246,t)); }
+  // red (fewest views) -> green (most)
+  function views(t){ return t<.5 ? rgb(lerp(255,246,t*2), lerp(90,195,t*2), lerp(90,68,t*2))
+                                 : rgb(lerp(246,90,(t-.5)*2), lerp(195,216,(t-.5)*2), lerp(68,130,(t-.5)*2)); }
+  function ret(t){ return rgb(lerp(255,90,t), lerp(107,216,t), lerp(107,150,t)); }
+
+  /**
+   * Percentile RANK, not min-max. Views are heavy-tailed: on this channel one
+   * 1.6M breakout sits five times above the pack, and a linear ramp spends its
+   * whole range on that one video while painting the other twenty-nine the same
+   * red. Rank spreads the ramp evenly over the set, so the colour answers
+   * "where does this sit among its siblings" — the question actually being
+   * asked. Same reasoning as scoring outliers against the median.
+   */
+  var rankCache = {};
+  function rankOf(v, key){
+    if (v[key] == null) return .5;
+    if (!rankCache[key]){
+      var sorted = D.videos.filter(function(x){ return x[key]!=null; })
+                           .sort(function(a,b){ return a[key]-b[key]; });
+      var m = {};
+      sorted.forEach(function(x,i){ m[x.videoId] = sorted.length>1 ? i/(sorted.length-1) : .5; });
+      rankCache[key] = m;
+    }
+    var r = rankCache[key][v.videoId];
+    return r == null ? .5 : r;
+  }
+  function colOf(v){
+    if (colour === 'recency') return recency(rankOf(v,'pub'));
+    if (colour === 'views')   return views(rankOf(v,'views'));
+    if (colour === 'ret')     return ret(rankOf(v,'r50'));
+    return '#7ee3f5';
+  }
+
+  function xOf(v, p){
+    var frac = axis === 'percent' ? p/100 : (p/100 * (v.durationSec||1)) / maxDur;
+    return L + Math.min(1, frac) * (W - L - R);
+  }
+  function yOf(w){ return T + (1 - Math.max(0, Math.min(1, w))) * (H - T - B); }
+  function fmtT(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60);
+    return (m>=60 ? Math.floor(m/60)+':'+String(m%60).padStart(2,'0') : String(m))+':'+String(s%60).padStart(2,'0'); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function pathFor(v){
+    var d='';
+    for (var i=0;i<v.curve.length;i++){
+      var pt=v.curve[i];
+      d += (i?'L':'M')+xOf(v,pt.p).toFixed(1)+' '+yOf(pt.w).toFixed(1)+' ';
+    }
+    return d;
+  }
+
+  /** Cohort median at each percent step — the line every video is judged against. */
+  function medianPath(){
+    var d='';
+    for (var p=0; p<=100; p+=2){
+      var vals=[];
+      for (var i=0;i<D.videos.length;i++){
+        var c=D.videos[i].curve, best=null, bd=1e9;
+        for (var j=0;j<c.length;j++){ var dd=Math.abs(c[j].p-p); if(dd<bd){bd=dd;best=c[j].w;} }
+        if (best!=null && bd<=3) vals.push(best);
+      }
+      if (vals.length < 3) continue;
+      vals.sort(function(a,b){return a-b;});
+      var m = vals.length%2 ? vals[vals.length>>1] : (vals[(vals.length>>1)-1]+vals[vals.length>>1])/2;
+      // Median is a structural statement, so it always lives on the percent axis.
+      var x = L + (p/100)*(W-L-R);
+      d += (d?'L':'M')+x.toFixed(1)+' '+yOf(m).toFixed(1)+' ';
+    }
+    return d;
+  }
+
+  function draw(){
+    var parts=[];
+    for (var g=0; g<=100; g+=25){
+      var y=yOf(g/100);
+      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>');
+      parts.push('<text class="tick" x="'+(L-9)+'" y="'+(y+4)+'" text-anchor="end">'+g+'%</text>');
+    }
+    for (var i=0;i<=5;i++){
+      var f=i/5, x=L+f*(W-L-R);
+      parts.push('<text class="tick" x="'+x+'" y="'+(H-8)+'" text-anchor="middle">'+
+        (axis==='percent' ? Math.round(f*100)+'%' : fmtT(f*maxDur))+'</text>');
+    }
+    D.videos.forEach(function(v,i){
+      if (!v.curve.length) return;
+      var d = pathFor(v);
+      parts.push('<path class="hit" data-i="'+i+'" d="'+d+'"><title>'+esc(v.title)+'</title></path>');
+      parts.push('<path class="cv'+(sel===i?' on':'')+'" data-i="'+i+'" d="'+d+'" stroke="'+colOf(v)+'"/>');
+    });
+    if (axis === 'percent'){
+      var md = medianPath();
+      if (md){
+        parts.push('<path class="medcase" d="'+md+'"/>');
+        parts.push('<path class="med" d="'+md+'"/>');
+        var last = md.trim().split('L').pop().trim().split(' ');
+        parts.push('<text class="medlab" x="'+(Number(last[0])-6)+'" y="'+(Number(last[1])-11)+
+          '" text-anchor="end">MEDIAN</text>');
+      }
+    }
+    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0)+'" x2="'+(W-R)+'" y2="'+yOf(0)+'"/>');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.innerHTML = parts.join('');
+    svg.classList.toggle('hasel', sel!==null);
+    document.querySelectorAll('.clegend a').forEach(function(a,i){
+      var sw=a.querySelector('b'); if(sw) sw.style.background = colOf(D.videos[i]);
+    });
+    var ramp = document.getElementById('ramp');
+    if (ramp){
+      var stops = { none:'', recency:'#ffffff,#4a96f6', views:'#ff5a5a,#f6c344,#5ad8a6', ret:'#ff6b6b,#5ad8a6' }[colour];
+      ramp.style.display = stops ? '' : 'none';
+      if (stops){
+        ramp.querySelector('i').style.background='linear-gradient(90deg,'+stops+')';
+        var lo=ramp.querySelector('.lo'), hi=ramp.querySelector('.hi');
+        var txt={ recency:['oldest','newest'], views:['fewest views','most views'], ret:['weakest at half','strongest at half'] }[colour];
+        lo.textContent=txt[0]; hi.textContent=txt[1];
+      }
+    }
+  }
+
+  function pick(i){ sel = (sel===i ? null : i); draw(); }
+  svg.addEventListener('click', function(e){
+    var p=e.target.closest('.hit'); if(p) pick(Number(p.dataset.i));
+    else { sel=null; draw(); }
+  });
+  document.querySelectorAll('.clegend a').forEach(function(a){
+    a.addEventListener('mouseenter', function(){ sel=Number(a.dataset.i); draw(); });
+    a.addEventListener('mouseleave', function(){ sel=null; draw(); });
+  });
+  document.querySelectorAll('[data-cx]').forEach(function(b){
+    b.addEventListener('click', function(){
+      axis=b.dataset.cx;
+      document.querySelectorAll('[data-cx]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.cx===axis)); });
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-col]').forEach(function(b){
+    b.addEventListener('click', function(){
+      colour=b.dataset.col;
+      document.querySelectorAll('[data-col]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.col===colour)); });
+      draw();
+    });
+  });
+  draw();
+})();
+</script>
+
+<!-- Freshness is provenance, not headline: it answers "how current is this?"
+     only once the reader has decided to trust something. Collapsed by default
+     so it stops competing with the work itself. -->
+<details class="freshbox">
+  <summary>Data freshness — when each of these was last pulled</summary>
+  <div class="freshness">
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-18</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video ideas</span><span class="v">2026-08-18</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-18</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-18</span><span class="ago">1 day ago</span></div>
+  </div>
+</details>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

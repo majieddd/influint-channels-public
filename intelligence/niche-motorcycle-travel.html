@@ -255,6 +255,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-rejected{color:#8a9a9a}
 .claims{display:grid;gap:12px;margin-top:16px}
 .claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -279,6 +280,35 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .nichecard a{text-decoration:none}
 .nichecard .n{font-weight:600;font-size:14.5px}
 .nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -305,6 +335,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Extreme weather as a subject broadens reach beyond a channel&#39;s niche because it is globally legible — it produced the channel&#39;s top-viewed video at 7.8% CTR in a motorcycle-travel niche.</div>
   <div class="src">Source: our own channel audits</div>
   
+  <div class="review" data-id="26e14026c916">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> No lift: WITH n=16 median 0.88x vs 1.00x (MWU z=-1.25, p=0.21); age-adjusted 0.83x vs 1.00x (p=0.29). Channels split 2 ahead / 2 behind — Moto Camp Nerd 1.38x vs 1.00x and Itchy Boots 1.17x vs 1.00x against Bikes and Beards 0.73x vs 1.02x and TheMissendenFlyer 0.86x vs 1.00x. Channel D&#39; own weather-subject video, &#39;The Blue Ridge Parkway was destroyed after this&#39;, is her third-best at 2.22x first-28d, which is the anecdote the claim generalises from.</p>
@@ -322,6 +357,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A single high-intent search query can support six non-duplicating videos by varying intent and format (checklist, transformation, comparison, beginner protection, format episode, longitudinal sequel) — supply within a query is not exhausted by one upload.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
+  <div class="review" data-id="375b7072f483">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -339,6 +379,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Travel footage should be cut as informational/travel-guide content rather than as documentation of the trip — the informational framing gives the video a reason to be found and rewatched.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="95c874113382">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested — contradicted:</b> Informational framing UNDER-performs: WITH n=37 median 0.95x vs 1.00x (MWU z=-1.97, p=0.049); age-adjusted 0.87x vs 1.00x (z=-1.88, p=0.061). 5 of the 7 channels with &gt;=2 guide videos came out behind — FortNine 0.40x vs 1.11x, Moto Camp Nerd 0.59x vs 1.08x, MotoJitsu 0.71x vs 1.00x, RevZilla 0.88x vs 1.00x, Chaseontwowheels 0.77x vs 1.03x. Narrative framing sits at or slightly above normal: 1.03x raw, 1.10x age-adjusted (n=9, ns). Broader corpus how-to check across all 46 channels: 0.95x raw / 0.89x age-adjusted, ahead on only 1 of 6 channels.</p>
@@ -357,6 +402,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Reactive, event-anchored titling works in the motorcycle-rally niche: a title of the shape &#39;I can&#39;t believe this happened at Sturgis&#39;, borrowed from a high-performing rally publisher, was chosen to capture live search demand within days of the event.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="b4c941cb2143">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> Named event or venue: n=5 across 4 channels, median 1.00x vs 1.00x, z=-0.14, p=0.89. Reactive construction: n=2 — no test possible. Our motorcycle corpus is built from touring, gear-review and riding-instruction channels; the rally-coverage sub-niche the claim describes is essentially absent from it.</p>
@@ -375,6 +425,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A visible real clock with an unambiguous start point (&#39;timed from kickstand down&#39;, no hidden prep) converts an ordinary setup demo into a watchable progression.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
+  <div class="review" data-id="fb4b1d7ea044">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -393,6 +448,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A motorcycle travel channel should amortize one trip into six distinct videos with different promises — route story, packing, gear test, campsite ranking, camera workflow, and postmortem — rather than one long vlog.</div>
   <div class="src">Source: idea-engine research dossier</div>
   <div class="qbox"><b>What would settle it</b><p>Does this footage support SIX DISTINCT PROMISES, or one promise cut into six pieces? Khare is right about PARTS — a part-two inherits a weakened package and asks the viewer to have seen part one. The packet&#39;s six are not parts: &#39;packing&#39; and &#39;campsite ranking&#39; are separate questions with separate titles, separate thumbnails and partly separate audiences, and none of them requires the others. So the rule is not about count at all, it is about whether each upload has an independent, clickable promise that stands alone. The store also supplies the failure mode at the other extreme: Channel I&#39;s c112e6452da9 — 30 daily uploads bought a subscriber bump then flatlined by day 30 as reach fell back to the core (~125k average down to 30-40k), which is what happens when the pieces have no independent promise. our strategist&#39;s 5e3bd00115b5 (2-4 long-form from a month-long trip) sits between the two and is the operating compromise.</p></div>
+  <div class="review" data-id="6b20d5f1022a">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -410,6 +470,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Budget-ladder gear comparisons in motorcycle camping only work as proof when the conditions are matched — the same cold night, the same route — and the compromises are disclosed honestly.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
+  <div class="review" data-id="73c625634a14">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -417,6 +482,111 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <blockquote>$100, $500, and $1,500 Camp Setups on the Same Cold Night | Matched conditions and honest compromises.</blockquote>
   </details>
 </div></div>
+
+<div id="rvdock">
+  <div class="c" id="rvcount">0 reviewed</div>
+  <p class="h">Saved in this browser as you go. Export when you are done and hand it back to be ingested.</p>
+  <button id="rvcopy" onclick="rvExport()" type="button">Copy review</button>
+  <button class="ghost" onclick="rvDownload()" type="button">Download</button>
+  <button class="ghost" onclick="rvClear()" type="button">Clear</button>
+  <textarea id="rvjson" readonly></textarea>
+</div>
+<script>
+(function(){
+  var KEY = 'influint-intel-review-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { store = {}; }
+
+  function persist(){
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+    render();
+  }
+  function count(){ return Object.keys(store).length; }
+
+  function render(){
+    var dock = document.getElementById('rvdock');
+    if (!dock) return;
+    var n = count();
+    dock.classList.toggle('on', n > 0);
+    var c = document.getElementById('rvcount');
+    if (c) {
+      var acc = 0, rej = 0;
+      for (var k in store) { if (store[k].verdict === 'accept') acc++; else rej++; }
+      c.textContent = n + ' reviewed · ' + acc + ' accepted, ' + rej + ' rejected';
+    }
+  }
+
+  // Paint any decisions already made, including ones made on another page.
+  function hydrate(){
+    document.querySelectorAll('.review').forEach(function(row){
+      var id = row.dataset.id, rec = store[id];
+      var card = row.closest('.claim');
+      row.querySelectorAll('.rv').forEach(function(b){
+        var on = !!rec && rec.verdict === b.dataset.v;
+        b.setAttribute('aria-pressed', String(on));
+      });
+      var note = row.querySelector('.rvnote');
+      if (note && rec && rec.note) note.value = rec.note;
+      if (card) card.classList.toggle('reviewed', !!rec);
+    });
+    render();
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.rv');
+    if (!btn) return;
+    var row = btn.closest('.review');
+    var id = row.dataset.id;
+    var v = btn.dataset.v;
+    var claimEl = row.closest('.claim').querySelector('.txt');
+    if (store[id] && store[id].verdict === v) {
+      delete store[id];                       // clicking the same verdict clears it
+    } else {
+      store[id] = {
+        verdict: v,
+        note: (row.querySelector('.rvnote') || {}).value || '',
+        claim: claimEl ? claimEl.textContent.slice(0, 120) : '',
+        at: new Date().toISOString()
+      };
+    }
+    hydrate();
+  });
+
+  // A note without a verdict is still worth keeping — it is feedback.
+  document.addEventListener('input', function(e){
+    if (!e.target.classList.contains('rvnote')) return;
+    var row = e.target.closest('.review');
+    var id = row.dataset.id;
+    if (!store[id]) store[id] = { verdict: 'note', claim: '', at: new Date().toISOString() };
+    store[id].note = e.target.value;
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (err) {}
+    render();
+  });
+
+  window.rvExport = function(){
+    var ta = document.getElementById('rvjson');
+    ta.value = JSON.stringify(store, null, 2);
+    ta.classList.add('on');
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    var b = document.getElementById('rvcopy');
+    if (b) { b.textContent = 'Copied ✓'; setTimeout(function(){ b.textContent = 'Copy review'; }, 1800); }
+  };
+  window.rvDownload = function(){
+    var blob = new Blob([JSON.stringify(store, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'intelligence-review.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+  window.rvClear = function(){
+    if (!confirm('Clear all ' + count() + ' review decisions on this device?')) return;
+    store = {}; persist(); hydrate();
+  };
+
+  hydrate();
+})();
+</script>
 
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

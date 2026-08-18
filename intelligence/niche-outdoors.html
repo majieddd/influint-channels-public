@@ -255,6 +255,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-rejected{color:#8a9a9a}
 .claims{display:grid;gap:12px;margin-top:16px}
 .claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -279,6 +280,35 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .nichecard a{text-decoration:none}
 .nichecard .n{font-weight:600;font-size:14.5px}
 .nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -305,6 +335,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Thumbnails that look AI-generated cost clicks because viewers perceive them as inauthentic — and on older audiences this has escalated to the point that any photo editing at all triggers accusations of AI and unsubscribes.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="c2cc6f0d497b">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -323,6 +358,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">An audience that watches mostly on TV (73% here) produces flat retention curves with no rewind spikes, and a drop-off in that context is far stronger evidence of a problem because reaching for a remote is a higher barrier than swiping on a phone.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="ebe92c9c58d4">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -340,6 +380,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">For a TV-watching audience, front-load a teased element whose payoff is withheld (the Pawn Stars technique: show the artifact, hide the price) so the viewer holds an open question through the video instead of reaching for the remote.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="37a9863871be">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -357,6 +402,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">An audience that watches mostly on TV (here 73%, with 27.5% aged 65+) produces flat retention curves with no rewind spikes, because rewinding requires a remote. That makes drop-offs unusually meaningful — reaching for a remote is a far higher barrier than a phone swipe — and it argues for front-loading an item of anticipation the way Pawn Stars teases an artefact.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="813c3071a401">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -375,6 +425,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Serialised channels need a fixed HOME BASE that every excursion returns to — like a cartoon cul-de-sac — with explicit flashbacks and references tying away-episodes back, or the away content reads as a departure the audience resents.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="26ba5a98ba99">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> Corpus: series-marked titles UNDERPERFORM their channel&#39;s own median — maker-builds 0.78x (n=10) vs 1.00x (n=320); motorcycle 0.90x (n=75) vs 1.01x (n=331); roblox 1.09x (n=4, unusable). Channel comparison cuts the other way: Channel C is a pure fixed-home-base serial (one abandoned general store, every video an excursion and return) and leads the retention table; Channel D is a travelling serial with no fixed base and trails it at every mark (28.2% vs 43.9% at the 50% mark, 15.3% vs 35.1% at end).</p>
@@ -392,6 +447,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Serialise by giving every excursion a reason tied to the home base: go out to acquire an item, bring it back, use it — which creates anticipation for the next video and merges two audience segments that would otherwise split.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="92df7e572706">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> The test requires next-video click-through and returning-viewer rate per episode. We hold neither: no traffic-source split, no returning-vs-new viewer breakdown, no impressions. The closest proxy we tried — whether a video&#39;s end-hold predicts the next upload&#39;s first-28d views — returned nothing across 113 consecutive pairs on 6 channels (rho -0.21 to +0.23), but that proxy measures memory of the ending, not an unresolved item destined for the base.</p>
@@ -409,6 +469,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Keep a fixed &#39;cul-de-sac&#39; — a recurring home location — and frame every departure as explicitly temporary with references back to it, because audiences resent an unannounced permanent move away from the setting they came for.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="2d769416ab79">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -427,6 +492,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">55% of this outdoor channel&#39;s audience watches vicariously (they do not do the activity) and 45% are active participants — which means a new video needs transformation, contrast, or a clear why to hold the majority, and can then be aimed at new viewers without risking the core.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="dfac1e1d1586">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -445,6 +515,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Audiences of a niched channel actively prefer a balanced mix over strict niching — 40% answered they want variety and are there for the person, contradicting the standard &#39;niche down&#39; prescription.</div>
   <div class="src">Source: internal strategy session</div>
   <div class="qbox"><b>What would settle it</b><p>Is the audience&#39;s attachment to the PERSON or to the CONTENT CONTRACT — and does the variety span different subjects inside one relationship, or different viewer JOBS (entertain me vs teach me vs let me follow you) on one feed? Hayden&#39;s mechanism is tier conflict: a superfan deep-dive and a broad-appeal video ask a viewer to be two different people. our strategist&#39;s 0c8258f3e010 names the other regime — when attachment is to the person, escalation and strictness stop being required. The store&#39;s own related claim (7563e845b615 aside) also warns of a measurement trap: 7a816d0ac0e5 says preference for an aesthetic is not a prediction of watch behaviour, so &#39;40% said they want variety&#39; is a stated preference and the behavioural test is whether the mixed uploads on that channel actually held their returning share.</p></div>
+  <div class="review" data-id="fc4285778049">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> No survey data of any kind is in the store. The nearest observable — topical dispersion vs channel median views, pooled spearman +0.24 across 46 channels — is directionally consistent with variety not being punished, but it does not test what the audience prefers or why, and it cannot separate personality-led from subject-led channels.</p>
@@ -462,6 +537,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A month-long trip should become 2–4 long-form videos rather than 30 daily uploads; two videos is enough to avoid audience fatigue, and if four are made the last must pivot back to the channel&#39;s home-base subject.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="5e3bd00115b5">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -479,6 +559,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Posting real-time content while an earlier chronological series is still unreleased confuses the audience and suppresses the following videos — project-based creators are read chronologically by default, so out-of-order uploads read as &#39;old news&#39;.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="790832518fbc">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> The series runs Ep:02 (2025-09-07, 80,701) → Ep:03 (2025-09-14, 50,289) → two unnumbered uploads (2025-09-25, 56,081; 2025-11-04, 48,139) → Ep.14 (2025-12-14, 100,487). The videos following the interruption sit at 56,081 and 48,139 against a channel median of 54,012 — no suppression — and the next series episode was the second-best video in the whole window.</p>
@@ -496,6 +581,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Posting real-time content while a past-footage series is still being released measurably depressed the videos that followed — the audience rejects it as &#39;old news&#39; even though they have never seen it.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="213098afb674">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -513,6 +603,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Daily trail-vlog uploads recruit a subscriber bump at the start of a hike and then flatten: by day 30 reach stops growing and views fall back to the core cohort (from ~125k average to 30–40k), which in turn damages brand-deal rates.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="93ba5531c6a2">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -530,6 +625,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Daily series uploads buy a subscriber bump at the start of a trip and then flatline — by roughly day 30 reach stops growing and only the existing core is watching, which also depresses the average view count used to price brand deals.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="c112e6452da9">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -547,6 +647,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">When the audience&#39;s attachment is to the person rather than the activity, the creator does NOT have to keep escalating danger or environment extremity to hold interest — which is the opposite of the usual survival-content treadmill.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="0c8258f3e010">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -554,6 +659,111 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <blockquote>there&#39;s a lot of creators that when they&#39;re doing survival content, they have to do it in like situations that feel hazardous or like feels like a challenge, right? Because their audience really wants to see them like overcome that barrier ... now you don&#39;t have to worry about trying to over top like your crazy environments</blockquote>
   </details>
 </div></div>
+
+<div id="rvdock">
+  <div class="c" id="rvcount">0 reviewed</div>
+  <p class="h">Saved in this browser as you go. Export when you are done and hand it back to be ingested.</p>
+  <button id="rvcopy" onclick="rvExport()" type="button">Copy review</button>
+  <button class="ghost" onclick="rvDownload()" type="button">Download</button>
+  <button class="ghost" onclick="rvClear()" type="button">Clear</button>
+  <textarea id="rvjson" readonly></textarea>
+</div>
+<script>
+(function(){
+  var KEY = 'influint-intel-review-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { store = {}; }
+
+  function persist(){
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+    render();
+  }
+  function count(){ return Object.keys(store).length; }
+
+  function render(){
+    var dock = document.getElementById('rvdock');
+    if (!dock) return;
+    var n = count();
+    dock.classList.toggle('on', n > 0);
+    var c = document.getElementById('rvcount');
+    if (c) {
+      var acc = 0, rej = 0;
+      for (var k in store) { if (store[k].verdict === 'accept') acc++; else rej++; }
+      c.textContent = n + ' reviewed · ' + acc + ' accepted, ' + rej + ' rejected';
+    }
+  }
+
+  // Paint any decisions already made, including ones made on another page.
+  function hydrate(){
+    document.querySelectorAll('.review').forEach(function(row){
+      var id = row.dataset.id, rec = store[id];
+      var card = row.closest('.claim');
+      row.querySelectorAll('.rv').forEach(function(b){
+        var on = !!rec && rec.verdict === b.dataset.v;
+        b.setAttribute('aria-pressed', String(on));
+      });
+      var note = row.querySelector('.rvnote');
+      if (note && rec && rec.note) note.value = rec.note;
+      if (card) card.classList.toggle('reviewed', !!rec);
+    });
+    render();
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.rv');
+    if (!btn) return;
+    var row = btn.closest('.review');
+    var id = row.dataset.id;
+    var v = btn.dataset.v;
+    var claimEl = row.closest('.claim').querySelector('.txt');
+    if (store[id] && store[id].verdict === v) {
+      delete store[id];                       // clicking the same verdict clears it
+    } else {
+      store[id] = {
+        verdict: v,
+        note: (row.querySelector('.rvnote') || {}).value || '',
+        claim: claimEl ? claimEl.textContent.slice(0, 120) : '',
+        at: new Date().toISOString()
+      };
+    }
+    hydrate();
+  });
+
+  // A note without a verdict is still worth keeping — it is feedback.
+  document.addEventListener('input', function(e){
+    if (!e.target.classList.contains('rvnote')) return;
+    var row = e.target.closest('.review');
+    var id = row.dataset.id;
+    if (!store[id]) store[id] = { verdict: 'note', claim: '', at: new Date().toISOString() };
+    store[id].note = e.target.value;
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (err) {}
+    render();
+  });
+
+  window.rvExport = function(){
+    var ta = document.getElementById('rvjson');
+    ta.value = JSON.stringify(store, null, 2);
+    ta.classList.add('on');
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    var b = document.getElementById('rvcopy');
+    if (b) { b.textContent = 'Copied ✓'; setTimeout(function(){ b.textContent = 'Copy review'; }, 1800); }
+  };
+  window.rvDownload = function(){
+    var blob = new Blob([JSON.stringify(store, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'intelligence-review.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+  window.rvClear = function(){
+    if (!confirm('Clear all ' + count() + ' review decisions on this device?')) return;
+    store = {}; persist(); hydrate();
+  };
+
+  hydrate();
+})();
+</script>
 
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

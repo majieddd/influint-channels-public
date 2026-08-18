@@ -255,6 +255,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-rejected{color:#8a9a9a}
 .claims{display:grid;gap:12px;margin-top:16px}
 .claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -279,6 +280,35 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .nichecard a{text-decoration:none}
 .nichecard .n{font-weight:600;font-size:14.5px}
 .nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -305,6 +335,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">The swap test for borrowing a format: take the source channel&#39;s outliers and ask whether the concept keeps its novelty and humour with your subject substituted in. Formats rooted in specifically human relationships (&#39;stuck with your ex&#39;) fail the test for non-players.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="3503a5e195ee">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -323,6 +358,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">The intro to a long-form challenge video should be built as premise + escalation + rule/stakes, and that same intro is publishable as the short — the short then drives people to the long-form.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="f8bb78e1c34b">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -340,6 +380,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">On For You-page platforms, a &#39;reverse hook&#39; — a broad topic to win reach plus a positioning line as the final sentence — filters who follows, raising follower quality without sacrificing top-of-funnel reach.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="65001a5c08c6">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -358,6 +403,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Front-load the segment the audience has NOT seen before and place the proven, previously-successful segment later in the video, so novelty carries the opening and familiarity holds the middle.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="120b1d039dd4">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -375,6 +425,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">An ad read that is deliberately OUT OF CHARACTER for the channel creates enough novelty to be worth watching — a men&#39;s-soap read staged as a comedic bit on a female gaming channel produced a measurable retention increase at that exact moment.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="5b36ff58bbcb">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -393,6 +448,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Contestant-elimination formats should burn through early rounds fast and halve the field repeatedly until 8–12 remain, because ~10 is the largest number a viewer can hold and track, and only then does personality attachment become possible.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="4f2f99f12412">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> Neither gaming channel runs contestant-elimination formats. Channel A&#39;s 30 analysed videos are challenge/obby/roleplay formats (&#39;Roblox WOULD YOU RATHER: BABY TOWER&#39;, &#39;ROBLOX PROTECT THE AIRPORT&#39;, &#39;Roblox GUESS MY ASMR&#39;), and Channel B&#39;s 30 are the same shape with no retention curves stored at all. We hold no chapter markers, no contestant counts, and no segment boundaries for any video in the store.</p>
@@ -410,6 +470,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">In post-production, cut in skits and interview beats for the contestant you already know wins, so the audience is attached to them before the finale — the emotional arc is manufactured retroactively, not captured live.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="77d5f6c4a82c">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -427,6 +492,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Segment-based videos hold best at THREE TO FIVE rounds with escalating lengths (~2 min, ~4 min, ~7 min); one round is too thin and many rounds fail without a culminating payoff.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="ed5deadefd88">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -444,6 +514,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">In elimination-format videos, cut the field down fast in the opening rounds and get to 8–12 contestants, because ~10 is the largest set a viewer can hold at a glance — only then shift the edit to personalities.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="b0090a2f973e">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -462,6 +537,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">In gaming, long uncut formats (event VODs, ranking/tier lists) produce deceptively high AVD with catastrophic APV — 12:23 AVD at 7.95% APV, and the lowest CTRs on the channel — so AVD alone will misidentify them as the channel&#39;s watchability leaders.</div>
   <div class="src">Source: our own channel audits</div>
   
+  <div class="review" data-id="401a64066aed">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> The headline case reproduces once, strikingly: the 128-minute &#39;Surviving the HARDEST MM2 Challenges for 24 Hours&#39; shows AVD 24.7 minutes (channel&#39;s highest) at APV 19.4% — dead last of 30 against a 42.3% median. But it does not generalise: the channel&#39;s top-5 videos by AVD have a median APV of 40.9%, essentially the channel median of 42.3%, and its 39-minute and 30-minute videos hold 46.1% and 39.9%. Length alone does not produce the pattern.</p>
@@ -489,6 +569,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Upload timing derived from data can contradict audience intuition and still win: a gaming channel&#39;s audience peaked in the early morning rather than after school, and shifting to it produced the channel&#39;s best video in a long time and 64 million views in 28 days.</div>
   <div class="src">Source: Derrel Eves</div>
   
+  <div class="review" data-id="30f3600cf317">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> (a) 27 channels testable: publishing in the channel&#39;s habitual hour was better on 13 and worse on 14 — a coin flip. Individual deltas swing wildly in both directions (Denis +1.25, Kat +0.85 vs PrestonGamez -0.66, NicoBlox -0.65), which is what noise at n~20 looks like. (b) Day-of-week medians span only 0.86-1.12x with no direction shared across niches (Saturday is the best maker day at 1.05 and the worst motorcycle day at 0.86). A pooled hour-bucket comparison did look significant (p=0.002-0.018) but I discard it: the &#39;best&#39; and &#39;worst&#39; hours were chosen from the same data being tested, so that test is circular.</p>
@@ -506,6 +591,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Live streams do not cannibalise long-form; they feed it, because viewers who missed the stream seek out the edited breakdown afterwards — the stream becomes raw production for both the long-form cut and the shorts.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="8010bd0fe948">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -524,6 +614,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A mini-game/challenge video should run 3 games (roughly 2, 4 and 7 minutes, escalating) for a 13–15 minute video; one game is too few and many games without a culminating event also fails — 3 to 5 is the sweet spot.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="a8bafdea4183">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -541,6 +636,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Setup complexity has no correlation with views: on Minecraft content, time-to-set-up did not predict view count, and switching to concepts that were trivially easy to produce raised performance — partly because an easy format gets repeated.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="668f986f5dd7">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -558,6 +658,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">There is NO correlation between how long a video takes to set up and how many views it gets — so the correct bias is toward formats that are cheap to produce, because cheap successful formats get repeated.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="a2fb52405396">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -575,6 +680,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Production complexity does not correlate with views — and simple formats outperform partly because they are cheap enough to repeat, which is what compounds.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="67ff93e8d241">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -592,6 +702,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Character attachment in competition formats is manufactured in POST, not captured live: once the winner is known, cut interview/skit beats for that person into earlier rounds so the audience already likes them by the finale.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="c888f434d026">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -609,6 +724,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Mini-game compilation videos have a sweet spot of three to five games (~13–15 minutes); one game stretched out underperforms, and too many games without a culminating event also underperforms.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="22b4e6736eae">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -616,6 +736,111 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <blockquote>I&#39;ve always found that like three to five tends to be a sweet spot when you don&#39;t have like some culmination.</blockquote>
   </details>
 </div></div>
+
+<div id="rvdock">
+  <div class="c" id="rvcount">0 reviewed</div>
+  <p class="h">Saved in this browser as you go. Export when you are done and hand it back to be ingested.</p>
+  <button id="rvcopy" onclick="rvExport()" type="button">Copy review</button>
+  <button class="ghost" onclick="rvDownload()" type="button">Download</button>
+  <button class="ghost" onclick="rvClear()" type="button">Clear</button>
+  <textarea id="rvjson" readonly></textarea>
+</div>
+<script>
+(function(){
+  var KEY = 'influint-intel-review-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { store = {}; }
+
+  function persist(){
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+    render();
+  }
+  function count(){ return Object.keys(store).length; }
+
+  function render(){
+    var dock = document.getElementById('rvdock');
+    if (!dock) return;
+    var n = count();
+    dock.classList.toggle('on', n > 0);
+    var c = document.getElementById('rvcount');
+    if (c) {
+      var acc = 0, rej = 0;
+      for (var k in store) { if (store[k].verdict === 'accept') acc++; else rej++; }
+      c.textContent = n + ' reviewed · ' + acc + ' accepted, ' + rej + ' rejected';
+    }
+  }
+
+  // Paint any decisions already made, including ones made on another page.
+  function hydrate(){
+    document.querySelectorAll('.review').forEach(function(row){
+      var id = row.dataset.id, rec = store[id];
+      var card = row.closest('.claim');
+      row.querySelectorAll('.rv').forEach(function(b){
+        var on = !!rec && rec.verdict === b.dataset.v;
+        b.setAttribute('aria-pressed', String(on));
+      });
+      var note = row.querySelector('.rvnote');
+      if (note && rec && rec.note) note.value = rec.note;
+      if (card) card.classList.toggle('reviewed', !!rec);
+    });
+    render();
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.rv');
+    if (!btn) return;
+    var row = btn.closest('.review');
+    var id = row.dataset.id;
+    var v = btn.dataset.v;
+    var claimEl = row.closest('.claim').querySelector('.txt');
+    if (store[id] && store[id].verdict === v) {
+      delete store[id];                       // clicking the same verdict clears it
+    } else {
+      store[id] = {
+        verdict: v,
+        note: (row.querySelector('.rvnote') || {}).value || '',
+        claim: claimEl ? claimEl.textContent.slice(0, 120) : '',
+        at: new Date().toISOString()
+      };
+    }
+    hydrate();
+  });
+
+  // A note without a verdict is still worth keeping — it is feedback.
+  document.addEventListener('input', function(e){
+    if (!e.target.classList.contains('rvnote')) return;
+    var row = e.target.closest('.review');
+    var id = row.dataset.id;
+    if (!store[id]) store[id] = { verdict: 'note', claim: '', at: new Date().toISOString() };
+    store[id].note = e.target.value;
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (err) {}
+    render();
+  });
+
+  window.rvExport = function(){
+    var ta = document.getElementById('rvjson');
+    ta.value = JSON.stringify(store, null, 2);
+    ta.classList.add('on');
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    var b = document.getElementById('rvcopy');
+    if (b) { b.textContent = 'Copied ✓'; setTimeout(function(){ b.textContent = 'Copy review'; }, 1800); }
+  };
+  window.rvDownload = function(){
+    var blob = new Blob([JSON.stringify(store, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'intelligence-review.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+  window.rvClear = function(){
+    if (!confirm('Clear all ' + count() + ' review decisions on this device?')) return;
+    store = {}; persist(); hydrate();
+  };
+
+  hydrate();
+})();
+</script>
 
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

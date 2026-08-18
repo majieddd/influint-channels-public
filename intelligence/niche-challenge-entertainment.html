@@ -255,6 +255,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-rejected{color:#8a9a9a}
 .claims{display:grid;gap:12px;margin-top:16px}
 .claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -279,6 +280,35 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .nichecard a{text-decoration:none}
 .nichecard .n{font-weight:600;font-size:14.5px}
 .nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -305,6 +335,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Emptying a thumbnail of its content - removing the objects rather than adding them - can be what makes it work, because the unanswered question is more clickable than the demonstrated result.</div>
   <div class="src">Source: Derrel Eves</div>
   
+  <div class="review" data-id="3dec44148a64">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -323,6 +358,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A 17-minute video can complete its entire hook - premise stated on screen, purchase montage, location walkthrough, comic beat - inside 45 seconds; hook duration should scale to the promise, not to video length.</div>
   <div class="src">Source: Derrel Eves</div>
   
+  <div class="review" data-id="759746b245c0">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -340,6 +380,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Deliberately dropping the energy before a climax is what makes the climax land — the MrBeast hide-and-seek edit slowed for Bella Poarch specifically to create a valley from which the chase sequence could escalate.</div>
   <div class="src">Source: Hayden Hillier-Smith</div>
   
+  <div class="review" data-id="e0fd51fb62db">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -357,6 +402,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">On-screen countdown timers and explicit time limits hold retention through otherwise weak visual stretches, because they simultaneously give a sense of control, act as a continuous visual stimulus, and encode a promise of something at zero.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
+  <div class="review" data-id="63bd86ae7d94">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -374,6 +424,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A cold open — cutting the video&#39;s highest moments into the very beginning — raises early retention because it is EVIDENCE the video will deliver the title&#39;s promise, not merely a hook.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="efc5f9ae2587">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -391,6 +446,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A three-beat opening of roughly 10s real-world stakes footage + 10s &#39;coming up&#39; tease + 10s of the actual training/action holds attention better than either stakes or tease alone, because each beat answers a different viewer objection.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="18fbb44b22b2">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -408,6 +468,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A long-form video should target ≥60% average percentage viewed; hitting that threshold is what causes YouTube to push the video to broader audiences, after which the measured retention decays as the audience widens.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>What is the video&#39;s RUNTIME and format, and is the 60% figure a distribution gate or a descriptive correlate of a specific challenge-entertainment format at ~10-15 minutes? A 60% APV on a 12-minute challenge video and on a 52-minute build video are entirely different demands on the viewer. Restated: (a) within one channel at one roughly fixed length and format, a rising APV is a real improvement signal; (b) no APV number is a cross-channel or cross-length gate on distribution.</p></div>
+  <div class="review" data-id="28046089e29a">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested — contradicted:</b> 0 of 119 videos reached 60% APV. Per-channel maxima: Channel C 55.0%, Channel A 54.0%, Channel G 47.4%, Channel F 47.3%, Channel D 41.3%, Channel E 38.7%. Channel median APVs are 31-48%. These same channels post median first-28d views of 54k-988k and produce breakouts up to 1.6M, so broad distribution demonstrably happens far below the stated threshold — and the breakouts sit at the LOW end of their channel&#39;s APV (Channel C&#39;s breakout 24.8% APV vs 48.3% for the rest).</p>
@@ -426,6 +491,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A channel should be run as a serialised world with recurring characters, themes and a season-level arc, not as a sequence of independent videos; the arc is what makes viewers return rather than merely click.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="4dc3f2d5e235">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -443,6 +513,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A payoff moment only lands if the setup planted stakes beforehand; the funny/shocking beat is produced by the preceding breadcrumbs, not by the event itself.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="34a1242c10bc">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -460,6 +535,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">In competition formats, character attachment is built RETROACTIVELY in post: once you know who wins, cut them into earlier moments so the audience already cares by the finale — attachment is an editing decision, not a casting one.</div>
   <div class="src">Source: internal strategy session</div>
   
+  <div class="review" data-id="7244f9d2a326">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -477,6 +557,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Money is never a motivation by itself — the audience only resonates once the money is tied to a human need (belonging, status, survival, self-actualisation); Joos cites a contestant whose real motive was &quot;I want to make Jimmy broke&quot;, which read as friendship rather than greed.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
+  <div class="review" data-id="bf6bb89ed1a6">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -494,6 +579,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A creator becomes memorable through CONTRAST with the people around them, in either direction — a calm creator should surround themselves with chaos and a chaotic creator with calm people; casting friends with the same personality erases the creator&#39;s distinctiveness.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
+  <div class="review" data-id="c6b501d3869c">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -511,6 +601,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Fabricated obstacles trigger a detectable credibility failure in older viewers but not younger ones, and the risk is asymmetric: an unscripted video that plants an obstacle can be caught on a continuity error (Joos&#39;s co-host cites a creator whose December-dated stunt showed a September watch face), so unscripted content must stay genuinely unscripted.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
+  <div class="review" data-id="a31435d54719">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -529,6 +624,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">A monthly upload cadence is compatible with tens of millions of views per video when production quality carries the concept - upload frequency is not a prerequisite for algorithmic success.</div>
   <div class="src">Source: Derrel Eves</div>
   <div class="qbox"><b>What would settle it</b><p>What share of this channel&#39;s views arrive through the subscription/home feed versus suggested and search? Joos&#39;s mechanism is ROUTINE — a viewer&#39;s habit decays, which only costs you views if your distribution depends on that viewer returning. Eves states the other half himself (3d7710fb7636): consistency &#39;matters far less once traffic comes from search or recommendations.&#39; The second missing variable is which metric is being defended: our strategist&#39;s 7c02437e3d5d says returning/core viewers correlate with upload VOLUME, not quality, so a monthly channel structurally cannot build a large core — it buys outlier reach and forfeits the returning baseline. Ask: am I trying to raise the floor (returning share) or the ceiling (outliers)? Cadence buys the floor.</p></div>
+  <div class="review" data-id="b86ffd3dc8da">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested — supported:</b> 8 channels publish at &gt;=21-day median gaps. Five of them clear 900k median views: Stuff Made Here (82.1d gap, 7,908,105 median views; 4,123,856 in the age-controlled band), I did a thing (53.0d, 4,678,904; 4,131,137), Blacktail Studio (36.0d, 3,630,772; 3,570,453), William Osman (29.3d, 3,052,009), Evan and Katelyn (28.0d, 929,084; 1,050,313). The whole maker-builds &gt;14d cadence bucket has a median-of-medians of 571,360 vs 32,719 for the 8-14d bucket.</p>
@@ -546,6 +646,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">One long video beats splitting the same footage into several shorter ones, because a single title-and-thumbnail pair concentrates the packaging and part-twos are not reliably watched.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>Does this footage support SIX DISTINCT PROMISES, or one promise cut into six pieces? Khare is right about PARTS — a part-two inherits a weakened package and asks the viewer to have seen part one. The packet&#39;s six are not parts: &#39;packing&#39; and &#39;campsite ranking&#39; are separate questions with separate titles, separate thumbnails and partly separate audiences, and none of them requires the others. So the rule is not about count at all, it is about whether each upload has an independent, clickable promise that stands alone. The store also supplies the failure mode at the other extreme: Channel I&#39;s c112e6452da9 — 30 daily uploads bought a subscriber bump then flatlined by day 30 as reach fell back to the core (~125k average down to 30-40k), which is what happens when the pieces have no independent promise. our strategist&#39;s 5e3bd00115b5 (2-4 long-form from a month-long trip) sits between the two and is the operating compromise.</p></div>
+  <div class="review" data-id="0387bbdf2406">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev"><b>Tested:</b> 28 videos carry a part marker but they collapse into only 2 same-stem multi-part sets. Moto Camp Nerd&#39;s gift guide: part 1 = 5,457, part 2 = 6,645. Motovudu&#39;s Q&amp;A series parts 8-18: 3,745 / 3,992 / 3,079 / 3,396 / 3,248 / 3,658 / 4,860 / 5,566 / 5,075 / 3,608 / 4,274 — flat across eleven consecutive parts, with no part-two cliff. Median part2/part1 ratio 1.14 (n=2).</p>
@@ -563,6 +668,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Spectacle and scale are not transferable strategies by themselves — large scale is not a viewer tension, a proof mechanism, or a creator advantage.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
+  <div class="review" data-id="c8df7508357c">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -581,6 +691,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Video length should be set by story completeness, not by a target duration — Khare&#39;s team shipped a 41-minute video because that was the shortest complete version of the story, and Yes Theory extended a planned 20-minute Wim Hof video past 40 minutes for the same reason.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>Is this an EPISODE or a TENTPOLE? Hurwitz&#39;s 5cb5e965b040 already draws the line: regular uploads are episodes of an open-ended series, tentpoles are finite films, and the two require different structures. An episodic container has slack — the metric can legitimately set the dial because the format can absorb another segment. A tentpole&#39;s length is determined by its payoff, and cutting to hit a number breaks the thing people came for. Our own data supports the audits&#39; direction within episodic catalogues: the longer half of the catalogue won on median first-28d views for six of seven channels (Channel C 321,662 vs 291,465; Channel D 65,205 vs 48,143; Channel A 251,961 vs 218,645; Channel F 1,012,676 vs 963,861; Channel B 287,063 vs 207,873; Channel G 485,039 vs 367,785). The single exception is Channel E — the channel with by far the longest median duration at 52 minutes — where longer LOST (691,316 vs 863,878). That is the shape of a permission-to-lengthen rule with a channel-specific ceiling, not a universal one, and it is why the rule must be re-read each quarter rather than applied once.</p></div>
+  <div class="review" data-id="da899afcbf27">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -598,6 +713,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Withholding the final-challenge details from the on-camera host while the crew knows everything produces honest reactions — a deliberate asymmetry, not lack of planning.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="c67e93a9bad5">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -615,6 +735,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">Michelle Khare writes the full voiceover before filming and treats each paragraph as a story beat, which is what determines the shot list rather than the reverse.</div>
   <div class="src">Source: CreatorNow</div>
   
+  <div class="review" data-id="275038c8dbb7">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -632,6 +757,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   <div class="txt">&#39;Shoot everything and find it in the edit&#39; is a failure mode of unscripted and spectacle content; going in with a thesis makes the questions you ask and the shots you take more useful, even though the plan must stay malleable.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>Does the payoff exist independently of the shoot, and can this production afford coverage? Khare&#39;s format is a designed challenge with an engineered payoff — the outcome is the plan, so shooting without a thesis means missing the shots the payoff needs. Yes Theory&#39;s subject is a PERSON or a PLACE whose behaviour is the content, and no thesis can predict it. The economics discriminate too: Brag&#39;s 3f346d2d855c says Yes Theory shoots 30-40 mini-scenes and keeps ~18 — a coverage ratio that makes discovery affordable. A single-run challenge with one take cannot buy that option. And Brag himself supplies the guard rail (c07117b89994): the Iceman documentary had to be fully recut because an editing team forced real events into a planned arc — so the failure both sources agree on is a plan that survives contact with contradicting footage.</p></div>
+  <div class="review" data-id="cd300055b002">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
   <details>
     <summary>Evidence and caveats →</summary>
     <p class="ev">Not yet tested against our data.</p>
@@ -639,6 +769,111 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <blockquote>I think a big mistake in a lot of unscripted or spectacle based storytelling is just sort of let&#39;s shoot everything and figure it out in the edit. That doesn&#39;t necessarily work for me, and I feel like you can be more intentional with the questions that you ask and how you film things and again, what your thesis is. However, you have to be malleable and open to improvisation</blockquote>
   </details>
 </div></div>
+
+<div id="rvdock">
+  <div class="c" id="rvcount">0 reviewed</div>
+  <p class="h">Saved in this browser as you go. Export when you are done and hand it back to be ingested.</p>
+  <button id="rvcopy" onclick="rvExport()" type="button">Copy review</button>
+  <button class="ghost" onclick="rvDownload()" type="button">Download</button>
+  <button class="ghost" onclick="rvClear()" type="button">Clear</button>
+  <textarea id="rvjson" readonly></textarea>
+</div>
+<script>
+(function(){
+  var KEY = 'influint-intel-review-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { store = {}; }
+
+  function persist(){
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+    render();
+  }
+  function count(){ return Object.keys(store).length; }
+
+  function render(){
+    var dock = document.getElementById('rvdock');
+    if (!dock) return;
+    var n = count();
+    dock.classList.toggle('on', n > 0);
+    var c = document.getElementById('rvcount');
+    if (c) {
+      var acc = 0, rej = 0;
+      for (var k in store) { if (store[k].verdict === 'accept') acc++; else rej++; }
+      c.textContent = n + ' reviewed · ' + acc + ' accepted, ' + rej + ' rejected';
+    }
+  }
+
+  // Paint any decisions already made, including ones made on another page.
+  function hydrate(){
+    document.querySelectorAll('.review').forEach(function(row){
+      var id = row.dataset.id, rec = store[id];
+      var card = row.closest('.claim');
+      row.querySelectorAll('.rv').forEach(function(b){
+        var on = !!rec && rec.verdict === b.dataset.v;
+        b.setAttribute('aria-pressed', String(on));
+      });
+      var note = row.querySelector('.rvnote');
+      if (note && rec && rec.note) note.value = rec.note;
+      if (card) card.classList.toggle('reviewed', !!rec);
+    });
+    render();
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.rv');
+    if (!btn) return;
+    var row = btn.closest('.review');
+    var id = row.dataset.id;
+    var v = btn.dataset.v;
+    var claimEl = row.closest('.claim').querySelector('.txt');
+    if (store[id] && store[id].verdict === v) {
+      delete store[id];                       // clicking the same verdict clears it
+    } else {
+      store[id] = {
+        verdict: v,
+        note: (row.querySelector('.rvnote') || {}).value || '',
+        claim: claimEl ? claimEl.textContent.slice(0, 120) : '',
+        at: new Date().toISOString()
+      };
+    }
+    hydrate();
+  });
+
+  // A note without a verdict is still worth keeping — it is feedback.
+  document.addEventListener('input', function(e){
+    if (!e.target.classList.contains('rvnote')) return;
+    var row = e.target.closest('.review');
+    var id = row.dataset.id;
+    if (!store[id]) store[id] = { verdict: 'note', claim: '', at: new Date().toISOString() };
+    store[id].note = e.target.value;
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (err) {}
+    render();
+  });
+
+  window.rvExport = function(){
+    var ta = document.getElementById('rvjson');
+    ta.value = JSON.stringify(store, null, 2);
+    ta.classList.add('on');
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    var b = document.getElementById('rvcopy');
+    if (b) { b.textContent = 'Copied ✓'; setTimeout(function(){ b.textContent = 'Copy review'; }, 1800); }
+  };
+  window.rvDownload = function(){
+    var blob = new Blob([JSON.stringify(store, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'intelligence-review.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+  window.rvClear = function(){
+    if (!confirm('Clear all ' + count() + ' review decisions on this device?')) return;
+    store = {}; persist(); hydrate();
+  };
+
+  hydrate();
+})();
+</script>
 
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

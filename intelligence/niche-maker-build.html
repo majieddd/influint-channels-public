@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Maker / build · Influint intelligence</title>
+<link rel="icon" href="../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.claims{display:grid;gap:12px;margin-top:16px}
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+</header>
+
+<h1>Maker / build</h1>
+<p class="lede intel-hero">Claims that apply specifically to maker / build channels. Advice learned in one niche often fails in another, so these are kept separate from the general set rather than laundered into universal rules.</p>
+<div class="intel-stats">
+  <div><div class="v">48</div><div class="k">Claims</div></div>
+  <div><div class="v">11</div><div class="k">Tested</div></div>
+  <div><div class="v">3</div><div class="k">Candidate laws</div></div>
+</div>
+<h2>ideation</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 8 channels</span>
+  </div>
+  <div class="txt">A repeatable maker format is: take a thing everyone already understands (an office, a kitchen) and install it in an unused domestic crevice — the format inherits the &#39;secret/hidden&#39; appeal that is currently strong on YouTube, and it addresses small-home viewers who outnumber large-home viewers.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Corpus: WITH n=26 median 1.56x vs 1.00x (MWU z=3.15, p=0.0016); age-adjusted 1.19x vs 1.00x (z=2.24, p=0.025); 5 of 6 channels with &gt;=2 matching videos came out ahead (CashBlox 4.30x vs 0.98x, Motovudu 4.44x vs 0.95x, Itchy Boots 1.27x vs 0.99x, Niz &amp; Rex 1.50x vs 0.92x, Lana&#39;s Life 1.05x vs 0.88x). Format library: &#39;Dark Secret Reveal&#39; 2.11x, &#39;X Has a Dark Secret&#39; 1.89x, &#39;Exposing Secrets In [Game]&#39; 2.74x. Our own channels give the literal version of the claim: Channel E&#39;s single best video is &#39;Building a Tiny Office Pod Under My Stairs&#39; at 10.48x first-28d, and Channel F&#39;s &#39;I Built a Secret Door to Trick my Landlord&#39; is his second best at 2.70x — both are a known object installed in an unused domestic crevice.</p>
+    <p class="caveat">Caveat: The corpus effect shrinks sharply once age is controlled (1.56x to 1.19x), so the headline number overstates it. The strongest single confirmations are two individual videos on two channels — n=1 each — and Channel F&#39;s other secret-themed video (&#39;Secretly Building my Wife&#39;s Dream Office&#39;) returned only 0.95x, so the format does not fire every time. Nothing here separates &#39;hidden install&#39; from the broader curiosity value of the word &#39;secret&#39;; the corpus effect is driven mostly by Roblox dark-secret titles, which are a different mechanism.</p>
+    <blockquote>it&#39;s a thing that everyone uses but now it&#39;s in a spot that is such an unused crevice of the house. a place that normally people would have and have like a kind of like a closet storage and now it also is uh feeding a little bit into the secret and hidden vibe which is very popular on YouTube.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 3 channels</span>
+  </div>
+  <div class="txt">Physical scale of the subject is itself the draw in machinery/sawmill content — &#39;Big Log, Big Machine, Big Views&#39; — and the same big-object framing recurs across the channel&#39;s clickability leaders AND its replayability leaders.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> Direction is consistently positive but underpowered: WITH n=10 median 1.22x vs 0.99x (MWU z=1.58, p=0.11); age-adjusted 1.33x vs 1.00x (z=1.56, p=0.12). All 3 channels with &gt;=2 matching videos came out ahead — frank howarth 1.70x vs 0.96x, I Like To Make Stuff 1.35x vs 1.00x, April Wilkerson 1.15x vs 1.00x. Channel C&#39;s own &#39;Fixing the BIGGEST RISK to My Abandoned General Store&#39; returned 1.33x and &#39;The BIGGEST RISK Yet&#39; 0.76x, so the word alone is not the driver.</p>
+    <p class="caveat">Caveat: Ten videos across three channels is an anecdote with a p-value attached. &#39;Big&#39; in a title is also an amplifier word applied to a stake (&#39;the biggest risk&#39;) as often as to a physical object, which is a different mechanism from the claim&#39;s. The claim is about machinery/sawmill content specifically and our maker-builds corpus is mostly furniture and home projects.</p>
+    <blockquote>Evaluation: Big Log, Big Machine, Big Views</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">A budget or price constraint in a format should not be a hard low number, because the cap itself limits the addressable market — the constraint should be reframed as a comparison or a range rather than a ceiling.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Specific Budget Ideas (budget &gt; $ amount, dont limit your TAM)</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">Before repeating a winning video, decompose WHICH element produced the click — the object or the juxtaposition — and when it is ambiguous, ship BOTH variants as separate videos rather than guessing.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>really evaluating kind of like the interest gap that was provided in the first video to know what what made them really click on it. Was it the office pod or was it the juxtiposition of building one under your stairs, right? … in some sense, maybe it might be good to try both of those videos out instead of just trying to do one of those.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">Sequel formats are the low-cost route to replayability: take a completed build and open a new interest gap on top of it (&#39;I built a modern PS3&#39; → &#39;I pushed X to the limit&#39;), so the follow-up inherits the original&#39;s audience.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I pushed blank to the limit and it was a natural follow-up for I built uh a a modern PS3. … So in some sense there might be something similar for you to have where you have something to follow up on something that is like an interest gap to see uh to to make a sequel of.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">After an outlier, the first job is to diagnose WHICH element earned the click — the object itself or its juxtaposition with an unexpected location. Getting this wrong makes the channel double down on the wrong variable.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>really evaluating kind of like the interest gap that was provided in the first video to know what what made them really click on it. Was it the office pod or was it the juxtiposition of building one under your stairs, right?</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">Sequel formats convert casual viewers to core: build a thing in one video, then make &#39;how far can it go&#39; the natural follow-up. The follow-up inherits the first video&#39;s audience and carries its own interest gap.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I pushed blank to the limit and it was a natural follow-up for I built uh a a modern PS3. ... because it&#39;s like if you built it how far can it go right and so by building it and going through the challenge of modernizing something that&#39;s old that&#39;s a whole video in itself and now seeing how far it can go compared to things that&#39;s a whole entire like interest gap</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-warn">Warning</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Negatively-framed curiosity underperforms as a format: seven videos in the &#39;Negative Curiosity&#39; bucket produced the channel&#39;s worst APV (23.76%) at below-average views, and the audit recommended eliminating the format entirely.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> In the Roblox corpus, negative-curiosity formats are among the HIGHEST performers, not the lowest: &#39;Exposing Secrets In [Game]&#39; 2.74x, &#39;Dark Secret Reveal&#39; 2.11x, &#39;X Has a Dark Secret&#39; 1.89x, &#39;This Roblox Game Is [Twist]&#39; 1.38x. The corpus-wide secret/hidden bucket runs 1.56x raw and 1.19x age-adjusted against 1.00x. But none of that is maker-build data, and I have no maker-build negative-curiosity classifier.</p>
+    <p class="caveat">Caveat: The claim is scoped to one channel&#39;s audit in one niche and the contrary evidence I have is from a different niche with a different audience. Negative curiosity in Roblox (&#39;dark secret&#39;) is a genre convention rather than a negative frame on the creator&#39;s own work, which may be the operative difference. This should be re-tested when the maker-build corpus carries a hand-labelled framing column.</p>
+    <blockquote>Eliminate:
+Negative Curiosity
+In 20 Minutes</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-wisdom">Wisdom</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">Audiences differ in WHICH relevance they demand: engineering/maker-space audiences do not care about social relevance (they read high view counts as a credibility stamp instead), while personality-led project channels care strongly about TIME relevance — does this feel like it happened recently.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I noticed like engineering maker space audiences they don&#39;t really care about the social aspect of like oh who else watched this or like who but they see it as more of a credibility uh a stamp of credibility if someone has high views.</blockquote>
+  </details>
+</div></div>
+<h2>packaging</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 48 channels</span>
+  </div>
+  <div class="txt">On maker channels the highest-performing thumbnails show HANDS with the object rather than the creator&#39;s face or body, and every top outlier carries a consistent brand icon.</div>
+  <div class="src">Source: our own channel audits</div>
+  <div class="qbox"><b>What would settle it</b><p>Was the Eves case a face-vs-hands comparison at all, or a human-presence-vs-none comparison? Hands are human presence with a fusiform-adjacent salience of their own, so both observations are consistent with &#39;add a person to an object-only thumbnail&#39; and inconsistent only about WHICH body part. The discriminating question is: does this channel&#39;s subscription proposition rest on the creator as a personality (face = recognition asset, and Trahan&#39;s consistent-expression theme in 98ed54ced350 compounds it) or on the object/outcome (hands keep the object at full size and put the viewer in first person)? Our corpus cannot settle it — the brief states we store thumbnail URLs but do not analyse pixels, and CTR is not exposed by the API at all.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> We store thumbnail URLs for corpus videos but perform no pixel or content analysis on them, so hands-versus-face composition cannot be classified. The sample to test against exists and is good — 330 scored maker-builds videos across 14 channels with &gt;=12 uploads each — which makes this one of the more tractable currently-untestable claims.</p>
+    <p class="caveat">Caveat: Testing it would need a vision pass over stored thumbnails plus a stable composition taxonomy, and would still only yield correlation with views, not CTR. The claim&#39;s &#39;every top outlier&#39; phrasing is also unusually strong and would be falsified by a single counterexample, which makes it cheap to attack once thumbnails are classifiable. The same infrastructure would settle 3268d9748690, 8da78c8a0a94, 0229f2b83993, 64258765d87d and 4505a04bba4d.</p>
+    <blockquote>Highest outliers all have brand icon
+Highest outliers all use Hands&gt;face/body</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 15 channels</span>
+  </div>
+  <div class="txt">Naming a specific machine or model that is popular WITHIN the niche produces extreme CTR on a small impression pool — 12.0% CTR versus the channel&#39;s 4.40% average — meaning niche-specific titles trade reach for conversion and should be judged on views, not CTR.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> motorcycle: n=106 across 15 channels, median 1.01x vs 1.00x, z=0.68, p=0.50. roblox: n=11, p=0.79. maker-builds: n=5, too few. A separate brand+model pattern in motorcycle (n=113, 13 channels) gave 1.00x vs 1.00x, p=0.47. So there is no VIEWS lift — but the claim is specifically that CTR spikes while the impression pool stays small, which would produce exactly this flat views result.</p>
+    <p class="caveat">Caveat: This is the clearest case where substituting outlier score for CTR would be dishonest: the claim predicts high CTR AND low impressions, whose product is ordinary views. Our flat result is consistent with the claim being true and with it being false. Only impressions-and-CTR data can settle it.</p>
+    <blockquote>Views: 386,051
+Impressions: 2,965,435
+CTR: 12.0%
+
+Evaluation: Popular machine within the niche</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">Packaging for a Sims build-fix video should put the before/after of the SAME house in the thumbnail and put the constraint, diagnosis, or one decisive rule in the title.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Package the result | Thumbnail shows the same house before and after; title explains the constraint, diagnosis, or one decisive rule.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">Putting the creator&#39;s own face into a thumbnail that previously lacked one can produce a step-change in CTR (1.6% to 8.9% in the cited woodworking case), because the fusiform face area gives faces a dedicated attentional shortcut.</div>
+  <div class="src">Source: Derrel Eves</div>
+  <div class="qbox"><b>What would settle it</b><p>Was the Eves case a face-vs-hands comparison at all, or a human-presence-vs-none comparison? Hands are human presence with a fusiform-adjacent salience of their own, so both observations are consistent with &#39;add a person to an object-only thumbnail&#39; and inconsistent only about WHICH body part. The discriminating question is: does this channel&#39;s subscription proposition rest on the creator as a personality (face = recognition asset, and Trahan&#39;s consistent-expression theme in 98ed54ced350 compounds it) or on the object/outcome (hands keep the object at full size and put the viewer in first person)? Our corpus cannot settle it — the brief states we store thumbnail URLs but do not analyse pixels, and CTR is not exposed by the API at all.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Example: John Malecki (woodworking channel) improved CTR from 1.6% to 8.9% by changing his thumbnail based on data feedback.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">A thumbnail change alone moved a video from a 7-of-10 to a 1-of-10 performance rating on the same title, with a roughly 20-45% thumbnail-test differential — the thumbnail, not the concept, carried the outcome.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>And so, when we saw how um we were able to change a thumbnail to make, by the way, 45% of the difference, right? … when we set this as the thumbnail is when it shipped up to one out of a 10, which makes sense because if you&#39;re having a 20% differential on a thumbnail, there&#39;s obviously a difference in the type of um uh uh performance you&#39;re going to get out of that.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">In the &#39;secret room&#39; niche, nearly every outlier thumbnail uses a bright high-contrast (usually neon) interior against a dull surrounding, plus a figure searching for the hidden space — and most carry little or no text.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>almost every single one other than this one um which doesn&#39;t have the most views per se, but um almost all of them have some form of bright kind of contrast to the surrounding.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">When a proven format&#39;s audience skews much younger than your own, borrow its COMPOSITION (contrast, hidden framing, the searching figure) but not its execution — the &#39;kidified&#39; rendering is what would alienate an adult audience, not the format.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>that&#39;s where it&#39;s like we implement something that doesn&#39;t feel too kitified. Right. because that&#39;s obviously like we we have these that are like obviously a little bit more towards your audience. Um, but we take elements like the contrast of the neon.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">Vague doubt-disproving titles (&#39;They said I needed an engineer to make this&#39;) work because they leave both &#39;they&#39; and &#39;this&#39; unresolved AND trigger the reflex to prove a doubter wrong — a male-skewing alternative to the drama-bait titles common in the same niches.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I think that the missing information of who is they and what is this? ... when someone tells us you can&#39;t, we also we automatically almost want to disprove it and show that we can.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">Thumbnails should be built from real photographs of the creator&#39;s actual workshop rather than composited or generated poses — it raises perceived quality and cuts production time; the enabling step is banking reference shots against both light and dark backgrounds in advance.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>our strategist emphasizes the importance of using authentic photos of the workshop for thumbnails rather than relying on generated poses, noting that this improves quality and efficiency. They suggest taking photos with contrasting light and dark backgrounds within the shop.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-wisdom">Wisdom</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">For established DIY/home channels, the top videos have deliberately CLEAN, non-&#39;YouTubery&#39; thumbnails — the advice is explicitly to resist the high-saturation creator-face style and to increase brand recognition only subtly. This contradicts the standard packaging playbook.</div>
+  <div class="src">Source: our own channel audits</div>
+  <div class="qbox"><b>What would settle it</b><p>What does this audience believe it is buying — a spectacle, or a witness? Exaggeration is free where the genre contract is entertainment and the viewer expects heightening; it is a trust tax where the genre contract is &#39;this actually happened to a real person doing real work&#39;. The operational form of the question: would a viewer who watched the video feel the thumbnail was a fair heightening of a moment that occurred (Galloway&#39;s own constraint in 7f11c9f5fbaa — it must look like a real screenshot from the video), or would they feel they were shown a thing that does not exist? The second discriminator is audience age, which c2c6c81bcc06 makes explicit and which nothing in the exaggeration camp controls for.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Top Vids on channel have CLEAN thumbnails, not very youtubery looking (demo needs alert)</blockquote>
+  </details>
+</div></div>
+<h2>retention</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 4 channels</span>
+  </div>
+  <div class="txt">Build videos lose a visible chunk of the audience in the FINAL 10%, after the product is tested. Adding a &#39;good problem&#39; or mini-arc after the test — a new stretch goal introduced once the thing works — holds that tail.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the video&#39;s PROMISE resolve before its runtime does? Joos&#39;s rule assumes the open loop is still live in the back half, so late leavers are self-selected tolerant viewers. A build video&#39;s test is a terminal payoff — everything after it is post-resolution, so the late drop is caused by the structure, not by tolerance. Restated: (a) where the loop is still live at 75%, back-half analysis is low-yield; (b) where the payoff has already landed, the post-payoff span is a distinct structural defect and worth a dedicated fix. Our own curves lose 9-13 percentage points between the 75% mark and the end — 20-30% of the surviving audience — so the tail is not negligible in absolute terms.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> maker-build (n=59, 4 channels) median final-10% loss 27.2% vs a matched mid-video band of 1.9%. Per maker channel, videos losing &gt;=15% in the final 10%: Channel G 10/10, Channel C 22/30, Channel F 6/10, Channel E 3/9. Controls: motorcycle-travel 23.0% median (22/30 videos &gt;=15%), gaming 9.4% median (6/30).</p>
+    <p class="caveat">Caveat: The phenomenon is confirmed for build content but is NOT specific to it — motorcycle-travel shows nearly the same tail loss (23.0% vs 27.2%), so this is a long-form-narrative pattern rather than a build-video signature. Gaming is the real exception. Channel E (52-min videos) is the weakest maker case at 14.1%. The prescription — add a stretch goal after the test — is a fix we cannot evaluate; no video in the set is labelled as having tried it.</p>
+    <blockquote>maybe at the end of the video after you&#39;ve already test it, you introduce almost like a uh a good problem like um what I mean by that almost like uh instead of just like okay cool it works. Um maybe now it&#39;s like cool it works but we&#39;re going to push it to the limit</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Deliberately withholding the finished result from the intro — showing a blueprint overlay instead of the built object — keeps viewers watching longer than showing the payoff up front, because it preserves the open question.</div>
+  <div class="src">Source: CreatorNow</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the video&#39;s promise turn on WHETHER IT WORKS (feasibility — withholding preserves the question) or on WHAT IT LOOKS LIKE (spectacle — proof of delivery is the click-confirmation), and does the thumbnail already show the finished object? If the thumbnail shows it, withholding is impossible and reads as a bait-and-switch; if the thumbnail poses a question, showing the object closes it. Restated: (a) thumbnail shows the finished object → first frame must partially deliver it; (b) thumbnail poses a feasibility question → withhold the object, show the plan.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>instead of like pulling from the footage of the already built ring, which we have plenty of, I decided I was like, Oh, I think what we could do here is instead place a boxing ring blueprint over the top of the living room where it would be built, which I think it does. This shows the same idea, but you don&#39;t actually get to see it until it&#39;s built, which will make the audience stick around longer.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Briefly explaining the complications and expert-level mechanics of what is being built produces a RISE in retention rather than the decline usually feared from explanation — the audit cites a liquid-pump explanation creating &#39;a stable rise in apv&#39;.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Continue to ensure that you explain briefly certain things that are more “expert” knowledge base and explaining the complications that can arise.
+During the explanation of the liquid pump, you did this fantastically, create a stable rise in apv rather than decline</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Replacing direct-to-camera talking with delivering the same value while visibly working improved retention and views on a renovation/homestead channel — tested by the creator on a single video.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>about like providing value while I&#39;m working instead of like talking where there&#39;s, you know, just face to camera. And I did that in yesterday&#39;s video and it did way better than usual. So, I&#39;m going to keep trying that,</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">The thumbnail should be the video&#39;s literal first frame — clicking should &#39;teleport&#39; the viewer into the exact visual moment they clicked. our strategist proposed this to three different creators across three separate meetings and cited a competitor&#39;s live result as confirmation.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> We store thumbnail URLs only and do not analyse pixels; we never decode a video&#39;s first frame (storyboard tiles are pulled for flagged mid-video moments, not for frame 0). No CTR data exists either, so neither the packaging half nor the retention half of the mechanism can be measured.</p>
+    <p class="caveat">Caveat: The closest indirect evidence we have cuts across it rather than for or against: first-15s loss is already small in this cohort (6.5-9.4% median) and correlates NEGATIVELY with views, so if a thumbnail-first-frame match matters it is competing for a fairly narrow slice of loss. That is context, not a test.</p>
+    <blockquote>making the thumbnail look like the thing that uh when you click it, it&#39;s like immediately teleporting you into that same exact visual moment.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">An ad segment should be the HERO of the video — the thing that solves a problem the video already set up — rather than an interruption; done this way it can produce a retention spike instead of a drop.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>you introduce a really big problem and you try a lot of um techniques that the ad tool is like solving for. … and now you have a laser machine waiting at your doorstep and now you&#39;re about to get the heat sink for your console to make this, … And so, um, and and that&#39;s kind of like the the hero style for that ad, I would say.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">For expert-presenter channels, on-camera FAILURE is a retention trap: the audience assumes an expert will not leave a mistake standing, so the troubleshooting sequence holds them.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I always told people like uh that our makers failure moments are kind of like retention traps because when you do something bad on a video and you&#39;re an expert, people kind of automatically expect like he&#39;s not going to leave it that way, is he? … Like there&#39;s like this feeling of like there&#39;s no way.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Making the video&#39;s literal first frame identical to the thumbnail image (same object, same camera position) reduces the intro drop-off, because it confirms to the viewer that the click will be delivered on immediately.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>if let&#39;s say you&#39;re seeing you know, uh, in one of your thumbnails, like the exact position of where the the the PCB board that you&#39;re kind of like working on is. And when you click on that thumbnail, it is the exact first frame of that moment there. Um, I&#39;ve seen some work with that.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">The &#39;hero&#39; ad — where the sponsored product is the thing that solves a real problem inside the video&#39;s own narrative — holds retention because the audience is watching a solution arrive, not an interruption.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>you know, that&#39;s a way to make the ad uh or the product the hero of the video. And I I think it&#39;s kind of like the the I someone actually mentioned that it&#39;s the hero style of ad</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">An ad read structured as a &#39;stepping stone on the path to the solution&#39; — narrate the problem, show the product producing the fix, and only then disclose the sponsorship — reads as process rather than advertisement and keeps viewers watching.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>the closer you are to kind of making it like this where it becomes uh a stepping stone on the path to the solution that you are trying to find then I feel like your your audience would be a little bit more inclined to watch through it</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">For a build video, the finished product should be teased in the opening — enough that the viewer sees it is real (one or two working movements), while the true reveal/test is held for the end. Showing the whole thing is not required; showing nothing is the failure mode.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the video&#39;s promise turn on WHETHER IT WORKS (feasibility — withholding preserves the question) or on WHAT IT LOOKS LIKE (spectacle — proof of delivery is the click-confirmation), and does the thumbnail already show the finished object? If the thumbnail shows it, withholding is impossible and reads as a bait-and-switch; if the thumbnail poses a question, showing the object closes it. Restated: (a) thumbnail shows the finished object → first frame must partially deliver it; (b) thumbnail poses a feasibility question → withhold the object, show the plan.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>you don&#39;t have to give like the whole shebang in the beginning, but you&#39;re you&#39;re teasing it more and finding a way to draw people out that normally wouldn&#39;t stay for the entire idea</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Rewriting a build video&#39;s voiceover to be LESS technical and more emotionally staked raised the 30-second retention from 63% to 69% on an otherwise comparable video from the same channel.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>So, this one&#39;s like 63 at the 30 and then this one&#39;s at 69.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Mid-video excess drop-offs in build content cluster on mid-build recaps, tool swaps and segues — moments with nothing for the viewer to follow into. The fix is to open the segue with a problem that must be solved, compressed to roughly a 15-second bridge.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>if there&#39;s kind of like a midbuild recap, tool swap, or some segue where there&#39;s nothing for the audience to kind of follow into, you should try to lead with a problem that you have to solve into that next moment.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">For expert makers, on-camera FAILURE is a retention trap rather than a leak: viewers who know the creator is skilled stay to see whether the mistake gets fixed, so mistakes and troubleshooting should be kept in the edit.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>our makers failure moments are kind of like retention traps because when you do something bad on a video and you&#39;re an expert, people kind of automatically expect like he&#39;s not going to leave it that way, is he?</blockquote>
+  </details>
+</div></div>
+<h2>storytelling</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention dips consistently at the END of build videos, and the fix is to hold a genuinely uncertain experimental payoff for the final segment and cut out mid-moment, so anticipation is never released before the video ends.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The terminal 95-100% band is the steepest post-intro band in 87% of Channel C&#39;s videos (n=30), 100% of Channel E&#39;s (n=9), 90% of Channel F&#39;s (n=10) and 100% of Channel G&#39; (n=10) — 4 independent maker-build channels, 92% of 59 videos. Median terminal hazard per 1%: Channel C 4.63%, Channel E 3.47%, Morley 3.89%, Zac 5.47%, against a 60-90% mid-video hazard of 0.03%, -0.01%, -0.09%, 0.07% (i.e. flat or rising). It is niche-differentiated: gaming (Channel A) shows the pattern in only 37% of videos with a terminal hazard of 1.27%; motorcycle 77% / 3.49%.</p>
+    <p class="caveat">Caveat: Only the FIRST half of the claim was tested. The prescribed fix (an unresolved experimental payoff held to the end, cut mid-moment) is untestable here — we hold no labelling of which videos end on a completed reveal vs an unresolved test. The last 5% also contains end cards and outros that every video has, so part of the terminal drop is a platform artifact rather than a storytelling failure; what makes the finding non-trivial is the CONTRAST with gaming (37%), not the drop itself.</p>
+    <blockquote>Hold a big experimental payoff for the very end and close off in the middle of that moment
+Like you have a main payoff, and then the experimental of something that may or may not go well, to ensure anticipation can still be built</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Adding an emotional promise with a third-party verdict — the build must be approved by a specific person — raised both retention and views versus the same creator&#39;s earlier videos in the identical format, with the retention curve spiking at the reveal.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> The retention half reproduces on both channels that carry such videos. Channel F: 4 third-party-verdict videos (&#39;I Built a Puzzle Door to Trick My Wife&#39;, &#39;I Built a Secret Door to Trick my Landlord&#39;, &quot;Secretly Building my Wife&#39;s Dream Office&quot;, &#39;I Built an Over-Engineered Door for My Wobbly Cat&#39;) hold 95.9% of their 85%-mark audience to the end, vs 70.7% for the other 6 — a 25pp gap. Channel E&#39;s single such video (&#39;They said I needed an Engineer for this&#39;) holds 101.7% (it RISES) vs 88.8% for the other 8. The VIEWS half reverses: Morley&#39;s third-party videos median 828,475 first-28d views vs 1,073,582 for the rest.</p>
+    <p class="caveat">Caveat: n=4 vs 6 on one channel plus a single video on another — far below anything promotable, and title-based classification will miss reveals that are not signalled in the title (Channel C and Zac register zero such videos, which is likely a coding failure rather than a real absence). Correlational: the same creator choosing an approval-stakes build may also be choosing his most-developed ideas. Worth a proper follow-up with reveal timestamps.</p>
+    <blockquote>compared to the other video in that same format that he did, it did way better retention-wise and also overall for his views. And I think part of that when we saw like the difference, it was the aspect of having an emotional payoff or emotional promise</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 4 channels</span>
+  </div>
+  <div class="txt">Progression that builds something up retains; progression that strips something down loses viewers — even though both are progress toward the stated goal.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> Channel C, the only renovation channel, splits cleanly in the claimed direction: subtractive language in 10% of her 105 drops vs 2% of her 96 peaks (5x), additive in 16% of drops vs 24% of peaks. Channel D 1% vs 0% subtractive, 8% vs 14% additive — same direction, tiny base. Channel A 0% vs 0% subtractive, 3% vs 8% additive. Channel E REVERSES on the additive side (48% of drops vs 30% of peaks). Title-level testing was impossible: zero strip-down titles across all four maker channels and only 1 in 330 maker-build corpus videos.</p>
+    <p class="caveat">Caveat: Base rates are so low (0-10%) that a handful of moments drives every number, the coding is our own pipeline&#39;s language rather than an independent label, and comparing drops against peaks is not the within-video span comparison the claim&#39;s test asks for. Channel E contradicting the additive half on n=42 matters.</p>
+    <blockquote>Negative progression is where we&#39;re going towards something but we&#39;re breaking off. So for example let&#39;s say we&#39;re gonna renovate a room while cleaning up the room is technically removing things. That&#39;s negative progression because we&#39;re still progressing but we&#39;re progressing through taking things away. You know when we&#39;re stripping things down that&#39;s bad when we&#39;re building things up that&#39;s good</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 4 channels</span>
+  </div>
+  <div class="txt">State the objective WHAT first and delay the emotional WHY until roughly the 15-20 second mark — viewers will not accept the why until they know the what is relevant to them, and existing fans experience an early why as a reason to click off.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> Curves are stored at one sample per percent of duration. Median seconds per sample: Channel C 13.8s, Channel F 17.0s, Channel G 15.2s, Channel E 31.1s. A test that must separate &#39;why starts before 10s&#39; from &#39;why starts after 15s&#39; needs sub-10-second resolution on channels where one sample spans 14-31 seconds. We also store no transcript passage boundaries — only ~5-word verbatim quotes attached to flagged moments.</p>
+    <p class="caveat">Caveat: Not a judgement on the claim. If full transcripts with timings were persisted alongside the curves (they are fetched during regression runs but not stored), this becomes testable on 59 maker-build videos across 4 channels.</p>
+    <blockquote>a lot of people don&#39;t care about the why until they&#39;ve heard about the what and feel like it&#39;s relevant to them in a way. … we&#39;re kind of hitting the 15 to 20 second marker. So we&#39;re not out of the first 30 yet. Um this is where we can start implementing maybe some of that why. … that&#39;ll be a clickoff point if we kind of like double down on like a why and it&#39;s like I already know why you&#39;re doing </blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">Structuring each SCENE as Problem → Theory → Execution (not just the video as a whole) undulates anticipation and is prescribed as a retention technique — the theory beat must be delivered WHILE the build is progressing, not before it.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Try to lead into each scene by presenting PTE
+Problem - Theory - Execution
+This is presenting the problem you face, then building up the theory while its being built, THEN you see the execution of it.  This is a great retention strategy to undulate the flow of your video with anticipation</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">A real-world constraint should be reframed as a DEADLINE to create stakes, then twisted mid-video into an advantage — the reversal re-engages viewers because the situation stops playing out as expected.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>it&#39;s less about that you took this trip to hide it and now the narrative kind of turns into you mentioned this because it sets a deadline which is a way to provide stakes to your audience … but then I realized maybe Croatia wasn&#39;t a deadline. It was actually the perfect excuse to get out of the house so the boys can come in and do the work needed … so that audiences are almost like re-engaged rete</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">Deliberately failing the final stress test creates both an end-of-video hook and a licensed sequel — the same mechanic as a TV villain surviving the finale.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>creatively you can almost do a thing where it fails on purpose, right? You pushed it so hard you failed it on purpose so that you have an excuse to do a new video on pushing it to the limit.</blockquote>
+  </details>
+</div></div>
+<h2>strategy</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">strategy</span>
+    
+    
+  </div>
+  <div class="txt">A Sims building channel&#39;s durable format is not the topic &#39;roofs&#39; but the viewer contract — diagnose a recognizable design failure, preserve meaningful constraints, show the decision process, and prove the result both aesthetically and functionally.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>The durable format is not &quot;roof videos.&quot; It is the viewer contract: diagnose a recognizable design failure, preserve meaningful constraints, make the decision process visible, and prove the final build aesthetically and functionally. Roofs are one variable inside the contract.</blockquote>
+  </details>
+</div></div>
+<h2>production</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">The repeatable episode skeleton for a Sims building channel is: diagnose, preserve the constraints, make three decisions, rebuild, play test, and name the rule — with the footprint, pack, budget, or submission as the changing variable.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Choose a format | Diagnose -&gt; preserve constraints -&gt; make three decisions -&gt; rebuild -&gt; play test -&gt; name the rule.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">For a Sims makeover video the delivery requirement is a preserved floor plan, a same-angle before/after, and a routing (playability) test — the preserved constraint is what makes the transformation legible as proof rather than as a different house.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I Fixed 5 Subscriber Roofs Without Moving Their Walls | Preserved floor plan; same-angle before/after; routing test.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Showing a mistake happening and being fixed retains better than explaining that a mistake happened — the audits treat &#39;Show &gt; Tell&#39; as a specific retention intervention for the explanation segments, not a general style preference.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Show&gt;Tell
+Instead of explaining the mistake, show it occurring and show the fix for it
+Great for watchtime</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">In quasi-educational niches, production value functions as a CREDIBILITY signal — viewers read polish as reliability of the information, so perceived production value affects clickability and trust, not just enjoyment.</div>
+  <div class="src">Source: our own channel audits</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the imperfection in the SUBJECT or in the CRAFT? A cut that fails, a measurement that is wrong, a joint that has to be redone is evidence that the process shown is real — it is content, and it is what makes the viewer feel they are building alongside. Clipped audio, a soft focus pull, an unbalanced grade, a jump cut that loses the thread is evidence that the MAKER is careless, and the viewer transfers that judgement to the information. The repaired rule: never hide the subject&#39;s failures, never show the craft&#39;s. This also disarms Galloway&#39;s 21cb7a502c05 (&#39;production upgrades do not make outliers&#39;) — polish is a floor condition for trust in an information niche, not a lever on reach.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Your niche is highly impacted by production value
+Essentially educational in some ways, so people will look at it being more reliable</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-wisdom">Wisdom</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Leaving mistakes in the edit makes the audience feel they are building alongside the creator and is prescribed as retention-positive — deliberate imperfection is treated as an asset in maker/DIY content, not a production defect to be minimised.</div>
+  <div class="src">Source: our own channel audits</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the imperfection in the SUBJECT or in the CRAFT? A cut that fails, a measurement that is wrong, a joint that has to be redone is evidence that the process shown is real — it is content, and it is what makes the viewer feel they are building alongside. Clipped audio, a soft focus pull, an unbalanced grade, a jump cut that loses the thread is evidence that the MAKER is careless, and the viewer transfers that judgement to the information. The repaired rule: never hide the subject&#39;s failures, never show the craft&#39;s. This also disarms Galloway&#39;s 21cb7a502c05 (&#39;production upgrades do not make outliers&#39;) — polish is a floor condition for trust in an information niche, not a lever on reach.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Allow your projects to feel like you’re doing it with the audience; let your mistakes be captured so you establish common solutions</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-wisdom">Wisdom</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">He cautions against lengthening videos when the creator is feeling pressure: shrinking project scope while holding quality, then ramping back up, is the sustainable path — and cutting length only works if cadence rises to compensate.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>Uh, I think that if you tried going down in video uh, length, you would have to put out more videos for … it is better to start going quality with smaller projects and then eventually ramping back up to what you really find that you enjoy doing and doing like more drawn out videos.</blockquote>
+  </details>
+</div></div>
+<h2>community</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">community</span>
+    
+    
+  </div>
+  <div class="txt">Technical depth for the hardcore-maker segment belongs at the END of the video as non-invasive &#39;shop notes&#39; — that way the core is served without forcing casual viewers to skip forward.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>maybe there&#39;s a way we can add some form of thing for those people like shop notes or something that is more in depth at the end. um just so that like people that really do care about like how to do this themselves like truly um they have the ability to do so but it&#39;s kept in the back and kept non-invasive</blockquote>
+  </details>
+</div></div>
+
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

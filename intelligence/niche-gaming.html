@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Gaming · Influint intelligence</title>
+<link rel="icon" href="../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.claims{display:grid;gap:12px;margin-top:16px}
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+</header>
+
+<h1>Gaming</h1>
+<p class="lede intel-hero">Claims that apply specifically to gaming channels. Advice learned in one niche often fails in another, so these are kept separate from the general set rather than laundered into universal rules.</p>
+<div class="intel-stats">
+  <div><div class="v">18</div><div class="k">Claims</div></div>
+  <div><div class="v">3</div><div class="k">Tested</div></div>
+  <div><div class="v">0</div><div class="k">Candidate laws</div></div>
+</div>
+<h2>ideation</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">ideation</span>
+    
+    
+  </div>
+  <div class="txt">The swap test for borrowing a format: take the source channel&#39;s outliers and ask whether the concept keeps its novelty and humour with your subject substituted in. Formats rooted in specifically human relationships (&#39;stuck with your ex&#39;) fail the test for non-players.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>we just think okay does this still retain its funniness if the sims were swapped in place. So for example if we did like um strongest verse the smartest in some ways there might be something that is still interesting with that in the Sims because they have attributes that display those things. But if it was maybe like being stuck with your ex, um it might not be as entertaining for nonsimmers beca</blockquote>
+  </details>
+</div></div>
+<h2>packaging</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">The intro to a long-form challenge video should be built as premise + escalation + rule/stakes, and that same intro is publishable as the short — the short then drives people to the long-form.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>So, all that right there is the is the hook, which includes the premise, escalation, and the rule if any the triple P&#39;s, I think.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">packaging</span>
+    
+    
+  </div>
+  <div class="txt">On For You-page platforms, a &#39;reverse hook&#39; — a broad topic to win reach plus a positioning line as the final sentence — filters who follows, raising follower quality without sacrificing top-of-funnel reach.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>So what I would say is make a kind of a reverse hook. Like, the hook is at the end to get the right people to follow you. So cast a wide net</blockquote>
+  </details>
+</div></div>
+<h2>retention</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Front-load the segment the audience has NOT seen before and place the proven, previously-successful segment later in the video, so novelty carries the opening and familiarity holds the middle.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>now you should frontload with one they haven&#39;t seen yet for this video and you frontload with one of the new ones we came up with today. Whatever is the easiest if I&#39;m being honest and you just set that up. That&#39;ll be your intro one. That&#39;ll cut down a lot of people.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">An ad read that is deliberately OUT OF CHARACTER for the channel creates enough novelty to be worth watching — a men&#39;s-soap read staged as a comedic bit on a female gaming channel produced a measurable retention increase at that exact moment.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>And what happened was that it made a retention uh like increase actually at that moment because of the way that we did the ad segment. And I always show this as like a case study example of um how like you can kind of like have fun with things like this.</blockquote>
+  </details>
+</div></div>
+<h2>storytelling</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 2 channels</span>
+  </div>
+  <div class="txt">Contestant-elimination formats should burn through early rounds fast and halve the field repeatedly until 8–12 remain, because ~10 is the largest number a viewer can hold and track, and only then does personality attachment become possible.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> Neither gaming channel runs contestant-elimination formats. Channel A&#39;s 30 analysed videos are challenge/obby/roleplay formats (&#39;Roblox WOULD YOU RATHER: BABY TOWER&#39;, &#39;ROBLOX PROTECT THE AIRPORT&#39;, &#39;Roblox GUESS MY ASMR&#39;), and Channel B&#39;s 30 are the same shape with no retention curves stored at all. We hold no chapter markers, no contestant counts, and no segment boundaries for any video in the store.</p>
+    <p class="caveat">Caveat: None — data gap plus cohort mismatch. Testing this needs a challenge-entertainment channel in the knowledge base with per-round timestamps. The same gap makes b0090a2f973e and ed5deadefd88 untestable on the same grounds.</p>
+    <blockquote>it&#39;s it&#39;s a constant game of half half until you get to about 8 to 12 people. When you get to 8 to 12 people statistically I think what we had found is that it&#39;s easier for people to focus on it. And there&#39;s a a psychological study that I think one of their strategists had discovered or I knew about this as well. Honestly, I remember in school learning about it that um humans tend to find it easie</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">In post-production, cut in skits and interview beats for the contestant you already know wins, so the audience is attached to them before the finale — the emotional arc is manufactured retroactively, not captured live.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>when the game is done and they look at the footage again, they retroactively cut in the post edit certain characters that they know are going to duke it out to the end.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">Segment-based videos hold best at THREE TO FIVE rounds with escalating lengths (~2 min, ~4 min, ~7 min); one round is too thin and many rounds fail without a culminating payoff.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>you could try to stretch it out on just one miniame, but what I have found is that it doesn&#39;t work that great um when you just do one, but it also does not work out that great when you do too many without having something that is like a culmination. … So, I&#39;ve always found that like three to five tends to be a sweet spot when you don&#39;t have like some culmination.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">storytelling</span>
+    
+    
+  </div>
+  <div class="txt">In elimination-format videos, cut the field down fast in the opening rounds and get to 8–12 contestants, because ~10 is the largest set a viewer can hold at a glance — only then shift the edit to personalities.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>it&#39;s a constant game of half half until you get to about 8 to 12 people. When you get to 8 to 12 people statistically I think what we had found is that it&#39;s easier for people to focus on it. ... humans tend to find it easiest to remember up to about 10</blockquote>
+  </details>
+</div></div>
+<h2>analytics</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-warn">Warning</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 1 channels</span>
+  </div>
+  <div class="txt">In gaming, long uncut formats (event VODs, ranking/tier lists) produce deceptively high AVD with catastrophic APV — 12:23 AVD at 7.95% APV, and the lowest CTRs on the channel — so AVD alone will misidentify them as the channel&#39;s watchability leaders.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> The headline case reproduces once, strikingly: the 128-minute &#39;Surviving the HARDEST MM2 Challenges for 24 Hours&#39; shows AVD 24.7 minutes (channel&#39;s highest) at APV 19.4% — dead last of 30 against a 42.3% median. But it does not generalise: the channel&#39;s top-5 videos by AVD have a median APV of 40.9%, essentially the channel median of 42.3%, and its 39-minute and 30-minute videos hold 46.1% and 39.9%. Length alone does not produce the pattern.</p>
+    <p class="caveat">Caveat: One channel and effectively one video — an anecdote, not a finding. The CTR half is untestable (no CTR data). The second gaming channel we hold (Channel B) has no retention curves at all, so there is no independent gaming replication available. The general warning that AVD misidentifies watchability leaders is better supported by the cross-channel WTH test (4524d4e423bd) than by this niche-specific version.</p>
+    <blockquote>Sims 4 – Rankings/Tier Lists
+2
+25,548
+1,179
+2.95%
+12:23
+7.95%
+305.15
+15.5
+7.35%</blockquote>
+  </details>
+</div></div>
+<h2>strategy</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 27 channels</span>
+  </div>
+  <div class="txt">Upload timing derived from data can contradict audience intuition and still win: a gaming channel&#39;s audience peaked in the early morning rather than after school, and shifting to it produced the channel&#39;s best video in a long time and 64 million views in 28 days.</div>
+  <div class="src">Source: Derrel Eves</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> (a) 27 channels testable: publishing in the channel&#39;s habitual hour was better on 13 and worse on 14 — a coin flip. Individual deltas swing wildly in both directions (Denis +1.25, Kat +0.85 vs PrestonGamez -0.66, NicoBlox -0.65), which is what noise at n~20 looks like. (b) Day-of-week medians span only 0.86-1.12x with no direction shared across niches (Saturday is the best maker day at 1.05 and the worst motorcycle day at 0.86). A pooled hour-bucket comparison did look significant (p=0.002-0.018) but I discard it: the &#39;best&#39; and &#39;worst&#39; hours were chosen from the same data being tested, so that test is circular.</p>
+    <p class="caveat">Caveat: The claim is about matching a specific measured audience-online peak, and that peak is exactly the datum we lack — a channel&#39;s modal publish hour is not the same thing as its audience peak, so a null here does not refute the claim, it only shows there is no generic publish-hour effect. The 64M-view anecdote is a single video on a channel we do not hold; single-video before/after evidence cannot separate timing from the video itself.</p>
+    <blockquote>It was a gaming channel, so he had been uploading in the afternoon when gamers would be getting home from school and work, but I saw that his content performed best in the early morning.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">strategy</span>
+    
+    
+  </div>
+  <div class="txt">Live streams do not cannibalise long-form; they feed it, because viewers who missed the stream seek out the edited breakdown afterwards — the stream becomes raw production for both the long-form cut and the shorts.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>there&#39;s there&#39;s something so beautiful about live streaming that it doesn&#39;t make it um it doesn&#39;t hurt the long form. I&#39;ve always found that it actually helps it.</blockquote>
+  </details>
+</div></div>
+<h2>production</h2>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">A mini-game/challenge video should run 3 games (roughly 2, 4 and 7 minutes, escalating) for a 13–15 minute video; one game is too few and many games without a culminating event also fails — 3 to 5 is the sweet spot.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>So that you know the first one is super quick that&#39;s like 2 minutes long. The second one is a little longer. That&#39;s four minutes long. The third one, you could honestly do three with this cadence and it&#39;s like seven minutes long. So that&#39;s seven plus six. So that&#39;s like a 13 to 15 minute video.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Setup complexity has no correlation with views: on Minecraft content, time-to-set-up did not predict view count, and switching to concepts that were trivially easy to produce raised performance — partly because an easy format gets repeated.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>there was no correlation to the amount of time it takes to set up to the views and it was kind of just like a completely different uh correlation to the reason why. So when we saw that, we were like, &quot;Oh, okay. Well, in that case, let&#39;s just think of videos that are so freaking simple to do.&quot; And when we did that, we we ended up doing the best because when a video is so easy to make, you want to d</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">There is NO correlation between how long a video takes to set up and how many views it gets — so the correct bias is toward formats that are cheap to produce, because cheap successful formats get repeated.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>what we realized was there was no correlation to the amount of time it takes to set up to the views and it was kind of just like a completely different uh correlation to the reason why. … we we ended up doing the best because when a video is so easy to make, you want to do it again because it did well.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Production complexity does not correlate with views — and simple formats outperform partly because they are cheap enough to repeat, which is what compounds.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>there was no correlation to the amount of time it takes to set up to the views ... let&#39;s just think of videos that are so freaking simple to do.&quot; And when we did that, we we ended up doing the best because when a video is so easy to make, you want to do it again because it did well.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Character attachment in competition formats is manufactured in POST, not captured live: once the winner is known, cut interview/skit beats for that person into earlier rounds so the audience already likes them by the finale.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>when the game is done and they look at the footage again, they retroactively cut in the post edit certain characters that they know are going to duke it out to the end ... in the post, we made sure that we we added him in all the key ports to make him feel lovable and liked</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+  </div>
+  <div class="txt">Mini-game compilation videos have a sweet spot of three to five games (~13–15 minutes); one game stretched out underperforms, and too many games without a culminating event also underperforms.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>I&#39;ve always found that like three to five tends to be a sweet spot when you don&#39;t have like some culmination.</blockquote>
+  </details>
+</div></div>
+
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

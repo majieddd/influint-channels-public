@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>What this system knows · Influint</title>
+<link rel="icon" href="assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.claims{display:grid;gap:12px;margin-top:16px}
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="index.html">All channels</a><a href="intelligence.html">Intelligence</a></nav>
+</header>
+
+<h1>What this system knows</h1>
+<p class="lede intel-hero">Every claim here was extracted from expert source material with a verbatim quote
+attached, then tested against real channel data wherever it could be. Nothing is
+asserted because it sounds right. Where our data contradicted a widely-repeated
+piece of advice, that is recorded too — including when it contradicted us.</p>
+
+<div class="intel-stats">
+  <div><div class="v">839</div><div class="k">Claims</div></div>
+  <div><div class="v">192</div><div class="k">Empirically tested</div></div>
+  <div><div class="v">36</div><div class="k">Candidate laws</div></div>
+  <div><div class="v">25</div><div class="k">Refuted by our data</div></div>
+  <div><div class="v">6</div><div class="k">Contested</div></div>
+</div>
+
+<h2>How to read this</h2>
+<div class="legendbox">
+<div><b class="s-law">Law · 0</b><p>Repeatable, verified across multiple independent channels, and confirmed by a human. Acted on as settled.</p></div>
+<div><b class="s-cand">Candidate Law · 36</b><p>Held everywhere we looked — verified across three or more independent channels and survived a contradiction check. Awaiting human sign-off; nothing becomes a Law automatically.</p></div>
+<div><b class="s-theory">Theory · 626</b><p>A plausible causal claim from a credible source. Either not yet tested, or tested with mixed results.</p></div>
+<div><b class="s-wisdom">Wisdom · 26</b><p>Judgement and taste that resists measurement. Experienced practitioners agree; our data cannot falsify it.</p></div>
+<div><b class="s-warn">Warning · 120</b><p>A failure mode to avoid, described by someone who has seen it happen.</p></div>
+<div><b class="s-contested">Contested · 6</b><p>Two well-evidenced claims genuinely conflict. Recorded with the discriminating question — the missing context that would make both true in their own domain.</p></div>
+<div><b class="s-refuted">Refuted · 25</b><p>Tested against our own data and it pointed the other way. Kept rather than deleted: knowing a widely-repeated tactic failed is itself an asset, and deleting it invites re-learning the same mistake.</p></div>
+</div>
+
+<h2>Sorted by who it applies to</h2>
+<div class="nichegrid">
+  <div class="nichecard"><a href="intelligence/general.html"><div class="n">General →</div>
+  <div class="c">699 claims that hold for essentially any channel</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-vlog-lifestyle.html"><div class="n">Vlog / lifestyle →</div><div class="c">5 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-education.html"><div class="n">Education →</div><div class="c">14 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-maker-build.html"><div class="n">Maker / build →</div><div class="c">48 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-home-improvement.html"><div class="n">Home improvement →</div><div class="c">3 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-motorcycle-travel.html"><div class="n">Motorcycle / travel →</div><div class="c">7 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-challenge-entertainment.html"><div class="n">Challenge / entertainment →</div><div class="c">20 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-branded-content.html"><div class="n">Branded content →</div><div class="c">2 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-gaming.html"><div class="n">Gaming →</div><div class="c">18 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-short-form.html"><div class="n">Short-form →</div><div class="c">6 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-documentary-travel.html"><div class="n">Documentary / travel →</div><div class="c">7 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-commentary-news.html"><div class="n">Commentary / news →</div><div class="c">4 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-other.html"><div class="n">Other →</div><div class="c">2 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-outdoors.html"><div class="n">Outdoors →</div><div class="c">15 claims specific to this niche</div></a></div>
+  <div class="nichecard"><a href="intelligence/niche-community-led.html"><div class="n">Community-led →</div><div class="c">1 claim specific to this niche</div></a></div>
+</div>
+
+<h2>Contested — where good sources genuinely disagree</h2>
+<p class="legend">A paradox of two truths is only a paradox for want of context. Each of these
+records the discriminating question: the thing you would need to know to tell which
+claim applies when.</p>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Announcing the end of a video is what causes the terminal retention cliff - viewers leave the moment they perceive the core content is finished, so the transition to the next video must happen before any wrap-up signal.</div>
+  <div class="src">Source: Sean Cannell</div>
+  <div class="qbox"><b>What would settle it</b><p>Which objective is being optimised — SESSION continuation (next-video click-through and watch time in this sitting) or REPEAT viewership (whether this viewer opens the channel&#39;s next upload)? These pull opposite ways at the outro, and each source is silently optimising a different one. The store&#39;s own 4214845e0b40 (Joos: under-delivering on a teased reward drives dopamine below baseline and suppresses willingness to wait in FUTURE videos) says the cost of the hand-off lands on later uploads, which is exactly the metric the retention curve cannot see. Restated: (a) optimising session watch time → hand off before the wrap-up signal; (b) optimising return rate on future uploads → resolve cleanly, and only then offer the next video. UNTESTABLE IN OUR DATA — we hold no next-video click-through or per-viewer return data.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> A terminal cliff is real and large in 6/6 channels. Final-10% loss (median): Channel G 35.3%, Channel C 28.1%, Channel D 23.0%, Channel F 22.4%, Channel E 14.1%, Channel A 9.4%. The matched mid-video 10% band loses far less: Channel C 1.1%, Channel F 3.0%, Channel G 2.2%, Channel E 2.0%, Channel D 10.6%, Channel A 9.2%. Per video, final-10% loss exceeds mid-10% loss in 97 of 119 cases. Median hazard by band is U-shaped: highest at 1-5%, ~0 through 46-90%, then rising again at 91-100%.</p>
+    <p class="caveat">Caveat: The cliff exists; the stated CAUSE does not follow from it. We have no labelling of where a wrap-up signal occurs, so we cannot separate &#39;the creator announced the end&#39; from the trivially expected fact that people stop watching when a video is over, from end-cards, from outros, or from the curve&#39;s own end artefact. The 3.7x spread between Channel A (9.4%) and Channel G (35.3%) shows the cliff size is not fixed, which is at least consistent with an editorial cause — but that is a hint, not a test.</p>
+    <blockquote>Most viewers will stop watching your video as soon as they realize the core content is done, so your only chance to keep them on your channel is to quickly transition them to other videos.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A video with high retention but low views has a PACKAGING problem, not a content problem — the retention proves the video can hold a wider audience than the packaging reached, so it is the prime repackaging candidate.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested:</b> The quadrant is the DEFAULT, not a diagnosis: among below-median-view videos, the share that also sit above median APV is Channel C 60%, Channel D 60%, Channel A 73%, Channel F 80%, Channel G 80%, Channel E 100%. This is forced by the underlying negative views/retention correlation (pooled -0.54) — low-view videos are ALSO the high-retention ones almost by construction, so the rule flags 60-100% of every channel&#39;s underperformers and discriminates almost nothing.</p>
+    <p class="caveat">Caveat: Two separate problems. First, no repackage outcomes exist in our data, so the causal claim (&#39;retention proves it can hold a wider audience&#39;) is untestable — retention was measured on the narrow audience it actually reached, and there is no evidence it would survive a wider one; the negative views/retention correlation is direct evidence against exactly that extrapolation. Second, even as a screening heuristic the rule barely narrows the field. The team&#39;s existing &#39;repackage or double down&#39; verdict table, which ranks retention-at-50% AGAINST first-28d views rather than thresholding both, is the sounder version of this idea.</p>
+    <blockquote>anything that has uh a low retention or like middle retention, we might be able to still repackage, but things that have a high retention, if they don&#39;t have as many views, then it just show it has room to grow where the reach is just not as big as the potential of the actual video holds</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Within a channel, videos with the HIGHEST view counts systematically sit BELOW the channel&#39;s average retention, because wider reach pulls in newer, less sticky viewers — so falling retention on a breakout is expected, not a defect.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> 6/6 channels: top-view video below channel mean APV (Channel C 24.8% vs 46.7%, Channel D 23.9% vs 30.8%, Channel E 25.0% vs 31.6%, Channel A 21.9% vs 41.4%, Channel F 33.1% vs 40.0%, Channel G 42.8% vs 43.6%). Note Channel G is a hair below, not meaningfully below.</p>
+    <p class="caveat">Caveat: Channel G&#39; gap is 0.8pp — effectively a tie, so &#39;systematically&#39; is really 5 clear channels plus one null. Correlational; the causal story (reach imports weaker viewers) is not observable in our data.</p>
+    <blockquote>as a video gets to be bigger or have more views. there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">analytics</span>
+    
+    
+  </div>
+  <div class="txt">Despite CTR decaying with reach, first-hour and first-24-hour CTR is strongly correlated with long-term video performance on established channels — so early CTR is the usable predictive signal even though lifetime CTR is not.</div>
+  <div class="src">Source: Paddy Galloway</div>
+  <div class="qbox"><b>What would settle it</b><p>Is day-one CTR read as an ABSOLUTE number or as a residual against the SAME channel&#39;s own prior day-one CTRs, and is that channel&#39;s day-one audience compositionally stable? Paddy&#39;s claim is scoped to established channels, where day one is a near-constant subscriber-heavy panel — that stability is what makes the comparison legitimate. Joos&#39;s counterexample is impression-accumulation rate varying per video, which corrupts absolute readings. Note the store already carries a partial carve-out from Joos himself (4f18d60d2b00: on news and patch-update channels day-one behaviour genuinely does carry signal). UNTESTABLE IN OUR DATA — we hold no CTR or impressions at all.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>there&#39;s a very strong correlation between first hour CTR and long-term video performance on a lot of established channels</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">analytics</span>
+    
+    
+  </div>
+  <div class="txt">Judging a video by its first 24 hours is actively deceptive, because different videos require different numbers of impressions before the SAME viewer clicks — one video converts on the second showing, another on the fifth.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>Is day-one CTR read as an ABSOLUTE number or as a residual against the SAME channel&#39;s own prior day-one CTRs, and is that channel&#39;s day-one audience compositionally stable? Paddy&#39;s claim is scoped to established channels, where day one is a near-constant subscriber-heavy panel — that stability is what makes the comparison legitimate. Joos&#39;s counterexample is impression-accumulation rate varying per video, which corrupts absolute readings. Note the store already carries a partial carve-out from Joos himself (4f18d60d2b00: on news and patch-update channels day-one behaviour genuinely does carry signal). UNTESTABLE IN OUR DATA — we hold no CTR or impressions at all.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>How many of you are still judging a video&#39;s performance by its first 24 hours? ... I&#39;m gonna tell you this right now This is extremely deceptive ... it could be that some videos take two times to show to a viewer before they&#39;re gonna click on it Other videos literally take five times to show to the exact same viewer</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-contested">Contested</span>
+    <span class="cat">retention</span>
+    
+    
+  </div>
+  <div class="txt">Ending on a negative emotional tone damages memorability and satisfaction (peak-end rule), and teasing the next video instead of fully resolving the current one produces LESS satisfaction than clean resolution.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>Which objective is being optimised — SESSION continuation (next-video click-through and watch time in this sitting) or REPEAT viewership (whether this viewer opens the channel&#39;s next upload)? These pull opposite ways at the outro, and each source is silently optimising a different one. The store&#39;s own 4214845e0b40 (Joos: under-delivering on a teased reward drives dopamine below baseline and suppresses willingness to wait in FUTURE videos) says the cost of the hand-off lands on later uploads, which is exactly the metric the retention curve cannot see. Restated: (a) optimising session watch time → hand off before the wrap-up signal; (b) optimising return rate on future uploads → resolve cleanly, and only then offer the next video. UNTESTABLE IN OUR DATA — we hold no next-video click-through or per-viewer return data.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev">Not yet tested against our data.</p>
+    
+    <blockquote>We sometimes think, yeah, but can we tease towards another video? That&#39;s going to lead to less satisfaction, by the way, than if we just resolve everything. ... that&#39;s because of a psychological thing called peak end rule, where you want the last tone of your video to be extremely positive.</blockquote>
+  </details>
+</div></div>
+
+<h2>Refuted by our own data</h2>
+<p class="legend">Widely-repeated advice that our channel data pointed against. Kept, not deleted —
+knowing a tactic failed is an asset, and deleting it invites learning it again.</p>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 52 channels</span>
+  </div>
+  <div class="txt">Making a subject the &#39;world&#39;s largest/fastest/most expensive&#39; version of a thing is a design decision that manufactures uniqueness, because a superlative topic has no direct competition on YouTube by construction.</div>
+  <div class="src">Source: Paddy Galloway</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Brief: superlative delta -0.06 (maker-builds, n=21), -0.01 (motorcycle, n=48), -0.05 (roblox, n=51) — negative in all three niches. My corpus check across 46 channels: WITH n=21 median 1.01x vs 1.00x (p=0.71); age-adjusted 0.98x vs 1.00x (p=0.52); 1 of 3 channels with &gt;=2 matches came out ahead. Our own channels: n=4, median 0.75x. The library agrees: &#39;The World&#39;s Most ___&#39; 1.09x, &quot;World&#39;s Most ___ People&quot; 0.98x, &#39;I Made the World&#39;s Most &lt;SUPERLATIVE&gt; &lt;THING&gt;&#39; 0.84x — three of the four lowest-lift formats we have mined. Channel G&#39; &#39;I built &quot;the world&#39;s best speakers&quot;&#39; returned 0.75x against his own median.</p>
+    <p class="caveat">Caveat: Title keywords are an imperfect stand-in for a genuinely superlative SUBJECT — a video can be about the world&#39;s largest thing without saying so in the title. Sample sizes for the tight regex are small (n=21 corpus, n=4 ours) even though three independent measurements agree on direction. The claim&#39;s premise (no direct competition) is not itself tested; only its performance consequence is.</p>
+    <blockquote>I talked about my latest Mark Rober video about how he does like the world&#39;s largest videos. So by design, that&#39;s unique because now it&#39;s the number one. There&#39;s no other competition.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 48 channels</span>
+  </div>
+  <div class="txt">Uploading &quot;whenever the video is ready&quot; is bad advice because of viewer churn: weekly is optimal, two weeks is the outer limit for exceptionally high-production content, and beyond that the creator falls out of the viewer&#39;s routine.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>What share of this channel&#39;s views arrive through the subscription/home feed versus suggested and search? Joos&#39;s mechanism is ROUTINE — a viewer&#39;s habit decays, which only costs you views if your distribution depends on that viewer returning. Eves states the other half himself (3d7710fb7636): consistency &#39;matters far less once traffic comes from search or recommendations.&#39; The second missing variable is which metric is being defended: our strategist&#39;s 7c02437e3d5d says returning/core viewers correlate with upload VOLUME, not quality, so a monthly channel structurally cannot build a large core — it buys outlier reach and forfeits the returning baseline. Ask: am I trying to raise the floor (returning share) or the ceiling (outliers)? Cadence buys the floor.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> (a) Pooled spearman(gap, channel-normalised first-28d views) = 0.00. Bucket medians: gap&lt;=7d n=44 → 1.01x channel median; 8-14d n=21 → 0.99x; &gt;14d n=48 → 0.99x. Mann-Whitney &lt;=7d vs &gt;14d p=0.98. Per-channel: Channel C -0.13, Channel D -0.02, Channel E -0.24, Channel A +0.12, Channel F +0.18, Channel G -0.63. (b) In maker-builds the correlation runs the OTHER way: spearman(median gap, median views) = +0.73 (n=12), and +0.73 again age-controlled (n=11). Bucket medians of channel medians: 8-14d = 32,719 views (n=1) vs &gt;14d = 571,360 (n=11). The slowest channels are the largest — Stuff Made Here 82d gap / 7.9M median, I did a thing 53d / 4.7M, Blacktail Studio 36d / 3.6M. Motorcycle +0.16 raw, -0.30 age-controlled (n=5); roblox +0.10 but every roblox channel is sub-weekly so there is no variance to read.</p>
+    <p class="caveat">Caveat: The cross-channel positive correlation is confounded with production scale: a three-month build is both a longer gap AND a bigger idea, so cadence is not the operating variable there — that half shows only that slow cadence does not preclude scale, not that slowness helps. The clean half is the within-channel null, and even that measures per-video reach, not channel trajectory: a churn effect could act on the subscriber base over years and be invisible in a 30-video window. We hold no returning-viewer share, which is the mechanism the claim actually names. Falsified by: a returning-viewer cohort series showing Regular-viewer share falling in channels whose gap exceeds 14 days.</p>
+    <blockquote>we often hear the advice that you can upload whenever. That&#39;s horrible advice, and I&#39;m going to tell you why. The reason why is because there&#39;s something called viewer churn. ... if you want something optimal and you cannot upload a lot, I would say once a week is the best. If you really have high production value ... you can do every two weeks. Anything less than two weeks, you&#39;re going to start </blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 46 channels</span>
+  </div>
+  <div class="txt">An outlier score is only actionable if computed RELATIVE to video age — comparing a 24-hour-old video against the lifetime views of the previous ten videos, and using average rather than median, systematically mis-ranks ideas.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Age half SUPPORTED and it is a large effect: within-channel Spearman(age, outlier) has a median of +0.36 across 38 channels (28 positive, 4 negative, 6 flat); globally the median outlier climbs 0.98x (&lt;90d) to 1.00x (90-365d) to 1.02x (1-2y) to 1.17x (2y+). Averaging half CONTRADICTED: the mean/median views ratio has a median of 1.21 across 46 channels and reaches 8.21 (RevZilla); a median of 63% of a channel&#39;s own uploads sit below its own mean, ranging to 94%, and 26 of 46 channels have more than 60% of their catalogue below the mean. An average baseline therefore labels the majority of a normal channel&#39;s output as underperforming, which is precisely the distortion the median avoids.</p>
+    <p class="caveat">Caveat: The claim bundles a correct diagnosis with an incorrect prescription; I have marked it contradicted because the specific method it prescribes fails, not because age-relativity is wrong. Our age adjustment (per-channel log-log fit) is itself a modelling choice and behaves badly on channels whose collected videos span a narrow age range — I excluded those. I did not test the specific &#39;24 hours vs previous ten videos&#39; comparison window, only the median-vs-mean baseline it names.</p>
+    <blockquote>a lot of them will work based on the last 10 videos, look at what their average views was, which again, they also use average instead of median, which I also think is stupid. ... You want to compare its views to the average of the previous, or the median, I would recommend median, of the previous three videos when they were also 24 hours old, right? So that makes it a fairer comparison.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 37 channels</span>
+  </div>
+  <div class="txt">A title decomposes into exactly three swappable slots — format (sentence structure), topic (subject), and amplifying word — and growth comes from holding the format constant while swapping the topic, not the reverse.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Holding the frame constant and swapping the topic returns median 0.954x age-adjusted against 1.016x for videos that changed the frame too (33 channels, p=0.0076). Only 15 of 33 channels showed frame-holding ahead. On our own channels the two are indistinguishable (0.99x vs 1.00x). The largest frame-held runs in the corpus land at or below channel-normal: Motovudu&#39;s Q&amp;A frame 0.74x over 11, Yammie Noob&#39;s 0.54x over 5, John Heisz&#39;s 0.68x over 6, ISHITANI&#39;s &#39;Making &lt;Piece&gt;&#39; 1.20-1.32x over 24.</p>
+    <p class="caveat">Caveat: The three-slot decomposition itself is a description, not a prediction, and is not what I tested — I tested the growth prescription attached to it. Amplifying words were not isolated separately. Same-method dependency as the two claims above.</p>
+    <blockquote>whenever we swap out the topic and we maintain the format, typically that the creator tends to grow and sustain views for longer. This is the reason why the advice comes into play that you want to actually find a format that you can deliver on like six, seven, eight times and live within that format.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 37 channels</span>
+  </div>
+  <div class="txt">A near-duplicate of a proven format outperforms a wholly new one because familiarity does the work of removing risk while a small novel element supplies the reason to click — roughly a 90/10 split of template to twist.</div>
+  <div class="src">Source: Alan Garnett</div>
+  <div class="qbox"><b>What would settle it</b><p>WHERE ON THE EXPOSURE CURVE is this format for this audience? Gannett already holds the reconciling pattern (115f4acc5069): liking follows an inverted-U against exposure count, rising with repetition to a peak and falling after, so a format has a finite number of uses. Both claims are true, on opposite sides of the peak — which converts an argument into a measurement problem: what is the instalment count, and is per-instalment performance still rising? Our mined-format table is weakly consistent with the decay side and worth watching rather than citing: the highest observed lifts sit on small match counts (I Built My Own After Getting Screwed, n=4, 2.92x; Exposing N Secrets, n=3, 2.76x) while the largest cohort in the table (Product Full Review, n=16) sits at 1.67x. That is confounded by naming granularity and cannot carry weight yet, but the store should record instalment index alongside every format so the peak becomes observable rather than argued about.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Corpus (33 channels, 831 videos): near-duplicates median 0.980x vs unique 1.005x (MWU z=-1.68, p=0.093). Age-adjusted the gap widens against repetition: 0.954x vs 1.016x (n=278 vs 534, z=-2.67, p=0.0076). Only 15 of 33 channels had repeats beating uniques. Our channels on first-28d views: repeated 0.99x (n=18) vs unique 1.00x (n=101), p=0.95. Conditional test, strict format frames (signature carrying &gt;=2 literal frame words): 9 pairs where the prior instance scored &gt;=1.5x produced follow-ups with median 1.01x and 0 of 9 reaching 1.5x (base rate 7%); median ratio next/prev = 0.29. Our channels: 3 such pairs, next median 0.72x, ratio 0.45, 0 of 3 reaching 1.5x.</p>
+    <p class="caveat">Caveat: Signature repetition is a proxy for &#39;near-duplicate of a proven format&#39; and catches generic title habits as well as deliberate franchises; a creator could execute the 90/10 rule without the title showing it. The conditional test that isolates deliberate repeats-of-a-hit is the strongest evidence but rests on only 12 pairs. Regression to the mean guarantees some decline from a &gt;=1.5x instance regardless of format logic — but the claim asserts near-duplicates beat wholly new videos, and they do not beat them even before conditioning on a prior hit.</p>
+    <blockquote>With a meme, you already know 90% of the joke. In this case, you know that grumpy Cat is grumpy, Ohanian told me. What makes it funny is the 10% twist, or what the caption is.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 37 channels</span>
+  </div>
+  <div class="txt">The correct way to generate a new format is to take a proven one and change exactly ONE key element — not to invent from scratch and not to copy wholesale.</div>
+  <div class="src">Source: Erik Bork</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> One-element-changed videos: age-adjusted median 0.954x (n=278) against 1.016x for from-scratch titles (n=534), MWU z=-2.67, p=0.0076 — the prescription&#39;s output is slightly WORSE than the alternative it is supposed to beat. Raw: 0.980x vs 1.005x. Our channels, age-free: 0.99x vs 1.00x. When the element-swap is applied to a demonstrably proven instance (&gt;=1.5x), the follow-up lands at median 1.01x with 0 of 9 reaching 1.5x.</p>
+    <p class="caveat">Caveat: Shares its method — and therefore its weaknesses — with claim 30b319487492; the two should not be counted as independent confirmations. Title signature cannot see element swaps that happen in the premise or thumbnail rather than the title, and the claim may be about which element to change rather than whether change helps at all. What the data rules out is the strong version: that one-element variation reliably produces above-normal videos.</p>
+    <blockquote>Build on successful movies in a genre that you&#39;d like to emulate by adding or changing one key element of what has worked in the past. She used the example of how James Bond begat Jason Bourne, a spy who doesn&#39;t know he&#39;s a spy, and also Mr. and Mrs. Smith, about two spies who were married, which then led to Spy Kids, about two married spies whose kids become spies.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 35 channels</span>
+  </div>
+  <div class="txt">Numbered/listicle titles are among the strongest title structures because the number sets an explicit expectation of scope and implied duration before the click.</div>
+  <div class="src">Source: Derrel Eves</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Any digit: maker-builds 1.01x vs 1.00x (p=0.71), motorcycle 1.00x vs 1.00x (p=0.51), roblox 1.00x vs 1.00x (p=0.66). Within-channel across 35 channels: 20 up, 15 down, median delta +0.08x. Strict listicle: maker-builds n=25, 1.11x vs 0.99x (p=0.51); motorcycle n=29, 1.00x vs 1.00x (p=0.39); roblox n=23, 1.00x vs 1.00x (p=0.91). Nothing anywhere reaches significance and the point estimates sit on 1.00x.</p>
+    <p class="caveat">Caveat: &#39;Among the strongest&#39; is a relative claim — a structure can be reliably fine without being a lift, and a null here does not prove listicles are bad, only that they do not outperform the channel&#39;s own baseline. Listicles may also be more common in search-driven sub-genres where the impression pool differs; I did not stratify by traffic source because we do not hold it.</p>
+    <blockquote>Include numbers for listicle video titles. This is by far one of the most powerful title and video strategies, because it gives the viewer a clear idea of what to expect, a clear time limit, and helps viewers remember</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 33 channels</span>
+  </div>
+  <div class="txt">Vague titles that withhold WHO and WHAT (&#39;They said I needed an engineer to make this&#39;) outperform specific ones because the missing information plus the urge to disprove a doubter drives the click.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>WHICH element is withheld, and is anything concrete given alongside it? The store already contains the reconciling pattern and does not know it: Loewenstein via Will Storr (c016b1b0d050, 029b6ab5c85b) says curiosity is an inverted-U over knowledge — weakest at total mystery AND at full spoiler — and the same internal source&#39;s other formulation (b252abcc8b24) is &#39;state the setup concretely and withhold the RESULT&#39; (&#39;I spent seven months in the wilderness. This is how many fish I caught&#39;). So the rule is: exactly one gap, sitting on top of a concrete, costly, verifiable setup. Galloway is attacking zero-information titles; the internal cases all carry a heavy stated investment. The second discriminator is demand timing — the Sturgis title was chosen to capture live event search within days, where the named event supplies the concrete half that the phrasing omits.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Vague-subject titles: maker-builds n=45 across 9 channels, median 1.00x vs 1.00x (z=-0.84, p=0.40); motorcycle n=33 across 12 channels, 0.99x vs 1.00x (p=0.73); roblox n=22 across 12 channels, 0.99x vs 1.00x (p=0.90). Within-channel: 12 channels, 7 up 4 down, tiny deltas. Meanwhile the opposite construction — more named things in the title — is significantly positive in 2 of 3 niches (rho +0.149 and +0.110). The data points the other way from the claim.</p>
+    <p class="caveat">Caveat: My regex captures grammatical vagueness, not the rhetorical device the claim describes: &#39;They said I needed an engineer&#39; works by implying a specific unstated antagonist, which is different from a title that is merely unspecific. A better test would need hand-labelled examples of the device. Treat this as contradicting the literal reading, not the craft intuition.</p>
+    <blockquote>when someone tells us you can&#39;t, we also we automatically almost want to disprove it and show that we can</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 32 channels</span>
+  </div>
+  <div class="txt">A repeated format decays: each additional instalment of the same idea loses remarkability until escalation is exhausted and views visibly plateau. Dream&#39;s Manhunt series is the named case.</div>
+  <div class="src">Source: CreatorNow</div>
+  <div class="qbox"><b>What would settle it</b><p>WHERE ON THE EXPOSURE CURVE is this format for this audience? Gannett already holds the reconciling pattern (115f4acc5069): liking follows an inverted-U against exposure count, rising with repetition to a peak and falling after, so a format has a finite number of uses. Both claims are true, on opposite sides of the peak — which converts an argument into a measurement problem: what is the instalment count, and is per-instalment performance still rising? Our mined-format table is weakly consistent with the decay side and worth watching rather than citing: the highest observed lifts sit on small match counts (I Built My Own After Getting Screwed, n=4, 2.92x; Exposing N Secrets, n=3, 2.76x) while the largest cohort in the table (Product Full Review, n=16) sits at 1.67x. That is confounded by naming granularity and cannot carry weight yet, but the store should record instalment index alongside every format so the peak becomes observable rather than argued about.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Raw corpus shows what looks like textbook decay: instalment #1 = 1.39x, #2 = 1.12x, #3 = 1.00x, #4 = 0.70x (46 groups, 30 channels). It is mostly an age artifact — within-channel Spearman(age, lifetime-views outlier) has a median of +0.36 across 38 channels (28 positive, 4 negative), and later instalments are by definition newer. Age-adjusted the ladder flattens to 1.08 / 1.02 / 0.88 / 0.84, and the per-group trend collapses from a median Spearman of -0.33 to -0.01 (9 negative, 8 positive of 20 groups). Age-free own-channel evidence points the same way: Channel C&#39;s 20-instalment &#39;Abandoned General Store&#39; run has Spearman(order, 28d score) = -0.22 with first-5 median 0.90x vs last-5 median 0.94x; Channel A&#39;s 14-instalment &#39;Roblox &lt;GAME&gt;&#39; frame is +0.14; Motovudu&#39;s 11 collected &#39;Q&amp;A with Simon Crafar&#39; parts show no downward trend (0.74, 0.79, 0.61, 0.67, 0.64, 0.72, 0.96, 1.10, 1.00, 0.71, 1.05). Two short runs do decay monotonically (Yammie Noob Q&amp;A 0.59 to 0.34 over 4; PrestonGamez &#39;But I ONLY Accept X&#39; 1.63 to 1.09 over 3), which is about what chance would produce across six runs.</p>
+    <p class="caveat">Caveat: Our longest observed runs are 11-24 instalments; Dream&#39;s Manhunt-style escalation formats, where the premise itself must escalate, are not in this data and could genuinely decay. A within-channel downward trend also cannot be separated from channel-level decline: Channel C&#39;s whole channel trends at -0.31 over the same window, so her format&#39;s -0.22 may be the channel, not the format. What is solid is the negative result — the raw decay pattern people cite is largely an artifact of comparing lifetime views across different ages.</p>
+    <blockquote>When Dream made his 10th or 20th manhunt video, no one cared anymore because it wasn&#39;t remarkable. So he had to escalate it and escalate it to the way he couldn&#39;t escalate it anymore.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 20 channels</span>
+  </div>
+  <div class="txt">Public outlier-research feeds make ideas MORE crowded, not less — because every competitor sees the same examples, so an adaptation needs proprietary context or materially different execution to be worth making.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Videos inside a copy-cluster outperform videos outside it: roblox age-adjusted residual +0.074 (n=121) vs -0.045 (n=261), Mann-Whitney p&lt;0.001 — i.e. adapting a visible outlier beat not adapting it, by roughly 30% on views. The first entrant does hold a premium (+0.138 vs +0.054, p=0.040), but there is no decay behind it: among later entrants order predicts nothing (spearman +0.05, n=100; 2nd entrant 0.040, 3rd 0.031, 4th-or-later 0.071; MW 2nd vs 4th+ p=0.355). Concretely: &#39;Exposing 11 SECRETS in Animal Hospital&#39; cluster ran CashBlox 7.72x → Techy Plays 1.38x → CaylusBlox 2.78x → Lana&#39;s Life 1.05x — the third entrant still beat its own channel median by 2.8x.</p>
+    <p class="caveat">Caveat: Serious confound on the first-mover half: a cluster only exists because someone copied a hit, so &#39;first&#39; is selected for having been successful — that premium is partly definitional and I would not spend anything on it. The inside-vs-outside comparison is the load-bearing result and it is driven almost entirely by roblox (maker-builds and motorcycle produced only 2 tight clusters between them), a niche where near-identical titles are the norm. This is correlation: cluster membership may proxy &#39;chose a game that is currently hot&#39;, not &#39;copied well&#39;. Falsified by: a niche where cluster members underperform non-members, or by CTR/impression data showing the adaptations win on impressions served rather than on merit.</p>
+    <blockquote>A public research feed can make an idea more crowded because competitors see the same examples. Your adaptation needs proprietary context or a materially different execution.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 20 channels</span>
+  </div>
+  <div class="txt">Entering a trend after its peak produces one strong period followed by a sharp collapse — the follow-on failure — so late entry is worse than no entry for a channel building a durable format.</div>
+  <div class="src">Source: Alan Garnett</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> 4th-and-later entrants: median residual +0.071 (n=44) — higher than 2nd entrants (+0.040, n=28) and 3rd (+0.031, n=28), MW 2nd vs 4th+ p=0.355. Against the non-participating baseline (roblox -0.045, n=261) every entry position is better. No collapse appears at any depth of entry.</p>
+    <p class="caveat">Caveat: Our corpus samples ~25 recent videos per channel, so we may not observe the true first entrant or the tail of a wave — a genuine post-peak collapse could sit outside the sampled window. &#39;Sharp collapse&#39; in the claim may also refer to the ADOPTING CHANNEL&#39;s later videos rather than the trend video itself, which we did not test. One niche dominates the clusters.</p>
+    <blockquote>If you opened a cupcake shop in 2015, soon after the cupcake craze had peaked. Yes, you might have had one busy year, but very likely you will soon experience a sudden drop in popularity if you haven&#39;t already.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">ideation</span>
+    <span class="cat">· Motorcycle / travel</span>
+    <span class="cat">· checked across 7 channels</span>
+  </div>
+  <div class="txt">Travel footage should be cut as informational/travel-guide content rather than as documentation of the trip — the informational framing gives the video a reason to be found and rewatched.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Informational framing UNDER-performs: WITH n=37 median 0.95x vs 1.00x (MWU z=-1.97, p=0.049); age-adjusted 0.87x vs 1.00x (z=-1.88, p=0.061). 5 of the 7 channels with &gt;=2 guide videos came out behind — FortNine 0.40x vs 1.11x, Moto Camp Nerd 0.59x vs 1.08x, MotoJitsu 0.71x vs 1.00x, RevZilla 0.88x vs 1.00x, Chaseontwowheels 0.77x vs 1.03x. Narrative framing sits at or slightly above normal: 1.03x raw, 1.10x age-adjusted (n=9, ns). Broader corpus how-to check across all 46 channels: 0.95x raw / 0.89x age-adjusted, ahead on only 1 of 6 channels.</p>
+    <p class="caveat">Caveat: Title framing is a weak stand-in for EDIT framing — a trip cut as a travel guide may still be titled narratively, which would put it in my &#39;narrative&#39; bucket and blunt the test. The claim also asserts a rewatch benefit, which lifetime views cannot see. The effect is modest and borderline-significant; treat it as &#39;guide-titled travel content does not outperform&#39; rather than &#39;informational cutting is wrong&#39;.</p>
+    <blockquote>They plan to create travel-style, informational content from this trip rather than just documentation, aiming to produce at least three videos from the journey.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A &#39;static middle&#39; — information with no progression, changing evidence, decisions, or consequences — is the specific structural cause of mid-video sag, and the fix is one of seven progression systems (steps, levels, tests, locations, transformations, countdowns, time).</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> There is no mid-video sag to explain. Median hazard falls monotonically from the opening and bottoms out in the middle: 1-5% band 7.0-13.1%, 6-15% 1.1-2.4%, 16-30% 0.4-1.1%, 31-45% 0.2-1.2%, 46-60% 0.0-1.1%, 61-75% -0.1 to 0.8%, 76-90% -0.3 to 0.8%, then 91-100% back up to 0.5-2.9%. In 4 of 6 channels the 46-90% region has hazard at or below zero — the middle is the SAFEST stretch of the video per viewer present, and several channels net GAIN audience there.</p>
+    <p class="caveat">Caveat: Two honest qualifiers. (1) The absolute audience does keep declining through the middle; what is flat is the per-present-viewer exit rate. If &#39;sag&#39; is meant as absolute decline, the claim survives trivially and says nothing. Read as an elevated-loss region — the way it is used diagnostically — it is not there. (2) These are cohort medians; individual videos certainly do sag mid-way, and our own analysis flags 99 drop moments in the 30-60% band. The refutation is of &#39;mid-video sag&#39; as a general structural feature, not of mid-video drops as an occurrence. The causal half (that a static middle is what produces sag) is untestable regardless — we do not label segment content.</p>
+    <blockquote>Static middle | The video has information but no progression, changing evidence, decisions, or consequences.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">The single highest-leverage edit target on a retention curve is the point where 50% of viewers have left; pushing that point later in the video causes YouTube to recommend the video more, because it raises average view duration.</div>
+  <div class="src">Source: Derrel Eves</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the comparison WITHIN one video (same audience composition, before-vs-after an edit) or ACROSS videos in a catalogue (audience width varying)? Eves is asserting a counterfactual on a fixed audience; Joos is describing a cross-sectional correlation in which audience breadth is the confounder and dominates. Restated conditionally: (a) holding reach constant, later 50%-departure raises AVD and is worth editing for; (b) across a channel&#39;s catalogue, retention-at-50% is a proxy for audience narrowness and predicts FEWER views, so it must never be used as a cross-video ranking of quality.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> rho(retention@50%, first-28d views) was negative in 5 of 6 channels: Channel C -0.45, Channel D -0.51, Channel E -0.85, Channel A -0.47, Channel F -0.89; Channel G +0.07. Pooled within-channel -0.50. APV vs views: negative in 6/6 (-0.46 to -0.83), pooled -0.54. The link survives the duration control: within duration tertiles pooled rho = -0.49; residual-method rho negative in 6/6 (-0.39 to -0.85), pooled -0.51. The proposed mediator does not carry either: AVD-in-seconds vs views is ~null, pooled -0.11 (per channel -0.49 to +0.15). Breakout videos (&gt;=2x channel median views) had LOWER median APV than the rest in 6/6 channels (e.g. Channel C 24.8% vs 48.3%, Channel A 21.9% vs 42.9%).</p>
+    <p class="caveat">Caveat: This is correlation, and reverse causation is very much live: a video that gets pushed to a broad audience is watched by colder viewers and therefore retains worse, which would produce exactly this negative sign even if retention did help. So this does NOT prove retention is irrelevant to distribution. What it does refute is the operational form of the claim — that within a channel the higher-retention videos are the ones that get the views. In our data they are reliably the ones that get FEWER. Also: first-28d views is a demand measure, not an impressions measure; without CTR/impressions we cannot separate demand from delivery.</p>
+    <blockquote>Look for where 50% of the viewers leave the video and go watch that part of your content to try to understand why people left at that point. You literally just lost half of your viewers.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A working benchmark for first-30-second retention on long-form is ~82%, versus a typical peer range of 50-70% — so 20-30 percentage points of finishable audience are routinely lost before the video really starts.</div>
+  <div class="src">Source: CreatorNow</div>
+  <div class="qbox"><b>What would settle it</b><p>What NICHE, video length and traffic mix produced the 50-70% peer band — and is the benchmark being used to set a target or to trigger a diagnostic look? A benchmark can be legitimate inside a tight niche+length+traffic band and illegitimate across the platform. Restated: (a) a within-niche barometer is a valid trigger for investigation; (b) the number itself must be re-derived per niche, never imported.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Median retention at 30s = 77.5%; p10 = 71.5%, p25 = 75.3%, p75 = 81.6%, p90 = 86.6%. Only 8 of 119 videos fall inside the claimed &#39;typical peer range&#39; of 50-70%, and NOT ONE falls below 50%. 27 of 119 (23%) meet or beat the 82% benchmark. Per-channel medians: Channel E 91.3%, Channel F 79.5%, Channel A 79.2%, Channel C 76.8%, Channel D 75.6%, Channel G 73.0%.</p>
+    <p class="caveat">Caveat: The 82% figure itself is defensible — it sits near our p75, i.e. an ambitious but reachable target. It is the comparison half that fails: the &#39;typical&#39; 50-70% band describes almost none of our videos, so the claim&#39;s rhetorical punch (that peers routinely bleed 30-50pp in 30 seconds) overstates the real gap by roughly 10-20pp. Our channels are all established performers, so they may be better than a random long-form peer set; and 30s is an interpolation inside a coarse first sample (11-31s per 1%), which adds a point or two of error.</p>
+    <blockquote>we&#39;ve had like first 30 seconds to 82% view duration. So that means by 30 seconds, 82% of people can make it to the end of video. And on a lot of my friends&#39; videos I&#39;ve seen, it at 60, 50, 70, but they&#39;re missing out on another 10, 20, 30% of people that can&#39;t make it to the end of video</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Cross-channel comparison of CTR and average view duration is invalid because both metrics dilute as a video scales — a million-view video will show lower CTR and lower watch duration than a ten-thousand-view video of equal quality.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> AVD does NOT dilute with scale: rho(28d views, AVD) is -0.49 to +0.15 across 6 channels, pooled -0.11. The metric that dilutes is APV (pooled -0.54). AVD is dominated by duration (rho +0.80), and since higher-view videos here are also longer, the two effects cancel. So the stated mechanism attaches to the wrong metric.</p>
+    <p class="caveat">Caveat: The CTR half is untestable here — we hold no CTR. The CONCLUSION (do not compare these across channels) may still be right for other reasons: between-channel APV spread is 21pp at the 30-second mark against a 5pp within-channel IQR, which makes cross-channel comparison invalid on baseline grounds even though the dilution mechanism does not hold for AVD.</p>
+    <blockquote>because if somebody has a million views and as compared to some of the 10,000 views, the dilution, as we call it, is much higher at a million views. So like click-through rate will be lower, watch duration should be lower just because there&#39;s been so many views given to the video.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">AVD and APV are unusable optimisation targets because they show no reliable correlation with views — across four years and hundreds of channels only one channel ever showed even a slight correlation — a consequence of survivorship bias in YouTube&#39;s audience selection.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> The AVD half survives: rho(views, AVD) is -0.49 to +0.15 across the six channels, pooled -0.11 — no reliable relationship, as claimed. The APV half fails: rho(views, APV) is negative in 6/6 channels (-0.46, -0.46, -0.49, -0.61, -0.73, -0.83), pooled -0.54, and survives controlling for duration. That is a highly reliable correlation, not &#39;no correlation&#39; and not &#39;one channel in hundreds&#39;.</p>
+    <p class="caveat">Caveat: The claim&#39;s SPIRIT — do not chase APV to get views — survives, and is arguably strengthened: the correlation is reliable but points the wrong way, so optimising APV upward would, on this evidence, move a channel toward its lower-view videos. What is contradicted is the factual assertion that no reliable correlation exists. Six channels in three niches is not &#39;hundreds&#39;, and all are mid-to-large channels the team already selected for analysis.</p>
+    <blockquote>we don&#39;t see does correlations. I can tell you from all the channels that I&#39;ve analyzed, once we go to meaningful data ... we struggle to find meaningful, consistent, reliable correlations. This means that at the end of the day, we don&#39;t know if AVD goes up that that&#39;s a good thing or a bad thing. ... I could tell you there&#39;s only one channel in this entire world in four years that have actually f</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Second-half retention teaches you almost nothing because remaining viewers tolerate more error, so analysis effort should concentrate on the first three to four minutes and the findings applied to the rest of the video.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the video&#39;s PROMISE resolve before its runtime does? Joos&#39;s rule assumes the open loop is still live in the back half, so late leavers are self-selected tolerant viewers. A build video&#39;s test is a terminal payoff — everything after it is post-resolution, so the late drop is caused by the structure, not by tolerance. Restated: (a) where the loop is still live at 75%, back-half analysis is low-yield; (b) where the payoff has already landed, the post-payoff span is a distinct structural defect and worth a dedicated fix. Our own curves lose 9-13 percentage points between the 75% mark and the end — 20-30% of the surviving audience — so the tail is not negligible in absolute terms.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Raw: dispersion is flat or rising through the video, never concentrated early. Channel C 5.2pp in decile 1 rising to 7.5pp in decile 10; Channel A 6.8pp to 8.0pp (peaking 10.3pp mid-video); Channel G 2.3pp to 3.5pp. Normalised for level, the growth is monotonic and large: Channel D 4.6pp at 20% of the video to 15.1pp at 90%; Channel A 5.1pp to 11.2pp; Channel C 4.7pp to 7.9pp. The first decile is the LEAST discriminating region in 6/6 channels.</p>
+    <p class="caveat">Caveat: Between-video dispersion measures where videos differ, not where a fix pays. The claim could still be right on ROI grounds: an early drop affects everyone downstream, so a small early gain may be worth more than a large late one, and our measure cannot price that. It is also true that the opening is where the LEVEL is set (all channels hold 92-94% at 15s, so there is little room to differentiate there). What is clearly contradicted is &#39;teaches you almost nothing&#39; — the second half is where these curves carry the most information about which video is which.</p>
+    <blockquote>Unfortunately, most of the times, we cannot learn much from second-half content. So most of the times, yes, you analyze your first three minutes, four minutes, and whatever you learned from that, you apply for the rest of the video. It&#39;s the only thing that we have is we can break a little bit more rules, because people are less likely to tune out.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Segment quality should be ordered good–good–bad–good … bad–bad–good, never front-loaded good-then-bad, because the peak-end rule means a deliberately contrasted mid-video high and a strong final beat determine how the whole video is remembered.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> 113 consecutive video pairs across 6 channels. rho(endHold_i, views_i+1) = -0.01 Channel C, -0.11 Channel D, +0.12 Channel E, -0.21 Channel A, +0.23 Channel F, +0.10 Channel G — no consistent sign, all near zero. rho(endHold_i, earlyHold_i+1) = -0.21, -0.00, -0.02, -0.09, -0.35, -0.55: every channel is zero or NEGATIVE, i.e. if anything, videos that held their ending were followed by uploads that held their opening WORSE. Control rho(views_i, views_i+1) = +0.46 on Channel C, showing the method can detect a real serial relationship when one exists.</p>
+    <p class="caveat">Caveat: First-28-day views are dominated by packaging, subscriber base and algorithmic distribution, so a real memory effect could be swamped. The negative sign on the early-hold column is driven by the two smallest cohorts (Morley n=9, Zac n=9) and is probably noise. This refutes the claim&#39;s own proposed test, not the peak-end rule in psychology.</p>
+    <blockquote>if you have segments and you think okay good good good good bad bad bad that&#39;s called front loading where we front load the content with good content and we do it with bad that is not how we do things what we do is we do good because we want the primacy effect good good bad Good, to create that contrast ... And then we still keep our bad segments towards the end. Actually, most people used to do t</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">retention</span>
+    <span class="cat">· Challenge / entertainment</span>
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A long-form video should target ≥60% average percentage viewed; hitting that threshold is what causes YouTube to push the video to broader audiences, after which the measured retention decays as the audience widens.</div>
+  <div class="src">Source: CreatorNow</div>
+  <div class="qbox"><b>What would settle it</b><p>What is the video&#39;s RUNTIME and format, and is the 60% figure a distribution gate or a descriptive correlate of a specific challenge-entertainment format at ~10-15 minutes? A 60% APV on a 12-minute challenge video and on a 52-minute build video are entirely different demands on the viewer. Restated: (a) within one channel at one roughly fixed length and format, a rising APV is a real improvement signal; (b) no APV number is a cross-channel or cross-length gate on distribution.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> 0 of 119 videos reached 60% APV. Per-channel maxima: Channel C 55.0%, Channel A 54.0%, Channel G 47.4%, Channel F 47.3%, Channel D 41.3%, Channel E 38.7%. Channel median APVs are 31-48%. These same channels post median first-28d views of 54k-988k and produce breakouts up to 1.6M, so broad distribution demonstrably happens far below the stated threshold — and the breakouts sit at the LOW end of their channel&#39;s APV (Channel C&#39;s breakout 24.8% APV vs 48.3% for the rest).</p>
+    <p class="caveat">Caveat: The claim is scoped to challenge-entertainment; none of our six channels is in that niche (maker-build, motorcycle-travel, Roblox gaming), and challenge content with 8-15 min runtimes could plausibly clear 60% where a 23-52 min build video cannot. So the threshold may be attainable in its home niche. What is contradicted is its use as a general long-form target and the implied gate on distribution — our channels are pushed broadly without ever approaching it. Our APV is the unweighted mean of a 100-point curve, a close but not exact match to Studio&#39;s APV.</p>
+    <blockquote>Personally, I&#39;m always shooting for 60 percent retention.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Most viewers decide within the first three seconds whether to keep watching, so the opening three seconds — not the first thirty — is where the largest single retention decision is made.</div>
+  <div class="src">Source: CreatorNow</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the arriving viewer already have investment in the PRESENTER, and via which traffic source? A subscribed/suggested viewer who already trusts the narrator will fund a minute of setup; a cold browse click will not. Restated: (a) for cold-traffic-dominant videos the opening seconds carry the decision; (b) for creator-loyalty-dominant traffic, setup length is bounded by story quality, not by a clock.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Median retention at 15s is 91.9-94.2% across all six channels — at most ~8% of the audience is gone by 15 seconds, let alone 3. The 15-60s window is where the real loss lands: Channel C 13.7%+15.0%, Channel D 15.2%+22.3%, Channel G 19.1%+14.2%, Channel F 14.7%+20.0%, Channel E 0.0%+24.9%, Channel A 12.0%+9.7%. In every channel more viewers leave between 15s and 60s than in the first 15s, by a factor of roughly 3-4x.</p>
+    <p class="caveat">Caveat: Two real limits. (1) Departure is not decision — a viewer could decide at 3s and physically leave at 25s, which would produce our data and still make the claim true in spirit. (2) Our curves store one sample per percent, which is 11-31 seconds of runtime per sample, so the sub-3-second interval is genuinely below our resolution; the 15s figure is an interpolation inside the first sample. What the data can say is that the observable exodus is a 15-60s phenomenon, so a 3-second framing points production effort at the wrong window.</p>
+    <blockquote>Most people make a decision on whether they&#39;re gonna watch the rest of the video within the first three seconds.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention is as much a property of the AUDIENCE as of the video, so a retention number is meaningless without a niche baseline — gaming and short-film audiences produce structurally different curves for equally good videos.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Between-niche medians: maker 44.4% (n=59), gaming 42.3% (n=30), motorcycle 31.2% (n=30) — a 13.2pp spread. Inside the single maker niche, channel medians run Channel C 48.3%, Channel G 42.9%, Channel F 40.0%, Channel E 32.5% — a 15.8pp spread, WIDER than the gap between niches. Gaming and maker, the two the claim would treat as structurally different, are 2.1pp apart.</p>
+    <p class="caveat">Caveat: The premise (a bare retention number is meaningless without a baseline) is supported; what fails is the choice of NICHE as the baseline unit. The correct unit on this evidence is the CHANNEL. Caveat on my side: only one channel each for gaming and motorcycle, so the between-niche estimate rests on n=1 channel per niche and could be an artefact of those particular channels — which is itself the point. Channel E&#39;s 52-minute median duration is also doing work inside the maker spread.</p>
+    <blockquote>you have to almost get a barometer of the retention in a niche and then use that as context and once you have that context you can really find okay because I have the context of other niche uh of people within my niche and how their retention looks like I can look at my retention and compare it in that sense because you can&#39;t really compare against like a gaming video because it&#39;s way</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">CTR, AVD and APV do not correlate with views on a video-by-video basis for most channels, and any creator can falsify or confirm this on their own catalogue by running a correlation of each metric against views across 50 videos.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> APV correlates with views in 6/6 channels, all negative, -0.46 to -0.83 (pooled -0.54, n=119) and robust to a duration control. AVD does not correlate (pooled -0.11). So the claim is right about AVD and wrong about APV — and wrong specifically about &#39;most channels&#39;, since APV correlated in every channel we hold.</p>
+    <p class="caveat">Caveat: CTR is untestable here, so one third of the claim is unexamined. Our per-channel n is 9-30, not the 50 the claim specifies; with n=9-10 (Channel E, Channel F, Channel G) a single video moves rho a lot. But the two n=30 channels both show it clearly, and the sign is unanimous. Note the falsification the claim invites would, run honestly, have returned a correlation — a useful warning about how confidently this one is asserted.</p>
+    <blockquote>I want you to take 50 of your videos All right, this is the exercise take 50 of your videos ... How what is my ctr in the first week for example for each of those videos? Do the same for avds do the same for apv, etc At the end of the day you care about views they&#39;re running against views. ... and then check is there a strong correlation? ... But for most channels no correlation at all. If there&#39;s</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention is as much a property of the AUDIENCE as of the video — viewing habits (phone vs TV, gaming vs short-film) set the baseline — so a retention number is meaningless without a within-niche barometer to compare it to.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Within-niche channel spread (maker: 32.5%-48.3%, 15.8pp) exceeds between-niche spread (maker 44.4% vs gaming 42.3% vs motorcycle 31.2%, 13.2pp). A within-niche barometer would have told Channel E its 32.5% median was 12pp below its own niche — while the real comparison it needs is against its own catalogue.</p>
+    <p class="caveat">Caveat: Same caveat: n=1 channel for two of the three niches. The claim is directionally right that a raw number needs a baseline; it names the wrong baseline. A niche barometer is not useless, it is just weaker than the channel-internal one the team already uses.</p>
+    <blockquote>If I go to a gaming channel versus a short film channel, the retentions are going to be so different because it&#39;s two completely different audiences. ... you have to almost get a barometer of the retention in a niche and then use that as context</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-refuted">Refuted</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· checked across 4 channels</span>
+  </div>
+  <div class="txt">Exposition should be delivered through action and choice, never through stated backstory: front-loading &quot;why I&#39;m doing this&quot; in the first minute loses the audience before the story starts, and retention flattens only once the first conflict begins.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>Has the audience already COMMITTED to finishing? Joos names the discriminator himself in 4ad699f1dd60: the YouTube intro&#39;s job is context and the rules of the world, not character exposition, &#39;because viewers arrive without any commitment to finish, unlike film audiences.&#39; A cinema audience has paid and cannot leave, so early backstory is an investment; a YouTube viewer is auditing and early backstory is an unpaid bill. The second variable is what the backstory is FOR — Pixar needed the viewer to LIKE a character they would spend 100 minutes with; a YouTube creator&#39;s &#39;why I&#39;m doing this&#39; is usually a justification the viewer has not yet asked for. Our own data locates the exact edge: median retention at 15s is 91.9-94.2% across all six analysed channels but falls to 72-79% by 30s (Channel E excepted at 93.5%). The first 15 seconds are nearly free; the bill lands between 15s and 60s. That is direct support for our strategist&#39;s 353818aee0a4 placement of the emotional WHY at 15-20s — after the free window, before the cliff.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — contradicted:</b> Backstory/personal-motivation language appears in only 3% of Channel C&#39;s 30 intro drops, 10% of Channel D&#39; 31, 13% of Channel A&#39;s 32 and 22% of Channel E&#39;s 9. What actually dominates intro drops is greeting/recap (Channel C 67% vs 8% in the rest of the video; Channel E 44% vs 9%) and restating/repetition (Channel C 37%, Channel E 56%, Channel A 47%). Verbatim quotes at Channel C&#39;s intro drops are &#39;Welcome back to my abandoned general store&#39;, &#39;Hi, I&#39;m Channel C. And for the last 18 months&#39; — greeting and channel framing, not project motivation. On Channel A the intro drop lands ON the objective statement itself (&#39;Today we&#39;re going to be playing Guess My ASMR&#39;, &#39;our goal today is to get all the way&#39;), which is the opposite of the claimed cause.</p>
+    <p class="caveat">Caveat: The cause labels were written by our own Claude pipeline whose prompts already carry audit priors, so the coding is not independent; only the evidence quotes are raw. More seriously, the first-decile drop is near-universal (8-13% loss per 1% of video in all 6 channels) and largely mechanical click-bounce, so whatever sentence happens to be spoken at second 9 gets blamed. This refutes backstory as the DOMINANT intro failure mode; it does not prove backstory is harmless.</p>
+    <blockquote>if in your first minute, for example, in the video, you... keep on explaining your why and this and that. And then you start getting into the story. Most people have already tuned out. ... you see this in retention that typically the flattening part of the retention chart starts when the first conflict starts.</blockquote>
+  </details>
+</div></div>
+
+<h2>Candidate laws</h2>
+<p class="legend">Verified across three or more independent channels and survived a contradiction
+check. These await human sign-off — nothing is promoted to Law automatically, because
+everything downstream stops questioning a Law.</p>
+<div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 46 channels</span>
+  </div>
+  <div class="txt">Demand evidence from competitors requires at least five independent examples sharing the same viewer promise but differing in creator, execution and upload date — one outlier is luck.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Only 11 of 57 stored formats reach 5+ scored evidence videos. 22 of 57 have all evidence from a single channel, so they fail the independence test outright. The formats that fail the bar are precisely the ones carrying the headline numbers: of the 16 formats reporting &gt;=2x lift, 12 rest on &lt;=3 examples and 6 are single-channel. Spearman(distinct channels, lift) = +0.10 — channel diversity buys essentially no lift, meaning a format&#39;s high number is not coming from breadth of evidence. And the thin high-lift formats do not survive their own evidence: dropping one instance takes the &gt;=2x group from 2.31x to 1.82x.</p>
+    <p class="caveat">Caveat: We can show that thin, single-creator evidence produces unstable lift estimates; we cannot show that a 5-example bar would have produced better-performing ideas, because no ideas were published under both rules. The specific number five is not itself validated — three independent channels would likely capture most of the gain.</p>
+    <blockquote>Collect at least five examples that share a viewer promise but differ in creator, execution, and upload date.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 46 channels</span>
+  </div>
+  <div class="txt">A single winner does not establish a format — the win may belong to a subject, guest, timing event or one package, so the format claim requires 20 viable episodes, one varied dimension, and confirmed return-viewer behaviour across replications.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Removing one video — the single best instance — drops a format&#39;s median lift by 0.24x (mean 0.34x). For the 16 formats claiming &gt;=2x lift, the median falls from 2.31x to 1.82x when the best instance is dropped. 30 of 57 formats sit on exactly 3 matches (the miner&#39;s minimum), and 22 of 57 draw all their evidence from ONE channel. Dispersion inside a format is enormous: &#39;Exposing Secrets In [Game]&#39; spans 7.72x to 1.05x; &#39;Best Motorcycle Superlative&#39; spans 104.5x to 0.96x; &#39;I Made a Cursed Machine&#39; spans 24.8x to 0.41x. Spearman(evidence count, reported lift) = -0.15 — the highest-lift formats in our library are systematically the thinnest-evidenced ones, exactly the selection artifact the warning names. Separately, 28 of 98 within-channel repeat groups contain both a &gt;=1.5x and a sub-1.0x instance of the same shape.</p>
+    <p class="caveat">Caveat: This tests our own miner&#39;s output, so it demonstrates the failure mode is live in our pipeline rather than proving it holds universally. The lift figures are median-based, so a single-instance removal moving the median by 0.24x is partly a small-n artifact of the median itself — which is the same point the warning makes.</p>
+    <blockquote>A winner may depend on a subject, guest, timing event, or one package rather than a repeatable contract.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 25 channels</span>
+  </div>
+  <div class="txt">&#39;Familiar + mysterious&#39; titles — a question about something everyone already knows (&#39;What Actually Is Blue Raspberry?&#39;) — convert well because they expose a knowledge gap in an object the viewer already has an established relationship with, requiring no new interest to be built.</div>
+  <div class="src">Source: Creator Hooks</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> motorcycle: n=36 across 13 channels, median 1.285x vs 1.00x, z=3.12, p=0.0018. roblox: n=19 across 12 channels, median 1.49x vs 1.00x, z=2.61, p=0.009. maker-builds flat (1.015x vs 0.995x). Within-channel: 12 channels spanning all 3 niches, 9 up 3 down, median delta +0.145x. The single strongest word is &#39;secret&#39;: n=30 across 15 channels, median 1.42x vs 1.00x, z=2.90, p=0.0037. This is also the only title feature I tested that survives in more than one niche.</p>
+    <p class="caveat">Caveat: Heavily influenced by two channels — CashBlox (+3.32x) and Motovudu (+3.49x, and its &#39;Secretas&#39; hits are a Spanish-language instructional SERIES, so the lift may be series loyalty rather than the word). Strip those and the effect halves. maker-builds shows nothing at all, so this is not universal. Correlation only: creators may reserve curiosity framing for their genuinely strongest ideas, which would produce exactly this pattern with no causal contribution from the wording.</p>
+    <blockquote>Questions about well-known items with hidden aspects, like &quot;What Actually Is Blue Raspberry?&quot;, create curiosity by exposing a gap in everyday knowledge.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">strategy</span>
+    <span class="cat">· Challenge / entertainment</span>
+    <span class="cat">· checked across 12 channels</span>
+  </div>
+  <div class="txt">A monthly upload cadence is compatible with tens of millions of views per video when production quality carries the concept - upload frequency is not a prerequisite for algorithmic success.</div>
+  <div class="src">Source: Derrel Eves</div>
+  <div class="qbox"><b>What would settle it</b><p>What share of this channel&#39;s views arrive through the subscription/home feed versus suggested and search? Joos&#39;s mechanism is ROUTINE — a viewer&#39;s habit decays, which only costs you views if your distribution depends on that viewer returning. Eves states the other half himself (3d7710fb7636): consistency &#39;matters far less once traffic comes from search or recommendations.&#39; The second missing variable is which metric is being defended: our strategist&#39;s 7c02437e3d5d says returning/core viewers correlate with upload VOLUME, not quality, so a monthly channel structurally cannot build a large core — it buys outlier reach and forfeits the returning baseline. Ask: am I trying to raise the floor (returning share) or the ceiling (outliers)? Cadence buys the floor.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> 8 channels publish at &gt;=21-day median gaps. Five of them clear 900k median views: Stuff Made Here (82.1d gap, 7,908,105 median views; 4,123,856 in the age-controlled band), I did a thing (53.0d, 4,678,904; 4,131,137), Blacktail Studio (36.0d, 3,630,772; 3,570,453), William Osman (29.3d, 3,052,009), Evan and Katelyn (28.0d, 929,084; 1,050,313). The whole maker-builds &gt;14d cadence bucket has a median-of-medians of 571,360 vs 32,719 for the 8-14d bucket.</p>
+    <p class="caveat">Caveat: This is a sufficiency claim, which is cheap to satisfy — one counterexample suffices and we found five. It does NOT show slowing down helps. The named niche (challenge-entertainment) is not in our corpus; all five cases are maker-builds, where long gaps are a consequence of build time. Views are lifetime, so older catalogues are flattered; the age-controlled band reproduces the result for the three biggest, which is the reason to trust it.</p>
+    <blockquote>My friend and YouTube creator Mark Rober is an engineer and inventor, and he uploaded a new video only once a month. He still gets tens of millions of views per video because his content is really good.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">ideation</span>
+    <span class="cat">· Maker / build</span>
+    <span class="cat">· checked across 8 channels</span>
+  </div>
+  <div class="txt">A repeatable maker format is: take a thing everyone already understands (an office, a kitchen) and install it in an unused domestic crevice — the format inherits the &#39;secret/hidden&#39; appeal that is currently strong on YouTube, and it addresses small-home viewers who outnumber large-home viewers.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Corpus: WITH n=26 median 1.56x vs 1.00x (MWU z=3.15, p=0.0016); age-adjusted 1.19x vs 1.00x (z=2.24, p=0.025); 5 of 6 channels with &gt;=2 matching videos came out ahead (CashBlox 4.30x vs 0.98x, Motovudu 4.44x vs 0.95x, Itchy Boots 1.27x vs 0.99x, Niz &amp; Rex 1.50x vs 0.92x, Lana&#39;s Life 1.05x vs 0.88x). Format library: &#39;Dark Secret Reveal&#39; 2.11x, &#39;X Has a Dark Secret&#39; 1.89x, &#39;Exposing Secrets In [Game]&#39; 2.74x. Our own channels give the literal version of the claim: Channel E&#39;s single best video is &#39;Building a Tiny Office Pod Under My Stairs&#39; at 10.48x first-28d, and Channel F&#39;s &#39;I Built a Secret Door to Trick my Landlord&#39; is his second best at 2.70x — both are a known object installed in an unused domestic crevice.</p>
+    <p class="caveat">Caveat: The corpus effect shrinks sharply once age is controlled (1.56x to 1.19x), so the headline number overstates it. The strongest single confirmations are two individual videos on two channels — n=1 each — and Channel F&#39;s other secret-themed video (&#39;Secretly Building my Wife&#39;s Dream Office&#39;) returned only 0.95x, so the format does not fire every time. Nothing here separates &#39;hidden install&#39; from the broader curiosity value of the word &#39;secret&#39;; the corpus effect is driven mostly by Roblox dark-secret titles, which are a different mechanism.</p>
+    <blockquote>it&#39;s a thing that everyone uses but now it&#39;s in a spot that is such an unused crevice of the house. a place that normally people would have and have like a kind of like a closet storage and now it also is uh feeding a little bit into the secret and hidden vibe which is very popular on YouTube.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 7 channels</span>
+  </div>
+  <div class="txt">The standard fix for weak retention — cut the video shorter — is the wrong remedy; a retention problem in the back half is a setup problem in the opening, so the fix is better setup, not less runtime.</div>
+  <div class="src">Source: Hayden Hillier-Smith</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the surface LOOP-SCORED (short-form, where completion and rewatch drive redistribution and the final second gates the loop) or watch-time-scored long-form? And is the trim removing a specifically DEAD trailing second, or removing runtime generally? Restated: (a) on short-form, trimming dead trailing frames is a direct lever on the loop metric; (b) on long-form, runtime is not the constraint — our own data has the longer half of the catalogue beating the shorter half on median first-28d views for 6 of 7 channels.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The longer half beat the shorter half on median views in 6 of 7 channels (Channel C 321,662 vs 291,465; Channel D 65,205 vs 48,143; Channel A 251,961 vs 218,645; Channel F 1,012,676 vs 963,861; Channel B 287,063 vs 207,873; Channel G 485,039 vs 367,785). Channel E is the sole exception (691,316 vs 863,878). Pooled within-channel rho(duration, views) = +0.23, and rho(duration, AVD-seconds) = +0.69 to +0.85 in every channel — so shortening would directly destroy watch-time seconds while, in these channels, moving views the wrong way.</p>
+    <p class="caveat">Caveat: Strictly this refutes only the remedy&#39;s premise (that shorter is better), not the claim&#39;s positive diagnosis (that the back-half problem originates in the opening) — that half is a causal story we cannot test without an edit experiment. Duration is also confounded with format: a channel&#39;s longest videos are often its most ambitious builds, which may attract more views for reasons unrelated to length. Channel E, the longest-form channel at 52-min median, is the one where longer loses.</p>
+    <blockquote>if you have an act free problem, you have an act One problem. So what is our Act One problem? The common misconception of retention is to make it shorter. Instead, we need to tell it better.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 7 channels</span>
+  </div>
+  <div class="txt">A fixed &#39;last N videos&#39; analysis window is invalid across channels: 30 videos is 30 days for a daily uploader and three years for a monthly one, so the window must be normalised by upload cadence.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> A 30-video window spans 35 days for Channel B (1.2 d/video), 108 days for Channel A (3.7 d/video), 224 days for Channel C (7.7 d/video), and 671 days for Channel D (23.1 d/video) — a 19x range for the identical N. Channel E&#39;s 9-video set spans 616 days (77 d/video); Channel G&#39; 10 spans 428 days. Share of the window falling inside the last 12 months ranges from 100% (Channel C, Channel A, Channel B) to 55% (Channel E 5/9) and 57% (Channel D 17/30).</p>
+    <p class="caveat">Caveat: The span premise is verified beyond argument. What is NOT verified is the consequence — that the un-normalised window produces wrong conclusions. Splitting each channel at 12 months moved the median-28d-views baseline by only -13% to +4% (see 8ee1d116cd5c), so on this data the practical damage from a fixed N is smaller than the rhetoric suggests.</p>
+    <blockquote>choosing the last 30 videos of a um channel that uploads every day is fine because you&#39;re getting 30 days of content, but then last 30 videos of a channel with only monthly content, that&#39;s like three years of videos.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A single video&#39;s retention spike is not evidence of enjoyment — it can be a rewatch, a share, a skip target, a surprising result, or a dense explanation, so the behaviour before and after the spike must be inspected before acting on it.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> 37.8% of rises collapse within two samples (not sustained), and 25.1% sit immediately after a comparable drop — evidence about the moment BEFORE them, not the moment they mark. Only 45.0% survive both checks. Per channel the misread rate ranges from 20% (Channel C) to 90% (Channel A).</p>
+    <p class="caveat">Caveat: Identical caveats to the previous verdict: curve-shape inference only, threshold-sensitive percentages. This also cannot distinguish among the claim&#39;s specific enumerated causes (rewatch vs share vs skip target vs dense explanation) — it only establishes that a face-value reading is wrong often enough to require the inspection step.</p>
+    <blockquote>Spike | Rewatch, share, skip target, surprising result, or dense explanation | Inspect behavior before and after; do not assume all spikes mean enjoyment.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A retention peak is not automatically a good premise — a peak caused by viewers skipping to a timestamp is different from a loved moment, and the discriminator is whether viewers keep watching after it.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Of 756 rises, only 62.2% (470) were still held two samples later, and 25.1% (190) were preceded by a comparable drop. Only 45.0% (340) pass BOTH tests as genuine replay candidates — meaning a naive &#39;a spike is a loved moment&#39; reading would misclassify roughly 55% of them. The discriminator also separates channels sharply: sustained-rise share runs Channel C 79.6%, Channel G 76.7%, Channel E 73.9%, Channel D 61.7%, Channel F 58.6%, Channel A 9.9%.</p>
+    <p class="caveat">Caveat: Both discriminators are inferences from curve shape, not observations of viewer behaviour — we never see a scrub event. The 2%/3-sample thresholds are ours and the exact percentages move with them. Channel A&#39;s 9.9% is extreme enough to suggest its short Roblox videos generate noisier curves rather than genuinely different behaviour. What is robust across all six channels is that a large minority-to-majority of rises fail at least one check, so the warning is doing real work rather than describing an edge case.</p>
+    <blockquote>A peak caused only by viewers skipping to a timestamp is not automatically a good premise; confirm whether viewers continue watching afterward.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A universal average-percentage-viewed target is invalid because a high retention percentage can coexist with low demand — retention must be read as a curve against the channel&#39;s own comparable videos, not against a benchmark number.</div>
+  <div class="src">Source: idea-engine research dossier</div>
+  <div class="qbox"><b>What would settle it</b><p>What is the video&#39;s RUNTIME and format, and is the 60% figure a distribution gate or a descriptive correlate of a specific challenge-entertainment format at ~10-15 minutes? A 60% APV on a 12-minute challenge video and on a 52-minute build video are entirely different demands on the viewer. Restated: (a) within one channel at one roughly fixed length and format, a rising APV is a real improvement signal; (b) no APV number is a cross-channel or cross-length gate on distribution.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Within every channel the higher-APV videos are the lower-view ones (pooled rho = -0.54, negative 6/6, surviving a duration control at -0.51). Absolute APV levels differ enormously between healthy channels: median APV Channel C 48.3%, Channel A 42.3%, Channel G 42.9%, Channel F 40.0%, Channel E 32.5%, Channel D 31.2% — while median first-28d views run from 54,012 (Channel D) to 988,269 (Channel F), i.e. the channel with the LOWEST APV is not the weakest performer and the ordering of APV does not track the ordering of views.</p>
+    <p class="caveat">Caveat: Cross-channel APV comparison is confounded by niche and by video length (median durations 17-52 min). The within-channel negative correlation is the stronger leg; it is still correlational, and the audience-widening mechanism could be what produces it. Either way the practical conclusion — do not read a fixed APV number as a quality grade — holds.</p>
+    <blockquote>Video length, audience, traffic source, and promise change the meaning of average percentage viewed. A high percentage can coexist with low demand.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">The first 30% of viewers are almost always lost in the first 30-60 seconds, so the 30-60s window is where a fixed diagnostic pass should be run on every video.</div>
+  <div class="src">Source: Derrel Eves</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> By 30s only 8 of 119 videos had lost 30%; by 60s 100 of 119 had; by 120s 117 of 119 had. Median retention: 77.5% at 30s, 61.6% at 60s, 54.1% at 120s. So the 30% threshold is crossed inside the 30-60s window for the large majority. Per channel at 60s: Channel C 30/30, Channel D 30/30, Channel F 10/10, Channel G 10/10, Channel E 6/9, Channel A 14/30. Median loss by window confirms the shape: 0-15s loses 6.5-9.4%, 15-30s loses 0-19.1%, 30-60s loses 9.7-24.9%.</p>
+    <p class="caveat">Caveat: Channel A (Roblox gaming, 19-min median) is a genuine partial exception — fewer than half its videos cross 30% loss by 60s, and it needs ~120s. Channel E (52-min median) loses almost nothing between 15s and 30s (0.0% median) but then drops 24.9% in the 30-60s band, so the window shifts with runtime. The claim&#39;s diagnostic prescription is sound; the word &#39;always&#39; is not.</p>
+    <blockquote>Go back and do it again at the spot where you lost the first 30% of your viewers. It&#39;s usually in the first 30 to 60s of the video. Figure out what triggered this drop so you can see how to adjust based on the data.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Average view duration and average percentage viewed can diverge sharply, and YouTube keeps recommending on the strength of AVD even at low APV - a 44-minute video with 20.4% APV kept being served because its AVD was 8:57.</div>
+  <div class="src">Source: Sean Cannell</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(AVD, APV) is -0.01 to +0.67 — weak or absent in 5 of 6 channels. The divergence is concrete: Channel A&#39;s AVD leader (&#39;Surviving the HARDEST MM2 Challenges for 24 Hours&#39;, 128 min, AVD 24.7 min) is APV rank 30/30 at 19.4% against a channel median of 42.3%. Channel C&#39;s AVD leader is APV rank 16/30; Channel D&#39; is 15/30; Channel F&#39;s is 7/10.</p>
+    <p class="caveat">Caveat: Only the DIVERGENCE is verified. The second half — that YouTube keeps serving the video because of AVD — is untestable here: we hold no impressions or traffic-source data, so we cannot distinguish &#39;served because AVD was high&#39; from &#39;got views for unrelated reasons and happens to be long&#39;. Channel A&#39;s 128-minute example drew 219,830 28d views against a 224,066 median, i.e. it was not actually over-served.</p>
+    <blockquote>Because the average view duration is eight minutes and 57 seconds, which is twice the average view duration of most videos on YouTube. That&#39;s great. At the same time, the tutorial was very long and people rarely make it through all 44 minutes. Consequently, even though the avid is high, the average percentage viewed is only 20.4%.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention curves are not comparable across channels - each channel&#39;s audience has its own viewing behaviour, so benchmarks must be channel-internal.</div>
+  <div class="src">Source: Derrel Eves</div>
+  <div class="qbox"><b>What would settle it</b><p>What NICHE, video length and traffic mix produced the 50-70% peer band — and is the benchmark being used to set a target or to trigger a diagnostic look? A benchmark can be legitimate inside a tight niche+length+traffic band and illegitimate across the platform. Restated: (a) a within-niche barometer is a valid trigger for investigation; (b) the number itself must be re-derived per niche, never imported.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> At 30s the channel medians span 72.3%-93.5% (21.2pp) while the typical within-channel IQR is 5.3pp — a 4x ratio. At 60s: 18.1pp between vs 5.5pp within. At 2min: 16.8pp vs 8.1pp. At 5min: 13.9pp vs 9.8pp. Variance decomposition on APV: 49% of all variance is between-channel, 51% within.</p>
+    <p class="caveat">Caveat: The gap narrows steadily with elapsed time (4x at 30s down to 1.4x at 5min), so the incomparability is concentrated in the opening minutes; deep-in-the-video comparison is less distorted than the claim implies. Six channels across three niches; a wider sample could shrink the between-channel share. This also does not identify WHY channels differ — audience behaviour, niche, and production style are all fused here.</p>
+    <blockquote>Every channel is different. Each has a different viewer and a different audience. So you can&#39;t compare graphs or expect similar patterns.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Any viewer lost in the first minute is mathematically excluded from finishing, so first-minute retention caps AVD — which justifies spending ~25% of total production time on the first minute alone.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The first minute accounts for a median 52-57% of a video&#39;s ENTIRE audience loss in 5 of 6 channels (Channel C 56.1%, Channel F 57.4%, Channel G 56.2%, Channel D 53.8%, Channel E 52.1%); Channel A is lower at 39.5%. rho(retention@60s, APV) is positive in 6/6 channels (+0.12 to +0.92). rho(retention@60s, AVD-seconds) is positive in 4/6 (up to +0.90) but negative for Channel F (-0.09) and weak for Channel A (+0.22).</p>
+    <p class="caveat">Caveat: The arithmetic core is a tautology and needs no data. What the data adds is the magnitude — over half of all loss really is pre-60s — which does justify heavy attention there for AVD purposes. But the onward inference to reach fails in this dataset: rho(retention@30s, first-28d views) is +0.06 pooled and flips sign across channels (-0.37 to +0.68). So first-minute work buys AVD, and we have no evidence it buys views. The &#39;25% of production time&#39; allocation is a judgement call the data cannot price.</p>
+    <blockquote>we spend probably 25% of our time on the first minute of the video because if you look at retention graphs, a lot of times I&#39;ll have a steep drop up in the beginning. And any viewer that drops off in the first minute is a viewer that can&#39;t make it to the end of the video</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Raising CTR and AVD in isolation may not raise views at all — the funnel is the object of optimisation, not either metric individually.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(28d views, AVD) pooled -0.11, per channel -0.49 (Channel G), -0.38 (Channel E), -0.26 (Channel F), -0.08 (Channel C, Channel A), +0.15 (Channel D). No channel shows AVD buying views.</p>
+    <p class="caveat">Caveat: Only the AVD half is testable; CTR is not held. And &#39;may not raise views&#39; is a weak claim that a null result cannot really refute — this verdict is better read as &#39;the data gives no reason to believe AVD is a view lever&#39; than as positive confirmation of the funnel framing.</p>
+    <blockquote>Increasing CTR and AVD may not have an impact on views, but we just essentially want to make as many people growth as viewer funnel.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A video can hold a viewer to the end and still fail, because full retention with no change means nothing happened — stimulation alone produces watched-but-forgettable content.</div>
+  <div class="src">Source: Hayden Hillier-Smith</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Retention level vs views is negative on all 6 channels (-0.47 to -0.85). The brief&#39;s independent computation of retention-at-50% vs first-28d views is negative on 5 of 6 (Channel C -0.45, Channel D -0.51, Channel E -0.85, Channel A -0.47, Channel F -0.89) and ~0 on the sixth (Channel G +0.07). High-retention videos are, on these channels, the low-view videos.</p>
+    <p class="caveat">Caveat: The claim&#39;s stated failure mode — no follow-on viewing, nothing changed for the viewer — is NOT what I measured. Views-per-viewer, returning-viewer share and satisfaction are absent from our data, so what is supported is only the weaker proposition that holding a viewer does not imply the video succeeded. The reverse-causation objection from the flat-curve verdict applies here identically.</p>
+    <blockquote>I watch the whole video and then I go, what the fuck just happened? And actually because if you think about it, nothing happened. But I had enough stimulating information. I ended up watching the whole video.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">AVD and APV normally move inversely (longer videos buy duration at the cost of percentage). When BOTH rise in the same window, that is the specific signature of genuine retention improvement, and it is the condition that licenses lengthening videos.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(duration, APV) is negative in 5 of 6 channels: Channel A -0.47, Channel F -0.52, Channel C -0.33, Channel E -0.30, Channel D -0.18; Channel G is the exception at +0.12. Pooled within-channel -0.30. rho(duration, AVD-seconds) is positive in 6/6 and strong: +0.69 to +0.85 (Channel C +0.82, Channel D +0.83, Channel A +0.85, Channel E +0.78, Channel G +0.73, Channel F +0.69). So length reliably converts into watch-time seconds while costing percentage — exactly the inverse movement claimed.</p>
+    <p class="caveat">Caveat: Only the premise is tested. The claim&#39;s operative half — that when BOTH rise in the same window it is the signature of genuine improvement and licenses lengthening — requires a time series of the same channel before and after an intervention, which we do not hold. Channel G&#39; positive duration-APV sign (n=10) is a reminder the inverse relation is a tendency, not a law.</p>
+    <blockquote>Steady Growth: AVD and APV has seen simultaneous growth indicating TRUE retentive growth. (these stats tend to be reciprocal of eachother unless true growth is achieved what varied with video length)</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Watch-time hours is contaminated by views and must never be used alone to identify a channel&#39;s most RETENTIVE video — a top-WTH video can have below-average APV and lose nearly half its audience in the first 30 seconds.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The WTH leader is at or near the BOTTOM of its channel&#39;s APV ranking in 4/6 channels: Channel C rank 30/30 (24.8% vs median 48.3%), Channel A 30/30 (19.4% vs 42.3%), Channel E 8/9 (25.0% vs 32.5%), Channel F 9/10 (33.1% vs 40.0%). Channel D 15/30 and Channel G 5/10 are neutral. In no channel is the WTH leader also the most-retentive video.</p>
+    <p class="caveat">Caveat: The claim&#39;s specific illustration does NOT reproduce: the WTH leaders hold 72.3%-97.5% at 30 seconds, so none &#39;loses nearly half its audience in the first 30 seconds&#39;. That figure appears to be an anecdote from one channel, not a property of WTH leaders. The general warning stands; the vivid detail attached to it should not be repeated as if it were typical.</p>
+    <blockquote>This one is actually not as high up there as we’d think.  The WTH is conflated by Views, because the APV and AVD are relatively unimpressive.  In Fact, only 56% stayed til 30s…</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Watchability is almost never the binding constraint on a channel — across all seven audited channels it was rated Low priority six times and Medium once, never Top, while Clickability was rated Top on five of seven. The default diagnosis for a stalled channel should be ideation/packaging, not retention.</div>
+  <div class="src">Source: our own channel audits</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the channel already being SERVED impressions it is failing to convert, or is it not being served at all? Retention work can only compound if distribution already exists to be amplified — Joos&#39;s channel was at 17M monthly views when he started, i.e. YouTube was already handing it audience. The audits&#39; channels are at 54k-988k median first-28d views, where the gap is upstream. Our own data settles the video-level half of this: rank correlation between retention-at-50% and first-28d views is NEGATIVE on five of six channels (Channel C -0.45, Channel D -0.51, Channel E -0.85, Channel A -0.47, Channel F -0.89; Channel G 0.07). Within a channel, the videos that reached furthest retained WORSE — because reach recruits non-core viewers who leave earlier. So &#39;improve retention&#39; is not a lever on views at the video level; it is at best a channel-level lever operating through a distribution regime our data does not cover. The discriminating question is the traffic-source mix, which we do not hold.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Retention-at-50% vs first-28d views: -0.45 (Channel C, n=30), -0.51 (Channel D, n=30), -0.85 (Channel E, n=9), -0.47 (Channel A, n=30), -0.89 (Channel F, n=10), +0.07 (Channel G, n=10). My independent recomputation of retention level vs views: negative on 6 of 6 (-0.47 to -0.85). Not one channel shows retention behaving as a growth lever.</p>
+    <p class="caveat">Caveat: I did NOT re-verify the slide-6 priority tally (Watchability rated Low six times, Clickability Top five of seven) — those ratings are not stored in the channel knowledge base, so the specific count in the claim is unchecked and should be re-read off the decks before quoting. The second half of the claim&#39;s own test — that impressions-per-video, not APV, predicts subsequent growth — is untestable here because we hold no impressions. And a negative retention-views correlation is consistent with retention still mattering at the margin within a fixed reach level; it shows retention is not the SCALING lever, not that it is worthless.</p>
+    <blockquote>Clickability
+Watchability
+Replayability
+Priority:  Top.
+Priority: Low
+Priority:  Moderate.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">storytelling</span>
+    <span class="cat">· Maker / build</span>
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention dips consistently at the END of build videos, and the fix is to hold a genuinely uncertain experimental payoff for the final segment and cut out mid-moment, so anticipation is never released before the video ends.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The terminal 95-100% band is the steepest post-intro band in 87% of Channel C&#39;s videos (n=30), 100% of Channel E&#39;s (n=9), 90% of Channel F&#39;s (n=10) and 100% of Channel G&#39; (n=10) — 4 independent maker-build channels, 92% of 59 videos. Median terminal hazard per 1%: Channel C 4.63%, Channel E 3.47%, Morley 3.89%, Zac 5.47%, against a 60-90% mid-video hazard of 0.03%, -0.01%, -0.09%, 0.07% (i.e. flat or rising). It is niche-differentiated: gaming (Channel A) shows the pattern in only 37% of videos with a terminal hazard of 1.27%; motorcycle 77% / 3.49%.</p>
+    <p class="caveat">Caveat: Only the FIRST half of the claim was tested. The prescribed fix (an unresolved experimental payoff held to the end, cut mid-moment) is untestable here — we hold no labelling of which videos end on a completed reveal vs an unresolved test. The last 5% also contains end cards and outros that every video has, so part of the terminal drop is a platform artifact rather than a storytelling failure; what makes the finding non-trivial is the CONTRAST with gaming (37%), not the drop itself.</p>
+    <blockquote>Hold a big experimental payoff for the very end and close off in the middle of that moment
+Like you have a main payoff, and then the experimental of something that may or may not go well, to ensure anticipation can still be built</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">ideation</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A format can have the channel&#39;s BEST APV and still deserve elimination: the &#39;20 Minutes&#39; constraint format posted the highest APV on the channel (47.20%) with the lowest views (35,918) and was cut, because retention among people who clicked cannot compensate for a format nobody clicks.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Spearman(first-28d score, retention at 50%) = -0.39 across 119 videos on 6 channels — the better-retaining videos are systematically the lower-viewed ones. The brief&#39;s per-channel figures agree independently: -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6. Concrete instances of the exact pattern the claim names: Channel C&#39;s 9.67x breakout retains 21% at half while her 0.94x video retains 48%; Channel E&#39;s 10.48x top video retains 20% against a channel where 0.60x and 0.73x videos retain 35% and 34%; Channel A&#39;s 2.01x video retains 14% while his 0.95x video retains 54%.</p>
+    <p class="caveat">Caveat: This confirms that a high-retention format can be a low-view format, which is the claim&#39;s factual core; it does NOT establish that eliminating such a format is correct — retention formats may serve returning-viewer value or watch-time that views do not capture, and we hold no return-rate data. The negative correlation is also partly mechanical: longer and broader-reaching videos retain worse, and Spearman(duration, retention at 50%) = -0.29 in the same set.</p>
+    <blockquote>in 20 Minutes
+1
+35,918
+634,242
+3.50%
+5:53
+47.20%
+3,530.50</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">YouTube reports audience retention as exactly 100 data points (one per 1% of the video), so on a 10-minute video each sample covers 6 seconds and on a 20-minute video 12 seconds — which makes intro-level analysis from the chart alone effectively impossible on long videos.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Median 14.1 seconds per sample; range 6.8s to 76.5s. 82% of videos have samples of 10 seconds or longer. In 44% of videos the entire first 30 seconds is covered by 2 samples or fewer. Channel E&#39;s 52-minute median duration puts a single sample at over 31 seconds.</p>
+    <p class="caveat">Caveat: Our stored curves are resampled to 100 points by our own pipeline, so this verifies the CONSEQUENCE (a sample is coarse on a long video) using an assumption identical to the claim&#39;s premise — it is not an independent check that YouTube&#39;s native output is exactly 100 rows. The API dimension used (elapsedVideoTimeRatio) returns whatever granularity YouTube supplies; we did not inspect raw row counts. &#39;Effectively impossible&#39; is also the claim&#39;s own judgement, not a measurement.</p>
+    <blockquote>it actually only reports a hundred data points per retention chart. It reports every 1% of the video. Now, why is this important? This is going to be important in your retention chart analysis because if you have a 10-minute video, this means that you only get a data point for every six seconds For 20-minute video, on the other hand, it&#39;s every 12 seconds</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A retention drop must be measured as a share of the audience still present (relative drop), not as percentage points on the chart, so a 50%→40% fall is exactly as severe as 100%→80% and late drops that look small are routinely underweighted.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The two metrics name a different worst moment (more than 2 percentage-points apart in position) in 33 of 119 videos — 28%. When they disagree the relative metric picks a LATER moment in 32 of those 33 cases (27% of all videos). Median worst-moment position: 48% of the video under percentage points, 67% under the relative measure — a systematic late shift, exactly the underweighting the claim describes.</p>
+    <p class="caveat">Caveat: Partly arithmetic: dividing by a shrinking denominator must push attention later, so this confirms the mechanism rather than discovering it. What it does NOT establish is that the relative measure identifies the more IMPORTANT moment — that would need an outcome to validate against (a fix that worked), which we do not have. Note the team&#39;s own pipeline ranks by excess viewers lost rather than by ratio alone, precisely because a pure ratio over-rewards small absolute losses late in a video; the claim as stated does not carry that correction.</p>
+    <blockquote>we never look at the percentage but we do sometimes use the relative drops as a measurement of impact so at the beginning we see that 100% to 80% is 20% drop well 50% to 40% is also 20% drop that&#39;s relative retention ... And a lot of people don&#39;t give a weight to these end drops simply because they&#39;re smaller. That doesn&#39;t make them. So that&#39;s the reason why I always say retention loss of our rema</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">strategy</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A retention chart that is high and almost flat is a WIDE-APPEAL failure, not a success: it means YouTube found only the core audience that already loves the format, and the fix is broadening appeal rather than any retention edit.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> spearman(hazard SD, normalised views) is POSITIVE on 5 of 6 channels — Channel C +0.53, Channel D +0.53, Channel E +0.62, Channel A +0.30, Channel F +0.72, Channel G -0.35. spearman(retention level, normalised views) is NEGATIVE on 6 of 6: -0.51, -0.48, -0.85, -0.47, -0.79, -0.66. The flat-and-high quadrant underperforms its channel on 6 of 6: Channel C 0.93x vs 1.16x rest, Channel D 0.89 vs 1.21, Channel E 0.73 vs 1.38, Channel A 0.96 vs 1.20, Channel F 0.79 vs 1.79, Channel G 0.93 vs 1.07. This is the same quadrant the brief&#39;s negative retention-vs-views correlations point at (-0.45 to -0.89 on five channels).</p>
+    <p class="caveat">Caveat: Reverse causation is the live alternative and I cannot rule it out: a video that reaches beyond the core necessarily collects casual viewers who leave early, which mechanically produces both a lower level and a lumpier curve. So the data cannot show that a flat curve CAUSES limited reach — only that flat-and-high co-occurs with low reach. The actionable half survives either reading: a flat high curve is not evidence of a healthy video, and retention edits are the wrong lever for it. Within-channel correlations over 9-30 videos are weak individually; the strength here is that the sign is identical on 6 independent channels across 3 niches.</p>
+    <blockquote>The static chart is the top one here. This is just a chart that doesn&#39;t seem to be moving a lot. It tends to be high as well ... Typically that means that you have a wide appeal issue, right, so that you&#39;re not reaching enough people in order to make the chart behave a certain way.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">YouTube Studio&#39;s own key-moment bubbles (intro, top moments, spikes, dips) are inaccurate and should be ignored: the &#39;intro&#39; bubble is a fixed 30 seconds regardless of the real intro, the &#39;top moment&#39; spans far too long, and the spikes/dips it names miss most of the real ones.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The initial decline flattens at a median of 65 seconds (p25 58s, p75 77s, full range 32s-230s). In 118 of 118 videos with a detectable initial decline — 100% — it is still running past the 30-second mark. A fixed 30-second intro window therefore cuts every one of these videos mid-decline.</p>
+    <p class="caveat">Caveat: This tests the PREMISE (real intros are not 30 seconds) and not Studio&#39;s bubbles, which we never observe — we hold no Studio UI output, so &#39;the bubbles are inaccurate&#39; is verified only by inference. My flattening detector (20% of opening slope) is a heuristic; a stricter threshold pushes the median later, a looser one earlier, though not below 32s in any video. Note this codebase&#39;s own segment census uses a fixed 0-30s intro window for comparability, so the team makes the same simplification it criticises — deliberately, to keep instances comparable.</p>
+    <blockquote>so that brings us to scrapping those two don&#39;t ever ever ever pay attention to those those are garbage those have been garbage since the beginning ... The only problem is the intro bubble, it doesn&#39;t accurately measure our intro.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Click-through rate is worth roughly 80% of the value of a successful video and retention the remaining 20%; a video with excellent retention and weak packaging will simply never accumulate impressions, so packaging must be solved before content quality.</div>
+  <div class="src">Source: Ryan Trahan</div>
+  <div class="qbox"><b>What would settle it</b><p>Is retention being treated as a CAUSE of reach or as a SYMPTOM of audience narrowness? Our own data forces this question: retention-at-50% is NEGATIVELY rank-correlated with first-28d views on five of six channels we hold curves for (Channel C -0.45, Channel D -0.51, Channel E -0.85, Channel A -0.47, Channel F -0.89; Channel G +0.07). The videos that hold best are systematically the ones that reached fewest people. That is exactly what the the team audits describe from the other side (a85bd294e8c3, cc661b69dba9): reach expands the impression pool faster than click rate or hold rate can survive it, so a top video&#39;s low CTR and low retention are marks of broad distribution, not of weak packaging. The correct scoping is therefore: retention is a FLOOR (below the platform&#39;s bar, no packaging fixes anything — B is right), not a LEVER (above that floor, more retention buys no additional reach and packaging carries the outcome — A is right). Note our data cannot test the CTR half of either claim; the brief states CTR is not exposed by the API we use.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Retention-at-50% vs first-28d views: Channel F -0.89 (n=10, p&lt;0.001), Channel E -0.85 (n=9, p&lt;0.001), Channel D -0.51 (n=30, p=0.002), Channel A -0.47 (n=30, p=0.005), Channel C -0.45 (n=30, p=0.008), Channel G +0.07 (n=10, p=0.85). Controlling duration barely moves them (-0.88, -0.85, -0.50, -0.42, -0.42, +0.01). Duration-free clock marks agree: at 60 seconds the correlations are -0.93, -0.23, -0.16, -0.33, -0.19, -0.66. In 5 of 6 channels retention buys nothing and predicts LESS reach.</p>
+    <p class="caveat">Caveat: This supports the ORDERING (packaging dominates retention as a driver of views) but NOT the 80/20 numbers, which are untestable without CTR. And the correlation is causally ambiguous in a way that matters: a video that reaches a broad browse audience is watched by less-qualified viewers, so wide reach probably CAUSES lower retention rather than low retention causing wide reach. Under that reading the negative correlation is a reach artefact and says nothing about the counterfactual value of improving retention on a fixed audience. What it does establish firmly is that within these channels retention is not a route to views.</p>
+    <blockquote>thing where click through rate is 80%</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A video with 62.3% retention and weak packaging got 27,000 views while a video with less than half that retention and strong packaging got 20 million — the packaging gap is worth roughly three orders of magnitude more than the retention gap.</div>
+  <div class="src">Source: Ryan Trahan</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The best-retention video never wins on views: it ranks 7/10 (Channel F), 22/30 (Channel C), 9/9 (Channel E), 22/30 (Channel A), 18/30 (Channel D), 9/10 (Channel G). Conversely the top-viewed video is usually the channel&#39;s WORST retainer: rank 10/10, 29/30, 9/9, 30/30, 26/30 — the sole exception is Channel G at 4/10. Concrete instance: Channel E&#39;s best retainer (35.0% at half) drew 412,394 views while its 7,242,999-view video held 19.9%. Channel C: best retainer 52.6% -&gt; 270,791 views; top video 2,987,622 views at 21.0%.</p>
+    <p class="caveat">Caveat: The specific 62.3% / 27,000 / 20M anecdote is unverifiable here — I confirmed the shape, not the story. Same reach-dilutes-retention confound as above: the top-viewed video may retain worst BECAUSE it reached a broad audience. The pattern is therefore strong evidence that high retention does not predict views, and weak evidence about what caused what.</p>
+    <blockquote>62.3% retention, which is insane.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Videos with more views systematically show LOWER average retention on the same channel, because wider reach pulls in new, less-sticky viewers — so a retention drop after a repackage is expected and is not evidence the repackage failed.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(28d views, APV) is negative in 6/6 channels: Channel C -0.47, Channel D -0.46, Channel E -0.73, Channel A -0.49, Channel F -0.83, Channel G -0.61. Pooled -0.54 (n=119). Controlling duration barely moves it (pooled -0.51; per-channel -0.42 to -0.84). The top-view video sits below its channel&#39;s mean APV in 6/6 channels (e.g. Channel C 24.8% vs mean 46.7%; Channel A 21.9% vs 41.4%). Top-3-by-views median APV vs bottom-3: Channel C 29.7% vs 46.7%, Channel A 26.5% vs 45.7%, Channel E 25.7% vs 37.2%.</p>
+    <p class="caveat">Caveat: This is CORRELATION only. We observe that high-view videos hold less; we cannot observe WHY. The stated mechanism (wider reach imports less-sticky viewers) is untested — a rival explanation fits the same data: high-view videos here are also longer (pooled rho views~duration +0.23, duration~APV -0.30), and broad-appeal topics may simply be structurally looser. Controlling duration leaves the effect nearly intact, which weakens but does not eliminate that rival. The repackaging half of the claim is untestable: we hold no before/after repackage events.</p>
+    <blockquote>there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky. They might not want to watch for as long.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">The only fair cross-video comparison is each video&#39;s FIRST 28 DAYS measured from its own publish date — not lifetime views and not a fixed calendar window.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The two measures disagree materially. Channel D: rho(lifetime, 28d) = +0.51, with 26 of 30 videos moving 3+ ranks and one moving 19 places. Channel A: 19/30 move 3+ ranks. The 28d share of lifetime varies enormously both across channels (median 46% for Channel E, 94% for Channel C) and within them (Channel D 25%-99%, Channel C 64%-100%) — so lifetime views mostly measures how long a video has been accumulating.</p>
+    <p class="caveat">Caveat: Two channels (Channel C, Channel F) show rho of +0.92 and +0.94 with zero or few rank moves, so for a fast-cadence channel with a young catalogue lifetime and 28d say nearly the same thing — &#39;the ONLY fair comparison&#39; overstates it there. And 28 days specifically is not tested against 14 or 60; we hold only the 28-day cut, so the choice of horizon is assumed.</p>
+    <blockquote>And then you just toss toss on a different number that&#39;s like at least three years and you&#39;ll get all the videos here. Make sure that all these are clicked. And this is the first 28 days of since when that video was launched respectively. … So um that&#39;s that&#39;s like the true way to compare videos.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Retention is EXPECTED to fall as a video&#39;s views rise, because reach brings in newer, less sticky viewers — so a high-view video with below-average retention is normal, not a defect.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> Negative in 6/6 on APV (-0.46 to -0.83, pooled -0.54); negative in 5/6 on retention-at-50% (Channel G +0.07 is the exception). Partial correlations controlling duration: -0.42 to -0.85.</p>
+    <p class="caveat">Caveat: Correlation, not causation. Also note the operational consequence cuts both ways: because the relationship is this strong, any diagnostic that ranks videos by raw retention is effectively ranking them by inverse reach.</p>
+    <blockquote>there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky. They might not want to watch for as long.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Longer videos carry a higher AVD baseline by construction, so a SHORTER video whose AVD matches or beats a longer one is genuine evidence of better retention — comparing raw AVD across lengths is invalid.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(duration, AVD) is +0.69 to +0.85 in 6/6 channels (pooled +0.80) — the baseline effect is real and large. rho(duration, APV) is negative in 5/6. Of 65 qualifying shorter-beats-longer-on-AVD pairs across 5 channels (Channel C 19, Channel D 16, Channel A 25, Channel E 4, Channel F 1; Channel G had 0), the shorter video ALSO had the higher APV in 65/65 — 100%.</p>
+    <p class="caveat">Caveat: The 65/65 result is close to arithmetically forced: AVD = APV x duration, so a shorter video with higher AVD must have a higher APV once the duration gap exceeds the AVD gap. That makes the inference SOUND rather than empirically surprising — which is exactly what the claim asserts, so it counts, but nobody should read 100% as an independent finding. The 20% duration-gap threshold is my choice; a smaller gap would admit near-ties.</p>
+    <blockquote>theoretically larger video lengths on average always have more AVD than uh lower video lengths. … So the fact that it has an AVD that is surpassing a larger video um also does show like retentively this video did do</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">A HIGH retention chart is evidence of NARROW appeal, not of a good video — it suggests YouTube did not think the video was broadly appealing enough to serve to more people.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  <div class="qbox"><b>What would settle it</b><p>Is the comparison WITHIN one video (same audience composition, before-vs-after an edit) or ACROSS videos in a catalogue (audience width varying)? Eves is asserting a counterfactual on a fixed audience; Joos is describing a cross-sectional correlation in which audience breadth is the confounder and dominates. Restated conditionally: (a) holding reach constant, later 50%-departure raises AVD and is worth editing for; (b) across a channel&#39;s catalogue, retention-at-50% is a proxy for audience narrowness and predicts FEWER views, so it must never be used as a cross-video ranking of quality.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The opposite holds in 6/6 channels — the highest-APV videos are systematically the LOWER-view ones (pooled rho -0.54). Concretely, Channel A&#39;s most-retentive video (&#39;IT ACTUALLY WORKED!&#39;, APV 54.0%) drew 212k 28d views against a channel median of 224k, while its top-view videos sit at 21-27% APV.</p>
+    <p class="caveat">Caveat: We observe the association, not the algorithmic reasoning behind it. &#39;YouTube did not think it was broadly appealing&#39; is an unobservable claim about ranking internals; the data is equally consistent with narrow topics simply attracting a self-selected audience that watches longer. Do not read this as &#39;high retention is bad&#39; — read it as &#39;retention rank is not a proxy for reach rank&#39;.</p>
+    <blockquote>if you have a high retention chart, probably YouTube didn&#39;t feel like your video was widely appealing enough to target more viewers. If your retention chart has a lot of issues, then you know what issues to fix.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">The largest single drop-off on almost any long-form video is in the first frame and first few seconds, so the opening must deliver on the thumbnail&#39;s promise AND partially close the interest gap immediately — but only partially.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> The largest ABSOLUTE per-sample drop falls inside the first 5% of runtime for 116 of 119 videos (97%). The largest HAZARD RATE falls in the first 5% for 89 of 119 (75%), with the runner-up bucket being the final 5% (9 videos). Median hazard by band is monotone away from the opening: 1-5% band 7.0-13.1% per sample, 6-15% band 1.1-2.4%, 16-30% band 0.4-1.1%.</p>
+    <p class="caveat">Caveat: &#39;First 5% of runtime&#39; is 60-155 seconds on these videos, not &#39;the first frame&#39;. Our resolution cannot distinguish frame 1 from second 30, so what is confirmed is that the opening BLOCK carries by far the biggest single loss — the claim&#39;s prescriptive half (that the first frame must deliver the thumbnail&#39;s promise) is untestable here since we do not analyse thumbnails or frames.</p>
+    <blockquote>as soon as people click on it, the first frame and the first few seconds are so important because that&#39;s where 99% of YouTubers have the largest drop off, right? ... We deliver what&#39;s clicked on uh by giving some delivery on expectations one and also uh immediately addressing any interest gap uh to a certain degree. not the entire thing.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">The only fair way to compare videos against each other is their FIRST 28 DAYS, not lifetime views — cumulative trailing-window data (30/90/180/360/720 day) is a momentum graph, a different instrument answering a different question.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(lifetime, 28d) ranges +0.51 (Channel D, 26/30 videos move 3+ ranks) to +0.94 (Channel F, 0 move). Median 28d share of lifetime by channel: Channel E 46%, Channel G 51%, Channel F 67%, Channel A 71%, Channel D 81%, Channel C 94%.</p>
+    <p class="caveat">Caveat: Same caveat: for young, fast-cadence catalogues the two measures nearly coincide, so the strength of the rule depends on catalogue age spread. The second half of the claim (trailing windows are a distinct instrument) is a definitional statement, not an empirical one — nothing to test.</p>
+    <blockquote>you go to first 28 days. And then you just toss toss on a different number that&#39;s like at least three years and you&#39;ll get all the videos here. ... So um that&#39;s that&#39;s like the true way to compare videos.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· checked across 6 channels</span>
+  </div>
+  <div class="txt">Because longer videos on average carry higher AVD than shorter ones, a SHORTER video beating a longer one on AVD is genuine evidence of better retention, not a length artefact.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> rho(duration, AVD) +0.69 to +0.85 across 6/6 channels; 65/65 shorter-beats-longer pairs also had higher APV.</p>
+    <p class="caveat">Caveat: Partly definitional (AVD = APV x duration). Also worth flagging the flip side the claim does not state: because the baseline effect is this strong (+0.80), comparing raw AVD across ANY length gap is close to reading duration, so AVD league tables inside a channel are mostly length rankings.</p>
+    <blockquote>theoretically larger video lengths on average always have more AVD than uh lower video lengths. ... So the fact that it has an AVD that is surpassing a larger video um also does show like retentively this video did do better.</blockquote>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">retention</span>
+    <span class="cat">· Maker / build</span>
+    <span class="cat">· checked across 4 channels</span>
+  </div>
+  <div class="txt">Build videos lose a visible chunk of the audience in the FINAL 10%, after the product is tested. Adding a &#39;good problem&#39; or mini-arc after the test — a new stretch goal introduced once the thing works — holds that tail.</div>
+  <div class="src">Source: internal strategy session</div>
+  <div class="qbox"><b>What would settle it</b><p>Does the video&#39;s PROMISE resolve before its runtime does? Joos&#39;s rule assumes the open loop is still live in the back half, so late leavers are self-selected tolerant viewers. A build video&#39;s test is a terminal payoff — everything after it is post-resolution, so the late drop is caused by the structure, not by tolerance. Restated: (a) where the loop is still live at 75%, back-half analysis is low-yield; (b) where the payoff has already landed, the post-payoff span is a distinct structural defect and worth a dedicated fix. Our own curves lose 9-13 percentage points between the 75% mark and the end — 20-30% of the surviving audience — so the tail is not negligible in absolute terms.</p></div>
+  <details>
+    <summary>Evidence and caveats →</summary>
+    <p class="ev"><b>Tested — supported:</b> maker-build (n=59, 4 channels) median final-10% loss 27.2% vs a matched mid-video band of 1.9%. Per maker channel, videos losing &gt;=15% in the final 10%: Channel G 10/10, Channel C 22/30, Channel F 6/10, Channel E 3/9. Controls: motorcycle-travel 23.0% median (22/30 videos &gt;=15%), gaming 9.4% median (6/30).</p>
+    <p class="caveat">Caveat: The phenomenon is confirmed for build content but is NOT specific to it — motorcycle-travel shows nearly the same tail loss (23.0% vs 27.2%), so this is a long-form-narrative pattern rather than a build-video signature. Gaming is the real exception. Channel E (52-min videos) is the weakest maker case at 14.1%. The prescription — add a stretch goal after the test — is a fix we cannot evaluate; no video in the set is labelled as having tried it.</p>
+    <blockquote>maybe at the end of the video after you&#39;ve already test it, you introduce almost like a uh a good problem like um what I mean by that almost like uh instead of just like okay cool it works. Um maybe now it&#39;s like cool it works but we&#39;re going to push it to the limit</blockquote>
+  </details>
+</div></div>
+
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

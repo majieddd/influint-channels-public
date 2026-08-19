@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -334,7 +402,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">The opening holds strong at 15 seconds (*98.9%, beating 115 of 138 channel videos*) then collapses through the first two minutes, sitting 8-9 points under the channel&#39;s median at 1:00, 2:00 and 5:00.</p>
+<p class="lede" style="margin:-14px 0 26px">This build sheds 8-13pp more than the channel&#39;s other video at every clock mark past 1:00, and the outro loses 42% versus a 27% channel norm.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:09</span><span class="kind">Drop-off</span></span>
-  <span class="what">The intro sheds 29.5% of the room in nine seconds (15.2x spike, 20,739 viewers lost, 98.9% down to 82.3%), 1.3x the channel&#39;s own intro average.</span>
+  <span class="what">The opening nine seconds shed 20,740 viewers as the console is teased and then handed to a music sting (15.2x surrounding stop rate, audience 98.9% to 82.3%).</span>
   <span class="body">
-    <span class="lab">Why</span>The opening line is a self-referential aside — &#39;I usually say that after each project this time I really mean it&#39; — before the promised console is ever shown.
-    <span class="quote">“I usually say that after each project”</span>
-    <span class="lab">The fix</span>Cut 0:07-0:11 and open on the finished console reveal at 0:12, so the thumbnail&#39;s promise lands inside three seconds.
-    <span class="lab">Why that works</span>Most viewers decide in ~3 seconds and a hockey-stick crash means the open disagrees with packaging; delivering the promise immediately is the fix.
+    <span class="lab">Why</span>The narrator undersells the reveal then cuts to music before showing it: &quot;I really mean it though well at least for now check it out.&quot;
+    <span class="quote">“I really mean it though”</span>
+    <span class="lab">The fix</span>Replace 0:09-0:18 with a two-second glamour shot of the finished console under the &quot;check it out&quot; line, then hard cut to angle-iron sparks.
+    <span class="lab">Why that works</span>Packaging promises the finished tree console; delivering it inside three seconds keeps the thumbnail promise the intro currently defers to a music bed.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">11:28</span><span class="kind">Drop-off</span></span>
-  <span class="what">A short caster-and-finish montage sheds 970 viewers over 18 seconds (5.1x spike, 29.3% down to 28.3%), running at 60% of similar videos and 1.3x the channel norm.</span>
+  <span class="what">A calm 18-second stretch on finish and dovetail notching quietly loses 966 viewers (5.1x surrounding stop rate, 1.3x the channel norm here).</span>
   <span class="body">
-    <span class="lab">Why</span>Narration switches topics mid-breath from casters to &#39;to finish the wood I&#39;m using maker brands simple finish&#39; with no visual or musical reset.
-    <span class="quote">“to finish the wood I&#39;m using maker”</span>
-    <span class="lab">The fix</span>Cut the finish-application beat from 11:28-11:43 and jump straight from the caster weld to the dovetail-jig notching at 11:45.
-    <span class="lab">Why that works</span>Pacing is the flow of new information; killing a repeated finish-coat beat before the next build step restores progression.
+    <span class="lab">Why</span>Three unrelated micro-topics stack without progression: &quot;to finish the wood,&quot; the dovetail-jig aside, and &quot;I drilled in countersunk a few holes.&quot;
+    <span class="quote">“not at all what this is intended for”</span>
+    <span class="lab">The fix</span>Cut the dovetail-jig aside (11:45-11:55) and cross-fade the finish application straight into the cabinet assembly at 12:02.
+    <span class="lab">Why that works</span>Pacing is flow of new information; three parallel side-notes with no visible change per five seconds reads as a static middle.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">12:30</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.3% and holds for eleven samples (883 viewers regained, sitting at 29.4%) across the cabinet assembly, running at 51% of similar videos.</span>
+  <span class="what">The cabinet assembly holds attention for 11 straight samples, pulling 883 viewers back (audience up 2.3%, 51% versus similar videos).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind the side-and-shelf slide-in — &#39;slide the whole side and shelf assembly into place&#39; — because it shows how the cabinet locks together.
+    <span class="lab">Why</span>This is the first moment separate parts become one object: &quot;slide the whole side and shelf assembly into place.&quot;
     <span class="quote">“slide the whole side and shelf assembly into place”</span>
-    <span class="lab">Do more of this</span>Add an on-screen callout naming the front apron and hinge order so first-time viewers get the step without needing to rewind.
-    <span class="lab">Why that works</span>The editor&#39;s loop is raise a question, answer it — labelling the sequence lets the answer land the first time.
+    <span class="lab">Do more of this</span>Cross-cut this assembly sequence (12:10-12:37) against the earlier bending-jig work to create an A/B story alternation.
+    <span class="lab">Why that works</span>Cross-cutting A/B stories in five-second alternations sustains the flow of new information this beat already generates on its own.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">13:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.6% and holds for three samples (1,043 viewers regained, sitting at 30.9%) on the shelves-and-top assembly.</span>
+  <span class="what">The room rises again seconds earlier as the top-and-shelf sequence begins, holding for three samples (audience up 2.6%, 1,044 viewers regained).</span>
   <span class="body">
-    <span class="lab">Why</span>The narration lands the final assembly move — &#39;put the shelves in place followed by the table top&#39; — the moment the tree form becomes readable.
-    <span class="quote">“put the shelves in place followed by the table top”</span>
-    <span class="lab">Do more of this</span>Hold this shelves-and-top shot two seconds longer and strip the music bed underneath so the assembly click is audible.
-    <span class="lab">Why that works</span>Stretching a conflict-resolution beat with bare sound can triple its screen time with stable retention.
+    <span class="lab">Why</span>Viewers scrub back to the setup for the reveal: &quot;the very last thing to do was put the shelves in place.&quot;
+    <span class="quote">“the very last thing to do”</span>
+    <span class="lab">Do more of this</span>Add a 20-second riser under 13:20-13:40 leading into the shelf placement, then cut the music tail after 13:42.
+    <span class="lab">Why that works</span>Anticipatory risers 20 seconds before a key moment flatten retention through buildup; this beat already earns rewinds without one.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">13:42</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.6% and holds for two samples (1,070 viewers regained, sitting at 31.7%) right after the finished-console line.</span>
+  <span class="what">Viewers rewind into the final reveal, adding 1,070 back to the room (audience up 2.6%, held two samples).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the completion beat — &#39;this tree media console was finished&#39; — to re-see the shelves and top going into place.
-    <span class="quote">“this tree media console was finished”</span>
-    <span class="lab">Do more of this</span>Tease this completion shot inside the first 15 seconds as a hard cut on the console, then earn it again here as the payoff.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; teasing it early and structuring toward it pulls viewers through the build.
+    <span class="lab">Why</span>This is the moment the shelves and top go on and the piece becomes the thing the thumbnail sold: &quot;shelves in place followed by the table top.&quot;
+    <span class="quote">“shelves in place followed by the table top”</span>
+    <span class="lab">Do more of this</span>Front-load a two-second cut of this exact shot at 0:09, so first-time viewers see the payoff the rewinders came back for.
+    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; teasing it in the intro closes the packaging promise this video currently defers to 13:42.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">13:50</span><span class="kind">Drop-off</span></span>
-  <span class="what">The wrap-up loses 41.8% of remaining viewers over 36 seconds (9.5x spike, 8,541 viewers lost, 32.6% down to 24.4%), 1.5x the channel&#39;s outro average.</span>
+  <span class="what">The final assembly and music tail bleeds 8,536 viewers in 36 seconds, taking the room from 32.6% to 24.4% (9.1x surrounding stop rate, 1.5x the channel&#39;s outro average).</span>
   <span class="body">
-    <span class="lab">Why</span>The narration explicitly signals the ending — &#39;this tree media console was finished&#39; — then hands off to a long music-only tail.
+    <span class="lab">Why</span>The video announces itself as finished mid-shot: &quot;this tree media console was finished,&quot; then holds on a music bed with nothing new to see.
     <span class="quote">“this tree media console was finished”</span>
-    <span class="lab">The fix</span>Cut the music tail from 13:39-14:26 and end within five seconds of the shelves-in-place shot at 13:32.
-    <span class="lab">Why that works</span>Retention drops the moment viewers sense the video is ending; ending at the emotional high and breaking off within seconds is the fix.
+    <span class="lab">The fix</span>Rebuild this ending the way &quot;I Built the Table of My Dreams&quot; does at 35:51 (0.0% loss): hard cut from the last screw to a styled reveal, then end screen inside 15 seconds.
+    <span class="lab">Why that works</span>Retention drops the moment viewers sense the video is ending; the outro currently signals ending 36 seconds before it stops.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"9-v_YpHN5NI","durationSec":893,"curve":[{"p":1,"w":0.989},{"p":2,"w":0.823},{"p":3,"w":0.698},{"p":4,"w":0.576},{"p":5,"w":0.523},{"p":6,"w":0.494},{"p":7,"w":0.473},{"p":8,"w":0.464},{"p":9,"w":0.453},{"p":10,"w":0.443},{"p":11,"w":0.434},{"p":12,"w":0.422},{"p":13,"w":0.415},{"p":14,"w":0.408},{"p":15,"w":0.4},{"p":16,"w":0.394},{"p":17,"w":0.393},{"p":18,"w":0.386},{"p":19,"w":0.38},{"p":20,"w":0.38},{"p":21,"w":0.375},{"p":22,"w":0.366},{"p":23,"w":0.365},{"p":24,"w":0.363},{"p":25,"w":0.356},{"p":26,"w":0.357},{"p":27,"w":0.355},{"p":28,"w":0.35},{"p":29,"w":0.35},{"p":30,"w":0.344},{"p":31,"w":0.34},{"p":32,"w":0.338},{"p":33,"w":0.337},{"p":34,"w":0.333},{"p":35,"w":0.33},{"p":36,"w":0.325},{"p":37,"w":0.324},{"p":38,"w":0.32},{"p":39,"w":0.319},{"p":40,"w":0.317},{"p":41,"w":0.318},{"p":42,"w":0.313},{"p":43,"w":0.312},{"p":44,"w":0.31},{"p":45,"w":0.303},{"p":46,"w":0.306},{"p":47,"w":0.306},{"p":48,"w":0.304},{"p":49,"w":0.301},{"p":50,"w":0.305},{"p":51,"w":0.303},{"p":52,"w":0.302},{"p":53,"w":0.303},{"p":54,"w":0.301},{"p":55,"w":0.303},{"p":56,"w":0.305},{"p":57,"w":0.302},{"p":58,"w":0.298},{"p":59,"w":0.296},{"p":60,"w":0.292},{"p":61,"w":0.29},{"p":62,"w":0.289},{"p":63,"w":0.288},{"p":64,"w":0.288},{"p":65,"w":0.29},{"p":66,"w":0.287},{"p":67,"w":0.285},{"p":68,"w":0.288},{"p":69,"w":0.292},{"p":70,"w":0.294},{"p":71,"w":0.289},{"p":72,"w":0.291},{"p":73,"w":0.291},{"p":74,"w":0.289},{"p":75,"w":0.29},{"p":76,"w":0.291},{"p":77,"w":0.293},{"p":78,"w":0.289},{"p":79,"w":0.283},{"p":80,"w":0.286},{"p":81,"w":0.291},{"p":82,"w":0.287},{"p":83,"w":0.287},{"p":84,"w":0.294},{"p":85,"w":0.295},{"p":86,"w":0.301},{"p":87,"w":0.301},{"p":88,"w":0.303},{"p":89,"w":0.303},{"p":90,"w":0.301},{"p":91,"w":0.309},{"p":92,"w":0.317},{"p":93,"w":0.326},{"p":94,"w":0.316},{"p":95,"w":0.296},{"p":96,"w":0.277},{"p":97,"w":0.244},{"p":98,"w":0.185},{"p":99,"w":0.139},{"p":100,"w":0.11}],"moments":[{"t":"0:09","sec":9,"kind":"drop","what":"The intro sheds 29.5% of the room in nine seconds (15.2x spike, 20,739 viewers lost, 98.9% down to 82.3%), 1.3x the channel's own intro average."},{"t":"11:28","sec":688,"kind":"drop","what":"A short caster-and-finish montage sheds 970 viewers over 18 seconds (5.1x spike, 29.3% down to 28.3%), running at 60% of similar videos and 1.3x the channel norm."},{"t":"12:30","sec":750,"kind":"peak","what":"Audience rises 2.3% and holds for eleven samples (883 viewers regained, sitting at 29.4%) across the cabinet assembly, running at 51% of similar videos."},{"t":"13:33","sec":813,"kind":"peak","what":"Audience rises 2.6% and holds for three samples (1,043 viewers regained, sitting at 30.9%) on the shelves-and-top assembly."},{"t":"13:42","sec":822,"kind":"peak","what":"Audience rises 2.6% and holds for two samples (1,070 viewers regained, sitting at 31.7%) right after the finished-console line."},{"t":"13:50","sec":830,"kind":"drop","what":"The wrap-up loses 41.8% of remaining viewers over 36 seconds (9.5x spike, 8,541 viewers lost, 32.6% down to 24.4%), 1.5x the channel's outro average."}]}</script>
+<script>window.__VIDEO__={"videoId":"9-v_YpHN5NI","durationSec":893,"curve":[{"p":1,"w":0.989},{"p":2,"w":0.823},{"p":3,"w":0.698},{"p":4,"w":0.576},{"p":5,"w":0.522},{"p":6,"w":0.494},{"p":7,"w":0.473},{"p":8,"w":0.464},{"p":9,"w":0.453},{"p":10,"w":0.443},{"p":11,"w":0.434},{"p":12,"w":0.421},{"p":13,"w":0.415},{"p":14,"w":0.408},{"p":15,"w":0.4},{"p":16,"w":0.394},{"p":17,"w":0.393},{"p":18,"w":0.386},{"p":19,"w":0.38},{"p":20,"w":0.38},{"p":21,"w":0.375},{"p":22,"w":0.366},{"p":23,"w":0.365},{"p":24,"w":0.363},{"p":25,"w":0.356},{"p":26,"w":0.357},{"p":27,"w":0.355},{"p":28,"w":0.35},{"p":29,"w":0.35},{"p":30,"w":0.344},{"p":31,"w":0.34},{"p":32,"w":0.338},{"p":33,"w":0.337},{"p":34,"w":0.333},{"p":35,"w":0.33},{"p":36,"w":0.325},{"p":37,"w":0.324},{"p":38,"w":0.32},{"p":39,"w":0.319},{"p":40,"w":0.317},{"p":41,"w":0.318},{"p":42,"w":0.313},{"p":43,"w":0.312},{"p":44,"w":0.31},{"p":45,"w":0.303},{"p":46,"w":0.306},{"p":47,"w":0.306},{"p":48,"w":0.304},{"p":49,"w":0.301},{"p":50,"w":0.305},{"p":51,"w":0.303},{"p":52,"w":0.302},{"p":53,"w":0.303},{"p":54,"w":0.301},{"p":55,"w":0.303},{"p":56,"w":0.305},{"p":57,"w":0.302},{"p":58,"w":0.298},{"p":59,"w":0.296},{"p":60,"w":0.292},{"p":61,"w":0.29},{"p":62,"w":0.289},{"p":63,"w":0.288},{"p":64,"w":0.288},{"p":65,"w":0.29},{"p":66,"w":0.287},{"p":67,"w":0.285},{"p":68,"w":0.288},{"p":69,"w":0.292},{"p":70,"w":0.294},{"p":71,"w":0.289},{"p":72,"w":0.291},{"p":73,"w":0.291},{"p":74,"w":0.289},{"p":75,"w":0.29},{"p":76,"w":0.291},{"p":77,"w":0.293},{"p":78,"w":0.289},{"p":79,"w":0.283},{"p":80,"w":0.286},{"p":81,"w":0.291},{"p":82,"w":0.287},{"p":83,"w":0.287},{"p":84,"w":0.294},{"p":85,"w":0.295},{"p":86,"w":0.301},{"p":87,"w":0.301},{"p":88,"w":0.303},{"p":89,"w":0.303},{"p":90,"w":0.301},{"p":91,"w":0.309},{"p":92,"w":0.317},{"p":93,"w":0.326},{"p":94,"w":0.316},{"p":95,"w":0.296},{"p":96,"w":0.277},{"p":97,"w":0.244},{"p":98,"w":0.185},{"p":99,"w":0.139},{"p":100,"w":0.11}],"moments":[{"t":"0:09","sec":9,"kind":"drop","what":"The opening nine seconds shed 20,740 viewers as the console is teased and then handed to a music sting (15.2x surrounding stop rate, audience 98.9% to 82.3%)."},{"t":"11:28","sec":688,"kind":"drop","what":"A calm 18-second stretch on finish and dovetail notching quietly loses 966 viewers (5.1x surrounding stop rate, 1.3x the channel norm here)."},{"t":"12:30","sec":750,"kind":"peak","what":"The cabinet assembly holds attention for 11 straight samples, pulling 883 viewers back (audience up 2.3%, 51% versus similar videos)."},{"t":"13:33","sec":813,"kind":"peak","what":"The room rises again seconds earlier as the top-and-shelf sequence begins, holding for three samples (audience up 2.6%, 1,044 viewers regained)."},{"t":"13:42","sec":822,"kind":"peak","what":"Viewers rewind into the final reveal, adding 1,070 back to the room (audience up 2.6%, held two samples)."},{"t":"13:50","sec":830,"kind":"drop","what":"The final assembly and music tail bleeds 8,536 viewers in 36 seconds, taking the room from 32.6% to 24.4% (9.1x surrounding stop rate, 1.5x the channel's outro average)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

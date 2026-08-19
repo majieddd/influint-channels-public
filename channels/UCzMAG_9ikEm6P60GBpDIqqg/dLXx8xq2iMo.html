@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -329,12 +397,12 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
       21:33 · 48,139 views ·
       28% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-18
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">The opening 12 seconds shed 10.2 points, beating only 2 of 29 sibling videos at 0:15 and putting this video 8.1pp behind the channel&#39;s median open.</p>
+<p class="lede" style="margin:-14px 0 26px">This video&#39;s opening sheds 12.8pp more than the channel median, and by 2:00 only 9 of 70 sibling videos are holding fewer viewers.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:12</span><span class="kind">Drop-off</span></span>
-  <span class="what">One second into the video the room collapses from 100% to 89.8% (7.4x spike, 12,893 viewers, beats 2 of 29 sibling intros at 0:15).</span>
+  <span class="what">First-frame bleed runs hotter than the channel&#39;s own intro habit (14.70% stop vs 10.25% typical, 12,935 viewers gone, 1.4x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>The open buries the Harley premise under travelogue admin: &quot;riding on the Mother Road, Route 66&quot; and Kingman logistics before the title question surfaces.
+    <span class="lab">Why</span>The open is a location recap — miles logged, towns left, husband towing — before the title&#39;s Harley question surfaces: &quot;riding on the Mother Road, Route 66&quot;.
     <span class="quote">“riding on the Mother Road, Route 66”</span>
-    <span class="lab">The fix</span>Cut 0:00-0:35 and open cold on the Heritage line from 19:46, &quot;hands down, the Heritage Classic would be my choice,&quot; then cut to the dealership walk-in.
-    <span class="lab">Why that works</span>Packaging promises a Harley regret; intros must deliver the thumbnail promise in seconds, and the channel&#39;s best intro loses 0.0% by skipping setup entirely.
+    <span class="lab">The fix</span>Cut 0:00-0:11 and open on the Kingman-to-LA stakes, modeled on &quot;What Happened To Me?&quot; which held 100% through 0:30.
+    <span class="lab">Why that works</span>Packaging promises a wrong-Harley confession; the recap delays that promise and 0:15 already trails the channel median by 6.6pp.
     
   </span>
 </button>
 <button class="m peak" data-i="1" type="button">
   <span class="h"><span class="ts">6:41</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.5 points to 37.3% and holds three samples (1,320 viewers scrubbed back, 54th percentile vs similar).</span>
+  <span class="what">Audience rises 2.5% at the first-ride ignition, regaining 1,325 viewers (held three samples, 37.3% present, 54th percentile vs similar).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers replay the mount-up gag: the bike lurches, someone deadpans &quot;Motorcycle,&quot; and she answers &quot;I remember my first time.&quot;
-    <span class="quote">“Motorcycle. I remember my first time”</span>
-    <span class="lab">Do more of this</span>Cold-open a future test-ride video on this exchange and title-card the bike name over the laugh to teach viewers the format&#39;s payoff shape.
-    <span class="lab">Why that works</span>Peak-end rule rewards engineered emotional peaks; a proven rewind moment doubles as a hook asset for sibling videos in the bucket.
+    <span class="lab">Why</span>The bike fires up and the reaction lands on a laugh line: &quot;Motorcycle. [laughter]&quot;.
+    <span class="quote">“Motorcycle. [laughter]”</span>
+    <span class="lab">Do more of this</span>Start a riser ~20 seconds before 6:41 and strip music at ignition so the first-ride beat carries bare sound.
+    <span class="lab">Why that works</span>Anticipatory buildup flattens retention into a payoff; this moment already earns rewinds, so the setup should be widened not the beat itself.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">6:54</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.2 points to 38.1% for one sample (1,188 viewers regained, 54th percentile vs similar).</span>
+  <span class="what">A one-sample lift regains 1,192 viewers on the ride-off cheer (audience rose 2.2%, 38.1% present, 54th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the first ride reaction: &quot;Woohoo,&quot; then &quot;Oh, this is light. This is very light&quot; as she pulls away.
-    <span class="quote">“Oh, this is light. This is very light”</span>
-    <span class="lab">Do more of this</span>Hold this shot two extra seconds on bare sound before music returns, then cut straight to the highway to skip the 7:11-7:31 lull.
-    <span class="lab">Why that works</span>Stretching a conflict or reaction beat with stripped audio can triple screen time at stable retention; the single-sample tick warrants extension, not addition.
+    <span class="lab">Why</span>The pull-away lands on a raw reaction: &quot;Oh, this is light. This is very light.&quot;
+    <span class="quote">“this is light. This is very light”</span>
+    <span class="lab">Do more of this</span>Hold this line on a clean cutaway of the softtail moving, then cross-cut to the next bike within five seconds.
+    <span class="lab">Why that works</span>Single-sample peaks are fragile; protecting the beat with visual progression prevents the dead-air collapse that follows at 7:07.
     
   </span>
 </button>
 <button class="m drop" data-i="3" type="button">
   <span class="h"><span class="ts">7:07</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 52-second segment loses 4,368 viewers from 38.3% to 34.0% (10.5x spike but only 0.7x channel norm, 41st percentile vs similar).</span>
+  <span class="what">A 52-second stretch shed 4,378 viewers, but the stop rate actually sits below the channel&#39;s habit here (1.03% stop vs 1.29% typical, 0.8x norm).</span>
   <span class="body">
-    <span class="lab">Why</span>This is the channel&#39;s standard post-first-ride lull: soft-tail impressions and &quot;get out of the city&quot; logistics after the mount-up payoff at 6:54.
-    <span class="quote">“most challenging part of today”</span>
-    <span class="lab">The fix</span>Tighten 7:11-7:31 to a single sentence on the soft-tail feel and cross-cut the city exit under the next segment&#39;s audio.
-    <span class="lab">Why that works</span>Pacing should push new information every ~5 seconds; this beat repeats the ride reaction already sold at 6:54 and stalls the A-story.
+    <span class="lab">Why</span>The first-ride beat lands then dissolves into filler chatter about city traffic: &quot;get out of the city&quot;.
+    <span class="quote">“get out of the city”</span>
+    <span class="lab">The fix</span>Tighten 7:16-7:31 to the softtail impression only, dropping the heat and traffic aside so the next bike arrives faster.
+    <span class="lab">Why that works</span>The 10.6x spike ratio is inflated by a quiet neighborhood; the real issue is dead air after a reveal, not a broken moment.
     
   </span>
 </button>
 <button class="m drop" data-i="4" type="button">
   <span class="h"><span class="ts">9:55</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 39-second stretch bleeds from 32.4% to 28.3% (6.0x spike, 2.1x the channel norm, 4,796 viewers, 34th percentile vs similar).</span>
+  <span class="what">Mid-video sag drops 4,821 viewers across 39 seconds where the channel typically loses almost none (2.70% stop vs 0.96% typical, 2.8x norm, 6.0x surrounding rate).</span>
   <span class="body">
-    <span class="lab">Why</span>The two-tone reveal resolves (&quot;It&#39;s on the Road Glide&quot;) and the segment collapses into unrelated LA vertigo banter with no next question raised.
+    <span class="lab">Why</span>The teal-and-black reveal resolves onto the Road Glide and the scene releases into vista banter: &quot;It&#39;s on the Road Glide.&quot;
     <span class="quote">“It&#39;s on the Road Glide”</span>
-    <span class="lab">The fix</span>Cut 9:48-10:17 and hard-cut from &quot;It&#39;s on the Road Glide&quot; straight into the dealership arrival that sets up the Heritage test ride.
-    <span class="lab">Why that works</span>Retention drops the moment tension is spent; the color reveal is a payoff, so the next beat must raise the next question, not sightsee.
+    <span class="lab">The fix</span>Cut 9:48-10:17 and rejoin on the next bike swap, holding the color reveal as a tease until a later payoff.
+    <span class="lab">Why that works</span>Reveals bleed audience when tension is spent with runtime left; the vertigo aside and music bed add no new information here.
     
   </span>
 </button>
 <button class="m peak" data-i="5" type="button">
   <span class="h"><span class="ts">19:24</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs 4.7 points to 20.4% and holds four samples (1,350 viewers scrubbed back, 49th percentile vs similar).</span>
+  <span class="what">Late rewind pulls 1,354 viewers back at 90% through (audience rose 4.7%, held four samples, 20.4% present).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to hear the verdict land: &quot;hands down, the Heritage Classic would be my choice,&quot; the title question finally answered.
-    <span class="quote">“hands down, the Heritage Classic would be my choice”</span>
-    <span class="lab">Do more of this</span>Lift this verdict line to a 10-second cold open before 0:12 and leave the full delivery at 19:24 as the earned payoff.
-    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward; front-loading the verdict as a tease keeps the promise live for the 21 minutes between.
+    <span class="lab">Why</span>The verdict lands plainly, naming the winner viewers came for: &quot;the Heritage Classic would be my choice&quot;.
+    <span class="quote">“the Heritage Classic would be my choice”</span>
+    <span class="lab">Do more of this</span>Tease this verdict language in the first 20 seconds as the video&#39;s promise, then deliver it verbatim here.
+    <span class="lab">Why that works</span>A rewound verdict is a reveal viewers wanted earlier; front-loading the tease closes the interest gap the opening left open.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"dLXx8xq2iMo","durationSec":1293,"curve":[{"p":1,"w":0.898},{"p":2,"w":0.763},{"p":3,"w":0.618},{"p":4,"w":0.548},{"p":5,"w":0.45},{"p":6,"w":0.42},{"p":7,"w":0.408},{"p":8,"w":0.398},{"p":9,"w":0.396},{"p":10,"w":0.405},{"p":11,"w":0.416},{"p":12,"w":0.415},{"p":13,"w":0.409},{"p":14,"w":0.409},{"p":15,"w":0.408},{"p":16,"w":0.41},{"p":17,"w":0.408},{"p":18,"w":0.395},{"p":19,"w":0.398},{"p":20,"w":0.392},{"p":21,"w":0.39},{"p":22,"w":0.384},{"p":23,"w":0.378},{"p":24,"w":0.375},{"p":25,"w":0.373},{"p":26,"w":0.369},{"p":27,"w":0.365},{"p":28,"w":0.362},{"p":29,"w":0.359},{"p":30,"w":0.364},{"p":31,"w":0.373},{"p":32,"w":0.381},{"p":33,"w":0.383},{"p":34,"w":0.369},{"p":35,"w":0.364},{"p":36,"w":0.355},{"p":37,"w":0.34},{"p":38,"w":0.337},{"p":39,"w":0.33},{"p":40,"w":0.33},{"p":41,"w":0.332},{"p":42,"w":0.33},{"p":43,"w":0.326},{"p":44,"w":0.321},{"p":45,"w":0.32},{"p":46,"w":0.324},{"p":47,"w":0.309},{"p":48,"w":0.308},{"p":49,"w":0.283},{"p":50,"w":0.282},{"p":51,"w":0.284},{"p":52,"w":0.284},{"p":53,"w":0.281},{"p":54,"w":0.275},{"p":55,"w":0.271},{"p":56,"w":0.273},{"p":57,"w":0.27},{"p":58,"w":0.267},{"p":59,"w":0.264},{"p":60,"w":0.261},{"p":61,"w":0.257},{"p":62,"w":0.253},{"p":63,"w":0.26},{"p":64,"w":0.242},{"p":65,"w":0.236},{"p":66,"w":0.232},{"p":67,"w":0.23},{"p":68,"w":0.227},{"p":69,"w":0.224},{"p":70,"w":0.222},{"p":71,"w":0.223},{"p":72,"w":0.224},{"p":73,"w":0.226},{"p":74,"w":0.222},{"p":75,"w":0.219},{"p":76,"w":0.218},{"p":77,"w":0.216},{"p":78,"w":0.214},{"p":79,"w":0.213},{"p":80,"w":0.209},{"p":81,"w":0.205},{"p":82,"w":0.204},{"p":83,"w":0.201},{"p":84,"w":0.2},{"p":85,"w":0.199},{"p":86,"w":0.202},{"p":87,"w":0.202},{"p":88,"w":0.197},{"p":89,"w":0.195},{"p":90,"w":0.204},{"p":91,"w":0.202},{"p":92,"w":0.205},{"p":93,"w":0.202},{"p":94,"w":0.197},{"p":95,"w":0.191},{"p":96,"w":0.18},{"p":97,"w":0.169},{"p":98,"w":0.165},{"p":99,"w":0.154},{"p":100,"w":0.141}],"moments":[{"t":"0:12","sec":12,"kind":"drop","what":"One second into the video the room collapses from 100% to 89.8% (7.4x spike, 12,893 viewers, beats 2 of 29 sibling intros at 0:15)."},{"t":"6:41","sec":401,"kind":"peak","what":"Audience rises 2.5 points to 37.3% and holds three samples (1,320 viewers scrubbed back, 54th percentile vs similar)."},{"t":"6:54","sec":414,"kind":"peak","what":"Audience rises 2.2 points to 38.1% for one sample (1,188 viewers regained, 54th percentile vs similar)."},{"t":"7:07","sec":427,"kind":"drop","what":"A 52-second segment loses 4,368 viewers from 38.3% to 34.0% (10.5x spike but only 0.7x channel norm, 41st percentile vs similar)."},{"t":"9:55","sec":595,"kind":"drop","what":"A 39-second stretch bleeds from 32.4% to 28.3% (6.0x spike, 2.1x the channel norm, 4,796 viewers, 34th percentile vs similar)."},{"t":"19:24","sec":1164,"kind":"peak","what":"Audience climbs 4.7 points to 20.4% and holds four samples (1,350 viewers scrubbed back, 49th percentile vs similar)."}]}</script>
+<script>window.__VIDEO__={"videoId":"dLXx8xq2iMo","durationSec":1293,"curve":[{"p":1,"w":0.898},{"p":2,"w":0.763},{"p":3,"w":0.618},{"p":4,"w":0.547},{"p":5,"w":0.45},{"p":6,"w":0.42},{"p":7,"w":0.407},{"p":8,"w":0.398},{"p":9,"w":0.396},{"p":10,"w":0.405},{"p":11,"w":0.416},{"p":12,"w":0.414},{"p":13,"w":0.408},{"p":14,"w":0.408},{"p":15,"w":0.408},{"p":16,"w":0.41},{"p":17,"w":0.408},{"p":18,"w":0.395},{"p":19,"w":0.397},{"p":20,"w":0.391},{"p":21,"w":0.39},{"p":22,"w":0.384},{"p":23,"w":0.377},{"p":24,"w":0.375},{"p":25,"w":0.372},{"p":26,"w":0.369},{"p":27,"w":0.365},{"p":28,"w":0.362},{"p":29,"w":0.359},{"p":30,"w":0.364},{"p":31,"w":0.373},{"p":32,"w":0.381},{"p":33,"w":0.383},{"p":34,"w":0.369},{"p":35,"w":0.363},{"p":36,"w":0.355},{"p":37,"w":0.34},{"p":38,"w":0.336},{"p":39,"w":0.33},{"p":40,"w":0.33},{"p":41,"w":0.332},{"p":42,"w":0.329},{"p":43,"w":0.326},{"p":44,"w":0.32},{"p":45,"w":0.319},{"p":46,"w":0.323},{"p":47,"w":0.309},{"p":48,"w":0.307},{"p":49,"w":0.283},{"p":50,"w":0.281},{"p":51,"w":0.284},{"p":52,"w":0.284},{"p":53,"w":0.28},{"p":54,"w":0.275},{"p":55,"w":0.271},{"p":56,"w":0.273},{"p":57,"w":0.27},{"p":58,"w":0.266},{"p":59,"w":0.264},{"p":60,"w":0.261},{"p":61,"w":0.256},{"p":62,"w":0.253},{"p":63,"w":0.26},{"p":64,"w":0.242},{"p":65,"w":0.235},{"p":66,"w":0.232},{"p":67,"w":0.23},{"p":68,"w":0.226},{"p":69,"w":0.224},{"p":70,"w":0.222},{"p":71,"w":0.222},{"p":72,"w":0.224},{"p":73,"w":0.226},{"p":74,"w":0.221},{"p":75,"w":0.219},{"p":76,"w":0.218},{"p":77,"w":0.215},{"p":78,"w":0.214},{"p":79,"w":0.213},{"p":80,"w":0.208},{"p":81,"w":0.205},{"p":82,"w":0.203},{"p":83,"w":0.201},{"p":84,"w":0.2},{"p":85,"w":0.199},{"p":86,"w":0.201},{"p":87,"w":0.201},{"p":88,"w":0.197},{"p":89,"w":0.195},{"p":90,"w":0.204},{"p":91,"w":0.201},{"p":92,"w":0.204},{"p":93,"w":0.202},{"p":94,"w":0.197},{"p":95,"w":0.19},{"p":96,"w":0.179},{"p":97,"w":0.169},{"p":98,"w":0.165},{"p":99,"w":0.154},{"p":100,"w":0.14}],"moments":[{"t":"0:12","sec":12,"kind":"drop","what":"First-frame bleed runs hotter than the channel's own intro habit (14.70% stop vs 10.25% typical, 12,935 viewers gone, 1.4x channel norm)."},{"t":"6:41","sec":401,"kind":"peak","what":"Audience rises 2.5% at the first-ride ignition, regaining 1,325 viewers (held three samples, 37.3% present, 54th percentile vs similar)."},{"t":"6:54","sec":414,"kind":"peak","what":"A one-sample lift regains 1,192 viewers on the ride-off cheer (audience rose 2.2%, 38.1% present, 54th percentile)."},{"t":"7:07","sec":427,"kind":"drop","what":"A 52-second stretch shed 4,378 viewers, but the stop rate actually sits below the channel's habit here (1.03% stop vs 1.29% typical, 0.8x norm)."},{"t":"9:55","sec":595,"kind":"drop","what":"Mid-video sag drops 4,821 viewers across 39 seconds where the channel typically loses almost none (2.70% stop vs 0.96% typical, 2.8x norm, 6.0x surrounding rate)."},{"t":"19:24","sec":1164,"kind":"peak","what":"Late rewind pulls 1,354 viewers back at 90% through (audience rose 4.7%, held four samples, 20.4% present)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

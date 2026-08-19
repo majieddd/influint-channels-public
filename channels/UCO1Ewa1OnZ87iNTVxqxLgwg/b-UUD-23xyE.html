@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -329,12 +397,12 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
       25:06 · 308,297 views ·
       49% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video holds through the middle (rank 4 of 30 at halfway) but bleeds at a 23:21 outro drop that runs 2.2x the channel norm.</p>
+<p class="lede" style="margin:-14px 0 26px">This video holds an unusually wide lead over the channel from 0:30 onward (*+11.5pp at 30s, +7.4pp at 5:00, 4th of 75 at halfway*), so the fixable moments are the late outro cliff and one paint-color aside.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:14</span><span class="kind">Drop-off</span></span>
-  <span class="what">Standard opening shed as Emma finishes the greeting and states the plan (9.61% stop rate, 25,365 viewers, 0.15 seconds in).</span>
+  <span class="what">The one-second greeting sheds a chunk on cue (6.5x spike, 25,421 viewers, 100% to 90.8%), but it is milder than the channel usually loses here.</span>
   <span class="body">
-    <span class="lab">Why</span>Emma opens with a channel greeting and self-introduction before any stake lands: &quot;Hi friends and welcome to my abandoned general store.&quot;
-    <span class="quote">“Hi friends and welcome to my”</span>
-    <span class="lab">The fix</span>Cold-open on the paint reveal moment from around 4:07, then cut back to &quot;today we are going to be working on the hallway.&quot;
-    <span class="lab">Why that works</span>Joos and Cannell: never open on a greeting or self-intro; lead with an out-of-context strong-emotion moment that forces &quot;wait, what&#39;s happening?&quot;
+    <span class="lab">Why</span>Standard channel-greeting open: &quot;Hi friends and welcome to my abandoned general store. My name is Emma&quot; before the paint-color tease arrives.
+    <span class="quote">“reveal the paint color”</span>
+    <span class="lab">The fix</span>Leave the structure and open cold on the &quot;reveal the paint color&quot; tease, moving the greeting to after the first swatch hits the wall.
+    <span class="lab">Why that works</span>Intro loss here (0.0% vs 13.8% channel average for intros) is already best-in-cohort territory, so protect the tease rather than rebuild the greeting.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">4:16</span><span class="kind">Drop-off</span></span>
-  <span class="what">45-second sag right after the color reveal costs 3 points of the room (8.4x spike, 1.3x channel norm, 7,769 viewers).</span>
+  <span class="what">The paint-color reveal window bleeds steadily for 45 seconds (8.4x spike, 1.1x channel norm, 7,785 viewers, 54.5% to 51.5%).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma resolves the reveal then digresses into alternate color musings and scheduling: &quot;I was thinking about doing this room actually a really dark color.&quot;
-    <span class="quote">“thinking about doing this room actually”</span>
-    <span class="lab">The fix</span>Cut 4:20-4:39 (&quot;I was thinking...no time to spare&quot;) and jump from &quot;Sherwin-Williams Cream in My Coffee&quot; straight to &quot;let&#39;s get right into the first coat.&quot;
-    <span class="lab">Why that works</span>Joos: never resolve tension with runtime left, and kill repetition; the reveal already paid off, so the tangent about darker colors and late start bleeds the room.
+    <span class="lab">Why</span>The reveal resolves then immediately detours into alternatives not taken: &quot;thinking about doing this room actually a really dark color&quot; before returning to the first coat.
+    <span class="quote">“there might be some darker colors”</span>
+    <span class="lab">The fix</span>Cut 4:20-4:36 and rejoin on &quot;let&#39;s get right into the first coat&quot; so the color name lands and painting starts immediately.
+    <span class="lab">Why that works</span>Tension is spent the second the color is named, so 16 seconds of what-ifs release the room; keep momentum on the physical action.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">11:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 2.4 points on the trim-finish celebration before the PSA (3,621 viewers regained, 63rd percentile).</span>
+  <span class="what">A smaller lift right before the PSA (+2.4% present, 3,625 viewers regained, 63rd percentile vs similar) sits on the celebration beat.</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind the visible completion moment: &quot;YAY! OH MY GOSH! OKAY, it&#39;s time to bring the ladder out and finish this trim.&quot;
-    <span class="quote">“YAY! OH MY GOSH! OKAY”</span>
-    <span class="lab">Do more of this</span>Front-load a 3-second cut of this &quot;YAY&quot; beat into the cold-open reel so the promise of a finished-wall payoff is visible in the first 30 seconds.
-    <span class="lab">Why that works</span>Audit: surface the concrete reveal in the first 30 seconds so long runtime feels earned quickly; withhold the finished thing so the payoff keeps pulling.
+    <span class="lab">Why</span>The trim-finish payoff reads out loud: &quot;Yay! Woo! YAY! OH MY GOSH! OKAY, it&#39;s time to bring the ladder out and finish this trim.&quot;
+    <span class="quote">“time to bring the ladder out”</span>
+    <span class="lab">Do more of this</span>Hold this celebration on screen a beat longer and cut directly into the PSA without the ladder line, chaining the two rewound moments.
+    <span class="lab">Why that works</span>Two adjacent replay peaks mean this stretch is the emotional spine of the video, so protect the connective tissue rather than trimming it.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">11:48</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs 5.1 points and holds as Emma opens a personal privacy PSA (7,993 viewers regained, 67th percentile vs similar).</span>
+  <span class="what">Audience climbs mid-video and holds (+5.1% present, 8,001 viewers regained, 67th percentile vs similar) as a personal aside begins.</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to catch the confession landing: &quot;I have been dealing with some privacy issues here at the homestead.&quot;
-    <span class="quote">“dealing with some privacy issues here”</span>
-    <span class="lab">Do more of this</span>Tease this PSA in the first 60 seconds (&quot;something&#39;s been happening at the homestead&quot;) and structure the paint work as the wait until she says it.
-    <span class="lab">Why that works</span>Joos: dopamine spikes at the ANNOUNCEMENT of a reward — a beat that earns rewinds is an asset, so tease it early and structure toward it.
+    <span class="lab">Why</span>Viewers scrub back into the PSA opener: &quot;I have been dealing with some privacy issues here at the homestead&quot; naming stopped cars and cameras on the street.
+    <span class="quote">“privacy issues here at the homestead”</span>
+    <span class="lab">Do more of this</span>Trail the next video&#39;s cold open on this exact beat, cutting in on &quot;privacy issues here at the homestead&quot; before any recap.
+    <span class="lab">Why that works</span>A rewind this large on a spoken aside means the personal-stakes material is pulling harder than the paint work around it.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">15:34</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 3 points and holds for 33 samples on the primer-versus-paint before/after (4,274 viewers regained, 56th percentile).</span>
+  <span class="what">A short before/after beat holds a lifted room for 33 samples (+3.0% present, 4,278 viewers regained, sustained at 44.9%).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to compare the two wall states as she says: &quot;Here&#39;s what the wall used to look like. That&#39;s the primer, that&#39;s the paint.&quot;
+    <span class="lab">Why</span>The primer-to-paint comparison lands cleanly: &quot;Here&#39;s what the wall used to look like. That&#39;s the primer, that&#39;s the paint&quot; with &quot;Never forget&quot; as the button.
     <span class="quote">“That&#39;s the primer, that&#39;s the paint”</span>
-    <span class="lab">Do more of this</span>Repeat this exact primer/paint side-by-side twice more — once at ~5:00 after the first coat and once in the final tour — using the same &quot;never forget&quot; beat.
-    <span class="lab">Why that works</span>Audit + Joos: before/after contrast is a channel-proven thumbnail and retention asset; peak-end rule says force emotional peaks mid-video and end on a high.
+    <span class="lab">Do more of this</span>Front-load a 5-second version of this same before/after into the first minute as proof of the transformation the thumbnail promises.
+    <span class="lab">Why that works</span>Viewers rewound a visual comparison, not a talking head, so the channel&#39;s own footage already contains a stronger hook asset than the current open uses.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">23:21</span><span class="kind">Drop-off</span></span>
-  <span class="what">Late-video bleed loses 3.8 points of the room in 30 seconds (10.1x spike, 2.2x the channel norm, 10,142 viewers).</span>
+  <span class="what">A 30-second stretch near the end loses twice the channel&#39;s usual rate here (10.2x spike, 2.0x channel norm, 10,156 viewers, 48.0% to 44.2%).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 23:21-23:51 for outro signals — sign-off phrasing, thanks, or a slowdown before the natural end that tells viewers the video is finishing.
+    <span class="lab">Why</span>Check 23:21-23:51 for the moment the finished-room reveal lands and the video visibly transitions toward wrap-up, spending the last suspense layer.
     
-    <span class="lab">The fix</span>Cut any &quot;thanks for watching&quot; or wrap-up beat in 23:21-23:51 and hand off directly to the next-episode tease within seconds.
-    <span class="lab">Why that works</span>Joos: retention drops the moment viewers SENSE the video is ending; the channel&#39;s best outro instance held 0.0% loss by not signaling.
-    <span class="lab">Check first</span><span class="warn">If 23:21-23:51 contains a required disclosure or sponsor tag, keep it but move it before the final reveal beat so the outro ends on payoff.</span>
+    <span class="lab">The fix</span>Cut from the final reveal straight to an end-screen hand-off within 10 seconds, moving any thanks or recap out entirely.
+    <span class="lab">Why that works</span>Outro loss (12.7% vs 12.9% channel average) is on-cohort, but the best comparable held 0.0% by ending before the wrap-up signal fires.
+    <span class="lab">Check first</span><span class="warn">Verify nothing at 23:21-23:51 sets up next week&#39;s episode; if it does, tease it in 3 seconds before the hand-off.</span>
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"b-UUD-23xyE","durationSec":1506,"curve":[{"p":1,"w":0.908},{"p":2,"w":0.768},{"p":3,"w":0.668},{"p":4,"w":0.611},{"p":5,"w":0.6},{"p":6,"w":0.601},{"p":7,"w":0.603},{"p":8,"w":0.593},{"p":9,"w":0.584},{"p":10,"w":0.569},{"p":11,"w":0.553},{"p":12,"w":0.539},{"p":13,"w":0.536},{"p":14,"w":0.535},{"p":15,"w":0.54},{"p":16,"w":0.542},{"p":17,"w":0.545},{"p":18,"w":0.539},{"p":19,"w":0.533},{"p":20,"w":0.515},{"p":21,"w":0.507},{"p":22,"w":0.507},{"p":23,"w":0.508},{"p":24,"w":0.507},{"p":25,"w":0.509},{"p":26,"w":0.506},{"p":27,"w":0.51},{"p":28,"w":0.501},{"p":29,"w":0.496},{"p":30,"w":0.512},{"p":31,"w":0.491},{"p":32,"w":0.487},{"p":33,"w":0.488},{"p":34,"w":0.492},{"p":35,"w":0.487},{"p":36,"w":0.491},{"p":37,"w":0.487},{"p":38,"w":0.487},{"p":39,"w":0.476},{"p":40,"w":0.477},{"p":41,"w":0.482},{"p":42,"w":0.47},{"p":43,"w":0.468},{"p":44,"w":0.466},{"p":45,"w":0.466},{"p":46,"w":0.478},{"p":47,"w":0.502},{"p":48,"w":0.49},{"p":49,"w":0.492},{"p":50,"w":0.492},{"p":51,"w":0.481},{"p":52,"w":0.476},{"p":53,"w":0.469},{"p":54,"w":0.463},{"p":55,"w":0.457},{"p":56,"w":0.455},{"p":57,"w":0.458},{"p":58,"w":0.44},{"p":59,"w":0.435},{"p":60,"w":0.434},{"p":61,"w":0.436},{"p":62,"w":0.449},{"p":63,"w":0.456},{"p":64,"w":0.464},{"p":65,"w":0.459},{"p":66,"w":0.457},{"p":67,"w":0.454},{"p":68,"w":0.458},{"p":69,"w":0.449},{"p":70,"w":0.444},{"p":71,"w":0.446},{"p":72,"w":0.447},{"p":73,"w":0.453},{"p":74,"w":0.457},{"p":75,"w":0.462},{"p":76,"w":0.458},{"p":77,"w":0.463},{"p":78,"w":0.465},{"p":79,"w":0.476},{"p":80,"w":0.467},{"p":81,"w":0.466},{"p":82,"w":0.471},{"p":83,"w":0.476},{"p":84,"w":0.482},{"p":85,"w":0.474},{"p":86,"w":0.466},{"p":87,"w":0.463},{"p":88,"w":0.474},{"p":89,"w":0.481},{"p":90,"w":0.479},{"p":91,"w":0.473},{"p":92,"w":0.478},{"p":93,"w":0.48},{"p":94,"w":0.463},{"p":95,"w":0.442},{"p":96,"w":0.433},{"p":97,"w":0.426},{"p":98,"w":0.417},{"p":99,"w":0.395},{"p":100,"w":0.343}],"moments":[{"t":"0:14","sec":14,"kind":"drop","what":"Standard opening shed as Emma finishes the greeting and states the plan (9.61% stop rate, 25,365 viewers, 0.15 seconds in)."},{"t":"4:16","sec":256,"kind":"drop","what":"45-second sag right after the color reveal costs 3 points of the room (8.4x spike, 1.3x channel norm, 7,769 viewers)."},{"t":"11:33","sec":693,"kind":"peak","what":"Audience rises 2.4 points on the trim-finish celebration before the PSA (3,621 viewers regained, 63rd percentile)."},{"t":"11:48","sec":708,"kind":"peak","what":"Audience climbs 5.1 points and holds as Emma opens a personal privacy PSA (7,993 viewers regained, 67th percentile vs similar)."},{"t":"15:34","sec":934,"kind":"peak","what":"Audience rises 3 points and holds for 33 samples on the primer-versus-paint before/after (4,274 viewers regained, 56th percentile)."},{"t":"23:21","sec":1401,"kind":"drop","what":"Late-video bleed loses 3.8 points of the room in 30 seconds (10.1x spike, 2.2x the channel norm, 10,142 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"b-UUD-23xyE","durationSec":1506,"curve":[{"p":1,"w":0.908},{"p":2,"w":0.768},{"p":3,"w":0.668},{"p":4,"w":0.611},{"p":5,"w":0.6},{"p":6,"w":0.601},{"p":7,"w":0.603},{"p":8,"w":0.593},{"p":9,"w":0.584},{"p":10,"w":0.569},{"p":11,"w":0.553},{"p":12,"w":0.539},{"p":13,"w":0.536},{"p":14,"w":0.535},{"p":15,"w":0.54},{"p":16,"w":0.543},{"p":17,"w":0.545},{"p":18,"w":0.539},{"p":19,"w":0.533},{"p":20,"w":0.515},{"p":21,"w":0.508},{"p":22,"w":0.507},{"p":23,"w":0.508},{"p":24,"w":0.507},{"p":25,"w":0.509},{"p":26,"w":0.506},{"p":27,"w":0.51},{"p":28,"w":0.501},{"p":29,"w":0.496},{"p":30,"w":0.513},{"p":31,"w":0.491},{"p":32,"w":0.488},{"p":33,"w":0.488},{"p":34,"w":0.492},{"p":35,"w":0.487},{"p":36,"w":0.491},{"p":37,"w":0.487},{"p":38,"w":0.487},{"p":39,"w":0.476},{"p":40,"w":0.477},{"p":41,"w":0.482},{"p":42,"w":0.47},{"p":43,"w":0.468},{"p":44,"w":0.466},{"p":45,"w":0.467},{"p":46,"w":0.478},{"p":47,"w":0.502},{"p":48,"w":0.49},{"p":49,"w":0.492},{"p":50,"w":0.493},{"p":51,"w":0.481},{"p":52,"w":0.476},{"p":53,"w":0.469},{"p":54,"w":0.463},{"p":55,"w":0.457},{"p":56,"w":0.455},{"p":57,"w":0.458},{"p":58,"w":0.44},{"p":59,"w":0.435},{"p":60,"w":0.434},{"p":61,"w":0.436},{"p":62,"w":0.449},{"p":63,"w":0.456},{"p":64,"w":0.464},{"p":65,"w":0.459},{"p":66,"w":0.457},{"p":67,"w":0.454},{"p":68,"w":0.458},{"p":69,"w":0.45},{"p":70,"w":0.444},{"p":71,"w":0.446},{"p":72,"w":0.447},{"p":73,"w":0.453},{"p":74,"w":0.457},{"p":75,"w":0.462},{"p":76,"w":0.458},{"p":77,"w":0.463},{"p":78,"w":0.465},{"p":79,"w":0.476},{"p":80,"w":0.467},{"p":81,"w":0.467},{"p":82,"w":0.471},{"p":83,"w":0.477},{"p":84,"w":0.482},{"p":85,"w":0.475},{"p":86,"w":0.466},{"p":87,"w":0.463},{"p":88,"w":0.474},{"p":89,"w":0.481},{"p":90,"w":0.479},{"p":91,"w":0.473},{"p":92,"w":0.478},{"p":93,"w":0.48},{"p":94,"w":0.463},{"p":95,"w":0.442},{"p":96,"w":0.433},{"p":97,"w":0.426},{"p":98,"w":0.417},{"p":99,"w":0.395},{"p":100,"w":0.343}],"moments":[{"t":"0:14","sec":14,"kind":"drop","what":"The one-second greeting sheds a chunk on cue (6.5x spike, 25,421 viewers, 100% to 90.8%), but it is milder than the channel usually loses here."},{"t":"4:16","sec":256,"kind":"drop","what":"The paint-color reveal window bleeds steadily for 45 seconds (8.4x spike, 1.1x channel norm, 7,785 viewers, 54.5% to 51.5%)."},{"t":"11:33","sec":693,"kind":"peak","what":"A smaller lift right before the PSA (+2.4% present, 3,625 viewers regained, 63rd percentile vs similar) sits on the celebration beat."},{"t":"11:48","sec":708,"kind":"peak","what":"Audience climbs mid-video and holds (+5.1% present, 8,001 viewers regained, 67th percentile vs similar) as a personal aside begins."},{"t":"15:34","sec":934,"kind":"peak","what":"A short before/after beat holds a lifted room for 33 samples (+3.0% present, 4,278 viewers regained, sustained at 44.9%)."},{"t":"23:21","sec":1401,"kind":"drop","what":"A 30-second stretch near the end loses twice the channel's usual rate here (10.2x spike, 2.0x channel norm, 10,156 viewers, 48.0% to 44.2%)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

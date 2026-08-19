@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -329,12 +397,12 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
       26:32 · 512,621 views ·
       34% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">The 7:58 Earth Breeze sponsor read cost 10.9 points of audience in 32 seconds — 10.2x the channel&#39;s stop rate at that spot and the video&#39;s single biggest wound.</p>
+<p class="lede" style="margin:-14px 0 26px">Emma&#39;s opening holds strong (*92.0% at 0:30, +12.7pp over channel median*), but a straight-read Earth Breeze sponsor at 7:58 costs 51,435 viewers — 7.2x the channel norm for that spot.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:15</span><span class="kind">Drop-off</span></span>
-  <span class="what">The channel-greeting open loses a quarter of the room in 17 seconds (4.8x surrounding stop rate, 98,691 viewers, 74.0% remaining).</span>
+  <span class="what">The channel greeting and premise restatement bleeds a quarter of viewers before the work starts (13.58% stop rate, 1.3x channel norm, 98,815 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma opens with a self-introduction and premise restatement instead of the obstacle: &quot;Hi and welcome to my channel. My name is Emma.&quot;
+    <span class="lab">Why</span>Emma opens on a logo-style greeting and restates what the thumbnail already sold: &quot;Hi and welcome to my channel. My name is Emma and this is my abandoned general store.&quot;
     <span class="quote">“Hi and welcome to my channel”</span>
-    <span class="lab">The fix</span>Recut 0:05-0:15 to open on the overgrown back lot and the machine, then say the goal in one sentence.
-    <span class="lab">Why that works</span>Joos and Cannell ban logo stings and greetings; the audit says surface the concrete obstacle in the first 30 seconds so casual viewers understand fast.
+    <span class="lab">The fix</span>Cut 0:05-0:13 and open cold on the 0:24 line &quot;clearing the back lot, all of the trees, all of the brush&quot; over the machinery.
+    <span class="lab">Why that works</span>Never open on a channel greeting or restate the premise the thumbnail already sold — deliver context and stakes fast.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">7:58</span><span class="kind">Drop-off</span></span>
-  <span class="what">The Earth Breeze read collapses audience from 37.3% to 26.4% in 32 seconds (13.2x spike, 10.2x channel norm here, 51,407 viewers).</span>
+  <span class="what">The Earth Breeze sponsor read triggers the video&#39;s worst drop (13.3x spike, 6.47% stop rate, 7.2x channel norm, 51,435 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>The read opens on the sponsor&#39;s name and a benefits list: &quot;Earth Breeze is an eco-friendly laundry detergent sheet.&quot;
-    <span class="quote">“Earth Breeze is an eco-friendly laundry detergent sheet”</span>
-    <span class="lab">The fix</span>Rebuild as a cross-cut: keep the wood chipper and clearing footage rolling under the read, and open on sustainability, not the brand.
-    <span class="lab">Why that works</span>Joos shows straight reads cost 10-20% while cross-cut reads cost ~2%; never open on &quot;this video is sponsored by.&quot;
-    <span class="lab">Check first</span><span class="warn">Confirm Earth Breeze&#39;s contract allows a rewritten opening line and B-roll under the read; if locked, negotiate for the next placement.</span>
+    <span class="lab">Why</span>Emma opens the read with a sponsor-first pivot straight after a work beat: &quot;that is why when Earth Breeze reached out to me&quot; — a released-tension moment, then a plastic-packaging pitch.
+    <span class="quote">“when Earth Breeze reached out to me”</span>
+    <span class="lab">The fix</span>Cross-cut the read with the wood-chipper footage running from 7:37, and rewrite the opener so &quot;Earth Breeze&quot; is not the first sentence — tie it to sustainability on the property.
+    <span class="lab">Why that works</span>A straight one-minute read costs 10-20% of the room; cross-cutting with the progressing story cuts that to ~2%, and ads must run during live suspense, not after a payoff.
+    <span class="lab">Check first</span><span class="warn">Earth Breeze is a paid partner — clear script changes and the countdown treatment with them before shipping.</span>
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">9:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs 8.6 points and holds for 60 samples as she names the maple discovery (14,988 viewers regained, 57th percentile vs similar).</span>
+  <span class="what">Viewers scrub back as Emma discovers she owns maple-syrup trees (+8.6% of the room, 14,998 regained, held 60 samples, 57th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>She realises the trees she is saving are tappable: &quot;Didn&#39;t even know that I had maples on my property.&quot;
+    <span class="lab">Why</span>The rewind lands on a genuine unplanned discovery: &quot;how to tap for maple syrup. Didn&#39;t even know that I had maples on my property.&quot;
     <span class="quote">“Didn&#39;t even know that I had maples”</span>
-    <span class="lab">Do more of this</span>Front-load a 5-second tease at 0:20 promising a hidden discovery among the trees she keeps, and title the next upload around tapping the maples.
-    <span class="lab">Why that works</span>Joos: reveals that earn rewinds are assets — tease early and structure toward them; the audit&#39;s loyalty loop asks for a forward-pointing next-video promise.
+    <span class="lab">Do more of this</span>Tease the maple discovery in the first 30 seconds — cut to Emma&#39;s &quot;That&#39;s so exciting&quot; over a maple leaf — and structure the clearing segment toward finding them.
+    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; tease it early and structure toward it to pull viewers through the middle.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">9:49</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A second lift of 4.5 points holds 53 samples as she explains why her wildflowers failed (8,482 viewers regained, 59th percentile).</span>
+  <span class="what">A second rewind on the same beat, into the wildflower-versus-reeds explanation (+4.5% of the room, 8,429 regained, held 53 samples, 59th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>She reasons out the power-line spraying theory: &quot;my wild flowers did not ever grow.&quot;
+    <span class="lab">Why</span>Viewers replay a concrete cause-effect observation: &quot;they must have outgrown my wild flowers because my wild flowers did not ever grow.&quot;
     <span class="quote">“my wild flowers did not ever grow”</span>
-    <span class="lab">Do more of this</span>Cut the summer-vs-winter aside from 9:54-10:10 into a tight 5-second before/after insert and keep the spray theory as the voiceover.
-    <span class="lab">Why that works</span>Joos: pacing is flow of new information; the theory is what viewers rewound for, so protect it and compress the recap footage around it.
+    <span class="lab">Do more of this</span>Front-load a summer-versus-now split screen at 9:49 the moment Emma says &quot;reeds grew,&quot; so the visual proof lands with the sentence instead of 15 seconds later.
+    <span class="lab">Why that works</span>Pacing is flow of new information; showing the change as it is named removes the delay viewers are currently rewinding to bridge.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">12:12</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 3.3 points on the day-one before-and-after (6,623 viewers regained, 65th percentile vs similar).</span>
+  <span class="what">A brief rewind on the day-one before-and-after from the upstairs window (+3.3% of the room, 6,627 regained, held only 2 samples, 65th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>She frames a clean progress checkpoint: &quot;give you a day one before and after.&quot;
-    <span class="quote">“day one before and after”</span>
-    <span class="lab">Do more of this</span>Add an on-screen day counter from 12:02 onward and repeat the same window-view framing at every subsequent day&#39;s end.
-    <span class="lab">Why that works</span>Joos: progress trackers and repeated framings hold retention; the audit calls before/after the channel&#39;s strongest thumbnail and pacing device.
+    <span class="lab">Why</span>Viewers replay the first visible payoff of the clearing work: &quot;here we are at the end of day one of clearing&quot; shot from the upstairs window.
+    <span class="quote">“end of day one of clearing”</span>
+    <span class="lab">Do more of this</span>Hold the upstairs before/after on screen for four more seconds with a riser under it, then cut to bottle-hunting so the payoff lands before releasing.
+    <span class="lab">Why that works</span>Start risers ~20s before a key moment and stretch the conflict beat — the 2-sample hold shows the payoff is landing but being released too fast.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">23:37</span><span class="kind">Drop-off</span></span>
-  <span class="what">The before-and-after montage loses 1.9 points in 32 seconds (4.1x spike, 2.0x channel norm, 7,731 viewers), where reveals here usually GAIN audience.</span>
+  <span class="what">The before-and-after montage loses a small share at a moment where the channel usually GAINS viewers (1.65% stop rate vs 0.93% norm, 4.1x spike, 7,737 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma pre-announces the reveal and hands off to a long music-only montage: &quot;Take a look and enjoy it.&quot;
-    <span class="quote">“Take a look and enjoy it”</span>
-    <span class="lab">The fix</span>Cut the &quot;Take a look and enjoy it&quot; line and open the montage on the hardest cleared shot, with the pine milling tease voiced over it.
-    <span class="lab">Why that works</span>Joos: never signal a passive segment; the channel&#39;s best reveal (Two Huge Setbacks at 8:55) GAINS 12.6% by voicing the payoff live over the shot.
+    <span class="lab">Why</span>Emma pre-announces the reveal instead of cutting into it: &quot;I want to go ahead and give you a before and after,&quot; then a music-only montage with no narration to hold the beat.
+    <span class="quote">“give you a before and after”</span>
+    <span class="lab">The fix</span>Delete 23:15-23:37 and cut straight from the felled pine to the before/after, modeled on &quot;Hitting Two Huge Setbacks&quot; at 8:55 which GAINED 12.6% by landing the reveal cold.
+    <span class="lab">Why that works</span>Reveals lose viewers the moment they are announced; the sister video&#39;s cold cut is the channel&#39;s proven pattern for this exact beat.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"8hbIH9KvEYs","durationSec":1592,"curve":[{"p":1,"w":0.92},{"p":2,"w":0.74},{"p":3,"w":0.6},{"p":4,"w":0.506},{"p":5,"w":0.477},{"p":6,"w":0.465},{"p":7,"w":0.461},{"p":8,"w":0.464},{"p":9,"w":0.456},{"p":10,"w":0.441},{"p":11,"w":0.427},{"p":12,"w":0.418},{"p":13,"w":0.414},{"p":14,"w":0.417},{"p":15,"w":0.404},{"p":16,"w":0.411},{"p":17,"w":0.404},{"p":18,"w":0.404},{"p":19,"w":0.407},{"p":20,"w":0.404},{"p":21,"w":0.405},{"p":22,"w":0.41},{"p":23,"w":0.399},{"p":24,"w":0.398},{"p":25,"w":0.398},{"p":26,"w":0.394},{"p":27,"w":0.382},{"p":28,"w":0.371},{"p":29,"w":0.37},{"p":30,"w":0.373},{"p":31,"w":0.303},{"p":32,"w":0.264},{"p":33,"w":0.262},{"p":34,"w":0.266},{"p":35,"w":0.3},{"p":36,"w":0.325},{"p":37,"w":0.34},{"p":38,"w":0.347},{"p":39,"w":0.348},{"p":40,"w":0.348},{"p":41,"w":0.347},{"p":42,"w":0.341},{"p":43,"w":0.339},{"p":44,"w":0.34},{"p":45,"w":0.347},{"p":46,"w":0.358},{"p":47,"w":0.348},{"p":48,"w":0.347},{"p":49,"w":0.343},{"p":50,"w":0.341},{"p":51,"w":0.343},{"p":52,"w":0.34},{"p":53,"w":0.339},{"p":54,"w":0.343},{"p":55,"w":0.343},{"p":56,"w":0.333},{"p":57,"w":0.339},{"p":58,"w":0.344},{"p":59,"w":0.348},{"p":60,"w":0.358},{"p":61,"w":0.364},{"p":62,"w":0.371},{"p":63,"w":0.367},{"p":64,"w":0.368},{"p":65,"w":0.369},{"p":66,"w":0.357},{"p":67,"w":0.351},{"p":68,"w":0.348},{"p":69,"w":0.346},{"p":70,"w":0.349},{"p":71,"w":0.355},{"p":72,"w":0.363},{"p":73,"w":0.368},{"p":74,"w":0.367},{"p":75,"w":0.362},{"p":76,"w":0.356},{"p":77,"w":0.361},{"p":78,"w":0.363},{"p":79,"w":0.362},{"p":80,"w":0.361},{"p":81,"w":0.371},{"p":82,"w":0.367},{"p":83,"w":0.359},{"p":84,"w":0.354},{"p":85,"w":0.352},{"p":86,"w":0.352},{"p":87,"w":0.345},{"p":88,"w":0.342},{"p":89,"w":0.343},{"p":90,"w":0.334},{"p":91,"w":0.324},{"p":92,"w":0.316},{"p":93,"w":0.317},{"p":94,"w":0.321},{"p":95,"w":0.312},{"p":96,"w":0.303},{"p":97,"w":0.296},{"p":98,"w":0.26},{"p":99,"w":0.247},{"p":100,"w":0.232}],"moments":[{"t":"0:15","sec":15,"kind":"drop","what":"The channel-greeting open loses a quarter of the room in 17 seconds (4.8x surrounding stop rate, 98,691 viewers, 74.0% remaining)."},{"t":"7:58","sec":478,"kind":"drop","what":"The Earth Breeze read collapses audience from 37.3% to 26.4% in 32 seconds (13.2x spike, 10.2x channel norm here, 51,407 viewers)."},{"t":"9:33","sec":573,"kind":"peak","what":"Audience climbs 8.6 points and holds for 60 samples as she names the maple discovery (14,988 viewers regained, 57th percentile vs similar)."},{"t":"9:49","sec":589,"kind":"peak","what":"A second lift of 4.5 points holds 53 samples as she explains why her wildflowers failed (8,482 viewers regained, 59th percentile)."},{"t":"12:12","sec":732,"kind":"peak","what":"Audience rises 3.3 points on the day-one before-and-after (6,623 viewers regained, 65th percentile vs similar)."},{"t":"23:37","sec":1417,"kind":"drop","what":"The before-and-after montage loses 1.9 points in 32 seconds (4.1x spike, 2.0x channel norm, 7,731 viewers), where reveals here usually GAIN audience."}]}</script>
+<script>window.__VIDEO__={"videoId":"8hbIH9KvEYs","durationSec":1592,"curve":[{"p":1,"w":0.92},{"p":2,"w":0.74},{"p":3,"w":0.6},{"p":4,"w":0.506},{"p":5,"w":0.477},{"p":6,"w":0.465},{"p":7,"w":0.461},{"p":8,"w":0.464},{"p":9,"w":0.456},{"p":10,"w":0.441},{"p":11,"w":0.426},{"p":12,"w":0.418},{"p":13,"w":0.414},{"p":14,"w":0.417},{"p":15,"w":0.404},{"p":16,"w":0.41},{"p":17,"w":0.404},{"p":18,"w":0.404},{"p":19,"w":0.407},{"p":20,"w":0.404},{"p":21,"w":0.405},{"p":22,"w":0.41},{"p":23,"w":0.399},{"p":24,"w":0.398},{"p":25,"w":0.397},{"p":26,"w":0.394},{"p":27,"w":0.382},{"p":28,"w":0.371},{"p":29,"w":0.37},{"p":30,"w":0.373},{"p":31,"w":0.303},{"p":32,"w":0.264},{"p":33,"w":0.262},{"p":34,"w":0.266},{"p":35,"w":0.3},{"p":36,"w":0.325},{"p":37,"w":0.34},{"p":38,"w":0.347},{"p":39,"w":0.348},{"p":40,"w":0.348},{"p":41,"w":0.347},{"p":42,"w":0.341},{"p":43,"w":0.339},{"p":44,"w":0.339},{"p":45,"w":0.346},{"p":46,"w":0.358},{"p":47,"w":0.348},{"p":48,"w":0.347},{"p":49,"w":0.343},{"p":50,"w":0.341},{"p":51,"w":0.342},{"p":52,"w":0.34},{"p":53,"w":0.339},{"p":54,"w":0.343},{"p":55,"w":0.343},{"p":56,"w":0.333},{"p":57,"w":0.339},{"p":58,"w":0.344},{"p":59,"w":0.348},{"p":60,"w":0.358},{"p":61,"w":0.364},{"p":62,"w":0.371},{"p":63,"w":0.367},{"p":64,"w":0.367},{"p":65,"w":0.369},{"p":66,"w":0.357},{"p":67,"w":0.351},{"p":68,"w":0.348},{"p":69,"w":0.346},{"p":70,"w":0.349},{"p":71,"w":0.355},{"p":72,"w":0.363},{"p":73,"w":0.368},{"p":74,"w":0.367},{"p":75,"w":0.362},{"p":76,"w":0.356},{"p":77,"w":0.361},{"p":78,"w":0.363},{"p":79,"w":0.362},{"p":80,"w":0.361},{"p":81,"w":0.37},{"p":82,"w":0.367},{"p":83,"w":0.359},{"p":84,"w":0.354},{"p":85,"w":0.352},{"p":86,"w":0.352},{"p":87,"w":0.345},{"p":88,"w":0.342},{"p":89,"w":0.343},{"p":90,"w":0.334},{"p":91,"w":0.324},{"p":92,"w":0.316},{"p":93,"w":0.317},{"p":94,"w":0.321},{"p":95,"w":0.312},{"p":96,"w":0.303},{"p":97,"w":0.296},{"p":98,"w":0.26},{"p":99,"w":0.247},{"p":100,"w":0.232}],"moments":[{"t":"0:15","sec":15,"kind":"drop","what":"The channel greeting and premise restatement bleeds a quarter of viewers before the work starts (13.58% stop rate, 1.3x channel norm, 98,815 viewers lost)."},{"t":"7:58","sec":478,"kind":"drop","what":"The Earth Breeze sponsor read triggers the video's worst drop (13.3x spike, 6.47% stop rate, 7.2x channel norm, 51,435 viewers lost)."},{"t":"9:33","sec":573,"kind":"peak","what":"Viewers scrub back as Emma discovers she owns maple-syrup trees (+8.6% of the room, 14,998 regained, held 60 samples, 57th percentile)."},{"t":"9:49","sec":589,"kind":"peak","what":"A second rewind on the same beat, into the wildflower-versus-reeds explanation (+4.5% of the room, 8,429 regained, held 53 samples, 59th percentile)."},{"t":"12:12","sec":732,"kind":"peak","what":"A brief rewind on the day-one before-and-after from the upstairs window (+3.3% of the room, 6,627 regained, held only 2 samples, 65th percentile)."},{"t":"23:37","sec":1417,"kind":"drop","what":"The before-and-after montage loses a small share at a moment where the channel usually GAINS viewers (1.65% stop rate vs 0.93% norm, 4.1x spike, 7,737 viewers lost)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

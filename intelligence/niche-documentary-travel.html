@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -335,7 +403,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Elderly interviewees are systematically under-used and carry more pronounced humanity per minute of screen time, because a lifetime of hardship and love is legible quickly.</div>
   <div class="src">Source: Yes Theory</div>
   
@@ -346,20 +417,34 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>I find that Elders are some of the most interesting people that go completely unnoticed around us all the time because they have so much knowledge. Every elderly person has lived through something... I think when you&#39;ve lived a lifetime, you have seen hardship and you have seen love. And so I find that those characters are interesting</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>I find that Elders are some of the most interesting people that go completely unnoticed around us all the time because they have so much knowledge. Every elderly person has lived through something... I think when you&#39;ve lived a lifetime, you have seen hardship and you have seen love. And so I find that those characters are interesting</blockquote></div>
   </details>
 </div></div>
 <h2>storytelling</h2>
 <div class="claims"><div class="claim">
   <div class="top">
-    <span class="pill s-wisdom">Wisdom</span>
+    <span class="pill s-theory">Theory</span>
     <span class="cat">storytelling</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">The real story of a video is usually discovered in the edit rather than the plan, and the correct response is to restructure the entire video around the emergent heart even if it discards planned sequences.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>Does the payoff exist independently of the shoot, and can this production afford coverage? Khare&#39;s format is a designed challenge with an engineered payoff — the outcome is the plan, so shooting without a thesis means missing the shots the payoff needs. Yes Theory&#39;s subject is a PERSON or a PLACE whose behaviour is the content, and no thesis can predict it. The economics discriminate too: Brag&#39;s 3f346d2d855c says Yes Theory shoots 30-40 mini-scenes and keeps ~18 — a coverage ratio that makes discovery affordable. A single-run challenge with one take cannot buy that option. And Brag himself supplies the guard rail (c07117b89994): the Iceman documentary had to be fully recut because an editing team forced real events into a planned arc — so the failure both sources agree on is a plan that survives contact with contradicting footage.</p></div>
@@ -370,10 +455,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>we were like, let&#39;s shift this entire video around this guy, this grandpa who just popped in and make these more cinematic stuff, just cut it down to really the bare minimum to focus on him. And I think when you edit that and you cut it down, you really find where the heart is.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>we were like, let&#39;s shift this entire video around this guy, this grandpa who just popped in and make these more cinematic stuff, just cut it down to really the bare minimum to focus on him. And I think when you edit that and you cut it down, you really find where the heart is.</blockquote></div>
   </details>
 </div></div>
 <h2>production</h2>
@@ -383,7 +479,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">In talking-head video the secondary camera angle is a liability if it is a profile shot: viewers came to connect with a face, so side angles read as cinematic but disengage — use the second angle only to refresh visuals, never to linger.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -394,10 +493,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>your secondary camera angle is not engaging. Nobody likes to look at the side of your face. I don&#39;t know why in documentary videos they tend to do this. They tend to linger on. On the side angle. People don&#39;t come to see that. They want to connect with the human.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>your secondary camera angle is not engaging. Nobody likes to look at the side of your face. I don&#39;t know why in documentary videos they tend to do this. They tend to linger on. On the side angle. People don&#39;t come to see that. They want to connect with the human.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -406,7 +516,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Scene selection is aggressive: Yes Theory films roughly 30-40 mini-scenes per video and keeps around 18 — a scene is cut whenever it does not serve the why, even when it is genuinely funny or beautiful.</div>
   <div class="src">Source: Yes Theory</div>
   
@@ -417,10 +530,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Typically, in a yes Theory video, we&#39;ll film let&#39;s say like 30, 40 different little mini scenes, and we have to think about what are the best 18 of these?... there were things that happened in between that we captured that we cut out because it was interesting, but it was a side moment that just brought fluff to the story</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Typically, in a yes Theory video, we&#39;ll film let&#39;s say like 30, 40 different little mini scenes, and we have to think about what are the best 18 of these?... there were things that happened in between that we captured that we cut out because it was interesting, but it was a side moment that just brought fluff to the story</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -429,7 +553,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Structure the video into acts with fixed check-in points for direct-to-camera commentary, but leave the content of each block unscripted — the container is planned, the words are not.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -440,10 +567,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>if I do act one, act two, act three, in the beginning, I&#39;ll be like, okay, well, this is going to happen here... I don&#39;t need to plan word for word what I&#39;m going to say, but it&#39;s like, okay, like I need like a spot where I need to film me talking to the camera at this point... you still have the freedom within each like little block of time</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>if I do act one, act two, act three, in the beginning, I&#39;ll be like, okay, well, this is going to happen here... I don&#39;t need to plan word for word what I&#39;m going to say, but it&#39;s like, okay, like I need like a spot where I need to film me talking to the camera at this point... you still have the freedom within each like little block of time</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -452,7 +590,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Place should be established with roughly five or six simple shots — a couple of wides plus a few details — and cinematographic polish is not required to transport the viewer; Brag&#39;s Tuvalu video did it on a GoPro.</div>
   <div class="src">Source: Yes Theory</div>
   
@@ -463,19 +604,33 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>we had, what, five, six shots maybe? And you can just think about it, about getting a couple of wides so that you can show the room a couple of interesting details that you think bring personality into it. But if the details aren&#39;t that interesting, it&#39;s fine... my cinematography wasn&#39;t top notch, but it still made you feel like you were there with me.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>we had, what, five, six shots maybe? And you can just think about it, about getting a couple of wides so that you can show the room a couple of interesting details that you think bring personality into it. But if the details aren&#39;t that interesting, it&#39;s fine... my cinematography wasn&#39;t top notch, but it still made you feel like you were there with me.</blockquote></div>
   </details>
 </div>
 <div class="claim">
   <div class="top">
-    <span class="pill s-wisdom">Wisdom</span>
+    <span class="pill s-theory">Theory</span>
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Abandoning the planned story for what actually shows up on location can produce the channel&#39;s best video — Yes Theory&#39;s Moldova shoot dropped its plan for three days to follow one elderly stranger, with no backup.</div>
   <div class="src">Source: Yes Theory</div>
   
@@ -486,10 +641,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>I let go of my thinking producing brain, and I allowed it to flow, the real flow that was happening to me right in front of me, to just go... We have no backup plan. We spent three days filming with him.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>I let go of my thinking producing brain, and I allowed it to flow, the real flow that was happening to me right in front of me, to just go... We have no backup plan. We spent three days filming with him.</blockquote></div>
   </details>
 </div></div>
 

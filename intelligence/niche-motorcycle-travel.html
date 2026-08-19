@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -335,7 +403,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     <span class="cat">· checked across 4 channels</span>
+    
+    
   </div>
+  
   <div class="txt">Extreme weather as a subject broadens reach beyond a channel&#39;s niche because it is globally legible — it produced the channel&#39;s top-viewed video at 7.8% CTR in a motorcycle-travel niche.</div>
   <div class="src">Source: our own channel audits</div>
   
@@ -346,10 +417,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> No lift: WITH n=16 median 0.88x vs 1.00x (MWU z=-1.25, p=0.21); age-adjusted 0.83x vs 1.00x (p=0.29). Channels split 2 ahead / 2 behind — Moto Camp Nerd 1.38x vs 1.00x and Itchy Boots 1.17x vs 1.00x against Bikes and Beards 0.73x vs 1.02x and TheMissendenFlyer 0.86x vs 1.00x. Channel D&#39; own weather-subject video, &#39;The Blue Ridge Parkway was destroyed after this&#39;, is her third-best at 2.22x first-28d, which is the anecdote the claim generalises from.</p>
-    <p class="caveat">Caveat: 16 videos across 4 channels cannot settle this, and the claim&#39;s mechanism (reach BEYOND the niche) needs traffic-source data we do not hold — a video could break out to non-motorcycle audiences and still land at 1.0x against its own channel. The cited 7.8% CTR is untestable. Weather also appears in titles as scene-setting rather than as the subject.</p>
-    <blockquote>Evaluation: Stormy/Extreme Weather conditions is passively popular and globally appealing</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> No lift: WITH n=16 median 0.88x vs 1.00x (MWU z=-1.25, p=0.21); age-adjusted 0.83x vs 1.00x (p=0.29). Channels split 2 ahead / 2 behind — Moto Camp Nerd 1.38x vs 1.00x and Itchy Boots 1.17x vs 1.00x against Bikes and Beards 0.73x vs 1.02x and TheMissendenFlyer 0.86x vs 1.00x. Channel D&#39; own weather-subject video, &#39;The Blue Ridge Parkway was destroyed after this&#39;, is her third-best at 2.22x first-28d, which is the anecdote the claim generalises from.</p>
+             <p class="caveat">Caveat: 16 videos across 4 channels cannot settle this, and the claim&#39;s mechanism (reach BEYOND the niche) needs traffic-source data we do not hold — a video could break out to non-motorcycle audiences and still land at 1.0x against its own channel. The cited 7.8% CTR is untestable. Weather also appears in titles as scene-setting rather than as the subject.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Evaluation: Stormy/Extreme Weather conditions is passively popular and globally appealing</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -358,7 +446,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">A single high-intent search query can support six non-duplicating videos by varying intent and format (checklist, transformation, comparison, beginner protection, format episode, longitudinal sequel) — supply within a query is not exhausted by one upload.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -369,19 +460,33 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>A precise search query such as &quot;motorcycle camping checklist&quot; can become several different ideas without duplicating value</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>A precise search query such as &quot;motorcycle camping checklist&quot; can become several different ideas without duplicating value</blockquote></div>
   </details>
 </div>
 <div class="claim">
   <div class="top">
-    <span class="pill s-refuted">Refuted</span>
+    <span class="pill s-rejected">Rejected</span>
     <span class="cat">ideation</span>
     
     <span class="cat">· checked across 7 channels</span>
+    <span class="cat rej-why">· Refuted by our data</span>
+    
   </div>
+  
   <div class="txt">Travel footage should be cut as informational/travel-guide content rather than as documentation of the trip — the informational framing gives the video a reason to be found and rewatched.</div>
   <div class="src">Source: internal strategy session</div>
   
@@ -392,10 +497,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested — contradicted:</b> Informational framing UNDER-performs: WITH n=37 median 0.95x vs 1.00x (MWU z=-1.97, p=0.049); age-adjusted 0.87x vs 1.00x (z=-1.88, p=0.061). 5 of the 7 channels with &gt;=2 guide videos came out behind — FortNine 0.40x vs 1.11x, Moto Camp Nerd 0.59x vs 1.08x, MotoJitsu 0.71x vs 1.00x, RevZilla 0.88x vs 1.00x, Chaseontwowheels 0.77x vs 1.03x. Narrative framing sits at or slightly above normal: 1.03x raw, 1.10x age-adjusted (n=9, ns). Broader corpus how-to check across all 46 channels: 0.95x raw / 0.89x age-adjusted, ahead on only 1 of 6 channels.</p>
-    <p class="caveat">Caveat: Title framing is a weak stand-in for EDIT framing — a trip cut as a travel guide may still be titled narratively, which would put it in my &#39;narrative&#39; bucket and blunt the test. The claim also asserts a rewatch benefit, which lifetime views cannot see. The effect is modest and borderline-significant; treat it as &#39;guide-titled travel content does not outperform&#39; rather than &#39;informational cutting is wrong&#39;.</p>
-    <blockquote>They plan to create travel-style, informational content from this trip rather than just documentation, aiming to produce at least three videos from the journey.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Contradicted:</b> Informational framing UNDER-performs: WITH n=37 median 0.95x vs 1.00x (MWU z=-1.97, p=0.049); age-adjusted 0.87x vs 1.00x (z=-1.88, p=0.061). 5 of the 7 channels with &gt;=2 guide videos came out behind — FortNine 0.40x vs 1.11x, Moto Camp Nerd 0.59x vs 1.08x, MotoJitsu 0.71x vs 1.00x, RevZilla 0.88x vs 1.00x, Chaseontwowheels 0.77x vs 1.03x. Narrative framing sits at or slightly above normal: 1.03x raw, 1.10x age-adjusted (n=9, ns). Broader corpus how-to check across all 46 channels: 0.95x raw / 0.89x age-adjusted, ahead on only 1 of 6 channels.</p>
+             <p class="caveat">Caveat: Title framing is a weak stand-in for EDIT framing — a trip cut as a travel guide may still be titled narratively, which would put it in my &#39;narrative&#39; bucket and blunt the test. The claim also asserts a rewatch benefit, which lifetime views cannot see. The effect is modest and borderline-significant; treat it as &#39;guide-titled travel content does not outperform&#39; rather than &#39;informational cutting is wrong&#39;.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>They plan to create travel-style, informational content from this trip rather than just documentation, aiming to produce at least three videos from the journey.</blockquote></div>
   </details>
 </div></div>
 <h2>packaging</h2>
@@ -405,7 +527,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     <span class="cat">· checked across 4 channels</span>
+    
+    
   </div>
+  
   <div class="txt">Reactive, event-anchored titling works in the motorcycle-rally niche: a title of the shape &#39;I can&#39;t believe this happened at Sturgis&#39;, borrowed from a high-performing rally publisher, was chosen to capture live search demand within days of the event.</div>
   <div class="src">Source: internal strategy session</div>
   
@@ -416,10 +541,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Named event or venue: n=5 across 4 channels, median 1.00x vs 1.00x, z=-0.14, p=0.89. Reactive construction: n=2 — no test possible. Our motorcycle corpus is built from touring, gear-review and riding-instruction channels; the rally-coverage sub-niche the claim describes is essentially absent from it.</p>
-    <p class="caveat">Caveat: A null on n=5 is not evidence against the claim, it is an absent sample. Note also the adjacent warning claim (693b8db93f38) that vague reactive phrasing was rewarded and then punished by the algorithm — if both are true the effect is time-dependent, which our single-snapshot corpus could not detect even with a decent sample.</p>
-    <blockquote>our strategist and Jess a.k.a. Channel D identified that a video titled &quot;I can&#39;t believe this happened at Sturgis&quot; could perform well, inspired by high-performing content from Cycle Drag Magazine.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Named event or venue: n=5 across 4 channels, median 1.00x vs 1.00x, z=-0.14, p=0.89. Reactive construction: n=2 — no test possible. Our motorcycle corpus is built from touring, gear-review and riding-instruction channels; the rally-coverage sub-niche the claim describes is essentially absent from it.</p>
+             <p class="caveat">Caveat: A null on n=5 is not evidence against the claim, it is an absent sample. Note also the adjacent warning claim (693b8db93f38) that vague reactive phrasing was rewarded and then punished by the algorithm — if both are true the effect is time-dependent, which our single-snapshot corpus could not detect even with a decent sample.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>our strategist and Jess a.k.a. Channel D identified that a video titled &quot;I can&#39;t believe this happened at Sturgis&quot; could perform well, inspired by high-performing content from Cycle Drag Magazine.</blockquote></div>
   </details>
 </div></div>
 <h2>retention</h2>
@@ -429,7 +571,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">retention</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">A visible real clock with an unambiguous start point (&#39;timed from kickstand down&#39;, no hidden prep) converts an ordinary setup demo into a watchable progression.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -440,10 +585,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>My 8-Minute Night-Camp Setup, Timed From Kickstand Down | Real clock, no hidden prep, practical layout.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>My 8-Minute Night-Camp Setup, Timed From Kickstand Down | Real clock, no hidden prep, practical layout.</blockquote></div>
   </details>
 </div></div>
 <h2>production</h2>
@@ -453,7 +609,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">A motorcycle travel channel should amortize one trip into six distinct videos with different promises — route story, packing, gear test, campsite ranking, camera workflow, and postmortem — rather than one long vlog.</div>
   <div class="src">Source: idea-engine research dossier</div>
   <div class="qbox"><b>What would settle it</b><p>Does this footage support SIX DISTINCT PROMISES, or one promise cut into six pieces? Khare is right about PARTS — a part-two inherits a weakened package and asks the viewer to have seen part one. The packet&#39;s six are not parts: &#39;packing&#39; and &#39;campsite ranking&#39; are separate questions with separate titles, separate thumbnails and partly separate audiences, and none of them requires the others. So the rule is not about count at all, it is about whether each upload has an independent, clickable promise that stands alone. The store also supplies the failure mode at the other extreme: Channel I&#39;s c112e6452da9 — 30 daily uploads bought a subscriber bump then flatlined by day 30 as reach fell back to the core (~125k average down to 30-40k), which is what happens when the pieces have no independent promise. our strategist&#39;s 5e3bd00115b5 (2-4 long-form from a month-long trip) sits between the two and is the operating compromise.</p></div>
@@ -464,10 +623,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Asset amortization | One Trip, Six Distinct Videos | Route story, packing, gear test, campsite ranking, camera workflow, postmortem.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Asset amortization | One Trip, Six Distinct Videos | Route story, packing, gear test, campsite ranking, camera workflow, postmortem.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -476,7 +646,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Budget-ladder gear comparisons in motorcycle camping only work as proof when the conditions are matched — the same cold night, the same route — and the compromises are disclosed honestly.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -487,10 +660,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>$100, $500, and $1,500 Camp Setups on the Same Cold Night | Matched conditions and honest compromises.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>$100, $500, and $1,500 Camp Setups on the Same Cold Night | Matched conditions and honest compromises.</blockquote></div>
   </details>
 </div></div>
 

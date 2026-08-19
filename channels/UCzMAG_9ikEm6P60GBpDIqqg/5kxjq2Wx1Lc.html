@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -329,7 +397,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
       25:05 · 43,880 views ·
       27% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-18
+       · retention pulled 2026-08-19
     </p>
   </div>
   
@@ -422,7 +490,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"5kxjq2Wx1Lc","durationSec":1505,"curve":[{"p":1,"w":0.929},{"p":2,"w":0.714},{"p":3,"w":0.547},{"p":4,"w":0.447},{"p":5,"w":0.424},{"p":6,"w":0.398},{"p":7,"w":0.389},{"p":8,"w":0.382},{"p":9,"w":0.371},{"p":10,"w":0.348},{"p":11,"w":0.332},{"p":12,"w":0.322},{"p":13,"w":0.333},{"p":14,"w":0.322},{"p":15,"w":0.319},{"p":16,"w":0.32},{"p":17,"w":0.318},{"p":18,"w":0.313},{"p":19,"w":0.311},{"p":20,"w":0.309},{"p":21,"w":0.309},{"p":22,"w":0.317},{"p":23,"w":0.363},{"p":24,"w":0.369},{"p":25,"w":0.377},{"p":26,"w":0.361},{"p":27,"w":0.344},{"p":28,"w":0.322},{"p":29,"w":0.321},{"p":30,"w":0.318},{"p":31,"w":0.318},{"p":32,"w":0.321},{"p":33,"w":0.318},{"p":34,"w":0.31},{"p":35,"w":0.306},{"p":36,"w":0.305},{"p":37,"w":0.309},{"p":38,"w":0.293},{"p":39,"w":0.287},{"p":40,"w":0.281},{"p":41,"w":0.297},{"p":42,"w":0.285},{"p":43,"w":0.282},{"p":44,"w":0.282},{"p":45,"w":0.278},{"p":46,"w":0.273},{"p":47,"w":0.269},{"p":48,"w":0.266},{"p":49,"w":0.27},{"p":50,"w":0.268},{"p":51,"w":0.264},{"p":52,"w":0.262},{"p":53,"w":0.256},{"p":54,"w":0.253},{"p":55,"w":0.256},{"p":56,"w":0.238},{"p":57,"w":0.233},{"p":58,"w":0.227},{"p":59,"w":0.225},{"p":60,"w":0.22},{"p":61,"w":0.218},{"p":62,"w":0.217},{"p":63,"w":0.208},{"p":64,"w":0.204},{"p":65,"w":0.201},{"p":66,"w":0.196},{"p":67,"w":0.191},{"p":68,"w":0.191},{"p":69,"w":0.188},{"p":70,"w":0.191},{"p":71,"w":0.192},{"p":72,"w":0.183},{"p":73,"w":0.176},{"p":74,"w":0.173},{"p":75,"w":0.169},{"p":76,"w":0.165},{"p":77,"w":0.172},{"p":78,"w":0.166},{"p":79,"w":0.162},{"p":80,"w":0.161},{"p":81,"w":0.16},{"p":82,"w":0.159},{"p":83,"w":0.157},{"p":84,"w":0.155},{"p":85,"w":0.152},{"p":86,"w":0.153},{"p":87,"w":0.155},{"p":88,"w":0.154},{"p":89,"w":0.148},{"p":90,"w":0.145},{"p":91,"w":0.142},{"p":92,"w":0.139},{"p":93,"w":0.137},{"p":94,"w":0.149},{"p":95,"w":0.142},{"p":96,"w":0.138},{"p":97,"w":0.137},{"p":98,"w":0.134},{"p":99,"w":0.132},{"p":100,"w":0.124}],"moments":[{"t":"0:14","sec":14,"kind":"drop","what":"Between 0:14 and 0:30 the video sheds nearly 18,000 viewers while the channel's typical opening barely moves (3.6x the surrounding stop rate, 17,866 viewers, 1.3x the channel norm here)."},{"t":"5:31","sec":331,"kind":"peak","what":"A smaller rise of 2.5% at 5:31 holds twelve samples, the longest hold of the three peaks (677 viewers regained, 74th percentile vs similar)."},{"t":"5:46","sec":346,"kind":"peak","what":"Audience climbs 14.5% and holds for ten samples around 5:46, well above similar videos (4,100 viewers regained, 80th percentile vs similar)."},{"t":"6:16","sec":376,"kind":"drop","what":"A 45-second stretch starting at 6:16 loses 3,898 viewers at 8.9x the surrounding stop rate (2.6x the channel's norm here, 3.35% vs 1.28%)."},{"t":"13:48","sec":828,"kind":"drop","what":"The 13:48-14:03 window loses 1,356 viewers at 6.3x the surrounding stop rate and underperforms similar videos (2.2x the channel norm, 28th percentile vs similar)."},{"t":"23:35","sec":1415,"kind":"peak","what":"Audience rises 8.6% at 23:35, three samples wide, holding 14.9% of the room (1,052 viewers regained, 50th percentile vs similar)."}]}</script>
+<script>window.__VIDEO__={"videoId":"5kxjq2Wx1Lc","durationSec":1505,"curve":[{"p":1,"w":0.929},{"p":2,"w":0.714},{"p":3,"w":0.547},{"p":4,"w":0.447},{"p":5,"w":0.424},{"p":6,"w":0.398},{"p":7,"w":0.389},{"p":8,"w":0.382},{"p":9,"w":0.371},{"p":10,"w":0.348},{"p":11,"w":0.332},{"p":12,"w":0.322},{"p":13,"w":0.334},{"p":14,"w":0.322},{"p":15,"w":0.319},{"p":16,"w":0.32},{"p":17,"w":0.319},{"p":18,"w":0.313},{"p":19,"w":0.311},{"p":20,"w":0.309},{"p":21,"w":0.309},{"p":22,"w":0.317},{"p":23,"w":0.363},{"p":24,"w":0.369},{"p":25,"w":0.377},{"p":26,"w":0.361},{"p":27,"w":0.344},{"p":28,"w":0.322},{"p":29,"w":0.321},{"p":30,"w":0.318},{"p":31,"w":0.318},{"p":32,"w":0.321},{"p":33,"w":0.318},{"p":34,"w":0.31},{"p":35,"w":0.306},{"p":36,"w":0.305},{"p":37,"w":0.309},{"p":38,"w":0.293},{"p":39,"w":0.287},{"p":40,"w":0.281},{"p":41,"w":0.297},{"p":42,"w":0.285},{"p":43,"w":0.282},{"p":44,"w":0.282},{"p":45,"w":0.278},{"p":46,"w":0.273},{"p":47,"w":0.269},{"p":48,"w":0.266},{"p":49,"w":0.27},{"p":50,"w":0.268},{"p":51,"w":0.264},{"p":52,"w":0.262},{"p":53,"w":0.256},{"p":54,"w":0.253},{"p":55,"w":0.256},{"p":56,"w":0.238},{"p":57,"w":0.233},{"p":58,"w":0.227},{"p":59,"w":0.225},{"p":60,"w":0.22},{"p":61,"w":0.218},{"p":62,"w":0.217},{"p":63,"w":0.208},{"p":64,"w":0.204},{"p":65,"w":0.201},{"p":66,"w":0.196},{"p":67,"w":0.191},{"p":68,"w":0.191},{"p":69,"w":0.188},{"p":70,"w":0.191},{"p":71,"w":0.192},{"p":72,"w":0.183},{"p":73,"w":0.176},{"p":74,"w":0.173},{"p":75,"w":0.169},{"p":76,"w":0.165},{"p":77,"w":0.172},{"p":78,"w":0.166},{"p":79,"w":0.162},{"p":80,"w":0.161},{"p":81,"w":0.16},{"p":82,"w":0.159},{"p":83,"w":0.157},{"p":84,"w":0.155},{"p":85,"w":0.152},{"p":86,"w":0.153},{"p":87,"w":0.155},{"p":88,"w":0.154},{"p":89,"w":0.148},{"p":90,"w":0.145},{"p":91,"w":0.142},{"p":92,"w":0.139},{"p":93,"w":0.137},{"p":94,"w":0.149},{"p":95,"w":0.142},{"p":96,"w":0.138},{"p":97,"w":0.137},{"p":98,"w":0.134},{"p":99,"w":0.132},{"p":100,"w":0.124}],"moments":[{"t":"0:14","sec":14,"kind":"drop","what":"Between 0:14 and 0:30 the video sheds nearly 18,000 viewers while the channel's typical opening barely moves (3.6x the surrounding stop rate, 17,866 viewers, 1.3x the channel norm here)."},{"t":"5:31","sec":331,"kind":"peak","what":"A smaller rise of 2.5% at 5:31 holds twelve samples, the longest hold of the three peaks (677 viewers regained, 74th percentile vs similar)."},{"t":"5:46","sec":346,"kind":"peak","what":"Audience climbs 14.5% and holds for ten samples around 5:46, well above similar videos (4,100 viewers regained, 80th percentile vs similar)."},{"t":"6:16","sec":376,"kind":"drop","what":"A 45-second stretch starting at 6:16 loses 3,898 viewers at 8.9x the surrounding stop rate (2.6x the channel's norm here, 3.35% vs 1.28%)."},{"t":"13:48","sec":828,"kind":"drop","what":"The 13:48-14:03 window loses 1,356 viewers at 6.3x the surrounding stop rate and underperforms similar videos (2.2x the channel norm, 28th percentile vs similar)."},{"t":"23:35","sec":1415,"kind":"peak","what":"Audience rises 8.6% at 23:35, three samples wide, holding 14.9% of the room (1,052 viewers regained, 50th percentile vs similar)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

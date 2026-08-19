@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>I am so SICK of this! · Her Two Wheels</title>
+<link rel="icon" href="../../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
+.claims{display:grid;gap:12px;margin-top:16px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+.opnote{background:rgba(90,216,166,.07);border:1px solid rgba(90,216,166,.28);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.opnote b{color:#5ad8a6;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.opnote p{margin:0;font-size:13px;line-height:1.55}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../../index.html">All channels</a><a href="../../intelligence.html">Intelligence</a></nav>
+</header>
+
+<div class="vhead">
+  <div>
+    <h1 style="font-size:clamp(24px,3.2vw,38px);margin-bottom:10px">I am so SICK of this!</h1>
+    <p class="vmeta">
+      <a href="../UCzMAG_9ikEm6P60GBpDIqqg.html">Her Two Wheels</a> ·
+      31:38 · 48,422 views ·
+      18% still watching at the halfway mark · 
+      3 drop-offs, 3 replay peaks
+       · retention pulled 2026-08-19
+    </p>
+  </div>
+  
+</div>
+<p class="lede" style="margin:-14px 0 26px">This video sits 69th of 71 at halfway (*18.1% APV vs a 31:38 runtime, 688s longer than the channel median*) — length, not the opening, is what breaks it.</p>
+
+<div class="viewer">
+  <div>
+    <div class="player"><div id="ytplayer"></div></div>
+    <div class="chartcard">
+      <div class="chartbar">
+        <span class="title">Audience retention</span>
+        <span class="spacer"></span>
+        <button class="tgl" data-axis="percent" aria-pressed="true" type="button">% of video</button>
+        <button class="tgl" data-axis="clock" aria-pressed="false" type="button">Clock time</button>
+        <button class="tgl" data-kind="drop" aria-pressed="true" type="button">Drop-offs</button>
+        <button class="tgl" data-kind="peak" aria-pressed="true" type="button">Replay peaks</button>
+      </div>
+      <div class="chartwrap"><svg class="curve" id="curve" role="img" aria-label="Audience retention curve with flagged moments"></svg></div>
+      <p class="hint">Click any dot to jump the player there — or click anywhere on the curve to scrub. The white line follows playback.</p>
+    </div>
+  </div>
+  <div class="moments" id="moments">
+    <h3>6 flagged moments</h3>
+    <button class="m drop" data-i="0" type="button">
+  <span class="h"><span class="ts">0:19</span><span class="kind">Drop-off</span></span>
+  <span class="what">Viewers bail through the sick-week explainer (13.1x surrounding stop rate, 10,779 viewers gone, 33rd percentile vs similar videos).</span>
+  <span class="body">
+    <span class="lab">Why</span>She opens on a missed-upload apology and health recap — &#39;i&#39;ve been really sick... i missed an upload last week&#39; — before any ride content lands.
+    <span class="quote">“i&#39;ve been really sick”</span>
+    <span class="lab">The fix</span>Cut 0:08-0:47 and open on the 7:07 &#39;oh my god it feels so good to ride&#39; beat, then backfill the flu context in one line.
+    <span class="lab">Why that works</span>The intro&#39;s job is context, stakes, goal in two sentences; opening on a channel-greeting apology contradicts the &#39;SICK of this&#39; title-promise.
+    
+  </span>
+</button>
+<button class="m peak" data-i="1" type="button">
+  <span class="h"><span class="ts">6:39</span><span class="kind">Viewers came back</span></span>
+  <span class="what">A smaller rebound as the ride finally begins (audience rises 3.9%, 675 regained, held only 3 samples, 55th percentile).</span>
+  <span class="body">
+    <span class="lab">Why</span>The garage-to-road transition delivers the title&#39;s promised ride — &#39;goodbye my beauties... let&#39;s hop on the bike&#39; — after six minutes of setup.
+    <span class="quote">“let&#39;s hop on the bike”</span>
+    <span class="lab">Do more of this</span>Cut 6:05-6:36 garage plotting and jump from the flu context straight to &#39;let&#39;s hop on the bike&#39; at 7:04.
+    <span class="lab">Why that works</span>Positive progression holds and stripping-down phases lose people; the peak shows viewers waited through setup for this beat, so compressing to it protects the next segment.
+    <span class="lab">Check first</span><span class="warn">The garage banter with Jordan may be a recurring character beat viewers expect — if community comments prove that, keep one 4-second exchange instead of cutting the whole block.</span>
+  </span>
+</button>
+<button class="m drop" data-i="2" type="button">
+  <span class="h"><span class="ts">7:17</span><span class="kind">Drop-off</span></span>
+  <span class="what">A second exit wave hits during the ride-along monologue (9.0x surrounding stop rate, 2,353 viewers lost, 1.6x the channel norm).</span>
+  <span class="body">
+    <span class="lab">Why</span>She loops back to the sickness the intro already covered — &#39;i was just out for the count completely sick, totally wiped out&#39; — while the ride itself stalls.
+    <span class="quote">“i was just out for the count”</span>
+    <span class="lab">The fix</span>Cut 7:13-7:45 and hold on the road/cows footage with the &#39;a bike ride by&#39; tearing-up beat as a single 8-second moment.
+    <span class="lab">Why that works</span>Kill repetition — visual, verbal, narrative; the flu recap is the third mention and the pacing rule wants new information every ~5 seconds.
+    
+  </span>
+</button>
+<button class="m peak" data-i="3" type="button">
+  <span class="h"><span class="ts">20:53</span><span class="kind">Viewers came back</span></span>
+  <span class="what">Audience climbs into the dealership arrival (rises 8.6%, held for 21 samples, 789 viewers regained, 71st percentile).</span>
+  <span class="body">
+    <span class="lab">Why</span>The arrival lands a location change and a named destination — &#39;pharaoh harley davidson america&#39;s oldest harley dealer&#39; — after 20 minutes of road.
+    <span class="quote">“america&#39;s oldest harley dealer”</span>
+    <span class="lab">Do more of this</span>Tighten 20:25-20:47 to a 6-second arrival cut and drop a riser under it starting around 20:33 into the &#39;service department&#39; line.
+    <span class="lab">Why that works</span>Start anticipatory music ~20 seconds before a key moment; the peak shows viewers already scrubbing here, so scoring the approach holds the room into it.
+    
+  </span>
+</button>
+<button class="m peak" data-i="4" type="button">
+  <span class="h"><span class="ts">21:12</span><span class="kind">Viewers came back</span></span>
+  <span class="what">The Sportster wall pulls viewers back (audience rises 13.0%, 1,298 regained, 73rd percentile vs similar videos).</span>
+  <span class="body">
+    <span class="lab">Why</span>She calls out the inventory reveal — &#39;look at all these damn sportsters... they have been selling so good this year&#39; — a countable, visual moment worth rewinding.
+    <span class="quote">“look at all these damn sportsters”</span>
+    <span class="lab">Do more of this</span>Front-load a 3-second Sportster-wall flash into the cold open at 0:05 as the out-of-context hook, then pay it off in place at 21:12.
+    <span class="lab">Why that works</span>Tease and announce the reward early; the peak proves the wall earns rewinds, so using it as the opener converts the hook the flu apology currently wastes.
+    
+  </span>
+</button>
+<button class="m drop" data-i="5" type="button">
+  <span class="h"><span class="ts">24:59</span><span class="kind">Drop-off</span></span>
+  <span class="what">Viewers leave during the post-service debrief (8.0x surrounding stop rate, 2.9x the channel norm, 1,086 viewers lost).</span>
+  <span class="body">
+    <span class="lab">Why</span>The tension resolves into a checklist recap — &#39;25 000 mile service... checking all the fluids and the seals&#39; — with the Sturgis payoff already stated.
+    <span class="quote">“25 000 mile service”</span>
+    <span class="lab">The fix</span>Cut 24:58-25:24 and jump from &#39;nasty girl / I love it&#39; straight to a Sturgis-prep tease that withholds the trip itself.
+    <span class="lab">Why that works</span>Retention drops the moment tension is spent; the service verdict was already delivered, so the itemised recap releases the room before the outro.
+    
+  </span>
+</button>
+  </div>
+</div>
+<script>window.__VIDEO__={"videoId":"jpLnJu7Jb_M","durationSec":1898,"curve":[{"p":1,"w":0.984},{"p":2,"w":0.78},{"p":3,"w":0.643},{"p":4,"w":0.501},{"p":5,"w":0.424},{"p":6,"w":0.379},{"p":7,"w":0.358},{"p":8,"w":0.34},{"p":9,"w":0.331},{"p":10,"w":0.317},{"p":11,"w":0.305},{"p":12,"w":0.295},{"p":13,"w":0.284},{"p":14,"w":0.277},{"p":15,"w":0.273},{"p":16,"w":0.262},{"p":17,"w":0.273},{"p":18,"w":0.278},{"p":19,"w":0.289},{"p":20,"w":0.3},{"p":21,"w":0.312},{"p":22,"w":0.32},{"p":23,"w":0.32},{"p":24,"w":0.306},{"p":25,"w":0.281},{"p":26,"w":0.267},{"p":27,"w":0.254},{"p":28,"w":0.245},{"p":29,"w":0.239},{"p":30,"w":0.246},{"p":31,"w":0.226},{"p":32,"w":0.222},{"p":33,"w":0.221},{"p":34,"w":0.215},{"p":35,"w":0.206},{"p":36,"w":0.201},{"p":37,"w":0.196},{"p":38,"w":0.19},{"p":39,"w":0.188},{"p":40,"w":0.193},{"p":41,"w":0.185},{"p":42,"w":0.182},{"p":43,"w":0.18},{"p":44,"w":0.179},{"p":45,"w":0.176},{"p":46,"w":0.174},{"p":47,"w":0.174},{"p":48,"w":0.178},{"p":49,"w":0.184},{"p":50,"w":0.181},{"p":51,"w":0.174},{"p":52,"w":0.168},{"p":53,"w":0.168},{"p":54,"w":0.171},{"p":55,"w":0.174},{"p":56,"w":0.161},{"p":57,"w":0.157},{"p":58,"w":0.155},{"p":59,"w":0.151},{"p":60,"w":0.149},{"p":61,"w":0.146},{"p":62,"w":0.145},{"p":63,"w":0.146},{"p":64,"w":0.152},{"p":65,"w":0.16},{"p":66,"w":0.174},{"p":67,"w":0.197},{"p":68,"w":0.207},{"p":69,"w":0.213},{"p":70,"w":0.214},{"p":71,"w":0.224},{"p":72,"w":0.212},{"p":73,"w":0.216},{"p":74,"w":0.217},{"p":75,"w":0.223},{"p":76,"w":0.225},{"p":77,"w":0.219},{"p":78,"w":0.218},{"p":79,"w":0.221},{"p":80,"w":0.209},{"p":81,"w":0.206},{"p":82,"w":0.194},{"p":83,"w":0.186},{"p":84,"w":0.183},{"p":85,"w":0.178},{"p":86,"w":0.169},{"p":87,"w":0.162},{"p":88,"w":0.159},{"p":89,"w":0.152},{"p":90,"w":0.148},{"p":91,"w":0.146},{"p":92,"w":0.145},{"p":93,"w":0.144},{"p":94,"w":0.141},{"p":95,"w":0.14},{"p":96,"w":0.141},{"p":97,"w":0.143},{"p":98,"w":0.148},{"p":99,"w":0.148},{"p":100,"w":0.137}],"moments":[{"t":"0:19","sec":19,"kind":"drop","what":"Viewers bail through the sick-week explainer (13.1x surrounding stop rate, 10,779 viewers gone, 33rd percentile vs similar videos)."},{"t":"6:39","sec":399,"kind":"peak","what":"A smaller rebound as the ride finally begins (audience rises 3.9%, 675 regained, held only 3 samples, 55th percentile)."},{"t":"7:17","sec":437,"kind":"drop","what":"A second exit wave hits during the ride-along monologue (9.0x surrounding stop rate, 2,353 viewers lost, 1.6x the channel norm)."},{"t":"20:53","sec":1253,"kind":"peak","what":"Audience climbs into the dealership arrival (rises 8.6%, held for 21 samples, 789 viewers regained, 71st percentile)."},{"t":"21:12","sec":1272,"kind":"peak","what":"The Sportster wall pulls viewers back (audience rises 13.0%, 1,298 regained, 73rd percentile vs similar videos)."},{"t":"24:59","sec":1499,"kind":"drop","what":"Viewers leave during the post-service debrief (8.0x surrounding stop rate, 2.9x the channel norm, 1,086 viewers lost)."}]}</script>
+<script>
+(function(){
+  var D = window.__VIDEO__; if(!D) return;
+  var svg = document.getElementById('curve'), list = document.getElementById('moments');
+  var W = 1000, H = 320, L = 46, R = 14, T = 16, B = 30;
+  var axis = 'percent', show = { drop:true, peak:true }, sel = null, player = null, poll = null;
+  var dur = D.durationSec || 1;
+
+  function xOf(pt){
+    var frac = axis === 'percent' ? pt.p/100 : (pt.p/100*dur)/dur; // same domain, label differs
+    return L + frac * (W - L - R);
+  }
+  function yOf(w){ return T + (1 - Math.max(0, Math.min(1, w))) * (H - T - B); }
+  function secOf(pt){ return pt.p/100 * dur; }
+
+  function draw(){
+    var pts = D.curve || [];
+    var parts = [];
+    // gridlines + y labels
+    for (var g=0; g<=100; g+=25){
+      var y = yOf(g/100);
+      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>');
+      parts.push('<text class="tick" x="'+(L-8)+'" y="'+(y+3.5)+'" text-anchor="end">'+g+'%</text>');
+    }
+    // x labels
+    for (var i=0;i<=4;i++){
+      var f = i/4, x = L + f*(W-L-R);
+      var lab = axis === 'percent' ? Math.round(f*100)+'%' : fmtT(f*dur);
+      parts.push('<text class="tick" x="'+x+'" y="'+(H-6)+'" text-anchor="middle">'+lab+'</text>');
+    }
+    if (pts.length){
+      var d='', area='';
+      pts.forEach(function(pt,i){
+        var x=xOf(pt), y=yOf(pt.w);
+        d += (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+      });
+      area = d + 'L'+xOf(pts[pts.length-1]).toFixed(1)+' '+yOf(0)+' L'+xOf(pts[0]).toFixed(1)+' '+yOf(0)+' Z';
+      parts.push('<path class="band" d="'+area+'"/>');
+      parts.push('<path class="line" d="'+d+'"/>');
+    }
+    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0)+'" x2="'+(W-R)+'" y2="'+yOf(0)+'"/>');
+    parts.push('<line class="head" id="head" x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+yOf(0)+'" style="display:none"/>');
+    (D.moments||[]).forEach(function(m,idx){
+      if(!show[m.kind]) return;
+      var p = (m.sec/dur)*100;
+      var near = nearestW(p);
+      var x = xOf({p:p}), y = yOf(near);
+      parts.push('<g class="mk '+m.kind+(sel===idx?' sel':'')+'" data-i="'+idx+'" role="button" tabindex="0" aria-label="'+esc(m.t+' '+m.kind)+'">'
+        +'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="6"/>'
+        +'<title>'+esc(m.t+' — '+m.what)+'</title></g>');
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.innerHTML = parts.join('');
+  }
+  function nearestW(p){
+    var pts = D.curve||[], best=1, bd=1e9;
+    for (var i=0;i<pts.length;i++){ var d=Math.abs(pts[i].p-p); if(d<bd){bd=d;best=pts[i].w;} }
+    return best;
+  }
+  function fmtT(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function select(i, seek){
+    sel = i;
+    Array.prototype.forEach.call(list.querySelectorAll('.m'), function(el){
+      el.classList.toggle('sel', Number(el.dataset.i) === i);
+    });
+    var el = list.querySelector('.m[data-i="'+i+'"]');
+    if (el) el.scrollIntoView({block:'nearest'});
+    draw();
+    if (seek && player && player.seekTo){
+      var m = D.moments[i];
+      player.seekTo(Math.max(0, m.sec - 2), true);
+      if (player.playVideo) player.playVideo();
+    }
+  }
+
+  list.addEventListener('click', function(e){
+    var b = e.target.closest('.m'); if(!b) return;
+    select(Number(b.dataset.i), true);
+  });
+  svg.addEventListener('click', function(e){
+    var g = e.target.closest('.mk');
+    if (g){ select(Number(g.dataset.i), true); return; }
+    // Clicking bare chart seeks to that position.
+    var r = svg.getBoundingClientRect();
+    var frac = ((e.clientX - r.left) / r.width * W - L) / (W - L - R);
+    if (frac < 0 || frac > 1 || !player || !player.seekTo) return;
+    player.seekTo(frac * dur, true);
+  });
+  svg.addEventListener('keydown', function(e){
+    var g = e.target.closest('.mk');
+    if (g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); select(Number(g.dataset.i), true); }
+  });
+
+  document.querySelectorAll('[data-axis]').forEach(function(b){
+    b.addEventListener('click', function(){
+      axis = b.dataset.axis;
+      document.querySelectorAll('[data-axis]').forEach(function(o){
+        o.setAttribute('aria-pressed', String(o.dataset.axis === axis));
+      });
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-kind]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.dataset.kind; show[k] = !show[k];
+      b.setAttribute('aria-pressed', String(show[k]));
+      list.querySelectorAll('.m.'+k).forEach(function(el){ el.style.display = show[k] ? '' : 'none'; });
+      draw();
+    });
+  });
+
+  function tick(){
+    if (!player || !player.getCurrentTime) return;
+    var t = player.getCurrentTime() || 0;
+    var head = document.getElementById('head');
+    if (!head) return;
+    var x = L + (t/dur) * (W - L - R);
+    head.setAttribute('x1', x); head.setAttribute('x2', x);
+    head.style.display = t > 0 ? '' : 'none';
+  }
+
+  window.onYouTubeIframeAPIReady = function(){
+    player = new YT.Player('ytplayer', {
+      videoId: D.videoId,
+      playerVars: { rel:0, modestbranding:1, playsinline:1 },
+      events: {
+        onReady: function(){ if(!poll) poll = setInterval(tick, 250); },
+      }
+    });
+  };
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  draw();
+})();
+</script>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

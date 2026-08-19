@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -335,7 +403,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     <span class="cat">· checked across 14 channels</span>
+    
+    
   </div>
+  
   <div class="txt">Regret framing (&#39;Bought 22 Rental Units and Now I Regret It&#39;) is one of the strongest title mechanisms because avoidance of mistakes is a stronger motivator than pursuit of gain, implying a lesson the viewer can extract before making the same decision.</div>
   <div class="src">Source: Creator Hooks</div>
   
@@ -346,10 +417,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Exact regret framing: n=4 across 4 channels (0.79x, 1.01x, 1.17x, 1.56x; median 1.09x). Broader loss framing (regret/mistake/ruined/death/worst/failed/lost/wrong/stop/never/avoid/quit): maker-builds n=16, 0.99x vs 1.00x (p=0.90); motorcycle n=40 across 14 channels, 1.055x vs 0.99x (p=0.21); roblox n=9, 1.30x vs 1.00x (p=0.51). Nothing reaches significance.</p>
-    <p class="caveat">Caveat: Four exact-match videos cannot support any verdict. The claim is scoped to commentary/news and personal-finance content, which our corpus does not include — the device is nearly unused in maker, motorcycle and roblox titles, and its absence may itself reflect that it does not suit these niches rather than that it fails.</p>
-    <blockquote>Regret is one of the most powerful emotional triggers because people want to avoid making mistakes.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Exact regret framing: n=4 across 4 channels (0.79x, 1.01x, 1.17x, 1.56x; median 1.09x). Broader loss framing (regret/mistake/ruined/death/worst/failed/lost/wrong/stop/never/avoid/quit): maker-builds n=16, 0.99x vs 1.00x (p=0.90); motorcycle n=40 across 14 channels, 1.055x vs 0.99x (p=0.21); roblox n=9, 1.30x vs 1.00x (p=0.51). Nothing reaches significance.</p>
+             <p class="caveat">Caveat: Four exact-match videos cannot support any verdict. The claim is scoped to commentary/news and personal-finance content, which our corpus does not include — the device is nearly unused in maker, motorcycle and roblox titles, and its absence may itself reflect that it does not suit these niches rather than that it fails.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Regret is one of the most powerful emotional triggers because people want to avoid making mistakes.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -358,7 +446,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     <span class="cat">· checked across 10 channels</span>
+    
+    
   </div>
+  
   <div class="txt">Attaching the current year to a title (&#39;New Tax Rules for 2025 (MUST KNOW)&#39;) raises clicks by signalling freshness, and performs best at the start and end of the calendar year — meaning the same title has a seasonally varying value.</div>
   <div class="src">Source: Creator Hooks</div>
   
@@ -369,10 +460,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Only motorcycle has a usable sample: n=36 across 10 channels, median 1.095x vs 1.00x, z=1.17, p=0.24. The direction is mildly favourable but not significant. maker-builds has 3 such titles and roblox has 0 — the device is essentially unused in two of our three niches.</p>
-    <p class="caveat">Caveat: Underpowered, single niche, and confounded by format: year-tagged motorcycle titles are mostly new-model gear reviews, which is a distinct content type with its own search demand. The mean for this group is 4.22x, dragged by a couple of extreme hits, which is exactly the shape that tempts an overclaim from a median that has not moved.</p>
-    <blockquote>Attaching a year to content signals relevance and freshness. These titles perform especially well at the beginning or end of the year.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Only motorcycle has a usable sample: n=36 across 10 channels, median 1.095x vs 1.00x, z=1.17, p=0.24. The direction is mildly favourable but not significant. maker-builds has 3 such titles and roblox has 0 — the device is essentially unused in two of our three niches.</p>
+             <p class="caveat">Caveat: Underpowered, single niche, and confounded by format: year-tagged motorcycle titles are mostly new-model gear reviews, which is a distinct content type with its own search demand. The mean for this group is 4.22x, dragged by a couple of extreme hits, which is exactly the shape that tempts an overclaim from a median that has not moved.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Attaching a year to content signals relevance and freshness. These titles perform especially well at the beginning or end of the year.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -381,7 +489,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     <span class="cat">· checked across 1 channels</span>
+    
+    
   </div>
+  
   <div class="txt">&#39;The Death of X&#39; framing reliably attracts clicks by signalling loss or disruption of something familiar, and is one of a small set of reusable phrase templates (&#39;Could This Replace That?&#39;) that make complex ideas legible instantly.</div>
   <div class="src">Source: Creator Hooks</div>
   
@@ -392,10 +503,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Exactly one match: &#39;The Death of Motorcycle Culture&#39; at 1.07x its channel&#39;s median — indistinguishable from an ordinary upload.</p>
-    <p class="caveat">Caveat: One video is an anecdote and 1.07x is within the noise band for any single video. The framing is a commentary-niche device and our corpus holds no commentary channels.</p>
-    <blockquote>This language signals change, loss, or disruption of a familiar thing. It immediately evokes emotion and a desire to understand what&#39;s causing the downfall.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Exactly one match: &#39;The Death of Motorcycle Culture&#39; at 1.07x its channel&#39;s median — indistinguishable from an ordinary upload.</p>
+             <p class="caveat">Caveat: One video is an anecdote and 1.07x is within the noise band for any single video. The framing is a commentary-niche device and our corpus holds no commentary channels.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>This language signals change, loss, or disruption of a familiar thing. It immediately evokes emotion and a desire to understand what&#39;s causing the downfall.</blockquote></div>
   </details>
 </div></div>
 <h2>analytics</h2>
@@ -405,7 +533,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">analytics</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">The metric rules break for recency-dependent channels: for news channels and patch-update channels (e.g. Fortnite), CTR and first-day behaviour DO carry signal, because all of their views live in how fast people click on day one.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -416,10 +547,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>If your news channel there could be some exam there could be some change You know all those like your news channel there could be some change Uh, if you&#39;re like a fortnite update channel, there could be some change as well But that&#39;s because all of your views live literally in how fast people click in the first day</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>If your news channel there could be some exam there could be some change You know all those like your news channel there could be some change Uh, if you&#39;re like a fortnite update channel, there could be some change as well But that&#39;s because all of your views live literally in how fast people click in the first day</blockquote></div>
   </details>
 </div></div>
 

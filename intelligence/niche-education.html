@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -335,7 +403,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Knowledge/education channels compete against the belief that the answer is faster to get elsewhere, so a strong educational idea must add a reason to WATCH — prediction, experiment, misconception, analogy, consequence, story, or a difficult decision — on top of the answer.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -346,10 +417,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>educational creators compete against the belief that the viewer can get the answer faster elsewhere. Strong ideas therefore combine utility with a reason to watch the explanation: prediction, experiment, misconception, analogy, consequence, story, or a difficult decision.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>educational creators compete against the belief that the viewer can get the answer faster elsewhere. Strong ideas therefore combine utility with a reason to watch the explanation: prediction, experiment, misconception, analogy, consequence, story, or a difficult decision.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -358,7 +440,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Video topics should be derived from YouTube search-bar autocomplete predictions, and the title should reuse the predicted phrase verbatim - the opposite of the Eves position, and presented as the primary discovery method.</div>
   <div class="src">Source: Sean Cannell</div>
   <div class="qbox"><b>What would settle it</b><p>Does this channel&#39;s demand arrive PULLED (a viewer types a query — how-to, product research, education, urgent repair) or PUSHED (browse and suggested)? Cannell&#39;s claim is already tagged to education and Galloway&#39;s already excludes search-driven channels, so the two rules are compatible the moment neither is stated as universal — but Eves&#39;s is stated universally, and that is the repair the store needs. Our corpus offers indirect support for the split: the search-driven motorcycle niche is the one where long titles help (+0.07 at n=127) and where naming a specific machine produced 12.0% CTR against a 4.40% channel average (7470d720ee0b), while browse-driven roblox punishes long titles hard (0.72x, -0.28). Add a required trafficSource scope tag to every packaging claim; roughly a third of this slice is silently conditioned on it.</p></div>
@@ -369,10 +454,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Create a title based on the exact phrase YouTube predicted and include variations of that same phrase in your description as well as the tags.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Create a title based on the exact phrase YouTube predicted and include variations of that same phrase in your description as well as the tags.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -381,7 +477,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Narrowly-scoped videos answering one question outperform broad omnibus videos, and splitting a broad topic into several specific videos multiplies discovery surface rather than cannibalising it.</div>
   <div class="src">Source: Sean Cannell</div>
   
@@ -392,10 +491,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Spearman(title word count, outlier) median 0.01 across 42 channels. How-to/tutorial titles: n=29, 0.95x vs 1.00x (p=0.25), ahead on 1 of 6 channels. Corpus niches are maker-builds (369), motorcycle (483), roblox (382) — no education niche collected.</p>
-    <p class="caveat">Caveat: Nothing here should be read as evidence about the claim. Scope breadth is not recoverable from titles, and the discovery-surface half requires search impressions per query, which the brief confirms we do not hold.</p>
-    <blockquote>Don&#39;t try to cover too many topics in one video. Rather than trying to make a video about ten different breakfast recipes. Make ten different videos, each one focused on a specific recipe.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Spearman(title word count, outlier) median 0.01 across 42 channels. How-to/tutorial titles: n=29, 0.95x vs 1.00x (p=0.25), ahead on 1 of 6 channels. Corpus niches are maker-builds (369), motorcycle (483), roblox (382) — no education niche collected.</p>
+             <p class="caveat">Caveat: Nothing here should be read as evidence about the claim. Scope breadth is not recoverable from titles, and the discovery-surface half requires search impressions per query, which the brief confirms we do not hold.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Don&#39;t try to cover too many topics in one video. Rather than trying to make a video about ten different breakfast recipes. Make ten different videos, each one focused on a specific recipe.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -404,7 +520,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">ideation</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">For educational content, topics must be chosen against the audience&#39;s UNDERLYING need rather than the surface subject — Joos cites a men&#39;s dating channel whose audience cared about the first date, not the second, so relationship-building content missed even though it was on-topic.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -415,10 +534,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>what we found is that the man that he&#39;s attracting, his audience does not care about the second date. They care about looking good for the first date, the single second. He focuses more on the connection or the relationship that gets formed in the second date.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>what we found is that the man that he&#39;s attracting, his audience does not care about the second date. They care about looking good for the first date, the single second. He focuses more on the connection or the relationship that gets formed in the second date.</blockquote></div>
   </details>
 </div></div>
 <h2>packaging</h2>
@@ -428,7 +558,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Titles that name a self-contradictory identity (&#39;If You&#39;re Creative But Lazy&#39;, &#39;If You&#39;re Ambitious But Lazy Please Watch This&#39;) outperform single-trait callouts because the viewer feels specifically recognised in a contradiction they believed was private.</div>
   <div class="src">Source: Creator Hooks</div>
   
@@ -439,10 +572,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Titles like &quot;If You&#39;re Creative But Lazy&quot; work by identifying a complex self-perception. Viewers who relate to this duality feel uniquely understood and want to see how their contradiction is addressed.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Titles like &quot;If You&#39;re Creative But Lazy&quot; work by identifying a complex self-perception. Viewers who relate to this duality feel uniquely understood and want to see how their contradiction is addressed.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -451,7 +595,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Stating an explicit time commitment or transformation window in the title (&#39;The Best 25-Minute Workout for Seniors Over 60&#39;, &#39;Give Me 9 Minutes, and 2025 Will Be Your Best Year Yet&#39;) raises clicks by removing the viewer&#39;s uncertainty about cost-versus-payoff before they commit.</div>
   <div class="src">Source: Creator Hooks</div>
   
@@ -462,10 +609,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Knowing exactly how long something will take (&quot;25-minute routine&quot;) removes friction. It sets clear expectations and helps viewers judge whether it&#39;s worth their time.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Knowing exactly how long something will take (&quot;25-minute routine&quot;) removes friction. It sets clear expectations and helps viewers judge whether it&#39;s worth their time.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -474,7 +632,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Social proof has a hard view threshold below which an idea reads as not worth clicking: roughly 10,000 views in education and 100,000 in entertainment — so a small channel should refuse ideas whose premise depends on demonstrated authority.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -485,10 +646,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>education 10,000 views is where social proof starts to play in your favor entertainment 100,000 views plus is where social proof starts to benefit you or play in your favor ... there&#39;s certain ideas that you may you may have to avoid like if you for example know that you&#39;re only gonna score a thousand views don&#39;t tell me like hey here&#39;s the five ways that I build a one million dollar business</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>education 10,000 views is where social proof starts to play in your favor entertainment 100,000 views plus is where social proof starts to benefit you or play in your favor ... there&#39;s certain ideas that you may you may have to avoid like if you for example know that you&#39;re only gonna score a thousand views don&#39;t tell me like hey here&#39;s the five ways that I build a one million dollar business</blockquote></div>
   </details>
 </div></div>
 <h2>retention</h2>
@@ -498,7 +670,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">retention</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">A prediction beat placed BEFORE the demonstration is a repeatable education format: prediction, then evidence, then explanation, then a transfer question.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -509,10 +684,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>Can You Predict the Result Before the Demonstration? | Prediction -&gt; evidence -&gt; explanation -&gt; transfer question.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Can You Predict the Result Before the Demonstration? | Prediction -&gt; evidence -&gt; explanation -&gt; transfer question.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -521,7 +707,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">retention</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Establishing authority raises retention in expert/interview formats through a specific mechanism — citing research even once shifts the information from subjective to objective in the viewer&#39;s mind.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -532,10 +721,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>one of those is, and you&#39;ve actually seen videos in this presentation is just mentioned research once. So when people feel like the information comes from an objective place rather than a subjective place, performance will start to increase.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>one of those is, and you&#39;ve actually seen videos in this presentation is just mentioned research once. So when people feel like the information comes from an objective place rather than a subjective place, performance will start to increase.</blockquote></div>
   </details>
 </div></div>
 <h2>storytelling</h2>
@@ -545,7 +745,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">storytelling</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Educational and how-to channels need a mission the video must complete, not just information delivered — the mission is what converts facts into a followable journey.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -556,10 +759,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>they deep dive into like a topic that they&#39;re curious about and in each of their videos they always have like a mission that they need to complete by the end of the video so it like gets you invested in like what they&#39;re researching it&#39;s not just information that you&#39;re getting but it&#39;s leading to something at the end</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>they deep dive into like a topic that they&#39;re curious about and in each of their videos they always have like a mission that they need to complete by the end of the video so it like gets you invested in like what they&#39;re researching it&#39;s not just information that you&#39;re getting but it&#39;s leading to something at the end</blockquote></div>
   </details>
 </div></div>
 <h2>analytics</h2>
@@ -569,7 +783,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">analytics</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Search traffic in a channel&#39;s top five sources is a warning sign, not a win — the target distribution is Browse first and Suggested second.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -580,10 +797,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>browse is number one, suggested number two. I don&#39;t even want search in the top five. I don&#39;t even, I don&#39;t even want to even see it.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>browse is number one, suggested number two. I don&#39;t even want search in the top five. I don&#39;t even, I don&#39;t even want to even see it.</blockquote></div>
   </details>
 </div></div>
 <h2>production</h2>
@@ -593,53 +821,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">production</span>
     
     
+    
+    
   </div>
-  <div class="txt">Writing a script improves a talking-head video even when the script is never read on camera, because the organising work happens before recording — meaning &#39;I improvise better&#39; does not justify skipping the script.</div>
-  <div class="src">Source: CreatorNow</div>
   
-  
-  <div class="review" data-id="724f58dd06c7">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
-    
-    <blockquote>even if I am going off the cuff or speaking extemporaneously when I&#39;m recording it, I had already spent time organizing the thoughts in my brain and the end result is so much better</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">production</span>
-    
-    
-  </div>
-  <div class="txt">Educational content should carry one or two jokes per video and no more — zero jokes makes information hard to retain, and too many make it impossible to focus on the information.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  
-  
-  <div class="review" data-id="2355598a2859">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
-    
-    <blockquote>If you have a teacher and he makes no jokes at all, that clause is just informational. And it&#39;s just, it gets very difficult to retain information because you just feel like everything is so tense. Add a little joke to it. Have this teacher make one joke, one or two jokes in the class. ... Once they make too many jokes, it&#39;s like, oh, man, you can&#39;t even focus on the information anymore.</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-wisdom">Wisdom</span>
-    <span class="cat">production</span>
-    
-    
-  </div>
   <div class="txt">Tutorials, talking-head videos and product reviews should get correction and polish only, not a stylised grade — for clarity-first formats a mood grade adds nothing the viewer wanted.</div>
   <div class="src">Source: Creator Film School</div>
   
@@ -650,10 +835,95 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>If your footage looks great straight out of camera, and your content doesn’t demand mood or emotion, a light correction may be all you need.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>If your footage looks great straight out of camera, and your content doesn’t demand mood or emotion, a light correction may be all you need.</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+    
+    
+  </div>
+  
+  <div class="txt">Writing a script improves a talking-head video even when the script is never read on camera, because the organising work happens before recording — meaning &#39;I improvise better&#39; does not justify skipping the script.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  
+  <div class="review" data-id="724f58dd06c7">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>even if I am going off the cuff or speaking extemporaneously when I&#39;m recording it, I had already spent time organizing the thoughts in my brain and the end result is so much better</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-theory">Theory</span>
+    <span class="cat">production</span>
+    
+    
+    
+    
+  </div>
+  
+  <div class="txt">Educational content should carry one or two jokes per video and no more — zero jokes makes information hard to retain, and too many make it impossible to focus on the information.</div>
+  <div class="src">Source: Mario Joos (retention courses)</div>
+  
+  
+  <div class="review" data-id="2355598a2859">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>If you have a teacher and he makes no jokes at all, that clause is just informational. And it&#39;s just, it gets very difficult to retain information because you just feel like everything is so tense. Add a little joke to it. Have this teacher make one joke, one or two jokes in the class. ... Once they make too many jokes, it&#39;s like, oh, man, you can&#39;t even focus on the information anymore.</blockquote></div>
   </details>
 </div></div>
 

@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -334,7 +402,7 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This build punches above the channel through the middle (2:00 holds 64.9%, +14.4pp over median, beating 133 of 138), then a mid-video sponsor read at 9:21 sheds viewers at 11.2x the channel&#39;s norm for that spot.</p>
+<p class="lede" style="margin:-14px 0 26px">This build outperforms the channel&#39;s other video at every clock mark from 1:00 onward (+8.2pp to +12.8pp), but the mid-video Squarespace read at 9:21 costs 5,309 viewers — nearly double the channel&#39;s norm for that spot.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:09</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening 9 seconds shed audience from 100.3% to 77.5% (29.3% of the room, 11,176 viewers), but softer than the channel&#39;s own intros.</span>
+  <span class="what">The opening sheds roughly a fifth of viewers as the sponsor tag lands before the premise (7.58% stop rate, 11,176 viewers, 0.8x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Opens on a sponsor tag before the premise: &quot;this video is sponsored by Squarespace&quot; precedes the tree-table hook.
+    <span class="lab">Why</span>The video opens on the sponsor line before the hook, delaying the tree-through-table premise the thumbnail sold.
     <span class="quote">“this video is sponsored by Squarespace”</span>
-    <span class="lab">The fix</span>Trial swapping the first line for the tree-through-the-table reveal, modeled on &quot;I Built the Table of My Dreams&quot; which lost 0.0% at 0:00.
-    <span class="lab">Why that works</span>Loss here is 1.3x the channel&#39;s intro average, so a hook-first open is the lever most likely to close the gap.
-    <span class="lab">Check first</span><span class="warn">Sponsor may require top-of-video placement; if so, keep the tag but delay the read until after the premise lands.</span>
+    <span class="lab">The fix</span>Trial a cold open on the finished tree-table reveal, then run the Squarespace tag after the premise sentence lands.
+    <span class="lab">Why that works</span>Opening on &#39;this video is sponsored by&#39; breaks the Joos rule against sponsor-first opens; the channel&#39;s best intro loses 0% by leading with the build.
+    <span class="lab">Check first</span><span class="warn">Confirm with Squarespace that a delayed tag still satisfies the contract; if not, keep the tag but shorten it to one line.</span>
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">9:21</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 9-second window bleeds 5,309 viewers, from 55.4% to 44.5% (11.2x the channel&#39;s norm here, 35% vs similar).</span>
+  <span class="what">The mid-video sponsor read loses roughly a fifth of remaining viewers in nine seconds, nearly double the channel norm here (5.53% stop rate, 5,309 viewers, 1.9x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>A cold sponsor hand-off during a drying pause: &quot;while we wait for it to dry I want to tell you about the sponsor.&quot;
-    <span class="quote">“want to tell you about the sponsor”</span>
-    <span class="lab">The fix</span>Cross-cut the Squarespace read with the bondo cure and grinding footage, opening on a viewer-relevant line rather than the sponsor name.
-    <span class="lab">Why that works</span>Straight reads cost 10-20%; cross-cutting drops that to ~2%, and placing reads during live suspense (not a lull) holds the room.
-    <span class="lab">Check first</span><span class="warn">Confirm the brand allows a rewritten opening line and interleaved visuals before restructuring.</span>
+    <span class="lab">Why</span>The read opens on &#39;I want to tell you about the sponsor&#39; during a bondo drying wait, with no build action cross-cut against it.
+    <span class="quote">“I want to tell you about the sponsor”</span>
+    <span class="lab">The fix</span>Trial cross-cutting the Squarespace read over the sanding and priming footage instead of parking it during the dry-time.
+    <span class="lab">Why that works</span>A straight read costs 10-20% of remaining audience; cross-cutting with progressing story action cuts that to ~2% (Joos).
+    <span class="lab">Check first</span><span class="warn">Verify Squarespace permits visual cross-cutting during the read; if the contract requires host-on-camera, keep face but overlay build B-roll.</span>
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">10:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 12.0% of the room and holds 26 samples (2,646 viewers regained, 73% vs similar), right after the sponsor read ends.</span>
+  <span class="what">Audience rises 12.0% and holds for 26 samples right after the Squarespace read ends and the primer coats go on (2,646 viewers regained, 73rd percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the primer/paint step: &quot;take it outside and hit it with a few coats of this primer.&quot;
+    <span class="lab">Why</span>Viewers scrub back to the paint and threaded-end-cap fabrication — &#39;take it outside and hit it with a few coats of this primer&#39; — the first concrete build progress after the ad.
     <span class="quote">“hit it with a few coats of this primer”</span>
-    <span class="lab">Do more of this</span>Front-load a 3-second tease of the primed base before 9:21 so viewers know what they&#39;re waiting through the read for.
-    <span class="lab">Why that works</span>Announcing the reward spikes anticipation; teasing the payoff before the ad is the placement rule that holds audience through it.
+    <span class="lab">Do more of this</span>Front-load the leveling-foot fabrication earlier and tease the primer coat at 8:30 so the segment carries anticipation into the sponsor read.
+    <span class="lab">Why that works</span>Placing ads at the height of anticipation holds retention; this replay proves the fabrication beat is the rewind-worthy content.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">10:42</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises 3.3% and holds 24 samples at 51.5% (810 viewers regained, 74% vs similar), immediately after the sponsor read closes.</span>
+  <span class="what">Audience rises 3.3% and holds for 24 samples on the threaded end-cap fabrication (810 viewers regained, 74th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers return for the leveling-feet fabrication: &quot;threaded end caps for the leveling feet.&quot;
-    <span class="quote">“threaded end caps for the leveling feet”</span>
-    <span class="lab">Do more of this</span>Move a 5-second beauty shot of the finished threaded end caps to just before the sponsor read as a promise.
-    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward; pre-teasing this step converts the post-ad replay into pre-ad hold.
+    <span class="lab">Why</span>Viewers scrub back to the drill-press and welding steps — &#39;drilling some holes for the leveling feet&#39; — a copyable technique.
+    <span class="quote">“drilling some holes for the leveling feet”</span>
+    <span class="lab">Do more of this</span>Extend the drill-press and tack-weld beat by 4-5 seconds with a tighter close-up on the nut being held in place.
+    <span class="lab">Why that works</span>Reveals that earn rewinds are assets; stretching the copyable step gives viewers the frame they came back for.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">13:04</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience ticks up 3.2% and holds 7 samples at 55.5% (859 viewers regained, 48% vs similar) as the planting step begins.</span>
+  <span class="what">Audience rises 3.2% and holds for 7 samples as the moss and planter soil goes in (859 viewers regained, 48th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to the moss detail: &quot;this mossy grass called golden Scotch moss.&quot;
+    <span class="lab">Why</span>Viewers rewind to the planting detail — &#39;this mossy grass called golden Scotch moss&#39; — the specific plant name viewers want to catch.
     <span class="quote">“mossy grass called golden Scotch moss”</span>
-    <span class="lab">Do more of this</span>Name and show the moss on-screen with a text callout at 13:03 so first-time viewers catch it without scrubbing back.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; surfacing the detail live converts rewinds into forward watch time.
+    <span class="lab">Do more of this</span>Show the moss name as an on-screen title card for three seconds when it is first mentioned at 13:03.
+    <span class="lab">Why that works</span>Named materials earn rewinds; a title card satisfies the rewind on first pass and reduces friction.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">13:58</span><span class="kind">Drop-off</span></span>
-  <span class="what">The outro sheds 31.0% of remaining viewers across 27 seconds (25.1x spike, 6,280 viewers, 31% vs similar), just above the channel&#39;s 27.0% outro average.</span>
+  <span class="what">The outro loses roughly a third of remaining viewers across 27 seconds after the reveal lands (10.60% stop rate, 6,280 viewers, 1.1x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Signals the video is ending with a wrap line and a pandemic aside: &quot;call this one done&quot; then &quot;tap room is closed during the pandemic.&quot;
-    <span class="quote">“call this one done”</span>
-    <span class="lab">The fix</span>Cut 14:19-14:24 (the pandemic aside) and hand to end screen within 10 seconds of &quot;call this one done.&quot;
-    <span class="lab">Why that works</span>Retention drops the moment viewers sense the end; a shorter, high-note close matches the playbook and this cohort&#39;s best outro.
+    <span class="lab">Why</span>The reveal resolves and the host shifts into reflection and pandemic aside — &#39;it&#39;s too bad the tap room is closed&#39; — signalling the video is ending.
+    <span class="quote">“it&#39;s too bad the tap room is closed”</span>
+    <span class="lab">The fix</span>Cut 14:16-14:24 and end on &#39;gravitate towards&#39; straight into the end-screen hand-off, dropping the pandemic aside entirely.
+    <span class="lab">Why that works</span>Retention drops the moment viewers sense the outro; the channel&#39;s best outro loses 0% by breaking off within seconds of the payoff.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"IzaUW0bYnIg","durationSec":891,"curve":[{"p":1,"w":1.003},{"p":2,"w":0.775},{"p":3,"w":0.709},{"p":4,"w":0.68},{"p":5,"w":0.663},{"p":6,"w":0.657},{"p":7,"w":0.641},{"p":8,"w":0.649},{"p":9,"w":0.644},{"p":10,"w":0.649},{"p":11,"w":0.642},{"p":12,"w":0.654},{"p":13,"w":0.649},{"p":14,"w":0.644},{"p":15,"w":0.64},{"p":16,"w":0.627},{"p":17,"w":0.636},{"p":18,"w":0.638},{"p":19,"w":0.639},{"p":20,"w":0.644},{"p":21,"w":0.643},{"p":22,"w":0.64},{"p":23,"w":0.639},{"p":24,"w":0.629},{"p":25,"w":0.638},{"p":26,"w":0.64},{"p":27,"w":0.636},{"p":28,"w":0.634},{"p":29,"w":0.633},{"p":30,"w":0.622},{"p":31,"w":0.607},{"p":32,"w":0.596},{"p":33,"w":0.594},{"p":34,"w":0.588},{"p":35,"w":0.583},{"p":36,"w":0.582},{"p":37,"w":0.583},{"p":38,"w":0.58},{"p":39,"w":0.578},{"p":40,"w":0.574},{"p":41,"w":0.576},{"p":42,"w":0.576},{"p":43,"w":0.571},{"p":44,"w":0.566},{"p":45,"w":0.565},{"p":46,"w":0.558},{"p":47,"w":0.56},{"p":48,"w":0.555},{"p":49,"w":0.555},{"p":50,"w":0.556},{"p":51,"w":0.557},{"p":52,"w":0.553},{"p":53,"w":0.554},{"p":54,"w":0.554},{"p":55,"w":0.554},{"p":56,"w":0.546},{"p":57,"w":0.546},{"p":58,"w":0.547},{"p":59,"w":0.555},{"p":60,"w":0.555},{"p":61,"w":0.552},{"p":62,"w":0.55},{"p":63,"w":0.554},{"p":64,"w":0.445},{"p":65,"w":0.413},{"p":66,"w":0.41},{"p":67,"w":0.388},{"p":68,"w":0.405},{"p":69,"w":0.414},{"p":70,"w":0.445},{"p":71,"w":0.499},{"p":72,"w":0.515},{"p":73,"w":0.514},{"p":74,"w":0.519},{"p":75,"w":0.524},{"p":76,"w":0.529},{"p":77,"w":0.531},{"p":78,"w":0.53},{"p":79,"w":0.522},{"p":80,"w":0.536},{"p":81,"w":0.534},{"p":82,"w":0.537},{"p":83,"w":0.532},{"p":84,"w":0.527},{"p":85,"w":0.531},{"p":86,"w":0.536},{"p":87,"w":0.538},{"p":88,"w":0.555},{"p":89,"w":0.57},{"p":90,"w":0.573},{"p":91,"w":0.585},{"p":92,"w":0.595},{"p":93,"w":0.61},{"p":94,"w":0.619},{"p":95,"w":0.586},{"p":96,"w":0.529},{"p":97,"w":0.468},{"p":98,"w":0.411},{"p":99,"w":0.358},{"p":100,"w":0.255}],"moments":[{"t":"0:09","sec":9,"kind":"drop","what":"The opening 9 seconds shed audience from 100.3% to 77.5% (29.3% of the room, 11,176 viewers), but softer than the channel's own intros."},{"t":"9:21","sec":561,"kind":"drop","what":"A 9-second window bleeds 5,309 viewers, from 55.4% to 44.5% (11.2x the channel's norm here, 35% vs similar)."},{"t":"10:33","sec":633,"kind":"peak","what":"Audience rises 12.0% of the room and holds 26 samples (2,646 viewers regained, 73% vs similar), right after the sponsor read ends."},{"t":"10:42","sec":642,"kind":"peak","what":"Audience rises 3.3% and holds 24 samples at 51.5% (810 viewers regained, 74% vs similar), immediately after the sponsor read closes."},{"t":"13:04","sec":784,"kind":"peak","what":"Audience ticks up 3.2% and holds 7 samples at 55.5% (859 viewers regained, 48% vs similar) as the planting step begins."},{"t":"13:58","sec":838,"kind":"drop","what":"The outro sheds 31.0% of remaining viewers across 27 seconds (25.1x spike, 6,280 viewers, 31% vs similar), just above the channel's 27.0% outro average."}]}</script>
+<script>window.__VIDEO__={"videoId":"IzaUW0bYnIg","durationSec":891,"curve":[{"p":1,"w":1.003},{"p":2,"w":0.775},{"p":3,"w":0.709},{"p":4,"w":0.68},{"p":5,"w":0.663},{"p":6,"w":0.657},{"p":7,"w":0.641},{"p":8,"w":0.649},{"p":9,"w":0.644},{"p":10,"w":0.649},{"p":11,"w":0.642},{"p":12,"w":0.654},{"p":13,"w":0.649},{"p":14,"w":0.644},{"p":15,"w":0.64},{"p":16,"w":0.627},{"p":17,"w":0.636},{"p":18,"w":0.638},{"p":19,"w":0.639},{"p":20,"w":0.644},{"p":21,"w":0.643},{"p":22,"w":0.64},{"p":23,"w":0.639},{"p":24,"w":0.629},{"p":25,"w":0.638},{"p":26,"w":0.64},{"p":27,"w":0.636},{"p":28,"w":0.634},{"p":29,"w":0.633},{"p":30,"w":0.622},{"p":31,"w":0.607},{"p":32,"w":0.596},{"p":33,"w":0.594},{"p":34,"w":0.588},{"p":35,"w":0.583},{"p":36,"w":0.582},{"p":37,"w":0.583},{"p":38,"w":0.58},{"p":39,"w":0.578},{"p":40,"w":0.574},{"p":41,"w":0.576},{"p":42,"w":0.576},{"p":43,"w":0.571},{"p":44,"w":0.566},{"p":45,"w":0.565},{"p":46,"w":0.558},{"p":47,"w":0.56},{"p":48,"w":0.555},{"p":49,"w":0.555},{"p":50,"w":0.556},{"p":51,"w":0.557},{"p":52,"w":0.553},{"p":53,"w":0.554},{"p":54,"w":0.554},{"p":55,"w":0.554},{"p":56,"w":0.546},{"p":57,"w":0.546},{"p":58,"w":0.547},{"p":59,"w":0.555},{"p":60,"w":0.555},{"p":61,"w":0.552},{"p":62,"w":0.55},{"p":63,"w":0.554},{"p":64,"w":0.445},{"p":65,"w":0.413},{"p":66,"w":0.41},{"p":67,"w":0.388},{"p":68,"w":0.405},{"p":69,"w":0.414},{"p":70,"w":0.445},{"p":71,"w":0.499},{"p":72,"w":0.515},{"p":73,"w":0.514},{"p":74,"w":0.519},{"p":75,"w":0.524},{"p":76,"w":0.529},{"p":77,"w":0.531},{"p":78,"w":0.53},{"p":79,"w":0.522},{"p":80,"w":0.536},{"p":81,"w":0.534},{"p":82,"w":0.537},{"p":83,"w":0.532},{"p":84,"w":0.527},{"p":85,"w":0.531},{"p":86,"w":0.536},{"p":87,"w":0.538},{"p":88,"w":0.555},{"p":89,"w":0.57},{"p":90,"w":0.573},{"p":91,"w":0.585},{"p":92,"w":0.595},{"p":93,"w":0.61},{"p":94,"w":0.619},{"p":95,"w":0.586},{"p":96,"w":0.529},{"p":97,"w":0.468},{"p":98,"w":0.411},{"p":99,"w":0.358},{"p":100,"w":0.255}],"moments":[{"t":"0:09","sec":9,"kind":"drop","what":"The opening sheds roughly a fifth of viewers as the sponsor tag lands before the premise (7.58% stop rate, 11,176 viewers, 0.8x channel norm)."},{"t":"9:21","sec":561,"kind":"drop","what":"The mid-video sponsor read loses roughly a fifth of remaining viewers in nine seconds, nearly double the channel norm here (5.53% stop rate, 5,309 viewers, 1.9x channel norm)."},{"t":"10:33","sec":633,"kind":"peak","what":"Audience rises 12.0% and holds for 26 samples right after the Squarespace read ends and the primer coats go on (2,646 viewers regained, 73rd percentile)."},{"t":"10:42","sec":642,"kind":"peak","what":"Audience rises 3.3% and holds for 24 samples on the threaded end-cap fabrication (810 viewers regained, 74th percentile)."},{"t":"13:04","sec":784,"kind":"peak","what":"Audience rises 3.2% and holds for 7 samples as the moss and planter soil goes in (859 viewers regained, 48th percentile)."},{"t":"13:58","sec":838,"kind":"drop","what":"The outro loses roughly a third of remaining viewers across 27 seconds after the reveal lands (10.60% stop rate, 6,280 viewers, 1.1x channel norm)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

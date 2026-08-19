@@ -3,8 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Contested · Influint intelligence</title>
-<link rel="icon" href="../assets/brand/influint-mark.png">
+<title>Forced to Stop Halfway Through Our Cross Country Motorcycle Trip! Episode 02 · Her Two Wheels</title>
+<link rel="icon" href="../../assets/brand/influint-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@ body{
 }
 body::before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  background-image:url("../../assets/brand/dot-grid.png"); background-size:520px auto;
   opacity:.32;
 }
 body::after{
@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -316,266 +384,240 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 </style>
 </head><body><div class="wrap">
 <header class="site">
-  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <img src="../../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../../index.html">All channels</a><a href="../../intelligence.html">Intelligence</a></nav>
 </header>
 
-<h1><span class="pill s-contested">Contested</span></h1>
-<p class="lede intel-hero">Two well-evidenced claims genuinely conflict. Recorded with the discriminating question — the missing context that would make both true in their own domain.</p>
-<div class="intel-stats">
-  <div><div class="v">6</div><div class="k">Claims at this standing</div></div>
-  <div><div class="v">5</div><div class="k">General</div></div>
-  <div><div class="v">1</div><div class="k">Niched</div></div>
+<div class="vhead">
+  <div>
+    <h1 style="font-size:clamp(24px,3.2vw,38px);margin-bottom:10px">Forced to Stop Halfway Through Our Cross Country Motorcycle Trip! Episode 02</h1>
+    <p class="vmeta">
+      <a href="../UCzMAG_9ikEm6P60GBpDIqqg.html">Her Two Wheels</a> ·
+      19:21 · 63,368 views ·
+      34% still watching at the halfway mark · 
+      3 drop-offs, 2 replay peaks
+       · retention pulled 2026-08-19
+    </p>
+  </div>
+  
 </div>
-<p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
-more than the tick alone. Decisions save in this browser as you go; export them from the
-panel in the corner when you are done.</p>
-<h2>retention &middot; 2</h2>
-<div class="claims"><div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">retention</span>
-    
-    <span class="cat">· checked across 6 channels</span>
-  </div>
-  <div class="txt">Announcing the end of a video is what causes the terminal retention cliff - viewers leave the moment they perceive the core content is finished, so the transition to the next video must happen before any wrap-up signal.</div>
-  <div class="src">Source: Sean Cannell</div>
-  <div class="qbox"><b>What would settle it</b><p>Which objective is being optimised — SESSION continuation (next-video click-through and watch time in this sitting) or REPEAT viewership (whether this viewer opens the channel&#39;s next upload)? These pull opposite ways at the outro, and each source is silently optimising a different one. The store&#39;s own 4214845e0b40 (Joos: under-delivering on a teased reward drives dopamine below baseline and suppresses willingness to wait in FUTURE videos) says the cost of the hand-off lands on later uploads, which is exactly the metric the retention curve cannot see. Restated: (a) optimising session watch time → hand off before the wrap-up signal; (b) optimising return rate on future uploads → resolve cleanly, and only then offer the next video. UNTESTABLE IN OUR DATA — we hold no next-video click-through or per-viewer return data.</p></div>
-  
-  <div class="review" data-id="fdbb7456ce5f">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> A terminal cliff is real and large in 6/6 channels. Final-10% loss (median): Channel G 35.3%, Channel C 28.1%, Channel D 23.0%, Channel F 22.4%, Channel E 14.1%, Channel A 9.4%. The matched mid-video 10% band loses far less: Channel C 1.1%, Channel F 3.0%, Channel G 2.2%, Channel E 2.0%, Channel D 10.6%, Channel A 9.2%. Per video, final-10% loss exceeds mid-10% loss in 97 of 119 cases. Median hazard by band is U-shaped: highest at 1-5%, ~0 through 46-90%, then rising again at 91-100%.</p>
-    <p class="caveat">Caveat: The cliff exists; the stated CAUSE does not follow from it. We have no labelling of where a wrap-up signal occurs, so we cannot separate &#39;the creator announced the end&#39; from the trivially expected fact that people stop watching when a video is over, from end-cards, from outros, or from the curve&#39;s own end artefact. The 3.7x spread between Channel A (9.4%) and Channel G (35.3%) shows the cliff size is not fixed, which is at least consistent with an editorial cause — but that is a hint, not a test.</p>
-    <blockquote>Most viewers will stop watching your video as soon as they realize the core content is done, so your only chance to keep them on your channel is to quickly transition them to other videos.</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">retention</span>
-    
-    
-  </div>
-  <div class="txt">Ending on a negative emotional tone damages memorability and satisfaction (peak-end rule), and teasing the next video instead of fully resolving the current one produces LESS satisfaction than clean resolution.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  <div class="qbox"><b>What would settle it</b><p>Which objective is being optimised — SESSION continuation (next-video click-through and watch time in this sitting) or REPEAT viewership (whether this viewer opens the channel&#39;s next upload)? These pull opposite ways at the outro, and each source is silently optimising a different one. The store&#39;s own 4214845e0b40 (Joos: under-delivering on a teased reward drives dopamine below baseline and suppresses willingness to wait in FUTURE videos) says the cost of the hand-off lands on later uploads, which is exactly the metric the retention curve cannot see. Restated: (a) optimising session watch time → hand off before the wrap-up signal; (b) optimising return rate on future uploads → resolve cleanly, and only then offer the next video. UNTESTABLE IN OUR DATA — we hold no next-video click-through or per-viewer return data.</p></div>
-  
-  <div class="review" data-id="5734eab7caae">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
-    
-    <blockquote>We sometimes think, yeah, but can we tease towards another video? That&#39;s going to lead to less satisfaction, by the way, than if we just resolve everything. ... that&#39;s because of a psychological thing called peak end rule, where you want the last tone of your video to be extremely positive.</blockquote>
-  </details>
-</div></div>
-<h2>analytics &middot; 4</h2>
-<div class="claims"><div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">analytics</span>
-    
-    <span class="cat">· checked across 6 channels</span>
-  </div>
-  <div class="txt">A video with high retention but low views has a PACKAGING problem, not a content problem — the retention proves the video can hold a wider audience than the packaging reached, so it is the prime repackaging candidate.</div>
-  <div class="src">Source: internal strategy session</div>
-  <div class="qbox"><b>What would settle it</b><p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
-  
-  <div class="review" data-id="124501e05eb5">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> The quadrant is the DEFAULT, not a diagnosis: among below-median-view videos, the share that also sit above median APV is Channel C 60%, Channel D 60%, Channel A 73%, Channel F 80%, Channel G 80%, Channel E 100%. This is forced by the underlying negative views/retention correlation (pooled -0.54) — low-view videos are ALSO the high-retention ones almost by construction, so the rule flags 60-100% of every channel&#39;s underperformers and discriminates almost nothing.</p>
-    <p class="caveat">Caveat: Two separate problems. First, no repackage outcomes exist in our data, so the causal claim (&#39;retention proves it can hold a wider audience&#39;) is untestable — retention was measured on the narrow audience it actually reached, and there is no evidence it would survive a wider one; the negative views/retention correlation is direct evidence against exactly that extrapolation. Second, even as a screening heuristic the rule barely narrows the field. The team&#39;s existing &#39;repackage or double down&#39; verdict table, which ranks retention-at-50% AGAINST first-28d views rather than thresholding both, is the sounder version of this idea.</p>
-    <blockquote>anything that has uh a low retention or like middle retention, we might be able to still repackage, but things that have a high retention, if they don&#39;t have as many views, then it just show it has room to grow where the reach is just not as big as the potential of the actual video holds</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">analytics</span>
-    
-    <span class="cat">· checked across 6 channels</span>
-  </div>
-  <div class="txt">Within a channel, videos with the HIGHEST view counts systematically sit BELOW the channel&#39;s average retention, because wider reach pulls in newer, less sticky viewers — so falling retention on a breakout is expected, not a defect.</div>
-  <div class="src">Source: internal strategy session</div>
-  <div class="qbox"><b>What would settle it</b><p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
-  
-  <div class="review" data-id="0bbd52b4777e">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested — supported:</b> 6/6 channels: top-view video below channel mean APV (Channel C 24.8% vs 46.7%, Channel D 23.9% vs 30.8%, Channel E 25.0% vs 31.6%, Channel A 21.9% vs 41.4%, Channel F 33.1% vs 40.0%, Channel G 42.8% vs 43.6%). Note Channel G is a hair below, not meaningfully below.</p>
-    <p class="caveat">Caveat: Channel G&#39; gap is 0.8pp — effectively a tie, so &#39;systematically&#39; is really 5 clear channels plus one null. Correlational; the causal story (reach imports weaker viewers) is not observable in our data.</p>
-    <blockquote>as a video gets to be bigger or have more views. there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky.</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">analytics</span>
-    
-    
-  </div>
-  <div class="txt">Despite CTR decaying with reach, first-hour and first-24-hour CTR is strongly correlated with long-term video performance on established channels — so early CTR is the usable predictive signal even though lifetime CTR is not.</div>
-  <div class="src">Source: Paddy Galloway</div>
-  <div class="qbox"><b>What would settle it</b><p>Is day-one CTR read as an ABSOLUTE number or as a residual against the SAME channel&#39;s own prior day-one CTRs, and is that channel&#39;s day-one audience compositionally stable? Paddy&#39;s claim is scoped to established channels, where day one is a near-constant subscriber-heavy panel — that stability is what makes the comparison legitimate. Joos&#39;s counterexample is impression-accumulation rate varying per video, which corrupts absolute readings. Note the store already carries a partial carve-out from Joos himself (4f18d60d2b00: on news and patch-update channels day-one behaviour genuinely does carry signal). UNTESTABLE IN OUR DATA — we hold no CTR or impressions at all.</p></div>
-  
-  <div class="review" data-id="386ef759c84a">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
-    
-    <blockquote>there&#39;s a very strong correlation between first hour CTR and long-term video performance on a lot of established channels</blockquote>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-contested">Contested</span>
-    <span class="cat">analytics</span>
-    
-    
-  </div>
-  <div class="txt">Judging a video by its first 24 hours is actively deceptive, because different videos require different numbers of impressions before the SAME viewer clicks — one video converts on the second showing, another on the fifth.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  <div class="qbox"><b>What would settle it</b><p>Is day-one CTR read as an ABSOLUTE number or as a residual against the SAME channel&#39;s own prior day-one CTRs, and is that channel&#39;s day-one audience compositionally stable? Paddy&#39;s claim is scoped to established channels, where day one is a near-constant subscriber-heavy panel — that stability is what makes the comparison legitimate. Joos&#39;s counterexample is impression-accumulation rate varying per video, which corrupts absolute readings. Note the store already carries a partial carve-out from Joos himself (4f18d60d2b00: on news and patch-update channels day-one behaviour genuinely does carry signal). UNTESTABLE IN OUR DATA — we hold no CTR or impressions at all.</p></div>
-  
-  <div class="review" data-id="50379959652e">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
-    
-    <blockquote>How many of you are still judging a video&#39;s performance by its first 24 hours? ... I&#39;m gonna tell you this right now This is extremely deceptive ... it could be that some videos take two times to show to a viewer before they&#39;re gonna click on it Other videos literally take five times to show to the exact same viewer</blockquote>
-  </details>
-</div></div>
+<p class="lede" style="margin:-14px 0 26px">The video&#39;s 51.3% hold at 1:00 sits 7.6pp under the channel&#39;s median and beats only 11 of 70 sibling videos — the first minute is where this episode uniquely bleeds.</p>
 
-<div id="rvdock">
-  <div class="c" id="rvcount">0 reviewed</div>
-  <p class="h">Saved in this browser as you go. Export when you are done and hand it back to be ingested.</p>
-  <button id="rvcopy" onclick="rvExport()" type="button">Copy review</button>
-  <button class="ghost" onclick="rvDownload()" type="button">Download</button>
-  <button class="ghost" onclick="rvClear()" type="button">Clear</button>
-  <textarea id="rvjson" readonly></textarea>
+<div class="viewer">
+  <div>
+    <div class="player"><div id="ytplayer"></div></div>
+    <div class="chartcard">
+      <div class="chartbar">
+        <span class="title">Audience retention</span>
+        <span class="spacer"></span>
+        <button class="tgl" data-axis="percent" aria-pressed="true" type="button">% of video</button>
+        <button class="tgl" data-axis="clock" aria-pressed="false" type="button">Clock time</button>
+        <button class="tgl" data-kind="drop" aria-pressed="true" type="button">Drop-offs</button>
+        <button class="tgl" data-kind="peak" aria-pressed="true" type="button">Replay peaks</button>
+      </div>
+      <div class="chartwrap"><svg class="curve" id="curve" role="img" aria-label="Audience retention curve with flagged moments"></svg></div>
+      <p class="hint">Click any dot to jump the player there — or click anywhere on the curve to scrub. The white line follows playback.</p>
+    </div>
+  </div>
+  <div class="moments" id="moments">
+    <h3>5 flagged moments</h3>
+    <button class="m drop" data-i="0" type="button">
+  <span class="h"><span class="ts">0:11</span><span class="kind">Drop-off</span></span>
+  <span class="what">The opening 24 seconds shed a third of the room while a hotel-coffee gripe stalls before the Barnett Harley setup lands (3.1x surrounding stop rate, 15,287 viewers, 100.0%→66.5%).</span>
+  <span class="body">
+    <span class="lab">Why</span>The first spoken beat is a filler complaint — &quot;real tired of crappy Hotel coffee&quot; — before the actual stakes of getting bikes serviced mid-trip arrive.
+    <span class="quote">“real tired of crappy Hotel coffee”</span>
+    <span class="lab">The fix</span>Cut 0:08-0:22 and open cold on &quot;we are here at Barnett Harley... we got to get these bikes service so we can keep going all the way to Florida.&quot;
+    <span class="lab">Why that works</span>1:00 holds only 51.3% versus a 58.9% channel median (11 of 70) — the stakes-and-goal sentence exists at 0:33 but arrives after the audience has already decided.
+    
+  </span>
+</button>
+<button class="m peak" data-i="1" type="button">
+  <span class="h"><span class="ts">9:29</span><span class="kind">Viewers came back</span></span>
+  <span class="what">The audience rises to 33.1% as the &quot;excuse me sir you kind of look like a criminal&quot; bit lands and holds for nine samples (+3.1% present, 706 viewers regained).</span>
+  <span class="body">
+    <span class="lab">Why</span>Viewers scrub back to the punchline setup — &quot;I held on to it with death grip too and I was like wait that&#39;s going to be funny.&quot;
+    <span class="quote">“you kind of look like a criminal”</span>
+    <span class="lab">Do more of this</span>Open the next episode&#39;s cold-open on a similar unscripted rider-to-rider bit before any narration or location card.
+    <span class="lab">Why that works</span>Character-through-action beats hold and earn rewinds; this one beat 57% of similar videos, so front-loading the format is the highest-leverage move.
+    
+  </span>
+</button>
+<button class="m peak" data-i="2" type="button">
+  <span class="h"><span class="ts">9:41</span><span class="kind">Viewers came back</span></span>
+  <span class="what">A second replay lift pulls the audience to 33.8% as the pegs-and-bag story continues (+2.0% present, 468 viewers regained, held five samples).</span>
+  <span class="body">
+    <span class="lab">Why</span>The rewound moment is the physical-comedy callback — &quot;I accidentally booped his bag and almost knocked him over&quot; — extending the same rider banter.
+    <span class="quote">“accidentally booped his bag”</span>
+    <span class="lab">Do more of this</span>Cluster rider-banter clips into a 45-60 second block earlier in Episode 03, cross-cut with riding b-roll every ~5 seconds.
+    <span class="lab">Why that works</span>Two consecutive replay peaks on the same conversation prove the format itself is the asset; concentrating it earlier defends the 1:00 mark where this episode collapsed.
+    
+  </span>
+</button>
+<button class="m drop" data-i="3" type="button">
+  <span class="h"><span class="ts">11:13</span><span class="kind">Drop-off</span></span>
+  <span class="what">A 12-second music-and-applause interlude leaving the diner loses viewers at 12.5x the surrounding rate with no words on screen (1,587 viewers, 34.1%→31.7%).</span>
+  <span class="body">
+    <span class="lab">Why</span>The dialogue resolves the town anecdote — &quot;just Texas hospitality down here&quot; — then hands off to 14 seconds of scored b-roll with no new question raised.
+    <span class="quote">“just Texas hospitality down here”</span>
+    <span class="lab">The fix</span>Cut 11:05-11:27 down to a 3-second riding transition and land directly on the next scene beat.
+    <span class="lab">Why that works</span>Pacing is the flow of new information; a resolved anecdote followed by silent b-roll gives viewers permission to leave, and the 1.5x channel-norm stop rate confirms it.
+    
+  </span>
+</button>
+<button class="m drop" data-i="4" type="button">
+  <span class="h"><span class="ts">13:33</span><span class="kind">Drop-off</span></span>
+  <span class="what">A 23-second scored montage after the &quot;third wheel&quot; aside loses viewers at 5.3x the surrounding rate before the table-79 payoff lands (1,067 viewers, 30.8%→28.8%).</span>
+  <span class="body">
+    <span class="lab">Why</span>The &quot;I&#39;m freewheeling it&quot; beat resolves the third-wheel joke, then 15 seconds of music play before &quot;do not let me down&quot; reintroduces stakes.
+    <span class="quote">“I&#39;m freewheeling it”</span>
+    <span class="lab">The fix</span>Trim 13:23-13:47 to a 5-second riser and cut straight into &quot;do not let me down look we&#39;re waving.&quot;
+    <span class="lab">Why that works</span>Anticipatory risers held ~20 seconds before a payoff flatten the curve; dead music after a resolved joke does the opposite, matching the 1.5x channel-norm stop rate here.
+    
+  </span>
+</button>
+  </div>
 </div>
+<script>window.__VIDEO__={"videoId":"s6gknruheMg","durationSec":1161,"curve":[{"p":1,"w":0.959},{"p":2,"w":0.858},{"p":3,"w":0.665},{"p":4,"w":0.602},{"p":5,"w":0.513},{"p":6,"w":0.494},{"p":7,"w":0.455},{"p":8,"w":0.439},{"p":9,"w":0.425},{"p":10,"w":0.418},{"p":11,"w":0.409},{"p":12,"w":0.407},{"p":13,"w":0.411},{"p":14,"w":0.411},{"p":15,"w":0.412},{"p":16,"w":0.413},{"p":17,"w":0.409},{"p":18,"w":0.406},{"p":19,"w":0.404},{"p":20,"w":0.396},{"p":21,"w":0.393},{"p":22,"w":0.389},{"p":23,"w":0.383},{"p":24,"w":0.377},{"p":25,"w":0.372},{"p":26,"w":0.369},{"p":27,"w":0.376},{"p":28,"w":0.379},{"p":29,"w":0.385},{"p":30,"w":0.379},{"p":31,"w":0.378},{"p":32,"w":0.367},{"p":33,"w":0.365},{"p":34,"w":0.379},{"p":35,"w":0.365},{"p":36,"w":0.363},{"p":37,"w":0.355},{"p":38,"w":0.352},{"p":39,"w":0.352},{"p":40,"w":0.345},{"p":41,"w":0.34},{"p":42,"w":0.336},{"p":43,"w":0.33},{"p":44,"w":0.325},{"p":45,"w":0.32},{"p":46,"w":0.316},{"p":47,"w":0.318},{"p":48,"w":0.321},{"p":49,"w":0.331},{"p":50,"w":0.338},{"p":51,"w":0.338},{"p":52,"w":0.338},{"p":53,"w":0.34},{"p":54,"w":0.337},{"p":55,"w":0.332},{"p":56,"w":0.33},{"p":57,"w":0.337},{"p":58,"w":0.341},{"p":59,"w":0.317},{"p":60,"w":0.316},{"p":61,"w":0.312},{"p":62,"w":0.312},{"p":63,"w":0.316},{"p":64,"w":0.314},{"p":65,"w":0.312},{"p":66,"w":0.305},{"p":67,"w":0.303},{"p":68,"w":0.305},{"p":69,"w":0.304},{"p":70,"w":0.308},{"p":71,"w":0.297},{"p":72,"w":0.288},{"p":73,"w":0.288},{"p":74,"w":0.29},{"p":75,"w":0.293},{"p":76,"w":0.292},{"p":77,"w":0.285},{"p":78,"w":0.283},{"p":79,"w":0.291},{"p":80,"w":0.285},{"p":81,"w":0.278},{"p":82,"w":0.277},{"p":83,"w":0.282},{"p":84,"w":0.282},{"p":85,"w":0.275},{"p":86,"w":0.27},{"p":87,"w":0.266},{"p":88,"w":0.264},{"p":89,"w":0.266},{"p":90,"w":0.264},{"p":91,"w":0.259},{"p":92,"w":0.263},{"p":93,"w":0.263},{"p":94,"w":0.261},{"p":95,"w":0.262},{"p":96,"w":0.262},{"p":97,"w":0.256},{"p":98,"w":0.239},{"p":99,"w":0.234},{"p":100,"w":0.196}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening 24 seconds shed a third of the room while a hotel-coffee gripe stalls before the Barnett Harley setup lands (3.1x surrounding stop rate, 15,287 viewers, 100.0%→66.5%)."},{"t":"9:29","sec":569,"kind":"peak","what":"The audience rises to 33.1% as the \"excuse me sir you kind of look like a criminal\" bit lands and holds for nine samples (+3.1% present, 706 viewers regained)."},{"t":"9:41","sec":581,"kind":"peak","what":"A second replay lift pulls the audience to 33.8% as the pegs-and-bag story continues (+2.0% present, 468 viewers regained, held five samples)."},{"t":"11:13","sec":673,"kind":"drop","what":"A 12-second music-and-applause interlude leaving the diner loses viewers at 12.5x the surrounding rate with no words on screen (1,587 viewers, 34.1%→31.7%)."},{"t":"13:33","sec":813,"kind":"drop","what":"A 23-second scored montage after the \"third wheel\" aside loses viewers at 5.3x the surrounding rate before the table-79 payoff lands (1,067 viewers, 30.8%→28.8%)."}]}</script>
 <script>
 (function(){
-  var KEY = 'influint-intel-review-v1';
-  var store = {};
-  try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { store = {}; }
+  var D = window.__VIDEO__; if(!D) return;
+  var svg = document.getElementById('curve'), list = document.getElementById('moments');
+  var W = 1000, H = 320, L = 46, R = 14, T = 16, B = 30;
+  var axis = 'percent', show = { drop:true, peak:true }, sel = null, player = null, poll = null;
+  var dur = D.durationSec || 1;
 
-  function persist(){
-    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
-    render();
+  function xOf(pt){
+    var frac = axis === 'percent' ? pt.p/100 : (pt.p/100*dur)/dur; // same domain, label differs
+    return L + frac * (W - L - R);
   }
-  function count(){ return Object.keys(store).length; }
+  function yOf(w){ return T + (1 - Math.max(0, Math.min(1, w))) * (H - T - B); }
+  function secOf(pt){ return pt.p/100 * dur; }
 
-  function render(){
-    var dock = document.getElementById('rvdock');
-    if (!dock) return;
-    var n = count();
-    dock.classList.toggle('on', n > 0);
-    var c = document.getElementById('rvcount');
-    if (c) {
-      var acc = 0, rej = 0;
-      for (var k in store) { if (store[k].verdict === 'accept') acc++; else rej++; }
-      c.textContent = n + ' reviewed · ' + acc + ' accepted, ' + rej + ' rejected';
+  function draw(){
+    var pts = D.curve || [];
+    var parts = [];
+    // gridlines + y labels
+    for (var g=0; g<=100; g+=25){
+      var y = yOf(g/100);
+      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>');
+      parts.push('<text class="tick" x="'+(L-8)+'" y="'+(y+3.5)+'" text-anchor="end">'+g+'%</text>');
     }
-  }
-
-  // Paint any decisions already made, including ones made on another page.
-  function hydrate(){
-    document.querySelectorAll('.review').forEach(function(row){
-      var id = row.dataset.id, rec = store[id];
-      var card = row.closest('.claim');
-      row.querySelectorAll('.rv').forEach(function(b){
-        var on = !!rec && rec.verdict === b.dataset.v;
-        b.setAttribute('aria-pressed', String(on));
+    // x labels
+    for (var i=0;i<=4;i++){
+      var f = i/4, x = L + f*(W-L-R);
+      var lab = axis === 'percent' ? Math.round(f*100)+'%' : fmtT(f*dur);
+      parts.push('<text class="tick" x="'+x+'" y="'+(H-6)+'" text-anchor="middle">'+lab+'</text>');
+    }
+    if (pts.length){
+      var d='', area='';
+      pts.forEach(function(pt,i){
+        var x=xOf(pt), y=yOf(pt.w);
+        d += (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';
       });
-      var note = row.querySelector('.rvnote');
-      if (note && rec && rec.note) note.value = rec.note;
-      if (card) card.classList.toggle('reviewed', !!rec);
+      area = d + 'L'+xOf(pts[pts.length-1]).toFixed(1)+' '+yOf(0)+' L'+xOf(pts[0]).toFixed(1)+' '+yOf(0)+' Z';
+      parts.push('<path class="band" d="'+area+'"/>');
+      parts.push('<path class="line" d="'+d+'"/>');
+    }
+    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0)+'" x2="'+(W-R)+'" y2="'+yOf(0)+'"/>');
+    parts.push('<line class="head" id="head" x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+yOf(0)+'" style="display:none"/>');
+    (D.moments||[]).forEach(function(m,idx){
+      if(!show[m.kind]) return;
+      var p = (m.sec/dur)*100;
+      var near = nearestW(p);
+      var x = xOf({p:p}), y = yOf(near);
+      parts.push('<g class="mk '+m.kind+(sel===idx?' sel':'')+'" data-i="'+idx+'" role="button" tabindex="0" aria-label="'+esc(m.t+' '+m.kind)+'">'
+        +'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="6"/>'
+        +'<title>'+esc(m.t+' — '+m.what)+'</title></g>');
     });
-    render();
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.innerHTML = parts.join('');
+  }
+  function nearestW(p){
+    var pts = D.curve||[], best=1, bd=1e9;
+    for (var i=0;i<pts.length;i++){ var d=Math.abs(pts[i].p-p); if(d<bd){bd=d;best=pts[i].w;} }
+    return best;
+  }
+  function fmtT(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function select(i, seek){
+    sel = i;
+    Array.prototype.forEach.call(list.querySelectorAll('.m'), function(el){
+      el.classList.toggle('sel', Number(el.dataset.i) === i);
+    });
+    var el = list.querySelector('.m[data-i="'+i+'"]');
+    if (el) el.scrollIntoView({block:'nearest'});
+    draw();
+    if (seek && player && player.seekTo){
+      var m = D.moments[i];
+      player.seekTo(Math.max(0, m.sec - 2), true);
+      if (player.playVideo) player.playVideo();
+    }
   }
 
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.rv');
-    if (!btn) return;
-    var row = btn.closest('.review');
-    var id = row.dataset.id;
-    var v = btn.dataset.v;
-    var claimEl = row.closest('.claim').querySelector('.txt');
-    if (store[id] && store[id].verdict === v) {
-      delete store[id];                       // clicking the same verdict clears it
-    } else {
-      store[id] = {
-        verdict: v,
-        note: (row.querySelector('.rvnote') || {}).value || '',
-        claim: claimEl ? claimEl.textContent.slice(0, 120) : '',
-        at: new Date().toISOString()
-      };
-    }
-    hydrate();
+  list.addEventListener('click', function(e){
+    var b = e.target.closest('.m'); if(!b) return;
+    select(Number(b.dataset.i), true);
+  });
+  svg.addEventListener('click', function(e){
+    var g = e.target.closest('.mk');
+    if (g){ select(Number(g.dataset.i), true); return; }
+    // Clicking bare chart seeks to that position.
+    var r = svg.getBoundingClientRect();
+    var frac = ((e.clientX - r.left) / r.width * W - L) / (W - L - R);
+    if (frac < 0 || frac > 1 || !player || !player.seekTo) return;
+    player.seekTo(frac * dur, true);
+  });
+  svg.addEventListener('keydown', function(e){
+    var g = e.target.closest('.mk');
+    if (g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); select(Number(g.dataset.i), true); }
   });
 
-  // A note without a verdict is still worth keeping — it is feedback.
-  document.addEventListener('input', function(e){
-    if (!e.target.classList.contains('rvnote')) return;
-    var row = e.target.closest('.review');
-    var id = row.dataset.id;
-    if (!store[id]) store[id] = { verdict: 'note', claim: '', at: new Date().toISOString() };
-    store[id].note = e.target.value;
-    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (err) {}
-    render();
+  document.querySelectorAll('[data-axis]').forEach(function(b){
+    b.addEventListener('click', function(){
+      axis = b.dataset.axis;
+      document.querySelectorAll('[data-axis]').forEach(function(o){
+        o.setAttribute('aria-pressed', String(o.dataset.axis === axis));
+      });
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-kind]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.dataset.kind; show[k] = !show[k];
+      b.setAttribute('aria-pressed', String(show[k]));
+      list.querySelectorAll('.m.'+k).forEach(function(el){ el.style.display = show[k] ? '' : 'none'; });
+      draw();
+    });
   });
 
-  window.rvExport = function(){
-    var ta = document.getElementById('rvjson');
-    ta.value = JSON.stringify(store, null, 2);
-    ta.classList.add('on');
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) {}
-    var b = document.getElementById('rvcopy');
-    if (b) { b.textContent = 'Copied ✓'; setTimeout(function(){ b.textContent = 'Copy review'; }, 1800); }
-  };
-  window.rvDownload = function(){
-    var blob = new Blob([JSON.stringify(store, null, 2)], { type: 'application/json' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'intelligence-review.json';
-    document.body.appendChild(a); a.click(); a.remove();
-  };
-  window.rvClear = function(){
-    if (!confirm('Clear all ' + count() + ' review decisions on this device?')) return;
-    store = {}; persist(); hydrate();
-  };
+  function tick(){
+    if (!player || !player.getCurrentTime) return;
+    var t = player.getCurrentTime() || 0;
+    var head = document.getElementById('head');
+    if (!head) return;
+    var x = L + (t/dur) * (W - L - R);
+    head.setAttribute('x1', x); head.setAttribute('x2', x);
+    head.style.display = t > 0 ? '' : 'none';
+  }
 
-  hydrate();
+  window.onYouTubeIframeAPIReady = function(){
+    player = new YT.Player('ytplayer', {
+      videoId: D.videoId,
+      playerVars: { rel:0, modestbranding:1, playsinline:1 },
+      events: {
+        onReady: function(){ if(!poll) poll = setInterval(tick, 250); },
+      }
+    });
+  };
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  draw();
 })();
 </script>
-
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

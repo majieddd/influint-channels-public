@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -335,7 +403,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     <span class="cat">· checked across 42 channels</span>
+    
+    
   </div>
+  
   <div class="txt">Returning viewers are manufactured by &#39;buckets&#39; — near-identical formats with deliberately near-identical titles and metadata — because that similarity is what tells the algorithm whom to re-serve.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -346,10 +417,27 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev"><b>Tested:</b> Across 42 channels: 22 positive rho, 20 negative, median rho +0.005. Nine channels reach p&lt;0.05 and they split both ways — Bikes and Beards +0.59, Aphmau Shuki +0.47, I did a thing +0.46, PrestonGamez +0.40, I Like To Make Stuff +0.42 against KreekCraft -0.75, RevZilla -0.61, CashBlox -0.42. Repeating your own title shape is neither reliably rewarded nor reliably punished in views.</p>
-    <p class="caveat">Caveat: The claim&#39;s actual outcome variable is RETURNING VIEWERS, which we do not hold — YouTube&#39;s returning/new split is not in our data for any channel. A bucket strategy could genuinely build a returning audience while leaving total views flat (returning viewers substituting for browse reach), which is exactly what a null on views looks like. So this is a null on the wrong metric, and should be read as untested rather than refuted.</p>
-    <blockquote>$1 Frappuccino versus Starbucks, $1 chicken sandwich versus Chick-fil-A, $1 pizza, $1 burrito. They&#39;re all the same thing. ... So by creating similar content, and I like to title them very similarly to just help and have similar metadata. So when YouTube sees that, they&#39;re going to know which videos to send back out. And that&#39;s how you create returning viewers.</blockquote>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
+               this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Across 42 channels: 22 positive rho, 20 negative, median rho +0.005. Nine channels reach p&lt;0.05 and they split both ways — Bikes and Beards +0.59, Aphmau Shuki +0.47, I did a thing +0.46, PrestonGamez +0.40, I Like To Make Stuff +0.42 against KreekCraft -0.75, RevZilla -0.61, CashBlox -0.42. Repeating your own title shape is neither reliably rewarded nor reliably punished in views.</p>
+             <p class="caveat">Caveat: The claim&#39;s actual outcome variable is RETURNING VIEWERS, which we do not hold — YouTube&#39;s returning/new split is not in our data for any channel. A bucket strategy could genuinely build a returning audience while leaving total views flat (returning viewers substituting for browse reach), which is exactly what a null on views looks like. So this is a null on the wrong metric, and should be read as untested rather than refuted.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>$1 Frappuccino versus Starbucks, $1 chicken sandwich versus Chick-fil-A, $1 pizza, $1 burrito. They&#39;re all the same thing. ... So by creating similar content, and I like to title them very similarly to just help and have similar metadata. So when YouTube sees that, they&#39;re going to know which videos to send back out. And that&#39;s how you create returning viewers.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -358,7 +446,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">packaging</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Trailers should carry a fixed density of payoff moments — a comedy trailer needs at least four or five key funny moments, and a shorter spot two or three.</div>
   <div class="src">Source: Alan Garnett</div>
   
@@ -369,10 +460,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>If it&#39;s a comedy, making sure you have at least 4 or 5 key hilarious moments in the trailer, 2 or 3 in a TV spot.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>If it&#39;s a comedy, making sure you have at least 4 or 5 key hilarious moments in the trailer, 2 or 3 in a TV spot.</blockquote></div>
   </details>
 </div></div>
 <h2>retention</h2>
@@ -382,7 +484,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">retention</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Trimming a single weak second from the end of a Short raised measured retention from 83% to 88%, and the video subsequently went from 30,000 to 18 million views — so end-trimming is a high-leverage edit on short-form.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox"><b>What would settle it</b><p>Is the surface LOOP-SCORED (short-form, where completion and rewatch drive redistribution and the final second gates the loop) or watch-time-scored long-form? And is the trim removing a specifically DEAD trailing second, or removing runtime generally? Restated: (a) on short-form, trimming dead trailing frames is a direct lever on the loop metric; (b) on long-form, runtime is not the constraint — our own data has the longer half of the catalogue beating the shorter half on median first-28d views for 6 of 7 channels.</p></div>
@@ -393,10 +498,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>This is the 83% and you can see on the last second, I lost a lot of people I went to the YouTube tool and I removed that last second and the retention went from 83% to 88% just deleting that one second, what happened to this video, it took off one week later, 30,000 to 18 million views.</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>This is the 83% and you can see on the last second, I lost a lot of people I went to the YouTube tool and I removed that last second and the retention went from 83% to 88% just deleting that one second, what happened to this video, it took off one week later, 30,000 to 18 million views.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -405,7 +521,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">retention</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">Short-form convention inverts the long-form payoff structure: deliver the conclusion first and let the rest of the piece justify it, because the attention budget will not survive a held-back payoff.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -416,10 +535,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>So I delivered the payoff early for you in the short form video. Typically, you deliver the payoff at the end of the video. You try and keep people around. I know that we have short attention span, so I tried to give you the payout</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>So I delivered the payoff early for you in the short form video. Typically, you deliver the payoff at the end of the video. You try and keep people around. I know that we have short attention span, so I tried to give you the payout</blockquote></div>
   </details>
 </div></div>
 <h2>storytelling</h2>
@@ -429,7 +559,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">storytelling</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">On short-form, story quality beats idea quality — an expensive spectacle premise will not hold viewers to the end if the story around it is weak.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -440,10 +573,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>for short-form content stories matter more than the idea Sure You can have like an idea where it&#39;s like you doing something crazy cool and like spending hundreds of thousands of dollars on a short But like if the stories are engaging enough No one&#39;s gonna watch to the end and the idea is actually not that intrinsically cool story equals retention and retention equals views</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>for short-form content stories matter more than the idea Sure You can have like an idea where it&#39;s like you doing something crazy cool and like spending hundreds of thousands of dollars on a short But like if the stories are engaging enough No one&#39;s gonna watch to the end and the idea is actually not that intrinsically cool story equals retention and retention equals views</blockquote></div>
   </details>
 </div></div>
 <h2>analytics</h2>
@@ -453,7 +597,10 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <span class="cat">analytics</span>
     
     
+    
+    
   </div>
+  
   <div class="txt">A retention figure higher than the scroll-through (post-hook view) rate can only be produced by rewatches, so retention above 100% of scroll-through is a direct measure of rewatch behaviour.</div>
   <div class="src">Source: CreatorNow</div>
   
@@ -464,10 +611,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
   </div>
   <details>
-    <summary>Evidence and caveats →</summary>
-    <p class="ev">Not yet tested against our data.</p>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="nomeasure unbound">
+    <b>Not measurable by anything we currently compute</b>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
+      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
+      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
+      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
+      motive are outside that reach.</p>
+    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
+      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+  </div>
     
-    <blockquote>the only way to have a retention higher than what my scroll-through rate is is because people are rewatching the videos Meaning that rewatches are very very important and getting those rewatches are actually very correlated to creating strong hooks</blockquote>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>the only way to have a retention higher than what my scroll-through rate is is because people are rewatching the videos Meaning that rewatches are very very important and getting those rewatches are actually very correlated to creating strong hooks</blockquote></div>
   </details>
 </div></div>
 

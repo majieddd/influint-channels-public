@@ -256,8 +256,76 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
 .s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
 .s-rejected{color:#8a9a9a}
+.rej-why{color:#ff8f8f}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
 .claims{display:grid;gap:12px;margin-top:16px}
-.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
@@ -329,12 +397,12 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
       19:20 · 502,230 views ·
       23% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video halves the room by the 2-minute mark (47.8% vs the channel&#39;s 57.6% median, beating just 3 of 29 siblings), and a straight sponsor read at 8:19 costs 66,343 viewers in 23 seconds.</p>
+<p class="lede" style="margin:-14px 0 26px">This video sits 70th of 75 at halfway because a 23-second sponsor read at 8:19 shed 41.2% of the room, 6.5x the channel&#39;s own ad average.</p>
 
 <div class="viewer">
   <div>
@@ -356,73 +424,73 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:11</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening second sheds viewers in line with this channel&#39;s own intro habit (9.60% stop rate vs the channel&#39;s 9.44% here, 22,660 viewers, 1.0x norm).</span>
+  <span class="what">First-second drop takes the room from 100% to 94.3% (4.5x surrounding stop rate, 22,954 viewers, 0.9x the channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma opens on the standing channel frame: &quot;Hi, I&#39;m Emma. And for the last 18 months, I&#39;ve been trying to turn this 120-year-old abandoned general store into my dream home.&quot;
+    <span class="lab">Why</span>Standing habit for the channel: opens with a self-introduction and premise recap the thumbnail already sold: &quot;Hi, I&#39;m Emma. And for the last 18 months&quot;.
     <span class="quote">“Hi, I&#39;m Emma. And for the last 18 months”</span>
-    <span class="lab">The fix</span>Hold the current open; do not surgery an intro that lost 9.0% against the channel&#39;s 8.2% intro average.
-    <span class="lab">Why that works</span>This is the channel&#39;s standing intro loss, not this video&#39;s problem — the 30-second mark still beats 17 of 29 siblings at 85.8%.
+    <span class="lab">The fix</span>Keep this intro; it beats the channel&#39;s own intro average (9.0% vs 13.8%) and holds 85.8% at 0:30 versus a 79.3% median.
+    <span class="lab">Why that works</span>Joos: a first-minute win caps AVD upside, and this intro already sits +6.5pp above the channel at 0:30.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">8:19</span><span class="kind">Drop-off</span></span>
-  <span class="what">A straight sponsor read collapses the room mid-video (12.5x the surrounding stop rate, 9.27% vs the channel&#39;s 0.68% here, 66,343 viewers gone in 23 seconds).</span>
+  <span class="what">A 23-second sponsor pivot dumps the audience from 40.6% to 24.8% (12.5x surrounding stop rate, 66,440 viewers, 6.5x the channel&#39;s ad average).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma hard-pivots from the sash hunt into a cold ad open: &quot;talk about the giveaway sponsored by Match Masters&quot;, killing the live suspense about the windows.
+    <span class="lab">Why</span>The read opens cold on the sponsor&#39;s name after a search beat, breaking story: &quot;talk about the giveaway sponsored by Match Masters&quot;.
     <span class="quote">“talk about the giveaway sponsored by Match Masters”</span>
-    <span class="lab">The fix</span>Rebuild this read the way &quot;Addressing The Truth.&quot; does it at 5:27 (0.0% loss): cross-cut the Match Masters pitch with the ongoing sash search, and open on the giveaway prize, not the sponsor name.
-    <span class="lab">Why that works</span>Cross-cutting sponsor reads with the progressing story cuts ad loss from 10-20% to ~2%, and this instance lost 41.2% versus the channel&#39;s 10.7% ad average.
-    <span class="lab">Check first</span><span class="warn">Verify Match Masters approved a non-standard open before recutting; if the opening line is contractually fixed, negotiate a replacement or run the read later while sash suspense is still live.</span>
+    <span class="lab">The fix</span>Cross-cut the read with the sashes hunt continuing on screen, and open on a viewer-facing line, not &quot;sponsored by Match Masters&quot;.
+    <span class="lab">Why that works</span>Joos: cross-cutting an ad with the progressing story cuts loss from 10-20% to ~2%; never open on &quot;sponsored by&quot;.
+    <span class="lab">Check first</span><span class="warn">Confirm Match Masters will accept a reworded opener and split-screen treatment before recutting.</span>
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">10:26</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The room swells the instant the sponsor ends and the renovation resumes (+19.6% of the audience, 23,339 viewers regained, 68th percentile).</span>
+  <span class="what">Audience rises 19.6% as the story returns from the ad to the sash discovery (23,389 viewers regained, 68th percentile vs similar videos).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the handoff line: &quot;let&#39;s get back to the renovation. Okay, hold on. I had no idea that these were even here.&quot;
-    <span class="quote">“let&#39;s get back to the renovation. Okay, hold on”</span>
-    <span class="lab">Do more of this</span>Move this &quot;Okay, hold on&quot; discovery beat to just before the 8:19 sponsor open, then run the Match Masters read cross-cut over the measuring — anticipation live during the ad, payoff after.
-    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward, not the reward; placing the ad at the height of anticipation instead of after a payoff is how the sponsor stops costing 66,343 viewers.
-    <span class="lab">Check first</span><span class="warn">Confirm the discovery footage isn&#39;t chronologically load-bearing for a later beat; if it is, film a short bridging line so the reorder still reads clean.</span>
+    <span class="lab">Why</span>The &quot;back to the renovation&quot; hand-off lands on an immediate find: &quot;I had no idea that these were even here&quot;.
+    <span class="quote">“I had no idea that these were even here”</span>
+    <span class="lab">Do more of this</span>Front-load this discovery language into a 5-second cold open before the intro so new viewers meet the find first.
+    <span class="lab">Why that works</span>Joos: open on an out-of-context moment that forces &quot;wait, what&#39;s happening?&quot; — never on a greeting.
+    
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">10:38</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rebuilds sharply as Emma measures the found sashes (+23.9% of the room, 34,158 viewers regained, 70th percentile vs similar videos).</span>
+  <span class="what">Audience rises 23.9% and holds 44 samples as she measures a found sash (34,180 viewers regained, 70th percentile vs similar videos).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to the measurement moment: &quot;that looks like my window frames... let&#39;s measure it... What&#39;s the width? 34 and a quarter.&quot;
-    <span class="quote">“let&#39;s measure it... What&#39;s the width? 34 and a quarter”</span>
-    <span class="lab">Do more of this</span>Front-load a 5-second tease of this measurement beat inside the first 60 seconds, cutting from &quot;$70,000 just on windows&quot; straight to &quot;34 and a quarter. Okay, that could work.&quot;
-    <span class="lab">Why that works</span>The 1:00 mark holds only 60.1% (beating just 3 of 29 siblings) while this measurement earns rewinds — surface the concrete obstacle and its possible fix in the first 30 seconds, per the channel audit.
+    <span class="lab">Why</span>Live measurement of a possible match to the historic windows: &quot;that looks like my window frames, but that looks kind of tall&quot;.
+    <span class="quote">“that looks like my window frames, but”</span>
+    <span class="lab">Do more of this</span>Tease this measurement moment in the first 45 seconds with the tape on the sash, without revealing the 39.5-inch number.
+    <span class="lab">Why that works</span>Joos: a reveal that earns rewinds is an asset — tease it early and structure toward it.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">10:50</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A second replay wave lands as the measurements start ruling sashes in and out (+8.7% of the room, 15,405 viewers regained, held 20 samples, 70th percentile).</span>
+  <span class="what">Audience rises 8.7% as she reads out the sash dimensions (15,489 viewers regained, 70th percentile vs similar videos).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind the size-check verdict: &quot;What&#39;s the width? 34 and a quarter. Okay, that could work. What&#39;s the height? Ooh, no. 39 and a half.&quot;
-    <span class="quote">“34 and a quarter. Okay, that could work”</span>
-    <span class="lab">Do more of this</span>Cut a 15-second on-screen tally (windows needed vs sashes matched) and drop it at 10:50, then repeat the tally at every subsequent measurement in the episode.
-    <span class="lab">Why that works</span>Progress trackers and something visibly changing every ~5 seconds hold retention; the audience is already rewinding this exact yes/no beat, so make the score legible.
+    <span class="lab">Why</span>Viewers scrub back for the numbers being called out: &quot;what&#39;s the width? 34 and a quarter&quot;.
+    <span class="quote">“what&#39;s the width? 34 and a quarter”</span>
+    <span class="lab">Do more of this</span>Hold this measurement on screen with a lower-third showing width and height so rewinds are not required to catch the numbers.
+    <span class="lab">Why that works</span>Joos: replay peaks on numbers being read out are copy-worthy; make them legible so the rewind isn&#39;t needed.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">18:22</span><span class="kind">Drop-off</span></span>
-  <span class="what">The outro bleeds harder than usual as Emma signals the video is wrapping (18.4x the surrounding stop rate, 5.38% vs 1.72% typical here, 16,663 viewers).</span>
+  <span class="what">A late reflective beat drops the room from 33.6% to 30.0% (18.1x surrounding stop rate, 16,637 viewers, 2.1x the channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma explicitly flags the ending and low stakes: &quot;I know that today&#39;s video wasn&#39;t really me working to super hard at anything, but this did need to be done.&quot;
+    <span class="lab">Why</span>She signals the video is ending and admits low action: &quot;today&#39;s video wasn&#39;t really me working to super hard at anything&quot;.
     <span class="quote">“today&#39;s video wasn&#39;t really me working to super hard”</span>
-    <span class="lab">The fix</span>Cut 18:20-18:31 and rejoin on &quot;I think I&#39;m going to send it&quot; at 18:36, then hand straight to a next-episode tease about repairing the salvaged sashes.
-    <span class="lab">Why that works</span>Retention drops the moment viewers sense the video ending, and this outro lost 14.1% vs the channel&#39;s 10.7% outro average — apologizing for the episode&#39;s low effort accelerates the exit.
+    <span class="lab">The fix</span>Cut 18:20-18:31 and rejoin on &quot;I think I&#39;m going to send it&quot; so the decision lands without the self-deprecating summary.
+    <span class="lab">Why that works</span>Joos: retention drops the moment viewers sense the outro; never signal ending, end on the emotional high.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"qG5P5x8CPMo","durationSec":1160,"curve":[{"p":1,"w":0.943},{"p":2,"w":0.858},{"p":3,"w":0.744},{"p":4,"w":0.709},{"p":5,"w":0.601},{"p":6,"w":0.589},{"p":7,"w":0.577},{"p":8,"w":0.513},{"p":9,"w":0.478},{"p":10,"w":0.478},{"p":11,"w":0.483},{"p":12,"w":0.482},{"p":13,"w":0.481},{"p":14,"w":0.48},{"p":15,"w":0.476},{"p":16,"w":0.472},{"p":17,"w":0.469},{"p":18,"w":0.465},{"p":19,"w":0.458},{"p":20,"w":0.462},{"p":21,"w":0.453},{"p":22,"w":0.45},{"p":23,"w":0.444},{"p":24,"w":0.439},{"p":25,"w":0.433},{"p":26,"w":0.425},{"p":27,"w":0.423},{"p":28,"w":0.421},{"p":29,"w":0.42},{"p":30,"w":0.422},{"p":31,"w":0.425},{"p":32,"w":0.426},{"p":33,"w":0.432},{"p":34,"w":0.432},{"p":35,"w":0.435},{"p":36,"w":0.433},{"p":37,"w":0.43},{"p":38,"w":0.438},{"p":39,"w":0.451},{"p":40,"w":0.418},{"p":41,"w":0.411},{"p":42,"w":0.407},{"p":43,"w":0.407},{"p":44,"w":0.303},{"p":45,"w":0.248},{"p":46,"w":0.249},{"p":47,"w":0.242},{"p":48,"w":0.232},{"p":49,"w":0.232},{"p":50,"w":0.227},{"p":51,"w":0.227},{"p":52,"w":0.229},{"p":53,"w":0.232},{"p":54,"w":0.277},{"p":55,"w":0.343},{"p":56,"w":0.373},{"p":57,"w":0.381},{"p":58,"w":0.384},{"p":59,"w":0.385},{"p":60,"w":0.383},{"p":61,"w":0.387},{"p":62,"w":0.377},{"p":63,"w":0.372},{"p":64,"w":0.379},{"p":65,"w":0.376},{"p":66,"w":0.368},{"p":67,"w":0.37},{"p":68,"w":0.37},{"p":69,"w":0.37},{"p":70,"w":0.366},{"p":71,"w":0.362},{"p":72,"w":0.361},{"p":73,"w":0.357},{"p":74,"w":0.352},{"p":75,"w":0.347},{"p":76,"w":0.356},{"p":77,"w":0.343},{"p":78,"w":0.34},{"p":79,"w":0.336},{"p":80,"w":0.342},{"p":81,"w":0.343},{"p":82,"w":0.341},{"p":83,"w":0.336},{"p":84,"w":0.335},{"p":85,"w":0.331},{"p":86,"w":0.329},{"p":87,"w":0.33},{"p":88,"w":0.338},{"p":89,"w":0.34},{"p":90,"w":0.344},{"p":91,"w":0.338},{"p":92,"w":0.338},{"p":93,"w":0.337},{"p":94,"w":0.337},{"p":95,"w":0.336},{"p":96,"w":0.33},{"p":97,"w":0.3},{"p":98,"w":0.291},{"p":99,"w":0.28},{"p":100,"w":0.251}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening second sheds viewers in line with this channel's own intro habit (9.60% stop rate vs the channel's 9.44% here, 22,660 viewers, 1.0x norm)."},{"t":"8:19","sec":499,"kind":"drop","what":"A straight sponsor read collapses the room mid-video (12.5x the surrounding stop rate, 9.27% vs the channel's 0.68% here, 66,343 viewers gone in 23 seconds)."},{"t":"10:26","sec":626,"kind":"peak","what":"The room swells the instant the sponsor ends and the renovation resumes (+19.6% of the audience, 23,339 viewers regained, 68th percentile)."},{"t":"10:38","sec":638,"kind":"peak","what":"Audience rebuilds sharply as Emma measures the found sashes (+23.9% of the room, 34,158 viewers regained, 70th percentile vs similar videos)."},{"t":"10:50","sec":650,"kind":"peak","what":"A second replay wave lands as the measurements start ruling sashes in and out (+8.7% of the room, 15,405 viewers regained, held 20 samples, 70th percentile)."},{"t":"18:22","sec":1102,"kind":"drop","what":"The outro bleeds harder than usual as Emma signals the video is wrapping (18.4x the surrounding stop rate, 5.38% vs 1.72% typical here, 16,663 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"qG5P5x8CPMo","durationSec":1160,"curve":[{"p":1,"w":0.943},{"p":2,"w":0.858},{"p":3,"w":0.744},{"p":4,"w":0.709},{"p":5,"w":0.601},{"p":6,"w":0.588},{"p":7,"w":0.577},{"p":8,"w":0.513},{"p":9,"w":0.478},{"p":10,"w":0.478},{"p":11,"w":0.483},{"p":12,"w":0.482},{"p":13,"w":0.481},{"p":14,"w":0.48},{"p":15,"w":0.476},{"p":16,"w":0.472},{"p":17,"w":0.469},{"p":18,"w":0.465},{"p":19,"w":0.458},{"p":20,"w":0.462},{"p":21,"w":0.453},{"p":22,"w":0.45},{"p":23,"w":0.444},{"p":24,"w":0.439},{"p":25,"w":0.432},{"p":26,"w":0.425},{"p":27,"w":0.423},{"p":28,"w":0.421},{"p":29,"w":0.42},{"p":30,"w":0.422},{"p":31,"w":0.425},{"p":32,"w":0.426},{"p":33,"w":0.432},{"p":34,"w":0.432},{"p":35,"w":0.435},{"p":36,"w":0.433},{"p":37,"w":0.43},{"p":38,"w":0.438},{"p":39,"w":0.451},{"p":40,"w":0.418},{"p":41,"w":0.411},{"p":42,"w":0.407},{"p":43,"w":0.406},{"p":44,"w":0.303},{"p":45,"w":0.248},{"p":46,"w":0.249},{"p":47,"w":0.242},{"p":48,"w":0.232},{"p":49,"w":0.232},{"p":50,"w":0.227},{"p":51,"w":0.227},{"p":52,"w":0.229},{"p":53,"w":0.231},{"p":54,"w":0.277},{"p":55,"w":0.343},{"p":56,"w":0.373},{"p":57,"w":0.381},{"p":58,"w":0.384},{"p":59,"w":0.385},{"p":60,"w":0.383},{"p":61,"w":0.387},{"p":62,"w":0.377},{"p":63,"w":0.372},{"p":64,"w":0.379},{"p":65,"w":0.376},{"p":66,"w":0.368},{"p":67,"w":0.369},{"p":68,"w":0.37},{"p":69,"w":0.37},{"p":70,"w":0.366},{"p":71,"w":0.362},{"p":72,"w":0.361},{"p":73,"w":0.357},{"p":74,"w":0.352},{"p":75,"w":0.347},{"p":76,"w":0.356},{"p":77,"w":0.343},{"p":78,"w":0.34},{"p":79,"w":0.336},{"p":80,"w":0.342},{"p":81,"w":0.343},{"p":82,"w":0.341},{"p":83,"w":0.336},{"p":84,"w":0.335},{"p":85,"w":0.33},{"p":86,"w":0.329},{"p":87,"w":0.33},{"p":88,"w":0.338},{"p":89,"w":0.34},{"p":90,"w":0.344},{"p":91,"w":0.338},{"p":92,"w":0.338},{"p":93,"w":0.337},{"p":94,"w":0.337},{"p":95,"w":0.336},{"p":96,"w":0.33},{"p":97,"w":0.3},{"p":98,"w":0.291},{"p":99,"w":0.28},{"p":100,"w":0.251}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"First-second drop takes the room from 100% to 94.3% (4.5x surrounding stop rate, 22,954 viewers, 0.9x the channel norm)."},{"t":"8:19","sec":499,"kind":"drop","what":"A 23-second sponsor pivot dumps the audience from 40.6% to 24.8% (12.5x surrounding stop rate, 66,440 viewers, 6.5x the channel's ad average)."},{"t":"10:26","sec":626,"kind":"peak","what":"Audience rises 19.6% as the story returns from the ad to the sash discovery (23,389 viewers regained, 68th percentile vs similar videos)."},{"t":"10:38","sec":638,"kind":"peak","what":"Audience rises 23.9% and holds 44 samples as she measures a found sash (34,180 viewers regained, 70th percentile vs similar videos)."},{"t":"10:50","sec":650,"kind":"peak","what":"Audience rises 8.7% as she reads out the sash dimensions (15,489 viewers regained, 70th percentile vs similar videos)."},{"t":"18:22","sec":1102,"kind":"drop","what":"A late reflective beat drops the room from 33.6% to 30.0% (18.1x surrounding stop rate, 16,637 viewers, 2.1x the channel norm)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -413,10 +441,10 @@ table.obs td.no{color:#ff8f8f}
       18:48 · 450,947 views ·
       14% still watching at the halfway mark · 
       7 drop-offs, 1 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
-  <span class="badge" style="color:var(--teal)">DEEP DIVE</span>
+  
 </div>
 <p class="lede" style="margin:-14px 0 26px">This video ranks 30th of 30 on the channel for both midpoint and end retention, with a 1:00 hold of 58.1% that&#39;s 13.8pp below the channel median and beats none of the other 29.</p>
 
@@ -528,7 +556,7 @@ table.obs td.no{color:#ff8f8f}
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"-_PWQZNUjoA","durationSec":1128,"curve":[{"p":1,"w":0.995},{"p":2,"w":0.823},{"p":3,"w":0.717},{"p":4,"w":0.639},{"p":5,"w":0.581},{"p":6,"w":0.546},{"p":7,"w":0.512},{"p":8,"w":0.492},{"p":9,"w":0.482},{"p":10,"w":0.476},{"p":11,"w":0.46},{"p":12,"w":0.443},{"p":13,"w":0.431},{"p":14,"w":0.412},{"p":15,"w":0.4},{"p":16,"w":0.389},{"p":17,"w":0.375},{"p":18,"w":0.376},{"p":19,"w":0.366},{"p":20,"w":0.32},{"p":21,"w":0.306},{"p":22,"w":0.296},{"p":23,"w":0.289},{"p":24,"w":0.286},{"p":25,"w":0.273},{"p":26,"w":0.262},{"p":27,"w":0.249},{"p":28,"w":0.237},{"p":29,"w":0.226},{"p":30,"w":0.218},{"p":31,"w":0.213},{"p":32,"w":0.209},{"p":33,"w":0.207},{"p":34,"w":0.203},{"p":35,"w":0.199},{"p":36,"w":0.195},{"p":37,"w":0.19},{"p":38,"w":0.186},{"p":39,"w":0.185},{"p":40,"w":0.191},{"p":41,"w":0.197},{"p":42,"w":0.164},{"p":43,"w":0.162},{"p":44,"w":0.158},{"p":45,"w":0.15},{"p":46,"w":0.144},{"p":47,"w":0.142},{"p":48,"w":0.14},{"p":49,"w":0.139},{"p":50,"w":0.138},{"p":51,"w":0.137},{"p":52,"w":0.137},{"p":53,"w":0.137},{"p":54,"w":0.138},{"p":55,"w":0.136},{"p":56,"w":0.142},{"p":57,"w":0.136},{"p":58,"w":0.132},{"p":59,"w":0.131},{"p":60,"w":0.131},{"p":61,"w":0.129},{"p":62,"w":0.128},{"p":63,"w":0.127},{"p":64,"w":0.126},{"p":65,"w":0.124},{"p":66,"w":0.124},{"p":67,"w":0.123},{"p":68,"w":0.123},{"p":69,"w":0.121},{"p":70,"w":0.118},{"p":71,"w":0.125},{"p":72,"w":0.114},{"p":73,"w":0.109},{"p":74,"w":0.107},{"p":75,"w":0.104},{"p":76,"w":0.102},{"p":77,"w":0.1},{"p":78,"w":0.098},{"p":79,"w":0.098},{"p":80,"w":0.098},{"p":81,"w":0.097},{"p":82,"w":0.097},{"p":83,"w":0.096},{"p":84,"w":0.096},{"p":85,"w":0.099},{"p":86,"w":0.099},{"p":87,"w":0.094},{"p":88,"w":0.093},{"p":89,"w":0.092},{"p":90,"w":0.091},{"p":91,"w":0.09},{"p":92,"w":0.089},{"p":93,"w":0.089},{"p":94,"w":0.089},{"p":95,"w":0.089},{"p":96,"w":0.086},{"p":97,"w":0.085},{"p":98,"w":0.087},{"p":99,"w":0.088},{"p":100,"w":0.084}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening 12 seconds shed 17.3% of viewers, running 1.4x the channel's own intro average and 1.5x its typical stop rate here (32.3x spike, 81,904 viewers lost)."},{"t":"3:34","sec":214,"kind":"drop","what":"A dead-air beat around the map lost 18,293 viewers at 3.0x the channel's usual stop rate for this position (5.3x spike, 36.6% to 32.0%)."},{"t":"7:42","sec":462,"kind":"drop","what":"The lobby handoff between rounds lost 14,770 viewers at 4.6x the channel's normal stop rate here (15.2x spike, 19.7% to 16.4%)."},{"t":"10:32","sec":632,"kind":"drop","what":"A mid-round watch-someone-else beat lost 3,724 viewers at 1.7x the channel's usual rate here (6.9x spike, 14.2% to 13.2%)."},{"t":"12:47","sec":767,"kind":"drop","what":"A 45-second post-round debrief lost 6,343 viewers, though at only 1.0x the channel's typical rate here (8.7x spike, 12.3% to 11.4%)."},{"t":"15:59","sec":959,"kind":"peak","what":"Viewers scrubbed back to the cloud-disguise beat, briefly lifting the room 3.3% (1,572 viewers regained, 9.9% present, 46% vs similar)."},{"t":"16:10","sec":970,"kind":"drop","what":"A resignation beat lost 2,391 viewers at 1.9x the channel's usual stop rate here (10.2x spike, 9.9% to 9.4%)."},{"t":"17:52","sec":1072,"kind":"drop","what":"The closing stretch lost 734 viewers at 3.7x the channel's usual rate here, though total loss (4.3%) stayed under its outro average of 4.9% (3.1x spike, 8.8% to 8.6%)."}]}</script>
+<script>window.__VIDEO__={"videoId":"-_PWQZNUjoA","durationSec":1128,"curve":[{"p":1,"w":0.995},{"p":2,"w":0.822},{"p":3,"w":0.716},{"p":4,"w":0.639},{"p":5,"w":0.581},{"p":6,"w":0.545},{"p":7,"w":0.511},{"p":8,"w":0.492},{"p":9,"w":0.481},{"p":10,"w":0.476},{"p":11,"w":0.46},{"p":12,"w":0.443},{"p":13,"w":0.431},{"p":14,"w":0.411},{"p":15,"w":0.4},{"p":16,"w":0.388},{"p":17,"w":0.375},{"p":18,"w":0.375},{"p":19,"w":0.366},{"p":20,"w":0.32},{"p":21,"w":0.306},{"p":22,"w":0.296},{"p":23,"w":0.289},{"p":24,"w":0.286},{"p":25,"w":0.273},{"p":26,"w":0.262},{"p":27,"w":0.249},{"p":28,"w":0.237},{"p":29,"w":0.226},{"p":30,"w":0.218},{"p":31,"w":0.213},{"p":32,"w":0.209},{"p":33,"w":0.207},{"p":34,"w":0.203},{"p":35,"w":0.199},{"p":36,"w":0.195},{"p":37,"w":0.19},{"p":38,"w":0.186},{"p":39,"w":0.185},{"p":40,"w":0.191},{"p":41,"w":0.197},{"p":42,"w":0.164},{"p":43,"w":0.162},{"p":44,"w":0.158},{"p":45,"w":0.15},{"p":46,"w":0.144},{"p":47,"w":0.142},{"p":48,"w":0.14},{"p":49,"w":0.139},{"p":50,"w":0.138},{"p":51,"w":0.137},{"p":52,"w":0.137},{"p":53,"w":0.137},{"p":54,"w":0.138},{"p":55,"w":0.136},{"p":56,"w":0.142},{"p":57,"w":0.136},{"p":58,"w":0.132},{"p":59,"w":0.131},{"p":60,"w":0.131},{"p":61,"w":0.129},{"p":62,"w":0.128},{"p":63,"w":0.127},{"p":64,"w":0.126},{"p":65,"w":0.124},{"p":66,"w":0.124},{"p":67,"w":0.123},{"p":68,"w":0.123},{"p":69,"w":0.121},{"p":70,"w":0.118},{"p":71,"w":0.125},{"p":72,"w":0.114},{"p":73,"w":0.109},{"p":74,"w":0.107},{"p":75,"w":0.104},{"p":76,"w":0.102},{"p":77,"w":0.1},{"p":78,"w":0.098},{"p":79,"w":0.098},{"p":80,"w":0.098},{"p":81,"w":0.097},{"p":82,"w":0.097},{"p":83,"w":0.096},{"p":84,"w":0.096},{"p":85,"w":0.099},{"p":86,"w":0.099},{"p":87,"w":0.094},{"p":88,"w":0.093},{"p":89,"w":0.092},{"p":90,"w":0.091},{"p":91,"w":0.09},{"p":92,"w":0.089},{"p":93,"w":0.089},{"p":94,"w":0.089},{"p":95,"w":0.088},{"p":96,"w":0.086},{"p":97,"w":0.086},{"p":98,"w":0.087},{"p":99,"w":0.088},{"p":100,"w":0.084}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening 12 seconds shed 17.3% of viewers, running 1.4x the channel's own intro average and 1.5x its typical stop rate here (32.3x spike, 81,904 viewers lost)."},{"t":"3:34","sec":214,"kind":"drop","what":"A dead-air beat around the map lost 18,293 viewers at 3.0x the channel's usual stop rate for this position (5.3x spike, 36.6% to 32.0%)."},{"t":"7:42","sec":462,"kind":"drop","what":"The lobby handoff between rounds lost 14,770 viewers at 4.6x the channel's normal stop rate here (15.2x spike, 19.7% to 16.4%)."},{"t":"10:32","sec":632,"kind":"drop","what":"A mid-round watch-someone-else beat lost 3,724 viewers at 1.7x the channel's usual rate here (6.9x spike, 14.2% to 13.2%)."},{"t":"12:47","sec":767,"kind":"drop","what":"A 45-second post-round debrief lost 6,343 viewers, though at only 1.0x the channel's typical rate here (8.7x spike, 12.3% to 11.4%)."},{"t":"15:59","sec":959,"kind":"peak","what":"Viewers scrubbed back to the cloud-disguise beat, briefly lifting the room 3.3% (1,572 viewers regained, 9.9% present, 46% vs similar)."},{"t":"16:10","sec":970,"kind":"drop","what":"A resignation beat lost 2,391 viewers at 1.9x the channel's usual stop rate here (10.2x spike, 9.9% to 9.4%)."},{"t":"17:52","sec":1072,"kind":"drop","what":"The closing stretch lost 734 viewers at 3.7x the channel's usual rate here, though total loss (4.3%) stayed under its outro average of 4.9% (3.1x spike, 8.8% to 8.6%)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

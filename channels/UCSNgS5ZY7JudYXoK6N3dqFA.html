@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -557,6 +585,7 @@ table.obs td.no{color:#ff8f8f}
   });
 })();
 </script>
+
 
 <h2>Video ideas</h2>
 <p class="legend">Concepts, not commissioned videos — the thumbnails are placeholders and every view count is a <strong>projection</strong>, computed from this channel's own median multiplied by the observed lift of the format each idea uses. Open <em>Why this idea</em> on any card to see the real videos it was built from.</p>

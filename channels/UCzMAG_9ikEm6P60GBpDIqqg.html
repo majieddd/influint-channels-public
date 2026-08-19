@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -1467,6 +1495,1136 @@ table.obs td.no{color:#ff8f8f}
   });
 })();
 </script>
+
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">My New ___</span>
+    <span class="fstats">
+      <b class="f-hot">1.73×</b>
+      <span>8 videos</span>
+      <span>97K median views</span>
+      <span>25% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Picking up or revealing a newly acquired bike or rig.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/2_4iTlCAV-g.html" data-pub="1720389589000" data-views="143328" data-out="2.56" data-r50="0.1613" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2_4iTlCAV-g/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.56×</span>
+    <span class="len">20:17</span>
+  </div>
+  <div class="t">My BRAND NEW, $6,500 Motorcycle!!!!!</div>
+  <div class="meta">143K views (28d) · 2 years ago · 16% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/nl3FHNEp-KU.html" data-pub="1699041588000" data-views="108266" data-out="1.93" data-r50="0.20129999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nl3FHNEp-KU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.93×</span>
+    <span class="len">15:27</span>
+  </div>
+  <div class="t">Surprising my Mom with her *NEW* Motorcycle!</div>
+  <div class="meta">108K views (28d) · 2 years ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/XN7-1xU9EzU.html" data-pub="1693429186000" data-views="107306" data-out="1.91" data-r50="0.2667" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XN7-1xU9EzU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.91×</span>
+    <span class="len">21:11</span>
+  </div>
+  <div class="t">Bringing home my NEW Motorcycle!!!</div>
+  <div class="meta">107K views (28d) · 2 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ojdO7UJWuK8.html" data-pub="1683926996000" data-views="35547" data-out="0.63" data-r50="0.2402" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ojdO7UJWuK8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.63×</span>
+    <span class="len">23:54</span>
+  </div>
+  <div class="t">MY NEW INDIAN CHALLENGER!</div>
+  <div class="meta">36K views (28d) · 3 years ago · 24% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/RkCDv4NcMWc.html" data-pub="1681664388000" data-views="42126" data-out="0.75" data-r50="0.32799999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RkCDv4NcMWc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">15:38</span>
+  </div>
+  <div class="t">MY NEW TOY HAULER!</div>
+  <div class="meta">42K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/zSKvXg72mjk.html" data-pub="1681577991000" data-views="69076" data-out="1.23" data-r50="0.2409" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zSKvXg72mjk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.23×</span>
+    <span class="len">20:01</span>
+  </div>
+  <div class="t">My first GOLDWING!</div>
+  <div class="meta">69K views (28d) · 3 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/XSvr5wh0WB4.html" data-pub="1661463009000" data-views="86124" data-out="1.54" data-r50="0.44689999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XSvr5wh0WB4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.54×</span>
+    <span class="len">17:15</span>
+  </div>
+  <div class="t">Picking up my NEW Motorcycle!</div>
+  <div class="meta">86K views (28d) · 3 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/_ryz8zYtPV8.html" data-pub="1659895399000" data-views="117712" data-out="2.1" data-r50="0.2874" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_ryz8zYtPV8/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.10×</span>
+    <span class="len">22:14</span>
+  </div>
+  <div class="t">I traded my Harley-Davidson at Sturgis for another Bagger!</div>
+  <div class="meta">118K views (28d) · 4 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Cross Country Trip Ep. ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.28×</b>
+      <span>6 videos</span>
+      <span>72K median views</span>
+      <span>31% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A numbered episode from an ongoing long-distance motorcycle journey.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/S0QRIC1XVEI.html" data-pub="1765747811000" data-views="100487" data-out="1.79" data-r50="0.24609999999999999" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/S0QRIC1XVEI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.79×</span>
+    <span class="len">48:58</span>
+  </div>
+  <div class="t">Trapped on the Mountain on our Motorcycles. Ep. 14</div>
+  <div class="meta">100K views (28d) · 8 months ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ZimcVcKzsro.html" data-pub="1757879996000" data-views="50289" data-out="0.9" data-r50="0.42719999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZimcVcKzsro/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">28:07</span>
+  </div>
+  <div class="t">Stranded on East Coast. Hopefully this fixes my Harley-Davidson! Ep: 03</div>
+  <div class="meta">50K views (28d) · 11 months ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oxkBGZLwRtQ.html" data-pub="1757275192000" data-views="80701" data-out="1.44" data-r50="0.3107" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oxkBGZLwRtQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.44×</span>
+    <span class="len">28:38</span>
+  </div>
+  <div class="t">Day 2 Crossing the Country and My Harley’s Already Breaking?!? Ep: 02</div>
+  <div class="meta">81K views (28d) · 11 months ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/WckzxtkQM6Y.html" data-pub="1751832241000" data-views="105960" data-out="1.89" data-r50="0.2429" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WckzxtkQM6Y/mqdefault.jpg" alt="">
+    <span class="score out-up">1.89×</span>
+    <span class="len">24:14</span>
+  </div>
+  <div class="t">I didn&#39;t know I had to tell the U.S. Border Patrol about this... Great Lakes Motorcycle Trip Ep. 05</div>
+  <div class="meta">106K views (28d) · 1 year ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/NMaDkB6HwLM.html" data-pub="1751223591000" data-views="45027" data-out="0.8" data-r50="0.2991" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NMaDkB6HwLM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.80×</span>
+    <span class="len">26:55</span>
+  </div>
+  <div class="t">Traveling Alone Is Great—Until You Hit a Day Like This! Episode 04 - Not Enough Room</div>
+  <div class="meta">45K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/s6gknruheMg.html" data-pub="1708116893000" data-views="63368" data-out="1.13" data-r50="0.33799999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/s6gknruheMg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">19:21</span>
+  </div>
+  <div class="t">Forced to Stop Halfway Through Our Cross Country Motorcycle Trip! Episode 02</div>
+  <div class="meta">63K views (28d) · 2 years ago · 34% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">I&#39;m Done With ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.21×</b>
+      <span>9 videos</span>
+      <span>68K median views</span>
+      <span>25% at half · 9 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An emotional decision to quit, sell, or walk away from something.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/YPavAXVlF50.html" data-pub="1718920797000" data-views="78398" data-out="1.4" data-r50="0.2723" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YPavAXVlF50/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">16:23</span>
+  </div>
+  <div class="t">Is This The End For My Channel? The Sad Truth... And the Future</div>
+  <div class="meta">78K views (28d) · 2 years ago · 27% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/D_bZBqXKtPM.html" data-pub="1711742086000" data-views="84558" data-out="1.51" data-r50="0.25429999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/D_bZBqXKtPM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.51×</span>
+    <span class="len">35:58</span>
+  </div>
+  <div class="t">It kills me to tell you this...</div>
+  <div class="meta">85K views (28d) · 2 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oCGclqsQDng.html" data-pub="1694035789000" data-views="68149" data-out="1.21" data-r50="0.30219999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oCGclqsQDng/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.21×</span>
+    <span class="len">22:54</span>
+  </div>
+  <div class="t">I&#39;m officially done.</div>
+  <div class="meta">68K views (28d) · 2 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ujugUWktxok.html" data-pub="1701032393000" data-views="273389" data-out="4.87" data-r50="0.0788" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ujugUWktxok/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.87×</span>
+    <span class="len">13:47</span>
+  </div>
+  <div class="t">Regretting my Motorcycle. Harley-Davidson Road Glide Special</div>
+  <div class="meta">273K views (28d) · 2 years ago · 8% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/AFBHXFZ8QSo.html" data-pub="1679766402000" data-views="58279" data-out="1.04" data-r50="0.1855" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AFBHXFZ8QSo/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">15:31</span>
+  </div>
+  <div class="t">I&#39;m just NOT cut out for this kind of thing. Making a change</div>
+  <div class="meta">58K views (28d) · 3 years ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oPWC7k81z_4.html" data-pub="1678644489000" data-views="63117" data-out="1.13" data-r50="0.2664" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oPWC7k81z_4/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">21:33</span>
+  </div>
+  <div class="t">No more BIG bikes for this girl!</div>
+  <div class="meta">63K views (28d) · 3 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/nEfybYSGrT0.html" data-pub="1668723886000" data-views="41545" data-out="0.74" data-r50="0.39049999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nEfybYSGrT0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">25:42</span>
+  </div>
+  <div class="t">It broke my heart to get rid of this...</div>
+  <div class="meta">42K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/jpLnJu7Jb_M.html" data-pub="1657565816000" data-views="48422" data-out="0.86" data-r50="0.1807" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jpLnJu7Jb_M/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">31:38</span>
+  </div>
+  <div class="t">I am so SICK of this!</div>
+  <div class="meta">48K views (28d) · 4 years ago · 18% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ompeGJRoIzc.html" data-pub="1727125189000" data-views="84582" data-out="1.51" data-r50="0.25420000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ompeGJRoIzc/mqdefault.jpg" alt="">
+    <span class="score out-up">1.51×</span>
+    <span class="len">16:32</span>
+  </div>
+  <div class="t">I&#39;ve been saying it for years... But this was the final straw.</div>
+  <div class="meta">85K views (28d) · 1 year ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Sturgis ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.19×</b>
+      <span>8 videos</span>
+      <span>67K median views</span>
+      <span>32% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A dispatch from the Sturgis motorcycle rally.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Z9S50JNKx6k.html" data-pub="1754506842000" data-views="85471" data-out="1.52" data-r50="0.2869" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Z9S50JNKx6k/mqdefault.jpg" alt="">
+    <span class="score out-up">1.52×</span>
+    <span class="len">26:46</span>
+  </div>
+  <div class="t">Camping Alone During the Sturgis 85th Motorcycle Rally. And Why It&#39;s Different This Year...</div>
+  <div class="meta">85K views (28d) · 1 year ago · 29% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/uGA8YocErrw.html" data-pub="1754346651000" data-views="49153" data-out="0.88" data-r50="0.31920000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uGA8YocErrw/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">12:13</span>
+  </div>
+  <div class="t">One girl, One Rally. 85th Annual Sturgis Motorcycle Rally MUST SEE!</div>
+  <div class="meta">49K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/g_NDWGLSs8o.html" data-pub="1691528391000" data-views="157366" data-out="2.81" data-r50="0.2704" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/g_NDWGLSs8o/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.81×</span>
+    <span class="len">12:30</span>
+  </div>
+  <div class="t">Sturgis 2023! Absolute DISASTER! So I did this instead...</div>
+  <div class="meta">157K views (28d) · 3 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/qkvba_Y2Hdg.html" data-pub="1691355588000" data-views="46326" data-out="0.83" data-r50="0.382" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qkvba_Y2Hdg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.83×</span>
+    <span class="len">16:17</span>
+  </div>
+  <div class="t">What NOT to do at the Sturgis Motorcycle Rally</div>
+  <div class="meta">46K views (28d) · 3 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/dp3bGfJaPKM.html" data-pub="1690754409000" data-views="85943" data-out="1.53" data-r50="0.33909999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dp3bGfJaPKM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.53×</span>
+    <span class="len">19:27</span>
+  </div>
+  <div class="t">This was the last straw... Sturgis 2023 Fail</div>
+  <div class="meta">86K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/fH2TN761uXs.html" data-pub="1660060727000" data-views="53616" data-out="0.96" data-r50="0.3284" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fH2TN761uXs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">16:15</span>
+  </div>
+  <div class="t">Sturgis has AWFUL riders! But I found this Roadside GEM!</div>
+  <div class="meta">54K views (28d) · 4 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/0kmhN-LGKoM.html" data-pub="1659808726000" data-views="67309" data-out="1.2" data-r50="0.38670000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0kmhN-LGKoM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">17:52</span>
+  </div>
+  <div class="t">I Quit my Job and Rode my Motorcycle to Sturgis! Sturgis 2022</div>
+  <div class="meta">67K views (28d) · 4 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Jc0-r6XVOvk.html" data-pub="1658440812000" data-views="66685" data-out="1.19" data-r50="0.2519" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Jc0-r6XVOvk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.19×</span>
+    <span class="len">22:05</span>
+  </div>
+  <div class="t">Not how I imagined my first time in Sturgis... 2022</div>
+  <div class="meta">67K views (28d) · 4 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Solo Motorcycle Camping ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.16×</b>
+      <span>6 videos</span>
+      <span>65K median views</span>
+      <span>30% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A solo camping trip on the bike, alone with the gear and the weather.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/WsdU6TgpKvA.html" data-pub="1699826391000" data-views="71560" data-out="1.28" data-r50="0.28559999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WsdU6TgpKvA/mqdefault.jpg" alt="">
+    <span class="score out-up">1.28×</span>
+    <span class="len">22:41</span>
+  </div>
+  <div class="t">Solo Motorcycle Camping. Last Minute Escape</div>
+  <div class="meta">72K views (28d) · 2 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/WbHmwktzSQ0.html" data-pub="1693771194000" data-views="69114" data-out="1.23" data-r50="0.2336" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WbHmwktzSQ0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.23×</span>
+    <span class="len">27:47</span>
+  </div>
+  <div class="t">Motorcycle camping took a dangerous turn...</div>
+  <div class="meta">69K views (28d) · 2 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/pDMLXk-gXPY.html" data-pub="1685393997000" data-views="119441" data-out="2.13" data-r50="0.2541" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pDMLXk-gXPY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.13×</span>
+    <span class="len">23:12</span>
+  </div>
+  <div class="t">Scariest thing to happen while Solo Camping. I had to leave...</div>
+  <div class="meta">119K views (28d) · 3 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/HqJeqjDIRlk.html" data-pub="1684792808000" data-views="40014" data-out="0.71" data-r50="0.3271" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HqJeqjDIRlk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">10:14</span>
+  </div>
+  <div class="t">Relaxing Solo Motorcycle Camping Trip. Camping ASMR</div>
+  <div class="meta">40K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/i6C939yytvc.html" data-pub="1682875793000" data-views="60895" data-out="1.09" data-r50="0.3123" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/i6C939yytvc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">37:29</span>
+  </div>
+  <div class="t">First time camping in our new Toy Hauler! Mistakes were made!</div>
+  <div class="meta">61K views (28d) · 3 years ago · 31% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Ry-4xVLDOWQ.html" data-pub="1662670608000" data-views="53768" data-out="0.96" data-r50="0.35109999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ry-4xVLDOWQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">20:34</span>
+  </div>
+  <div class="t">I needed a change. Motorcycle camping with my Husband.</div>
+  <div class="meta">54K views (28d) · 3 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">This Motorcycle Rally ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.16×</b>
+      <span>5 videos</span>
+      <span>65K median views</span>
+      <span>29% at half · 5 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A recap of a non-Sturgis rally experience.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/_DM2Tb7As8c.html" data-pub="1748195989000" data-views="50375" data-out="0.9" data-r50="0.2621" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_DM2Tb7As8c/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">37:15</span>
+  </div>
+  <div class="t">I Survived the Most Chaotic Motorcycle Campout in Tennessee | TMMR 2025</div>
+  <div class="meta">50K views (28d) · 1 year ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/RlvkPYwuFEM.html" data-pub="1679247954000" data-views="65027" data-out="1.16" data-r50="0.20809999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RlvkPYwuFEM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">23:07</span>
+  </div>
+  <div class="t">Biker&#39;s Nightmare: Daytona Bike Week on a Harley-Davidson 2023</div>
+  <div class="meta">65K views (28d) · 3 years ago · 21% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/D5x9-5R7F-o.html" data-pub="1667510686000" data-views="68636" data-out="1.22" data-r50="0.34850000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/D5x9-5R7F-o/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">10:26</span>
+  </div>
+  <div class="t">This Motorcycle Rally Ruined me FOREVER! High Seas Rally!</div>
+  <div class="meta">69K views (28d) · 3 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/3JKaREBkyNI.html" data-pub="1665431808000" data-views="103893" data-out="1.85" data-r50="0.2895" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3JKaREBkyNI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.85×</span>
+    <span class="len">15:28</span>
+  </div>
+  <div class="t">Biker Rally Gone Wrong!</div>
+  <div class="meta">104K views (28d) · 3 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/_MS-dPE0afQ.html" data-pub="1686518988000" data-views="33341" data-out="0.59" data-r50="0.3221" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_MS-dPE0afQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">15:57</span>
+  </div>
+  <div class="t">The secret world of Biker Women/ 750+ Biker Babes behind the scenes</div>
+  <div class="meta">33K views (28d) · 3 years ago · 32% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Then This Happened ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.06×</b>
+      <span>15 videos</span>
+      <span>59K median views</span>
+      <span>30% at half · 15 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A ride starts normally, then something goes wrong and derails it.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/FgxKgypUl4Q.html" data-pub="1783266891000" data-views="64912" data-out="1.16" data-r50="0.3045" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FgxKgypUl4Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">21:38</span>
+  </div>
+  <div class="t">I Wasn&#39;t Ready For What Happened....</div>
+  <div class="meta">65K views (28d) · 1 month ago · 30% at half</div>
+  <div class="verdict">12 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/aj78y8k_P5I.html" data-pub="1782662093000" data-views="77230" data-out="1.38" data-r50="0.1583" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aj78y8k_P5I/mqdefault.jpg" alt="">
+    <span class="score out-up">1.38×</span>
+    <span class="len">34:20</span>
+  </div>
+  <div class="t">What Happened To Me?</div>
+  <div class="meta">77K views (28d) · 1 month ago · 16% at half</div>
+  <div class="verdict">13 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/IhfwCa8W-IM.html" data-pub="1758834031000" data-views="56081" data-out="1" data-r50="0.325" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IhfwCa8W-IM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">18:19</span>
+  </div>
+  <div class="t">Hundreds of miles riding in the Smoky Mountains... when IT happened...</div>
+  <div class="meta">56K views (28d) · 10 months ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/cicz_qVr2tw.html" data-pub="1704488088000" data-views="68344" data-out="1.22" data-r50="0.2882" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cicz_qVr2tw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">20:46</span>
+  </div>
+  <div class="t">We moved away to ride motorcycles, then this happened</div>
+  <div class="meta">68K views (28d) · 2 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/gqrO4n-aRhs.html" data-pub="1687717789000" data-views="48246" data-out="0.86" data-r50="0.19870000000000002" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gqrO4n-aRhs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">20:10</span>
+  </div>
+  <div class="t">This happened after I stopped giving a &quot;F&quot;. Broken Bikes and future plans.</div>
+  <div class="meta">48K views (28d) · 3 years ago · 20% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/gaEO9621EiQ.html" data-pub="1682270986000" data-views="47098" data-out="0.84" data-r50="0.2639" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gaEO9621EiQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">33:02</span>
+  </div>
+  <div class="t">I had serious issues on this famous road. Back of the Dragon First Ride!</div>
+  <div class="meta">47K views (28d) · 3 years ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/JLveILmlH84.html" data-pub="1674165605000" data-views="42897" data-out="0.76" data-r50="0.3611" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JLveILmlH84/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">29:00</span>
+  </div>
+  <div class="t">Almost Breaking My Neck 😅 Motorcycle trip to Key West!</div>
+  <div class="meta">43K views (28d) · 3 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/W68QqO3SOgA.html" data-pub="1667251500000" data-views="61275" data-out="1.09" data-r50="0.2716" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/W68QqO3SOgA/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">20:02</span>
+  </div>
+  <div class="t">This is what I deserve for modifying my motorcycle…</div>
+  <div class="meta">61K views (28d) · 3 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/XcwnB06difg.html" data-pub="1666905889000" data-views="77887" data-out="1.39" data-r50="0.3387" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XcwnB06difg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.39×</span>
+    <span class="len">24:58</span>
+  </div>
+  <div class="t">This gear malfunction had dangerous consequences...</div>
+  <div class="meta">78K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/vDWBwZMBTMo.html" data-pub="1666646686000" data-views="99929" data-out="1.78" data-r50="0.3942" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vDWBwZMBTMo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.78×</span>
+    <span class="len">27:09</span>
+  </div>
+  <div class="t">I wanted more power, then this happened... Motorcycle Upgrades at Blockhead Garage! Stage 2</div>
+  <div class="meta">100K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Yxq01WDjTOY.html" data-pub="1662321609000" data-views="59240" data-out="1.06" data-r50="0.2984" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Yxq01WDjTOY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.06×</span>
+    <span class="len">28:00</span>
+  </div>
+  <div class="t">This was not supposed to happen riding through Wyoming! Jess Goes West Ep. 02</div>
+  <div class="meta">59K views (28d) · 3 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/6c9EkA-KUQs.html" data-pub="1663881296000" data-views="49453" data-out="0.88" data-r50="0.28059999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6c9EkA-KUQs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">21:57</span>
+  </div>
+  <div class="t">I was forced to turn around... 😣</div>
+  <div class="meta">49K views (28d) · 3 years ago · 28% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/-3dQ3wHdyUk.html" data-pub="1659383815000" data-views="50058" data-out="0.89" data-r50="0.3722" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-3dQ3wHdyUk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">26:02</span>
+  </div>
+  <div class="t">A Medical Emergency on my Motorcycle forced me to do this</div>
+  <div class="meta">50K views (28d) · 4 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/82xBVcEb8Kw.html" data-pub="1687109392000" data-views="43155" data-out="0.77" data-r50="0.3729" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/82xBVcEb8Kw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.77×</span>
+    <span class="len">34:53</span>
+  </div>
+  <div class="t">The Mountain claims another victim. 100th Laconia Rally 1st timers...</div>
+  <div class="meta">43K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/LOukDRhU0t0.html" data-pub="1671486765000" data-views="122466" data-out="2.18" data-r50="0.2357" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LOukDRhU0t0/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.18×</span>
+    <span class="len">14:14</span>
+  </div>
+  <div class="t">Well... You said this would happen.</div>
+  <div class="meta">122K views (28d) · 3 years ago · 24% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">___ I Wish I Knew Before ___</span>
+    <span class="fstats">
+      <b class="f-mid">0.90×</b>
+      <span>6 videos</span>
+      <span>50K median views</span>
+      <span>31% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Lessons learned the hard way, packaged as advice for the next person.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/FBxliFPkhoM.html" data-pub="1745161189000" data-views="48143" data-out="0.86" data-r50="0.30820000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FBxliFPkhoM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">21:13</span>
+  </div>
+  <div class="t">I Wish I Knew This BEFORE Ripping Open My Motorcycle 😰</div>
+  <div class="meta">48K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/j9v1ukNOhE4.html" data-pub="1738184391000" data-views="25386" data-out="0.45" data-r50="0.2914" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j9v1ukNOhE4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.45×</span>
+    <span class="len">16:31</span>
+  </div>
+  <div class="t">The Biggest Mistakes New Motorcycle Campers Make</div>
+  <div class="meta">25K views (28d) · 1 year ago · 29% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/a4j44ma2-xQ.html" data-pub="1703883302000" data-views="103565" data-out="1.85" data-r50="0.34729999999999994" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/a4j44ma2-xQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.85×</span>
+    <span class="len">11:10</span>
+  </div>
+  <div class="t">8 Things I Wish I Knew BEFORE Buying My Motorcycle Camper. Toy Hauler Noobs</div>
+  <div class="meta">104K views (28d) · 2 years ago · 35% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/mL0RB-cid3w.html" data-pub="1723499993000" data-views="64757" data-out="1.15" data-r50="0.1967" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mL0RB-cid3w/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">21:06</span>
+  </div>
+  <div class="t">BOY Do I Wish I Knew This Before Buying My Pan America...</div>
+  <div class="meta">65K views (28d) · 2 years ago · 20% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/nOm98ffzYfU.html" data-pub="1700254787000" data-views="19013" data-out="0.34" data-r50="0.3176" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nOm98ffzYfU/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.34×</span>
+    <span class="len">15:39</span>
+  </div>
+  <div class="t">Beginner Motorcycle riders NEED to do this. (Stop Being Scared!)</div>
+  <div class="meta">19K views (28d) · 2 years ago · 32% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/B3nToI60a4A.html" data-pub="1662065927000" data-views="52778" data-out="0.94" data-r50="0.3714" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/B3nToI60a4A/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">11:54</span>
+  </div>
+  <div class="t">5 things about the Sturgis rally you need to know.</div>
+  <div class="meta">53K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">___ Test Ride / Review</span>
+    <span class="fstats">
+      <b class="f-cold">0.68×</b>
+      <span>11 videos</span>
+      <span>38K median views</span>
+      <span>32% at half · 11 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A hands-on ride and verdict on a specific motorcycle model.</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/zd0s3M908KY.html" data-pub="1784042988000" data-views="52492" data-out="0.94" data-r50="0.2696" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zd0s3M908KY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">21:01</span>
+  </div>
+  <div class="t">Harley-Davidson, WTF Have You Done? 2026 Deadwood First Ride</div>
+  <div class="meta">52K views (28d) · 1 month ago · 27% at half</div>
+  <div class="verdict">10 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/0O9nm01P77M.html" data-pub="1781195421000" data-views="56110" data-out="1" data-r50="0.22219999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0O9nm01P77M/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">16:10</span>
+  </div>
+  <div class="t">Harley-Davidson Has a Problem... This Bike Is Too Cheap! 2026 Super Glide</div>
+  <div class="meta">56K views (28d) · 2 months ago · 22% at half</div>
+  <div class="verdict">11 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ngFza89vOqs.html" data-pub="1768436731000" data-views="33506" data-out="0.6" data-r50="0.35600000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ngFza89vOqs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">16:03</span>
+  </div>
+  <div class="t">Is This the Right Touring Bike for You? 2026 Harley-Davidson Limited Test Ride</div>
+  <div class="meta">34K views (28d) · 7 months ago · 36% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Rn4YrtJW0wI.html" data-pub="1740326407000" data-views="67420" data-out="1.2" data-r50="0.22210000000000002" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Rn4YrtJW0wI/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">24:04</span>
+  </div>
+  <div class="t">Better than my Harley? 2025 Indian Challenger &amp; Chieftain Test Ride &amp; Review</div>
+  <div class="meta">67K views (28d) · 1 year ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/ZUC9MH4tEkA.html" data-pub="1741982391000" data-views="49296" data-out="0.88" data-r50="0.3173" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZUC9MH4tEkA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">15:39</span>
+  </div>
+  <div class="t">H-D made a BIG mistake with the 2025 Low Rider ST...</div>
+  <div class="meta">49K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/qpHiv4noMxc.html" data-pub="1725310792000" data-views="19805" data-out="0.35" data-r50="0.3214" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qpHiv4noMxc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.35×</span>
+    <span class="len">16:03</span>
+  </div>
+  <div class="t">2024 Pan America... Is it ACTUALLY Better?</div>
+  <div class="meta">20K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/w4ovkaf0lYA.html" data-pub="1721339990000" data-views="20562" data-out="0.37" data-r50="0.3874" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/w4ovkaf0lYA/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.37×</span>
+    <span class="len">14:11</span>
+  </div>
+  <div class="t">2024 Harley-Davidson Road Glide... Is it worth it? 10K Review</div>
+  <div class="meta">21K views (28d) · 2 years ago · 39% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/J0CPd-myEoM.html" data-pub="1709326491000" data-views="47546" data-out="0.85" data-r50="0.3293" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J0CPd-myEoM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">17:04</span>
+  </div>
+  <div class="t">3,000 Mile Test Ride | Official Review | 2024 Road Glide</div>
+  <div class="meta">48K views (28d) · 2 years ago · 33% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/3kCNTm1snMA.html" data-pub="1689626688000" data-views="38026" data-out="0.68" data-r50="0.3654" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3kCNTm1snMA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">16:08</span>
+  </div>
+  <div class="t">Test Riding NEW Harley-Davidson 2023 CVO! My current bike is in TROUBLE.</div>
+  <div class="meta">38K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/gsA99_wqzgc.html" data-pub="1678055989000" data-views="25852" data-out="0.46" data-r50="0.38909999999999995" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gsA99_wqzgc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.46×</span>
+    <span class="len">13:13</span>
+  </div>
+  <div class="t">The Truth about this motorcycle... BMW R18 B Review</div>
+  <div class="meta">26K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/W5yu2nljkx8.html" data-pub="1679517953000" data-views="31178" data-out="0.56" data-r50="0.29410000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/W5yu2nljkx8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.56×</span>
+    <span class="len">19:40</span>
+  </div>
+  <div class="t">I refused to do this ONE thing on the Sport Chief test ride! Indian Motorcycle</div>
+  <div class="meta">31K views (28d) · 3 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>26 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/dL0wmiCPmlw.html" data-pub="1779635380000" data-views="65205" data-out="1.16" data-r50="0.1895" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dL0wmiCPmlw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">34:48</span>
+  </div>
+  <div class="t">I Thought It Was Just a Campout… I Was Wrong</div>
+  <div class="meta">65K views (28d) · 2 months ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/elxhrjhFQK0.html" data-pub="1774796388000" data-views="49950" data-out="0.89" data-r50="0.2138" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/elxhrjhFQK0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">25:19</span>
+  </div>
+  <div class="t">I Hope I Don&#39;t Regret This</div>
+  <div class="meta">50K views (28d) · 4 months ago · 21% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/iYWt5O4mHUs.html" data-pub="1774191597000" data-views="51942" data-out="0.93" data-r50="0.35869999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iYWt5O4mHUs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">39:33</span>
+  </div>
+  <div class="t">Everyone told me NOT to buy a RAM...</div>
+  <div class="meta">52K views (28d) · 5 months ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/489q_roSgug.html" data-pub="1772987391000" data-views="46133" data-out="0.82" data-r50="0.2045" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/489q_roSgug/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">23:02</span>
+  </div>
+  <div class="t">Why is NOBODY talking about this Motorcycle??</div>
+  <div class="meta">46K views (28d) · 5 months ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/5kxjq2Wx1Lc.html" data-pub="1771781402000" data-views="43880" data-out="0.78" data-r50="0.2677" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5kxjq2Wx1Lc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.78×</span>
+    <span class="len">25:05</span>
+  </div>
+  <div class="t">This is why I DIDN&#39;T buy a Harley-Davidson Street Glide</div>
+  <div class="meta">44K views (28d) · 5 months ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/dLXx8xq2iMo.html" data-pub="1762216199000" data-views="48139" data-out="0.86" data-r50="0.2813" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dLXx8xq2iMo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">21:33</span>
+  </div>
+  <div class="t">I Think I Bought the Wrong Harley-Davidson 😭 / NEW 2026 Motorcycles</div>
+  <div class="meta">48K views (28d) · 9 months ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/4JG_DnMdyso.html" data-pub="1756065589000" data-views="58953" data-out="1.05" data-r50="0.3191" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4JG_DnMdyso/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.05×</span>
+    <span class="len">24:03</span>
+  </div>
+  <div class="t">Life Update, New Motorcycle, Big Changes, Cross Country Trip...</div>
+  <div class="meta">59K views (28d) · 0 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/s41Q7wg_Svs.html" data-pub="1745531637000" data-views="62555" data-out="1.12" data-r50="0.1588" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/s41Q7wg_Svs/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.12×</span>
+    <span class="len">18:51</span>
+  </div>
+  <div class="t">DO NOT WASTE YOUR MONEY! Watch this first! Insta360 X5 Review</div>
+  <div class="meta">63K views (28d) · 1 year ago · 16% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/oDNvykBXItU.html" data-pub="1744556387000" data-views="87087" data-out="1.55" data-r50="0.1417" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oDNvykBXItU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.55×</span>
+    <span class="len">28:29</span>
+  </div>
+  <div class="t">Last hope for my Harley-Davidson Road Glide.</div>
+  <div class="meta">87K views (28d) · 1 year ago · 14% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/8FZiY3PRiFE.html" data-pub="1743951598000" data-views="39736" data-out="0.71" data-r50="0.3332" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8FZiY3PRiFE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">32:49</span>
+  </div>
+  <div class="t">Spontaneous 1,000+ mile motorcycle trip!</div>
+  <div class="meta">40K views (28d) · 1 year ago · 33% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/CKF7N3PndIc.html" data-pub="1735765196000" data-views="42521" data-out="0.76" data-r50="0.36450000000000005" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/CKF7N3PndIc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">23:06</span>
+  </div>
+  <div class="t">2,427 Miles Later, This is Why I&#39;m Forever Alone on Motorcycle Trips</div>
+  <div class="meta">43K views (28d) · 1 year ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/gMSXiH20qV4.html" data-pub="1735246791000" data-views="45608" data-out="0.81" data-r50="0.3469" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gMSXiH20qV4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">21:19</span>
+  </div>
+  <div class="t">I Joined a Motorcycle Crew. Then Rode 1,134 miles – Here’s What Went Down</div>
+  <div class="meta">46K views (28d) · 1 year ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/-dVZv1gy5VM.html" data-pub="1728940791000" data-views="39254" data-out="0.7" data-r50="0.2828" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-dVZv1gy5VM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">11:58</span>
+  </div>
+  <div class="t">Critical failure comparing the DJI Action 5 Pro vs. GoPro 13 Action Camera</div>
+  <div class="meta">39K views (28d) · 1 year ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/spl7XTtthoY.html" data-pub="1728595796000" data-views="119721" data-out="2.13" data-r50="0.1935" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/spl7XTtthoY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.13×</span>
+    <span class="len">15:42</span>
+  </div>
+  <div class="t">The Blue Ridge Parkway was destroyed after this 😢</div>
+  <div class="meta">120K views (28d) · 1 year ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/zgku-K-grKg.html" data-pub="1724363993000" data-views="39591" data-out="0.71" data-r50="0.2954" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zgku-K-grKg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">21:07</span>
+  </div>
+  <div class="t">I Tried So Hard. And Got So Far... But In The End It DIDN’T FIT!</div>
+  <div class="meta">40K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/z8fn7m6txNs.html" data-pub="1723068008000" data-views="56917" data-out="1.01" data-r50="0.3778" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/z8fn7m6txNs/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">30:28</span>
+  </div>
+  <div class="t">American Tours the Swiss Alps on a Harley-Davidson | Tour1 Part 1</div>
+  <div class="meta">57K views (28d) · 2 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/J5BlNH-mMi8.html" data-pub="1718569795000" data-views="42186" data-out="0.75" data-r50="0.1928" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J5BlNH-mMi8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">34:20</span>
+  </div>
+  <div class="t">Best Kept Secret Motorcycle Destination in the Heart of the USA | Travel Guide | Ohio&#39;s Windy 9</div>
+  <div class="meta">42K views (28d) · 2 years ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/e8qu231ltD4.html" data-pub="1710532487000" data-views="52610" data-out="0.94" data-r50="0.34" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/e8qu231ltD4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">29:33</span>
+  </div>
+  <div class="t">I Have An Announcement... About This Motorcycle...</div>
+  <div class="meta">53K views (28d) · 2 years ago · 34% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/cUWhG2RaV-Q.html" data-pub="1701637197000" data-views="41219" data-out="0.73" data-r50="0.26940000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cUWhG2RaV-Q/mqdefault.jpg" alt="">
+    <span class="score out-down">0.73×</span>
+    <span class="len">25:10</span>
+  </div>
+  <div class="t">It comes down to ONE Touring Motorcycle....</div>
+  <div class="meta">41K views (28d) · 2 years ago · 27% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/Bp6095PuMXg.html" data-pub="1699221593000" data-views="236857" data-out="4.22" data-r50="0.1999" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Bp6095PuMXg/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.22×</span>
+    <span class="len">18:18</span>
+  </div>
+  <div class="t">Accidentally forced to ride this Deadly Road. U.S. 129 | The Tail of the Dragon</div>
+  <div class="meta">237K views (28d) · 2 years ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/-nuNCyA6Qig.html" data-pub="1673301594000" data-views="84447" data-out="1.51" data-r50="0.3208" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-nuNCyA6Qig/mqdefault.jpg" alt="">
+    <span class="score out-up">1.51×</span>
+    <span class="len">17:50</span>
+  </div>
+  <div class="t">Living in Florida Alone with my Motorcycle</div>
+  <div class="meta">84K views (28d) · 3 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/nq2CeSxLRrM.html" data-pub="1670279268000" data-views="29885" data-out="0.53" data-r50="0.3865" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nq2CeSxLRrM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.53×</span>
+    <span class="len">9:08</span>
+  </div>
+  <div class="t">Street Glide vs. Road Glide?</div>
+  <div class="meta">30K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/VdNYF-Hn-9g.html" data-pub="1669222673000" data-views="9595" data-out="0.17" data-r50="0.39890000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VdNYF-Hn-9g/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.17×</span>
+    <span class="len">10:04</span>
+  </div>
+  <div class="t">How to start a Motovlog YouTube channel.</div>
+  <div class="meta">10K views (28d) · 3 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/_g7zWWeUBKk.html" data-pub="1668119093000" data-views="45101" data-out="0.8" data-r50="0.27140000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_g7zWWeUBKk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.80×</span>
+    <span class="len">15:11</span>
+  </div>
+  <div class="t">First and LAST time trying this...</div>
+  <div class="meta">45K views (28d) · 3 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/0l6N05YUc-E.html" data-pub="1666213226000" data-views="90540" data-out="1.61" data-r50="0.2748" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0l6N05YUc-E/mqdefault.jpg" alt="">
+    <span class="score out-up">1.61×</span>
+    <span class="len">16:30</span>
+  </div>
+  <div class="t">Why we left Ohio.</div>
+  <div class="meta">91K views (28d) · 3 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCzMAG_9ikEm6P60GBpDIqqg/y9ydIMF45KY.html" data-pub="1664722787000" data-views="47793" data-out="0.85" data-r50="0.332" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y9ydIMF45KY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">19:48</span>
+  </div>
+  <div class="t">The perfect summer day on motorcycles</div>
+  <div class="meta">48K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">74 of 100 videos sit in a named format · library built 2026-08-19.</p>
+
 
 <h2>Video ideas</h2>
 <p class="legend">Concepts, not commissioned videos — the thumbnails are placeholders and every view count is a <strong>projection</strong>, computed from this channel's own median multiplied by the observed lift of the format each idea uses. Open <em>Why this idea</em> on any card to see the real videos it was built from.</p>

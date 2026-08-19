@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -411,14 +439,14 @@ table.obs td.no{color:#ff8f8f}
     <p class="vmeta">
       <a href="../UCvEtdkmA1aR9Tt7iXIiQXbw.html">MoreNizarisaqt</a> ·
       22:16 · 251,961 views ·
-      46% still watching at the halfway mark · 
+      47% still watching at the halfway mark · 
       3 drop-offs, 1 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video holds the back half better than 27 of the channel&#39;s 30 comparable uploads, but the 13:48 forest wander loses viewers 33.6x faster than the moments around it.</p>
+<p class="lede" style="margin:-14px 0 26px">This video sits 5.7 points below the channel&#39;s own opening-loss median and ranks 28 of 75 at halfway despite running six minutes longer than typical.</p>
 
 <div class="viewer">
   <div>
@@ -440,51 +468,51 @@ table.obs td.no{color:#ff8f8f}
     <h3>4 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:12</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening 14 seconds shed a fifth of arrivals, worse than the channel&#39;s own intro habit (6.9x the surrounding stop rate, 77,377 viewers, 100.0% to 79.6%).</span>
+  <span class="what">One in five viewers walks during the setup window between the title card and first gameplay (7.0x surrounding stop rate, 79,112 viewers, 79.6% remaining).</span>
   <span class="body">
-    <span class="lab">Why</span>The hook restates the thumbnail premise instead of paying it off: &#39;we heard weird rumors about this babysitter being a killer.&#39;
-    <span class="quote">“weird rumors about this babysitter”</span>
-    <span class="lab">The fix</span>Trial opening on the 6:27 lights-flickering scare, then cut to the premise line, modeled on &#39;Surviving the HARDEST MM2 Challenges for 24 HOURS!&#39; which lost 0.0% at 0:00.
-    <span class="lab">Why that works</span>This intro drops 16.4% versus the channel&#39;s 12.8% average, so a stronger cold-open should recover the 3.6pp gap.
-    <span class="lab">Check first</span><span class="warn">Verify the 6:27 clip reads without daycare context; if not, use another in-game scare beat from the first five minutes.</span>
+    <span class="lab">Why</span>The opener restates what the thumbnail already sold and pitches part two before anything happens: &quot;if you guys want to see part two&quot;.
+    <span class="quote">“if you guys want to see part two”</span>
+    <span class="lab">The fix</span>Cut 0:16-0:24 and open cold on 0:27 &quot;this is a house right here&quot; so the babysitter rumor lands before any menu talk.
+    <span class="lab">Why that works</span>0:30 holds 79.6% versus a 81.8% channel median and beats only 21 of 74 siblings, so the intro underperforms the channel&#39;s own norm.
+    
   </span>
 </button>
 <button class="m peak" data-i="1" type="button">
   <span class="h"><span class="ts">3:20</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs 1.9% around the food delivery and photo beat, holding 61.6% at the 15% mark (5,820 viewers regained, 62nd percentile versus similar videos).</span>
+  <span class="what">The audience climbs back to 61.7% during the pizza delivery and photo beat (1.9% of the audience present, 6,046 viewers regained, 62nd percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to the burger-delivery reveal and the &#39;say cheese&#39; photo moment: &#39;Cheeseburger. Cheeseburger.&#39;
-    <span class="quote">“Cheeseburger. Cheeseburger.”</span>
-    <span class="lab">Do more of this</span>Front-load a 2-second tease of the cheeseburger delivery inside the first 30 seconds to pull the replay signal earlier.
-    <span class="lab">Why that works</span>Reveals that earn rewinds are assets; teasing this one against the current 0:12 collapse should lift the opening 30-second hold.
+    <span class="lab">Why</span>A concrete reward lands with a visual gag viewers rewind for: &quot;Cheeseburger. Cheeseburger&quot; then &quot;look at his swag&quot; and &quot;Say cheese&quot;.
+    <span class="quote">“Cheeseburger. Cheeseburger”</span>
+    <span class="lab">Do more of this</span>Front-load a similar tangible-reward beat inside the first 90 seconds, cutting to the delivery gag before the babysitter rumor is fully explained.
+    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward; moving this beat earlier addresses the 3.1pp gap versus channel median at 1:00.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">6:27</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 40-second stretch around the 3am scare drops below the surrounding rate, but actually holds better than the channel&#39;s norm here (6.7x spike, 12,870 viewers, 55.2% to 52.0%, 0.7x channel norm).</span>
+  <span class="what">A 40-second stretch loses viewers at the channel&#39;s own typical rate for this position (6.9x surrounding stop rate, 13,162 viewers, 52.0% remaining, 0.9x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>The scare lands then dissipates into cat banter before the next beat: &#39;we have a cat, bro. We&#39;re we&#39;re safe.&#39;
+    <span class="lab">Why</span>This is a standing channel habit, not a defect of this video: the 3am scare resolves in seconds with &quot;we have a cat, bro. We&#39;re we&#39;re safe&quot;.
     <span class="quote">“we have a cat, bro”</span>
-    <span class="lab">The fix</span>Keep as is; this segment is already outperforming the channel&#39;s baseline at 30% through and does not need surgery.
-    <span class="lab">Why that works</span>The 0.7x versus channel norm shows this is a channel-wide sag position, not a mistake specific to this video.
-    
+    <span class="lab">The fix</span>Trial stretching the flicker beat by holding on 6:22-6:27 with music stripped to bare sound, delaying the cat reveal until 6:40.
+    <span class="lab">Why that works</span>Retention editing flattens through conflict and drops when tension resolves; the scare currently resolves inside 15 seconds with runtime left.
+    <span class="lab">Check first</span><span class="warn">The cat gag may be a running channel bit; if viewers expect the fast resolution, keep the current cut and test the stretch on a later video.</span>
   </span>
 </button>
 <button class="m drop" data-i="3" type="button">
   <span class="h"><span class="ts">13:48</span><span class="kind">Drop-off</span></span>
-  <span class="what">A forest wander loses viewers 33.6 times faster than the surrounding moments, the sharpest anomaly in the video (18,674 viewers, 47.0% to 43.2%).</span>
+  <span class="what">The audience quits at 2.1x the channel&#39;s rate for this position while the host wanders looking for food (33.7x surrounding stop rate, 19,169 viewers, 43.2% remaining).</span>
   <span class="body">
-    <span class="lab">Why</span>The narration loops on the same unanswered question for 15 seconds: &#39;Find something to eat from the forest&#39; repeated three times with no progress.
+    <span class="lab">Why</span>Six near-identical lines with no new information: &quot;Find something to eat from the forest&quot; repeats, then &quot;Dude, where&#39;s the food?&quot;
     <span class="quote">“Find something to eat from the forest”</span>
-    <span class="lab">The fix</span>Cut 13:48-14:02 down to the first &#39;find some food&#39; line and jump straight to the 14:15 &#39;maybe up here?&#39; beat.
-    <span class="lab">Why that works</span>Pacing is flow of new information; killing the verbal repetition should close the 1.7x gap versus the channel norm at this position.
+    <span class="lab">The fix</span>Cut 13:48-14:13 down to one attempt and one failure, rejoining on 14:15 &quot;Maybe up here?&quot; to keep the food search under ten seconds.
+    <span class="lab">Why that works</span>Pacing is the flow of new information and something should visibly change every ~5 seconds; this stretch repeats the same beat six times.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"LUNL9nXwZH4","durationSec":1336,"curve":[{"p":1,"w":0.952},{"p":2,"w":0.796},{"p":3,"w":0.725},{"p":4,"w":0.688},{"p":5,"w":0.67},{"p":6,"w":0.669},{"p":7,"w":0.645},{"p":8,"w":0.635},{"p":9,"w":0.628},{"p":10,"w":0.622},{"p":11,"w":0.618},{"p":12,"w":0.613},{"p":13,"w":0.609},{"p":14,"w":0.605},{"p":15,"w":0.616},{"p":16,"w":0.609},{"p":17,"w":0.588},{"p":18,"w":0.589},{"p":19,"w":0.583},{"p":20,"w":0.578},{"p":21,"w":0.572},{"p":22,"w":0.564},{"p":23,"w":0.559},{"p":24,"w":0.555},{"p":25,"w":0.552},{"p":26,"w":0.547},{"p":27,"w":0.542},{"p":28,"w":0.541},{"p":29,"w":0.552},{"p":30,"w":0.533},{"p":31,"w":0.534},{"p":32,"w":0.52},{"p":33,"w":0.516},{"p":34,"w":0.515},{"p":35,"w":0.511},{"p":36,"w":0.506},{"p":37,"w":0.503},{"p":38,"w":0.5},{"p":39,"w":0.497},{"p":40,"w":0.51},{"p":41,"w":0.49},{"p":42,"w":0.487},{"p":43,"w":0.484},{"p":44,"w":0.481},{"p":45,"w":0.479},{"p":46,"w":0.475},{"p":47,"w":0.473},{"p":48,"w":0.473},{"p":49,"w":0.471},{"p":50,"w":0.465},{"p":51,"w":0.463},{"p":52,"w":0.461},{"p":53,"w":0.459},{"p":54,"w":0.458},{"p":55,"w":0.456},{"p":56,"w":0.454},{"p":57,"w":0.453},{"p":58,"w":0.45},{"p":59,"w":0.448},{"p":60,"w":0.449},{"p":61,"w":0.448},{"p":62,"w":0.47},{"p":63,"w":0.432},{"p":64,"w":0.429},{"p":65,"w":0.428},{"p":66,"w":0.425},{"p":67,"w":0.423},{"p":68,"w":0.423},{"p":69,"w":0.418},{"p":70,"w":0.425},{"p":71,"w":0.411},{"p":72,"w":0.407},{"p":73,"w":0.406},{"p":74,"w":0.405},{"p":75,"w":0.401},{"p":76,"w":0.399},{"p":77,"w":0.398},{"p":78,"w":0.397},{"p":79,"w":0.398},{"p":80,"w":0.395},{"p":81,"w":0.392},{"p":82,"w":0.389},{"p":83,"w":0.388},{"p":84,"w":0.387},{"p":85,"w":0.386},{"p":86,"w":0.397},{"p":87,"w":0.38},{"p":88,"w":0.379},{"p":89,"w":0.378},{"p":90,"w":0.378},{"p":91,"w":0.376},{"p":92,"w":0.374},{"p":93,"w":0.369},{"p":94,"w":0.366},{"p":95,"w":0.364},{"p":96,"w":0.363},{"p":97,"w":0.361},{"p":98,"w":0.36},{"p":99,"w":0.357},{"p":100,"w":0.322}],"moments":[{"t":"0:12","sec":12,"kind":"drop","what":"The opening 14 seconds shed a fifth of arrivals, worse than the channel's own intro habit (6.9x the surrounding stop rate, 77,377 viewers, 100.0% to 79.6%)."},{"t":"3:20","sec":200,"kind":"peak","what":"Audience climbs 1.9% around the food delivery and photo beat, holding 61.6% at the 15% mark (5,820 viewers regained, 62nd percentile versus similar videos)."},{"t":"6:27","sec":387,"kind":"drop","what":"A 40-second stretch around the 3am scare drops below the surrounding rate, but actually holds better than the channel's norm here (6.7x spike, 12,870 viewers, 55.2% to 52.0%, 0.7x channel norm)."},{"t":"13:48","sec":828,"kind":"drop","what":"A forest wander loses viewers 33.6 times faster than the surrounding moments, the sharpest anomaly in the video (18,674 viewers, 47.0% to 43.2%)."}]}</script>
+<script>window.__VIDEO__={"videoId":"LUNL9nXwZH4","durationSec":1336,"curve":[{"p":1,"w":0.953},{"p":2,"w":0.796},{"p":3,"w":0.725},{"p":4,"w":0.689},{"p":5,"w":0.67},{"p":6,"w":0.67},{"p":7,"w":0.646},{"p":8,"w":0.636},{"p":9,"w":0.628},{"p":10,"w":0.622},{"p":11,"w":0.618},{"p":12,"w":0.613},{"p":13,"w":0.61},{"p":14,"w":0.605},{"p":15,"w":0.617},{"p":16,"w":0.61},{"p":17,"w":0.588},{"p":18,"w":0.589},{"p":19,"w":0.584},{"p":20,"w":0.578},{"p":21,"w":0.572},{"p":22,"w":0.565},{"p":23,"w":0.56},{"p":24,"w":0.555},{"p":25,"w":0.553},{"p":26,"w":0.547},{"p":27,"w":0.542},{"p":28,"w":0.541},{"p":29,"w":0.553},{"p":30,"w":0.533},{"p":31,"w":0.534},{"p":32,"w":0.52},{"p":33,"w":0.517},{"p":34,"w":0.515},{"p":35,"w":0.512},{"p":36,"w":0.506},{"p":37,"w":0.503},{"p":38,"w":0.5},{"p":39,"w":0.497},{"p":40,"w":0.511},{"p":41,"w":0.491},{"p":42,"w":0.487},{"p":43,"w":0.484},{"p":44,"w":0.481},{"p":45,"w":0.479},{"p":46,"w":0.476},{"p":47,"w":0.474},{"p":48,"w":0.473},{"p":49,"w":0.471},{"p":50,"w":0.465},{"p":51,"w":0.464},{"p":52,"w":0.461},{"p":53,"w":0.46},{"p":54,"w":0.458},{"p":55,"w":0.456},{"p":56,"w":0.454},{"p":57,"w":0.453},{"p":58,"w":0.45},{"p":59,"w":0.448},{"p":60,"w":0.449},{"p":61,"w":0.449},{"p":62,"w":0.47},{"p":63,"w":0.432},{"p":64,"w":0.429},{"p":65,"w":0.428},{"p":66,"w":0.425},{"p":67,"w":0.423},{"p":68,"w":0.423},{"p":69,"w":0.418},{"p":70,"w":0.425},{"p":71,"w":0.411},{"p":72,"w":0.407},{"p":73,"w":0.406},{"p":74,"w":0.405},{"p":75,"w":0.401},{"p":76,"w":0.399},{"p":77,"w":0.398},{"p":78,"w":0.398},{"p":79,"w":0.398},{"p":80,"w":0.395},{"p":81,"w":0.393},{"p":82,"w":0.389},{"p":83,"w":0.388},{"p":84,"w":0.387},{"p":85,"w":0.386},{"p":86,"w":0.398},{"p":87,"w":0.38},{"p":88,"w":0.379},{"p":89,"w":0.378},{"p":90,"w":0.378},{"p":91,"w":0.376},{"p":92,"w":0.374},{"p":93,"w":0.369},{"p":94,"w":0.366},{"p":95,"w":0.365},{"p":96,"w":0.363},{"p":97,"w":0.362},{"p":98,"w":0.36},{"p":99,"w":0.357},{"p":100,"w":0.323}],"moments":[{"t":"0:12","sec":12,"kind":"drop","what":"One in five viewers walks during the setup window between the title card and first gameplay (7.0x surrounding stop rate, 79,112 viewers, 79.6% remaining)."},{"t":"3:20","sec":200,"kind":"peak","what":"The audience climbs back to 61.7% during the pizza delivery and photo beat (1.9% of the audience present, 6,046 viewers regained, 62nd percentile)."},{"t":"6:27","sec":387,"kind":"drop","what":"A 40-second stretch loses viewers at the channel's own typical rate for this position (6.9x surrounding stop rate, 13,162 viewers, 52.0% remaining, 0.9x channel norm)."},{"t":"13:48","sec":828,"kind":"drop","what":"The audience quits at 2.1x the channel's rate for this position while the host wanders looking for food (33.7x surrounding stop rate, 19,169 viewers, 43.2% remaining)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

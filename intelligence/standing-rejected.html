@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -408,8 +436,8 @@ table.obs td.no{color:#ff8f8f}
 <h1><span class="pill s-rejected">Rejected</span></h1>
 <p class="lede intel-hero">The system must stop asserting this. One category, two ways in: our own measurements pointed the other way, or a strategist overruled it. Each claim says which — the remedy differs. Kept, never deleted: knowing a tactic failed is an asset, and deleting it invites learning it again.</p>
 <div class="intel-stats">
-  <div><div class="v">34</div><div class="k">Claims at this standing</div></div>
-  <div><div class="v">30</div><div class="k">General</div></div>
+  <div><div class="v">35</div><div class="k">Claims at this standing</div></div>
+  <div><div class="v">31</div><div class="k">General</div></div>
   <div><div class="v">4</div><div class="k">Niched</div></div>
 </div>
 <p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
@@ -1249,8 +1277,88 @@ panel in the corner when you are done.</p>
       <blockquote>maybe at the end of the video after you&#39;ve already test it, you introduce almost like a uh a good problem like um what I mean by that almost like uh instead of just like okay cool it works. Um maybe now it&#39;s like cool it works but we&#39;re going to push it to the limit</blockquote></div>
   </details>
 </div></div>
-<h2>storytelling &middot; 2</h2>
+<h2>storytelling &middot; 3</h2>
 <div class="claims"><div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">storytelling</span>
+    
+    <span class="cat">· earlier check spanned 6 channels</span>
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 33% of 3 measurements</span>
+    <span class="num">3 channels</span>
+  </div>
+  <div class="txt">Resolving the video&#39;s headline question before the end causes a large mid-video exodus — the drop is caused by the question being answered, not by the segment&#39;s quality.</div>
+  <div class="src">Source: our own channel audits</div>
+  
+  
+  <div class="review" data-id="b53088cb6ada">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>resolving the headline question earlier in the video</b> &rarr; share of audience retained through the back half
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Does resolving the video&#39;s payoff earlier cost the back half its audience?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of where the payoff lands (percent through) against the share of the audience present at that point still watching 20% of the runtime later.</p>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.38</td>
+        <td>8</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.11</td>
+        <td>39</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="ok">held</td>
+        <td>+0.31</td>
+        <td>6</td>
+        <td>2026-08-19</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 6 videos. At that size a couple of unusual uploads can carry the whole result.</li>
+<li>It did NOT hold on Channel C, Channel A. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.57). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Only Channel D carries enough question titles to test (6 vs 24). Median largest second-half spike: 6.4% for question-titled videos vs 7.0% for the rest — no difference, and if anything slightly smaller. Channel C has 1 question title, Channel E, Channel A, Channel F and Channel G have zero.</p>
+             <p class="caveat">Caveat: Six videos on one channel. And the proxy is weak in a specific way: a question in the TITLE is not the same as the video answering its headline question early, which is what the claim is about. The real test needs the transcript timestamp where the title&#39;s question is answered — we do not store it — and then a check that the largest second-half spike falls within 60s of it more often than chance.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Great content appeal, near negligible difference in performance to other #1.  Big drop off at 8:00 because you might’ve answered your question already…</blockquote></div>
+  </details>
+</div>
+<div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
     <span class="cat">storytelling</span>

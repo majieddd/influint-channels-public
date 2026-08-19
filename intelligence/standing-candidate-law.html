@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -408,162 +436,14 @@ table.obs td.no{color:#ff8f8f}
 <h1><span class="pill s-cand">Candidate Law</span></h1>
 <p class="lede intel-hero">One rung below settled. Most arrive by measurement — the lever was quantified and a real effect showed up — and what they still need is repetition across more channels plus a human signature. A few arrive by demotion: a signed Law whose evidence stopped holding drops back here and must be re-signed. Every card states which, and every analysis run re-tests the measurable ones, so this number moves in both directions.</p>
 <div class="intel-stats">
-  <div><div class="v">4</div><div class="k">Claims at this standing</div></div>
-  <div><div class="v">4</div><div class="k">General</div></div>
+  <div><div class="v">3</div><div class="k">Claims at this standing</div></div>
+  <div><div class="v">3</div><div class="k">General</div></div>
   <div><div class="v">0</div><div class="k">Niched</div></div>
 </div>
 <p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
 more than the tick alone. Decisions save in this browser as you go; export them from the
 panel in the corner when you are done.</p>
-<h2>retention &middot; 1</h2>
-<div class="claims"><div class="claim">
-  <div class="top">
-    <span class="pill s-cand">Candidate Law</span>
-    <span class="cat">retention</span>
-    
-    <span class="cat">· earlier check spanned 6 channels</span>
-    
-    
-  </div>
-  <div class="strength">
-    <span class="grade g-moderate">moderate</span>
-    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
-    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
-    <span class="num">held 100% of 2 measurements</span>
-    <span class="num">2 channels</span>
-  </div>
-  <div class="txt">The largest single drop-off on almost any long-form video is in the first frame and first few seconds, so the opening must deliver on the thumbnail&#39;s promise AND partially close the interest gap immediately — but only partially.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Correct</p></div>
-  <div class="review" data-id="19e8d0f92898">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="ledger">
-    <b>Measurement record</b>
-    <p class="lever">Tested as: <b>opening seconds of a long-form video</b> &rarr; share of total audience loss occurring in the intro
-             <span class="dir">(the claim predicts this goes up)</span></p>
-    <p class="qline">The question put to the data: <i>Is the opening of a video its single costliest stretch?</i></p>
-    <p class="method"><b>Exact arithmetic:</b> Share of videos whose single costliest flagged drop falls in the first 5% of the runtime.</p>
-    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
-      <table class="obs">
-        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
-        <tbody><tr>
-        <td>Channel C</td>
-        <td class="ok">held</td>
-        <td>+0.83</td>
-        <td>99</td>
-        <td>2026-08-19</td>
-      </tr>
-<tr>
-        <td>Channel D</td>
-        <td class="ok">held</td>
-        <td>+0.98</td>
-        <td>100</td>
-        <td>2026-08-19</td>
-      </tr></tbody>
-      </table>
-    </div>
-    
-    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
-      prediction showed up, whichever way the raw statistic pointed.
-      Figures are proportions, running from 0 to 1.</p>
-    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
-    <div class="caveats"><b>What this does not tell you</b><ul><li>Measured on 2 channels. Reproduction across at least 3 independent channels is what separates a pattern from a coincidence, so this has not cleared that bar.</li>
-<li>This is a proportion — the share of videos where something was true. It says how OFTEN, not how MUCH, and it carries no direction of its own.</li></ul></div>
-  </div>
-    <div class="legacy">
-             <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               The measured record above is what this claim's standing now rests on.</i></p>
-             <p class="ev"><b>Supported:</b> The largest ABSOLUTE per-sample drop falls inside the first 5% of runtime for 116 of 119 videos (97%). The largest HAZARD RATE falls in the first 5% for 89 of 119 (75%), with the runner-up bucket being the final 5% (9 videos). Median hazard by band is monotone away from the opening: 1-5% band 7.0-13.1% per sample, 6-15% band 1.1-2.4%, 16-30% band 0.4-1.1%.</p>
-             <p class="caveat">Caveat: &#39;First 5% of runtime&#39; is 60-155 seconds on these videos, not &#39;the first frame&#39;. Our resolution cannot distinguish frame 1 from second 30, so what is confirmed is that the opening BLOCK carries by far the biggest single loss — the claim&#39;s prescriptive half (that the first frame must deliver the thumbnail&#39;s promise) is untestable here since we do not analyse thumbnails or frames.</p>
-           </div>
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>as soon as people click on it, the first frame and the first few seconds are so important because that&#39;s where 99% of YouTubers have the largest drop off, right? ... We deliver what&#39;s clicked on uh by giving some delivery on expectations one and also uh immediately addressing any interest gap uh to a certain degree. not the entire thing.</blockquote></div>
-  </details>
-</div></div>
-<h2>storytelling &middot; 1</h2>
-<div class="claims"><div class="claim">
-  <div class="top">
-    <span class="pill s-cand">Candidate Law</span>
-    <span class="cat">storytelling</span>
-    
-    <span class="cat">· earlier check spanned 6 channels</span>
-    
-    
-  </div>
-  <div class="strength">
-    <span class="grade g-weak">weak</span>
-    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
-    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
-    <span class="num">held 50% of 2 measurements</span>
-    <span class="num">2 channels</span>
-  </div>
-  <div class="txt">Resolving the video&#39;s headline question before the end causes a large mid-video exodus — the drop is caused by the question being answered, not by the segment&#39;s quality.</div>
-  <div class="src">Source: our own channel audits</div>
-  
-  
-  <div class="review" data-id="b53088cb6ada">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="ledger">
-    <b>Measurement record</b>
-    <p class="lever">Tested as: <b>resolving the headline question earlier in the video</b> &rarr; share of audience retained through the back half
-             <span class="dir">(the claim predicts this goes down)</span></p>
-    <p class="qline">The question put to the data: <i>Does resolving the video&#39;s payoff earlier cost the back half its audience?</i></p>
-    <p class="method"><b>Exact arithmetic:</b> Spearman of where the payoff lands (percent through) against the share of the audience present at that point still watching 20% of the runtime later.</p>
-    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
-      <table class="obs">
-        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
-        <tbody><tr>
-        <td>Channel C</td>
-        <td class="no">did not hold</td>
-        <td>+0.11</td>
-        <td>39</td>
-        <td>2026-08-19</td>
-      </tr>
-<tr>
-        <td>Channel D</td>
-        <td class="ok">held</td>
-        <td>+0.31</td>
-        <td>6</td>
-        <td>2026-08-19</td>
-      </tr></tbody>
-      </table>
-    </div>
-    
-    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
-      prediction showed up, whichever way the raw statistic pointed.
-      Figures are Spearman rank correlations, running from -1 to +1.</p>
-    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
-    <div class="caveats"><b>What this does not tell you</b><ul><li>Measured on 2 channels. Reproduction across at least 3 independent channels is what separates a pattern from a coincidence, so this has not cleared that bar.</li>
-<li>The smallest sample behind this is 6 videos. At that size a couple of unusual uploads can carry the whole result.</li>
-<li>It did NOT hold on Channel C. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
-<li>At least one reading could plausibly have come from chance (p = 0.57). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
-  </div>
-    <div class="legacy">
-             <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               The measured record above is what this claim's standing now rests on.</i></p>
-             <p class="ev"><b>Checked:</b> Only Channel D carries enough question titles to test (6 vs 24). Median largest second-half spike: 6.4% for question-titled videos vs 7.0% for the rest — no difference, and if anything slightly smaller. Channel C has 1 question title, Channel E, Channel A, Channel F and Channel G have zero.</p>
-             <p class="caveat">Caveat: Six videos on one channel. And the proxy is weak in a specific way: a question in the TITLE is not the same as the video answering its headline question early, which is what the claim is about. The real test needs the transcript timestamp where the title&#39;s question is answered — we do not store it — and then a check that the largest second-half spike falls within 60s of it more often than chance.</p>
-           </div>
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>Great content appeal, near negligible difference in performance to other #1.  Big drop off at 8:00 because you might’ve answered your question already…</blockquote></div>
-  </details>
-</div></div>
-<h2>analytics &middot; 2</h2>
+<h2>analytics &middot; 3</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-cand">Candidate Law</span>
@@ -578,6 +458,114 @@ panel in the corner when you are done.</p>
     <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
     <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
     <span class="num">held 57% of 7 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">Videos with more views systematically show LOWER average retention on the same channel, because wider reach pulls in newer, less-sticky viewers. A retention drop after a repackage is therefore not abnormal and is not by itself evidence the repackage failed — but it is not the desired outcome either: the aim is for retention to hold or improve as reach widens.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Yes, but a retention drop after repackage doesn&#39;t have to be Expected, it just isn&#39;t abnormal.  Ideally retention stays or even get up</p></div>
+  <div class="review" data-id="6442f0e91c5f">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>a video accumulating more first-28-day views on the channel</b> &rarr; audience share remaining at the halfway mark
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Do the videos that hold viewers to halfway also get the most views?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of audience share at 50% through against first-28-day views.</p>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>+0.19</td>
+        <td>100</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>-0.01</td>
+        <td>99</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="ok">held</td>
+        <td>+0.39</td>
+        <td>100</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.85</td>
+        <td>9</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.07</td>
+        <td>10</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="ok">held</td>
+        <td>+0.32</td>
+        <td>139</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.89</td>
+        <td>10</td>
+        <td>2026-08-19</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 9 videos. At that size a couple of unusual uploads can carry the whole result.</li>
+<li>It did NOT hold on Channel C, Channel G, Channel A. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.90). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Supported:</b> rho(28d views, APV) is negative in 6/6 channels: Channel C -0.47, Channel D -0.46, Channel E -0.73, Channel A -0.49, Channel F -0.83, Channel G -0.61. Pooled -0.54 (n=119). Controlling duration barely moves it (pooled -0.51; per-channel -0.42 to -0.84). The top-view video sits below its channel&#39;s mean APV in 6/6 channels (e.g. Channel C 24.8% vs mean 46.7%; Channel A 21.9% vs 41.4%). Top-3-by-views median APV vs bottom-3: Channel C 29.7% vs 46.7%, Channel A 26.5% vs 45.7%, Channel E 25.7% vs 37.2%.</p>
+             <p class="caveat">Caveat: This is CORRELATION only. We observe that high-view videos hold less; we cannot observe WHY. The stated mechanism (wider reach imports less-sticky viewers) is untested — a rival explanation fits the same data: high-view videos here are also longer (pooled rho views~duration +0.23, duration~APV -0.30), and broad-appeal topics may simply be structurally looser. Controlling duration leaves the effect nearly intact, which weakens but does not eliminate that rival. The repackaging half of the claim is untestable: we hold no before/after repackage events.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky. They might not want to watch for as long.</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-cand">Candidate Law</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· earlier check spanned 6 channels</span>
+    
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 43% of 7 measurements</span>
     <span class="num">7 channels</span>
   </div>
   <div class="txt">Longer videos do not reduce view counts: on a 30-video retention chart the longest-running curves were disproportionately the high-view ones, so length is not the constraint many creators assume.</div>
@@ -601,6 +589,13 @@ panel in the corner when you are done.</p>
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>+0.12</td>
+        <td>100</td>
+        <td>2026-08-19</td>
+      </tr>
+<tr>
         <td>Channel C</td>
         <td class="ok">held</td>
         <td>+0.33</td>
@@ -612,13 +607,6 @@ panel in the corner when you are done.</p>
         <td class="no">did not hold</td>
         <td>+0.08</td>
         <td>100</td>
-        <td>2026-08-19</td>
-      </tr>
-<tr>
-        <td>Channel A</td>
-        <td class="ok">held</td>
-        <td>+0.22</td>
-        <td>30</td>
         <td>2026-08-19</td>
       </tr>
 <tr>
@@ -657,7 +645,8 @@ panel in the corner when you are done.</p>
       Figures are Spearman rank correlations, running from -1 to +1.</p>
     <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
     <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 9 videos. At that size a couple of unusual uploads can carry the whole result.</li>
-<li>It did NOT hold on Channel G, Channel E, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel G, Channel E, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
 <li>At least one reading could plausibly have come from chance (p = 0.77). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
   </div>
     <div class="legacy">

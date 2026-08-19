@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -413,12 +441,12 @@ table.obs td.no{color:#ff8f8f}
       13:27 · 157,000 views ·
       42% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">The opening 30 seconds massively over-performs the channel (112.3% at 0:30, +30.3pp over the median, beating 29 of 29 others), but the video finishes 20 of 30 by ending audience — the front is doing work the middle wastes.</p>
+<p class="lede" style="margin:-14px 0 26px">This video opened stronger than every one of the channel&#39;s 74 others (+30.5pp at 0:30) but bled that lead by 2:00, ranking 52 of 75 at halfway.</p>
 
 <div class="viewer">
   <div>
@@ -440,73 +468,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:08</span><span class="kind">Drop-off</span></span>
-  <span class="what">Viewers drift out across the 40-second setup (15.8x surrounding stop rate, 90,077 viewers, dropping 104.4% to 74.5%).</span>
+  <span class="what">Standard intro shed unfolds over 40 seconds as the opening novelty settles into gameplay setup (15.2x spike, 91,061 viewers, 74.5% remaining).</span>
   <span class="body">
-    <span class="lab">Why</span>Premise, avatar pick and rules all land before any gameplay: &quot;red or blue? They&#39;re honestly the same person.&quot;
+    <span class="lab">Why</span>The hook lands then immediately downshifts into menu talk: &quot;red or blue? They&#39;re honestly the same person&quot; before any obstacle appears.
     <span class="quote">“red or blue? They&#39;re honestly”</span>
-    <span class="lab">The fix</span>Cut 0:08-0:22 down to one line stating the goal, then jump straight to the &quot;[screaming]&quot; beat at 0:22.
-    <span class="lab">Why that works</span>This intro shed only 1.1% versus the channel&#39;s 12.8% average — the loss is exposition length, not the hook itself.
+    <span class="lab">The fix</span>Cut 0:09-0:14 avatar-selection chatter and jump straight from &quot;my first Roblox girlfriend&quot; into the 0:15 &quot;I&#39;m literally carrying her&quot; reveal.
+    <span class="lab">Why that works</span>This instance already outperformed the channel&#39;s 14.6% intro-kind average, but the color pick is dead air between two payoffs.
     
   </span>
 </button>
 <button class="m peak" data-i="1" type="button">
   <span class="h"><span class="ts">0:24</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs above the start inside the opening 30 seconds (+8.8% of viewers present, 25,822 regained, 112.3% audience, 87th percentile).</span>
+  <span class="what">Audience swells above the starting line as viewers rewind the opening gag (+8.8% of audience, 26,017 viewers, 87th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the screaming reveal moment: &quot;That one didn&#39;t have any clothes on.&quot;
-    <span class="quote">“didn&#39;t have any clothes on”</span>
-    <span class="lab">Do more of this</span>Move this line into the first 5 seconds as the cold open, before the avatar-pick, so new arrivals hit it immediately.
-    <span class="lab">Why that works</span>It beats 29 of 29 channel videos at 0:30 — this is the strongest hook material in the video and it&#39;s currently buried behind setup.
+    <span class="lab">Why</span>Viewers scrub back to the screaming beat and the punchline: &quot;That one didn&#39;t have any clothes on. No, I saw that, buddy.&quot;
+    <span class="quote">“That one didn&#39;t have any clothes”</span>
+    <span class="lab">Do more of this</span>Front-load a 2-second cold open of the 0:22 scream and 0:27 punchline before the &quot;Today, I got my first girlfriend&quot; line.
+    <span class="lab">Why that works</span>Packaging makes an emotional promise; leading on the moment viewers already rewind delivers on it inside the first three seconds.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">3:14</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A small rewind mid-run holds the room at the quarter mark (+2.2% present, 3,539 regained, 57.3% audience, 57th percentile).</span>
+  <span class="what">Modest rewind bump lands on a self-aware aside mid-chase (+2.2% of audience, 3,553 viewers, 57th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>A speed upgrade unlocks and viewers replay the reaction: &quot;10x speed treadmill? No problem.&quot;
-    <span class="quote">“10x speed treadmill? No problem”</span>
-    <span class="lab">Do more of this</span>Start a riser ~20 seconds before each upgrade unlock and hold the reaction shot two beats longer.
-    <span class="lab">Why that works</span>Anticipation music before rewards flattens the graph through buildup — this peak proves upgrades are what viewers rewind for.
+    <span class="lab">Why</span>Viewers replay the reaction line &quot;Holy lord. Now, this is giving fanboy&quot; arriving right after a Jandel encounter.
+    <span class="quote">“Now, this is giving fanboy”</span>
+    <span class="lab">Do more of this</span>Hold this beat at full length and cut the 3:17-3:19 &quot;It&#39;s okay. It&#39;s okay&quot; filler before the treadmill-upgrade line.
+    <span class="lab">Why that works</span>The rewind proves the reaction lands; trimming the flat recovery after it protects the peak from decaying into the next segment.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">4:26</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A minor replay just before the mid-video drop (+1.7% present, 2,492 regained, 52.7% audience, 48th percentile).</span>
+  <span class="what">Small replay bump on a self-roast line during a reboot sequence (+1.7% of audience, 2,579 viewers, 48th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>A risky jump fails hard and viewers rewatch the reaction: &quot;stupid idiotic baboon. I deserve to be punished.&quot;
-    <span class="quote">“stupid idiotic baboon. I deserve”</span>
-    <span class="lab">Do more of this</span>Cross-cut the failure reaction with the next attempt&#39;s setup so the death lands into forward motion, not into the 4:34 menu dip.
-    <span class="lab">Why that works</span>The rewatch sits directly against the 4:34 drop — the reaction is loved, the shop screen that follows is what leaks the room.
+    <span class="lab">Why</span>The rewind sits on &quot;My baddie is battier than your baddie&quot; following the &quot;stupid idiotic baboon&quot; self-punishment bit.
+    <span class="quote">“My baddie is battier than your”</span>
+    <span class="lab">Do more of this</span>Cut 4:32-4:34 &quot;Unlucky, mate. And I&#39;m out of here&quot; so the &quot;battier&quot; line rolls straight into the free-reward claim.
+    <span class="lab">Why that works</span>The punchline is what viewers came back for; removing the dead beat after it keeps momentum into the gambling segment.
     
   </span>
 </button>
 <button class="m drop" data-i="4" type="button">
   <span class="h"><span class="ts">4:34</span><span class="kind">Drop-off</span></span>
-  <span class="what">A short dip while claiming a menu reward (17.6x surrounding stop rate, 8,893 viewers, 53.0% to 49.6%).</span>
+  <span class="what">Brief mid-video dip where the video actually held better than the channel&#39;s norm at this mark (17.7x spike, 9,028 viewers, 0.8x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Gameplay pauses for a shop/spin sequence: &quot;I get to claim a free reward. Say less.&quot;
-    <span class="quote">“claim a free reward. Say”</span>
-    <span class="lab">The fix</span>Frame this as the channel&#39;s habit — 0.6x its norm here — and leave the beat, but tighten 4:38-4:47 to one &quot;5 gems, spin, 2.5K XP&quot; cut.
-    <span class="lab">Why that works</span>stopRate is actually BELOW the channel norm (0.71% vs 1.24%), so surgery isn&#39;t warranted — just compress the menu time.
+    <span class="lab">Why</span>A reward-claim beat plays out verbatim: &quot;Thank you. Thank you. Thank you. Free rewards&quot; over a menu screen with no gameplay stakes live.
+    <span class="quote">“Thank you. Thank you. Thank you”</span>
+    <span class="lab">The fix</span>Trim 4:38-4:40 triple &quot;thank you&quot; to a single beat and cut straight from &quot;free reward&quot; into the 4:46 &quot;Gamble gamble&quot; spin.
+    <span class="lab">Why that works</span>The spike ratio is inflated by a quiet preceding stretch; the real lever is compressing menu time so gambling tension arrives sooner.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">6:03</span><span class="kind">Drop-off</span></span>
-  <span class="what">A clean 8-second bleed at the midpoint that the channel does not usually take here (14.0x surrounding stop rate, 3.0x channel norm, 10,542 viewers).</span>
+  <span class="what">A mid-video cliff lands where the channel usually holds, with stop-rate 3.4x its norm at this position (14.0x spike, 10,669 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>A run collapses into filler self-talk after a failed jump: &quot;I don&#39;t know what happened there, guys.&quot;
-    <span class="quote">“I don&#39;t know what happened”</span>
-    <span class="lab">The fix</span>Cut 6:07-6:18 and rejoin on &quot;Lock in. Come with me&quot; so the failure hands straight into the next attempt.
-    <span class="lab">Why that works</span>vsSimilarVideos sits at 43% and channel norm is 0.95% — the dead-air recovery, not the death itself, is what&#39;s losing the room.
+    <span class="lab">Why</span>Momentum stalls into repetition: &quot;Get out of my way&quot; four times, then &quot;I&#39;m fine, I&#39;m fine, I&#39;m fine, I&#39;m fine&quot; after a fall.
+    <span class="quote">“I&#39;m fine, I&#39;m fine, I&#39;m fine”</span>
+    <span class="lab">The fix</span>Cut 5:41-5:44 repeated &quot;get out of my way&quot; and trim 6:10-6:13 to one &quot;I&#39;m fine&quot;, rejoining on &quot;Lock in. Come with me.&quot;
+    <span class="lab">Why that works</span>Pacing is the flow of new information; four identical lines register as nothing happening and viewers exit on the flatline.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"l2Afa5tTZio","durationSec":807,"curve":[{"p":1,"w":1.044},{"p":2,"w":1.032},{"p":3,"w":1.123},{"p":4,"w":1.055},{"p":5,"w":0.851},{"p":6,"w":0.745},{"p":7,"w":0.72},{"p":8,"w":0.698},{"p":9,"w":0.68},{"p":10,"w":0.664},{"p":11,"w":0.655},{"p":12,"w":0.644},{"p":13,"w":0.634},{"p":14,"w":0.629},{"p":15,"w":0.599},{"p":16,"w":0.589},{"p":17,"w":0.578},{"p":18,"w":0.568},{"p":19,"w":0.56},{"p":20,"w":0.558},{"p":21,"w":0.555},{"p":22,"w":0.555},{"p":23,"w":0.56},{"p":24,"w":0.573},{"p":25,"w":0.574},{"p":26,"w":0.548},{"p":27,"w":0.542},{"p":28,"w":0.533},{"p":29,"w":0.525},{"p":30,"w":0.521},{"p":31,"w":0.52},{"p":32,"w":0.518},{"p":33,"w":0.527},{"p":34,"w":0.53},{"p":35,"w":0.497},{"p":36,"w":0.487},{"p":37,"w":0.482},{"p":38,"w":0.48},{"p":39,"w":0.48},{"p":40,"w":0.479},{"p":41,"w":0.475},{"p":42,"w":0.47},{"p":43,"w":0.465},{"p":44,"w":0.468},{"p":45,"w":0.489},{"p":46,"w":0.449},{"p":47,"w":0.439},{"p":48,"w":0.429},{"p":49,"w":0.424},{"p":50,"w":0.423},{"p":51,"w":0.423},{"p":52,"w":0.423},{"p":53,"w":0.421},{"p":54,"w":0.417},{"p":55,"w":0.414},{"p":56,"w":0.412},{"p":57,"w":0.412},{"p":58,"w":0.425},{"p":59,"w":0.394},{"p":60,"w":0.384},{"p":61,"w":0.374},{"p":62,"w":0.368},{"p":63,"w":0.371},{"p":64,"w":0.374},{"p":65,"w":0.362},{"p":66,"w":0.358},{"p":67,"w":0.365},{"p":68,"w":0.365},{"p":69,"w":0.351},{"p":70,"w":0.335},{"p":71,"w":0.337},{"p":72,"w":0.333},{"p":73,"w":0.326},{"p":74,"w":0.327},{"p":75,"w":0.323},{"p":76,"w":0.322},{"p":77,"w":0.319},{"p":78,"w":0.318},{"p":79,"w":0.312},{"p":80,"w":0.304},{"p":81,"w":0.291},{"p":82,"w":0.287},{"p":83,"w":0.281},{"p":84,"w":0.267},{"p":85,"w":0.265},{"p":86,"w":0.264},{"p":87,"w":0.264},{"p":88,"w":0.261},{"p":89,"w":0.252},{"p":90,"w":0.25},{"p":91,"w":0.251},{"p":92,"w":0.253},{"p":93,"w":0.249},{"p":94,"w":0.242},{"p":95,"w":0.241},{"p":96,"w":0.239},{"p":97,"w":0.24},{"p":98,"w":0.244},{"p":99,"w":0.245},{"p":100,"w":0.239}],"moments":[{"t":"0:08","sec":8,"kind":"drop","what":"Viewers drift out across the 40-second setup (15.8x surrounding stop rate, 90,077 viewers, dropping 104.4% to 74.5%)."},{"t":"0:24","sec":24,"kind":"peak","what":"Audience climbs above the start inside the opening 30 seconds (+8.8% of viewers present, 25,822 regained, 112.3% audience, 87th percentile)."},{"t":"3:14","sec":194,"kind":"peak","what":"A small rewind mid-run holds the room at the quarter mark (+2.2% present, 3,539 regained, 57.3% audience, 57th percentile)."},{"t":"4:26","sec":266,"kind":"peak","what":"A minor replay just before the mid-video drop (+1.7% present, 2,492 regained, 52.7% audience, 48th percentile)."},{"t":"4:34","sec":274,"kind":"drop","what":"A short dip while claiming a menu reward (17.6x surrounding stop rate, 8,893 viewers, 53.0% to 49.6%)."},{"t":"6:03","sec":363,"kind":"drop","what":"A clean 8-second bleed at the midpoint that the channel does not usually take here (14.0x surrounding stop rate, 3.0x channel norm, 10,542 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"l2Afa5tTZio","durationSec":807,"curve":[{"p":1,"w":1.044},{"p":2,"w":1.032},{"p":3,"w":1.122},{"p":4,"w":1.055},{"p":5,"w":0.851},{"p":6,"w":0.745},{"p":7,"w":0.72},{"p":8,"w":0.698},{"p":9,"w":0.68},{"p":10,"w":0.664},{"p":11,"w":0.655},{"p":12,"w":0.644},{"p":13,"w":0.634},{"p":14,"w":0.629},{"p":15,"w":0.598},{"p":16,"w":0.589},{"p":17,"w":0.577},{"p":18,"w":0.568},{"p":19,"w":0.56},{"p":20,"w":0.557},{"p":21,"w":0.555},{"p":22,"w":0.554},{"p":23,"w":0.56},{"p":24,"w":0.572},{"p":25,"w":0.573},{"p":26,"w":0.547},{"p":27,"w":0.541},{"p":28,"w":0.532},{"p":29,"w":0.524},{"p":30,"w":0.521},{"p":31,"w":0.519},{"p":32,"w":0.517},{"p":33,"w":0.526},{"p":34,"w":0.529},{"p":35,"w":0.496},{"p":36,"w":0.486},{"p":37,"w":0.481},{"p":38,"w":0.479},{"p":39,"w":0.479},{"p":40,"w":0.478},{"p":41,"w":0.474},{"p":42,"w":0.469},{"p":43,"w":0.465},{"p":44,"w":0.467},{"p":45,"w":0.489},{"p":46,"w":0.448},{"p":47,"w":0.438},{"p":48,"w":0.429},{"p":49,"w":0.423},{"p":50,"w":0.422},{"p":51,"w":0.422},{"p":52,"w":0.423},{"p":53,"w":0.421},{"p":54,"w":0.416},{"p":55,"w":0.413},{"p":56,"w":0.411},{"p":57,"w":0.411},{"p":58,"w":0.424},{"p":59,"w":0.394},{"p":60,"w":0.384},{"p":61,"w":0.373},{"p":62,"w":0.367},{"p":63,"w":0.37},{"p":64,"w":0.373},{"p":65,"w":0.361},{"p":66,"w":0.357},{"p":67,"w":0.364},{"p":68,"w":0.365},{"p":69,"w":0.35},{"p":70,"w":0.335},{"p":71,"w":0.337},{"p":72,"w":0.332},{"p":73,"w":0.325},{"p":74,"w":0.326},{"p":75,"w":0.322},{"p":76,"w":0.321},{"p":77,"w":0.318},{"p":78,"w":0.317},{"p":79,"w":0.311},{"p":80,"w":0.303},{"p":81,"w":0.29},{"p":82,"w":0.286},{"p":83,"w":0.28},{"p":84,"w":0.266},{"p":85,"w":0.264},{"p":86,"w":0.263},{"p":87,"w":0.264},{"p":88,"w":0.26},{"p":89,"w":0.252},{"p":90,"w":0.249},{"p":91,"w":0.25},{"p":92,"w":0.252},{"p":93,"w":0.248},{"p":94,"w":0.242},{"p":95,"w":0.24},{"p":96,"w":0.238},{"p":97,"w":0.239},{"p":98,"w":0.243},{"p":99,"w":0.244},{"p":100,"w":0.238}],"moments":[{"t":"0:08","sec":8,"kind":"drop","what":"Standard intro shed unfolds over 40 seconds as the opening novelty settles into gameplay setup (15.2x spike, 91,061 viewers, 74.5% remaining)."},{"t":"0:24","sec":24,"kind":"peak","what":"Audience swells above the starting line as viewers rewind the opening gag (+8.8% of audience, 26,017 viewers, 87th percentile)."},{"t":"3:14","sec":194,"kind":"peak","what":"Modest rewind bump lands on a self-aware aside mid-chase (+2.2% of audience, 3,553 viewers, 57th percentile)."},{"t":"4:26","sec":266,"kind":"peak","what":"Small replay bump on a self-roast line during a reboot sequence (+1.7% of audience, 2,579 viewers, 48th percentile)."},{"t":"4:34","sec":274,"kind":"drop","what":"Brief mid-video dip where the video actually held better than the channel's norm at this mark (17.7x spike, 9,028 viewers, 0.8x channel norm)."},{"t":"6:03","sec":363,"kind":"drop","what":"A mid-video cliff lands where the channel usually holds, with stop-rate 3.4x its norm at this position (14.0x spike, 10,669 viewers)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -413,7 +441,7 @@ table.obs td.no{color:#ff8f8f}
       13:19 · 215,429 views ·
       48% still watching at the halfway mark · 
       3 drop-offs, 1 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
@@ -484,7 +512,7 @@ table.obs td.no{color:#ff8f8f}
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"wcgScHgIN5U","durationSec":799,"curve":[{"p":1,"w":0.978},{"p":2,"w":0.884},{"p":3,"w":0.811},{"p":4,"w":0.772},{"p":5,"w":0.749},{"p":6,"w":0.725},{"p":7,"w":0.698},{"p":8,"w":0.681},{"p":9,"w":0.662},{"p":10,"w":0.649},{"p":11,"w":0.639},{"p":12,"w":0.628},{"p":13,"w":0.625},{"p":14,"w":0.621},{"p":15,"w":0.623},{"p":16,"w":0.613},{"p":17,"w":0.606},{"p":18,"w":0.599},{"p":19,"w":0.592},{"p":20,"w":0.588},{"p":21,"w":0.584},{"p":22,"w":0.596},{"p":23,"w":0.593},{"p":24,"w":0.558},{"p":25,"w":0.554},{"p":26,"w":0.55},{"p":27,"w":0.547},{"p":28,"w":0.544},{"p":29,"w":0.541},{"p":30,"w":0.541},{"p":31,"w":0.54},{"p":32,"w":0.539},{"p":33,"w":0.536},{"p":34,"w":0.533},{"p":35,"w":0.531},{"p":36,"w":0.529},{"p":37,"w":0.525},{"p":38,"w":0.523},{"p":39,"w":0.522},{"p":40,"w":0.52},{"p":41,"w":0.516},{"p":42,"w":0.512},{"p":43,"w":0.507},{"p":44,"w":0.504},{"p":45,"w":0.5},{"p":46,"w":0.498},{"p":47,"w":0.5},{"p":48,"w":0.512},{"p":49,"w":0.48},{"p":50,"w":0.478},{"p":51,"w":0.477},{"p":52,"w":0.476},{"p":53,"w":0.476},{"p":54,"w":0.474},{"p":55,"w":0.471},{"p":56,"w":0.468},{"p":57,"w":0.464},{"p":58,"w":0.461},{"p":59,"w":0.458},{"p":60,"w":0.456},{"p":61,"w":0.453},{"p":62,"w":0.45},{"p":63,"w":0.449},{"p":64,"w":0.447},{"p":65,"w":0.446},{"p":66,"w":0.445},{"p":67,"w":0.443},{"p":68,"w":0.443},{"p":69,"w":0.443},{"p":70,"w":0.437},{"p":71,"w":0.435},{"p":72,"w":0.433},{"p":73,"w":0.432},{"p":74,"w":0.43},{"p":75,"w":0.428},{"p":76,"w":0.428},{"p":77,"w":0.428},{"p":78,"w":0.426},{"p":79,"w":0.425},{"p":80,"w":0.424},{"p":81,"w":0.425},{"p":82,"w":0.424},{"p":83,"w":0.423},{"p":84,"w":0.421},{"p":85,"w":0.417},{"p":86,"w":0.408},{"p":87,"w":0.405},{"p":88,"w":0.402},{"p":89,"w":0.4},{"p":90,"w":0.395},{"p":91,"w":0.393},{"p":92,"w":0.39},{"p":93,"w":0.388},{"p":94,"w":0.385},{"p":95,"w":0.383},{"p":96,"w":0.382},{"p":97,"w":0.381},{"p":98,"w":0.381},{"p":99,"w":0.38},{"p":100,"w":0.37}],"moments":[{"t":"0:07","sec":7,"kind":"drop","what":"The opening nine seconds shed 17.1% of arrivals, above the channel's 12.8% intro average (1.3x the channel's intro norm, 19,775 viewers)."},{"t":"2:56","sec":176,"kind":"peak","what":"Audience rises 2.1% and holds at 59.6%, with 2,703 viewers scrubbing back to this moment (57th percentile versus similar videos)."},{"t":"3:04","sec":184,"kind":"drop","what":"A shop-menu beat loses 6,999 viewers over eight seconds, running 1.5x the channel's typical stop rate for this position (9.8x the surrounding stop rate)."},{"t":"6:24","sec":384,"kind":"drop","what":"The Space-area transition sheds 6,790 viewers in eight seconds at 1.5x the channel's norm for this mark (16.9x the surrounding stop rate)."}]}</script>
+<script>window.__VIDEO__={"videoId":"wcgScHgIN5U","durationSec":799,"curve":[{"p":1,"w":0.978},{"p":2,"w":0.884},{"p":3,"w":0.811},{"p":4,"w":0.772},{"p":5,"w":0.749},{"p":6,"w":0.725},{"p":7,"w":0.698},{"p":8,"w":0.681},{"p":9,"w":0.662},{"p":10,"w":0.649},{"p":11,"w":0.638},{"p":12,"w":0.628},{"p":13,"w":0.624},{"p":14,"w":0.621},{"p":15,"w":0.623},{"p":16,"w":0.613},{"p":17,"w":0.606},{"p":18,"w":0.599},{"p":19,"w":0.592},{"p":20,"w":0.588},{"p":21,"w":0.584},{"p":22,"w":0.596},{"p":23,"w":0.593},{"p":24,"w":0.558},{"p":25,"w":0.554},{"p":26,"w":0.55},{"p":27,"w":0.546},{"p":28,"w":0.544},{"p":29,"w":0.541},{"p":30,"w":0.54},{"p":31,"w":0.54},{"p":32,"w":0.539},{"p":33,"w":0.535},{"p":34,"w":0.533},{"p":35,"w":0.53},{"p":36,"w":0.528},{"p":37,"w":0.525},{"p":38,"w":0.523},{"p":39,"w":0.521},{"p":40,"w":0.52},{"p":41,"w":0.516},{"p":42,"w":0.512},{"p":43,"w":0.507},{"p":44,"w":0.504},{"p":45,"w":0.5},{"p":46,"w":0.498},{"p":47,"w":0.5},{"p":48,"w":0.512},{"p":49,"w":0.48},{"p":50,"w":0.478},{"p":51,"w":0.476},{"p":52,"w":0.476},{"p":53,"w":0.475},{"p":54,"w":0.474},{"p":55,"w":0.471},{"p":56,"w":0.468},{"p":57,"w":0.464},{"p":58,"w":0.46},{"p":59,"w":0.458},{"p":60,"w":0.456},{"p":61,"w":0.453},{"p":62,"w":0.45},{"p":63,"w":0.449},{"p":64,"w":0.447},{"p":65,"w":0.445},{"p":66,"w":0.445},{"p":67,"w":0.443},{"p":68,"w":0.443},{"p":69,"w":0.443},{"p":70,"w":0.437},{"p":71,"w":0.435},{"p":72,"w":0.433},{"p":73,"w":0.431},{"p":74,"w":0.429},{"p":75,"w":0.428},{"p":76,"w":0.428},{"p":77,"w":0.428},{"p":78,"w":0.426},{"p":79,"w":0.424},{"p":80,"w":0.424},{"p":81,"w":0.425},{"p":82,"w":0.424},{"p":83,"w":0.423},{"p":84,"w":0.421},{"p":85,"w":0.417},{"p":86,"w":0.408},{"p":87,"w":0.405},{"p":88,"w":0.402},{"p":89,"w":0.4},{"p":90,"w":0.395},{"p":91,"w":0.393},{"p":92,"w":0.39},{"p":93,"w":0.388},{"p":94,"w":0.385},{"p":95,"w":0.383},{"p":96,"w":0.381},{"p":97,"w":0.381},{"p":98,"w":0.381},{"p":99,"w":0.38},{"p":100,"w":0.37}],"moments":[{"t":"0:07","sec":7,"kind":"drop","what":"The opening nine seconds shed 17.1% of arrivals, above the channel's 12.8% intro average (1.3x the channel's intro norm, 19,775 viewers)."},{"t":"2:56","sec":176,"kind":"peak","what":"Audience rises 2.1% and holds at 59.6%, with 2,703 viewers scrubbing back to this moment (57th percentile versus similar videos)."},{"t":"3:04","sec":184,"kind":"drop","what":"A shop-menu beat loses 6,999 viewers over eight seconds, running 1.5x the channel's typical stop rate for this position (9.8x the surrounding stop rate)."},{"t":"6:24","sec":384,"kind":"drop","what":"The Space-area transition sheds 6,790 viewers in eight seconds at 1.5x the channel's norm for this mark (16.9x the surrounding stop rate)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

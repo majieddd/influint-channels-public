@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -413,12 +441,12 @@ table.obs td.no{color:#ff8f8f}
       38:43 · 146,587 views ·
       42% still watching at the halfway mark · 
       3 drop-offs, 0 replay peaks
-       · retention pulled 2026-08-17
+       · retention pulled 2026-08-19
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video opens 15 points above the channel&#39;s 0:30 median (97.0% vs 82.0%), but a stalled tree-hunt at 28:39 leaks viewers even after the channel-best obby reveal at 16:16.</p>
+<p class="lede" style="margin:-14px 0 26px">This 38-minute video holds its opening better than 70 of 74 channel siblings, but a mid-video hunt through 66,000 trees costs 8,281 viewers in 23 seconds.</p>
 
 <div class="viewer">
   <div>
@@ -440,40 +468,40 @@ table.obs td.no{color:#ff8f8f}
     <h3>3 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:22</span><span class="kind">Drop-off</span></span>
-  <span class="what">The first 24 seconds shed 21.4% of the room while the premise is being restated (6.3x the surrounding stop rate, 40,831 viewers).</span>
+  <span class="what">The opening 24 seconds shed the first fifth of the audience as the premise gets re-explained after the title card (6.3x surrounding stop rate, 41,218 viewers, dropping 100% to 78.7%).</span>
   <span class="body">
-    <span class="lab">Why</span>The opener re-explains the goal the title already sold: &quot;we have to find 143 dumplings.&quot;
-    <span class="quote">“we have to find 143 dumplings”</span>
-    <span class="lab">The fix</span>Keep this intro — it holds 97.0% at 0:30 versus the channel&#39;s 82.0% median, beating 26 of 29 siblings.
-    <span class="lab">Why that works</span>Packaging promise is landing here; the loss matches the channel&#39;s 12.8% intro average, so surgery would risk a working opener.
+    <span class="lab">Why</span>The premise is restated after loading in: &quot;we just loaded into the game. There&#39;s easy ones medium hard insane mythic secret.&quot;
+    <span class="quote">“easy ones medium hard insane mythic secret”</span>
+    <span class="lab">The fix</span>Cut 0:14-0:22 and hard-join the title card straight into &quot;I see one right here pastel orange&quot; at 0:28.
+    <span class="lab">Why that works</span>The channel&#39;s intro cohort loses 14.6% on average and this instance held even — but the 30-second mark still beats 70 of 74 siblings by 15.2pp, so tightening the restated setup protects that lead.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">16:16</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 23-second beat drops 3.9% at nearly twice the channel&#39;s norm for a reveal moment (13.3x spike, 8,178 viewers, 1.9x channel norm).</span>
+  <span class="what">A 23-second stretch mid-video quits at more than twice the channel&#39;s rate for this position, bleeding audience from 48.9% to 45.0% (13.4x surrounding stop rate, 8,281 viewers, 2.2x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>The reveal stalls on a stuck-in-geometry aside before the obby lands: &quot;Wait, why am I stuck?&quot;
-    <span class="quote">“Wait, why am I stuck?”</span>
-    <span class="lab">The fix</span>Cut 16:16-16:26 and rejoin on &quot;Oh my god, it&#39;s a whole obby&quot; so the obby reveal hits without the checklist pause.
-    <span class="lab">Why that works</span>The obby is the payoff viewers came for; stripping the &quot;no dumplings and no dumplings&quot; recap protects the anticipation Joos says flattens the graph into a reveal.
+    <span class="lab">Why</span>The host loops on a save-and-check beat with dead air: &quot;Hopefully it saves. Okay, it did. Good. Great.&quot; then repeats &quot;Looks like I got all of the dumplings&quot; twice.
+    <span class="quote">“Hopefully it saves. Okay, it did”</span>
+    <span class="lab">The fix</span>Cut 16:11-16:26 and rejoin on &quot;let&#39;s lock in. I&#39;m just going to fly. Oh my god, it&#39;s a whole obby&quot; at 16:34.
+    <span class="lab">Why that works</span>Pacing is the flow of NEW information; the save confirmation and duplicated &quot;got all the dumplings&quot; line add zero progression, and this moment is 2.2x the channel norm rather than typical.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">28:39</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 23-second tree search bleeds 2.3% at three-quarters through the runtime (11.6x spike, 4,714 viewers).</span>
+  <span class="what">A 23-second tree hunt spikes local quitting sharply against its neighbours, though the raw rate stays under the channel&#39;s habit here (11.7x surrounding stop rate, 0.7x channel norm, 4,807 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>The host loops on aimless searching with no new information: &quot;there&#39;s literally 10,000 trees.&quot;
-    <span class="quote">“there&#39;s literally 10,000 trees”</span>
-    <span class="lab">The fix</span>Cut 28:33-29:02 down to one &quot;trees, trees&quot; beat and jump to the &quot;brown-roofed house&quot; hint.
-    <span class="lab">Why that works</span>Joos: kill repetition — verbal, visual, narrative. The stop rate here is actually 0.6x channel norm, so tighten rather than restructure.
+    <span class="lab">Why</span>The hunt stalls with no progression as the host lists the search space: &quot;there&#39;s about 66,000 trees in this game&quot; then &quot;literally 10,000 trees&quot; with repeated &quot;Trees, trees.&quot;
+    <span class="quote">“there&#39;s about 66,000 trees in this game”</span>
+    <span class="lab">The fix</span>Cut 28:42-28:56 and rejoin on &quot;and I died. Okay. You got to teleport me&quot; at 28:59.
+    <span class="lab">Why that works</span>Kill ALL repetition — visual, verbal, narrative; the tree-count restatement and &quot;Trees, trees&quot; loop are the exact pattern that flattens progression, and this beat is typical for the channel so trimming it lifts a known weak spot.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"htGFW7Ohs9g","durationSec":2323,"curve":[{"p":1,"w":0.97},{"p":2,"w":0.786},{"p":3,"w":0.742},{"p":4,"w":0.71},{"p":5,"w":0.688},{"p":6,"w":0.671},{"p":7,"w":0.664},{"p":8,"w":0.642},{"p":9,"w":0.631},{"p":10,"w":0.625},{"p":11,"w":0.61},{"p":12,"w":0.597},{"p":13,"w":0.59},{"p":14,"w":0.589},{"p":15,"w":0.578},{"p":16,"w":0.572},{"p":17,"w":0.567},{"p":18,"w":0.564},{"p":19,"w":0.558},{"p":20,"w":0.552},{"p":21,"w":0.547},{"p":22,"w":0.543},{"p":23,"w":0.538},{"p":24,"w":0.537},{"p":25,"w":0.529},{"p":26,"w":0.526},{"p":27,"w":0.521},{"p":28,"w":0.517},{"p":29,"w":0.511},{"p":30,"w":0.506},{"p":31,"w":0.501},{"p":32,"w":0.498},{"p":33,"w":0.496},{"p":34,"w":0.494},{"p":35,"w":0.498},{"p":36,"w":0.483},{"p":37,"w":0.481},{"p":38,"w":0.478},{"p":39,"w":0.476},{"p":40,"w":0.47},{"p":41,"w":0.467},{"p":42,"w":0.487},{"p":43,"w":0.448},{"p":44,"w":0.444},{"p":45,"w":0.44},{"p":46,"w":0.437},{"p":47,"w":0.432},{"p":48,"w":0.427},{"p":49,"w":0.424},{"p":50,"w":0.422},{"p":51,"w":0.426},{"p":52,"w":0.418},{"p":53,"w":0.416},{"p":54,"w":0.414},{"p":55,"w":0.412},{"p":56,"w":0.409},{"p":57,"w":0.407},{"p":58,"w":0.406},{"p":59,"w":0.405},{"p":60,"w":0.416},{"p":61,"w":0.403},{"p":62,"w":0.402},{"p":63,"w":0.398},{"p":64,"w":0.395},{"p":65,"w":0.393},{"p":66,"w":0.392},{"p":67,"w":0.39},{"p":68,"w":0.388},{"p":69,"w":0.386},{"p":70,"w":0.387},{"p":71,"w":0.381},{"p":72,"w":0.379},{"p":73,"w":0.378},{"p":74,"w":0.39},{"p":75,"w":0.367},{"p":76,"w":0.365},{"p":77,"w":0.366},{"p":78,"w":0.361},{"p":79,"w":0.36},{"p":80,"w":0.358},{"p":81,"w":0.358},{"p":82,"w":0.355},{"p":83,"w":0.352},{"p":84,"w":0.349},{"p":85,"w":0.348},{"p":86,"w":0.35},{"p":87,"w":0.343},{"p":88,"w":0.342},{"p":89,"w":0.341},{"p":90,"w":0.34},{"p":91,"w":0.338},{"p":92,"w":0.337},{"p":93,"w":0.345},{"p":94,"w":0.334},{"p":95,"w":0.332},{"p":96,"w":0.33},{"p":97,"w":0.331},{"p":98,"w":0.332},{"p":99,"w":0.333},{"p":100,"w":0.334}],"moments":[{"t":"0:22","sec":22,"kind":"drop","what":"The first 24 seconds shed 21.4% of the room while the premise is being restated (6.3x the surrounding stop rate, 40,831 viewers)."},{"t":"16:16","sec":976,"kind":"drop","what":"A 23-second beat drops 3.9% at nearly twice the channel's norm for a reveal moment (13.3x spike, 8,178 viewers, 1.9x channel norm)."},{"t":"28:39","sec":1719,"kind":"drop","what":"A 23-second tree search bleeds 2.3% at three-quarters through the runtime (11.6x spike, 4,714 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"htGFW7Ohs9g","durationSec":2323,"curve":[{"p":1,"w":0.97},{"p":2,"w":0.787},{"p":3,"w":0.743},{"p":4,"w":0.711},{"p":5,"w":0.689},{"p":6,"w":0.672},{"p":7,"w":0.665},{"p":8,"w":0.643},{"p":9,"w":0.633},{"p":10,"w":0.626},{"p":11,"w":0.612},{"p":12,"w":0.599},{"p":13,"w":0.592},{"p":14,"w":0.591},{"p":15,"w":0.579},{"p":16,"w":0.573},{"p":17,"w":0.569},{"p":18,"w":0.566},{"p":19,"w":0.56},{"p":20,"w":0.554},{"p":21,"w":0.549},{"p":22,"w":0.545},{"p":23,"w":0.54},{"p":24,"w":0.539},{"p":25,"w":0.531},{"p":26,"w":0.528},{"p":27,"w":0.523},{"p":28,"w":0.519},{"p":29,"w":0.513},{"p":30,"w":0.508},{"p":31,"w":0.503},{"p":32,"w":0.5},{"p":33,"w":0.498},{"p":34,"w":0.496},{"p":35,"w":0.5},{"p":36,"w":0.486},{"p":37,"w":0.483},{"p":38,"w":0.48},{"p":39,"w":0.478},{"p":40,"w":0.473},{"p":41,"w":0.469},{"p":42,"w":0.489},{"p":43,"w":0.45},{"p":44,"w":0.446},{"p":45,"w":0.442},{"p":46,"w":0.439},{"p":47,"w":0.434},{"p":48,"w":0.43},{"p":49,"w":0.427},{"p":50,"w":0.425},{"p":51,"w":0.429},{"p":52,"w":0.42},{"p":53,"w":0.418},{"p":54,"w":0.416},{"p":55,"w":0.414},{"p":56,"w":0.412},{"p":57,"w":0.41},{"p":58,"w":0.409},{"p":59,"w":0.407},{"p":60,"w":0.419},{"p":61,"w":0.405},{"p":62,"w":0.405},{"p":63,"w":0.4},{"p":64,"w":0.397},{"p":65,"w":0.396},{"p":66,"w":0.394},{"p":67,"w":0.392},{"p":68,"w":0.391},{"p":69,"w":0.388},{"p":70,"w":0.389},{"p":71,"w":0.384},{"p":72,"w":0.381},{"p":73,"w":0.38},{"p":74,"w":0.392},{"p":75,"w":0.37},{"p":76,"w":0.368},{"p":77,"w":0.368},{"p":78,"w":0.364},{"p":79,"w":0.363},{"p":80,"w":0.36},{"p":81,"w":0.361},{"p":82,"w":0.357},{"p":83,"w":0.354},{"p":84,"w":0.351},{"p":85,"w":0.35},{"p":86,"w":0.352},{"p":87,"w":0.345},{"p":88,"w":0.344},{"p":89,"w":0.343},{"p":90,"w":0.342},{"p":91,"w":0.34},{"p":92,"w":0.34},{"p":93,"w":0.348},{"p":94,"w":0.336},{"p":95,"w":0.334},{"p":96,"w":0.333},{"p":97,"w":0.333},{"p":98,"w":0.334},{"p":99,"w":0.335},{"p":100,"w":0.336}],"moments":[{"t":"0:22","sec":22,"kind":"drop","what":"The opening 24 seconds shed the first fifth of the audience as the premise gets re-explained after the title card (6.3x surrounding stop rate, 41,218 viewers, dropping 100% to 78.7%)."},{"t":"16:16","sec":976,"kind":"drop","what":"A 23-second stretch mid-video quits at more than twice the channel's rate for this position, bleeding audience from 48.9% to 45.0% (13.4x surrounding stop rate, 8,281 viewers, 2.2x channel norm)."},{"t":"28:39","sec":1719,"kind":"drop","what":"A 23-second tree hunt spikes local quitting sharply against its neighbours, though the raw rate stays under the channel's habit here (11.7x surrounding stop rate, 0.7x channel norm, 4,807 viewers)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

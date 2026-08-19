@@ -123,6 +123,34 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
 .freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
 .freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
                   letter-spacing:.16em; color:var(--teal); font-weight:600}
@@ -412,13 +440,13 @@ table.obs td.no{color:#ff8f8f}
       <a href="../UCvEtdkmA1aR9Tt7iXIiQXbw.html">MoreNizarisaqt</a> ·
       11:33 · 185,167 views ·
       52% still watching at the halfway mark · 
-      7 drop-offs, 2 replay peaks
-       · retention pulled 2026-08-17
+      3 drop-offs, 2 replay peaks
+       · retention pulled 2026-08-19
     </p>
   </div>
-  <span class="badge" style="color:var(--teal)">DEEP DIVE</span>
+  
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video holds the middle unusually well (2 of 30 at halfway) but bleeds hard at the second tower&#39;s reset (8:12) and never recovers.</p>
+<p class="lede" style="margin:-14px 0 26px">This video holds the middle better than most of the channel (rank 7 of 75 at halfway) but opens 6.5pp under the channel&#39;s own 15-second median.</p>
 
 <div class="viewer">
   <div>
@@ -437,109 +465,65 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <div class="moments" id="moments">
-    <h3>9 flagged moments</h3>
+    <h3>5 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:07</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening seven seconds shed a fifth of the room before the first choice lands (19.5% lost, 20,718 viewers).</span>
+  <span class="what">The opening seven seconds shed a fifth of the room, leaving 15s retention 6.5pp under the channel&#39;s own median (21,291 viewers, 8 of 74 beaten).</span>
   <span class="body">
-    <span class="lab">Why</span>The open explains the game instead of dropping into it: &quot;Today, we&#39;re going to be playing Would You Rather baby edition.&quot;
-    <span class="quote">“we&#39;re going to be playing Would You Rather baby edition”</span>
-    <span class="lab">The fix</span>Cut 0:00-0:06 and open cold on the 0:22 line &quot;Become a parent. What? If I get one win, say less.&quot;
-    <span class="lab">Why that works</span>Intro loss runs 1.5x the channel average for intros; the premise is already sold by the thumbnail, so restating it burns the room.
+    <span class="lab">Why</span>The open restates what the thumbnail already sold and walks through menu choices: &quot;choose a baby. Baby girl or baby boy?&quot;
+    <span class="quote">“choose a baby. Baby girl”</span>
+    <span class="lab">The fix</span>Cut 0:00-0:14 and cold-open on the first would-you-rather dilemma with the stinky-trail visual already on screen.
+    <span class="lab">Why that works</span>The channel&#39;s best intro in cohort holds 100% by skipping premise-restatement; this open loses 1.3x the channel&#39;s own intro average.
     
   </span>
 </button>
-<button class="m drop" data-i="1" type="button">
-  <span class="h"><span class="ts">1:58</span><span class="kind">Drop-off</span></span>
-  <span class="what">A small but above-cohort dip while cycling through pants options (3.2x surrounding stop rate, 2,445 viewers).</span>
+<button class="m peak" data-i="1" type="button">
+  <span class="h"><span class="ts">7:17</span><span class="kind">Viewers came back</span></span>
+  <span class="what">A small rewind lift on the first tower&#39;s outfit reveal, coming in just before the applause beat (2,523 viewers regained, audience 50.3%).</span>
   <span class="body">
-    <span class="lab">Why</span>The clip stalls on menu-scrolling with no new stake: &quot;should we get the jeans 2K... Or baggy pants? Hmm.&quot;
-    <span class="quote">“should we get the jeans 2K”</span>
-    <span class="lab">The fix</span>Tighten 1:56-2:05 to two beats: the pants pick and the &quot;Oh, it&#39;s so mid&quot; reaction, dropping the keyboard-test aside.
-    <span class="lab">Why that works</span>Pacing is the flow of new information — a wardrobe menu with no consequence lets the viewer feel the loop repeating.
+    <span class="lab">Why</span>Viewers rewind the headphones swap moment: &quot;You&#39;re actually looking good, my boy.&quot;
+    <span class="quote">“actually looking good, my boy”</span>
+    <span class="lab">Do more of this</span>Hold the finished outfit off-screen until 7:38 and cut to the full reveal with the applause sting as a single beat.
+    <span class="lab">Why that works</span>Hayden: withhold the finished thing so the reveal earns rewinds — the replay shows this beat already does.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
-  <span class="h"><span class="ts">3:00</span><span class="kind">Drop-off</span></span>
-  <span class="what">A minor sag as the first outfit finishes assembling (2.1x surrounding stop rate, 1,242 viewers).</span>
-  <span class="body">
-    <span class="lab">Why</span>The moment is filler between choices: &quot;Picture. Picture. Picture. Uh-huh. Okay. Okay.&quot;
-    <span class="quote">“Picture. Picture. Picture. Uh-huh.”</span>
-    <span class="lab">The fix</span>Cut 3:02-3:09 and jump from &quot;runaway? What?&quot; straight into the zip-up hoodie pick at 3:16.
-    <span class="lab">Why that works</span>Something should visibly change every five seconds; a photo pose with no reveal is dead air the graph reflects.
-    
-  </span>
-</button>
-<button class="m drop" data-i="3" type="button">
-  <span class="h"><span class="ts">4:30</span><span class="kind">Drop-off</span></span>
-  <span class="what">A small dip mid-first-run as the pants search dead-ends (2.9x surrounding stop rate, 2,088 viewers).</span>
-  <span class="body">
-    <span class="lab">Why</span>The bit repeats its own complaint: &quot;we still need to change the pants, bro... No pants. We got to keep this trash pants.&quot;
-    <span class="quote">“we still need to change the pants, bro”</span>
-    <span class="lab">The fix</span>Compress 4:12-4:37 into one beat: the &quot;Why is there no pants options?&quot; line, then jump to &quot;Take your pictures.&quot;
-    <span class="lab">Why that works</span>Kill verbal repetition — the same joke stated three ways is the classic cause of a mid-video slow bleed.
-    
-  </span>
-</button>
-<button class="m peak" data-i="4" type="button">
-  <span class="h"><span class="ts">7:17</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Viewers scrub back as the first tower&#39;s outfit locks in (2.4% of the audience regained, 2,532 viewers).</span>
-  <span class="body">
-    <span class="lab">Why</span>The rewind sits on the headphones swap that turns the look around: &quot;You&#39;re actually looking good, my boy.&quot;
-    <span class="quote">“You&#39;re actually looking good, my boy”</span>
-    <span class="lab">Do more of this</span>Tease this exact frame at 0:22 as the intro&#39;s promise — cut to the finished &quot;bad boy shirt, doggy on the front&quot; outfit for one second.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; front-loading it as the intro&#39;s promise gives the opener a concrete goal to pull toward.
-    
-  </span>
-</button>
-<button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">7:24</span><span class="kind">Drop-off</span></span>
-  <span class="what">A small dip as the first tower&#39;s outfit reveal wraps (23.1x surrounding stop rate, 7,352 viewers).</span>
+  <span class="what">A brief dip on the outfit-finish beat, but stop rate here actually sits under the channel&#39;s own norm for this position (7,363 viewers, 0.9x channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>The reveal is stated then re-stated: &quot;This is your brand new outfit. Way better than before. Look at him with the skateboard, headphones, bad boy shirt, doggy on the front.&quot;
-    <span class="quote">“This is your brand new outfit. Way better than before.”</span>
-    <span class="lab">The fix</span>Cut 7:30-7:42 after the applause SFX and hard-cut to &quot;Now, supposedly there&#39;s another tower.&quot;
-    <span class="lab">Why that works</span>Retention drops the moment tension is spent; listing the outfit&#39;s parts after the payoff releases viewers before the next hook lands.
+    <span class="lab">Why</span>The moment lingers on skateboard/dog commentary just before the reveal: &quot;if I could just take that skateboard off.&quot;
+    <span class="quote">“if I could just take”</span>
+    <span class="lab">The fix</span>Trim 7:24-7:30 to a single line and cut straight to the applause and &quot;10 out of 10&quot; reveal.
+    <span class="lab">Why that works</span>This is typical for the channel at this position, so the win is tightening pacing into the reveal, not surgery.
     
   </span>
 </button>
-<button class="m peak" data-i="6" type="button">
+<button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">8:05</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A second rewind as tower two&#39;s path choice hits (3.0% of the audience regained, 2,991 viewers).</span>
+  <span class="what">The audience ticks up 3.1% on a single sample as the second tower&#39;s routing choice lands (3,192 viewers regained, audience 47.4%).</span>
   <span class="body">
-    <span class="lab">Why</span>The pull-back lands on the decision line: &quot;be going left or right. Left never fails. Go left.&quot;
-    <span class="quote">“Left never fails. Go left.”</span>
-    <span class="lab">Do more of this</span>Add a riser under 7:59-8:07 starting at &quot;I kind of want the fart gun&quot; and holding through the left/right pick.
-    <span class="lab">Why that works</span>Anticipatory audio ~20 seconds before a moment viewers already return to flattens retention through the buildup and holds more of the room.
+    <span class="lab">Why</span>Viewers scrub back to the shower-then-direction choice: &quot;Now, be going left or right. Left never fails.&quot;
+    <span class="quote">“left or right. Left never”</span>
+    <span class="lab">Do more of this</span>Front-load the second-tower branching choice earlier and add a riser 20 seconds before each left/right decision.
+    <span class="lab">Why that works</span>Joos: risers before key moments flatten retention through buildup, and the replay proves the branching choice is the asset viewers rewind for.
     
   </span>
 </button>
-<button class="m drop" data-i="7" type="button">
+<button class="m drop" data-i="4" type="button">
   <span class="h"><span class="ts">8:12</span><span class="kind">Drop-off</span></span>
-  <span class="what">The biggest mid-video bleed of the run, right as tower two restarts the loop (4.1x the channel norm here, 11,977 viewers).</span>
+  <span class="what">A seven-second beat quits at 4.9x the channel&#39;s norm here, well above nearby moments (12,551 viewers, spikeRatio 19.9x).</span>
   <span class="body">
-    <span class="lab">Why</span>The bit signals a full reset the audience just watched: &quot;We are back to being a stinky boy... This time, instead of taking a bubble bath, let&#39;s take a shower.&quot;
-    <span class="quote">“We are back to being a stinky boy”</span>
-    <span class="lab">The fix</span>Cross-cut 7:50-8:19 with the tower-two ending: show the final tower-two outfit up front, then flash back to the choices.
-    <span class="lab">Why that works</span>Sentence connectivity breaks when the video visibly restarts — front-loading the new payoff keeps a suspense layer live through the repeat.
+    <span class="lab">Why</span>The bit stalls on a repeated audio complaint mid-dress-up: &quot;the keyboard noise is just is is not it.&quot;
+    <span class="quote">“keyboard noise is just is”</span>
+    <span class="lab">The fix</span>Cut 8:16-8:19 to remove the keyboard-noise aside and rejoin on the &quot;big cute adorable eyes or sleepy tired boy face&quot; choice.
+    <span class="lab">Why that works</span>Joos: kill repetition — the line repeats within three seconds and stalls the flow of new choices that drives this format.
     
-  </span>
-</button>
-<button class="m drop" data-i="8" type="button">
-  <span class="h"><span class="ts">10:38</span><span class="kind">Drop-off</span></span>
-  <span class="what">A late tick above the channel&#39;s outro norm during the final pants hunt (1.7x the channel norm here, 722 viewers).</span>
-  <span class="body">
-    <span class="lab">Why</span>The joke has been paid twice already: &quot;Dude, I need to change my pants... There&#39;s going to be no pants, is there?&quot;
-    <span class="quote">“Dude, I need to change my pants”</span>
-    <span class="lab">The fix</span>Trial cutting 10:38-10:48 and jumping from &quot;we just need to change the pants&quot; to the &quot;Mute&quot; reveal at 11:07.
-    <span class="lab">Why that works</span>Outro loss sits at the channel average, but the pants-callback repeats itself; trimming one weak second late can shift a whole video&#39;s retention.
-    <span class="lab">Check first</span><span class="warn">Verify the final outfit reveal still reads without the pants-hunt setup; if the beat lands weaker, restore the 10:45-10:48 lines.</span>
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"UR45HsG-mY8","durationSec":693,"curve":[{"p":1,"w":1.001},{"p":2,"w":0.904},{"p":3,"w":0.848},{"p":4,"w":0.807},{"p":5,"w":0.789},{"p":6,"w":0.772},{"p":7,"w":0.752},{"p":8,"w":0.741},{"p":9,"w":0.729},{"p":10,"w":0.724},{"p":11,"w":0.715},{"p":12,"w":0.707},{"p":13,"w":0.701},{"p":14,"w":0.692},{"p":15,"w":0.688},{"p":16,"w":0.691},{"p":17,"w":0.685},{"p":18,"w":0.669},{"p":19,"w":0.663},{"p":20,"w":0.656},{"p":21,"w":0.651},{"p":22,"w":0.643},{"p":23,"w":0.635},{"p":24,"w":0.629},{"p":25,"w":0.627},{"p":26,"w":0.623},{"p":27,"w":0.612},{"p":28,"w":0.606},{"p":29,"w":0.603},{"p":30,"w":0.6},{"p":31,"w":0.593},{"p":32,"w":0.587},{"p":33,"w":0.583},{"p":34,"w":0.577},{"p":35,"w":0.573},{"p":36,"w":0.565},{"p":37,"w":0.556},{"p":38,"w":0.552},{"p":39,"w":0.56},{"p":40,"w":0.546},{"p":41,"w":0.542},{"p":42,"w":0.539},{"p":43,"w":0.538},{"p":44,"w":0.536},{"p":45,"w":0.535},{"p":46,"w":0.533},{"p":47,"w":0.53},{"p":48,"w":0.528},{"p":49,"w":0.526},{"p":50,"w":0.523},{"p":51,"w":0.521},{"p":52,"w":0.518},{"p":53,"w":0.514},{"p":54,"w":0.512},{"p":55,"w":0.51},{"p":56,"w":0.508},{"p":57,"w":0.505},{"p":58,"w":0.504},{"p":59,"w":0.5},{"p":60,"w":0.497},{"p":61,"w":0.495},{"p":62,"w":0.493},{"p":63,"w":0.504},{"p":64,"w":0.512},{"p":65,"w":0.476},{"p":66,"w":0.474},{"p":67,"w":0.472},{"p":68,"w":0.466},{"p":69,"w":0.461},{"p":70,"w":0.474},{"p":71,"w":0.473},{"p":72,"w":0.415},{"p":73,"w":0.405},{"p":74,"w":0.395},{"p":75,"w":0.387},{"p":76,"w":0.376},{"p":77,"w":0.365},{"p":78,"w":0.357},{"p":79,"w":0.352},{"p":80,"w":0.345},{"p":81,"w":0.34},{"p":82,"w":0.337},{"p":83,"w":0.335},{"p":84,"w":0.331},{"p":85,"w":0.329},{"p":86,"w":0.327},{"p":87,"w":0.323},{"p":88,"w":0.32},{"p":89,"w":0.32},{"p":90,"w":0.317},{"p":91,"w":0.314},{"p":92,"w":0.31},{"p":93,"w":0.304},{"p":94,"w":0.3},{"p":95,"w":0.299},{"p":96,"w":0.299},{"p":97,"w":0.298},{"p":98,"w":0.294},{"p":99,"w":0.282},{"p":100,"w":0.267}],"moments":[{"t":"0:07","sec":7,"kind":"drop","what":"The opening seven seconds shed a fifth of the room before the first choice lands (19.5% lost, 20,718 viewers)."},{"t":"1:58","sec":118,"kind":"drop","what":"A small but above-cohort dip while cycling through pants options (3.2x surrounding stop rate, 2,445 viewers)."},{"t":"3:00","sec":180,"kind":"drop","what":"A minor sag as the first outfit finishes assembling (2.1x surrounding stop rate, 1,242 viewers)."},{"t":"4:30","sec":270,"kind":"drop","what":"A small dip mid-first-run as the pants search dead-ends (2.9x surrounding stop rate, 2,088 viewers)."},{"t":"7:17","sec":437,"kind":"peak","what":"Viewers scrub back as the first tower's outfit locks in (2.4% of the audience regained, 2,532 viewers)."},{"t":"7:24","sec":444,"kind":"drop","what":"A small dip as the first tower's outfit reveal wraps (23.1x surrounding stop rate, 7,352 viewers)."},{"t":"8:05","sec":485,"kind":"peak","what":"A second rewind as tower two's path choice hits (3.0% of the audience regained, 2,991 viewers)."},{"t":"8:12","sec":492,"kind":"drop","what":"The biggest mid-video bleed of the run, right as tower two restarts the loop (4.1x the channel norm here, 11,977 viewers)."},{"t":"10:38","sec":638,"kind":"drop","what":"A late tick above the channel's outro norm during the final pants hunt (1.7x the channel norm here, 722 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"UR45HsG-mY8","durationSec":693,"curve":[{"p":1,"w":1.001},{"p":2,"w":0.904},{"p":3,"w":0.847},{"p":4,"w":0.806},{"p":5,"w":0.788},{"p":6,"w":0.772},{"p":7,"w":0.752},{"p":8,"w":0.74},{"p":9,"w":0.729},{"p":10,"w":0.723},{"p":11,"w":0.715},{"p":12,"w":0.707},{"p":13,"w":0.701},{"p":14,"w":0.692},{"p":15,"w":0.687},{"p":16,"w":0.69},{"p":17,"w":0.684},{"p":18,"w":0.668},{"p":19,"w":0.663},{"p":20,"w":0.656},{"p":21,"w":0.65},{"p":22,"w":0.643},{"p":23,"w":0.634},{"p":24,"w":0.629},{"p":25,"w":0.626},{"p":26,"w":0.622},{"p":27,"w":0.611},{"p":28,"w":0.605},{"p":29,"w":0.602},{"p":30,"w":0.6},{"p":31,"w":0.593},{"p":32,"w":0.586},{"p":33,"w":0.583},{"p":34,"w":0.576},{"p":35,"w":0.572},{"p":36,"w":0.564},{"p":37,"w":0.555},{"p":38,"w":0.551},{"p":39,"w":0.559},{"p":40,"w":0.545},{"p":41,"w":0.541},{"p":42,"w":0.538},{"p":43,"w":0.537},{"p":44,"w":0.535},{"p":45,"w":0.535},{"p":46,"w":0.532},{"p":47,"w":0.529},{"p":48,"w":0.527},{"p":49,"w":0.525},{"p":50,"w":0.522},{"p":51,"w":0.52},{"p":52,"w":0.517},{"p":53,"w":0.513},{"p":54,"w":0.511},{"p":55,"w":0.509},{"p":56,"w":0.507},{"p":57,"w":0.505},{"p":58,"w":0.503},{"p":59,"w":0.499},{"p":60,"w":0.496},{"p":61,"w":0.494},{"p":62,"w":0.492},{"p":63,"w":0.503},{"p":64,"w":0.51},{"p":65,"w":0.476},{"p":66,"w":0.474},{"p":67,"w":0.471},{"p":68,"w":0.465},{"p":69,"w":0.46},{"p":70,"w":0.474},{"p":71,"w":0.473},{"p":72,"w":0.414},{"p":73,"w":0.403},{"p":74,"w":0.394},{"p":75,"w":0.385},{"p":76,"w":0.375},{"p":77,"w":0.364},{"p":78,"w":0.356},{"p":79,"w":0.351},{"p":80,"w":0.344},{"p":81,"w":0.339},{"p":82,"w":0.336},{"p":83,"w":0.334},{"p":84,"w":0.33},{"p":85,"w":0.328},{"p":86,"w":0.325},{"p":87,"w":0.322},{"p":88,"w":0.319},{"p":89,"w":0.319},{"p":90,"w":0.316},{"p":91,"w":0.313},{"p":92,"w":0.308},{"p":93,"w":0.303},{"p":94,"w":0.299},{"p":95,"w":0.298},{"p":96,"w":0.298},{"p":97,"w":0.297},{"p":98,"w":0.293},{"p":99,"w":0.281},{"p":100,"w":0.266}],"moments":[{"t":"0:07","sec":7,"kind":"drop","what":"The opening seven seconds shed a fifth of the room, leaving 15s retention 6.5pp under the channel's own median (21,291 viewers, 8 of 74 beaten)."},{"t":"7:17","sec":437,"kind":"peak","what":"A small rewind lift on the first tower's outfit reveal, coming in just before the applause beat (2,523 viewers regained, audience 50.3%)."},{"t":"7:24","sec":444,"kind":"drop","what":"A brief dip on the outfit-finish beat, but stop rate here actually sits under the channel's own norm for this position (7,363 viewers, 0.9x channel norm)."},{"t":"8:05","sec":485,"kind":"peak","what":"The audience ticks up 3.1% on a single sample as the second tower's routing choice lands (3,192 viewers regained, audience 47.4%)."},{"t":"8:12","sec":492,"kind":"drop","what":"A seven-second beat quits at 4.9x the channel's norm here, well above nearby moments (12,551 viewers, spikeRatio 19.9x)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

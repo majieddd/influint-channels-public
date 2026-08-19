@@ -254,9 +254,16 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
-.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}
+/* Available to screen readers, invisible on screen. The causal rung's meaning
+   used to exist only in a title attribute, which never fires on touch and
+   cannot be focused. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
 .rej-why{color:#ff8f8f}
+.catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
+.capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
@@ -276,7 +283,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .ledger .lever .dir{color:#8a9a9a}
 .ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
 /* Wide content scrolls inside its own box; the page body never scrolls sideways. */
-.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+/* A scroll container with no visible edge reads as a clipped table, so it gets
+   a fade on the right and a focus ring for keyboard users. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0;
+  background:linear-gradient(to left,rgba(141,216,211,.13),transparent 2.2rem)}
+.obswrap:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
 table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
   border-bottom:1px solid #223}
@@ -311,6 +322,11 @@ table.obs td.no{color:#ff8f8f}
 .claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
 .nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
 .legacy i{color:#8a9a9a}
+.qbox.live{border-left:2px solid #7a5a1a;background:#1a1408}
+.qbox.live>b{color:#ffb85c}
+.qbox.settled{border-left:2px solid #2b4a4a;background:#0d1616}
+.qbox.settled>b{color:#7fb0b0}
+.qbox.settled .q{color:#cfe;margin-top:.3rem}
 .contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
   border-left:2px solid #7a5a1a}
 .contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
@@ -390,7 +406,7 @@ table.obs td.no{color:#ff8f8f}
 </header>
 
 <h1><span class="pill s-cand">Candidate Law</span></h1>
-<p class="lede intel-hero">The lever behind it has been MEASURED and a real effect showed up. What it still needs is repetition — more channels, more runs — and a human signature. Every analysis run re-tests it, so this number moves in both directions.</p>
+<p class="lede intel-hero">One rung below settled. Most arrive by measurement — the lever was quantified and a real effect showed up — and what they still need is repetition across more channels plus a human signature. A few arrive by demotion: a signed Law whose evidence stopped holding drops back here and must be re-signed. Every card states which, and every analysis run re-tests the measurable ones, so this number moves in both directions.</p>
 <div class="intel-stats">
   <div><div class="v">4</div><div class="k">Claims at this standing</div></div>
   <div><div class="v">4</div><div class="k">General</div></div>
@@ -405,13 +421,14 @@ panel in the corner when you are done.</p>
     <span class="pill s-cand">Candidate Law</span>
     <span class="cat">retention</span>
     
-    <span class="cat">· checked across 6 channels</span>
+    <span class="cat">· earlier check spanned 6 channels</span>
     
     
   </div>
   <div class="strength">
     <span class="grade g-moderate">moderate</span>
     <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
     <span class="num">held 100% of 2 measurements</span>
     <span class="num">2 channels</span>
   </div>
@@ -432,7 +449,7 @@ panel in the corner when you are done.</p>
              <span class="dir">(the claim predicts this goes up)</span></p>
     <p class="qline">The question put to the data: <i>Is the opening of a video its single costliest stretch?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Share of videos whose single costliest flagged drop falls in the first 5% of the runtime.</p>
-    <div class="obswrap">
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
@@ -451,6 +468,7 @@ panel in the corner when you are done.</p>
       </tr></tbody>
       </table>
     </div>
+    
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are proportions, running from 0 to 1.</p>
@@ -460,8 +478,8 @@ panel in the corner when you are done.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Supported:</b> The largest ABSOLUTE per-sample drop falls inside the first 5% of runtime for 116 of 119 videos (97%). The largest HAZARD RATE falls in the first 5% for 89 of 119 (75%), with the runner-up bucket being the final 5% (9 videos). Median hazard by band is monotone away from the opening: 1-5% band 7.0-13.1% per sample, 6-15% band 1.1-2.4%, 16-30% band 0.4-1.1%.</p>
              <p class="caveat">Caveat: &#39;First 5% of runtime&#39; is 60-155 seconds on these videos, not &#39;the first frame&#39;. Our resolution cannot distinguish frame 1 from second 30, so what is confirmed is that the opening BLOCK carries by far the biggest single loss — the claim&#39;s prescriptive half (that the first frame must deliver the thumbnail&#39;s promise) is untestable here since we do not analyse thumbnails or frames.</p>
            </div>
@@ -476,13 +494,14 @@ panel in the corner when you are done.</p>
     <span class="pill s-cand">Candidate Law</span>
     <span class="cat">storytelling</span>
     
-    <span class="cat">· checked across 6 channels</span>
+    <span class="cat">· earlier check spanned 6 channels</span>
     
     
   </div>
   <div class="strength">
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
     <span class="num">held 50% of 2 measurements</span>
     <span class="num">2 channels</span>
   </div>
@@ -503,7 +522,7 @@ panel in the corner when you are done.</p>
              <span class="dir">(the claim predicts this goes down)</span></p>
     <p class="qline">The question put to the data: <i>Does resolving the video&#39;s payoff earlier cost the back half its audience?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Spearman of where the payoff lands (percent through) against the share of the audience present at that point still watching 20% of the runtime later.</p>
-    <div class="obswrap">
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
@@ -522,6 +541,7 @@ panel in the corner when you are done.</p>
       </tr></tbody>
       </table>
     </div>
+    
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are Spearman rank correlations, running from -1 to +1.</p>
@@ -533,8 +553,8 @@ panel in the corner when you are done.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Checked:</b> Only Channel D carries enough question titles to test (6 vs 24). Median largest second-half spike: 6.4% for question-titled videos vs 7.0% for the rest — no difference, and if anything slightly smaller. Channel C has 1 question title, Channel E, Channel A, Channel F and Channel G have zero.</p>
              <p class="caveat">Caveat: Six videos on one channel. And the proxy is weak in a specific way: a question in the TITLE is not the same as the video answering its headline question early, which is what the claim is about. The real test needs the transcript timestamp where the title&#39;s question is answered — we do not store it — and then a check that the largest second-half spike falls within 60s of it more often than chance.</p>
            </div>
@@ -549,13 +569,14 @@ panel in the corner when you are done.</p>
     <span class="pill s-cand">Candidate Law</span>
     <span class="cat">analytics</span>
     
-    <span class="cat">· checked across 6 channels</span>
+    <span class="cat">· earlier check spanned 6 channels</span>
     
     
   </div>
   <div class="strength">
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
     <span class="num">held 57% of 7 measurements</span>
     <span class="num">7 channels</span>
   </div>
@@ -576,7 +597,7 @@ panel in the corner when you are done.</p>
              <span class="dir">(the claim predicts this goes up)</span></p>
     <p class="qline">The question put to the data: <i>Do longer videos earn more or fewer first-28-day views?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Spearman of runtime against first-28-day views.</p>
-    <div class="obswrap">
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
@@ -630,6 +651,7 @@ panel in the corner when you are done.</p>
       </tr></tbody>
       </table>
     </div>
+    
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are Spearman rank correlations, running from -1 to +1.</p>
@@ -640,8 +662,8 @@ panel in the corner when you are done.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Checked:</b> (a) rho(duration, views) positive in 5/6 channels (+0.12 to +0.36), negative only for Channel G (-0.19); pooled +0.23. (b) Longest quartile beats shortest quartile on median 28d views in 5/6: Channel C 426k vs 282k, Channel D 71k vs 44k, Channel E 617k vs 508k, Channel A 304k vs 214k, Channel F 943k vs 618k; Channel G is the exception (485k vs 641k). (c) Corpus rho(duration, outlier score): maker-builds +0.10 (n=330), motorcycle +0.04 (n=406), roblox -0.08 (n=378).</p>
              <p class="caveat">Caveat: [superseded] computed on the age-confounded outlier score; 6 of 15 title-feature effects flip sign under age control, so this result cannot be distinguished from accumulation bias. Re-test now that scoring is age-normalised. Strong selection confound: creators choose length to fit the material, so a big ambitious build gets both more minutes and more interest. The corpus test — which removes channel-size effects — finds essentially NOTHING (rho +0.10 / +0.04 / -0.08), which is the honest reading: length is not a penalty, but it is also not a lever. The claim&#39;s own evidence (&#39;longest curves were disproportionately high-view&#39;) is exactly the confounded within-channel version.</p>
            </div>
@@ -655,14 +677,15 @@ panel in the corner when you are done.</p>
     <span class="pill s-cand">Candidate Law</span>
     <span class="cat">analytics</span>
     
-    <span class="cat">· checked across 6 channels</span>
+    <span class="cat">· earlier check spanned 6 channels</span>
     
     <span class="pill s-contested">Contested</span>
   </div>
   
   <div class="txt">Within a channel, videos with the HIGHEST view counts systematically sit BELOW the channel&#39;s average retention, because wider reach pulls in newer, less sticky viewers — so falling retention on a breakout is expected, not a defect.</div>
   <div class="src">Source: internal strategy session</div>
-  <div class="qbox"><b>What would settle it</b><p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
+  <div class="qbox live"><b>Contested &mdash; what would settle it</b>
+      <p>Is the video&#39;s retention high in ABSOLUTE terms, or high as a RESIDUAL — above what the channel&#39;s own retention-versus-views relationship predicts at that view count? Only the residual carries information; the absolute number is confounded by exactly the mechanism claim B names. OUR DATA SETTLES THIS: rank correlation between retention-at-50% and first-28d views is -0.45 (Channel C), -0.51 (Channel D), -0.85 (Channel E), -0.47 (Channel A), -0.89 (Channel F), +0.07 (Channel G) — negative on 5 of 6 channels, strongly so on the two small-n maker channels. The repackaging rule must therefore be re-specified as &#39;retention above the channel&#39;s fitted expectation at that view count&#39;, and the existing verdict table in our own pipeline should be checked against this.</p></div>
   
   <div class="review" data-id="0bbd52b4777e">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -673,18 +696,18 @@ panel in the corner when you are done.</p>
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so this rung was reached through earlier manual checks rather than the measurement ledger.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Supported:</b> 6/6 channels: top-view video below channel mean APV (Channel C 24.8% vs 46.7%, Channel D 23.9% vs 30.8%, Channel E 25.0% vs 31.6%, Channel A 21.9% vs 41.4%, Channel F 33.1% vs 40.0%, Channel G 42.8% vs 43.6%). Note Channel G is a hair below, not meaningfully below.</p>
              <p class="caveat">Caveat: Channel G&#39; gap is 0.8pp — effectively a tie, so &#39;systematically&#39; is really 5 clear channels plus one null. Correlational; the causal story (reach imports weaker viewers) is not observable in our data.</p>
            </div>

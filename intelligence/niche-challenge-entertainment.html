@@ -254,9 +254,16 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
-.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}
+/* Available to screen readers, invisible on screen. The causal rung's meaning
+   used to exist only in a title attribute, which never fires on touch and
+   cannot be focused. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
 .rej-why{color:#ff8f8f}
+.catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
+.capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
@@ -276,7 +283,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .ledger .lever .dir{color:#8a9a9a}
 .ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
 /* Wide content scrolls inside its own box; the page body never scrolls sideways. */
-.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+/* A scroll container with no visible edge reads as a clipped table, so it gets
+   a fade on the right and a focus ring for keyboard users. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0;
+  background:linear-gradient(to left,rgba(141,216,211,.13),transparent 2.2rem)}
+.obswrap:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
 table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
   border-bottom:1px solid #223}
@@ -311,6 +322,11 @@ table.obs td.no{color:#ff8f8f}
 .claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
 .nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
 .legacy i{color:#8a9a9a}
+.qbox.live{border-left:2px solid #7a5a1a;background:#1a1408}
+.qbox.live>b{color:#ffb85c}
+.qbox.settled{border-left:2px solid #2b4a4a;background:#0d1616}
+.qbox.settled>b{color:#7fb0b0}
+.qbox.settled .q{color:#cfe;margin-top:.3rem}
 .contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
   border-left:2px solid #7a5a1a}
 .contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
@@ -396,7 +412,8 @@ table.obs td.no{color:#ff8f8f}
   <div><div class="v">3</div><div class="k">Tested</div></div>
   <div><div class="v">0</div><div class="k">Candidate laws</div></div>
 </div>
-<h2>packaging</h2>
+<h2>packaging <span class="catcount">1</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -420,11 +437,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -434,7 +451,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>So he changed the video&#39;s thumbnail to include fewer items in the circle, and the video performed better, but still not like he wanted it to. He reached out to our mastermind group to get human feedback, and someone suggested that he leave the circle empty. So he went back again and took all the items off the thumbnail to show the circle empty. Viewers responded really well to this thumbnail and t</blockquote></div>
   </details>
 </div></div>
-<h2>retention</h2>
+<h2>retention <span class="catcount">6</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -458,11 +476,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -495,11 +513,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -532,11 +550,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -569,11 +587,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -606,11 +624,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -625,14 +643,17 @@ table.obs td.no{color:#ff8f8f}
     <span class="pill s-rejected">Rejected</span>
     <span class="cat">retention</span>
     
-    <span class="cat">· checked across 6 channels</span>
+    <span class="cat">· earlier check spanned 6 channels</span>
     <span class="cat rej-why">· Refuted by our data</span>
     
   </div>
   
   <div class="txt">A long-form video should target ≥60% average percentage viewed; hitting that threshold is what causes YouTube to push the video to broader audiences, after which the measured retention decays as the audience widens.</div>
   <div class="src">Source: CreatorNow</div>
-  <div class="qbox"><b>What would settle it</b><p>What is the video&#39;s RUNTIME and format, and is the 60% figure a distribution gate or a descriptive correlate of a specific challenge-entertainment format at ~10-15 minutes? A 60% APV on a 12-minute challenge video and on a 52-minute build video are entirely different demands on the viewer. Restated: (a) within one channel at one roughly fixed length and format, a rising APV is a real improvement signal; (b) no APV number is a cross-channel or cross-length gate on distribution.</p></div>
+  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
+    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
+      the two apply at different channel sizes. The question that separates them:</p>
+    <p class="q">What is the video&#39;s RUNTIME and format, and is the 60% figure a distribution gate or a descriptive correlate of a specific challenge-entertainment format at ~10-15 minutes? A 60% APV on a 12-minute challenge video and on a 52-minute build video are entirely different demands on the viewer. Restated: (a) within one channel at one roughly fixed length and format, a rising APV is a real improvement signal; (b) no APV number is a cross-channel or cross-length gate on distribution.</p></div>
   
   <div class="review" data-id="28046089e29a">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -643,18 +664,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it was set aside on judgement or on an earlier one-off check, not because the ledger measured it and it failed.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Contradicted:</b> 0 of 119 videos reached 60% APV. Per-channel maxima: Channel C 55.0%, Channel A 54.0%, Channel G 47.4%, Channel F 47.3%, Channel D 41.3%, Channel E 38.7%. Channel median APVs are 31-48%. These same channels post median first-28d views of 54k-988k and produce breakouts up to 1.6M, so broad distribution demonstrably happens far below the stated threshold — and the breakouts sit at the LOW end of their channel&#39;s APV (Channel C&#39;s breakout 24.8% APV vs 48.3% for the rest).</p>
              <p class="caveat">Caveat: The claim is scoped to challenge-entertainment; none of our six channels is in that niche (maker-build, motorcycle-travel, Roblox gaming), and challenge content with 8-15 min runtimes could plausibly clear 60% where a 23-52 min build video cannot. So the threshold may be attainable in its home niche. What is contradicted is its use as a general long-form target and the implied gate on distribution — our channels are pushed broadly without ever approaching it. Our APV is the unweighted mean of a 100-point curve, a close but not exact match to Studio&#39;s APV.</p>
            </div>
@@ -663,7 +684,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>Personally, I&#39;m always shooting for 60 percent retention.</blockquote></div>
   </details>
 </div></div>
-<h2>storytelling</h2>
+<h2>storytelling <span class="catcount">6</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-warn">Warning</span>
@@ -687,11 +709,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it stays a Warning on the strength of practitioner testimony. A failure mode is worth avoiding on good authority; it has simply never been put to our arithmetic.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -724,11 +746,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -761,11 +783,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -798,11 +820,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -835,11 +857,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -872,11 +894,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -886,7 +908,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>a lot of mistakes that I see related to this one is that the creator brings in their friends, and their friends have almost the exact same personality. So then it doesn&#39;t like, we don&#39;t really feel like this creator is anything special ... So I love it when a creator actually creates this contrast of how they are compared to their surroundings.</blockquote></div>
   </details>
 </div></div>
-<h2>strategy</h2>
+<h2>strategy <span class="catcount">3</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-warn">Warning</span>
@@ -910,11 +933,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it stays a Warning on the strength of practitioner testimony. A failure mode is worth avoiding on good authority; it has simply never been put to our arithmetic.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -929,14 +952,17 @@ table.obs td.no{color:#ff8f8f}
     <span class="pill s-theory">Theory</span>
     <span class="cat">strategy</span>
     
-    <span class="cat">· checked across 2 channels</span>
+    <span class="cat">· earlier check spanned 2 channels</span>
     
     
   </div>
   
   <div class="txt">One long video beats splitting the same footage into several shorter ones, because a single title-and-thumbnail pair concentrates the packaging and part-twos are not reliably watched.</div>
   <div class="src">Source: CreatorNow</div>
-  <div class="qbox"><b>What would settle it</b><p>Does this footage support SIX DISTINCT PROMISES, or one promise cut into six pieces? Khare is right about PARTS — a part-two inherits a weakened package and asks the viewer to have seen part one. The packet&#39;s six are not parts: &#39;packing&#39; and &#39;campsite ranking&#39; are separate questions with separate titles, separate thumbnails and partly separate audiences, and none of them requires the others. So the rule is not about count at all, it is about whether each upload has an independent, clickable promise that stands alone. The store also supplies the failure mode at the other extreme: Channel I&#39;s c112e6452da9 — 30 daily uploads bought a subscriber bump then flatlined by day 30 as reach fell back to the core (~125k average down to 30-40k), which is what happens when the pieces have no independent promise. our strategist&#39;s 5e3bd00115b5 (2-4 long-form from a month-long trip) sits between the two and is the operating compromise.</p></div>
+  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
+    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
+      the two apply to different kinds of channel. The question that separates them:</p>
+    <p class="q">Does this footage support SIX DISTINCT PROMISES, or one promise cut into six pieces? Khare is right about PARTS — a part-two inherits a weakened package and asks the viewer to have seen part one. The packet&#39;s six are not parts: &#39;packing&#39; and &#39;campsite ranking&#39; are separate questions with separate titles, separate thumbnails and partly separate audiences, and none of them requires the others. So the rule is not about count at all, it is about whether each upload has an independent, clickable promise that stands alone. The store also supplies the failure mode at the other extreme: Channel I&#39;s c112e6452da9 — 30 daily uploads bought a subscriber bump then flatlined by day 30 as reach fell back to the core (~125k average down to 30-40k), which is what happens when the pieces have no independent promise. our strategist&#39;s 5e3bd00115b5 (2-4 long-form from a month-long trip) sits between the two and is the operating compromise.</p></div>
   
   <div class="review" data-id="0387bbdf2406">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -947,18 +973,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Checked:</b> 28 videos carry a part marker but they collapse into only 2 same-stem multi-part sets. Moto Camp Nerd&#39;s gift guide: part 1 = 5,457, part 2 = 6,645. Motovudu&#39;s Q&amp;A series parts 8-18: 3,745 / 3,992 / 3,079 / 3,396 / 3,248 / 3,658 / 4,860 / 5,566 / 5,075 / 3,608 / 4,274 — flat across eleven consecutive parts, with no part-two cliff. Median part2/part1 ratio 1.14 (n=2).</p>
              <p class="caveat">Caveat: Two comparable sets is nothing, and both are on small channels (median views 5,000-14,000) where audience behaviour may differ entirely from the challenge-entertainment context the claim comes from. The claim&#39;s real test is total watch time for one long cut vs a split, and we hold no watch-time data. Multi-part series are also usually signalled outside the title, so the regex undercounts.</p>
            </div>
@@ -972,14 +998,17 @@ table.obs td.no{color:#ff8f8f}
     <span class="pill s-rejected">Rejected</span>
     <span class="cat">strategy</span>
     
-    <span class="cat">· checked across 12 channels</span>
+    <span class="cat">· earlier check spanned 12 channels</span>
     <span class="cat rej-why">· Overruled by a strategist</span>
     
   </div>
   
   <div class="txt">A monthly upload cadence is compatible with tens of millions of views per video when production quality carries the concept - upload frequency is not a prerequisite for algorithmic success.</div>
   <div class="src">Source: Derrel Eves</div>
-  <div class="qbox"><b>What would settle it</b><p>What share of this channel&#39;s views arrive through the subscription/home feed versus suggested and search? Joos&#39;s mechanism is ROUTINE — a viewer&#39;s habit decays, which only costs you views if your distribution depends on that viewer returning. Eves states the other half himself (3d7710fb7636): consistency &#39;matters far less once traffic comes from search or recommendations.&#39; The second missing variable is which metric is being defended: our strategist&#39;s 7c02437e3d5d says returning/core viewers correlate with upload VOLUME, not quality, so a monthly channel structurally cannot build a large core — it buys outlier reach and forfeits the returning baseline. Ask: am I trying to raise the floor (returning share) or the ceiling (outliers)? Cadence buys the floor.</p></div>
+  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
+    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
+      the two apply to different kinds of channel. The question that separates them:</p>
+    <p class="q">What share of this channel&#39;s views arrive through the subscription/home feed versus suggested and search? Joos&#39;s mechanism is ROUTINE — a viewer&#39;s habit decays, which only costs you views if your distribution depends on that viewer returning. Eves states the other half himself (3d7710fb7636): consistency &#39;matters far less once traffic comes from search or recommendations.&#39; The second missing variable is which metric is being defended: our strategist&#39;s 7c02437e3d5d says returning/core viewers correlate with upload VOLUME, not quality, so a monthly channel structurally cannot build a large core — it buys outlier reach and forfeits the returning baseline. Ask: am I trying to raise the floor (returning share) or the ceiling (outliers)? Cadence buys the floor.</p></div>
   <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Kinda.  In today&#39;s algorithm, you&#39;ll find a much better time posting more frequently with lower production value, as interests change rapidly, so the video will feel more relevant or timely compared to a monthly release video, of which this all banks on the kind of niche like homemaking and such would benefit greatly from lower frequency compared to gaming channels.  HOWEVER, the one thing BOTH always needs for success is consistency in cadence.  The more consistent, the more it programs your audience when to expect the next video.  Rewrite this law accordingly please</p></div>
   <div class="review" data-id="b86ffd3dc8da">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -990,18 +1019,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it was set aside on judgement or on an earlier one-off check, not because the ledger measured it and it failed.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Supported:</b> 8 channels publish at &gt;=21-day median gaps. Five of them clear 900k median views: Stuff Made Here (82.1d gap, 7,908,105 median views; 4,123,856 in the age-controlled band), I did a thing (53.0d, 4,678,904; 4,131,137), Blacktail Studio (36.0d, 3,630,772; 3,570,453), William Osman (29.3d, 3,052,009), Evan and Katelyn (28.0d, 929,084; 1,050,313). The whole maker-builds &gt;14d cadence bucket has a median-of-medians of 571,360 vs 32,719 for the 8-14d bucket.</p>
              <p class="caveat">Caveat: This is a sufficiency claim, which is cheap to satisfy — one counterexample suffices and we found five. It does NOT show slowing down helps. The named niche (challenge-entertainment) is not in our corpus; all five cases are maker-builds, where long gaps are a consequence of build time. Views are lifetime, so older catalogues are flattered; the age-controlled band reproduces the result for the three biggest, which is the reason to trust it.</p>
            </div>
@@ -1010,7 +1039,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>My friend and YouTube creator Mark Rober is an engineer and inventor, and he uploaded a new video only once a month. He still gets tens of millions of views per video because his content is really good.</blockquote></div>
   </details>
 </div></div>
-<h2>production</h2>
+<h2>production <span class="catcount">4</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-warn">Warning</span>
@@ -1023,7 +1053,10 @@ table.obs td.no{color:#ff8f8f}
   
   <div class="txt">&#39;Shoot everything and find it in the edit&#39; is a failure mode of unscripted and spectacle content; going in with a thesis makes the questions you ask and the shots you take more useful, even though the plan must stay malleable.</div>
   <div class="src">Source: CreatorNow</div>
-  <div class="qbox"><b>What would settle it</b><p>Does the payoff exist independently of the shoot, and can this production afford coverage? Khare&#39;s format is a designed challenge with an engineered payoff — the outcome is the plan, so shooting without a thesis means missing the shots the payoff needs. Yes Theory&#39;s subject is a PERSON or a PLACE whose behaviour is the content, and no thesis can predict it. The economics discriminate too: Brag&#39;s 3f346d2d855c says Yes Theory shoots 30-40 mini-scenes and keeps ~18 — a coverage ratio that makes discovery affordable. A single-run challenge with one take cannot buy that option. And Brag himself supplies the guard rail (c07117b89994): the Iceman documentary had to be fully recut because an editing team forced real events into a planned arc — so the failure both sources agree on is a plan that survives contact with contradicting footage.</p></div>
+  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
+    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
+      the two apply to different kinds of channel. The question that separates them:</p>
+    <p class="q">Does the payoff exist independently of the shoot, and can this production afford coverage? Khare&#39;s format is a designed challenge with an engineered payoff — the outcome is the plan, so shooting without a thesis means missing the shots the payoff needs. Yes Theory&#39;s subject is a PERSON or a PLACE whose behaviour is the content, and no thesis can predict it. The economics discriminate too: Brag&#39;s 3f346d2d855c says Yes Theory shoots 30-40 mini-scenes and keeps ~18 — a coverage ratio that makes discovery affordable. A single-run challenge with one take cannot buy that option. And Brag himself supplies the guard rail (c07117b89994): the Iceman documentary had to be fully recut because an editing team forced real events into a planned arc — so the failure both sources agree on is a plan that survives contact with contradicting footage.</p></div>
   
   <div class="review" data-id="cd300055b002">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -1034,11 +1067,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it stays a Warning on the strength of practitioner testimony. A failure mode is worth avoiding on good authority; it has simply never been put to our arithmetic.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1060,7 +1093,10 @@ table.obs td.no{color:#ff8f8f}
   
   <div class="txt">Video length should be set by story completeness, not by a target duration — Khare&#39;s team shipped a 41-minute video because that was the shortest complete version of the story, and Yes Theory extended a planned 20-minute Wim Hof video past 40 minutes for the same reason.</div>
   <div class="src">Source: CreatorNow</div>
-  <div class="qbox"><b>What would settle it</b><p>Is this an EPISODE or a TENTPOLE? Hurwitz&#39;s 5cb5e965b040 already draws the line: regular uploads are episodes of an open-ended series, tentpoles are finite films, and the two require different structures. An episodic container has slack — the metric can legitimately set the dial because the format can absorb another segment. A tentpole&#39;s length is determined by its payoff, and cutting to hit a number breaks the thing people came for. Our own data supports the audits&#39; direction within episodic catalogues: the longer half of the catalogue won on median first-28d views for six of seven channels (Channel C 321,662 vs 291,465; Channel D 65,205 vs 48,143; Channel A 251,961 vs 218,645; Channel F 1,012,676 vs 963,861; Channel B 287,063 vs 207,873; Channel G 485,039 vs 367,785). The single exception is Channel E — the channel with by far the longest median duration at 52 minutes — where longer LOST (691,316 vs 863,878). That is the shape of a permission-to-lengthen rule with a channel-specific ceiling, not a universal one, and it is why the rule must be re-read each quarter rather than applied once.</p></div>
+  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
+    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
+      the two apply to different kinds of channel. The question that separates them:</p>
+    <p class="q">Is this an EPISODE or a TENTPOLE? Hurwitz&#39;s 5cb5e965b040 already draws the line: regular uploads are episodes of an open-ended series, tentpoles are finite films, and the two require different structures. An episodic container has slack — the metric can legitimately set the dial because the format can absorb another segment. A tentpole&#39;s length is determined by its payoff, and cutting to hit a number breaks the thing people came for. Our own data supports the audits&#39; direction within episodic catalogues: the longer half of the catalogue won on median first-28d views for six of seven channels (Channel C 321,662 vs 291,465; Channel D 65,205 vs 48,143; Channel A 251,961 vs 218,645; Channel F 1,012,676 vs 963,861; Channel B 287,063 vs 207,873; Channel G 485,039 vs 367,785). The single exception is Channel E — the channel with by far the longest median duration at 52 minutes — where longer LOST (691,316 vs 863,878). That is the shape of a permission-to-lengthen rule with a channel-specific ceiling, not a universal one, and it is why the rule must be re-read each quarter rather than applied once.</p></div>
   
   <div class="review" data-id="da899afcbf27">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
@@ -1071,11 +1107,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1108,11 +1144,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1145,11 +1181,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>

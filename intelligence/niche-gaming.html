@@ -254,9 +254,16 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
   letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
 .s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
-.s-wisdom{color:#c9a6ff}.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}.s-refuted{color:#ff6b6b}
+.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}
+/* Available to screen readers, invisible on screen. The causal rung's meaning
+   used to exist only in a title attribute, which never fires on touch and
+   cannot be focused. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
 .rej-why{color:#ff8f8f}
+.catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
+.capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
@@ -276,7 +283,11 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .ledger .lever .dir{color:#8a9a9a}
 .ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
 /* Wide content scrolls inside its own box; the page body never scrolls sideways. */
-.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0}
+/* A scroll container with no visible edge reads as a clipped table, so it gets
+   a fade on the right and a focus ring for keyboard users. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0;
+  background:linear-gradient(to left,rgba(141,216,211,.13),transparent 2.2rem)}
+.obswrap:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
 table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
   border-bottom:1px solid #223}
@@ -311,6 +322,11 @@ table.obs td.no{color:#ff8f8f}
 .claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
 .nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
 .legacy i{color:#8a9a9a}
+.qbox.live{border-left:2px solid #7a5a1a;background:#1a1408}
+.qbox.live>b{color:#ffb85c}
+.qbox.settled{border-left:2px solid #2b4a4a;background:#0d1616}
+.qbox.settled>b{color:#7fb0b0}
+.qbox.settled .q{color:#cfe;margin-top:.3rem}
 .contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
   border-left:2px solid #7a5a1a}
 .contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
@@ -396,7 +412,8 @@ table.obs td.no{color:#ff8f8f}
   <div><div class="v">3</div><div class="k">Tested</div></div>
   <div><div class="v">0</div><div class="k">Candidate laws</div></div>
 </div>
-<h2>ideation</h2>
+<h2>ideation <span class="catcount">1</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -420,11 +437,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -434,7 +451,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>we just think okay does this still retain its funniness if the sims were swapped in place. So for example if we did like um strongest verse the smartest in some ways there might be something that is still interesting with that in the Sims because they have attributes that display those things. But if it was maybe like being stuck with your ex, um it might not be as entertaining for nonsimmers beca</blockquote></div>
   </details>
 </div></div>
-<h2>packaging</h2>
+<h2>packaging <span class="catcount">2</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -458,11 +476,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -495,11 +513,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -509,7 +527,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>So what I would say is make a kind of a reverse hook. Like, the hook is at the end to get the right people to follow you. So cast a wide net</blockquote></div>
   </details>
 </div></div>
-<h2>retention</h2>
+<h2>retention <span class="catcount">2</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -533,11 +552,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -570,11 +589,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -584,13 +603,14 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>And what happened was that it made a retention uh like increase actually at that moment because of the way that we did the ad segment. And I always show this as like a case study example of um how like you can kind of like have fun with things like this.</blockquote></div>
   </details>
 </div></div>
-<h2>storytelling</h2>
+<h2>storytelling <span class="catcount">4</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
     <span class="cat">storytelling</span>
     
-    <span class="cat">· checked across 2 channels</span>
+    <span class="cat">· earlier check spanned 2 channels</span>
     
     
   </div>
@@ -608,18 +628,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Checked:</b> Neither gaming channel runs contestant-elimination formats. Channel A&#39;s 30 analysed videos are challenge/obby/roleplay formats (&#39;Roblox WOULD YOU RATHER: BABY TOWER&#39;, &#39;ROBLOX PROTECT THE AIRPORT&#39;, &#39;Roblox GUESS MY ASMR&#39;), and Channel B&#39;s 30 are the same shape with no retention curves stored at all. We hold no chapter markers, no contestant counts, and no segment boundaries for any video in the store.</p>
              <p class="caveat">Caveat: None — data gap plus cohort mismatch. Testing this needs a challenge-entertainment channel in the knowledge base with per-round timestamps. The same gap makes b0090a2f973e and ed5deadefd88 untestable on the same grounds.</p>
            </div>
@@ -651,11 +671,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -688,11 +708,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -725,11 +745,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -739,13 +759,14 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>it&#39;s a constant game of half half until you get to about 8 to 12 people. When you get to 8 to 12 people statistically I think what we had found is that it&#39;s easier for people to focus on it. ... humans tend to find it easiest to remember up to about 10</blockquote></div>
   </details>
 </div></div>
-<h2>analytics</h2>
+<h2>analytics <span class="catcount">1</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-warn">Warning</span>
     <span class="cat">analytics</span>
     
-    <span class="cat">· checked across 1 channels</span>
+    <span class="cat">· earlier check spanned 1 channels</span>
     
     
   </div>
@@ -763,18 +784,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      so it stays a Warning on the strength of practitioner testimony. A failure mode is worth avoiding on good authority; it has simply never been put to our arithmetic.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Checked:</b> The headline case reproduces once, strikingly: the 128-minute &#39;Surviving the HARDEST MM2 Challenges for 24 Hours&#39; shows AVD 24.7 minutes (channel&#39;s highest) at APV 19.4% — dead last of 30 against a 42.3% median. But it does not generalise: the channel&#39;s top-5 videos by AVD have a median APV of 40.9%, essentially the channel median of 42.3%, and its 39-minute and 30-minute videos hold 46.1% and 39.9%. Length alone does not produce the pattern.</p>
              <p class="caveat">Caveat: One channel and effectively one video — an anecdote, not a finding. The CTR half is untestable (no CTR data). The second gaming channel we hold (Channel B) has no retention curves at all, so there is no independent gaming replication available. The general warning that AVD misidentifies watchability leaders is better supported by the cross-channel WTH test (4524d4e423bd) than by this niche-specific version.</p>
            </div>
@@ -792,13 +813,14 @@ table.obs td.no{color:#ff8f8f}
 7.35%</blockquote></div>
   </details>
 </div></div>
-<h2>strategy</h2>
+<h2>strategy <span class="catcount">2</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
     <span class="cat">strategy</span>
     
-    <span class="cat">· checked across 27 channels</span>
+    <span class="cat">· earlier check spanned 27 channels</span>
     
     
   </div>
@@ -816,18 +838,18 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test, and not what
-               this claim's standing now rests on.</i></p>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
              <p class="ev"><b>Checked:</b> (a) 27 channels testable: publishing in the channel&#39;s habitual hour was better on 13 and worse on 14 — a coin flip. Individual deltas swing wildly in both directions (Denis +1.25, Kat +0.85 vs PrestonGamez -0.66, NicoBlox -0.65), which is what noise at n~20 looks like. (b) Day-of-week medians span only 0.86-1.12x with no direction shared across niches (Saturday is the best maker day at 1.05 and the worst motorcycle day at 0.86). A pooled hour-bucket comparison did look significant (p=0.002-0.018) but I discard it: the &#39;best&#39; and &#39;worst&#39; hours were chosen from the same data being tested, so that test is circular.</p>
              <p class="caveat">Caveat: The claim is about matching a specific measured audience-online peak, and that peak is exactly the datum we lack — a channel&#39;s modal publish hour is not the same thing as its audience peak, so a null here does not refute the claim, it only shows there is no generic publish-hour effect. The 64M-view anecdote is a single video on a channel we do not hold; single-video before/after evidence cannot separate timing from the video itself.</p>
            </div>
@@ -859,11 +881,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -873,7 +895,8 @@ table.obs td.no{color:#ff8f8f}
       <blockquote>there&#39;s there&#39;s something so beautiful about live streaming that it doesn&#39;t make it um it doesn&#39;t hurt the long form. I&#39;ve always found that it actually helps it.</blockquote></div>
   </details>
 </div></div>
-<h2>production</h2>
+<h2>production <span class="catcount">6</span></h2>
+
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -897,11 +920,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -934,11 +957,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -971,11 +994,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1008,11 +1031,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1045,11 +1068,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>
@@ -1082,11 +1105,11 @@ table.obs td.no{color:#ff8f8f}
     <summary>Evidence and caveats &rarr;</summary>
     <div class="nomeasure unbound">
     <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified — which is
-      exactly why it sits at Theory rather than higher. Our probes run over retention curves, runtime,
-      publish dates, view counts, titles and detected intro / sponsor / payoff / outro segments. Claims about
-      click-through rate, impressions, thumbnails, subscriber behaviour, revenue or a viewer's internal
-      motive are outside that reach.</p>
+    <p>No test in our battery measures this claim's variables, so it has never been quantified —
+      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
+      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
+      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
+      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
     <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
       attach a real number to the wrong question, and that number would move this claim's standing.</p>
   </div>

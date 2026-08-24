@@ -123,6 +123,33 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{color:var(--grey); font-style:italic}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
 /* Format library. Each group is a collapsed disclosure whose summary carries
    the template and the numbers, so the library can be skimmed without opening
    anything — the templates ARE the content. */
@@ -248,6 +275,19 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
 /* A 1.7px stroke is an unhittable target, so each curve carries an invisible
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/520}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
 svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
 svg.cohortsvg.hasel .cv{opacity:.12}
 svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
@@ -289,6 +329,38 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
@@ -447,8 +519,27 @@ table.obs td.no{color:#ff8f8f}
 </div>
 
 
+
+<h2>What to do next</h2>
+<p class="legend">Ordered by how much is at stake, which is arithmetic rather than opinion: each figure is an
+estimate of first-28-day views recoverable, computed from this channel's own curves and view counts. Not a
+forecast. Every row says how well-evidenced it is &mdash; hover the chip &mdash; and what would make it wrong.</p>
+<ol class="actions"><li class="act">
+  <div class="acthead">
+    <span class="actn">1</span>
+    <span class="chip c-law" title="Rests on a belief measured across independent channels and signed off by a strategist.">Measured law</span>
+    <span class="stake">~99K viewers at stake</span>
+  </div>
+  <p class="actdo">Rebuild the first 5% of every upload: open on the thing the thumbnail promised, and cut any recap, logo sting or self-introduction that sits before it.</p>
+  <p class="actwhy"><b>Because</b> The opening loses a median 45.0% of the audience across 10 analysed videos — the single largest bleed on this channel.</p>
+  <p class="actbut"><b>But</b> Some opening loss is unavoidable — viewers who clicked the wrong thing leave whatever you do. Treat the gap over a quarter as the addressable part, not the whole figure.</p>
+</li></ol>
+<p class="capnote">Built from 10 videos with retention data. Every figure is this channel&#39;s own; the &quot;viewers at stake&quot; column is an estimate of first-28-day views recoverable, not a forecast.</p>
+<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+
+
 <h2>Video wall</h2>
-<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
+<p class="legend">Each badge is the video's <strong>outlier score</strong> — its first-28-day views against the median of the uploads nearest it in time. 1.00× is typical <em>for this channel at that point</em>; 2×+ is a breakout; below 0.5× underperformed. Compared against contemporaries rather than the whole catalogue, because a video from before the channel grew would otherwise always look like a failure. Median, not average, so one breakout can't drag the baseline.</p>
 <div class="wallbar">
   <span class="lab">Sort</span>
   <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
@@ -617,6 +708,10 @@ table.obs td.no{color:#ff8f8f}
       <button class="tgl" data-cx="percent" aria-pressed="true" type="button">% of video</button>
       <button class="tgl" data-cx="clock" aria-pressed="false" type="button">Clock time</button>
     </span>
+    <span class="grp"><span class="lab">Depth</span>
+      <button class="tgl" data-z="flat" aria-pressed="true" type="button">Flat</button>
+      <button class="tgl" data-z="time" aria-pressed="false" type="button">By upload date</button>
+    </span>
     <span class="spacer"></span>
     <span class="grp"><span class="lab">Colour by</span>
       <button class="tgl" data-col="none" aria-pressed="true" type="button">None</button>
@@ -627,7 +722,11 @@ table.obs td.no{color:#ff8f8f}
   </div>
   <svg class="cohortsvg" id="cohortsvg" role="img" aria-label="Retention curves for 10 videos"></svg>
   <div class="ramp" id="ramp" style="display:none"><span class="lo"></span><i></i><span class="hi"></span></div>
-  <p class="cap"><strong>% of video</strong> normalises length, so structural habits line up — a sag every video shares shows as one shared dip. <strong>Clock time</strong> lets each curve stop where its video stops, so length and endurance become visible. On the % axis the dashed white line is this channel's own median — the bar every video is judged against; clock time has no shared x, so no median is drawn. Click a curve to isolate it, or a title below to open its viewer.</p>
+  <p class="cap"><strong>% of video</strong> normalises length, so structural habits line up — a sag every video shares shows as one shared dip. <strong>Clock time</strong> lets each curve stop where its video stops, so length and endurance become visible. On the % axis the dashed white line is this channel's own median — the bar every video is judged against; clock time has no shared x, so no median is drawn. <strong>By upload date</strong> adds a third axis: each plane is one slice of the channel&rsquo;s
+    history, receding by when it was published &mdash; oldest at the back. Each plane draws the MEDIAN curve of
+    the uploads in its window, not every video: a hundred planes land a pixel apart and stack into a solid
+    wall, and the question is whether retention drifted, not what one video did. Median rather than mean, so
+    a single breakout cannot speak for a whole quarter. Click a curve to isolate it, or a title below to open its viewer.</p>
   <div class="clegend"><a href="https://www.youtube.com/watch?v=R1ul9iBhpVM" target="_blank" rel="noopener" data-i="0" title="I Hate Modern Desks... So I Built This."><b></b><span>I Hate Modern Desks... So I Built This.</span></a><a href="https://www.youtube.com/watch?v=XAycw099agw" target="_blank" rel="noopener" data-i="1" title="I Built an Over-Engineered Door for My Wobbly Cat"><b></b><span>I Built an Over-Engineered Door for My Wobbly Cat</span></a><a href="https://www.youtube.com/watch?v=Ig0UVe5jXic" target="_blank" rel="noopener" data-i="2" title="I Built a Puzzle Door to Trick My Wife"><b></b><span>I Built a Puzzle Door to Trick My Wife</span></a><a href="https://www.youtube.com/watch?v=wCD6KecZhM0" target="_blank" rel="noopener" data-i="3" title="They stole my invention... so I got revenge."><b></b><span>They stole my invention... so I got revenge.</span></a><a href="https://www.youtube.com/watch?v=rG0cGccTCgk" target="_blank" rel="noopener" data-i="4" title="I Built a Secret Door to Trick my Landlord"><b></b><span>I Built a Secret Door to Trick my Landlord</span></a><a href="https://www.youtube.com/watch?v=mRiHfEAACZw" target="_blank" rel="noopener" data-i="5" title="Secretly Building my Wife&#39;s Dream Office"><b></b><span>Secretly Building my Wife&#39;s Dream Office</span></a><a href="https://www.youtube.com/watch?v=hISwQHHBCTk" target="_blank" rel="noopener" data-i="6" title="I 3D Printed a $3,500 Chair"><b></b><span>I 3D Printed a $3,500 Chair</span></a><a href="https://www.youtube.com/watch?v=rwZLV5Kda3Q" target="_blank" rel="noopener" data-i="7" title="I Built a Tiny Library on my Stairs"><b></b><span>I Built a Tiny Library on my Stairs</span></a><a href="https://www.youtube.com/watch?v=HFTrzJ_9QzM" target="_blank" rel="noopener" data-i="8" title="I Built a $1,224 Chair (the right way)"><b></b><span>I Built a $1,224 Chair (the right way)</span></a><a href="https://www.youtube.com/watch?v=DUHQ_lLD0n0" target="_blank" rel="noopener" data-i="9" title="I Built a Sleep Pod in a Suitcase"><b></b><span>I Built a Sleep Pod in a Suitcase</span></a></div>
 </div>
 <script>window.__COHORT__={"videos":[{"videoId":"R1ul9iBhpVM","title":"I Hate Modern Desks... So I Built This.","durationSec":1729,"pub":1781976718000,"views":2413245,"r50":0.324,"curve":[{"p":1,"w":0.926},{"p":2,"w":0.68},{"p":3,"w":0.568},{"p":4,"w":0.492},{"p":5,"w":0.465},{"p":6,"w":0.449},{"p":7,"w":0.44},{"p":8,"w":0.432},{"p":9,"w":0.426},{"p":10,"w":0.435},{"p":11,"w":0.429},{"p":12,"w":0.413},{"p":13,"w":0.406},{"p":14,"w":0.401},{"p":15,"w":0.4},{"p":16,"w":0.397},{"p":17,"w":0.394},{"p":18,"w":0.392},{"p":19,"w":0.387},{"p":20,"w":0.385},{"p":21,"w":0.382},{"p":22,"w":0.38},{"p":23,"w":0.374},{"p":24,"w":0.37},{"p":25,"w":0.363},{"p":26,"w":0.361},{"p":27,"w":0.356},{"p":28,"w":0.369},{"p":29,"w":0.352},{"p":30,"w":0.352},{"p":31,"w":0.35},{"p":32,"w":0.347},{"p":33,"w":0.344},{"p":34,"w":0.34},{"p":35,"w":0.34},{"p":36,"w":0.343},{"p":37,"w":0.345},{"p":38,"w":0.341},{"p":39,"w":0.339},{"p":40,"w":0.339},{"p":41,"w":0.34},{"p":42,"w":0.341},{"p":43,"w":0.343},{"p":44,"w":0.295},{"p":45,"w":0.262},{"p":46,"w":0.262},{"p":47,"w":0.314},{"p":48,"w":0.32},{"p":49,"w":0.318},{"p":50,"w":0.324},{"p":51,"w":0.322},{"p":52,"w":0.323},{"p":53,"w":0.324},{"p":54,"w":0.322},{"p":55,"w":0.332},{"p":56,"w":0.339},{"p":57,"w":0.322},{"p":58,"w":0.319},{"p":59,"w":0.32},{"p":60,"w":0.318},{"p":61,"w":0.32},{"p":62,"w":0.322},{"p":63,"w":0.318},{"p":64,"w":0.318},{"p":65,"w":0.327},{"p":66,"w":0.338},{"p":67,"w":0.323},{"p":68,"w":0.322},{"p":69,"w":0.323},{"p":70,"w":0.325},{"p":71,"w":0.325},{"p":72,"w":0.325},{"p":73,"w":0.326},{"p":74,"w":0.335},{"p":75,"w":0.343},{"p":76,"w":0.328},{"p":77,"w":0.328},{"p":78,"w":0.326},{"p":79,"w":0.325},{"p":80,"w":0.325},{"p":81,"w":0.325},{"p":82,"w":0.326},{"p":83,"w":0.329},{"p":84,"w":0.333},{"p":85,"w":0.335},{"p":86,"w":0.333},{"p":87,"w":0.334},{"p":88,"w":0.337},{"p":89,"w":0.349},{"p":90,"w":0.348},{"p":91,"w":0.344},{"p":92,"w":0.347},{"p":93,"w":0.343},{"p":94,"w":0.339},{"p":95,"w":0.337},{"p":96,"w":0.337},{"p":97,"w":0.338},{"p":98,"w":0.333},{"p":99,"w":0.312},{"p":100,"w":0.266}]},{"videoId":"XAycw099agw","title":"I Built an Over-Engineered Door for My Wobbly Cat","durationSec":1328,"pub":1775831667000,"views":574312,"r50":0.442,"curve":[{"p":1,"w":0.93},{"p":2,"w":0.786},{"p":3,"w":0.729},{"p":4,"w":0.678},{"p":5,"w":0.655},{"p":6,"w":0.639},{"p":7,"w":0.621},{"p":8,"w":0.608},{"p":9,"w":0.6},{"p":10,"w":0.569},{"p":11,"w":0.559},{"p":12,"w":0.552},{"p":13,"w":0.547},{"p":14,"w":0.544},{"p":15,"w":0.538},{"p":16,"w":0.532},{"p":17,"w":0.525},{"p":18,"w":0.52},{"p":19,"w":0.515},{"p":20,"w":0.513},{"p":21,"w":0.511},{"p":22,"w":0.508},{"p":23,"w":0.507},{"p":24,"w":0.506},{"p":25,"w":0.504},{"p":26,"w":0.497},{"p":27,"w":0.492},{"p":28,"w":0.489},{"p":29,"w":0.482},{"p":30,"w":0.477},{"p":31,"w":0.483},{"p":32,"w":0.488},{"p":33,"w":0.492},{"p":34,"w":0.458},{"p":35,"w":0.456},{"p":36,"w":0.458},{"p":37,"w":0.46},{"p":38,"w":0.461},{"p":39,"w":0.453},{"p":40,"w":0.415},{"p":41,"w":0.403},{"p":42,"w":0.407},{"p":43,"w":0.415},{"p":44,"w":0.447},{"p":45,"w":0.449},{"p":46,"w":0.448},{"p":47,"w":0.447},{"p":48,"w":0.442},{"p":49,"w":0.443},{"p":50,"w":0.442},{"p":51,"w":0.439},{"p":52,"w":0.437},{"p":53,"w":0.437},{"p":54,"w":0.437},{"p":55,"w":0.436},{"p":56,"w":0.438},{"p":57,"w":0.439},{"p":58,"w":0.433},{"p":59,"w":0.434},{"p":60,"w":0.435},{"p":61,"w":0.432},{"p":62,"w":0.432},{"p":63,"w":0.43},{"p":64,"w":0.428},{"p":65,"w":0.423},{"p":66,"w":0.422},{"p":67,"w":0.422},{"p":68,"w":0.423},{"p":69,"w":0.421},{"p":70,"w":0.42},{"p":71,"w":0.42},{"p":72,"w":0.419},{"p":73,"w":0.419},{"p":74,"w":0.42},{"p":75,"w":0.424},{"p":76,"w":0.421},{"p":77,"w":0.421},{"p":78,"w":0.422},{"p":79,"w":0.421},{"p":80,"w":0.438},{"p":81,"w":0.419},{"p":82,"w":0.419},{"p":83,"w":0.418},{"p":84,"w":0.417},{"p":85,"w":0.416},{"p":86,"w":0.416},{"p":87,"w":0.418},{"p":88,"w":0.416},{"p":89,"w":0.413},{"p":90,"w":0.414},{"p":91,"w":0.418},{"p":92,"w":0.423},{"p":93,"w":0.421},{"p":94,"w":0.421},{"p":95,"w":0.421},{"p":96,"w":0.42},{"p":97,"w":0.423},{"p":98,"w":0.423},{"p":99,"w":0.415},{"p":100,"w":0.395}]},{"videoId":"Ig0UVe5jXic","title":"I Built a Puzzle Door to Trick My Wife","durationSec":2587,"pub":1773772580000,"views":714344,"r50":0.374,"curve":[{"p":1,"w":0.898},{"p":2,"w":0.612},{"p":3,"w":0.542},{"p":4,"w":0.515},{"p":5,"w":0.508},{"p":6,"w":0.487},{"p":7,"w":0.476},{"p":8,"w":0.465},{"p":9,"w":0.455},{"p":10,"w":0.452},{"p":11,"w":0.444},{"p":12,"w":0.438},{"p":13,"w":0.441},{"p":14,"w":0.434},{"p":15,"w":0.43},{"p":16,"w":0.445},{"p":17,"w":0.424},{"p":18,"w":0.414},{"p":19,"w":0.413},{"p":20,"w":0.41},{"p":21,"w":0.413},{"p":22,"w":0.408},{"p":23,"w":0.402},{"p":24,"w":0.4},{"p":25,"w":0.402},{"p":26,"w":0.396},{"p":27,"w":0.388},{"p":28,"w":0.387},{"p":29,"w":0.384},{"p":30,"w":0.384},{"p":31,"w":0.391},{"p":32,"w":0.404},{"p":33,"w":0.376},{"p":34,"w":0.375},{"p":35,"w":0.37},{"p":36,"w":0.37},{"p":37,"w":0.368},{"p":38,"w":0.365},{"p":39,"w":0.365},{"p":40,"w":0.366},{"p":41,"w":0.376},{"p":42,"w":0.368},{"p":43,"w":0.361},{"p":44,"w":0.359},{"p":45,"w":0.359},{"p":46,"w":0.359},{"p":47,"w":0.361},{"p":48,"w":0.361},{"p":49,"w":0.369},{"p":50,"w":0.374},{"p":51,"w":0.357},{"p":52,"w":0.354},{"p":53,"w":0.354},{"p":54,"w":0.355},{"p":55,"w":0.353},{"p":56,"w":0.351},{"p":57,"w":0.351},{"p":58,"w":0.349},{"p":59,"w":0.349},{"p":60,"w":0.348},{"p":61,"w":0.348},{"p":62,"w":0.348},{"p":63,"w":0.346},{"p":64,"w":0.346},{"p":65,"w":0.345},{"p":66,"w":0.344},{"p":67,"w":0.343},{"p":68,"w":0.343},{"p":69,"w":0.345},{"p":70,"w":0.347},{"p":71,"w":0.368},{"p":72,"w":0.349},{"p":73,"w":0.349},{"p":74,"w":0.347},{"p":75,"w":0.347},{"p":76,"w":0.346},{"p":77,"w":0.35},{"p":78,"w":0.345},{"p":79,"w":0.343},{"p":80,"w":0.34},{"p":81,"w":0.345},{"p":82,"w":0.349},{"p":83,"w":0.345},{"p":84,"w":0.346},{"p":85,"w":0.345},{"p":86,"w":0.345},{"p":87,"w":0.346},{"p":88,"w":0.346},{"p":89,"w":0.348},{"p":90,"w":0.354},{"p":91,"w":0.37},{"p":92,"w":0.353},{"p":93,"w":0.354},{"p":94,"w":0.358},{"p":95,"w":0.365},{"p":96,"w":0.366},{"p":97,"w":0.377},{"p":98,"w":0.374},{"p":99,"w":0.344},{"p":100,"w":0.312}]},{"videoId":"wCD6KecZhM0","title":"They stole my invention... so I got revenge.","durationSec":1351,"pub":1770651946000,"views":618363,"r50":0.394,"curve":[{"p":1,"w":0.91},{"p":2,"w":0.836},{"p":3,"w":0.8},{"p":4,"w":0.641},{"p":5,"w":0.625},{"p":6,"w":0.592},{"p":7,"w":0.582},{"p":8,"w":0.579},{"p":9,"w":0.579},{"p":10,"w":0.576},{"p":11,"w":0.573},{"p":12,"w":0.57},{"p":13,"w":0.565},{"p":14,"w":0.562},{"p":15,"w":0.549},{"p":16,"w":0.544},{"p":17,"w":0.539},{"p":18,"w":0.536},{"p":19,"w":0.535},{"p":20,"w":0.529},{"p":21,"w":0.518},{"p":22,"w":0.516},{"p":23,"w":0.509},{"p":24,"w":0.503},{"p":25,"w":0.5},{"p":26,"w":0.491},{"p":27,"w":0.483},{"p":28,"w":0.48},{"p":29,"w":0.479},{"p":30,"w":0.48},{"p":31,"w":0.475},{"p":32,"w":0.473},{"p":33,"w":0.474},{"p":34,"w":0.468},{"p":35,"w":0.484},{"p":36,"w":0.444},{"p":37,"w":0.439},{"p":38,"w":0.426},{"p":39,"w":0.37},{"p":40,"w":0.299},{"p":41,"w":0.296},{"p":42,"w":0.304},{"p":43,"w":0.362},{"p":44,"w":0.392},{"p":45,"w":0.396},{"p":46,"w":0.395},{"p":47,"w":0.394},{"p":48,"w":0.395},{"p":49,"w":0.397},{"p":50,"w":0.394},{"p":51,"w":0.393},{"p":52,"w":0.39},{"p":53,"w":0.387},{"p":54,"w":0.387},{"p":55,"w":0.385},{"p":56,"w":0.382},{"p":57,"w":0.378},{"p":58,"w":0.377},{"p":59,"w":0.376},{"p":60,"w":0.377},{"p":61,"w":0.377},{"p":62,"w":0.375},{"p":63,"w":0.376},{"p":64,"w":0.375},{"p":65,"w":0.373},{"p":66,"w":0.373},{"p":67,"w":0.372},{"p":68,"w":0.373},{"p":69,"w":0.373},{"p":70,"w":0.375},{"p":71,"w":0.378},{"p":72,"w":0.371},{"p":73,"w":0.37},{"p":74,"w":0.375},{"p":75,"w":0.379},{"p":76,"w":0.394},{"p":77,"w":0.383},{"p":78,"w":0.383},{"p":79,"w":0.378},{"p":80,"w":0.375},{"p":81,"w":0.374},{"p":82,"w":0.374},{"p":83,"w":0.376},{"p":84,"w":0.377},{"p":85,"w":0.376},{"p":86,"w":0.377},{"p":87,"w":0.376},{"p":88,"w":0.38},{"p":89,"w":0.381},{"p":90,"w":0.377},{"p":91,"w":0.374},{"p":92,"w":0.372},{"p":93,"w":0.373},{"p":94,"w":0.372},{"p":95,"w":0.372},{"p":96,"w":0.368},{"p":97,"w":0.36},{"p":98,"w":0.349},{"p":99,"w":0.314},{"p":100,"w":0.297}]},{"videoId":"rG0cGccTCgk","title":"I Built a Secret Door to Trick my Landlord","durationSec":1972,"pub":1767207075000,"views":2668240,"r50":0.28,"curve":[{"p":1,"w":0.957},{"p":2,"w":0.661},{"p":3,"w":0.5},{"p":4,"w":0.444},{"p":5,"w":0.428},{"p":6,"w":0.42},{"p":7,"w":0.405},{"p":8,"w":0.395},{"p":9,"w":0.389},{"p":10,"w":0.382},{"p":11,"w":0.371},{"p":12,"w":0.359},{"p":13,"w":0.35},{"p":14,"w":0.352},{"p":15,"w":0.343},{"p":16,"w":0.343},{"p":17,"w":0.347},{"p":18,"w":0.338},{"p":19,"w":0.331},{"p":20,"w":0.333},{"p":21,"w":0.331},{"p":22,"w":0.341},{"p":23,"w":0.321},{"p":24,"w":0.319},{"p":25,"w":0.311},{"p":26,"w":0.309},{"p":27,"w":0.308},{"p":28,"w":0.307},{"p":29,"w":0.306},{"p":30,"w":0.306},{"p":31,"w":0.308},{"p":32,"w":0.305},{"p":33,"w":0.304},{"p":34,"w":0.299},{"p":35,"w":0.256},{"p":36,"w":0.224},{"p":37,"w":0.227},{"p":38,"w":0.254},{"p":39,"w":0.28},{"p":40,"w":0.281},{"p":41,"w":0.283},{"p":42,"w":0.282},{"p":43,"w":0.283},{"p":44,"w":0.288},{"p":45,"w":0.287},{"p":46,"w":0.287},{"p":47,"w":0.281},{"p":48,"w":0.282},{"p":49,"w":0.281},{"p":50,"w":0.28},{"p":51,"w":0.281},{"p":52,"w":0.28},{"p":53,"w":0.282},{"p":54,"w":0.286},{"p":55,"w":0.282},{"p":56,"w":0.283},{"p":57,"w":0.282},{"p":58,"w":0.279},{"p":59,"w":0.281},{"p":60,"w":0.289},{"p":61,"w":0.285},{"p":62,"w":0.282},{"p":63,"w":0.283},{"p":64,"w":0.282},{"p":65,"w":0.284},{"p":66,"w":0.293},{"p":67,"w":0.284},{"p":68,"w":0.286},{"p":69,"w":0.283},{"p":70,"w":0.288},{"p":71,"w":0.291},{"p":72,"w":0.292},{"p":73,"w":0.295},{"p":74,"w":0.3},{"p":75,"w":0.304},{"p":76,"w":0.307},{"p":77,"w":0.304},{"p":78,"w":0.302},{"p":79,"w":0.302},{"p":80,"w":0.306},{"p":81,"w":0.307},{"p":82,"w":0.313},{"p":83,"w":0.318},{"p":84,"w":0.318},{"p":85,"w":0.321},{"p":86,"w":0.325},{"p":87,"w":0.331},{"p":88,"w":0.332},{"p":89,"w":0.336},{"p":90,"w":0.345},{"p":91,"w":0.373},{"p":92,"w":0.356},{"p":93,"w":0.354},{"p":94,"w":0.353},{"p":95,"w":0.352},{"p":96,"w":0.351},{"p":97,"w":0.364},{"p":98,"w":0.353},{"p":99,"w":0.326},{"p":100,"w":0.314}]},{"videoId":"mRiHfEAACZw","title":"Secretly Building my Wife's Dream Office","durationSec":1861,"pub":1764786497000,"views":942605,"r50":0.443,"curve":[{"p":1,"w":0.951},{"p":2,"w":0.696},{"p":3,"w":0.616},{"p":4,"w":0.582},{"p":5,"w":0.566},{"p":6,"w":0.562},{"p":7,"w":0.535},{"p":8,"w":0.528},{"p":9,"w":0.522},{"p":10,"w":0.52},{"p":11,"w":0.517},{"p":12,"w":0.514},{"p":13,"w":0.507},{"p":14,"w":0.502},{"p":15,"w":0.505},{"p":16,"w":0.504},{"p":17,"w":0.493},{"p":18,"w":0.489},{"p":19,"w":0.484},{"p":20,"w":0.485},{"p":21,"w":0.485},{"p":22,"w":0.482},{"p":23,"w":0.476},{"p":24,"w":0.475},{"p":25,"w":0.501},{"p":26,"w":0.473},{"p":27,"w":0.469},{"p":28,"w":0.469},{"p":29,"w":0.453},{"p":30,"w":0.453},{"p":31,"w":0.455},{"p":32,"w":0.459},{"p":33,"w":0.459},{"p":34,"w":0.459},{"p":35,"w":0.456},{"p":36,"w":0.455},{"p":37,"w":0.453},{"p":38,"w":0.455},{"p":39,"w":0.454},{"p":40,"w":0.454},{"p":41,"w":0.455},{"p":42,"w":0.458},{"p":43,"w":0.449},{"p":44,"w":0.445},{"p":45,"w":0.444},{"p":46,"w":0.445},{"p":47,"w":0.442},{"p":48,"w":0.441},{"p":49,"w":0.442},{"p":50,"w":0.443},{"p":51,"w":0.474},{"p":52,"w":0.445},{"p":53,"w":0.434},{"p":54,"w":0.432},{"p":55,"w":0.429},{"p":56,"w":0.426},{"p":57,"w":0.427},{"p":58,"w":0.424},{"p":59,"w":0.422},{"p":60,"w":0.422},{"p":61,"w":0.422},{"p":62,"w":0.425},{"p":63,"w":0.423},{"p":64,"w":0.421},{"p":65,"w":0.421},{"p":66,"w":0.422},{"p":67,"w":0.421},{"p":68,"w":0.426},{"p":69,"w":0.448},{"p":70,"w":0.45},{"p":71,"w":0.424},{"p":72,"w":0.423},{"p":73,"w":0.425},{"p":74,"w":0.428},{"p":75,"w":0.429},{"p":76,"w":0.432},{"p":77,"w":0.437},{"p":78,"w":0.437},{"p":79,"w":0.435},{"p":80,"w":0.435},{"p":81,"w":0.443},{"p":82,"w":0.436},{"p":83,"w":0.441},{"p":84,"w":0.447},{"p":85,"w":0.448},{"p":86,"w":0.443},{"p":87,"w":0.44},{"p":88,"w":0.445},{"p":89,"w":0.447},{"p":90,"w":0.452},{"p":91,"w":0.458},{"p":92,"w":0.484},{"p":93,"w":0.496},{"p":94,"w":0.488},{"p":95,"w":0.486},{"p":96,"w":0.479},{"p":97,"w":0.47},{"p":98,"w":0.459},{"p":99,"w":0.449},{"p":100,"w":0.434}]},{"videoId":"hISwQHHBCTk","title":"I 3D Printed a $3,500 Chair","durationSec":1709,"pub":1761237856000,"views":1012676,"r50":0.353,"curve":[{"p":1,"w":0.943},{"p":2,"w":0.775},{"p":3,"w":0.647},{"p":4,"w":0.575},{"p":5,"w":0.535},{"p":6,"w":0.526},{"p":7,"w":0.517},{"p":8,"w":0.51},{"p":9,"w":0.505},{"p":10,"w":0.499},{"p":11,"w":0.496},{"p":12,"w":0.49},{"p":13,"w":0.487},{"p":14,"w":0.483},{"p":15,"w":0.48},{"p":16,"w":0.472},{"p":17,"w":0.467},{"p":18,"w":0.462},{"p":19,"w":0.448},{"p":20,"w":0.441},{"p":21,"w":0.436},{"p":22,"w":0.436},{"p":23,"w":0.441},{"p":24,"w":0.419},{"p":25,"w":0.408},{"p":26,"w":0.374},{"p":27,"w":0.376},{"p":28,"w":0.386},{"p":29,"w":0.395},{"p":30,"w":0.395},{"p":31,"w":0.397},{"p":32,"w":0.394},{"p":33,"w":0.393},{"p":34,"w":0.389},{"p":35,"w":0.383},{"p":36,"w":0.376},{"p":37,"w":0.375},{"p":38,"w":0.374},{"p":39,"w":0.374},{"p":40,"w":0.387},{"p":41,"w":0.37},{"p":42,"w":0.368},{"p":43,"w":0.366},{"p":44,"w":0.368},{"p":45,"w":0.368},{"p":46,"w":0.359},{"p":47,"w":0.359},{"p":48,"w":0.363},{"p":49,"w":0.36},{"p":50,"w":0.353},{"p":51,"w":0.352},{"p":52,"w":0.352},{"p":53,"w":0.353},{"p":54,"w":0.349},{"p":55,"w":0.353},{"p":56,"w":0.347},{"p":57,"w":0.357},{"p":58,"w":0.35},{"p":59,"w":0.344},{"p":60,"w":0.341},{"p":61,"w":0.342},{"p":62,"w":0.346},{"p":63,"w":0.353},{"p":64,"w":0.482},{"p":65,"w":0.344},{"p":66,"w":0.345},{"p":67,"w":0.344},{"p":68,"w":0.346},{"p":69,"w":0.346},{"p":70,"w":0.346},{"p":71,"w":0.343},{"p":72,"w":0.342},{"p":73,"w":0.343},{"p":74,"w":0.345},{"p":75,"w":0.346},{"p":76,"w":0.349},{"p":77,"w":0.349},{"p":78,"w":0.343},{"p":79,"w":0.338},{"p":80,"w":0.34},{"p":81,"w":0.34},{"p":82,"w":0.344},{"p":83,"w":0.348},{"p":84,"w":0.35},{"p":85,"w":0.357},{"p":86,"w":0.352},{"p":87,"w":0.352},{"p":88,"w":0.36},{"p":89,"w":0.359},{"p":90,"w":0.353},{"p":91,"w":0.351},{"p":92,"w":0.356},{"p":93,"w":0.37},{"p":94,"w":0.357},{"p":95,"w":0.357},{"p":96,"w":0.355},{"p":97,"w":0.34},{"p":98,"w":0.332},{"p":99,"w":0.319},{"p":100,"w":0.186}]},{"videoId":"rwZLV5Kda3Q","title":"I Built a Tiny Library on my Stairs","durationSec":1695,"pub":1757100187000,"views":1134487,"r50":0.37,"curve":[{"p":1,"w":0.951},{"p":2,"w":0.742},{"p":3,"w":0.645},{"p":4,"w":0.6},{"p":5,"w":0.578},{"p":6,"w":0.552},{"p":7,"w":0.527},{"p":8,"w":0.504},{"p":9,"w":0.493},{"p":10,"w":0.481},{"p":11,"w":0.477},{"p":12,"w":0.481},{"p":13,"w":0.475},{"p":14,"w":0.465},{"p":15,"w":0.455},{"p":16,"w":0.438},{"p":17,"w":0.444},{"p":18,"w":0.445},{"p":19,"w":0.448},{"p":20,"w":0.452},{"p":21,"w":0.449},{"p":22,"w":0.444},{"p":23,"w":0.442},{"p":24,"w":0.436},{"p":25,"w":0.426},{"p":26,"w":0.424},{"p":27,"w":0.419},{"p":28,"w":0.417},{"p":29,"w":0.417},{"p":30,"w":0.435},{"p":31,"w":0.406},{"p":32,"w":0.4},{"p":33,"w":0.399},{"p":34,"w":0.395},{"p":35,"w":0.391},{"p":36,"w":0.389},{"p":37,"w":0.389},{"p":38,"w":0.383},{"p":39,"w":0.382},{"p":40,"w":0.38},{"p":41,"w":0.379},{"p":42,"w":0.381},{"p":43,"w":0.38},{"p":44,"w":0.378},{"p":45,"w":0.376},{"p":46,"w":0.376},{"p":47,"w":0.379},{"p":48,"w":0.379},{"p":49,"w":0.376},{"p":50,"w":0.37},{"p":51,"w":0.368},{"p":52,"w":0.368},{"p":53,"w":0.374},{"p":54,"w":0.385},{"p":55,"w":0.364},{"p":56,"w":0.36},{"p":57,"w":0.362},{"p":58,"w":0.365},{"p":59,"w":0.369},{"p":60,"w":0.371},{"p":61,"w":0.356},{"p":62,"w":0.351},{"p":63,"w":0.35},{"p":64,"w":0.344},{"p":65,"w":0.345},{"p":66,"w":0.343},{"p":67,"w":0.344},{"p":68,"w":0.341},{"p":69,"w":0.344},{"p":70,"w":0.345},{"p":71,"w":0.348},{"p":72,"w":0.349},{"p":73,"w":0.365},{"p":74,"w":0.352},{"p":75,"w":0.346},{"p":76,"w":0.35},{"p":77,"w":0.354},{"p":78,"w":0.361},{"p":79,"w":0.363},{"p":80,"w":0.363},{"p":81,"w":0.356},{"p":82,"w":0.358},{"p":83,"w":0.354},{"p":84,"w":0.361},{"p":85,"w":0.365},{"p":86,"w":0.369},{"p":87,"w":0.36},{"p":88,"w":0.353},{"p":89,"w":0.355},{"p":90,"w":0.364},{"p":91,"w":0.361},{"p":92,"w":0.363},{"p":93,"w":0.369},{"p":94,"w":0.38},{"p":95,"w":0.392},{"p":96,"w":0.39},{"p":97,"w":0.381},{"p":98,"w":0.3},{"p":99,"w":0.254},{"p":100,"w":0.223}]},{"videoId":"HFTrzJ_9QzM","title":"I Built a $1,224 Chair (the right way)","durationSec":1328,"pub":1755354290000,"views":963861,"r50":0.391,"curve":[{"p":1,"w":0.944},{"p":2,"w":0.756},{"p":3,"w":0.714},{"p":4,"w":0.661},{"p":5,"w":0.617},{"p":6,"w":0.605},{"p":7,"w":0.575},{"p":8,"w":0.562},{"p":9,"w":0.547},{"p":10,"w":0.536},{"p":11,"w":0.527},{"p":12,"w":0.511},{"p":13,"w":0.498},{"p":14,"w":0.49},{"p":15,"w":0.485},{"p":16,"w":0.482},{"p":17,"w":0.476},{"p":18,"w":0.467},{"p":19,"w":0.462},{"p":20,"w":0.459},{"p":21,"w":0.456},{"p":22,"w":0.452},{"p":23,"w":0.448},{"p":24,"w":0.444},{"p":25,"w":0.437},{"p":26,"w":0.432},{"p":27,"w":0.431},{"p":28,"w":0.43},{"p":29,"w":0.429},{"p":30,"w":0.427},{"p":31,"w":0.425},{"p":32,"w":0.424},{"p":33,"w":0.424},{"p":34,"w":0.448},{"p":35,"w":0.413},{"p":36,"w":0.41},{"p":37,"w":0.408},{"p":38,"w":0.407},{"p":39,"w":0.406},{"p":40,"w":0.407},{"p":41,"w":0.404},{"p":42,"w":0.402},{"p":43,"w":0.402},{"p":44,"w":0.4},{"p":45,"w":0.398},{"p":46,"w":0.398},{"p":47,"w":0.397},{"p":48,"w":0.398},{"p":49,"w":0.395},{"p":50,"w":0.391},{"p":51,"w":0.362},{"p":52,"w":0.332},{"p":53,"w":0.329},{"p":54,"w":0.328},{"p":55,"w":0.325},{"p":56,"w":0.323},{"p":57,"w":0.325},{"p":58,"w":0.338},{"p":59,"w":0.37},{"p":60,"w":0.373},{"p":61,"w":0.373},{"p":62,"w":0.372},{"p":63,"w":0.371},{"p":64,"w":0.37},{"p":65,"w":0.369},{"p":66,"w":0.368},{"p":67,"w":0.368},{"p":68,"w":0.367},{"p":69,"w":0.378},{"p":70,"w":0.383},{"p":71,"w":0.366},{"p":72,"w":0.365},{"p":73,"w":0.365},{"p":74,"w":0.361},{"p":75,"w":0.36},{"p":76,"w":0.363},{"p":77,"w":0.364},{"p":78,"w":0.359},{"p":79,"w":0.359},{"p":80,"w":0.358},{"p":81,"w":0.359},{"p":82,"w":0.359},{"p":83,"w":0.362},{"p":84,"w":0.361},{"p":85,"w":0.36},{"p":86,"w":0.36},{"p":87,"w":0.361},{"p":88,"w":0.362},{"p":89,"w":0.356},{"p":90,"w":0.346},{"p":91,"w":0.338},{"p":92,"w":0.327},{"p":93,"w":0.32},{"p":94,"w":0.317},{"p":95,"w":0.31},{"p":96,"w":0.308},{"p":97,"w":0.307},{"p":98,"w":0.303},{"p":99,"w":0.295},{"p":100,"w":0.252}]},{"videoId":"DUHQ_lLD0n0","title":"I Built a Sleep Pod in a Suitcase","durationSec":1468,"pub":1750345754000,"views":3659219,"r50":0.258,"curve":[{"p":1,"w":0.913},{"p":2,"w":0.803},{"p":3,"w":0.638},{"p":4,"w":0.512},{"p":5,"w":0.488},{"p":6,"w":0.461},{"p":7,"w":0.442},{"p":8,"w":0.437},{"p":9,"w":0.432},{"p":10,"w":0.413},{"p":11,"w":0.4},{"p":12,"w":0.4},{"p":13,"w":0.396},{"p":14,"w":0.39},{"p":15,"w":0.374},{"p":16,"w":0.366},{"p":17,"w":0.359},{"p":18,"w":0.355},{"p":19,"w":0.344},{"p":20,"w":0.341},{"p":21,"w":0.329},{"p":22,"w":0.354},{"p":23,"w":0.317},{"p":24,"w":0.316},{"p":25,"w":0.313},{"p":26,"w":0.314},{"p":27,"w":0.316},{"p":28,"w":0.312},{"p":29,"w":0.3},{"p":30,"w":0.297},{"p":31,"w":0.296},{"p":32,"w":0.291},{"p":33,"w":0.289},{"p":34,"w":0.289},{"p":35,"w":0.284},{"p":36,"w":0.281},{"p":37,"w":0.281},{"p":38,"w":0.276},{"p":39,"w":0.277},{"p":40,"w":0.275},{"p":41,"w":0.275},{"p":42,"w":0.274},{"p":43,"w":0.276},{"p":44,"w":0.273},{"p":45,"w":0.289},{"p":46,"w":0.273},{"p":47,"w":0.271},{"p":48,"w":0.257},{"p":49,"w":0.246},{"p":50,"w":0.258},{"p":51,"w":0.263},{"p":52,"w":0.266},{"p":53,"w":0.276},{"p":54,"w":0.283},{"p":55,"w":0.27},{"p":56,"w":0.271},{"p":57,"w":0.272},{"p":58,"w":0.271},{"p":59,"w":0.27},{"p":60,"w":0.27},{"p":61,"w":0.269},{"p":62,"w":0.271},{"p":63,"w":0.268},{"p":64,"w":0.272},{"p":65,"w":0.275},{"p":66,"w":0.28},{"p":67,"w":0.278},{"p":68,"w":0.276},{"p":69,"w":0.284},{"p":70,"w":0.294},{"p":71,"w":0.283},{"p":72,"w":0.285},{"p":73,"w":0.293},{"p":74,"w":0.294},{"p":75,"w":0.302},{"p":76,"w":0.305},{"p":77,"w":0.307},{"p":78,"w":0.295},{"p":79,"w":0.294},{"p":80,"w":0.301},{"p":81,"w":0.309},{"p":82,"w":0.315},{"p":83,"w":0.321},{"p":84,"w":0.333},{"p":85,"w":0.339},{"p":86,"w":0.341},{"p":87,"w":0.342},{"p":88,"w":0.355},{"p":89,"w":0.366},{"p":90,"w":0.372},{"p":91,"w":0.375},{"p":92,"w":0.37},{"p":93,"w":0.36},{"p":94,"w":0.352},{"p":95,"w":0.352},{"p":96,"w":0.331},{"p":97,"w":0.309},{"p":98,"w":0.291},{"p":99,"w":0.276},{"p":100,"w":0.242}]}]}</script>
@@ -636,8 +735,30 @@ table.obs td.no{color:#ff8f8f}
   var D = window.__COHORT__; if(!D || !D.videos.length) return;
   var svg = document.getElementById('cohortsvg');
   var W = 1000, H = 420, L = 46, R = 14, T = 14, B = 30;
-  var axis = 'percent', colour = 'none', sel = null;
+  var axis = 'percent', colour = 'none', sel = null, depth = 'flat';
   var maxDur = Math.max.apply(null, D.videos.map(function(v){ return v.durationSec||1; }));
+
+  // Depth extents, in viewBox units. The plot area shrinks by exactly these
+  // when the z axis is on, so the newest curve keeps the position it had in the
+  // flat view and everything older recedes from it.
+  var DX = 168, DY = 168;
+  var pubs = D.videos.map(function(v){ return v.pub||0; }).filter(function(n){ return n>0; });
+  var minPub = Math.min.apply(null, pubs), maxPub = Math.max.apply(null, pubs);
+  var is3d = function(){ return depth === 'time'; };
+  /** 0 for the oldest series, 1 for the newest. The z axis. */
+  function ageOf(v){
+    if (maxPub === minPub) return 1;
+    return ((v.pub||minPub) - minPub) / (maxPub - minPub);
+  }
+  /** What the 3D view actually draws: period medians, not every video. */
+  var bins = null;
+  function seriesFor3d(){ if (bins === null) bins = zBins(); return bins; }
+  // Older uploads sit further back: up and to the right, an oblique projection.
+  // Parallel rather than perspective on purpose — this chart is read by
+  // comparing heights between planes, and perspective would make the same
+  // audience share draw at different heights depending on its depth.
+  function offX(v){ return is3d() ? (1 - ageOf(v)) * DX : 0; }
+  function offY(v){ return is3d() ? -(1 - ageOf(v)) * DY : 0; }
 
   function lerp(a,b,t){ return a + (b-a)*t; }
   function rgb(r,g,b){ return 'rgb('+Math.round(r)+','+Math.round(g)+','+Math.round(b)+')'; }
@@ -676,21 +797,42 @@ table.obs td.no{color:#ff8f8f}
     return '#7ee3f5';
   }
 
+  function plotW(){ return W - L - R - (is3d() ? DX : 0); }
+  function plotH(){ return H - T - B - (is3d() ? DY : 0); }
   function xOf(v, p){
     var frac = axis === 'percent' ? p/100 : (p/100 * (v.durationSec||1)) / maxDur;
-    return L + Math.min(1, frac) * (W - L - R);
+    return L + offX(v) + Math.min(1, frac) * plotW();
   }
-  function yOf(w){ return T + (1 - Math.max(0, Math.min(1, w))) * (H - T - B); }
+  // The oy argument is the plane depth offset. Passing it explicitly keeps the grid and
+  // the median — which belong to the FRONT plane — from inheriting a curve's.
+  function yOf(w, oy){
+    return T + (is3d() ? DY : 0) + (oy||0) + (1 - Math.max(0, Math.min(1, w))) * plotH();
+  }
   function fmtT(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60);
     return (m>=60 ? Math.floor(m/60)+':'+String(m%60).padStart(2,'0') : String(m))+':'+String(s%60).padStart(2,'0'); }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
   function pathFor(v){
-    var d='';
+    var d='', oy=offY(v);
     for (var i=0;i<v.curve.length;i++){
       var pt=v.curve[i];
-      d += (i?'L':'M')+xOf(v,pt.p).toFixed(1)+' '+yOf(pt.w).toFixed(1)+' ';
+      d += (i?'L':'M')+xOf(v,pt.p).toFixed(1)+' '+yOf(pt.w,oy).toFixed(1)+' ';
     }
+    return d;
+  }
+
+  /**
+   * A filled skirt from the curve down to its own plane's baseline.
+   * Without it the 3D view is a tangle of lines with no depth cue — the fill is
+   * what makes each curve read as a plane standing at its own distance, and
+   * what lets a nearer curve visibly occlude one behind it.
+   */
+  function ribbonFor(v){
+    if (!v.curve.length) return '';
+    var oy=offY(v), d=pathFor(v);
+    var lastP=v.curve[v.curve.length-1].p, firstP=v.curve[0].p;
+    d += 'L'+xOf(v,lastP).toFixed(1)+' '+yOf(0,oy).toFixed(1)+' ';
+    d += 'L'+xOf(v,firstP).toFixed(1)+' '+yOf(0,oy).toFixed(1)+' Z';
     return d;
   }
 
@@ -708,31 +850,131 @@ table.obs td.no{color:#ff8f8f}
       vals.sort(function(a,b){return a-b;});
       var m = vals.length%2 ? vals[vals.length>>1] : (vals[(vals.length>>1)-1]+vals[vals.length>>1])/2;
       // Median is a structural statement, so it always lives on the percent axis.
-      var x = L + (p/100)*(W-L-R);
-      d += (d?'L':'M')+x.toFixed(1)+' '+yOf(m).toFixed(1)+' ';
+      var x = L + (p/100)*plotW();
+      d += (d?'L':'M')+x.toFixed(1)+' '+yOf(m,0).toFixed(1)+' ';
     }
     return d;
   }
 
+  /**
+   * The 3D view draws PERIOD MEDIANS, not one plane per video.
+   *
+   * One plane per video was the obvious build and it is unreadable: a hundred
+   * planes share the same ~100px of depth, so they land a pixel apart and stack
+   * into a solid wall that hides the very thing the axis was added to show.
+   * It also answers the wrong question — nobody asks "what did video 43 do",
+   * they ask "did our retention drift as we kept publishing".
+   *
+   * So videos are binned by upload date and each bin contributes the MEDIAN
+   * curve of its members. Median rather than mean for the usual reason: one
+   * breakout or one dud should not speak for a quarter's worth of uploads.
+   */
+  function zBins(){
+    var withPub = D.videos.filter(function(v){ return v.pub && v.curve.length; })
+      .sort(function(a,b){ return a.pub-b.pub; });
+    if (withPub.length < 2) return [];
+    // Enough planes to show a trend, few enough to stay legible at this depth.
+    var n = Math.max(2, Math.min(12, Math.floor(withPub.length/2)));
+    var per = Math.ceil(withPub.length/n);
+    var out=[];
+    for (var i=0;i<withPub.length;i+=per){
+      var group = withPub.slice(i, i+per);
+      if (!group.length) continue;
+      var curve=[];
+      for (var pp=0; pp<=100; pp+=2){
+        var vals=[];
+        for (var k=0;k<group.length;k++){
+          var c=group[k].curve, best=null, bd=1e9;
+          for (var j=0;j<c.length;j++){ var dd=Math.abs(c[j].p-pp); if(dd<bd){bd=dd;best=c[j].w;} }
+          if (best!=null && bd<=3) vals.push(best);
+        }
+        if (!vals.length) continue;
+        vals.sort(function(a,b){return a-b;});
+        var m = vals.length%2 ? vals[vals.length>>1] : (vals[(vals.length>>1)-1]+vals[vals.length>>1])/2;
+        curve.push({p:pp, w:m});
+      }
+      if (curve.length<5) continue;
+      out.push({
+        pub: group[Math.floor(group.length/2)].pub,
+        from: group[0].pub, to: group[group.length-1].pub,
+        n: group.length,
+        durationSec: group[Math.floor(group.length/2)].durationSec,
+        curve: curve,
+        // A bin inherits the median of its members' metrics so the colour ramps
+        // keep working without a second code path.
+        views: median(group.map(function(g){return g.views||0;})),
+        r50: median(group.map(function(g){return g.r50;}).filter(function(x){return x!=null;})),
+        title: group.length+' uploads'
+      });
+    }
+    return out;
+  }
+  function median(xs){ if(!xs.length) return null; var a=xs.slice().sort(function(p,q){return p-q;});
+    var m=a.length>>1; return a.length%2? a[m] : (a[m-1]+a[m])/2; }
+
+  function ymd(ms){ var d=new Date(ms); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+
   function draw(){
-    var parts=[];
+    var parts=[], threeD = is3d();
+
+    // The floor grid belongs to the FRONT plane. In 3D it also grows a receding
+    // edge at each level, which is what gives the eye a surface to read depth
+    // against instead of curves floating in space.
     for (var g=0; g<=100; g+=25){
-      var y=yOf(g/100);
-      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>');
+      var y=yOf(g/100,0);
+      parts.push('<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(L+plotW())+'" y2="'+y+'"/>');
       parts.push('<text class="tick" x="'+(L-9)+'" y="'+(y+4)+'" text-anchor="end">'+g+'%</text>');
+      if (threeD){
+        parts.push('<line class="grid zgrid" x1="'+(L+plotW())+'" y1="'+y+'" x2="'+(L+plotW()+DX)+
+          '" y2="'+(y-DY)+'"/>');
+      }
     }
     for (var i=0;i<=5;i++){
-      var f=i/5, x=L+f*(W-L-R);
+      var f=i/5, x=L+f*plotW();
       parts.push('<text class="tick" x="'+x+'" y="'+(H-8)+'" text-anchor="middle">'+
         (axis==='percent' ? Math.round(f*100)+'%' : fmtT(f*maxDur))+'</text>');
     }
-    D.videos.forEach(function(v,i){
-      if (!v.curve.length) return;
-      var d = pathFor(v);
-      parts.push('<path class="hit" data-i="'+i+'" d="'+d+'"><title>'+esc(v.title)+'</title></path>');
-      parts.push('<path class="cv'+(sel===i?' on':'')+'" data-i="'+i+'" d="'+d+'" stroke="'+colOf(v)+'"/>');
-    });
-    if (axis === 'percent'){
+
+    // The z axis: a receding rule from the front-right corner, labelled with the
+    // dates at each end. Without labels the depth is decorative.
+    if (threeD && pubs.length){
+      var zx0=L+plotW(), zy0=yOf(0,0), zx1=zx0+DX, zy1=zy0-DY;
+      parts.push('<line class="zaxis" x1="'+zx0+'" y1="'+zy0+'" x2="'+zx1+'" y2="'+zy1+'"/>');
+      parts.push('<text class="tick zlab" x="'+(zx0+10)+'" y="'+(zy0-4)+'">'+ymd(maxPub)+' newest</text>');
+      parts.push('<text class="tick zlab" x="'+(zx1+2)+'" y="'+(zy1-8)+'" text-anchor="end">'+
+        ymd(minPub)+' oldest</text>');
+    }
+
+    if (threeD){
+      // Painter's algorithm: oldest first, so a nearer plane occludes the ones
+      // behind it. Drawing in any other order destroys the depth read.
+      var series = seriesFor3d();
+      series.forEach(function(b, idx){
+        var d = pathFor(b), c = colOf(b);
+        parts.push('<path class="rib" d="'+ribbonFor(b)+'" fill="'+c+'"/>');
+        parts.push('<path class="cv zcv" d="'+d+'" stroke="'+c+'"><title>'+
+          ymd(b.from)+' to '+ymd(b.to)+' · median of '+b.n+' uploads</title></path>');
+        // Alternate planes only. Every plane starts at the same audience share,
+        // so their labels sit exactly DY/planes apart — at twelve planes that is
+        // tighter than the type, and they collide into an unreadable stack.
+        // Never the frontmost: its label lands on the y-axis 100% tick, and
+        // the z axis already names it.
+        if (idx % 2 === 0 && idx !== series.length-1){
+          parts.push('<text class="tick planelab" x="'+(xOf(b,0)-7)+'" y="'+(yOf(1,offY(b))+3)+
+            '" text-anchor="end">'+ymd(b.pub)+'</text>');
+        }
+      });
+    } else {
+      D.videos.forEach(function(v,i){
+        if (!v.curve.length) return;
+        var d = pathFor(v), c = colOf(v);
+        parts.push('<path class="hit" data-i="'+i+'" d="'+d+'"><title>'+esc(v.title)+'</title></path>');
+        parts.push('<path class="cv'+(sel===i?' on':'')+'" data-i="'+i+'" d="'+d+'" stroke="'+c+'"/>');
+      });
+    }
+    // In 3D the median would sit on the front plane while every curve it
+    // summarises sits on its own — a bar the eye cannot line anything up against.
+    if (axis === 'percent' && !threeD){
       var md = medianPath();
       if (md){
         parts.push('<path class="medcase" d="'+md+'"/>');
@@ -742,7 +984,7 @@ table.obs td.no{color:#ff8f8f}
           '" text-anchor="end">MEDIAN</text>');
       }
     }
-    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0)+'" x2="'+(W-R)+'" y2="'+yOf(0)+'"/>');
+    parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0,0)+'" x2="'+(L+plotW())+'" y2="'+yOf(0,0)+'"/>');
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
     svg.innerHTML = parts.join('');
     svg.classList.toggle('hasel', sel!==null);
@@ -778,6 +1020,16 @@ table.obs td.no{color:#ff8f8f}
       draw();
     });
   });
+  document.querySelectorAll('[data-z]').forEach(function(b){
+    b.addEventListener('click', function(){
+      depth=b.dataset.z;
+      document.querySelectorAll('[data-z]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.z===depth)); });
+      // The 3D view needs vertical room for the receding stack; the flat one
+      // does not, and forcing it taller would just add dead space.
+      svg.classList.toggle('deep', depth==='time');
+      draw();
+    });
+  });
   document.querySelectorAll('[data-col]').forEach(function(b){
     b.addEventListener('click', function(){
       colour=b.dataset.col;
@@ -795,7 +1047,7 @@ table.obs td.no{color:#ff8f8f}
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">2 days ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">2 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">13 days ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-17</span><span class="ago">6 days ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-17</span><span class="ago">6 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-06</span><span class="ago">18 days ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

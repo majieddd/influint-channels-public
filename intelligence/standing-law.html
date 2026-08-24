@@ -123,6 +123,33 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{color:var(--grey); font-style:italic}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
 /* Format library. Each group is a collapsed disclosure whose summary carries
    the template and the numbers, so the library can be skimmed without opening
    anything — the templates ARE the content. */
@@ -248,6 +275,19 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
 /* A 1.7px stroke is an unhittable target, so each curve carries an invisible
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/520}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
 svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
 svg.cohortsvg.hasel .cv{opacity:.12}
 svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
@@ -289,6 +329,38 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
@@ -938,8 +1010,8 @@ panel in the corner when you are done.</p>
     <span class="grade g-strong">strong</span>
     <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
     <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
-    <span class="num">held 100% of 3 measurements</span>
-    <span class="num">3 channels</span>
+    <span class="num">held 100% of 5 measurements</span>
+    <span class="num">5 channels</span>
   </div>
   <div class="txt">The largest single drop-off on almost any long-form video is in the first frame and first few seconds, so the opening must deliver on the thumbnail&#39;s promise AND partially close the interest gap immediately — but only partially.</div>
   <div class="src">Source: internal strategy session</div>
@@ -958,10 +1030,64 @@ panel in the corner when you are done.</p>
              <span class="dir">(the claim predicts this goes up)</span></p>
     <p class="qline">The question put to the data: <i>Is the opening of a video its single costliest stretch?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Share of videos whose single costliest flagged drop falls in the first 5% of the runtime.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 148" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="128"/><text class="etick" x="116.0" y="141" text-anchor="middle">0</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="128"/><text class="etick" x="359.0" y="141" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="128"/><text class="etick" x="602.0" y="141" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="128"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel D</text>
+<circle class="edot eheld" cx="592.3" cy="30" r="5">
+  <title>Channel D: +0.98 over 100 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel E</text>
+<circle class="edot eheld" cx="577.7" cy="50" r="5">
+  <title>Channel E: +0.95 over 100 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel A</text>
+<circle class="edot eheld" cx="572.8" cy="70" r="5">
+  <title>Channel A: +0.94 over 100 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel G</text>
+<circle class="edot eheld" cx="571.9" cy="90" r="5">
+  <title>Channel G: +0.94 over 97 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel C</text>
+<circle class="edot eheld" cx="518.5" cy="110" r="5">
+  <title>Channel C: +0.83 over 99 videos — held</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    This claim is measured as a proportion, so the axis runs 0 to 1 and carries no sign.
+    </p>
+</div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.95</td>
+        <td>100</td>
+        <td>2026-08-20</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>+0.94</td>
+        <td>97</td>
+        <td>2026-08-20</td>
+      </tr>
+<tr>
         <td>Channel A</td>
         <td class="ok">held</td>
         <td>+0.94</td>

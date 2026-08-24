@@ -123,6 +123,33 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{color:var(--grey); font-style:italic}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
 /* Format library. Each group is a collapsed disclosure whose summary carries
    the template and the numbers, so the library can be skimmed without opening
    anything — the templates ARE the content. */
@@ -248,6 +275,19 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
 /* A 1.7px stroke is an unhittable target, so each curve carries an invisible
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/520}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
 svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
 svg.cohortsvg.hasel .cv{opacity:.12}
 svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
@@ -289,6 +329,38 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
@@ -441,7 +513,7 @@ table.obs td.no{color:#ff8f8f}
       46:32 · 2,708,174 views ·
       22% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-18
+       · retention pulled 2026-08-20
     </p>
   </div>
   
@@ -534,7 +606,7 @@ table.obs td.no{color:#ff8f8f}
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"FT98_SW67Dg","durationSec":2792,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.588},{"p":3,"w":0.483},{"p":4,"w":0.436},{"p":5,"w":0.388},{"p":6,"w":0.377},{"p":7,"w":0.365},{"p":8,"w":0.339},{"p":9,"w":0.333},{"p":10,"w":0.318},{"p":11,"w":0.307},{"p":12,"w":0.305},{"p":13,"w":0.293},{"p":14,"w":0.288},{"p":15,"w":0.271},{"p":16,"w":0.266},{"p":17,"w":0.264},{"p":18,"w":0.27},{"p":19,"w":0.295},{"p":20,"w":0.271},{"p":21,"w":0.259},{"p":22,"w":0.25},{"p":23,"w":0.245},{"p":24,"w":0.243},{"p":25,"w":0.238},{"p":26,"w":0.238},{"p":27,"w":0.236},{"p":28,"w":0.234},{"p":29,"w":0.233},{"p":30,"w":0.232},{"p":31,"w":0.23},{"p":32,"w":0.226},{"p":33,"w":0.224},{"p":34,"w":0.223},{"p":35,"w":0.229},{"p":36,"w":0.231},{"p":37,"w":0.231},{"p":38,"w":0.225},{"p":39,"w":0.222},{"p":40,"w":0.219},{"p":41,"w":0.219},{"p":42,"w":0.219},{"p":43,"w":0.219},{"p":44,"w":0.222},{"p":45,"w":0.219},{"p":46,"w":0.217},{"p":47,"w":0.216},{"p":48,"w":0.214},{"p":49,"w":0.213},{"p":50,"w":0.219},{"p":51,"w":0.213},{"p":52,"w":0.217},{"p":53,"w":0.213},{"p":54,"w":0.214},{"p":55,"w":0.215},{"p":56,"w":0.215},{"p":57,"w":0.216},{"p":58,"w":0.214},{"p":59,"w":0.216},{"p":60,"w":0.215},{"p":61,"w":0.214},{"p":62,"w":0.212},{"p":63,"w":0.215},{"p":64,"w":0.212},{"p":65,"w":0.21},{"p":66,"w":0.209},{"p":67,"w":0.209},{"p":68,"w":0.212},{"p":69,"w":0.209},{"p":70,"w":0.209},{"p":71,"w":0.207},{"p":72,"w":0.21},{"p":73,"w":0.212},{"p":74,"w":0.215},{"p":75,"w":0.217},{"p":76,"w":0.219},{"p":77,"w":0.222},{"p":78,"w":0.223},{"p":79,"w":0.224},{"p":80,"w":0.225},{"p":81,"w":0.226},{"p":82,"w":0.229},{"p":83,"w":0.235},{"p":84,"w":0.235},{"p":85,"w":0.237},{"p":86,"w":0.234},{"p":87,"w":0.238},{"p":88,"w":0.243},{"p":89,"w":0.271},{"p":90,"w":0.29},{"p":91,"w":0.29},{"p":92,"w":0.289},{"p":93,"w":0.284},{"p":94,"w":0.272},{"p":95,"w":0.263},{"p":96,"w":0.252},{"p":97,"w":0.249},{"p":98,"w":0.235},{"p":99,"w":0.224},{"p":100,"w":0.202}],"moments":[{"t":"0:28","sec":28,"kind":"drop","what":"The opening 28 seconds shed 38.5 points of audience, dropping from 97.3% to 58.8% (14.7x spike, 2.12M viewers, 38th percentile vs similar)."},{"t":"8:50","sec":530,"kind":"drop","what":"The router-table near-miss segment leaks at 2.2x the channel norm across 56 seconds (4.9x spike, 149,681 viewers lost, 29.4% to 25.9%)."},{"t":"8:50","sec":530,"kind":"peak","what":"Audience rises 9.2% at the router-table scare, though it holds for only one sample (147,268 viewers regained, 29.4% present, 53rd percentile)."},{"t":"41:25","sec":2485,"kind":"peak","what":"Audience climbs 11.4% and holds for eight samples as the reveal builds (163,828 viewers regained, 27.1% present, 82nd percentile vs similar)."},{"t":"41:53","sec":2513,"kind":"peak","what":"A second climb of 7.2% follows the reveal and holds four samples as Brian touches the keys (114,739 viewers regained, 29.0% present, 83rd percentile)."},{"t":"42:49","sec":2569,"kind":"drop","what":"The two minutes after the reveal bleed viewers at 4.2x the channel norm for this position (10.3x spike, 153,061 viewers lost, 1.97% stop rate vs 0.47% typical)."}]}</script>
+<script>window.__VIDEO__={"videoId":"FT98_SW67Dg","durationSec":2792,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.588},{"p":3,"w":0.483},{"p":4,"w":0.436},{"p":5,"w":0.388},{"p":6,"w":0.377},{"p":7,"w":0.365},{"p":8,"w":0.338},{"p":9,"w":0.333},{"p":10,"w":0.318},{"p":11,"w":0.307},{"p":12,"w":0.305},{"p":13,"w":0.293},{"p":14,"w":0.288},{"p":15,"w":0.271},{"p":16,"w":0.266},{"p":17,"w":0.264},{"p":18,"w":0.27},{"p":19,"w":0.295},{"p":20,"w":0.271},{"p":21,"w":0.259},{"p":22,"w":0.25},{"p":23,"w":0.245},{"p":24,"w":0.243},{"p":25,"w":0.238},{"p":26,"w":0.238},{"p":27,"w":0.236},{"p":28,"w":0.234},{"p":29,"w":0.233},{"p":30,"w":0.232},{"p":31,"w":0.23},{"p":32,"w":0.226},{"p":33,"w":0.224},{"p":34,"w":0.223},{"p":35,"w":0.229},{"p":36,"w":0.231},{"p":37,"w":0.231},{"p":38,"w":0.225},{"p":39,"w":0.222},{"p":40,"w":0.219},{"p":41,"w":0.219},{"p":42,"w":0.219},{"p":43,"w":0.219},{"p":44,"w":0.222},{"p":45,"w":0.219},{"p":46,"w":0.217},{"p":47,"w":0.216},{"p":48,"w":0.214},{"p":49,"w":0.213},{"p":50,"w":0.219},{"p":51,"w":0.213},{"p":52,"w":0.217},{"p":53,"w":0.213},{"p":54,"w":0.214},{"p":55,"w":0.215},{"p":56,"w":0.215},{"p":57,"w":0.216},{"p":58,"w":0.214},{"p":59,"w":0.216},{"p":60,"w":0.215},{"p":61,"w":0.214},{"p":62,"w":0.212},{"p":63,"w":0.215},{"p":64,"w":0.212},{"p":65,"w":0.21},{"p":66,"w":0.209},{"p":67,"w":0.209},{"p":68,"w":0.212},{"p":69,"w":0.209},{"p":70,"w":0.209},{"p":71,"w":0.207},{"p":72,"w":0.21},{"p":73,"w":0.212},{"p":74,"w":0.215},{"p":75,"w":0.217},{"p":76,"w":0.219},{"p":77,"w":0.222},{"p":78,"w":0.223},{"p":79,"w":0.224},{"p":80,"w":0.225},{"p":81,"w":0.226},{"p":82,"w":0.229},{"p":83,"w":0.235},{"p":84,"w":0.235},{"p":85,"w":0.237},{"p":86,"w":0.234},{"p":87,"w":0.238},{"p":88,"w":0.243},{"p":89,"w":0.271},{"p":90,"w":0.29},{"p":91,"w":0.29},{"p":92,"w":0.289},{"p":93,"w":0.284},{"p":94,"w":0.272},{"p":95,"w":0.263},{"p":96,"w":0.252},{"p":97,"w":0.249},{"p":98,"w":0.235},{"p":99,"w":0.224},{"p":100,"w":0.202}],"moments":[{"t":"0:28","sec":28,"kind":"drop","what":"The opening 28 seconds shed 38.5 points of audience, dropping from 97.3% to 58.8% (14.7x spike, 2.12M viewers, 38th percentile vs similar)."},{"t":"8:50","sec":530,"kind":"drop","what":"The router-table near-miss segment leaks at 2.2x the channel norm across 56 seconds (4.9x spike, 149,681 viewers lost, 29.4% to 25.9%)."},{"t":"8:50","sec":530,"kind":"peak","what":"Audience rises 9.2% at the router-table scare, though it holds for only one sample (147,268 viewers regained, 29.4% present, 53rd percentile)."},{"t":"41:25","sec":2485,"kind":"peak","what":"Audience climbs 11.4% and holds for eight samples as the reveal builds (163,828 viewers regained, 27.1% present, 82nd percentile vs similar)."},{"t":"41:53","sec":2513,"kind":"peak","what":"A second climb of 7.2% follows the reveal and holds four samples as Brian touches the keys (114,739 viewers regained, 29.0% present, 83rd percentile)."},{"t":"42:49","sec":2569,"kind":"drop","what":"The two minutes after the reveal bleed viewers at 4.2x the channel norm for this position (10.3x spike, 153,061 viewers lost, 1.97% stop rate vs 0.47% typical)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

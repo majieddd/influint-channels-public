@@ -123,6 +123,33 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{color:var(--grey); font-style:italic}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
 /* Format library. Each group is a collapsed disclosure whose summary carries
    the template and the numbers, so the library can be skimmed without opening
    anything — the templates ARE the content. */
@@ -248,6 +275,19 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
 /* A 1.7px stroke is an unhittable target, so each curve carries an invisible
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/520}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
 svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
 svg.cohortsvg.hasel .cv{opacity:.12}
 svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
@@ -289,6 +329,38 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
@@ -447,8 +519,10 @@ table.obs td.no{color:#ff8f8f}
 </div>
 <h2>Notes</h2><p class="lede">Public data only — no analytics grant for this channel yet, so there are no retention curves, first-28-day windows or written findings here. Outlier scores below divide lifetime views by the median of these 30 recent long-form uploads, which is a fair comparison only because the window is narrow; it is not the same measure as the first-28-day score used on analysed channels.</p>
 
+<h2>What to do next</h2><p class="empty">Only 0 videos have retention data. An action list needs at least 6 before its medians mean anything — run a regression over more of the catalogue first.</p>
+
 <h2>Video wall</h2>
-<p class="legend">Each badge is the video's <strong>outlier score</strong> — its views divided by this channel's median. 1.00× is a typical video for this channel; 2×+ is a breakout; below 0.5× underperformed. Median, not average, so one breakout can't drag the baseline.</p>
+<p class="legend">Each badge is the video's <strong>outlier score</strong> — its first-28-day views against the median of the uploads nearest it in time. 1.00× is typical <em>for this channel at that point</em>; 2×+ is a breakout; below 0.5× underperformed. Compared against contemporaries rather than the whole catalogue, because a video from before the channel grew would otherwise always look like a failure. Median, not average, so one breakout can't drag the baseline.</p>
 <div class="wallbar">
   <span class="lab">Sort</span>
   <button class="tgl" data-sort="pub" aria-pressed="true" type="button">Newest</button>
@@ -465,7 +539,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">27:34</span>
   </div>
   <div class="t">SURVIVING WONDERLAND IN ROBLOX...</div>
-  <div class="meta">10K views · 2 days ago</div>
+  <div class="meta">10K views · 6 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=LBxfqNyN4Ho" target="_blank" rel="noopener" data-pub="1786900504000" data-views="198838" data-out="0.8" data-r50="" data-analysed="0">
@@ -475,7 +549,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">16:31</span>
   </div>
   <div class="t">Letting YouTubers CONTROL ME in MM2 for 24 HOURS…</div>
-  <div class="meta">199K views · 3 days ago</div>
+  <div class="meta">199K views · 7 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=8ZiAlCyVPOo" target="_blank" rel="noopener" data-pub="1786808703000" data-views="120073" data-out="0.48" data-r50="" data-analysed="0">
@@ -485,7 +559,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">14:34</span>
   </div>
   <div class="t">Using ADMIN ABUSE in TROLL HUG TOWER... (BAD IDEA)</div>
-  <div class="meta">120K views · 4 days ago</div>
+  <div class="meta">120K views · 8 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.61" data-r50="" data-analysed="0">
@@ -495,7 +569,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">14:19</span>
   </div>
   <div class="t">NOOB To PRO Using ONLY ROBUX In Keyboard Escape...</div>
-  <div class="meta">152K views · 5 days ago</div>
+  <div class="meta">152K views · 9 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Sp-OFhRI_hk" target="_blank" rel="noopener" data-pub="1786719616000" data-views="103358" data-out="0.42" data-r50="" data-analysed="0">
@@ -505,7 +579,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">26:00</span>
   </div>
   <div class="t">This ANIMAL RESTAURANT has DARK SECRETS...</div>
-  <div class="meta">103K views · 5 days ago</div>
+  <div class="meta">103K views · 9 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.01" data-r50="" data-analysed="0">
@@ -515,7 +589,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">24:09</span>
   </div>
   <div class="t">WIRELESS KEYBOARD PRANK in MM2...</div>
-  <div class="meta">251K views · 6 days ago</div>
+  <div class="meta">251K views · 10 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=ARZNad18ddM" target="_blank" rel="noopener" data-pub="1786545911000" data-views="328661" data-out="1.32" data-r50="" data-analysed="0">
@@ -525,7 +599,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">18:32</span>
   </div>
   <div class="t">MM2, But If I DIE, I Eat EXOTIC SNACKS</div>
-  <div class="meta">329K views · 7 days ago</div>
+  <div class="meta">329K views · 11 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=IgYeyQ35Beg" target="_blank" rel="noopener" data-pub="1786117519000" data-views="299785" data-out="1.21" data-r50="" data-analysed="0">
@@ -535,7 +609,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">28:06</span>
   </div>
   <div class="t">Reacting to HIS STORY...</div>
-  <div class="meta">300K views · 12 days ago</div>
+  <div class="meta">300K views · 16 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=LQ6DUD5G-GM" target="_blank" rel="noopener" data-pub="1786033100000" data-views="261198" data-out="1.05" data-r50="" data-analysed="0">
@@ -545,7 +619,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">15:50</span>
   </div>
   <div class="t">I Played MM2 in VR... (Roblox)</div>
-  <div class="meta">261K views · 13 days ago</div>
+  <div class="meta">261K views · 17 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.38" data-r50="" data-analysed="0">
@@ -555,7 +629,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">13:41</span>
   </div>
   <div class="t">Playing GAMES That COST $1...</div>
-  <div class="meta">94K views · 14 days ago</div>
+  <div class="meta">94K views · 18 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.5" data-r50="" data-analysed="0">
@@ -565,7 +639,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">13:23</span>
   </div>
   <div class="t">Animal Hospital, But I Only Allow BLUE PATIENTS...</div>
-  <div class="meta">124K views · 15 days ago</div>
+  <div class="meta">124K views · 19 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.58" data-r50="" data-analysed="0">
@@ -575,7 +649,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">21:34</span>
   </div>
   <div class="t">Animal Hospital But, I ONLY LET ANOMALYS IN!</div>
-  <div class="meta">145K views · 16 days ago</div>
+  <div class="meta">145K views · 20 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.23" data-r50="" data-analysed="0">
@@ -585,7 +659,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">21:05</span>
   </div>
   <div class="t">Every Time I DIE, EAT Different COUNTRIES FOOD! (MM2)</div>
-  <div class="meta">304K views · 17 days ago</div>
+  <div class="meta">304K views · 21 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.24" data-r50="" data-analysed="0">
@@ -595,7 +669,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">18:26</span>
   </div>
   <div class="t">Using X RAY to CHEAT in HIDE AND SEEK!</div>
-  <div class="meta">308K views · 18 days ago</div>
+  <div class="meta">308K views · 22 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.84" data-r50="" data-analysed="0">
@@ -605,7 +679,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">16:45</span>
   </div>
   <div class="t">This NEW Animal Hospital UPDATE is INSANE...</div>
-  <div class="meta">208K views · 19 days ago</div>
+  <div class="meta">208K views · 23 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=40hrk1nWIu0" target="_blank" rel="noopener" data-pub="1785427224000" data-views="250672" data-out="1.01" data-r50="" data-analysed="0">
@@ -615,7 +689,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">15:55</span>
   </div>
   <div class="t">Guess What&#39;s WRONG with MM2 MAPS!</div>
-  <div class="meta">251K views · 20 days ago</div>
+  <div class="meta">251K views · 24 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.69" data-r50="" data-analysed="0">
@@ -625,7 +699,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">20:32</span>
   </div>
   <div class="t">The NEW MM2 SUMMER UPDATE is INSANE...</div>
-  <div class="meta">420K views · 22 days ago</div>
+  <div class="meta">420K views · 26 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.16" data-r50="" data-analysed="0">
@@ -635,7 +709,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">20:24</span>
   </div>
   <div class="t">BLIND, DEAF, &amp; MUTE CHALLENGE in MM2...</div>
-  <div class="meta">287K views · 25 days ago</div>
+  <div class="meta">287K views · 29 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.26" data-r50="" data-analysed="0">
@@ -645,7 +719,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">11:40</span>
   </div>
   <div class="t">Reacting to the BEST ANIMAL HOSPITAL MOMENTS...</div>
-  <div class="meta">314K views · 26 days ago</div>
+  <div class="meta">314K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.23" data-r50="" data-analysed="0">
@@ -655,7 +729,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">18:21</span>
   </div>
   <div class="t">I Hired BODYGUARDS in MM2...</div>
-  <div class="meta">305K views · 27 days ago</div>
+  <div class="meta">305K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.9" data-r50="" data-analysed="0">
@@ -665,7 +739,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">26:16</span>
   </div>
   <div class="t">I Made My Own CUSTOM ASMR TOWER in Roblox!</div>
-  <div class="meta">223K views · 28 days ago</div>
+  <div class="meta">223K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.86" data-r50="" data-analysed="0">
@@ -675,7 +749,7 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">15:42</span>
   </div>
   <div class="t">MM2 With a HEART RATE Monitor...</div>
-  <div class="meta">213K views · 29 days ago</div>
+  <div class="meta">213K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1.11" data-r50="" data-analysed="0">
@@ -802,7 +876,10 @@ A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &m
 belong together when they make the same promise, even if they share no words.
 Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
 it is used: a format shipped twenty times that underperforms is a habit, not a strength.
-The multiplier is the group&rsquo;s median outlier score.</p>
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
 <div class="formats">
 <details class="fmt">
   <summary>
@@ -822,7 +899,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">18:32</span>
   </div>
   <div class="t">MM2, But If I DIE, I Eat EXOTIC SNACKS</div>
-  <div class="meta">329K views · 7 days ago</div>
+  <div class="meta">329K views · 11 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.23" data-r50="" data-analysed="0">
@@ -832,7 +909,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">21:05</span>
   </div>
   <div class="t">Every Time I DIE, EAT Different COUNTRIES FOOD! (MM2)</div>
-  <div class="meta">304K views · 17 days ago</div>
+  <div class="meta">304K views · 21 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=udUS9hoZ_zI" target="_blank" rel="noopener" data-pub="1784299508000" data-views="403441" data-out="1.62" data-r50="" data-analysed="0">
@@ -864,7 +941,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">28:06</span>
   </div>
   <div class="t">Reacting to HIS STORY...</div>
-  <div class="meta">300K views · 12 days ago</div>
+  <div class="meta">300K views · 16 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.26" data-r50="" data-analysed="0">
@@ -874,7 +951,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">11:40</span>
   </div>
   <div class="t">Reacting to the BEST ANIMAL HOSPITAL MOMENTS...</div>
-  <div class="meta">314K views · 26 days ago</div>
+  <div class="meta">314K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1.11" data-r50="" data-analysed="0">
@@ -906,7 +983,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">16:31</span>
   </div>
   <div class="t">Letting YouTubers CONTROL ME in MM2 for 24 HOURS…</div>
-  <div class="meta">199K views · 3 days ago</div>
+  <div class="meta">199K views · 7 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.01" data-r50="" data-analysed="0">
@@ -916,7 +993,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">24:09</span>
   </div>
   <div class="t">WIRELESS KEYBOARD PRANK in MM2...</div>
-  <div class="meta">251K views · 6 days ago</div>
+  <div class="meta">251K views · 10 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.16" data-r50="" data-analysed="0">
@@ -926,7 +1003,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">20:24</span>
   </div>
   <div class="t">BLIND, DEAF, &amp; MUTE CHALLENGE in MM2...</div>
-  <div class="meta">287K views · 25 days ago</div>
+  <div class="meta">287K views · 29 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.23" data-r50="" data-analysed="0">
@@ -936,7 +1013,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">18:21</span>
   </div>
   <div class="t">I Hired BODYGUARDS in MM2...</div>
-  <div class="meta">305K views · 27 days ago</div>
+  <div class="meta">305K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.86" data-r50="" data-analysed="0">
@@ -946,7 +1023,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">15:42</span>
   </div>
   <div class="t">MM2 With a HEART RATE Monitor...</div>
-  <div class="meta">213K views · 29 days ago</div>
+  <div class="meta">213K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=-rgtLzkO7y8" target="_blank" rel="noopener" data-pub="1784476820000" data-views="204561" data-out="0.82" data-r50="" data-analysed="0">
@@ -976,7 +1053,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">15:50</span>
   </div>
   <div class="t">I Played MM2 in VR... (Roblox)</div>
-  <div class="meta">261K views · 13 days ago</div>
+  <div class="meta">261K views · 17 days ago</div>
   
 </a></div>
 </details>
@@ -998,7 +1075,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">14:34</span>
   </div>
   <div class="t">Using ADMIN ABUSE in TROLL HUG TOWER... (BAD IDEA)</div>
-  <div class="meta">120K views · 4 days ago</div>
+  <div class="meta">120K views · 8 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Nn15Dq8_UE8" target="_blank" rel="noopener" data-pub="1784384132000" data-views="246257" data-out="0.99" data-r50="" data-analysed="0">
@@ -1040,7 +1117,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">26:00</span>
   </div>
   <div class="t">This ANIMAL RESTAURANT has DARK SECRETS...</div>
-  <div class="meta">103K views · 5 days ago</div>
+  <div class="meta">103K views · 9 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.5" data-r50="" data-analysed="0">
@@ -1050,7 +1127,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">13:23</span>
   </div>
   <div class="t">Animal Hospital, But I Only Allow BLUE PATIENTS...</div>
-  <div class="meta">124K views · 15 days ago</div>
+  <div class="meta">124K views · 19 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.58" data-r50="" data-analysed="0">
@@ -1060,7 +1137,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">21:34</span>
   </div>
   <div class="t">Animal Hospital But, I ONLY LET ANOMALYS IN!</div>
-  <div class="meta">145K views · 16 days ago</div>
+  <div class="meta">145K views · 20 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.84" data-r50="" data-analysed="0">
@@ -1070,7 +1147,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">16:45</span>
   </div>
   <div class="t">This NEW Animal Hospital UPDATE is INSANE...</div>
-  <div class="meta">208K views · 19 days ago</div>
+  <div class="meta">208K views · 23 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=OQ7iIssiUvo" target="_blank" rel="noopener" data-pub="1784043038000" data-views="341309" data-out="1.37" data-r50="" data-analysed="0">
@@ -1100,7 +1177,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">27:34</span>
   </div>
   <div class="t">SURVIVING WONDERLAND IN ROBLOX...</div>
-  <div class="meta">10K views · 2 days ago</div>
+  <div class="meta">10K views · 6 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.61" data-r50="" data-analysed="0">
@@ -1110,7 +1187,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">14:19</span>
   </div>
   <div class="t">NOOB To PRO Using ONLY ROBUX In Keyboard Escape...</div>
-  <div class="meta">152K views · 5 days ago</div>
+  <div class="meta">152K views · 9 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.38" data-r50="" data-analysed="0">
@@ -1120,7 +1197,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">13:41</span>
   </div>
   <div class="t">Playing GAMES That COST $1...</div>
-  <div class="meta">94K views · 14 days ago</div>
+  <div class="meta">94K views · 18 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.24" data-r50="" data-analysed="0">
@@ -1130,7 +1207,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">18:26</span>
   </div>
   <div class="t">Using X RAY to CHEAT in HIDE AND SEEK!</div>
-  <div class="meta">308K views · 18 days ago</div>
+  <div class="meta">308K views · 22 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=40hrk1nWIu0" target="_blank" rel="noopener" data-pub="1785427224000" data-views="250672" data-out="1.01" data-r50="" data-analysed="0">
@@ -1140,7 +1217,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">15:55</span>
   </div>
   <div class="t">Guess What&#39;s WRONG with MM2 MAPS!</div>
-  <div class="meta">251K views · 20 days ago</div>
+  <div class="meta">251K views · 24 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.69" data-r50="" data-analysed="0">
@@ -1150,7 +1227,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">20:32</span>
   </div>
   <div class="t">The NEW MM2 SUMMER UPDATE is INSANE...</div>
-  <div class="meta">420K views · 22 days ago</div>
+  <div class="meta">420K views · 26 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.9" data-r50="" data-analysed="0">
@@ -1160,7 +1237,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
     <span class="len">26:16</span>
   </div>
   <div class="t">I Made My Own CUSTOM ASMR TOWER in Roblox!</div>
-  <div class="meta">223K views · 28 days ago</div>
+  <div class="meta">223K views · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=y0ePbki6h1c" target="_blank" rel="noopener" data-pub="1784212215000" data-views="606609" data-out="2.44" data-r50="" data-analysed="0">
@@ -1190,7 +1267,7 @@ The multiplier is the group&rsquo;s median outlier score.</p>
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-19</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-19</span><span class="ago">4 days ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

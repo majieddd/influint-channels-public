@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -1010,8 +1135,8 @@ panel in the corner when you are done.</p>
     <span class="grade g-strong">strong</span>
     <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
     <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
-    <span class="num">held 100% of 5 measurements</span>
-    <span class="num">5 channels</span>
+    <span class="num">held 100% of 16 measurements</span>
+    <span class="num">7 channels</span>
   </div>
   <div class="txt">The largest single drop-off on almost any long-form video is in the first frame and first few seconds, so the opening must deliver on the thumbnail&#39;s promise AND partially close the interest gap immediately — but only partially.</div>
   <div class="src">Source: internal strategy session</div>
@@ -1031,86 +1156,145 @@ panel in the corner when you are done.</p>
     <p class="qline">The question put to the data: <i>Is the opening of a video its single costliest stretch?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Share of videos whose single costliest flagged drop falls in the first 5% of the runtime.</p>
     <div class="echartwrap">
-  <svg class="echart" viewBox="0 0 620 148" role="img"
+  <svg class="echart" viewBox="0 0 620 188" role="img"
        aria-label="Effect size per channel, with the threshold for counting as held">
-    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="128"/><text class="etick" x="116.0" y="141" text-anchor="middle">0</text>
-<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="128"/><text class="etick" x="359.0" y="141" text-anchor="middle">0.5</text>
-<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="128"/><text class="etick" x="602.0" y="141" text-anchor="middle">1</text>
-    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="128"/>
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
     <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
     <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
 <text class="elabel" x="108" y="33.5" text-anchor="end">Channel D</text>
-<circle class="edot eheld" cx="592.3" cy="30" r="5">
-  <title>Channel D: +0.98 over 100 videos — held</title>
+<circle class="edot eheld" cx="593.9" cy="30" r="5">
+  <title>Channel D: +0.98 over 300 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
-<text class="elabel" x="108" y="53.5" text-anchor="end">Channel E</text>
-<circle class="edot eheld" cx="577.7" cy="50" r="5">
-  <title>Channel E: +0.95 over 100 videos — held</title>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel A</text>
+<circle class="edot eheld" cx="592.3" cy="50" r="5">
+  <title>Channel A: +0.98 over 300 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
-<text class="elabel" x="108" y="73.5" text-anchor="end">Channel A</text>
-<circle class="edot eheld" cx="572.8" cy="70" r="5">
-  <title>Channel A: +0.94 over 100 videos — held</title>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="589.1" cy="70" r="5">
+  <title>Channel F: +0.97 over 226 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
 <text class="elabel" x="108" y="93.5" text-anchor="end">Channel G</text>
-<circle class="edot eheld" cx="571.9" cy="90" r="5">
-  <title>Channel G: +0.94 over 97 videos — held</title>
+<circle class="edot eheld" cx="576.9" cy="90" r="5">
+  <title>Channel G: +0.95 over 116 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
-<text class="elabel" x="108" y="113.5" text-anchor="end">Channel C</text>
-<circle class="edot eheld" cx="518.5" cy="110" r="5">
-  <title>Channel C: +0.83 over 99 videos — held</title>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel H</text>
+<circle class="edot eheld" cx="570.5" cy="110" r="5">
+  <title>Channel H: +0.94 over 139 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel E</text>
+<circle class="edot eheld" cx="552.3" cy="130" r="5">
+  <title>Channel E: +0.90 over 176 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel C</text>
+<circle class="edot eheld" cx="537.6" cy="150" r="5">
+  <title>Channel C: +0.87 over 166 videos — held</title>
 </circle>
   </svg>
   <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
     hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
     direction but too small to build a decision on.
     This claim is measured as a proportion, so the axis runs 0 to 1 and carries no sign.
-    </p>
+    One dot per channel &mdash; 9 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
 </div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
-        <td>Channel E</td>
-        <td class="ok">held</td>
-        <td>+0.95</td>
-        <td>100</td>
-        <td>2026-08-20</td>
-      </tr>
-<tr>
         <td>Channel G</td>
         <td class="ok">held</td>
-        <td>+0.94</td>
-        <td>97</td>
-        <td>2026-08-20</td>
+        <td>+0.95</td>
+        <td>116</td>
+        <td>2026-08-25</td>
       </tr>
 <tr>
-        <td>Channel A</td>
+        <td>Channel H</td>
         <td class="ok">held</td>
         <td>+0.94</td>
-        <td>100</td>
-        <td>2026-08-19</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.90</td>
+        <td>176</td>
+        <td>2026-08-25</td>
       </tr>
 <tr>
         <td>Channel C</td>
         <td class="ok">held</td>
-        <td>+0.83</td>
-        <td>99</td>
-        <td>2026-08-19</td>
+        <td>+0.87</td>
+        <td>166</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.97</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="ok">held</td>
+        <td>+0.98</td>
+        <td>300</td>
+        <td>2026-08-24</td>
       </tr>
 <tr>
         <td>Channel D</td>
         <td class="ok">held</td>
         <td>+0.98</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="ok">held</td>
+        <td>+0.94</td>
+        <td>139</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.90</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>+0.95</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="ok">held</td>
+        <td>+0.87</td>
+        <td>166</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.95</td>
         <td>100</td>
-        <td>2026-08-19</td>
+        <td>2026-08-20</td>
       </tr></tbody>
       </table>
     </div>
-    
+    <p class="capnote">Showing the 12 most recent of 16 readings.</p>
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are proportions, running from 0 to 1.</p>

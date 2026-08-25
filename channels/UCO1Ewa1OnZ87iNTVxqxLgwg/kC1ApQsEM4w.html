@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       17:42 · 272,611 views ·
       38% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-25
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video ends 4th of 30 for finish rate (50.9%) but sits 21st at halfway — a 7:47 sponsor read cost 35,945 viewers mid-project.</p>
+<p class="lede" style="margin:-14px 0 26px">This one holds far better than Emma&#39;s usual: 84.8% at 0:30 beats 69 of 80 sister videos (+17.3pp) and end-rank is 7 of 81 despite running +371s longer than her median.</p>
 
 <div class="viewer">
   <div>
@@ -540,73 +665,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:10</span><span class="kind">Drop-off</span></span>
-  <span class="what">The open sheds 7.3 points in one second as the greeting lands (5.9x spike, 16,958 viewers, 92.7% remaining).</span>
+  <span class="what">The opening sheds viewers at roughly the channel&#39;s usual rate for its intros (8.8% vs 9.27% channel-typical, 0.9x norm, 0.4x the channel&#39;s average intro loss of 21.9%).</span>
   <span class="body">
-    <span class="lab">Why</span>The moment plays as a channel-standard greeting — &quot;Hi and welcome to my abandoned general store series. I am Emma&quot; — before any obstacle or reveal is surfaced.
-    <span class="quote">“Hi and welcome to my abandoned general”</span>
-    <span class="lab">The fix</span>Trial an open that leads with the salvaged beadboard and chandelier reveal at 0:06, pushing the greeting and &quot;continuing the hallway&quot; line to 0:20.
-    <span class="lab">Why that works</span>This intro loss (8.5%) sits right on the channel&#39;s intro average (8.2%), and the audit prescribes surfacing the concrete obstacle or reveal in the first 30 seconds so casual viewers grasp the stakes fast.
+    <span class="lab">Why</span>Emma delivers a clean context-and-goal open naming the series, herself and today&#39;s job: &quot;continuing the hallway transformation. So last week I installed this picture rail.&quot;
+    <span class="quote">“continuing the hallway transformation”</span>
+    <span class="lab">The fix</span>Keep this open as the channel&#39;s template for intros — greet, name the series, state today&#39;s install goal inside eight seconds, then cut to work.
+    <span class="lab">Why that works</span>Segment-context shows this intro loses less than half the channel&#39;s average for the kind, and 0:30 sits +17.3pp above channel median — the open is doing its job.
     
   </span>
 </button>
 <button class="m peak" data-i="1" type="button">
   <span class="h"><span class="ts">7:05</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A short rewind lifts the room 4.0% for 3 samples as the second wall finishes (6,081 viewers regained, 56.1% present).</span>
+  <span class="what">A small, brief lift as the second wall wraps (+4.0% of present audience, 6,067 regained, held only 3 samples, 44th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the completion beat — &quot;second wall is done. Let&#39;s move on to the main walls.&quot;
+    <span class="lab">Why</span>Emma marks a completed segment then immediately names the next one: &quot;second wall is done. Let&#39;s move on to the main walls.&quot;
     <span class="quote">“second wall is done”</span>
-    <span class="lab">Do more of this</span>Add a 20-second riser under 6:52-7:15 building from the uneven-entryway measurement into the &quot;second wall is done&quot; line.
-    <span class="lab">Why that works</span>Anticipatory music starting ~20 seconds before a payoff flattens retention through the buildup and holds up to 10% more of the room to the moment.
-    
+    <span class="lab">Do more of this</span>Keep the &quot;wall done → main walls&quot; beat and layer a riser 20 seconds ahead of it as the anticipatory cue into the bigger install block.
+    <span class="lab">Why that works</span>Joos: risers ~20s before a key moment can hold up to 10% more of the room; the natural segment close is already earning micro-rewinds, so amplify it rather than cut.
+    <span class="lab">Check first</span><span class="warn">The lift only held 3 samples, so treat this as a candidate cue — measure whether the riser extends the hold on the next upload before repeating.</span>
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">7:47</span><span class="kind">Drop-off</span></span>
-  <span class="what">The sponsor read cuts in cold mid-install and the room collapses from 53.5% to 37.2% (7.3x the surrounding stop rate, 5.6x the channel norm, 35,945 viewers).</span>
+  <span class="what">The Dose liver-shot sponsor read torches the middle of the video (7.4x surrounding stop rate, 3.7x channel norm here, 36,013 viewers lost, 53.4% down to 37.2%).</span>
   <span class="body">
-    <span class="lab">Why</span>The read opens on a life-philosophy segue — &quot;trying to build a life we actually love&quot; — then pivots straight into &quot;that is why I started taking Dose for Your Liver.&quot;
-    <span class="quote">“that is why I started taking Dose”</span>
-    <span class="lab">The fix</span>Cut the philosophy intro and cross-cut the read over the beadboard install from 7:47-8:19, opening on the notched-board test.
-    <span class="lab">Why that works</span>Straight reads cost 10-20% of the room; cross-cutting the read with the progressing story cuts that to ~2% and matches how the channel&#39;s High-Stakes Reno format holds 43% APV.
-    <span class="lab">Check first</span><span class="warn">Sponsor may require the philosophy framing verbatim — if so, A/B the cross-cut version and keep it only if 8:19 audience beats 40%.</span>
+    <span class="lab">Why</span>The read opens on a life-advice preamble then hard-pivots to the pitch, with no build cross-cut underneath: &quot;And that is why I started taking Dose for Your Liver.&quot;
+    <span class="quote">“started taking Dose for Your Liver”</span>
+    <span class="lab">The fix</span>Trial a cross-cut version: keep beadboard cutting and fitting audio-visible under the read, and open the read on the liver-filter idea, not the personal preamble.
+    <span class="lab">Why that works</span>Joos measures a straight one-minute read at 10-20% loss versus ~2% when cross-cut with the story — this drop is 16.2pp, squarely in the straight-read range.
+    <span class="lab">Check first</span><span class="warn">This is a paid read, so the brand controls first-line copy; negotiate the alternative opener before recutting and A/B against next sponsor slot.</span>
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">9:02</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience climbs 16.4% and holds for 48 samples right as the tongue-and-groove test flips (17,261 viewers regained, 43.7% present).</span>
+  <span class="what">Right after the sponsor ends, the audience swells back hard (+16.4% of viewers present, 17,274 regained, held 48 samples, 60th percentile vs similar).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the reversal moment — &quot;the tongue and groove is like completely intact. Spoke too soon cuz this board does not want to go in.&quot;
-    <span class="quote">“Spoke too soon cuz this board”</span>
-    <span class="lab">Do more of this</span>Tease this reversal earlier by front-loading a 2-second &quot;spoke too soon&quot; flash at 6:30, before the second-wall completion.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset — teasing it early structures anticipation toward it and keeps three suspense layers live through the sponsor.
+    <span class="lab">Why</span>Viewers scrub back to the tongue-and-groove reveal and its instant reversal: &quot;the tongue and groove is like completely intact. Spoke too soon cuz this board does not want to go in.&quot;
+    <span class="quote">“tongue and groove is like completely intact”</span>
+    <span class="lab">Do more of this</span>Front-load this beat: open the post-ad return on the &quot;spoke too soon&quot; line, then show the stuck board, so the rewind moment lands without needing to scrub.
+    <span class="lab">Why that works</span>Joos: a reveal that earns rewinds is an asset — structure toward it. Sitting it right after the ad also rewards viewers who stayed, reinforcing the cross-cut fix upstream.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">9:12</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A second rewind cluster holds 47 samples as the board-count check lands (10.5% rise, 12,862 viewers regained, 48.3% present).</span>
+  <span class="what">A second replay pulse lands ten seconds later on the board count (+10.5% of present audience, 12,864 regained, held 47 samples, 62nd percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers replay the progress-tracker beat — &quot;there were about 10 more. I don&#39;t even think we&#39;ll get to the end of that today.&quot;
-    <span class="quote">“there were about 10 more”</span>
-    <span class="lab">Do more of this</span>Add an on-screen board counter from 9:11 onward showing boards remaining vs installed, carrying it through the day-two work.
-    <span class="lab">Why that works</span>Progress trackers and on-screen timers hold retention; the audience is already rewinding to hear the count, so make it visible.
+    <span class="lab">Why</span>Emma quantifies remaining work out loud, which viewers rewind to catch: &quot;there were about 10 10 more. I don&#39;t even think we&#39;ll get to the end of that today.&quot;
+    <span class="quote">“about 10 10 more”</span>
+    <span class="lab">Do more of this</span>Add an on-screen board counter (&quot;10 boards left / day 1&quot;) the moment she says the number, and hold it as a progress tracker across the rest of day one.
+    <span class="lab">Why that works</span>Joos: progress trackers and on-screen timers hold retention, and the rewind proves viewers want the count — surfacing it visually stops the scrub-back.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">11:09</span><span class="kind">Drop-off</span></span>
-  <span class="what">The day-one-to-day-two handoff triggers a 4.9x spike but only 0.45% actually leave — under the channel norm (5,203 viewers, 0.8x vsChannelNorm).</span>
+  <span class="what">A day-one-to-day-two seam flags on ratio but the actual loss is tiny and below the channel&#39;s own norm (4.8x spike but only 0.45% stop rate, 0.4x channel norm, 5,191 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>The moment is a housekeeping recap — &quot;tomorrow we just have this wall and a little bit left on this wall&quot; then &quot;welcome to day two. We are going to continue working on the beadboard.&quot;
-    <span class="quote">“welcome to day two”</span>
-    <span class="lab">The fix</span>Tighten 11:02-11:18 by cutting the day-two restate and jumping directly from &quot;I&#39;ll be right back&quot; to the first day-two board going up.
-    <span class="lab">Why that works</span>Pacing is the flow of new information; the restate repeats what viewers just saw, and killing verbal repetition is how the channel&#39;s High-Stakes format holds 10:21 AVD.
-    
+    <span class="lab">Why</span>Emma verbally signals a stopping point and re-plans the next day out loud: &quot;tomorrow we just have this wall... Okay, welcome to day two.&quot;
+    <span class="quote">“tomorrow we just have this wall”</span>
+    <span class="lab">The fix</span>Trim the 11:02-11:13 planning aside and jump-cut straight from the last board of day one into the first board of day two, holding the on-screen progress cue.
+    <span class="lab">Why that works</span>Joos: retention drops the moment viewers sense a stopping point; the day-break language reads as a mini-outro even though the stop rate here is actually below channel norm.
+    <span class="lab">Check first</span><span class="warn">The day-two recap may be load-bearing for viewers who dip out and back; A/B the trimmed cut and only keep it if end-audience holds above 50.9%.</span>
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"kC1ApQsEM4w","durationSec":1062,"curve":[{"p":1,"w":0.927},{"p":2,"w":0.848},{"p":3,"w":0.738},{"p":4,"w":0.69},{"p":5,"w":0.63},{"p":6,"w":0.609},{"p":7,"w":0.596},{"p":8,"w":0.589},{"p":9,"w":0.579},{"p":10,"w":0.573},{"p":11,"w":0.565},{"p":12,"w":0.564},{"p":13,"w":0.558},{"p":14,"w":0.555},{"p":15,"w":0.548},{"p":16,"w":0.546},{"p":17,"w":0.546},{"p":18,"w":0.549},{"p":19,"w":0.548},{"p":20,"w":0.545},{"p":21,"w":0.551},{"p":22,"w":0.555},{"p":23,"w":0.553},{"p":24,"w":0.547},{"p":25,"w":0.548},{"p":26,"w":0.538},{"p":27,"w":0.544},{"p":28,"w":0.542},{"p":29,"w":0.533},{"p":30,"w":0.529},{"p":31,"w":0.533},{"p":32,"w":0.535},{"p":33,"w":0.541},{"p":34,"w":0.539},{"p":35,"w":0.544},{"p":36,"w":0.541},{"p":37,"w":0.534},{"p":38,"w":0.535},{"p":39,"w":0.539},{"p":40,"w":0.561},{"p":41,"w":0.541},{"p":42,"w":0.539},{"p":43,"w":0.54},{"p":44,"w":0.535},{"p":45,"w":0.497},{"p":46,"w":0.442},{"p":47,"w":0.372},{"p":48,"w":0.361},{"p":49,"w":0.366},{"p":50,"w":0.375},{"p":51,"w":0.437},{"p":52,"w":0.483},{"p":53,"w":0.504},{"p":54,"w":0.509},{"p":55,"w":0.516},{"p":56,"w":0.52},{"p":57,"w":0.527},{"p":58,"w":0.51},{"p":59,"w":0.509},{"p":60,"w":0.509},{"p":61,"w":0.513},{"p":62,"w":0.521},{"p":63,"w":0.526},{"p":64,"w":0.522},{"p":65,"w":0.514},{"p":66,"w":0.506},{"p":67,"w":0.498},{"p":68,"w":0.504},{"p":69,"w":0.494},{"p":70,"w":0.491},{"p":71,"w":0.491},{"p":72,"w":0.498},{"p":73,"w":0.504},{"p":74,"w":0.524},{"p":75,"w":0.513},{"p":76,"w":0.524},{"p":77,"w":0.531},{"p":78,"w":0.527},{"p":79,"w":0.516},{"p":80,"w":0.508},{"p":81,"w":0.501},{"p":82,"w":0.5},{"p":83,"w":0.498},{"p":84,"w":0.509},{"p":85,"w":0.518},{"p":86,"w":0.528},{"p":87,"w":0.522},{"p":88,"w":0.532},{"p":89,"w":0.528},{"p":90,"w":0.525},{"p":91,"w":0.524},{"p":92,"w":0.518},{"p":93,"w":0.53},{"p":94,"w":0.523},{"p":95,"w":0.517},{"p":96,"w":0.512},{"p":97,"w":0.509},{"p":98,"w":0.481},{"p":99,"w":0.439},{"p":100,"w":0.359}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The open sheds 7.3 points in one second as the greeting lands (5.9x spike, 16,958 viewers, 92.7% remaining)."},{"t":"7:05","sec":425,"kind":"peak","what":"A short rewind lifts the room 4.0% for 3 samples as the second wall finishes (6,081 viewers regained, 56.1% present)."},{"t":"7:47","sec":467,"kind":"drop","what":"The sponsor read cuts in cold mid-install and the room collapses from 53.5% to 37.2% (7.3x the surrounding stop rate, 5.6x the channel norm, 35,945 viewers)."},{"t":"9:02","sec":542,"kind":"peak","what":"The audience climbs 16.4% and holds for 48 samples right as the tongue-and-groove test flips (17,261 viewers regained, 43.7% present)."},{"t":"9:12","sec":552,"kind":"peak","what":"A second rewind cluster holds 47 samples as the board-count check lands (10.5% rise, 12,862 viewers regained, 48.3% present)."},{"t":"11:09","sec":669,"kind":"drop","what":"The day-one-to-day-two handoff triggers a 4.9x spike but only 0.45% actually leave — under the channel norm (5,203 viewers, 0.8x vsChannelNorm)."}]}</script>
+<script>window.__VIDEO__={"videoId":"kC1ApQsEM4w","durationSec":1062,"curve":[{"p":1,"w":0.927},{"p":2,"w":0.848},{"p":3,"w":0.737},{"p":4,"w":0.689},{"p":5,"w":0.63},{"p":6,"w":0.609},{"p":7,"w":0.595},{"p":8,"w":0.589},{"p":9,"w":0.579},{"p":10,"w":0.573},{"p":11,"w":0.565},{"p":12,"w":0.563},{"p":13,"w":0.558},{"p":14,"w":0.554},{"p":15,"w":0.548},{"p":16,"w":0.545},{"p":17,"w":0.546},{"p":18,"w":0.549},{"p":19,"w":0.548},{"p":20,"w":0.545},{"p":21,"w":0.55},{"p":22,"w":0.555},{"p":23,"w":0.553},{"p":24,"w":0.546},{"p":25,"w":0.547},{"p":26,"w":0.538},{"p":27,"w":0.544},{"p":28,"w":0.542},{"p":29,"w":0.533},{"p":30,"w":0.529},{"p":31,"w":0.532},{"p":32,"w":0.535},{"p":33,"w":0.54},{"p":34,"w":0.539},{"p":35,"w":0.544},{"p":36,"w":0.54},{"p":37,"w":0.534},{"p":38,"w":0.535},{"p":39,"w":0.539},{"p":40,"w":0.56},{"p":41,"w":0.541},{"p":42,"w":0.539},{"p":43,"w":0.54},{"p":44,"w":0.534},{"p":45,"w":0.496},{"p":46,"w":0.442},{"p":47,"w":0.372},{"p":48,"w":0.36},{"p":49,"w":0.366},{"p":50,"w":0.375},{"p":51,"w":0.437},{"p":52,"w":0.483},{"p":53,"w":0.504},{"p":54,"w":0.508},{"p":55,"w":0.516},{"p":56,"w":0.52},{"p":57,"w":0.526},{"p":58,"w":0.51},{"p":59,"w":0.508},{"p":60,"w":0.508},{"p":61,"w":0.513},{"p":62,"w":0.52},{"p":63,"w":0.526},{"p":64,"w":0.522},{"p":65,"w":0.514},{"p":66,"w":0.506},{"p":67,"w":0.498},{"p":68,"w":0.504},{"p":69,"w":0.494},{"p":70,"w":0.491},{"p":71,"w":0.491},{"p":72,"w":0.498},{"p":73,"w":0.503},{"p":74,"w":0.524},{"p":75,"w":0.513},{"p":76,"w":0.524},{"p":77,"w":0.531},{"p":78,"w":0.527},{"p":79,"w":0.515},{"p":80,"w":0.508},{"p":81,"w":0.501},{"p":82,"w":0.5},{"p":83,"w":0.498},{"p":84,"w":0.509},{"p":85,"w":0.517},{"p":86,"w":0.528},{"p":87,"w":0.521},{"p":88,"w":0.532},{"p":89,"w":0.527},{"p":90,"w":0.524},{"p":91,"w":0.523},{"p":92,"w":0.518},{"p":93,"w":0.529},{"p":94,"w":0.523},{"p":95,"w":0.516},{"p":96,"w":0.512},{"p":97,"w":0.509},{"p":98,"w":0.481},{"p":99,"w":0.439},{"p":100,"w":0.359}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The opening sheds viewers at roughly the channel's usual rate for its intros (8.8% vs 9.27% channel-typical, 0.9x norm, 0.4x the channel's average intro loss of 21.9%)."},{"t":"7:05","sec":425,"kind":"peak","what":"A small, brief lift as the second wall wraps (+4.0% of present audience, 6,067 regained, held only 3 samples, 44th percentile)."},{"t":"7:47","sec":467,"kind":"drop","what":"The Dose liver-shot sponsor read torches the middle of the video (7.4x surrounding stop rate, 3.7x channel norm here, 36,013 viewers lost, 53.4% down to 37.2%)."},{"t":"9:02","sec":542,"kind":"peak","what":"Right after the sponsor ends, the audience swells back hard (+16.4% of viewers present, 17,274 regained, held 48 samples, 60th percentile vs similar)."},{"t":"9:12","sec":552,"kind":"peak","what":"A second replay pulse lands ten seconds later on the board count (+10.5% of present audience, 12,864 regained, held 47 samples, 62nd percentile)."},{"t":"11:09","sec":669,"kind":"drop","what":"A day-one-to-day-two seam flags on ratio but the actual loss is tiny and below the channel's own norm (4.8x spike but only 0.45% stop rate, 0.4x channel norm, 5,191 viewers)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       34:58 · 1,220,210 views ·
       28% still watching at the halfway mark · 
       8 drop-offs, 5 replay peaks
-       · retention pulled 2026-08-20
+       · retention pulled 2026-08-25
     </p>
   </div>
   <span class="badge" style="color:var(--teal)">DEEP DIVE</span>
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video runs 17 minutes longer than the channel&#39;s median and ranks 6 of 9 at halfway, with the anomaly clustered at 4:33 and 20:38 where stops run 1.8x and 1.2x the channel&#39;s own norm.</p>
+<p class="lede" style="margin:-14px 0 26px">This video holds 94.7% at 0:30 (channel median 76.3%, beating 167 of 168) but collapses to 47.0% by 2:00, 15.9pp below the channel median — the hook oversells and the second minute doesn&#39;t cash it.</p>
 
 <div class="viewer">
   <div>
@@ -540,150 +665,150 @@ table.obs td.no{color:#ff8f8f}
     <h3>13 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:20</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening 22 seconds shed a quarter of the room, matching the channel&#39;s own intro habit (5.5x spike, 538,453 viewers, 100% to 73.8%).</span>
+  <span class="what">Between 0:20 and 0:42 the video sheds a quarter of the room, from 100% to 73.8% (2.1x the channel&#39;s norm here, 544,755 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 0:20-0:42 for the standard channel open — logo/greeting and premise restatement before any build footage appears.
-    
-    <span class="lab">The fix</span>Hold this intro; the channel&#39;s best comparable open (&quot;I made this cause I needed a nap lol&quot;) also loses zero beyond the structural baseline.
-    <span class="lab">Why that works</span>Stop rate here (13.60%) sits on the channel norm (13.44%), so intervention risks breaking a working pattern.
+    <span class="lab">Why</span>The cold-open promise gives way to a first-person setup beat: &quot;At the very beginning of this build, my precision has to be nothing less than perfect.&quot;
+    <span class="quote">“my precision has to be nothing less than perfect”</span>
+    <span class="lab">The fix</span>Cut 0:30-0:42 and jump straight from the brother-reveal tease into the first cut on the desktop.
+    <span class="lab">Why that works</span>The first minute mathematically caps AVD, and the 0:30-0:42 stretch restates premise the thumbnail already sold instead of starting the build.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">4:33</span><span class="kind">Drop-off</span></span>
-  <span class="what">21 seconds lose viewers at 1.8x the channel&#39;s own norm here, the sharpest anomaly in the video (2.63% vs 1.45% typical, 20,523 lost).</span>
+  <span class="what">A 21-second beat inside the brother&#39;s office costs 20,767 viewers (2.1x the channel norm, 2.63% stop rate vs 1.22% typical, 47% vsSimilarVideos).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 4:33-4:54 for an early exposition batch or tool/materials rundown landing before viewers need the information.
+    <span class="lab">Why</span>The exchange drifts into a labelling aside: &quot;If you&#39;re actually making it for, you know, the autistic, then I&#39;m going to be honest.&quot;
+    <span class="quote">“If you&#39;re actually making it for, you know, the autistic”</span>
+    <span class="lab">The fix</span>Cut 4:22-4:33 and land the brother scene on &quot;imagine a desk&quot; flowing straight into the magnet step at 4:52.
+    <span class="lab">Why that works</span>This is the only early moment scoring below similar videos (47%); trimming the sensitive aside removes the specific segment underperforming its peers.
     
-    <span class="lab">The fix</span>Test cutting 4:33-4:54 entirely and reintroducing any needed information in a 5-second batch right before it is used.
-    <span class="lab">Why that works</span>Front-loaded exposition earns boredom exits; the playbook says introduce information right before it&#39;s needed, shown visually when used.
-    <span class="lab">Check first</span><span class="warn">Confirm nothing in this window sets up a later joke or callback; if it does, keep the setup line only and cut the rest.</span>
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">7:42</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 105-second stretch drops the room from 34.4% to 31.8% at 7.9x the surrounding stop rate (68,544 viewers lost).</span>
+  <span class="what">The glue-up and sponsor hand-off runs 105 seconds and loses 69,538 viewers (7.6x the surrounding stop rate, 1.14% vs a 0.97% channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 7:42-9:26 for a stripping-down or cleanup phase — teardown, sorting, or a recap before the next build step.
-    
-    <span class="lab">The fix</span>Cut 7:42-9:26 to under 40 seconds and cross-cut the remaining teardown with a tease of the next fidget mechanism.
-    <span class="lab">Why that works</span>The playbook says stripping-down phases bleed viewers; compressing them and layering B-story restores forward motion.
-    <span class="lab">Check first</span><span class="warn">Verify none of this stretch is load-bearing setup for a later reveal; if it is, keep the setup shots and cut only the dead air.</span>
+    <span class="lab">Why</span>A router aside dead-ends into overwhelmed narration before the ad: &quot;That&#39;s where my sponsor Claude comes in.&quot;
+    <span class="quote">“That&#39;s where my sponsor Claude comes in”</span>
+    <span class="lab">The fix</span>Cross-cut the Claude read with the tile-planning problem in ~5s alternations so the sponsor lands while the &quot;how do 78 tiles fit&quot; question is still open.
+    <span class="lab">Why that works</span>A straight read here costs 10-20% of the room; cross-cutting into a live problem cuts that to ~2% and keeps suspense alive through the ad.
+    <span class="lab">Check first</span><span class="warn">Confirm with the sponsor that a cross-cut structure is allowed; if the brand requires a clean read, trial the split-screen variant instead.</span>
   </span>
 </button>
 <button class="m drop" data-i="3" type="button">
   <span class="h"><span class="ts">11:11</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 21-second beat loses 10,953 viewers at 3.6x the surrounding rate but below the channel norm here (0.72% vs 0.87%, 0.8x channel).</span>
+  <span class="what">A 21-second table-saw troubleshooting beat costs 11,030 viewers but actually stops fewer people than the channel typically does here (0.73% vs 0.95%, 0.8x norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 11:11-11:32 for a mid-build transition — a cut between two assembly steps where narration briefly restates what just happened.
-    
-    <span class="lab">The fix</span>Tighten 11:11-11:32 by trimming any recap line and hard-cutting straight into the next assembly action.
-    <span class="lab">Why that works</span>Kill all repetition — verbal recap of a step just shown flattens the flow of new information.
+    <span class="lab">Why</span>Narration circles the same issue twice: &quot;It&#39;s wobbling a little bit. That&#39;s not good... This is not bueno.&quot;
+    <span class="quote">“Too much wobble”</span>
+    <span class="lab">The fix</span>Trim 11:11-11:28 to a single &quot;too much wobble&quot; line before jumping to the blade-angle reveal.
+    <span class="lab">Why that works</span>Kill all repetition — the fence-vs-blade beat repeats the wobble diagnosis three times before the actual cause lands.
     
   </span>
 </button>
 <button class="m drop" data-i="4" type="button">
   <span class="h"><span class="ts">14:41</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 21-second beat leaks viewers at 8.3x the surrounding rate, close to the channel&#39;s own norm (25,748 lost, 30.1% to 29.0%).</span>
+  <span class="what">A 21-second stall over out-of-square cubes bleeds 26,375 viewers (8.5x the surrounding stop rate, 1.3x the channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 14:41-15:02 for a segue or repeated explanation — a transition line between two build segments with no new information landing.
-    
-    <span class="lab">The fix</span>Tighten 14:41-15:02 to a single hard cut and add a 2-second on-screen tease of the next mechanism.
-    <span class="lab">Why that works</span>Pacing is flow of new information; a 21-second segue with nothing new violates the every-5-seconds change rule.
+    <span class="lab">Why</span>The narration turns inward and asks the audience for reassurance: &quot;Have you guys ever had a project that you felt like you wanted to give up on halfway through?&quot;
+    <span class="quote">“you felt like you wanted to give up on halfway through”</span>
+    <span class="lab">The fix</span>Cut 14:30-14:39 and jump from &quot;the sides are not square&quot; straight into &quot;My planer stopped working.&quot;
+    <span class="lab">Why that works</span>Pacing is the flow of new information; stripping the self-doubt aside stacks two fresh problems and removes a beat that reads as the maker asking to quit.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">20:38</span><span class="kind">Drop-off</span></span>
-  <span class="what">84 seconds bleed 23,991 viewers at 1.2x the channel&#39;s norm here, and the same timestamp is a replay peak (7.6x spike, 28.7% to 27.5%).</span>
+  <span class="what">An 84-second aside about the previous build loses 24,416 viewers, though the local stop rate (0.78% vs 0.83% channel norm, 0.9x) is actually under the channel&#39;s baseline.</span>
   <span class="body">
-    <span class="lab">Why</span>Check 20:38-22:02 for a reveal or mechanism demonstration — the replay traffic suggests something worth rewinding sits at the front of this window.
-    
-    <span class="lab">The fix</span>Cut the tail of 20:38-22:02 back to the demonstration itself and hard-cut into the next segment within 30 seconds.
-    <span class="lab">Why that works</span>Retention drops the moment tension is spent; the replay proves the payoff hits, so the loss is post-payoff drift.
+    <span class="lab">Why</span>Joey detours from the desk into last video&#39;s promotion: &quot;I made the floating office pod in my garage.&quot;
+    <span class="quote">“I made the floating office pod in my garage”</span>
+    <span class="lab">The fix</span>Tighten 20:33-21:05 to a single sentence naming the pod, then return to the rake callback that opens the next segment.
+    <span class="lab">Why that works</span>The moment resolves tension about whether he keeps the desk before the reveal is earned, and retention drops the moment tension is spent.
     
   </span>
 </button>
 <button class="m peak" data-i="6" type="button">
   <span class="h"><span class="ts">20:38</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The room rises 2.8% mid-video, coinciding with the 84-second drop that follows (21,039 regained, held 2 samples).</span>
+  <span class="what">Audience ticks up 2.9% for just 2 samples on the callback to the prior build (21,557 viewers regained, 61% vsSimilarVideos).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 20:38 for a mid-video mechanism demonstration — viewers rewound to it, then left during the aftermath.
-    
-    <span class="lab">Do more of this</span>Move a 2-second cutaway of this demonstration into the intro and cut the post-demo runoff to under 30 seconds.
-    <span class="lab">Why that works</span>Withhold the finished thing and tease early; the replay proves this beat pulls viewers, the drop proves the tail doesn&#39;t.
+    <span class="lab">Why</span>A named prior project pulls scrub-backs: &quot;I made the floating office pod in my garage.&quot;
+    <span class="quote">“the floating office pod in my garage”</span>
+    <span class="lab">Do more of this</span>Keep the pod name on screen as a lower third so scrubbers land on the reference without needing to rewind twice.
+    <span class="lab">Why that works</span>The 2-sample hold means viewers hit the reference and leave; a legible on-screen title converts the scrub into a click at the end screen.
     
   </span>
 </button>
 <button class="m drop" data-i="7" type="button">
   <span class="h"><span class="ts">25:53</span><span class="kind">Drop-off</span></span>
-  <span class="what">21 seconds lose 9,677 viewers at 3.9x the surrounding rate, exactly on the channel&#39;s norm here (0.19% vs 0.19%, 1.0x).</span>
+  <span class="what">A 21-second first-fit test loses 9,845 viewers, though the local stop rate is a fraction of the channel norm (0.19% vs 0.74%, 0.3x).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 25:53-26:14 for a routine segue between build stages — the loss matches the channel&#39;s baseline habit at this structural point.
-    
-    <span class="lab">The fix</span>Hold this beat; the stop rate matches the channel norm exactly, so intervention is unlikely to move the graph.
-    <span class="lab">Why that works</span>Fix the content between spikes, not the spikes themselves; this one carries no anomaly signal.
-    
+    <span class="lab">Why</span>This is a mini-reveal held for its click: &quot;It slides so nice. The magnets just snap into place.&quot;
+    <span class="quote">“The magnets just snap into place”</span>
+    <span class="lab">The fix</span>Trial adding a riser starting at 25:30, ~20 seconds before the snap, and hold the first snap sound in bare audio for two beats.
+    <span class="lab">Why that works</span>Anticipatory risers 20s before a payoff can hold up to ~10% more of the room, and this is the video&#39;s earned first-payoff moment.
+    <span class="lab">Check first</span><span class="warn">The channel&#39;s best reveal (&quot;Building a Tiny Office Pod Under My Stairs&quot; at 50:21) gained 10.8%; A/B this treatment against a straight cut and keep whichever raises audience through the beat.</span>
   </span>
 </button>
 <button class="m peak" data-i="8" type="button">
   <span class="h"><span class="ts">29:22</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The room rises 3.9% and holds for 15 samples, the strongest sustained replay in the video (27,963 regained, 70th percentile vs similar).</span>
+  <span class="what">Audience rises 3.9% and holds for 15 samples as viewers rewind the leg swap (28,293 viewers regained, 70% vsSimilarVideos).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 29:22 for a reveal, measurement or mechanism demonstration — the 15-sample hold reads as viewers rewinding to see it again.
-    
-    <span class="lab">Do more of this</span>Front-load a 3-second tease of this moment into the opening 60 seconds and structure the video&#39;s promise around it.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; teasing it early pulls the audience forward through the middle.
+    <span class="lab">Why</span>A visible fix lands in three sentences: &quot;Those look strange. Not a fan. Not a fan at all. I&#39;m going to get something else. That&#39;s much better.&quot;
+    <span class="quote">“Those look strange. Not a fan”</span>
+    <span class="lab">Do more of this</span>Front-load a 3-second flash of this before/after in the cold open, then return to it in full at 29:22.
+    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset — teasing it early gives the packaging promise a second on-screen anchor.
     
   </span>
 </button>
 <button class="m peak" data-i="9" type="button">
   <span class="h"><span class="ts">31:49</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience rises 2.6% at the 91% mark and holds for 8 samples, a long hold this late (20,772 regained, 70th percentile).</span>
+  <span class="what">Audience rises 2.6% and holds 8 samples on the maker&#39;s own self-review before the brother arrives (21,018 viewers regained, 70% vsSimilarVideos).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 31:49 for a fidget-mechanism demonstration on the finished desk — sustained late replays usually sit on repeatable actions.
-    
-    <span class="lab">Do more of this</span>Hold this shot 1 second longer in place and cut a 1-second insert of it into the intro tease.
-    <span class="lab">Why that works</span>Late replays that hold 8 samples are the video&#39;s peak-end asset; extending them lifts the ending.
+    <span class="lab">Why</span>Joey verbalises the tension the whole video has been building: &quot;if he guesses where my freehand routed tiles are, then we&#39;re going to consider this table flawed at best.&quot;
+    <span class="quote">“consider this table flawed at best”</span>
+    <span class="lab">Do more of this</span>Move this stakes-restatement earlier — mirror it at the 0:22 freehand-router tease so the whole build carries the same question.
+    <span class="lab">Why that works</span>Remind viewers of the goal every ~2 minutes; this line is the narrative spine viewers are rewinding to hear.
     
   </span>
 </button>
 <button class="m peak" data-i="10" type="button">
   <span class="h"><span class="ts">32:10</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience rises 3.3% at the 92% mark, held for 6 samples inside the final act (26,631 regained, 69th percentile).</span>
+  <span class="what">Audience climbs 3.3% at the brother&#39;s turn-around (26,677 viewers regained, 69% vsSimilarVideos, 6-sample hold).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 32:10 for the final reveal or the finished desk in use — replay traffic this late usually sits on a payoff shot.
-    
-    <span class="lab">Do more of this</span>Cut a 2-second insert of this moment into the intro tease and hold the shot 1 second longer in place.
-    <span class="lab">Why that works</span>Peak-end rule: force an emotional peak late and end on a high; extending the peak strengthens the ending.
+    <span class="lab">Why</span>The reveal beat lands verbatim on his reaction: &quot;Wa. Dang. That&#39;s no joke.&quot;
+    <span class="quote">“Wa. Dang. That&#39;s no joke”</span>
+    <span class="lab">Do more of this</span>Cut a 1-second silent freeze on his face immediately after &quot;three, two, one, go&quot; before the laughter track kicks in.
+    <span class="lab">Why that works</span>Stretching a conflict beat by stripping music to bare sound can triple screen time with stable retention — this is the video&#39;s earned peak.
     
   </span>
 </button>
 <button class="m peak" data-i="11" type="button">
   <span class="h"><span class="ts">32:31</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The room rises 2.1% at the 93% mark, one of three late peaks clustered around the final reveal (17,310 regained, 67th percentile).</span>
+  <span class="what">Audience rises 2.1% at the brother processing the desk (17,515 viewers regained, 67% vsSimilarVideos, 3-sample hold).</span>
   <span class="body">
-    <span class="lab">Why</span>Check 32:31 for another beat in the final demonstration sequence — three peaks in 42 seconds means the reveal is doing sustained work.
-    
-    <span class="lab">Do more of this</span>Merge the 31:49, 32:10 and 32:31 beats into a single continuous demonstration and tease it in the opening 60 seconds.
-    <span class="lab">Why that works</span>Three replays inside 42 seconds prove this is the video&#39;s true payoff; concentrating it strengthens both peak and end.
+    <span class="lab">Why</span>The reaction lands as an honest struggle to take it in: &quot;I&#39;m like trying to process it cuz there&#39;s so much.&quot;
+    <span class="quote">“trying to process it cuz there&#39;s so much”</span>
+    <span class="lab">Do more of this</span>Hold this line in a tight two-shot for a full beat before cutting to the phone-charging discovery.
+    <span class="lab">Why that works</span>The peak-end rule — force an emotional peak mid-video and end high; this beat is the second half&#39;s highest point and should not be undercut.
     
   </span>
 </button>
 <button class="m drop" data-i="12" type="button">
   <span class="h"><span class="ts">32:52</span><span class="kind">Drop-off</span></span>
-  <span class="what">63 seconds shed 18,543 viewers at 6.9x the surrounding rate, but at half the channel&#39;s typical outro loss (0.92% vs 1.21%, 0.5x channel avg).</span>
+  <span class="what">The brother&#39;s reaction runs 63 seconds and loses 18,196 viewers, but the local stop rate (0.92% vs 3.56% channel norm, 0.3x) is a third of what outros here usually run.</span>
   <span class="body">
-    <span class="lab">Why</span>Check 32:52-33:55 for the outro sequence — thanks, plugs, and the next-video pitch after the final reveal has landed.
-    
-    <span class="lab">The fix</span>Hold this outro; it already outperforms the channel average for its kind and the best comparable outro loses only its structural baseline.
-    <span class="lab">Why that works</span>This instance loses 2.8% against a 5.6% channel average for outros, so surgery risks breaking something working.
+    <span class="lab">Why</span>The reveal-reaction lingers on tangents: &quot;Cherry berry ropes. Oh, it&#39;s it&#39;s strong, bro.&quot;
+    <span class="quote">“Cherry berry ropes. Oh, it&#39;s it&#39;s strong, bro”</span>
+    <span class="lab">The fix</span>Keep as-is; this outro loses 2.8% versus the channel&#39;s 23.7% average for outros, so protect it and hand off to the next video inside the last 20 seconds.
+    <span class="lab">Why that works</span>Signalling an ending is what triggers exits; this segment is already 15x better than the channel&#39;s outro habit, so the fix is preservation, not surgery.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"k5eHSd-p3x0","durationSec":2098,"curve":[{"p":1,"w":0.947},{"p":2,"w":0.738},{"p":3,"w":0.557},{"p":4,"w":0.506},{"p":5,"w":0.471},{"p":6,"w":0.449},{"p":7,"w":0.431},{"p":8,"w":0.417},{"p":9,"w":0.406},{"p":10,"w":0.402},{"p":11,"w":0.397},{"p":12,"w":0.387},{"p":13,"w":0.379},{"p":14,"w":0.364},{"p":15,"w":0.352},{"p":16,"w":0.348},{"p":17,"w":0.347},{"p":18,"w":0.346},{"p":19,"w":0.344},{"p":20,"w":0.344},{"p":21,"w":0.344},{"p":22,"w":0.344},{"p":23,"w":0.342},{"p":24,"w":0.335},{"p":25,"w":0.325},{"p":26,"w":0.332},{"p":27,"w":0.318},{"p":28,"w":0.317},{"p":29,"w":0.317},{"p":30,"w":0.311},{"p":31,"w":0.316},{"p":32,"w":0.314},{"p":33,"w":0.309},{"p":34,"w":0.306},{"p":35,"w":0.304},{"p":36,"w":0.302},{"p":37,"w":0.299},{"p":38,"w":0.298},{"p":39,"w":0.293},{"p":40,"w":0.294},{"p":41,"w":0.299},{"p":42,"w":0.301},{"p":43,"w":0.29},{"p":44,"w":0.288},{"p":45,"w":0.285},{"p":46,"w":0.284},{"p":47,"w":0.283},{"p":48,"w":0.284},{"p":49,"w":0.283},{"p":50,"w":0.281},{"p":51,"w":0.281},{"p":52,"w":0.283},{"p":53,"w":0.28},{"p":54,"w":0.28},{"p":55,"w":0.279},{"p":56,"w":0.278},{"p":57,"w":0.278},{"p":58,"w":0.279},{"p":59,"w":0.287},{"p":60,"w":0.282},{"p":61,"w":0.283},{"p":62,"w":0.279},{"p":63,"w":0.275},{"p":64,"w":0.273},{"p":65,"w":0.271},{"p":66,"w":0.27},{"p":67,"w":0.269},{"p":68,"w":0.268},{"p":69,"w":0.266},{"p":70,"w":0.267},{"p":71,"w":0.273},{"p":72,"w":0.268},{"p":73,"w":0.266},{"p":74,"w":0.272},{"p":75,"w":0.268},{"p":76,"w":0.267},{"p":77,"w":0.266},{"p":78,"w":0.266},{"p":79,"w":0.265},{"p":80,"w":0.266},{"p":81,"w":0.271},{"p":82,"w":0.267},{"p":83,"w":0.267},{"p":84,"w":0.278},{"p":85,"w":0.282},{"p":86,"w":0.278},{"p":87,"w":0.284},{"p":88,"w":0.288},{"p":89,"w":0.294},{"p":90,"w":0.296},{"p":91,"w":0.304},{"p":92,"w":0.313},{"p":93,"w":0.32},{"p":94,"w":0.32},{"p":95,"w":0.317},{"p":96,"w":0.316},{"p":97,"w":0.311},{"p":98,"w":0.305},{"p":99,"w":0.297},{"p":100,"w":0.262}],"moments":[{"t":"0:20","sec":20,"kind":"drop","what":"The opening 22 seconds shed a quarter of the room, matching the channel's own intro habit (5.5x spike, 538,453 viewers, 100% to 73.8%)."},{"t":"4:33","sec":273,"kind":"drop","what":"21 seconds lose viewers at 1.8x the channel's own norm here, the sharpest anomaly in the video (2.63% vs 1.45% typical, 20,523 lost)."},{"t":"7:42","sec":462,"kind":"drop","what":"A 105-second stretch drops the room from 34.4% to 31.8% at 7.9x the surrounding stop rate (68,544 viewers lost)."},{"t":"11:11","sec":671,"kind":"drop","what":"A 21-second beat loses 10,953 viewers at 3.6x the surrounding rate but below the channel norm here (0.72% vs 0.87%, 0.8x channel)."},{"t":"14:41","sec":881,"kind":"drop","what":"A 21-second beat leaks viewers at 8.3x the surrounding rate, close to the channel's own norm (25,748 lost, 30.1% to 29.0%)."},{"t":"20:38","sec":1238,"kind":"drop","what":"84 seconds bleed 23,991 viewers at 1.2x the channel's norm here, and the same timestamp is a replay peak (7.6x spike, 28.7% to 27.5%)."},{"t":"20:38","sec":1238,"kind":"peak","what":"The room rises 2.8% mid-video, coinciding with the 84-second drop that follows (21,039 regained, held 2 samples)."},{"t":"25:53","sec":1553,"kind":"drop","what":"21 seconds lose 9,677 viewers at 3.9x the surrounding rate, exactly on the channel's norm here (0.19% vs 0.19%, 1.0x)."},{"t":"29:22","sec":1762,"kind":"peak","what":"The room rises 3.9% and holds for 15 samples, the strongest sustained replay in the video (27,963 regained, 70th percentile vs similar)."},{"t":"31:49","sec":1909,"kind":"peak","what":"The audience rises 2.6% at the 91% mark and holds for 8 samples, a long hold this late (20,772 regained, 70th percentile)."},{"t":"32:10","sec":1930,"kind":"peak","what":"The audience rises 3.3% at the 92% mark, held for 6 samples inside the final act (26,631 regained, 69th percentile)."},{"t":"32:31","sec":1951,"kind":"peak","what":"The room rises 2.1% at the 93% mark, one of three late peaks clustered around the final reveal (17,310 regained, 67th percentile)."},{"t":"32:52","sec":1972,"kind":"drop","what":"63 seconds shed 18,543 viewers at 6.9x the surrounding rate, but at half the channel's typical outro loss (0.92% vs 1.21%, 0.5x channel avg)."}]}</script>
+<script>window.__VIDEO__={"videoId":"k5eHSd-p3x0","durationSec":2098,"curve":[{"p":1,"w":0.947},{"p":2,"w":0.738},{"p":3,"w":0.556},{"p":4,"w":0.505},{"p":5,"w":0.47},{"p":6,"w":0.449},{"p":7,"w":0.431},{"p":8,"w":0.416},{"p":9,"w":0.405},{"p":10,"w":0.401},{"p":11,"w":0.396},{"p":12,"w":0.386},{"p":13,"w":0.378},{"p":14,"w":0.363},{"p":15,"w":0.351},{"p":16,"w":0.348},{"p":17,"w":0.346},{"p":18,"w":0.346},{"p":19,"w":0.344},{"p":20,"w":0.343},{"p":21,"w":0.343},{"p":22,"w":0.343},{"p":23,"w":0.341},{"p":24,"w":0.335},{"p":25,"w":0.324},{"p":26,"w":0.331},{"p":27,"w":0.317},{"p":28,"w":0.316},{"p":29,"w":0.316},{"p":30,"w":0.311},{"p":31,"w":0.315},{"p":32,"w":0.314},{"p":33,"w":0.308},{"p":34,"w":0.305},{"p":35,"w":0.304},{"p":36,"w":0.301},{"p":37,"w":0.299},{"p":38,"w":0.297},{"p":39,"w":0.292},{"p":40,"w":0.293},{"p":41,"w":0.298},{"p":42,"w":0.3},{"p":43,"w":0.289},{"p":44,"w":0.287},{"p":45,"w":0.284},{"p":46,"w":0.284},{"p":47,"w":0.282},{"p":48,"w":0.283},{"p":49,"w":0.282},{"p":50,"w":0.28},{"p":51,"w":0.28},{"p":52,"w":0.282},{"p":53,"w":0.28},{"p":54,"w":0.28},{"p":55,"w":0.279},{"p":56,"w":0.278},{"p":57,"w":0.277},{"p":58,"w":0.279},{"p":59,"w":0.286},{"p":60,"w":0.281},{"p":61,"w":0.282},{"p":62,"w":0.278},{"p":63,"w":0.274},{"p":64,"w":0.272},{"p":65,"w":0.271},{"p":66,"w":0.269},{"p":67,"w":0.268},{"p":68,"w":0.267},{"p":69,"w":0.265},{"p":70,"w":0.266},{"p":71,"w":0.272},{"p":72,"w":0.268},{"p":73,"w":0.266},{"p":74,"w":0.272},{"p":75,"w":0.267},{"p":76,"w":0.266},{"p":77,"w":0.265},{"p":78,"w":0.265},{"p":79,"w":0.265},{"p":80,"w":0.265},{"p":81,"w":0.27},{"p":82,"w":0.266},{"p":83,"w":0.267},{"p":84,"w":0.277},{"p":85,"w":0.281},{"p":86,"w":0.278},{"p":87,"w":0.283},{"p":88,"w":0.288},{"p":89,"w":0.294},{"p":90,"w":0.295},{"p":91,"w":0.303},{"p":92,"w":0.313},{"p":93,"w":0.319},{"p":94,"w":0.319},{"p":95,"w":0.316},{"p":96,"w":0.315},{"p":97,"w":0.31},{"p":98,"w":0.304},{"p":99,"w":0.296},{"p":100,"w":0.261}],"moments":[{"t":"0:20","sec":20,"kind":"drop","what":"Between 0:20 and 0:42 the video sheds a quarter of the room, from 100% to 73.8% (2.1x the channel's norm here, 544,755 viewers)."},{"t":"4:33","sec":273,"kind":"drop","what":"A 21-second beat inside the brother's office costs 20,767 viewers (2.1x the channel norm, 2.63% stop rate vs 1.22% typical, 47% vsSimilarVideos)."},{"t":"7:42","sec":462,"kind":"drop","what":"The glue-up and sponsor hand-off runs 105 seconds and loses 69,538 viewers (7.6x the surrounding stop rate, 1.14% vs a 0.97% channel norm)."},{"t":"11:11","sec":671,"kind":"drop","what":"A 21-second table-saw troubleshooting beat costs 11,030 viewers but actually stops fewer people than the channel typically does here (0.73% vs 0.95%, 0.8x norm)."},{"t":"14:41","sec":881,"kind":"drop","what":"A 21-second stall over out-of-square cubes bleeds 26,375 viewers (8.5x the surrounding stop rate, 1.3x the channel norm)."},{"t":"20:38","sec":1238,"kind":"drop","what":"An 84-second aside about the previous build loses 24,416 viewers, though the local stop rate (0.78% vs 0.83% channel norm, 0.9x) is actually under the channel's baseline."},{"t":"20:38","sec":1238,"kind":"peak","what":"Audience ticks up 2.9% for just 2 samples on the callback to the prior build (21,557 viewers regained, 61% vsSimilarVideos)."},{"t":"25:53","sec":1553,"kind":"drop","what":"A 21-second first-fit test loses 9,845 viewers, though the local stop rate is a fraction of the channel norm (0.19% vs 0.74%, 0.3x)."},{"t":"29:22","sec":1762,"kind":"peak","what":"Audience rises 3.9% and holds for 15 samples as viewers rewind the leg swap (28,293 viewers regained, 70% vsSimilarVideos)."},{"t":"31:49","sec":1909,"kind":"peak","what":"Audience rises 2.6% and holds 8 samples on the maker's own self-review before the brother arrives (21,018 viewers regained, 70% vsSimilarVideos)."},{"t":"32:10","sec":1930,"kind":"peak","what":"Audience climbs 3.3% at the brother's turn-around (26,677 viewers regained, 69% vsSimilarVideos, 6-sample hold)."},{"t":"32:31","sec":1951,"kind":"peak","what":"Audience rises 2.1% at the brother processing the desk (17,515 viewers regained, 67% vsSimilarVideos, 3-sample hold)."},{"t":"32:52","sec":1972,"kind":"drop","what":"The brother's reaction runs 63 seconds and loses 18,196 viewers, but the local stop rate (0.92% vs 3.56% channel norm, 0.3x) is a third of what outros here usually run."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

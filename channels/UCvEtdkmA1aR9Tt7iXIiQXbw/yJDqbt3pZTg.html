@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       29:57 · 359,997 views ·
       37% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-24
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video sits mid-pack for the channel (18 of 30 at halfway) and runs 11+ minutes longer than the channel&#39;s median, and the delete-the-friend beat at 13:29 loses viewers at 2.9x the channel&#39;s rate there.</p>
+<p class="lede" style="margin:-14px 0 26px">This 29:57 reaction runs 712 seconds longer than the channel&#39;s median and ranks 65 of 83 at halfway, so the extra runtime is where the audience is being spent.</p>
 
 <div class="viewer">
   <div>
@@ -540,73 +665,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:17</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening 19 seconds shed a fifth of the room while the reaction sits over the source video&#39;s setup (4.7x surrounding stop rate, 71,748 viewers, 100% to 78.6%).</span>
+  <span class="what">The source video&#39;s cold-open plays and a fifth of the room leaves as it does (4.7x spike, 75,987 viewers, 100% to 78.5%).</span>
   <span class="body">
-    <span class="lab">Why</span>The host talks over the source clip&#39;s premise setup — &quot;get your guys some snacks cuz this is going to be a long one&quot; — delaying the hook the thumbnail promised.
-    <span class="quote">“get your guys some snacks”</span>
-    <span class="lab">The fix</span>Cut 0:10-0:16 (snacks aside and Poke shout-out) and open cold on the source clip&#39;s &quot;do not add&quot; warning at 0:17.
-    <span class="lab">Why that works</span>Intro lost 0pp against a channel-kind average of 12.8%, so this beat is already strong for the channel — trimming host preamble compounds that advantage without touching the source hook.
-    
+    <span class="lab">Why</span>The reactor hands the screen to the source&#39;s own setup — &quot;do not add blank2593. I think they are targeting me now&quot; — instead of driving the hook himself.
+    <span class="quote">“do not add blank2593”</span>
+    <span class="lab">The fix</span>Trial opening on the reactor&#39;s own line about adding the wrong person, then cut into the source clip already mid-warning around 0:22.
+    <span class="lab">Why that works</span>The 0:30 mark holds 96.1% versus a 82.0% channel median, so the reactor&#39;s voice is what the audience arrived for.
+    <span class="lab">Check first</span><span class="warn">Verify the source creator&#39;s usage terms allow trimming their opening; if not, keep the full clip and cut the pre-roll greeting instead.</span>
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">5:05</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 36-second stretch around the joins-off aside loses viewers at 1.7x the channel&#39;s rate here (4.0x spike, 16,847 viewers, 52.8% to 47.5%).</span>
+  <span class="what">A soccer/football aside interrupts the stalker beat and 18,121 viewers leave across 36 seconds (3.9x spike, 2.2x channel norm, 52.8% to 47.5%).</span>
   <span class="body">
-    <span class="lab">Why</span>The host stacks three overlapping bits — the &quot;football&quot; joke, a BRB tangent, and the &quot;18 plus&quot; aside — before the source&#39;s follower reveal at 5:11 lands.
-    <span class="quote">“Because they&#39;re both 18 plus”</span>
-    <span class="lab">The fix</span>Cut 5:01-5:07 (the &quot;18 plus&quot; and &quot;Good to know&quot; beat) and rejoin on the source&#39;s &quot;upon joining another game / I was followed&quot; reveal.
-    <span class="lab">Why that works</span>Pacing is flow of NEW information — three host asides on top of one source beat stalls the A-story right as the stalker pattern is being established.
+    <span class="lab">Why</span>The reactor breaks the follow-across-games thread with an off-topic bit — &quot;we should probably be calling it football around here&quot; — right as the source escalates.
+    <span class="quote">“calling it football around here”</span>
+    <span class="lab">The fix</span>Cut 4:45-4:52 and rejoin on &quot;All right. Got to go&quot; so the follow-into-Rivals beat lands without the football detour.
+    <span class="lab">Why that works</span>Conflict introduced flattens the chart; cutting away from the stalker escalation resolves tension the audience came to sit inside.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">13:11</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience climbs to 40.0% just before the delete beat, adding 5,598 viewers scrubbing back (3.3% rise, 59th percentile vs similar videos).</span>
+  <span class="what">Viewers scrub back to the pre-delete beat and the room rises (+3.2%, 5,797 viewers regained, to 39.9%).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to the host and source syncing — &quot;I swear that was crazy. I think me and Poke just had the same brain&quot; — the video&#39;s first genuine reaction-video payoff.
+    <span class="lab">Why</span>The reactor lands a genuine overlap moment — &quot;I swear that was crazy. I think me and Poke just had the same brain&quot; — right before the delete decision.
     <span class="quote">“me and Poke just had the same brain”</span>
-    <span class="lab">Do more of this</span>Tease this same-brain moment in the first 30 seconds as a cold cut, without naming when it happens, to seed the promise the peak already proves lands.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset — front-loading a silent tease of it gives new arrivals a reason to stay through the mid-video sag before 13:29.
+    <span class="lab">Do more of this</span>Front-load a 5-second tease of this same-brain beat in the opening minute so first-time viewers know this payoff is coming.
+    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward; teasing the shared-brain moment early sets up the delete sequence the audience already rewinds to.
     
   </span>
 </button>
 <button class="m drop" data-i="3" type="button">
   <span class="h"><span class="ts">13:29</span><span class="kind">Drop-off</span></span>
-  <span class="what">The delete-the-friend beat sheds viewers at nearly triple the channel&#39;s rate for this position (10.0x spike, 20,040 viewers, 2.74% vs 0.95% channel norm).</span>
+  <span class="what">The reactor stacks nine &quot;Don&#39;t do that. Nope. Nope&quot; beats over the delete moment and 21,157 viewers leave through it (10.1x spike, 3.3x channel norm, 39.7% to 37.1%).</span>
   <span class="body">
-    <span class="lab">Why</span>The source video announces the tension will be resolved — &quot;it&#39;s time for me to delete blank 2593&quot; — and the host repeats &quot;don&#39;t do that&quot; seven times without adding new information.
-    <span class="quote">“time for me to delete”</span>
-    <span class="lab">The fix</span>Cut the repeated &quot;Nope. Nope. Nope. Nope&quot; and &quot;Don&#39;t do that&quot; loop between 13:33-13:39, and hold silence over the source&#39;s &quot;moment of truth&quot;.
-    <span class="lab">Why that works</span>Retention drops the moment tension is spent — stripping repetition and letting the source&#39;s suspense breathe holds the room across the reveal instead of releasing them into it.
+    <span class="lab">Why</span>The source&#39;s &quot;moment of truth&quot; gets buried under a repeating reaction: &quot;Don&#39;t do that. Don&#39;t do that. Don&#39;t do that. Nope. Nope. Nope. Nope.&quot;
+    <span class="quote">“Don&#39;t do that. Nope. Nope”</span>
+    <span class="lab">The fix</span>Cut 13:33-13:39 down to a single &quot;Don&#39;t do it&quot; and let the source&#39;s delete beat play clean before the curse line.
+    <span class="lab">Why that works</span>Pacing is the flow of new information; six repeats of the same warning add no new beat and stall the payoff the room is waiting on.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">19:46</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A small rewind lifts the audience to 34.5% on the reversed-audio moment (0.5% rise, 749 viewers, 52nd percentile vs similar videos).</span>
+  <span class="what">The reversed-audio reveal lifts the room modestly two-thirds through (+0.5%, 835 viewers regained, to 34.4%).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub to hear the reversed loop — &quot;Make friends, make them stay&quot; — repeated as the host decodes it in editing software.
+    <span class="lab">Why</span>The source plays the decoded loop — &quot;Make friends, make them stay&quot; — and the reactor sits inside it rather than talking over.
     <span class="quote">“Make friends, make them stay”</span>
-    <span class="lab">Do more of this</span>Cut the fourth and fifth repeats of &quot;Make friends, make them stay&quot; between 19:40-19:46 and hold on the host&#39;s silent reaction instead.
-    <span class="lab">Why that works</span>Kill ALL repetition — the rewind proves one clean pass of the audio is the asset; extra loops dilute the moment viewers came back for.
+    <span class="lab">Do more of this</span>Start a low riser around 19:26 as the audio goes into the editing software so the loop lands on built anticipation, not cold.
+    <span class="lab">Why that works</span>Anticipatory risers ~20 seconds before a key moment hold up to 10% more of the room into the payoff.
     
   </span>
 </button>
 <button class="m peak" data-i="5" type="button">
   <span class="h"><span class="ts">27:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience rises to 27.6% deep in the outro stretch, pulling back 4,055 viewers at the AI reveal (3.4% rise, 68th percentile vs similar videos).</span>
+  <span class="what">The AI-brother reveal lands and the room ticks up at 92% through (+3.5%, 4,359 viewers regained, to 27.5%).</span>
   <span class="body">
-    <span class="lab">Why</span>The brother-used-AI twist lands — &quot;Oh, he used the AI. Claude code bot to help communicate&quot; — recontextualising every earlier bot-follower beat.
-    <span class="quote">“Oh, he used the AI”</span>
-    <span class="lab">Do more of this</span>Move a 4-second tease of &quot;he used the AI&quot; to before the 13:29 delete beat as a flash-forward, without showing the Claude reveal.
-    <span class="lab">Why that works</span>Dopamine spikes at the announcement of a reward — planting the AI twist earlier gives the sagging middle a live narrative suspense layer to pull toward.
-    <span class="lab">Check first</span><span class="warn">Verify the 27:33 reveal is not spoiled elsewhere in the video; if it is, tease a different unseen frame from this beat instead.</span>
+    <span class="lab">Why</span>The source drops the twist that the stalker was an AI — &quot;Oh, he used the AI. Claude code bot to help communicate&quot; — and viewers rewind to catch it.
+    <span class="quote">“he used the AI. Claude code bot”</span>
+    <span class="lab">Do more of this</span>Cut 27:36-27:41 so the reactor&#39;s &quot;Woah. Woah. Woah&quot; doesn&#39;t delay the Claude reveal, and hold a second beat after for the brother explanation.
+    <span class="lab">Why that works</span>Never resolve all tension with runtime left; tightening the reveal keeps the last two minutes anchored on the twist rather than the reaction to it.
+    
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"yJDqbt3pZTg","durationSec":1797,"curve":[{"p":1,"w":0.961},{"p":2,"w":0.785},{"p":3,"w":0.719},{"p":4,"w":0.675},{"p":5,"w":0.636},{"p":6,"w":0.613},{"p":7,"w":0.597},{"p":8,"w":0.586},{"p":9,"w":0.576},{"p":10,"w":0.591},{"p":11,"w":0.558},{"p":12,"w":0.547},{"p":13,"w":0.537},{"p":14,"w":0.534},{"p":15,"w":0.527},{"p":16,"w":0.517},{"p":17,"w":0.528},{"p":18,"w":0.505},{"p":19,"w":0.475},{"p":20,"w":0.471},{"p":21,"w":0.47},{"p":22,"w":0.467},{"p":23,"w":0.459},{"p":24,"w":0.461},{"p":25,"w":0.451},{"p":26,"w":0.445},{"p":27,"w":0.442},{"p":28,"w":0.44},{"p":29,"w":0.458},{"p":30,"w":0.437},{"p":31,"w":0.439},{"p":32,"w":0.431},{"p":33,"w":0.422},{"p":34,"w":0.416},{"p":35,"w":0.412},{"p":36,"w":0.428},{"p":37,"w":0.404},{"p":38,"w":0.407},{"p":39,"w":0.399},{"p":40,"w":0.394},{"p":41,"w":0.391},{"p":42,"w":0.39},{"p":43,"w":0.387},{"p":44,"w":0.399},{"p":45,"w":0.397},{"p":46,"w":0.378},{"p":47,"w":0.405},{"p":48,"w":0.372},{"p":49,"w":0.369},{"p":50,"w":0.369},{"p":51,"w":0.368},{"p":52,"w":0.367},{"p":53,"w":0.362},{"p":54,"w":0.373},{"p":55,"w":0.359},{"p":56,"w":0.36},{"p":57,"w":0.354},{"p":58,"w":0.351},{"p":59,"w":0.349},{"p":60,"w":0.346},{"p":61,"w":0.349},{"p":62,"w":0.343},{"p":63,"w":0.342},{"p":64,"w":0.342},{"p":65,"w":0.343},{"p":66,"w":0.345},{"p":67,"w":0.358},{"p":68,"w":0.327},{"p":69,"w":0.322},{"p":70,"w":0.318},{"p":71,"w":0.316},{"p":72,"w":0.323},{"p":73,"w":0.306},{"p":74,"w":0.301},{"p":75,"w":0.3},{"p":76,"w":0.295},{"p":77,"w":0.291},{"p":78,"w":0.289},{"p":79,"w":0.288},{"p":80,"w":0.294},{"p":81,"w":0.281},{"p":82,"w":0.28},{"p":83,"w":0.28},{"p":84,"w":0.277},{"p":85,"w":0.273},{"p":86,"w":0.272},{"p":87,"w":0.283},{"p":88,"w":0.269},{"p":89,"w":0.268},{"p":90,"w":0.266},{"p":91,"w":0.266},{"p":92,"w":0.276},{"p":93,"w":0.275},{"p":94,"w":0.263},{"p":95,"w":0.263},{"p":96,"w":0.264},{"p":97,"w":0.267},{"p":98,"w":0.263},{"p":99,"w":0.267},{"p":100,"w":0.267}],"moments":[{"t":"0:17","sec":17,"kind":"drop","what":"The opening 19 seconds shed a fifth of the room while the reaction sits over the source video's setup (4.7x surrounding stop rate, 71,748 viewers, 100% to 78.6%)."},{"t":"5:05","sec":305,"kind":"drop","what":"A 36-second stretch around the joins-off aside loses viewers at 1.7x the channel's rate here (4.0x spike, 16,847 viewers, 52.8% to 47.5%)."},{"t":"13:11","sec":791,"kind":"peak","what":"The audience climbs to 40.0% just before the delete beat, adding 5,598 viewers scrubbing back (3.3% rise, 59th percentile vs similar videos)."},{"t":"13:29","sec":809,"kind":"drop","what":"The delete-the-friend beat sheds viewers at nearly triple the channel's rate for this position (10.0x spike, 20,040 viewers, 2.74% vs 0.95% channel norm)."},{"t":"19:46","sec":1186,"kind":"peak","what":"A small rewind lifts the audience to 34.5% on the reversed-audio moment (0.5% rise, 749 viewers, 52nd percentile vs similar videos)."},{"t":"27:33","sec":1653,"kind":"peak","what":"The audience rises to 27.6% deep in the outro stretch, pulling back 4,055 viewers at the AI reveal (3.4% rise, 68th percentile vs similar videos)."}]}</script>
+<script>window.__VIDEO__={"videoId":"yJDqbt3pZTg","durationSec":1797,"curve":[{"p":1,"w":0.961},{"p":2,"w":0.784},{"p":3,"w":0.718},{"p":4,"w":0.674},{"p":5,"w":0.635},{"p":6,"w":0.612},{"p":7,"w":0.597},{"p":8,"w":0.585},{"p":9,"w":0.576},{"p":10,"w":0.59},{"p":11,"w":0.557},{"p":12,"w":0.546},{"p":13,"w":0.536},{"p":14,"w":0.533},{"p":15,"w":0.526},{"p":16,"w":0.516},{"p":17,"w":0.528},{"p":18,"w":0.505},{"p":19,"w":0.475},{"p":20,"w":0.471},{"p":21,"w":0.469},{"p":22,"w":0.466},{"p":23,"w":0.459},{"p":24,"w":0.461},{"p":25,"w":0.45},{"p":26,"w":0.444},{"p":27,"w":0.441},{"p":28,"w":0.44},{"p":29,"w":0.457},{"p":30,"w":0.437},{"p":31,"w":0.438},{"p":32,"w":0.431},{"p":33,"w":0.422},{"p":34,"w":0.416},{"p":35,"w":0.411},{"p":36,"w":0.428},{"p":37,"w":0.403},{"p":38,"w":0.406},{"p":39,"w":0.398},{"p":40,"w":0.393},{"p":41,"w":0.39},{"p":42,"w":0.389},{"p":43,"w":0.386},{"p":44,"w":0.399},{"p":45,"w":0.396},{"p":46,"w":0.377},{"p":47,"w":0.404},{"p":48,"w":0.371},{"p":49,"w":0.369},{"p":50,"w":0.368},{"p":51,"w":0.367},{"p":52,"w":0.366},{"p":53,"w":0.362},{"p":54,"w":0.373},{"p":55,"w":0.358},{"p":56,"w":0.359},{"p":57,"w":0.353},{"p":58,"w":0.35},{"p":59,"w":0.348},{"p":60,"w":0.346},{"p":61,"w":0.349},{"p":62,"w":0.343},{"p":63,"w":0.342},{"p":64,"w":0.341},{"p":65,"w":0.342},{"p":66,"w":0.344},{"p":67,"w":0.357},{"p":68,"w":0.326},{"p":69,"w":0.322},{"p":70,"w":0.318},{"p":71,"w":0.315},{"p":72,"w":0.322},{"p":73,"w":0.305},{"p":74,"w":0.301},{"p":75,"w":0.299},{"p":76,"w":0.294},{"p":77,"w":0.29},{"p":78,"w":0.288},{"p":79,"w":0.288},{"p":80,"w":0.293},{"p":81,"w":0.28},{"p":82,"w":0.279},{"p":83,"w":0.279},{"p":84,"w":0.276},{"p":85,"w":0.273},{"p":86,"w":0.271},{"p":87,"w":0.283},{"p":88,"w":0.268},{"p":89,"w":0.267},{"p":90,"w":0.266},{"p":91,"w":0.265},{"p":92,"w":0.275},{"p":93,"w":0.274},{"p":94,"w":0.262},{"p":95,"w":0.262},{"p":96,"w":0.264},{"p":97,"w":0.266},{"p":98,"w":0.262},{"p":99,"w":0.266},{"p":100,"w":0.267}],"moments":[{"t":"0:17","sec":17,"kind":"drop","what":"The source video's cold-open plays and a fifth of the room leaves as it does (4.7x spike, 75,987 viewers, 100% to 78.5%)."},{"t":"5:05","sec":305,"kind":"drop","what":"A soccer/football aside interrupts the stalker beat and 18,121 viewers leave across 36 seconds (3.9x spike, 2.2x channel norm, 52.8% to 47.5%)."},{"t":"13:11","sec":791,"kind":"peak","what":"Viewers scrub back to the pre-delete beat and the room rises (+3.2%, 5,797 viewers regained, to 39.9%)."},{"t":"13:29","sec":809,"kind":"drop","what":"The reactor stacks nine \"Don't do that. Nope. Nope\" beats over the delete moment and 21,157 viewers leave through it (10.1x spike, 3.3x channel norm, 39.7% to 37.1%)."},{"t":"19:46","sec":1186,"kind":"peak","what":"The reversed-audio reveal lifts the room modestly two-thirds through (+0.5%, 835 viewers regained, to 34.4%)."},{"t":"27:33","sec":1653,"kind":"peak","what":"The AI-brother reveal lands and the room ticks up at 92% through (+3.5%, 4,359 viewers regained, to 27.5%)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

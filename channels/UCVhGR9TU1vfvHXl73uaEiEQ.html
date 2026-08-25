@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -521,6 +646,7 @@ table.obs td.no{color:#ff8f8f}
 
 <h2>What to do next</h2><p class="empty">Only 0 videos have retention data. An action list needs at least 6 before its medians mean anything — run a regression over more of the catalogue first.</p>
 
+
 <h2>Video wall</h2>
 <p class="legend">Each badge is the video's <strong>outlier score</strong> — its first-28-day views against the median of the uploads nearest it in time. 1.00× is typical <em>for this channel at that point</em>; 2×+ is a breakout; below 0.5× underperformed. Compared against contemporaries rather than the whole catalogue, because a video from before the channel grew would otherwise always look like a failure. Median, not average, so one breakout can't drag the baseline.</p>
 <div class="wallbar">
@@ -539,147 +665,147 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">27:34</span>
   </div>
   <div class="t">SURVIVING WONDERLAND IN ROBLOX...</div>
-  <div class="meta">10K views · 6 days ago</div>
+  <div class="meta">10K views · 7 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=LBxfqNyN4Ho" target="_blank" rel="noopener" data-pub="1786900504000" data-views="198838" data-out="0.8" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=LBxfqNyN4Ho" target="_blank" rel="noopener" data-pub="1786900504000" data-views="198838" data-out="0.99" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/LBxfqNyN4Ho/mqdefault.jpg" alt="">
-    <span class="score out-down">0.80×</span>
+    <span class="score out-mid">0.99×</span>
     <span class="len">16:31</span>
   </div>
   <div class="t">Letting YouTubers CONTROL ME in MM2 for 24 HOURS…</div>
-  <div class="meta">199K views · 7 days ago</div>
+  <div class="meta">199K views · 8 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=8ZiAlCyVPOo" target="_blank" rel="noopener" data-pub="1786808703000" data-views="120073" data-out="0.48" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=8ZiAlCyVPOo" target="_blank" rel="noopener" data-pub="1786808703000" data-views="120073" data-out="0.53" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/8ZiAlCyVPOo/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.48×</span>
+    <span class="score out-down">0.53×</span>
     <span class="len">14:34</span>
   </div>
   <div class="t">Using ADMIN ABUSE in TROLL HUG TOWER... (BAD IDEA)</div>
-  <div class="meta">120K views · 8 days ago</div>
+  <div class="meta">120K views · 10 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.61" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.68" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/EUX3dAIw1ac/mqdefault.jpg" alt="">
-    <span class="score out-down">0.61×</span>
+    <span class="score out-down">0.68×</span>
     <span class="len">14:19</span>
   </div>
   <div class="t">NOOB To PRO Using ONLY ROBUX In Keyboard Escape...</div>
-  <div class="meta">152K views · 9 days ago</div>
+  <div class="meta">152K views · 10 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=Sp-OFhRI_hk" target="_blank" rel="noopener" data-pub="1786719616000" data-views="103358" data-out="0.42" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=Sp-OFhRI_hk" target="_blank" rel="noopener" data-pub="1786719616000" data-views="103358" data-out="0.46" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/Sp-OFhRI_hk/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.42×</span>
+    <span class="score out-cold">0.46×</span>
     <span class="len">26:00</span>
   </div>
   <div class="t">This ANIMAL RESTAURANT has DARK SECRETS...</div>
-  <div class="meta">103K views · 9 days ago</div>
+  <div class="meta">103K views · 11 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.01" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.43" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/638S11qLnQI/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.01×</span>
+    <span class="score out-up">1.43×</span>
     <span class="len">24:09</span>
   </div>
   <div class="t">WIRELESS KEYBOARD PRANK in MM2...</div>
-  <div class="meta">251K views · 10 days ago</div>
+  <div class="meta">251K views · 12 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=ARZNad18ddM" target="_blank" rel="noopener" data-pub="1786545911000" data-views="328661" data-out="1.32" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=ARZNad18ddM" target="_blank" rel="noopener" data-pub="1786545911000" data-views="328661" data-out="1.87" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/ARZNad18ddM/mqdefault.jpg" alt="">
-    <span class="score out-up">1.32×</span>
+    <span class="score out-up">1.87×</span>
     <span class="len">18:32</span>
   </div>
   <div class="t">MM2, But If I DIE, I Eat EXOTIC SNACKS</div>
-  <div class="meta">329K views · 11 days ago</div>
+  <div class="meta">329K views · 13 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=IgYeyQ35Beg" target="_blank" rel="noopener" data-pub="1786117519000" data-views="299785" data-out="1.21" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=IgYeyQ35Beg" target="_blank" rel="noopener" data-pub="1786117519000" data-views="299785" data-out="1.17" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/IgYeyQ35Beg/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.21×</span>
+    <span class="score out-mid">1.17×</span>
     <span class="len">28:06</span>
   </div>
   <div class="t">Reacting to HIS STORY...</div>
-  <div class="meta">300K views · 16 days ago</div>
+  <div class="meta">300K views · 18 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=LQ6DUD5G-GM" target="_blank" rel="noopener" data-pub="1786033100000" data-views="261198" data-out="1.05" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=LQ6DUD5G-GM" target="_blank" rel="noopener" data-pub="1786033100000" data-views="261198" data-out="1.03" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/LQ6DUD5G-GM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.05×</span>
+    <span class="score out-mid">1.03×</span>
     <span class="len">15:50</span>
   </div>
   <div class="t">I Played MM2 in VR... (Roblox)</div>
-  <div class="meta">261K views · 17 days ago</div>
+  <div class="meta">261K views · 18 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.38" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.37" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/Aq2-58XuK7w/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.38×</span>
+    <span class="score out-cold">0.37×</span>
     <span class="len">13:41</span>
   </div>
   <div class="t">Playing GAMES That COST $1...</div>
-  <div class="meta">94K views · 18 days ago</div>
+  <div class="meta">94K views · 20 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.5" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.48" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vv0GBazvPDk/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.50×</span>
+    <span class="score out-cold">0.48×</span>
     <span class="len">13:23</span>
   </div>
   <div class="t">Animal Hospital, But I Only Allow BLUE PATIENTS...</div>
-  <div class="meta">124K views · 19 days ago</div>
+  <div class="meta">124K views · 20 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.58" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.57" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/pGYWbkONOCo/mqdefault.jpg" alt="">
-    <span class="score out-down">0.58×</span>
+    <span class="score out-down">0.57×</span>
     <span class="len">21:34</span>
   </div>
   <div class="t">Animal Hospital But, I ONLY LET ANOMALYS IN!</div>
-  <div class="meta">145K views · 20 days ago</div>
+  <div class="meta">145K views · 22 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.23" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.33" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/WbvXBbuqhzQ/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.23×</span>
+    <span class="score out-up">1.33×</span>
     <span class="len">21:05</span>
   </div>
   <div class="t">Every Time I DIE, EAT Different COUNTRIES FOOD! (MM2)</div>
-  <div class="meta">304K views · 21 days ago</div>
+  <div class="meta">304K views · 22 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.24" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.34" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/WlKFlWEurrU/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.24×</span>
+    <span class="score out-up">1.34×</span>
     <span class="len">18:26</span>
   </div>
   <div class="t">Using X RAY to CHEAT in HIDE AND SEEK!</div>
-  <div class="meta">308K views · 22 days ago</div>
+  <div class="meta">308K views · 24 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.84" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.77" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vy76SnMAEf8/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.84×</span>
+    <span class="score out-down">0.77×</span>
     <span class="len">16:45</span>
   </div>
   <div class="t">This NEW Animal Hospital UPDATE is INSANE...</div>
-  <div class="meta">208K views · 23 days ago</div>
+  <div class="meta">208K views · 25 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=40hrk1nWIu0" target="_blank" rel="noopener" data-pub="1785427224000" data-views="250672" data-out="1.01" data-r50="" data-analysed="0">
@@ -689,83 +815,83 @@ table.obs td.no{color:#ff8f8f}
     <span class="len">15:55</span>
   </div>
   <div class="t">Guess What&#39;s WRONG with MM2 MAPS!</div>
-  <div class="meta">251K views · 24 days ago</div>
+  <div class="meta">251K views · 26 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.69" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.42" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/RvI5vT3kDIc/mqdefault.jpg" alt="">
-    <span class="score out-up">1.69×</span>
+    <span class="score out-up">1.42×</span>
     <span class="len">20:32</span>
   </div>
   <div class="t">The NEW MM2 SUMMER UPDATE is INSANE...</div>
-  <div class="meta">420K views · 26 days ago</div>
+  <div class="meta">420K views · 27 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.16" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.09" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/AzuHK06RUzM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.16×</span>
+    <span class="score out-mid">1.09×</span>
     <span class="len">20:24</span>
   </div>
   <div class="t">BLIND, DEAF, &amp; MUTE CHALLENGE in MM2...</div>
-  <div class="meta">287K views · 29 days ago</div>
+  <div class="meta">287K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.26" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.19" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/-OWmQY2g1OU/mqdefault.jpg" alt="">
-    <span class="score out-up">1.26×</span>
+    <span class="score out-mid">1.19×</span>
     <span class="len">11:40</span>
   </div>
   <div class="t">Reacting to the BEST ANIMAL HOSPITAL MOMENTS...</div>
   <div class="meta">314K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.23" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.17" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/zMz8EuwXthk/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.23×</span>
+    <span class="score out-mid">1.17×</span>
     <span class="len">18:21</span>
   </div>
   <div class="t">I Hired BODYGUARDS in MM2...</div>
   <div class="meta">305K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.9" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.79" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/wpqZhN3UJAk/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.90×</span>
+    <span class="score out-down">0.79×</span>
     <span class="len">26:16</span>
   </div>
   <div class="t">I Made My Own CUSTOM ASMR TOWER in Roblox!</div>
   <div class="meta">223K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.86" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/RkyTIaYix2o/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.86×</span>
+    <span class="score out-down">0.76×</span>
     <span class="len">15:42</span>
   </div>
   <div class="t">MM2 With a HEART RATE Monitor...</div>
   <div class="meta">213K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1.11" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/kunFVi6ewPM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.11×</span>
+    <span class="score out-mid">1.00×</span>
     <span class="len">16:52</span>
   </div>
   <div class="t">Reacting to The FUNNIEST MM2 Moments!</div>
   <div class="meta">276K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=-rgtLzkO7y8" target="_blank" rel="noopener" data-pub="1784476820000" data-views="204561" data-out="0.82" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=-rgtLzkO7y8" target="_blank" rel="noopener" data-pub="1784476820000" data-views="204561" data-out="0.78" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/-rgtLzkO7y8/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.82×</span>
+    <span class="score out-down">0.78×</span>
     <span class="len">10:05</span>
   </div>
   <div class="t">MM2, But You CANT Touch The COLOR...</div>
@@ -782,50 +908,50 @@ table.obs td.no{color:#ff8f8f}
   <div class="meta">246K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=udUS9hoZ_zI" target="_blank" rel="noopener" data-pub="1784299508000" data-views="403441" data-out="1.62" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=udUS9hoZ_zI" target="_blank" rel="noopener" data-pub="1784299508000" data-views="403441" data-out="1.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/udUS9hoZ_zI/mqdefault.jpg" alt="">
-    <span class="score out-up">1.62×</span>
+    <span class="score out-up">1.76×</span>
     <span class="len">11:31</span>
   </div>
   <div class="t">MM2 But Everytime I Die, I OPEN A SQUISHY...</div>
   <div class="meta">403K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=y0ePbki6h1c" target="_blank" rel="noopener" data-pub="1784212215000" data-views="606609" data-out="2.44" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=y0ePbki6h1c" target="_blank" rel="noopener" data-pub="1784212215000" data-views="606609" data-out="2.64" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/y0ePbki6h1c/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.44×</span>
+    <span class="score out-hot">2.64×</span>
     <span class="len">11:58</span>
   </div>
   <div class="t">I TESTED THE MOST OP EMOTES IN MM2</div>
   <div class="meta">607K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=ECimZuiH46w" target="_blank" rel="noopener" data-pub="1784125817000" data-views="199881" data-out="0.8" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=ECimZuiH46w" target="_blank" rel="noopener" data-pub="1784125817000" data-views="199881" data-out="0.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/ECimZuiH46w/mqdefault.jpg" alt="">
-    <span class="score out-down">0.80×</span>
+    <span class="score out-down">0.76×</span>
     <span class="len">11:52</span>
   </div>
   <div class="t">Climbing The SCARIEST LEMON TOWER in Roblox!</div>
   <div class="meta">200K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=OQ7iIssiUvo" target="_blank" rel="noopener" data-pub="1784043038000" data-views="341309" data-out="1.37" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=OQ7iIssiUvo" target="_blank" rel="noopener" data-pub="1784043038000" data-views="341309" data-out="1.48" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/OQ7iIssiUvo/mqdefault.jpg" alt="">
-    <span class="score out-up">1.37×</span>
+    <span class="score out-up">1.48×</span>
     <span class="len">43:16</span>
   </div>
   <div class="t">Animal Hospital&#39;s NEW Update has DARK SECRETS...</div>
   <div class="meta">341K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=n0R-NCRrSpI" target="_blank" rel="noopener" data-pub="1783952130000" data-views="150773" data-out="0.61" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=n0R-NCRrSpI" target="_blank" rel="noopener" data-pub="1783952130000" data-views="150773" data-out="0.58" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/n0R-NCRrSpI/mqdefault.jpg" alt="">
-    <span class="score out-down">0.61×</span>
+    <span class="score out-down">0.58×</span>
     <span class="len">17:24</span>
   </div>
   <div class="t">MM2 But, 1v1 Challenge Vs Brother...</div>
@@ -885,37 +1011,37 @@ formats over the same months is what makes them comparable.</p>
   <summary>
     <span class="tpl">MM2, But Every Time I Die, I ___</span>
     <span class="fstats">
-      <b class="f-mid">1.32×</b>
+      <b class="f-hot">1.76×</b>
       <span>3 videos</span>
       <span>329K median views</span>
       
     </span>
   </summary>
   <p class="premise">A death in Murder Mystery 2 triggers a real-world consequence.</p>
-  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=ARZNad18ddM" target="_blank" rel="noopener" data-pub="1786545911000" data-views="328661" data-out="1.32" data-r50="" data-analysed="0">
+  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=ARZNad18ddM" target="_blank" rel="noopener" data-pub="1786545911000" data-views="328661" data-out="1.87" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/ARZNad18ddM/mqdefault.jpg" alt="">
-    <span class="score out-up">1.32×</span>
+    <span class="score out-up">1.87×</span>
     <span class="len">18:32</span>
   </div>
   <div class="t">MM2, But If I DIE, I Eat EXOTIC SNACKS</div>
-  <div class="meta">329K views · 11 days ago</div>
+  <div class="meta">329K views · 13 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.23" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=WbvXBbuqhzQ" target="_blank" rel="noopener" data-pub="1785687303000" data-views="304379" data-out="1.33" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/WbvXBbuqhzQ/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.23×</span>
+    <span class="score out-up">1.33×</span>
     <span class="len">21:05</span>
   </div>
   <div class="t">Every Time I DIE, EAT Different COUNTRIES FOOD! (MM2)</div>
-  <div class="meta">304K views · 21 days ago</div>
+  <div class="meta">304K views · 22 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=udUS9hoZ_zI" target="_blank" rel="noopener" data-pub="1784299508000" data-views="403441" data-out="1.62" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=udUS9hoZ_zI" target="_blank" rel="noopener" data-pub="1784299508000" data-views="403441" data-out="1.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/udUS9hoZ_zI/mqdefault.jpg" alt="">
-    <span class="score out-up">1.62×</span>
+    <span class="score out-up">1.76×</span>
     <span class="len">11:31</span>
   </div>
   <div class="t">MM2 But Everytime I Die, I OPEN A SQUISHY...</div>
@@ -927,37 +1053,37 @@ formats over the same months is what makes them comparable.</p>
   <summary>
     <span class="tpl">Reacting To ___</span>
     <span class="fstats">
-      <b class="f-mid">1.21×</b>
+      <b class="f-mid">1.17×</b>
       <span>3 videos</span>
       <span>300K median views</span>
       
     </span>
   </summary>
   <p class="premise">Watching and reacting to other people&#39;s content or moments.</p>
-  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=IgYeyQ35Beg" target="_blank" rel="noopener" data-pub="1786117519000" data-views="299785" data-out="1.21" data-r50="" data-analysed="0">
+  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=IgYeyQ35Beg" target="_blank" rel="noopener" data-pub="1786117519000" data-views="299785" data-out="1.17" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/IgYeyQ35Beg/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.21×</span>
+    <span class="score out-mid">1.17×</span>
     <span class="len">28:06</span>
   </div>
   <div class="t">Reacting to HIS STORY...</div>
-  <div class="meta">300K views · 16 days ago</div>
+  <div class="meta">300K views · 18 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.26" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=-OWmQY2g1OU" target="_blank" rel="noopener" data-pub="1784912403000" data-views="313854" data-out="1.19" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/-OWmQY2g1OU/mqdefault.jpg" alt="">
-    <span class="score out-up">1.26×</span>
+    <span class="score out-mid">1.19×</span>
     <span class="len">11:40</span>
   </div>
   <div class="t">Reacting to the BEST ANIMAL HOSPITAL MOMENTS...</div>
   <div class="meta">314K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1.11" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=kunFVi6ewPM" target="_blank" rel="noopener" data-pub="1784556018000" data-views="276349" data-out="1" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/kunFVi6ewPM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.11×</span>
+    <span class="score out-mid">1.00×</span>
     <span class="len">16:52</span>
   </div>
   <div class="t">Reacting to The FUNNIEST MM2 Moments!</div>
@@ -969,91 +1095,91 @@ formats over the same months is what makes them comparable.</p>
   <summary>
     <span class="tpl">MM2 But ___ (Challenge Twist)</span>
     <span class="fstats">
-      <b class="f-mid">0.94×</b>
+      <b class="f-mid">1.01×</b>
       <span>8 videos</span>
       <span>232K median views</span>
       
     </span>
   </summary>
   <p class="premise">Murder Mystery 2 played with a self-imposed rule or gimmick.</p>
-  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=LBxfqNyN4Ho" target="_blank" rel="noopener" data-pub="1786900504000" data-views="198838" data-out="0.8" data-r50="" data-analysed="0">
+  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=LBxfqNyN4Ho" target="_blank" rel="noopener" data-pub="1786900504000" data-views="198838" data-out="0.99" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/LBxfqNyN4Ho/mqdefault.jpg" alt="">
-    <span class="score out-down">0.80×</span>
+    <span class="score out-mid">0.99×</span>
     <span class="len">16:31</span>
   </div>
   <div class="t">Letting YouTubers CONTROL ME in MM2 for 24 HOURS…</div>
-  <div class="meta">199K views · 7 days ago</div>
+  <div class="meta">199K views · 8 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.01" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=638S11qLnQI" target="_blank" rel="noopener" data-pub="1786633208000" data-views="251012" data-out="1.43" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/638S11qLnQI/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.01×</span>
+    <span class="score out-up">1.43×</span>
     <span class="len">24:09</span>
   </div>
   <div class="t">WIRELESS KEYBOARD PRANK in MM2...</div>
-  <div class="meta">251K views · 10 days ago</div>
+  <div class="meta">251K views · 12 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.16" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=AzuHK06RUzM" target="_blank" rel="noopener" data-pub="1784988018000" data-views="287063" data-out="1.09" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/AzuHK06RUzM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.16×</span>
+    <span class="score out-mid">1.09×</span>
     <span class="len">20:24</span>
   </div>
   <div class="t">BLIND, DEAF, &amp; MUTE CHALLENGE in MM2...</div>
-  <div class="meta">287K views · 29 days ago</div>
+  <div class="meta">287K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.23" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=zMz8EuwXthk" target="_blank" rel="noopener" data-pub="1784815209000" data-views="305270" data-out="1.17" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/zMz8EuwXthk/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.23×</span>
+    <span class="score out-mid">1.17×</span>
     <span class="len">18:21</span>
   </div>
   <div class="t">I Hired BODYGUARDS in MM2...</div>
   <div class="meta">305K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.86" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=RkyTIaYix2o" target="_blank" rel="noopener" data-pub="1784652333000" data-views="213444" data-out="0.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/RkyTIaYix2o/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.86×</span>
+    <span class="score out-down">0.76×</span>
     <span class="len">15:42</span>
   </div>
   <div class="t">MM2 With a HEART RATE Monitor...</div>
   <div class="meta">213K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=-rgtLzkO7y8" target="_blank" rel="noopener" data-pub="1784476820000" data-views="204561" data-out="0.82" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=-rgtLzkO7y8" target="_blank" rel="noopener" data-pub="1784476820000" data-views="204561" data-out="0.78" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/-rgtLzkO7y8/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.82×</span>
+    <span class="score out-down">0.78×</span>
     <span class="len">10:05</span>
   </div>
   <div class="t">MM2, But You CANT Touch The COLOR...</div>
   <div class="meta">205K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=n0R-NCRrSpI" target="_blank" rel="noopener" data-pub="1783952130000" data-views="150773" data-out="0.61" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=n0R-NCRrSpI" target="_blank" rel="noopener" data-pub="1783952130000" data-views="150773" data-out="0.58" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/n0R-NCRrSpI/mqdefault.jpg" alt="">
-    <span class="score out-down">0.61×</span>
+    <span class="score out-down">0.58×</span>
     <span class="len">17:24</span>
   </div>
   <div class="t">MM2 But, 1v1 Challenge Vs Brother...</div>
   <div class="meta">151K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=LQ6DUD5G-GM" target="_blank" rel="noopener" data-pub="1786033100000" data-views="261198" data-out="1.05" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=LQ6DUD5G-GM" target="_blank" rel="noopener" data-pub="1786033100000" data-views="261198" data-out="1.03" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/LQ6DUD5G-GM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.05×</span>
+    <span class="score out-mid">1.03×</span>
     <span class="len">15:50</span>
   </div>
   <div class="t">I Played MM2 in VR... (Roblox)</div>
-  <div class="meta">261K views · 17 days ago</div>
+  <div class="meta">261K views · 18 days ago</div>
   
 </a></div>
 </details>
@@ -1061,21 +1187,21 @@ formats over the same months is what makes them comparable.</p>
   <summary>
     <span class="tpl">Climbing/Surviving The ___ Tower In Roblox</span>
     <span class="fstats">
-      <b class="f-cold">0.80×</b>
+      <b class="f-cold">0.76×</b>
       <span>3 videos</span>
       <span>200K median views</span>
       
     </span>
   </summary>
   <p class="premise">Attempting a themed obby or troll tower in Roblox.</p>
-  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=8ZiAlCyVPOo" target="_blank" rel="noopener" data-pub="1786808703000" data-views="120073" data-out="0.48" data-r50="" data-analysed="0">
+  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=8ZiAlCyVPOo" target="_blank" rel="noopener" data-pub="1786808703000" data-views="120073" data-out="0.53" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/8ZiAlCyVPOo/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.48×</span>
+    <span class="score out-down">0.53×</span>
     <span class="len">14:34</span>
   </div>
   <div class="t">Using ADMIN ABUSE in TROLL HUG TOWER... (BAD IDEA)</div>
-  <div class="meta">120K views · 8 days ago</div>
+  <div class="meta">120K views · 10 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Nn15Dq8_UE8" target="_blank" rel="noopener" data-pub="1784384132000" data-views="246257" data-out="0.99" data-r50="" data-analysed="0">
@@ -1088,10 +1214,10 @@ formats over the same months is what makes them comparable.</p>
   <div class="meta">246K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=ECimZuiH46w" target="_blank" rel="noopener" data-pub="1784125817000" data-views="199881" data-out="0.8" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=ECimZuiH46w" target="_blank" rel="noopener" data-pub="1784125817000" data-views="199881" data-out="0.76" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/ECimZuiH46w/mqdefault.jpg" alt="">
-    <span class="score out-down">0.80×</span>
+    <span class="score out-down">0.76×</span>
     <span class="len">11:52</span>
   </div>
   <div class="t">Climbing The SCARIEST LEMON TOWER in Roblox!</div>
@@ -1103,57 +1229,57 @@ formats over the same months is what makes them comparable.</p>
   <summary>
     <span class="tpl">Animal Hospital, But ___</span>
     <span class="fstats">
-      <b class="f-cold">0.58×</b>
+      <b class="f-cold">0.57×</b>
       <span>5 videos</span>
       <span>145K median views</span>
       
     </span>
   </summary>
   <p class="premise">Playing Animal Hospital with a strange restriction or discovery.</p>
-  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=Sp-OFhRI_hk" target="_blank" rel="noopener" data-pub="1786719616000" data-views="103358" data-out="0.42" data-r50="" data-analysed="0">
+  <div class="wall"><a class="v" href="https://www.youtube.com/watch?v=Sp-OFhRI_hk" target="_blank" rel="noopener" data-pub="1786719616000" data-views="103358" data-out="0.46" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/Sp-OFhRI_hk/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.42×</span>
+    <span class="score out-cold">0.46×</span>
     <span class="len">26:00</span>
   </div>
   <div class="t">This ANIMAL RESTAURANT has DARK SECRETS...</div>
-  <div class="meta">103K views · 9 days ago</div>
+  <div class="meta">103K views · 11 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.5" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=vv0GBazvPDk" target="_blank" rel="noopener" data-pub="1785874537000" data-views="123542" data-out="0.48" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vv0GBazvPDk/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.50×</span>
+    <span class="score out-cold">0.48×</span>
     <span class="len">13:23</span>
   </div>
   <div class="t">Animal Hospital, But I Only Allow BLUE PATIENTS...</div>
-  <div class="meta">124K views · 19 days ago</div>
+  <div class="meta">124K views · 20 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.58" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=pGYWbkONOCo" target="_blank" rel="noopener" data-pub="1785768541000" data-views="144843" data-out="0.57" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/pGYWbkONOCo/mqdefault.jpg" alt="">
-    <span class="score out-down">0.58×</span>
+    <span class="score out-down">0.57×</span>
     <span class="len">21:34</span>
   </div>
   <div class="t">Animal Hospital But, I ONLY LET ANOMALYS IN!</div>
-  <div class="meta">145K views · 20 days ago</div>
+  <div class="meta">145K views · 22 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.84" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=vy76SnMAEf8" target="_blank" rel="noopener" data-pub="1785506426000" data-views="207873" data-out="0.77" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vy76SnMAEf8/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.84×</span>
+    <span class="score out-down">0.77×</span>
     <span class="len">16:45</span>
   </div>
   <div class="t">This NEW Animal Hospital UPDATE is INSANE...</div>
-  <div class="meta">208K views · 23 days ago</div>
+  <div class="meta">208K views · 25 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=OQ7iIssiUvo" target="_blank" rel="noopener" data-pub="1784043038000" data-views="341309" data-out="1.37" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=OQ7iIssiUvo" target="_blank" rel="noopener" data-pub="1784043038000" data-views="341309" data-out="1.48" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/OQ7iIssiUvo/mqdefault.jpg" alt="">
-    <span class="score out-up">1.37×</span>
+    <span class="score out-up">1.48×</span>
     <span class="len">43:16</span>
   </div>
   <div class="t">Animal Hospital&#39;s NEW Update has DARK SECRETS...</div>
@@ -1177,37 +1303,37 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">27:34</span>
   </div>
   <div class="t">SURVIVING WONDERLAND IN ROBLOX...</div>
-  <div class="meta">10K views · 6 days ago</div>
+  <div class="meta">10K views · 7 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.61" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=EUX3dAIw1ac" target="_blank" rel="noopener" data-pub="1786744823000" data-views="152123" data-out="0.68" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/EUX3dAIw1ac/mqdefault.jpg" alt="">
-    <span class="score out-down">0.61×</span>
+    <span class="score out-down">0.68×</span>
     <span class="len">14:19</span>
   </div>
   <div class="t">NOOB To PRO Using ONLY ROBUX In Keyboard Escape...</div>
-  <div class="meta">152K views · 9 days ago</div>
+  <div class="meta">152K views · 10 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.38" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=Aq2-58XuK7w" target="_blank" rel="noopener" data-pub="1785942021000" data-views="93536" data-out="0.37" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/Aq2-58XuK7w/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.38×</span>
+    <span class="score out-cold">0.37×</span>
     <span class="len">13:41</span>
   </div>
   <div class="t">Playing GAMES That COST $1...</div>
-  <div class="meta">94K views · 18 days ago</div>
+  <div class="meta">94K views · 20 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.24" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=WlKFlWEurrU" target="_blank" rel="noopener" data-pub="1785595524000" data-views="307944" data-out="1.34" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/WlKFlWEurrU/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.24×</span>
+    <span class="score out-up">1.34×</span>
     <span class="len">18:26</span>
   </div>
   <div class="t">Using X RAY to CHEAT in HIDE AND SEEK!</div>
-  <div class="meta">308K views · 22 days ago</div>
+  <div class="meta">308K views · 24 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=40hrk1nWIu0" target="_blank" rel="noopener" data-pub="1785427224000" data-views="250672" data-out="1.01" data-r50="" data-analysed="0">
@@ -1217,33 +1343,33 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">15:55</span>
   </div>
   <div class="t">Guess What&#39;s WRONG with MM2 MAPS!</div>
-  <div class="meta">251K views · 24 days ago</div>
+  <div class="meta">251K views · 26 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.69" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=RvI5vT3kDIc" target="_blank" rel="noopener" data-pub="1785277811000" data-views="420328" data-out="1.42" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/RvI5vT3kDIc/mqdefault.jpg" alt="">
-    <span class="score out-up">1.69×</span>
+    <span class="score out-up">1.42×</span>
     <span class="len">20:32</span>
   </div>
   <div class="t">The NEW MM2 SUMMER UPDATE is INSANE...</div>
-  <div class="meta">420K views · 26 days ago</div>
+  <div class="meta">420K views · 27 days ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.9" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=wpqZhN3UJAk" target="_blank" rel="noopener" data-pub="1784731527000" data-views="222984" data-out="0.79" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/wpqZhN3UJAk/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.90×</span>
+    <span class="score out-down">0.79×</span>
     <span class="len">26:16</span>
   </div>
   <div class="t">I Made My Own CUSTOM ASMR TOWER in Roblox!</div>
   <div class="meta">223K views · 1 month ago</div>
   
 </a>
-<a class="v" href="https://www.youtube.com/watch?v=y0ePbki6h1c" target="_blank" rel="noopener" data-pub="1784212215000" data-views="606609" data-out="2.44" data-r50="" data-analysed="0">
+<a class="v" href="https://www.youtube.com/watch?v=y0ePbki6h1c" target="_blank" rel="noopener" data-pub="1784212215000" data-views="606609" data-out="2.64" data-r50="" data-analysed="0">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/y0ePbki6h1c/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.44×</span>
+    <span class="score out-hot">2.64×</span>
     <span class="len">11:58</span>
   </div>
   <div class="t">I TESTED THE MOST OP EMOTES IN MM2</div>
@@ -1267,7 +1393,7 @@ formats over the same months is what makes them comparable.</p>
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-19</span><span class="ago">4 days ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-19</span><span class="ago">5 days ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

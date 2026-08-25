@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       5:26 · 236 views ·
       26% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-25
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This update video sheds 40% of viewers before the 30-second mark, ranking 67 of 75 at halfway and finishing 28pp under the channel&#39;s median.</p>
+<p class="lede" style="margin:-14px 0 26px">Opening is 14.3pp below the channel&#39;s median hold and by 5:00 only 18.0% remain, ranking 9 of 68 of the channel&#39;s own videos.</p>
 
 <div class="viewer">
   <div>
@@ -540,73 +665,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:02</span><span class="kind">Drop-off</span></span>
-  <span class="what">First-second loss is actually softer than this channel usually sees at frame one (5.43% stop rate versus 10.14% channel norm, 0.5x).</span>
+  <span class="what">A small first-frame dip that runs cleaner than the channel usually manages (2.5x surrounding stop rate but only 0.6x the channel norm, 1,525 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma opens on a warm direct address — &#39;Hi angel friends. My name is Emma&#39; — which is the channel&#39;s standing habit and lands better than her median open.
+    <span class="lab">Why</span>Emma opens with &quot;Hi angel friends. My name is Emma&quot; — the standard channel greeting the audience already expects.
     <span class="quote">“Hi angel friends. My name is Emma”</span>
-    <span class="lab">The fix</span>Hold the current cold open; do not swap it while testing the 0:13 and 0:59 cuts, so the first-second baseline stays clean.
-    <span class="lab">Why that works</span>This moment is typical for the channel and beats the norm, so it is a control, not a fix — surgery here would confound the intro test above.
+    <span class="lab">The fix</span>Leave the frame-one behaviour alone and spend the effort on the 0:13 and 0:59 cuts above.
+    <span class="lab">Why that works</span>This moment beats the channel&#39;s own typical opening stop rate, so it is not where the unusual loss on this video is coming from.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">0:13</span><span class="kind">Drop-off</span></span>
-  <span class="what">Viewers bail as the greeting hands off to a subscriber-count aside instead of the promised update (2.6x the channel norm here, 2,564 viewers gone).</span>
+  <span class="what">The channel greeting and subscriber thanks bleeds audience three seconds in (2.4x surrounding stop rate, 2,567 viewers, 84.2% to 75.5%).</span>
   <span class="body">
-    <span class="lab">Why</span>Emma pauses on channel housekeeping — &#39;I greatly appreciate over a thousand subscribers now&#39; — before naming what the video is actually about.
-    <span class="quote">“greatly appreciate over a thousand subscribers now”</span>
-    <span class="lab">The fix</span>Cut 0:06-0:14 and open cold on &#39;I sold the van&#39; at 0:16, the way &#39;Addressing The Truth.&#39; opens with zero intro loss.
-    <span class="lab">Why that works</span>The intro sheds 36.4% versus a 13.8% channel average for intros, so removing the greeting delivers the thumbnail promise inside three seconds.
+    <span class="lab">Why</span>Emma is thanking subscribers before naming the topic: &quot;thank you all so much for being here.&quot;
+    <span class="quote">“thank you all so much for being here”</span>
+    <span class="lab">The fix</span>Cut 0:00-0:14 entirely and open on &quot;I sold the van. I didn&#39;t see that coming&quot; over the break-in footage.
+    <span class="lab">Why that works</span>The intro&#39;s 36.4% loss is 1.7x the channel&#39;s average for intros; &quot;Addressing The Truth&quot; held 100% by skipping the greeting.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">0:59</span><span class="kind">Drop-off</span></span>
-  <span class="what">A second wave leaves mid-explanation of the LA parking logistics (3.6x the surrounding stop rate, 1,805 viewers, 2.8x channel norm).</span>
+  <span class="what">A parking-logistics tangent sheds another chunk right at the one-minute mark (3.5x surrounding stop rate, 1,803 viewers, 50.2% to 44.9%).</span>
   <span class="body">
-    <span class="lab">Why</span>The reason narrows from &#39;I sold the van&#39; to dog-and-parking admin — &#39;trying to find parking every day is stressful&#39; — with no stakes or visual change.
+    <span class="lab">Why</span>Emma is listing errands rather than the break-in: &quot;trying to find parking every day is stressful.&quot;
     <span class="quote">“trying to find parking every day is stressful”</span>
-    <span class="lab">The fix</span>Cut 0:43-1:27 down to one sentence naming the job and the dog, then jump straight to the break-in teased by the title.
-    <span class="lab">Why that works</span>At 1:00 the video holds 50.2% versus a 59.3% channel median; the parking monologue is where the gap opens, and the title promises an incident we never reach.
+    <span class="lab">The fix</span>Cut 0:54-1:20 and jump from &quot;I didn&#39;t want to live in the van in LA with my dog&quot; to the break-in reveal teased by the title.
+    <span class="lab">Why that works</span>Packaging promised a break-in story; a minute of parking and coffee-shop logistics breaks the interest promise the thumbnail made.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">4:01</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A shallow rise leads into the same content-pivot list (1.3% returns, 160 viewers, holds three samples).</span>
+  <span class="what">A shorter rewind sits on the same pivot beat seconds earlier (audience rose 1.4%, 165 viewers regained, 24.4% present).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to catch the setup line — &#39;this channel is going to look like lifestyle content&#39; — that frames the categories at 4:08.
+    <span class="lab">Why</span>Emma sets up the pivot: &quot;this channel is going to look like lifestyle content.&quot;
     <span class="quote">“this channel is going to look like lifestyle content”</span>
-    <span class="lab">Do more of this</span>Merge 4:01-4:15 into a single beat and pair it with the front-loaded pivot in the new opening.
-    <span class="lab">Why that works</span>Two adjacent replays on the same idea confirm the pivot is the asset; consolidating it removes the repetition currently softening the moment.
+    <span class="lab">Do more of this</span>Merge this beat with the 4:08 line into one tight sentence and place it in the opening 20 seconds.
+    <span class="lab">Why that works</span>Two adjacent rewinds on the same idea confirm this is the interest anchor; it is currently buried at 74% of runtime.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">4:08</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A smaller replay lands as she lists the new content categories (2.4% of the audience returns, 289 viewers, one sample).</span>
+  <span class="what">A brief rewatch lands on the channel&#39;s new-direction statement (audience rose 2.4%, 295 viewers regained, 25.0% present).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind the channel&#39;s new promise — &#39;lifestyle content, wellness, mindfulness, spirituality&#39; — to hear the full list.
+    <span class="lab">Why</span>Emma names what the channel becomes: &quot;lifestyle content, wellness, mindfulness, spirituality.&quot;
     <span class="quote">“lifestyle content, wellness, mindfulness, spirituality”</span>
-    <span class="lab">Do more of this</span>Move this list into the first 20 seconds as the video&#39;s stake, replacing the subscriber-count aside currently there.
-    <span class="lab">Why that works</span>The only moment viewers rewind is the pivot itself, so front-loading it delivers the title&#39;s &#39;what&#39;s happening next&#39; promise before the 0:30 cliff.
+    <span class="lab">Do more of this</span>Move this sentence into the first 20 seconds as the promise the video delivers on, before the van backstory.
+    <span class="lab">Why that works</span>The moment viewers rewind to is the actual premise; front-loading it closes the packaging gap driving the -7.2pp deficit at 0:30.
     
   </span>
 </button>
 <button class="m peak" data-i="5" type="button">
   <span class="h"><span class="ts">5:03</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience rises late as she reads out her Instagram handle (3.9% of the room returns, 349 viewers, holds three samples).</span>
+  <span class="what">A small rewind clusters on the Instagram handle right before the sign-off (audience rose 3.9%, 350 viewers regained, 18.7% present).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to catch the handle being spelled — &#39;it&#39;s @ Emma Shay_. I&#39;ll put it in the description below.&#39;
+    <span class="lab">Why</span>Emma reads the handle viewers came back to catch: &quot;it&#39;s @ Emma Shay_. I&#39;ll put it in the description below.&quot;
     <span class="quote">“it&#39;s @ Emma Shay_”</span>
-    <span class="lab">Do more of this</span>Burn the handle on-screen at 5:03 for the full six seconds and pin it in the top comment so the rewind is not needed.
-    <span class="lab">Why that works</span>A rewind at 93% through means the handle is the sticky asset of the outro; making it legible converts the replay into a follow instead of a scrub.
+    <span class="lab">Do more of this</span>Burn the handle as a large on-screen graphic from 5:03 for four seconds so viewers do not need to scrub back.
+    <span class="lab">Why that works</span>Rewinds on a text string signal viewers missed the spelling; surfacing it visually removes the friction and cleans the outro.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"w2J8NOfUjrA","durationSec":326,"curve":[{"p":1,"w":0.949},{"p":2,"w":0.904},{"p":3,"w":0.865},{"p":4,"w":0.842},{"p":5,"w":0.755},{"p":6,"w":0.693},{"p":7,"w":0.666},{"p":8,"w":0.639},{"p":9,"w":0.604},{"p":10,"w":0.577},{"p":11,"w":0.56},{"p":12,"w":0.549},{"p":13,"w":0.519},{"p":14,"w":0.489},{"p":15,"w":0.503},{"p":16,"w":0.517},{"p":17,"w":0.518},{"p":18,"w":0.502},{"p":19,"w":0.471},{"p":20,"w":0.449},{"p":21,"w":0.435},{"p":22,"w":0.422},{"p":23,"w":0.41},{"p":24,"w":0.405},{"p":25,"w":0.396},{"p":26,"w":0.39},{"p":27,"w":0.382},{"p":28,"w":0.37},{"p":29,"w":0.367},{"p":30,"w":0.362},{"p":31,"w":0.356},{"p":32,"w":0.354},{"p":33,"w":0.347},{"p":34,"w":0.34},{"p":35,"w":0.336},{"p":36,"w":0.332},{"p":37,"w":0.33},{"p":38,"w":0.327},{"p":39,"w":0.323},{"p":40,"w":0.318},{"p":41,"w":0.312},{"p":42,"w":0.306},{"p":43,"w":0.297},{"p":44,"w":0.291},{"p":45,"w":0.283},{"p":46,"w":0.277},{"p":47,"w":0.271},{"p":48,"w":0.269},{"p":49,"w":0.264},{"p":50,"w":0.258},{"p":51,"w":0.26},{"p":52,"w":0.261},{"p":53,"w":0.259},{"p":54,"w":0.26},{"p":55,"w":0.261},{"p":56,"w":0.259},{"p":57,"w":0.257},{"p":58,"w":0.255},{"p":59,"w":0.258},{"p":60,"w":0.256},{"p":61,"w":0.255},{"p":62,"w":0.254},{"p":63,"w":0.254},{"p":64,"w":0.252},{"p":65,"w":0.251},{"p":66,"w":0.247},{"p":67,"w":0.242},{"p":68,"w":0.241},{"p":69,"w":0.237},{"p":70,"w":0.238},{"p":71,"w":0.239},{"p":72,"w":0.238},{"p":73,"w":0.241},{"p":74,"w":0.244},{"p":75,"w":0.245},{"p":76,"w":0.251},{"p":77,"w":0.251},{"p":78,"w":0.235},{"p":79,"w":0.218},{"p":80,"w":0.209},{"p":81,"w":0.206},{"p":82,"w":0.202},{"p":83,"w":0.198},{"p":84,"w":0.196},{"p":85,"w":0.191},{"p":86,"w":0.187},{"p":87,"w":0.187},{"p":88,"w":0.181},{"p":89,"w":0.178},{"p":90,"w":0.177},{"p":91,"w":0.177},{"p":92,"w":0.18},{"p":93,"w":0.187},{"p":94,"w":0.189},{"p":95,"w":0.193},{"p":96,"w":0.187},{"p":97,"w":0.163},{"p":98,"w":0.144},{"p":99,"w":0.124},{"p":100,"w":0.106}],"moments":[{"t":"0:02","sec":2,"kind":"drop","what":"First-second loss is actually softer than this channel usually sees at frame one (5.43% stop rate versus 10.14% channel norm, 0.5x)."},{"t":"0:13","sec":13,"kind":"drop","what":"Viewers bail as the greeting hands off to a subscriber-count aside instead of the promised update (2.6x the channel norm here, 2,564 viewers gone)."},{"t":"0:59","sec":59,"kind":"drop","what":"A second wave leaves mid-explanation of the LA parking logistics (3.6x the surrounding stop rate, 1,805 viewers, 2.8x channel norm)."},{"t":"4:01","sec":241,"kind":"peak","what":"A shallow rise leads into the same content-pivot list (1.3% returns, 160 viewers, holds three samples)."},{"t":"4:08","sec":248,"kind":"peak","what":"A smaller replay lands as she lists the new content categories (2.4% of the audience returns, 289 viewers, one sample)."},{"t":"5:03","sec":303,"kind":"peak","what":"Audience rises late as she reads out her Instagram handle (3.9% of the room returns, 349 viewers, holds three samples)."}]}</script>
+<script>window.__VIDEO__={"videoId":"w2J8NOfUjrA","durationSec":326,"curve":[{"p":1,"w":0.949},{"p":2,"w":0.904},{"p":3,"w":0.865},{"p":4,"w":0.842},{"p":5,"w":0.755},{"p":6,"w":0.693},{"p":7,"w":0.665},{"p":8,"w":0.639},{"p":9,"w":0.603},{"p":10,"w":0.577},{"p":11,"w":0.56},{"p":12,"w":0.549},{"p":13,"w":0.519},{"p":14,"w":0.489},{"p":15,"w":0.502},{"p":16,"w":0.516},{"p":17,"w":0.518},{"p":18,"w":0.502},{"p":19,"w":0.471},{"p":20,"w":0.449},{"p":21,"w":0.435},{"p":22,"w":0.421},{"p":23,"w":0.41},{"p":24,"w":0.405},{"p":25,"w":0.396},{"p":26,"w":0.39},{"p":27,"w":0.382},{"p":28,"w":0.37},{"p":29,"w":0.367},{"p":30,"w":0.362},{"p":31,"w":0.356},{"p":32,"w":0.353},{"p":33,"w":0.347},{"p":34,"w":0.34},{"p":35,"w":0.335},{"p":36,"w":0.332},{"p":37,"w":0.33},{"p":38,"w":0.327},{"p":39,"w":0.323},{"p":40,"w":0.318},{"p":41,"w":0.311},{"p":42,"w":0.306},{"p":43,"w":0.297},{"p":44,"w":0.291},{"p":45,"w":0.283},{"p":46,"w":0.277},{"p":47,"w":0.271},{"p":48,"w":0.269},{"p":49,"w":0.264},{"p":50,"w":0.257},{"p":51,"w":0.26},{"p":52,"w":0.261},{"p":53,"w":0.259},{"p":54,"w":0.26},{"p":55,"w":0.261},{"p":56,"w":0.258},{"p":57,"w":0.257},{"p":58,"w":0.255},{"p":59,"w":0.257},{"p":60,"w":0.256},{"p":61,"w":0.254},{"p":62,"w":0.254},{"p":63,"w":0.254},{"p":64,"w":0.252},{"p":65,"w":0.251},{"p":66,"w":0.247},{"p":67,"w":0.242},{"p":68,"w":0.241},{"p":69,"w":0.237},{"p":70,"w":0.238},{"p":71,"w":0.239},{"p":72,"w":0.238},{"p":73,"w":0.241},{"p":74,"w":0.244},{"p":75,"w":0.244},{"p":76,"w":0.25},{"p":77,"w":0.251},{"p":78,"w":0.235},{"p":79,"w":0.217},{"p":80,"w":0.209},{"p":81,"w":0.206},{"p":82,"w":0.202},{"p":83,"w":0.197},{"p":84,"w":0.195},{"p":85,"w":0.191},{"p":86,"w":0.187},{"p":87,"w":0.186},{"p":88,"w":0.181},{"p":89,"w":0.178},{"p":90,"w":0.177},{"p":91,"w":0.177},{"p":92,"w":0.18},{"p":93,"w":0.187},{"p":94,"w":0.189},{"p":95,"w":0.193},{"p":96,"w":0.186},{"p":97,"w":0.163},{"p":98,"w":0.144},{"p":99,"w":0.124},{"p":100,"w":0.106}],"moments":[{"t":"0:02","sec":2,"kind":"drop","what":"A small first-frame dip that runs cleaner than the channel usually manages (2.5x surrounding stop rate but only 0.6x the channel norm, 1,525 viewers)."},{"t":"0:13","sec":13,"kind":"drop","what":"The channel greeting and subscriber thanks bleeds audience three seconds in (2.4x surrounding stop rate, 2,567 viewers, 84.2% to 75.5%)."},{"t":"0:59","sec":59,"kind":"drop","what":"A parking-logistics tangent sheds another chunk right at the one-minute mark (3.5x surrounding stop rate, 1,803 viewers, 50.2% to 44.9%)."},{"t":"4:01","sec":241,"kind":"peak","what":"A shorter rewind sits on the same pivot beat seconds earlier (audience rose 1.4%, 165 viewers regained, 24.4% present)."},{"t":"4:08","sec":248,"kind":"peak","what":"A brief rewatch lands on the channel's new-direction statement (audience rose 2.4%, 295 viewers regained, 25.0% present)."},{"t":"5:03","sec":303,"kind":"peak","what":"A small rewind clusters on the Instagram handle right before the sign-off (audience rose 3.9%, 350 viewers regained, 18.7% present)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

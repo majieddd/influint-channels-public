@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       18:28 · 173,688 views ·
       34% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-24
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video sits 22nd of 30 at the halfway mark, giving up 3-4 points to the channel&#39;s median between 2:00 and 5:00 despite a stronger-than-usual first minute.</p>
+<p class="lede" style="margin:-14px 0 26px">This video&#39;s opening beats the channel&#39;s median through 1:00, then collapses: by 2:00 it holds 59.4% (channel median 63.2%) and ranks 71 of 83 at halfway.</p>
 
 <div class="viewer">
   <div>
@@ -540,73 +665,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:10</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening 12 seconds shed 14 points of the room while the host stalls on the game&#39;s title (4.5x surrounding stop rate, 34,892 viewers, holds 85.6% at 0:30).</span>
+  <span class="what">The opening 12 seconds shed the standard chunk of the room but slightly gentler than this channel&#39;s usual intro (5.76% stop rate vs 6.53% channel norm, 35,467 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>The host repeats the premise instead of delivering it: &quot;weirdest games on Roblox. Starting off with Obby into the noobs cheeks. Um, what?&quot;
-    <span class="quote">“weirdest games on Roblox”</span>
-    <span class="lab">The fix</span>Cut 0:04-0:22 down to one sentence stating the goal, then jump straight to the first in-game action at 0:23.
-    <span class="lab">Why that works</span>The intro&#39;s only job is context, stakes, and goal fast; restating the thumbnail premise burns the room before anything happens.
+    <span class="lab">Why</span>First game is announced and immediately undercut by the host noting nobody plays it: &quot;this game literally has zero active players&quot;.
+    <span class="quote">“this game literally has zero active players”</span>
+    <span class="lab">The fix</span>Keep this open — do not resurface the zero-players line; lead straight into &quot;Obby into noob cheeks&quot; and enter the game within 8 seconds.
+    <span class="lab">Why that works</span>This intro already beats the channel&#39;s average for its kind (0.9x), so protect it; telling viewers the game is dead invites them to leave too.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">1:29</span><span class="kind">Drop-off</span></span>
-  <span class="what">The first obby stalls for 11 seconds on a silent climb, losing 6 points against the channel&#39;s usual 2% here (3.2x surrounding stop rate, 2.1x the channel norm, 13,204 viewers).</span>
+  <span class="what">A mid-obby lull loses viewers at more than twice the channel&#39;s usual rate for this position (4.27% vs 1.93% norm, 3.1x spike, 13,432 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>The host runs out of commentary during a climb: &quot;Imagine. I can&#39;t even defeat this whole thing,&quot; then nine silent seconds before the next joke.
+    <span class="lab">Why</span>The host stalls with filler while nothing new happens on screen: &quot;I can&#39;t even defeat this whole thing&quot; followed by narration of poop obstacles already established.
     <span class="quote">“I can&#39;t even defeat this whole thing”</span>
-    <span class="lab">The fix</span>Cut 1:24-1:36 to the moment the next poop gag lands, holding the climb to one continuous beat instead of two.
-    <span class="lab">Why that works</span>Something should visibly or verbally change every five seconds; a nine-second silent traverse in a comedy Roblox video reads as boredom.
+    <span class="lab">The fix</span>Cut 1:24-1:36 entirely and jump from the first poop obstacle to the &quot;dude taking a dump&quot; gag, keeping the segment under 90 seconds of intro.
+    <span class="lab">Why that works</span>Something should visibly change every ~5 seconds; this window repeats the same joke without introducing a new obstacle, and the channel&#39;s best intro loses 0%.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">5:55</span><span class="kind">Drop-off</span></span>
-  <span class="what">The handoff from game one into &quot;escape the running head&quot; bleeds 6 points in 33 seconds, the worst spike in the video (12.8x surrounding stop rate, 2.4x the channel norm, 15,145 viewers).</span>
+  <span class="what">The handoff between game one and &quot;escape the running head&quot; bleeds unusually hard for this channel (12.2x the surrounding stop rate, 3.2x the channel norm, 15,506 viewers lost).</span>
   <span class="body">
-    <span class="lab">Why</span>The host closes one game with a rant then narrates rules of the next before anything happens: &quot;ban the guy who made this game... Next up we got is escape the running head.&quot;
-    <span class="quote">“Next up we got is escape the running head”</span>
-    <span class="lab">The fix</span>Cut 5:41-5:56 and open the new game on the first head attack at 6:02, backfilling the rule in one line over that shot.
-    <span class="lab">Why that works</span>Segues that recap a finished game and pre-explain the next one are dead air; introduce information right before it is needed, not before.
+    <span class="lab">Why</span>The segue is a flat verdict on the previous game followed by a low-energy tee-up: &quot;ban the guy who made this game&quot; then &quot;next up we got is escape the running head&quot;.
+    <span class="quote">“next up we got is escape the running head”</span>
+    <span class="lab">The fix</span>Cut 5:41-5:56 and open the new game cold on the first head-attack shock at 6:02, with a riser starting ~15s before it.
+    <span class="lab">Why that works</span>Pacing = flow of new information; the current segue repeats the prior verdict and previews the mechanic instead of showing it, so replace exposition with the surprise beat that&#39;s already on tape.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">12:00</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The jump into the &quot;yo yo yo&quot; game holds a 2.5-point lift for six samples, the longest sustained peak in the video (2,516 viewers regained, 30.7% present).</span>
+  <span class="what">Audience climbs into the next game&#39;s intro and holds for six samples, the longest sustained lift in the video (+2.5% of the audience present, 2,568 viewers regained, 30.6% still watching).</span>
   <span class="body">
-    <span class="lab">Why</span>The out-of-context game name and the mouse-arrows discovery land together: &quot;Yo, look at my arrows. Look when I move my mouse.&quot;
-    <span class="quote">“look at my arrows”</span>
-    <span class="lab">Do more of this</span>Cut a 2-second clip of the arrows moment into the cold open before 0:04 to sell the &quot;weirdest&quot; promise visually.
-    <span class="lab">Why that works</span>Opening on an out-of-context strong-emotion moment beats restating the thumbnail; the data shows this beat pulls viewers back on its own.
+    <span class="lab">Why</span>Viewers rewind the absurd game-name delivery and the three-portal choice: &quot;Yo yo yo yo yo yo yo yo yo yo yo yo yo. Yep. That&#39;s the game we&#39;re playing.&quot;
+    <span class="quote">“Yo yo yo yo yo yo yo yo yo yo”</span>
+    <span class="lab">Do more of this</span>Reuse the &quot;yo yo yo&quot; delivery as a mid-video pattern interrupt around 8:00, and cross-cut the three-portal choice with the host&#39;s on-screen mouse arrows.
+    <span class="lab">Why that works</span>Pattern interrupts belong at the graph&#39;s valleys; the audience is telling you this beat holds, so plant a shorter echo of it in the sagging 5-8 minute window.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">12:11</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A smaller one-sample tick continues the lift into the portal choice (1,258 viewers regained, 31.1% present).</span>
+  <span class="what">A second, smaller lift immediately after 12:00 confirms the portal-pick beat is the draw (+1.2% of the audience present, 1,284 viewers regained, 31.0% still watching).</span>
   <span class="body">
-    <span class="lab">Why</span>The three-portal choice creates a live decision: &quot;we have three portals. We can go left, middle, or right.&quot;
-    <span class="quote">“three portals. We can go left, middle, or right”</span>
-    <span class="lab">Do more of this</span>Tighten 12:07-12:13 so the portal choice lands within three seconds of naming the game, protecting the peak&#39;s connectivity.
-    <span class="lab">Why that works</span>This tick sits on the same anticipation as 12:00; keeping the announcement-to-choice gap short holds the room through the payoff.
+    <span class="lab">Why</span>Rewind lands on the mouse-arrow visual gag and the hacking punchline: &quot;Look when I move my mouse&quot; into &quot;I&#39;m definitely getting hacked&quot;.
+    <span class="quote">“Look when I move my mouse”</span>
+    <span class="lab">Do more of this</span>Hold the mouse-arrow visual on screen 2 seconds longer in the master edit and cap the beat with the &quot;getting hacked&quot; line as its own cut.
+    <span class="lab">Why that works</span>Stretching a conflict beat with stable retention can triple its screen time; the replay proves viewers want more of this exact gag, not a faster move-on.
     
   </span>
 </button>
 <button class="m peak" data-i="5" type="button">
   <span class="h"><span class="ts">14:24</span><span class="kind">Viewers came back</span></span>
-  <span class="what">The audience climbs back 3 points and holds through the &quot;silly boy&quot; teleport into the fanboy chase (2,714 viewers regained, held two samples, 28.3% present).</span>
+  <span class="what">Audience rises here and holds for two samples, unusual this late in the video (+3.0% of the audience present, 2,804 viewers regained, 28.3% still watching).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind for the character reveal and scream: &quot;Teleport to silly boy... This is not even a fanboy. This is a furball.&quot;
+    <span class="lab">Why</span>Viewers scrub back to the &quot;silly boy&quot; teleport gag and the furball reveal: &quot;Teleport to silly boy. Who is silly boy?&quot; landing on &quot;This is not even a fanboy. This is a furball.&quot;
     <span class="quote">“This is not even a fanboy. This is a furball”</span>
-    <span class="lab">Do more of this</span>Front-load a 3-second tease of the fanboy scream at 0:23 so the intro promises this exact beat.
-    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset; teasing it early gives the whole video something to pull toward.
+    <span class="lab">Do more of this</span>Front-load a 3-second tease of the furball scream at 0:05 and cut a shorter cold-open version of the silly-boy teleport into the intro montage.
+    <span class="lab">Why that works</span>A reveal that earns rewinds is an asset — tease it early to pull the opening audience toward a moment they already voted for with replays.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"pYZhW5oT_xU","durationSec":1108,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.855},{"p":3,"w":0.79},{"p":4,"w":0.768},{"p":5,"w":0.741},{"p":6,"w":0.735},{"p":7,"w":0.726},{"p":8,"w":0.689},{"p":9,"w":0.631},{"p":10,"w":0.594},{"p":11,"w":0.583},{"p":12,"w":0.563},{"p":13,"w":0.535},{"p":14,"w":0.522},{"p":15,"w":0.509},{"p":16,"w":0.499},{"p":17,"w":0.495},{"p":18,"w":0.486},{"p":19,"w":0.476},{"p":20,"w":0.472},{"p":21,"w":0.466},{"p":22,"w":0.469},{"p":23,"w":0.469},{"p":24,"w":0.474},{"p":25,"w":0.463},{"p":26,"w":0.463},{"p":27,"w":0.469},{"p":28,"w":0.479},{"p":29,"w":0.48},{"p":30,"w":0.477},{"p":31,"w":0.475},{"p":32,"w":0.474},{"p":33,"w":0.454},{"p":34,"w":0.434},{"p":35,"w":0.413},{"p":36,"w":0.406},{"p":37,"w":0.398},{"p":38,"w":0.395},{"p":39,"w":0.394},{"p":40,"w":0.399},{"p":41,"w":0.413},{"p":42,"w":0.381},{"p":43,"w":0.375},{"p":44,"w":0.369},{"p":45,"w":0.364},{"p":46,"w":0.36},{"p":47,"w":0.356},{"p":48,"w":0.351},{"p":49,"w":0.346},{"p":50,"w":0.344},{"p":51,"w":0.338},{"p":52,"w":0.335},{"p":53,"w":0.331},{"p":54,"w":0.326},{"p":55,"w":0.327},{"p":56,"w":0.318},{"p":57,"w":0.317},{"p":58,"w":0.317},{"p":59,"w":0.315},{"p":60,"w":0.304},{"p":61,"w":0.301},{"p":62,"w":0.3},{"p":63,"w":0.298},{"p":64,"w":0.299},{"p":65,"w":0.306},{"p":66,"w":0.31},{"p":67,"w":0.315},{"p":68,"w":0.303},{"p":69,"w":0.301},{"p":70,"w":0.299},{"p":71,"w":0.304},{"p":72,"w":0.286},{"p":73,"w":0.28},{"p":74,"w":0.278},{"p":75,"w":0.278},{"p":76,"w":0.276},{"p":77,"w":0.275},{"p":78,"w":0.283},{"p":79,"w":0.279},{"p":80,"w":0.28},{"p":81,"w":0.272},{"p":82,"w":0.27},{"p":83,"w":0.267},{"p":84,"w":0.262},{"p":85,"w":0.259},{"p":86,"w":0.261},{"p":87,"w":0.252},{"p":88,"w":0.25},{"p":89,"w":0.249},{"p":90,"w":0.254},{"p":91,"w":0.254},{"p":92,"w":0.252},{"p":93,"w":0.246},{"p":94,"w":0.246},{"p":95,"w":0.246},{"p":96,"w":0.244},{"p":97,"w":0.243},{"p":98,"w":0.24},{"p":99,"w":0.236},{"p":100,"w":0.216}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The opening 12 seconds shed 14 points of the room while the host stalls on the game's title (4.5x surrounding stop rate, 34,892 viewers, holds 85.6% at 0:30)."},{"t":"1:29","sec":89,"kind":"drop","what":"The first obby stalls for 11 seconds on a silent climb, losing 6 points against the channel's usual 2% here (3.2x surrounding stop rate, 2.1x the channel norm, 13,204 viewers)."},{"t":"5:55","sec":355,"kind":"drop","what":"The handoff from game one into \"escape the running head\" bleeds 6 points in 33 seconds, the worst spike in the video (12.8x surrounding stop rate, 2.4x the channel norm, 15,145 viewers)."},{"t":"12:00","sec":720,"kind":"peak","what":"The jump into the \"yo yo yo\" game holds a 2.5-point lift for six samples, the longest sustained peak in the video (2,516 viewers regained, 30.7% present)."},{"t":"12:11","sec":731,"kind":"peak","what":"A smaller one-sample tick continues the lift into the portal choice (1,258 viewers regained, 31.1% present)."},{"t":"14:24","sec":864,"kind":"peak","what":"The audience climbs back 3 points and holds through the \"silly boy\" teleport into the fanboy chase (2,714 viewers regained, held two samples, 28.3% present)."}]}</script>
+<script>window.__VIDEO__={"videoId":"pYZhW5oT_xU","durationSec":1108,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.855},{"p":3,"w":0.79},{"p":4,"w":0.768},{"p":5,"w":0.74},{"p":6,"w":0.734},{"p":7,"w":0.725},{"p":8,"w":0.689},{"p":9,"w":0.631},{"p":10,"w":0.594},{"p":11,"w":0.583},{"p":12,"w":0.563},{"p":13,"w":0.535},{"p":14,"w":0.522},{"p":15,"w":0.509},{"p":16,"w":0.499},{"p":17,"w":0.495},{"p":18,"w":0.486},{"p":19,"w":0.476},{"p":20,"w":0.472},{"p":21,"w":0.466},{"p":22,"w":0.469},{"p":23,"w":0.469},{"p":24,"w":0.474},{"p":25,"w":0.463},{"p":26,"w":0.463},{"p":27,"w":0.469},{"p":28,"w":0.478},{"p":29,"w":0.48},{"p":30,"w":0.477},{"p":31,"w":0.475},{"p":32,"w":0.474},{"p":33,"w":0.454},{"p":34,"w":0.434},{"p":35,"w":0.413},{"p":36,"w":0.405},{"p":37,"w":0.398},{"p":38,"w":0.395},{"p":39,"w":0.394},{"p":40,"w":0.398},{"p":41,"w":0.413},{"p":42,"w":0.381},{"p":43,"w":0.375},{"p":44,"w":0.369},{"p":45,"w":0.364},{"p":46,"w":0.36},{"p":47,"w":0.356},{"p":48,"w":0.35},{"p":49,"w":0.346},{"p":50,"w":0.343},{"p":51,"w":0.337},{"p":52,"w":0.334},{"p":53,"w":0.331},{"p":54,"w":0.326},{"p":55,"w":0.327},{"p":56,"w":0.318},{"p":57,"w":0.316},{"p":58,"w":0.317},{"p":59,"w":0.315},{"p":60,"w":0.304},{"p":61,"w":0.3},{"p":62,"w":0.3},{"p":63,"w":0.297},{"p":64,"w":0.299},{"p":65,"w":0.306},{"p":66,"w":0.31},{"p":67,"w":0.315},{"p":68,"w":0.303},{"p":69,"w":0.301},{"p":70,"w":0.299},{"p":71,"w":0.304},{"p":72,"w":0.286},{"p":73,"w":0.279},{"p":74,"w":0.278},{"p":75,"w":0.277},{"p":76,"w":0.276},{"p":77,"w":0.274},{"p":78,"w":0.283},{"p":79,"w":0.279},{"p":80,"w":0.279},{"p":81,"w":0.272},{"p":82,"w":0.27},{"p":83,"w":0.267},{"p":84,"w":0.262},{"p":85,"w":0.259},{"p":86,"w":0.261},{"p":87,"w":0.251},{"p":88,"w":0.25},{"p":89,"w":0.249},{"p":90,"w":0.253},{"p":91,"w":0.253},{"p":92,"w":0.252},{"p":93,"w":0.246},{"p":94,"w":0.246},{"p":95,"w":0.245},{"p":96,"w":0.244},{"p":97,"w":0.242},{"p":98,"w":0.24},{"p":99,"w":0.236},{"p":100,"w":0.215}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The opening 12 seconds shed the standard chunk of the room but slightly gentler than this channel's usual intro (5.76% stop rate vs 6.53% channel norm, 35,467 viewers lost)."},{"t":"1:29","sec":89,"kind":"drop","what":"A mid-obby lull loses viewers at more than twice the channel's usual rate for this position (4.27% vs 1.93% norm, 3.1x spike, 13,432 viewers lost)."},{"t":"5:55","sec":355,"kind":"drop","what":"The handoff between game one and \"escape the running head\" bleeds unusually hard for this channel (12.2x the surrounding stop rate, 3.2x the channel norm, 15,506 viewers lost)."},{"t":"12:00","sec":720,"kind":"peak","what":"Audience climbs into the next game's intro and holds for six samples, the longest sustained lift in the video (+2.5% of the audience present, 2,568 viewers regained, 30.6% still watching)."},{"t":"12:11","sec":731,"kind":"peak","what":"A second, smaller lift immediately after 12:00 confirms the portal-pick beat is the draw (+1.2% of the audience present, 1,284 viewers regained, 31.0% still watching)."},{"t":"14:24","sec":864,"kind":"peak","what":"Audience rises here and holds for two samples, unusual this late in the video (+3.0% of the audience present, 2,804 viewers regained, 28.3% still watching)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

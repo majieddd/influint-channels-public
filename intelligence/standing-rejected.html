@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -508,14 +633,14 @@ table.obs td.no{color:#ff8f8f}
 <h1><span class="pill s-rejected">Rejected</span></h1>
 <p class="lede intel-hero">The system must stop asserting this. One category, two ways in: our own measurements pointed the other way, or a strategist overruled it. Each claim says which — the remedy differs. Kept, never deleted: knowing a tactic failed is an asset, and deleting it invites learning it again.</p>
 <div class="intel-stats">
-  <div><div class="v">34</div><div class="k">Claims at this standing</div></div>
-  <div><div class="v">30</div><div class="k">General</div></div>
-  <div><div class="v">4</div><div class="k">Niched</div></div>
+  <div><div class="v">40</div><div class="k">Claims at this standing</div></div>
+  <div><div class="v">35</div><div class="k">General</div></div>
+  <div><div class="v">5</div><div class="k">Niched</div></div>
 </div>
 <p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
 more than the tick alone. Decisions save in this browser as you go; export them from the
 panel in the corner when you are done.</p>
-<h2>ideation &middot; 8</h2>
+<h2>ideation &middot; 7</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -655,52 +780,6 @@ panel in the corner when you are done.</p>
     
   </div>
   
-  <div class="txt">A near-duplicate of a proven format outperforms a wholly new one because familiarity does the work of removing risk while a small novel element supplies the reason to click — roughly a 90/10 split of template to twist.</div>
-  <div class="src">Source: Alan Garnett</div>
-  <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
-    <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
-      the two apply to different kinds of channel. The question that separates them:</p>
-    <p class="q">WHERE ON THE EXPOSURE CURVE is this format for this audience? Gannett already holds the reconciling pattern (115f4acc5069): liking follows an inverted-U against exposure count, rising with repetition to a peak and falling after, so a format has a finite number of uses. Both claims are true, on opposite sides of the peak — which converts an argument into a measurement problem: what is the instalment count, and is per-instalment performance still rising? Our mined-format table is weakly consistent with the decay side and worth watching rather than citing: the highest observed lifts sit on small match counts (I Built My Own After Getting Screwed, n=4, 2.92x; Exposing N Secrets, n=3, 2.76x) while the largest cohort in the table (Product Full Review, n=16) sits at 1.67x. That is confounded by naming granularity and cannot carry weight yet, but the store should record instalment index alongside every format so the peak becomes observable rather than argued about.</p></div>
-  
-  <div class="review" data-id="30b319487492">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      so it was set aside on judgement or on an earlier one-off check, not because the ledger measured it and it failed.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    <div class="legacy">
-             <b>Earlier one-off check</b>
-             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
-             <p class="ev"><b>Contradicted:</b> Corpus (33 channels, 831 videos): near-duplicates median 0.980x vs unique 1.005x (MWU z=-1.68, p=0.093). Age-adjusted the gap widens against repetition: 0.954x vs 1.016x (n=278 vs 534, z=-2.67, p=0.0076). Only 15 of 33 channels had repeats beating uniques. Our channels on first-28d views: repeated 0.99x (n=18) vs unique 1.00x (n=101), p=0.95. Conditional test, strict format frames (signature carrying &gt;=2 literal frame words): 9 pairs where the prior instance scored &gt;=1.5x produced follow-ups with median 1.01x and 0 of 9 reaching 1.5x (base rate 7%); median ratio next/prev = 0.29. Our channels: 3 such pairs, next median 0.72x, ratio 0.45, 0 of 3 reaching 1.5x.</p>
-             <p class="caveat">Caveat: Signature repetition is a proxy for &#39;near-duplicate of a proven format&#39; and catches generic title habits as well as deliberate franchises; a creator could execute the 90/10 rule without the title showing it. The conditional test that isolates deliberate repeats-of-a-hit is the strongest evidence but rests on only 12 pairs. Regression to the mean guarantees some decline from a &gt;=1.5x instance regardless of format logic — but the claim asserts near-duplicates beat wholly new videos, and they do not beat them even before conditioning on a prior hit.</p>
-           </div>
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>With a meme, you already know 90% of the joke. In this case, you know that grumpy Cat is grumpy, Ohanian told me. What makes it funny is the 10% twist, or what the caption is.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-rejected">Rejected</span>
-    <span class="cat">ideation</span>
-    
-    <span class="cat">· earlier check spanned 37 channels</span>
-    <span class="cat rej-why">· Refuted by our data</span>
-    
-  </div>
-  
   <div class="txt">The correct way to generate a new format is to take a proven one and change exactly ONE key element — not to invent from scratch and not to copy wholesale.</div>
   <div class="src">Source: Erik Bork</div>
   
@@ -743,7 +822,13 @@ panel in the corner when you are done.</p>
     <span class="cat rej-why">· Refuted by our data</span>
     
   </div>
-  
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 20% of 10 measurements</span>
+    <span class="num">6 channels</span>
+  </div>
   <div class="txt">A repeated format decays: each additional instalment of the same idea loses remarkability until escalation is exhausted and views visibly plateau. Dream&#39;s Manhunt series is the named case.</div>
   <div class="src">Source: CreatorNow</div>
   <div class="qbox settled"><b>Reconciled with a conflicting claim</b>
@@ -758,20 +843,146 @@ panel in the corner when you are done.</p>
   </div>
   <details>
     <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      so it was set aside on judgement or on an earlier one-off check, not because the ledger measured it and it failed.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>shipping another instalment of the same format</b> &rarr; first-28-day views of that instalment
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Does a format wear out — do later episodes under-perform earlier ones?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of an episode&#39;s position within its own format run (0 = first, 1 = last) against its first-28-day views relative to that format&#39;s median, pooled across formats.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 168" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="148"/><text class="etick" x="116.0" y="161" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="148"/><text class="etick" x="237.5" y="161" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="148"/><text class="etick" x="359.0" y="161" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="148"/><text class="etick" x="480.5" y="161" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="148"/><text class="etick" x="602.0" y="161" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="148"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel H</text>
+<circle class="edot eheld" cx="481.9" cy="30" r="5">
+  <title>Channel H: +0.51 over 58 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="453.6" cy="50" r="5">
+  <title>Channel F: +0.39 over 66 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="382.1" cy="70" r="5">
+  <title>Channel G: +0.10 over 59 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="378.3" cy="90" r="5">
+  <title>Channel E: +0.08 over 59 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="280.4" cy="110" r="5">
+  <title>Channel A: -0.32 over 41 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="228.3" cy="130" r="5">
+  <title>Channel D: -0.54 over 74 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 4 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.54</td>
+        <td>74</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.32</td>
+        <td>41</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.08</td>
+        <td>59</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.10</td>
+        <td>59</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="ok">held</td>
+        <td>+0.51</td>
+        <td>58</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.39</td>
+        <td>66</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.01</td>
+        <td>22</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.48</td>
+        <td>72</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.09</td>
+        <td>66</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.10</td>
+        <td>59</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>It did NOT hold on Channel G, Channel E, Channel A, Channel D, Channel E, Channel G, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.95). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
              <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Contradicted:</b> Raw corpus shows what looks like textbook decay: instalment #1 = 1.39x, #2 = 1.12x, #3 = 1.00x, #4 = 0.70x (46 groups, 30 channels). It is mostly an age artifact — within-channel Spearman(age, lifetime-views outlier) has a median of +0.36 across 38 channels (28 positive, 4 negative), and later instalments are by definition newer. Age-adjusted the ladder flattens to 1.08 / 1.02 / 0.88 / 0.84, and the per-group trend collapses from a median Spearman of -0.33 to -0.01 (9 negative, 8 positive of 20 groups). Age-free own-channel evidence points the same way: Channel C&#39;s 20-instalment &#39;Abandoned General Store&#39; run has Spearman(order, 28d score) = -0.22 with first-5 median 0.90x vs last-5 median 0.94x; Channel A&#39;s 14-instalment &#39;Roblox &lt;GAME&gt;&#39; frame is +0.14; Motovudu&#39;s 11 collected &#39;Q&amp;A with Simon Crafar&#39; parts show no downward trend (0.74, 0.79, 0.61, 0.67, 0.64, 0.72, 0.96, 1.10, 1.00, 0.71, 1.05). Two short runs do decay monotonically (Yammie Noob Q&amp;A 0.59 to 0.34 over 4; PrestonGamez &#39;But I ONLY Accept X&#39; 1.63 to 1.09 over 3), which is about what chance would produce across six runs.</p>
              <p class="caveat">Caveat: Our longest observed runs are 11-24 instalments; Dream&#39;s Manhunt-style escalation formats, where the premise itself must escalate, are not in this data and could genuinely decay. A within-channel downward trend also cannot be separated from channel-level decline: Channel C&#39;s whole channel trends at -0.31 over the same window, so her format&#39;s -0.22 may be the channel, not the format. What is solid is the negative result — the raw decay pattern people cite is largely an artifact of comparing lifetime views across different ages.</p>
            </div>
@@ -873,7 +1084,7 @@ panel in the corner when you are done.</p>
 3,530.50</blockquote></div>
   </details>
 </div></div>
-<h2>packaging &middot; 3</h2>
+<h2>packaging &middot; 6</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -883,7 +1094,13 @@ panel in the corner when you are done.</p>
     <span class="cat rej-why">· Refuted by our data</span>
     
   </div>
-  
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 14% of 14 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
   <div class="txt">Numbered/listicle titles are among the strongest title structures because the number sets an explicit expectation of scope and implied duration before the click.</div>
   <div class="src">Source: Derrel Eves</div>
   
@@ -895,20 +1112,165 @@ panel in the corner when you are done.</p>
   </div>
   <details>
     <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      so it was set aside on judgement or on an earlier one-off check, not because the ledger measured it and it failed.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>putting a number in the title</b> &rarr; first-28-day views
+             <span class="dir">(the claim predicts this goes up)</span></p>
+    <p class="qline">The question put to the data: <i>Do titles containing a number out-perform titles without one?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Median first-28-day views for titles containing a digit minus the same for titles without, scaled by the pooled median.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="411.8" cy="30" r="5">
+  <title>Channel F: +0.22 over 226 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="369.9" cy="50" r="5">
+  <title>Channel D: +0.05 over 302 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="367.7" cy="70" r="5">
+  <title>Channel E: +0.04 over 176 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="359.2" cy="90" r="5">
+  <title>Channel C: +0.00 over 168 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="341.5" cy="110" r="5">
+  <title>Channel A: -0.07 over 392 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="305.3" cy="130" r="5">
+  <title>Channel H: -0.22 over 139 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="262.8" cy="150" r="5">
+  <title>Channel G: -0.40 over 116 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 7 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>+0.05</td>
+        <td>302</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.07</td>
+        <td>392</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.04</td>
+        <td>176</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.40</td>
+        <td>116</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.00</td>
+        <td>168</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>-0.22</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.22</td>
+        <td>226</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.22</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.04</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>+0.03</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.04</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.40</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 14 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are differences of medians, scaled by the pooled median.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel H, Channel C, Channel G, Channel E, Channel A, Channel D, Channel C, Channel E, Channel H, Channel G, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
              <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Contradicted:</b> Any digit: maker-builds 1.01x vs 1.00x (p=0.71), motorcycle 1.00x vs 1.00x (p=0.51), roblox 1.00x vs 1.00x (p=0.66). Within-channel across 35 channels: 20 up, 15 down, median delta +0.08x. Strict listicle: maker-builds n=25, 1.11x vs 0.99x (p=0.51); motorcycle n=29, 1.00x vs 1.00x (p=0.39); roblox n=23, 1.00x vs 1.00x (p=0.91). Nothing anywhere reaches significance and the point estimates sit on 1.00x.</p>
              <p class="caveat">Caveat: &#39;Among the strongest&#39; is a relative claim — a structure can be reliably fine without being a lift, and a null here does not prove listicles are bad, only that they do not outperform the channel&#39;s own baseline. Listicles may also be more common in search-driven sub-genres where the impression pool differs; I did not stratify by traffic source because we do not hold it.</p>
            </div>
@@ -968,6 +1330,393 @@ panel in the corner when you are done.</p>
     <span class="pill s-rejected">Rejected</span>
     <span class="cat">packaging</span>
     
+    <span class="cat">· earlier check spanned 32 channels</span>
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 0% of 14 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">Titles should be eight words or fewer and comprehensible to a three-year-old; complexity in the title suppresses clicks regardless of concept quality.</div>
+  <div class="src">Source: CreatorNow</div>
+  
+  
+  <div class="review" data-id="b33fa5743888">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>adding words to a title</b> &rarr; first-28-day views
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Do titles with fewer words earn more first-28-day views?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of title word count against first-28-day views.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="400.0" cy="30" r="5">
+  <title>Channel G: +0.17 over 116 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="360.1" cy="50" r="5">
+  <title>Channel H: +0.00 over 139 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="353.8" cy="70" r="5">
+  <title>Channel F: -0.02 over 226 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="352.6" cy="90" r="5">
+  <title>Channel A: -0.03 over 392 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="346.7" cy="110" r="5">
+  <title>Channel D: -0.05 over 302 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="344.3" cy="130" r="5">
+  <title>Channel E: -0.06 over 176 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="328.9" cy="150" r="5">
+  <title>Channel C: -0.12 over 168 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 7 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.05</td>
+        <td>302</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.03</td>
+        <td>392</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.06</td>
+        <td>176</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.17</td>
+        <td>116</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>-0.12</td>
+        <td>168</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>+0.00</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>-0.02</td>
+        <td>226</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>-0.02</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.03</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.05</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.06</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.17</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 14 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.96). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> Niche level: maker-builds short titles 0.98x vs 1.03x (z=-1.51, p=0.13), motorcycle 0.97x vs 1.005x (z=-1.34, p=0.18), roblox 1.01x vs 0.97x (z=+1.74, p=0.083). Within-channel across 32 channels in 3 niches: 16 up, 15 down, 1 tie, median delta +0.015x — indistinguishable from a coin toss. The two largest short-title penalties come from channels whose LONG titles carry their series branding (Motovudu -2.34x, RevZilla -5.65x).</p>
+             <p class="caveat">Caveat: [superseded] computed on the age-confounded outlier score; 6 of 15 title-feature effects flip sign under age control, so this result cannot be distinguished from accumulation bias. Re-test now that scoring is age-normalised. Word count is a crude proxy for the &#39;comprehensible to a three-year-old&#39; half of the claim; I tested that separately via syllable and rare-word measures (see f8bae89fff5c) and it also failed to support the claim. If the eight-word rule operates on CTR while impressions adjust, our views-based measure would miss it.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>The title of your video also needs to be simple. Think eight words or less. How can I communicate this idea in the simplest way possible? How can a three year old understand the title of your video?</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">packaging</span>
+    
+    <span class="cat">· earlier check spanned 14 channels</span>
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 14% of 14 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">A title phrased as an assertion (&#39;Why is crypto better than stocks?&#39;) excludes both people who disagree with the premise and people who already agree and therefore need nothing; the question form (&#39;Is crypto better than stocks?&#39;) keeps both audiences clickable.</div>
+  <div class="src">Source: Ryan Trahan</div>
+  
+  
+  <div class="review" data-id="03cb45743d26">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>phrasing a title as a question instead of an assertion</b> &rarr; first-28-day views
+             <span class="dir">(the claim predicts this goes up)</span></p>
+    <p class="qline">The question put to the data: <i>Do titles phrased as a question out-perform titles that assert?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Median first-28-day views for titles that ask a question (mark or interrogative opener) minus the same for titles that assert, scaled by the pooled median.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel A</text>
+<circle class="edot eheld" cx="481.8" cy="30" r="5">
+  <title>Channel A: +0.51 over 392 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="395.3" cy="50" r="5">
+  <title>Channel C: +0.15 over 168 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="341.8" cy="70" r="5">
+  <title>Channel D: -0.07 over 302 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="328.3" cy="90" r="5">
+  <title>Channel E: -0.13 over 176 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="294.3" cy="110" r="5">
+  <title>Channel F: -0.27 over 226 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="257.0" cy="130" r="5">
+  <title>Channel G: -0.42 over 116 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="196.4" cy="150" r="5">
+  <title>Channel H: -0.67 over 139 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 7 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.07</td>
+        <td>302</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="ok">held</td>
+        <td>+0.51</td>
+        <td>392</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.13</td>
+        <td>176</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.42</td>
+        <td>116</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.15</td>
+        <td>168</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>-0.67</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>-0.27</td>
+        <td>226</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>-0.27</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="ok">held</td>
+        <td>+0.52</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.09</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.13</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.42</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 14 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are differences of medians, scaled by the pooled median.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>It did NOT hold on Channel F, Channel H, Channel C, Channel G, Channel E, Channel D, Channel C, Channel E, Channel H, Channel G, Channel F, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> maker-builds n=37 across 12 channels, 1.00x vs 1.00x (z=-0.41, p=0.68); motorcycle n=43 across 12 channels, 1.00x vs 1.00x (z=-0.10, p=0.92); roblox n=10, 1.275x vs 1.00x (z=0.23, p=0.82). Within-channel: 14 channels, 9 up 4 down, but median delta only +0.035x. No effect in either direction.</p>
+             <p class="caveat">Caveat: A question mark is a poor proxy for the rhetorical distinction the claim draws — &#39;Why is crypto better than stocks?&#39; carries a question mark and is exactly the exclusionary assertion the claim warns against. Testing this properly needs hand-labelled premise-assertion vs open-question titles. Our null is a null on punctuation, not on rhetoric.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>you&#39;re saying why is crypto better than stocks? It&#39;s like assuming</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">packaging</span>
+    
     <span class="cat">· earlier check spanned 6 channels</span>
     <span class="cat rej-why">· Overruled by a strategist</span>
     
@@ -1008,8 +1757,196 @@ panel in the corner when you are done.</p>
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>thing where click through rate is 80%</blockquote></div>
   </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">packaging</span>
+    
+    
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 29% of 14 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">Titles with at least one fully-capitalized word (3+ letters) tend to pull lower 28-day median views than titles without them, and this gap shows up consistently across 7 channels — so shouting in the title is associated with weaker openings, not stronger ones.</div>
+  <div class="src">Source: the probe battery</div>
+  
+  
+  <div class="review" data-id="b94986a397e2">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>Do titles that shout — words in full capitals — earn more views?</b> &rarr; Median first-28-day views for titles containing at least one fully-capitalised word of three or more letters minus the same for titles without, scaled by the pooled median.
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Do titles that shout — words in full capitals — earn more views?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Median first-28-day views for titles containing at least one fully-capitalised word of three or more letters minus the same for titles without, scaled by the pooled median.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="396.7" cy="30" r="5">
+  <title>Channel G: +0.16 over 116 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="379.4" cy="50" r="5">
+  <title>Channel F: +0.08 over 226 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="368.2" cy="70" r="5">
+  <title>Channel A: +0.04 over 392 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="366.4" cy="90" r="5">
+  <title>Channel E: +0.03 over 176 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="365.3" cy="110" r="5">
+  <title>Channel C: +0.03 over 168 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="360.6" cy="130" r="5">
+  <title>Channel D: +0.01 over 302 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="281.8" cy="150" r="5">
+  <title>Channel H: -0.32 over 139 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 7 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>+0.01</td>
+        <td>302</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>+0.04</td>
+        <td>392</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.03</td>
+        <td>176</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.16</td>
+        <td>116</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.03</td>
+        <td>168</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>-0.32</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>+0.08</td>
+        <td>226</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>+0.08</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.01</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.01</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="ok">held</td>
+        <td>+0.03</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>+0.16</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 14 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are differences of medians, scaled by the pooled median.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel F, Channel A, Channel D, Channel C, Channel E, Channel H, Channel G, Channel F, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>Median first-28-day views for titles containing at least one fully-capitalised word of three or more letters minus the same for titles without, scaled by the pooled median. Reproduced on 7 channels.</blockquote></div>
+  </details>
 </div></div>
-<h2>retention &middot; 6</h2>
+<h2>retention &middot; 7</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1282,6 +2219,137 @@ panel in the corner when you are done.</p>
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>maybe at the end of the video after you&#39;ve already test it, you introduce almost like a uh a good problem like um what I mean by that almost like uh instead of just like okay cool it works. Um maybe now it&#39;s like cool it works but we&#39;re going to push it to the limit</blockquote></div>
   </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">retention</span>
+    
+    
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 20% of 5 measurements</span>
+    <span class="num">5 channels</span>
+  </div>
+  <div class="txt">A 2–4 second sponsor disclosure at the very top of the video costs less retention than a mid-video disclosure, because YouTube&#39;s 5-second skip-back granularity means skipping it would cost the viewer key intro information — so there is a disincentive to skip.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  
+  <div class="review" data-id="d75001820553">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>placing the sponsor disclosure later in the video instead of at the very top</b> &rarr; audience share lost across the sponsor segment
+             <span class="dir">(the claim predicts this goes up)</span></p>
+    <p class="qline">The question put to the data: <i>Does a sponsor read placed later in the video bleed more of the audience than an early one?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of where the sponsor read starts (percent through) against the share of the present audience it loses.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 148" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="128"/><text class="etick" x="116.0" y="141" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="128"/><text class="etick" x="237.5" y="141" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="128"/><text class="etick" x="359.0" y="141" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="128"/><text class="etick" x="480.5" y="141" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="128"/><text class="etick" x="602.0" y="141" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="128"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel C</text>
+<circle class="edot eheld" cx="434.5" cy="30" r="5">
+  <title>Channel C: +0.31 over 24 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="389.8" cy="50" r="5">
+  <title>Channel H: +0.13 over 30 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="363.4" cy="70" r="5">
+  <title>Channel F: +0.02 over 7 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="330.7" cy="90" r="5">
+  <title>Channel D: -0.12 over 22 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="329.7" cy="110" r="5">
+  <title>Channel G: -0.12 over 26 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    </p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.12</td>
+        <td>26</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>+0.13</td>
+        <td>30</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="ok">held</td>
+        <td>+0.31</td>
+        <td>24</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>+0.02</td>
+        <td>7</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.12</td>
+        <td>22</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 7 videos. At that size a couple of unusual uploads can carry the whole result.</li>
+<li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel D, Channel F, Channel H, Channel G. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.97). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>it&#39;s almost so fast that I don&#39;t have the capability to hit click like the right click button and it&#39;s so fast that if I click the right click button it&#39;s going to boot me 5 seconds and then I&#39;m going to miss at least two or three seconds of the intro and not get the key information. So there&#39;s incentive not to do it almost.</blockquote></div>
+  </details>
 </div></div>
 <h2>storytelling &middot; 3</h2>
 <div class="claims"><div class="claim">
@@ -1297,8 +2365,8 @@ panel in the corner when you are done.</p>
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
     <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
-    <span class="num">held 20% of 5 measurements</span>
-    <span class="num">5 channels</span>
+    <span class="num">held 6% of 16 measurements</span>
+    <span class="num">7 channels</span>
   </div>
   <div class="txt">Resolving the video&#39;s headline question before the end causes a large mid-video exodus — the drop is caused by the question being answered, not by the segment&#39;s quality.</div>
   <div class="src">Source: our own channel audits</div>
@@ -1318,96 +2386,155 @@ panel in the corner when you are done.</p>
     <p class="qline">The question put to the data: <i>Does resolving the video&#39;s payoff earlier cost the back half its audience?</i></p>
     <p class="method"><b>Exact arithmetic:</b> Spearman of where the payoff lands (percent through) against the share of the audience present at that point still watching 20% of the runtime later.</p>
     <div class="echartwrap">
-  <svg class="echart" viewBox="0 0 620 148" role="img"
+  <svg class="echart" viewBox="0 0 620 188" role="img"
        aria-label="Effect size per channel, with the threshold for counting as held">
-    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="128"/><text class="etick" x="116.0" y="141" text-anchor="middle">-1</text>
-<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="128"/><text class="etick" x="237.5" y="141" text-anchor="middle">-0.5</text>
-<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="128"/><text class="etick" x="359.0" y="141" text-anchor="middle">0</text>
-<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="128"/><text class="etick" x="480.5" y="141" text-anchor="middle">0.5</text>
-<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="128"/><text class="etick" x="602.0" y="141" text-anchor="middle">1</text>
-    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="128"/>
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
     <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
     <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
-<text class="elabel" x="108" y="33.5" text-anchor="end">Channel D</text>
-<circle class="edot eheld" cx="435.4" cy="30" r="5">
-  <title>Channel D: +0.31 over 6 videos — held</title>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="369.3" cy="30" r="5">
+  <title>Channel C: +0.04 over 42 videos — did not hold</title>
 </circle>
 <line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
-<text class="elabel" x="108" y="53.5" text-anchor="end">Channel C</text>
-<circle class="edot efail" cx="385.1" cy="50" r="5">
-  <title>Channel C: +0.11 over 39 videos — did not hold</title>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="356.6" cy="50" r="5">
+  <title>Channel F: -0.01 over 36 videos — did not hold</title>
 </circle>
 <line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
-<text class="elabel" x="108" y="73.5" text-anchor="end">Channel G</text>
-<circle class="edot efail" cx="330.8" cy="70" r="5">
-  <title>Channel G: -0.12 over 27 videos — did not hold</title>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="332.3" cy="70" r="5">
+  <title>Channel H: -0.11 over 38 videos — did not hold</title>
 </circle>
 <line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
-<text class="elabel" x="108" y="93.5" text-anchor="end">Channel E</text>
-<circle class="edot efail" cx="326.6" cy="90" r="5">
-  <title>Channel E: -0.13 over 23 videos — did not hold</title>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="327.6" cy="90" r="5">
+  <title>Channel G: -0.13 over 29 videos — did not hold</title>
 </circle>
 <line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
-<text class="elabel" x="108" y="113.5" text-anchor="end">Channel A</text>
-<circle class="edot efail" cx="266.4" cy="110" r="5">
-  <title>Channel A: -0.38 over 8 videos — did not hold</title>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="326.6" cy="110" r="5">
+  <title>Channel E: -0.13 over 23 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="299.4" cy="130" r="5">
+  <title>Channel D: -0.25 over 20 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="205.6" cy="150" r="5">
+  <title>Channel A: -0.63 over 26 videos — did not hold</title>
 </circle>
   </svg>
   <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
     hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
     direction but too small to build a decision on.
     Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
-    </p>
+    One dot per channel &mdash; 9 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
 </div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.13</td>
+        <td>29</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>-0.11</td>
+        <td>38</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.13</td>
+        <td>23</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.04</td>
+        <td>42</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>-0.01</td>
+        <td>36</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.63</td>
+        <td>26</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.25</td>
+        <td>20</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>-0.11</td>
+        <td>38</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.15</td>
+        <td>22</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.13</td>
+        <td>29</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.01</td>
+        <td>40</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
         <td>Channel E</td>
         <td class="no">did not hold</td>
         <td>-0.13</td>
         <td>23</td>
         <td>2026-08-20</td>
-      </tr>
-<tr>
-        <td>Channel G</td>
-        <td class="no">did not hold</td>
-        <td>-0.12</td>
-        <td>27</td>
-        <td>2026-08-20</td>
-      </tr>
-<tr>
-        <td>Channel A</td>
-        <td class="no">did not hold</td>
-        <td>-0.38</td>
-        <td>8</td>
-        <td>2026-08-19</td>
-      </tr>
-<tr>
-        <td>Channel C</td>
-        <td class="no">did not hold</td>
-        <td>+0.11</td>
-        <td>39</td>
-        <td>2026-08-19</td>
-      </tr>
-<tr>
-        <td>Channel D</td>
-        <td class="ok">held</td>
-        <td>+0.31</td>
-        <td>6</td>
-        <td>2026-08-19</td>
       </tr></tbody>
       </table>
     </div>
-    
+    <p class="capnote">Showing the 12 most recent of 16 readings.</p>
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are Spearman rank correlations, running from -1 to +1.</p>
     <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
     <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 6 videos. At that size a couple of unusual uploads can carry the whole result.</li>
 <li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
-<li>It did NOT hold on Channel C, Channel A, Channel G, Channel E. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
-<li>At least one reading could plausibly have come from chance (p = 0.57). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+<li>It did NOT hold on Channel C, Channel A, Channel G, Channel E, Channel C, Channel A, Channel G, Channel F, Channel E, Channel H, Channel D, Channel C, Channel E, Channel H, Channel G. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.98). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
   </div>
     <div class="legacy">
              <b>Earlier one-off check</b>
@@ -1510,7 +2637,7 @@ panel in the corner when you are done.</p>
       <blockquote>if in your first minute, for example, in the video, you... keep on explaining your why and this and that. And then you start getting into the story. Most people have already tuned out. ... you see this in retention that typically the flattening part of the retention chart starts when the first conflict starts.</blockquote></div>
   </details>
 </div></div>
-<h2>analytics &middot; 9</h2>
+<h2>analytics &middot; 10</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1641,6 +2768,202 @@ panel in the corner when you are done.</p>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>Unfortunately, most of the times, we cannot learn much from second-half content. So most of the times, yes, you analyze your first three minutes, four minutes, and whatever you learned from that, you apply for the rest of the video. It&#39;s the only thing that we have is we can break a little bit more rules, because people are less likely to tune out.</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">analytics</span>
+    
+    <span class="cat">· earlier check spanned 6 channels</span>
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 30% of 23 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">Longer videos do not reduce view counts: on a 30-video retention chart the longest-running curves were disproportionately the high-view ones, so length is not the constraint many creators assume.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  
+  <div class="review" data-id="be05cf1f696d">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>publishing a longer video</b> &rarr; first-28-day views
+             <span class="dir">(the claim predicts this goes up)</span></p>
+    <p class="qline">The question put to the data: <i>Do longer videos earn more or fewer first-28-day views?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of runtime against first-28-day views.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel G</text>
+<circle class="edot eheld" cx="484.2" cy="30" r="5">
+  <title>Channel G: +0.52 over 116 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel F</text>
+<circle class="edot efail" cx="398.5" cy="50" r="5">
+  <title>Channel F: +0.16 over 226 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="393.5" cy="70" r="5">
+  <title>Channel D: +0.14 over 302 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="390.0" cy="90" r="5">
+  <title>Channel C: +0.13 over 168 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel H</text>
+<circle class="edot efail" cx="386.2" cy="110" r="5">
+  <title>Channel H: +0.11 over 139 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="384.3" cy="130" r="5">
+  <title>Channel A: +0.10 over 392 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="371.1" cy="150" r="5">
+  <title>Channel E: +0.05 over 176 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    One dot per channel &mdash; 16 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>+0.14</td>
+        <td>302</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>+0.10</td>
+        <td>392</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.05</td>
+        <td>176</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>+0.52</td>
+        <td>116</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>+0.13</td>
+        <td>168</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="no">did not hold</td>
+        <td>+0.11</td>
+        <td>139</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>+0.16</td>
+        <td>226</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="no">did not hold</td>
+        <td>+0.16</td>
+        <td>226</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>+0.15</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>+0.14</td>
+        <td>300</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.05</td>
+        <td>176</td>
+        <td>2026-08-24</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>+0.51</td>
+        <td>116</td>
+        <td>2026-08-24</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 23 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest sample behind this is 9 videos. At that size a couple of unusual uploads can carry the whole result.</li>
+<li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel G, Channel E, Channel A, Channel D, Channel C, Channel A, Channel F, Channel E, Channel H, Channel D, Channel C, Channel E, Channel H, Channel F, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.77). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    <div class="legacy">
+             <b>Earlier one-off check</b>
+             <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
+               The measured record above is what this claim's standing now rests on.</i></p>
+             <p class="ev"><b>Checked:</b> (a) rho(duration, views) positive in 5/6 channels (+0.12 to +0.36), negative only for Channel G (-0.19); pooled +0.23. (b) Longest quartile beats shortest quartile on median 28d views in 5/6: Channel C 426k vs 282k, Channel D 71k vs 44k, Channel E 617k vs 508k, Channel A 304k vs 214k, Channel F 943k vs 618k; Channel G is the exception (485k vs 641k). (c) Corpus rho(duration, outlier score): maker-builds +0.10 (n=330), motorcycle +0.04 (n=406), roblox -0.08 (n=378).</p>
+             <p class="caveat">Caveat: [superseded] computed on the age-confounded outlier score; 6 of 15 title-feature effects flip sign under age control, so this result cannot be distinguished from accumulation bias. Re-test now that scoring is age-normalised. Strong selection confound: creators choose length to fit the material, so a big ambitious build gets both more minutes and more interest. The corpus test — which removes channel-size effects — finds essentially NOTHING (rho +0.10 / +0.04 / -0.08), which is the honest reading: length is not a penalty, but it is also not a lever. The claim&#39;s own evidence (&#39;longest curves were disproportionately high-view&#39;) is exactly the confounded within-channel version.</p>
+           </div>
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>A majority of these longer strands tend to be green, which is higher views. And if you look here, a lot of the strands that are kind of shorter that end a little shorter tend to be red or yellowish more so than those. And what that kind of gleams from a visual standpoint is, okay, longer videos do not hurt my chance of getting a high view count.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -1901,7 +3224,7 @@ panel in the corner when you are done.</p>
       <blockquote>theoretically larger video lengths on average always have more AVD than uh lower video lengths. ... So the fact that it has an AVD that is surpassing a larger video um also does show like retentively this video did do better.</blockquote></div>
   </details>
 </div></div>
-<h2>strategy &middot; 5</h2>
+<h2>strategy &middot; 7</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -2121,6 +3444,300 @@ panel in the corner when you are done.</p>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>I watch the whole video and then I go, what the fuck just happened? And actually because if you think about it, nothing happened. But I had enough stimulating information. I ended up watching the whole video.</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">strategy</span>
+    <span class="cat">· Outdoors</span>
+    
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 33% of 6 measurements</span>
+    <span class="num">6 channels</span>
+  </div>
+  <div class="txt">Daily trail-vlog uploads recruit a subscriber bump at the start of a hike and then flatten: by day 30 reach stops growing and views fall back to the core cohort (from ~125k average to 30–40k), which in turn damages brand-deal rates.</div>
+  <div class="src">Source: internal strategy session</div>
+  
+  
+  <div class="review" data-id="93ba5531c6a2">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>shipping later episodes of a daily trail-vlog series</b> &rarr; first-28-day views across the run
+             <span class="dir">(the claim predicts this goes down)</span></p>
+    <p class="qline">The question put to the data: <i>Does a format wear out — do later episodes under-perform earlier ones?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Spearman of an episode&#39;s position within its own format run (0 = first, 1 = last) against its first-28-day views relative to that format&#39;s median, pooled across formats.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 168" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="148"/><text class="etick" x="116.0" y="161" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="148"/><text class="etick" x="237.5" y="161" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="148"/><text class="etick" x="359.0" y="161" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="148"/><text class="etick" x="480.5" y="161" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="148"/><text class="etick" x="602.0" y="161" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="148"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel H</text>
+<circle class="edot eheld" cx="481.9" cy="30" r="5">
+  <title>Channel H: +0.51 over 58 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="453.6" cy="50" r="5">
+  <title>Channel F: +0.39 over 66 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="382.1" cy="70" r="5">
+  <title>Channel G: +0.10 over 59 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="378.3" cy="90" r="5">
+  <title>Channel E: +0.08 over 59 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="280.4" cy="110" r="5">
+  <title>Channel A: -0.32 over 41 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="228.3" cy="130" r="5">
+  <title>Channel D: -0.54 over 74 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    </p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.54</td>
+        <td>74</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.32</td>
+        <td>41</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.08</td>
+        <td>59</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>+0.10</td>
+        <td>59</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="ok">held</td>
+        <td>+0.51</td>
+        <td>58</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.39</td>
+        <td>66</td>
+        <td>2026-08-25</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are Spearman rank correlations, running from -1 to +1.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>It did NOT hold on Channel G, Channel E, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li>
+<li>At least one reading could plausibly have come from chance (p = 0.55). The p-values here are a normal approximation, reported rather than used as a gate.</li></ul></div>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>at the beginning of those hikes, I&#39;ll get a bump in subscribers cuz it&#39;s like, &quot;Oh, cool. She&#39;s doing this thing. We&#39;re interested.&quot; But again, once we hit like day 30, you know, my my audience isn&#39;t growing at all. my reach is like nothing</blockquote></div>
+  </details>
+</div>
+<div class="claim">
+  <div class="top">
+    <span class="pill s-rejected">Rejected</span>
+    <span class="cat">strategy</span>
+    
+    
+    <span class="cat rej-why">· Refuted by our data</span>
+    
+  </div>
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.">Correlation</span>
+    <span class="vh">The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</span>
+    <span class="num">held 29% of 7 measurements</span>
+    <span class="num">7 channels</span>
+  </div>
+  <div class="txt">Consistency of cadence matters more than the cadence itself. Whatever the interval, holding it reliably programs the audience to expect the next video; an erratic schedule costs more than a slow one. Frequency should then be set by niche: fast-moving interests (gaming, news) reward more frequent, lower-production uploads because timeliness is the value, while slower niches (homemaking, long-form build) can carry a monthly cadence when production quality is the value.</div>
+  <div class="src">Source: operator review</div>
+  
+  
+  <div class="review" data-id="6b20f150d0be">
+    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
+    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
+    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
+  </div>
+  <details>
+    <summary>Evidence and caveats &rarr;</summary>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>shipping an upload on the channel&#39;s usual rhythm</b> &rarr; first-28-day views versus off-cadence uploads
+             <span class="dir">(the claim predicts this goes up)</span></p>
+    <p class="qline">The question put to the data: <i>On this channel, do uploads that arrived on the channel&#39;s usual rhythm out-perform ones that broke it?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Median first-28-day views for uploads arriving within half the channel&#39;s typical 10.1-day gap, minus the same for uploads that broke the rhythm.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 188" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="168"/><text class="etick" x="116.0" y="181" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="168"/><text class="etick" x="237.5" y="181" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="168"/><text class="etick" x="359.0" y="181" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="168"/><text class="etick" x="480.5" y="181" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="168"/><text class="etick" x="602.0" y="181" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="168"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="452.0" cy="30" r="5">
+  <title>Channel F: +0.38 over 225 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Channel H</text>
+<circle class="edot eheld" cx="414.1" cy="50" r="5">
+  <title>Channel H: +0.23 over 138 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="359.5" cy="70" r="5">
+  <title>Channel E: +0.00 over 175 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Channel C</text>
+<circle class="edot efail" cx="358.9" cy="90" r="5">
+  <title>Channel C: -0.00 over 167 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Channel D</text>
+<circle class="edot efail" cx="358.2" cy="110" r="5">
+  <title>Channel D: -0.00 over 301 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">Channel A</text>
+<circle class="edot efail" cx="352.2" cy="130" r="5">
+  <title>Channel A: -0.03 over 391 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">Channel G</text>
+<circle class="edot efail" cx="314.5" cy="150" r="5">
+  <title>Channel G: -0.18 over 115 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    </p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="no">did not hold</td>
+        <td>-0.00</td>
+        <td>301</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="no">did not hold</td>
+        <td>-0.03</td>
+        <td>391</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>+0.00</td>
+        <td>175</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="no">did not hold</td>
+        <td>-0.18</td>
+        <td>115</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="no">did not hold</td>
+        <td>-0.00</td>
+        <td>167</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel H</td>
+        <td class="ok">held</td>
+        <td>+0.23</td>
+        <td>138</td>
+        <td>2026-08-25</td>
+      </tr>
+<tr>
+        <td>Channel F</td>
+        <td class="ok">held</td>
+        <td>+0.38</td>
+        <td>225</td>
+        <td>2026-08-25</td>
+      </tr></tbody>
+      </table>
+    </div>
+    
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are differences of medians, scaled by the pooled median.</p>
+    <p class="rungnote"><b>Correlation.</b> The trigger and the outcome move together on the channels measured. That is a pattern, not a cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel C, Channel G, Channel E, Channel A, Channel D. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
+  </div>
+    
+    
+    <div class="quotewrap"><b>Where the claim came from</b>
+      <blockquote>the one thing BOTH always needs for success is consistency in cadence. The more consistent, the more it programs your audience when to expect the next video</blockquote></div>
   </details>
 </div></div>
 

@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,12 +638,12 @@ table.obs td.no{color:#ff8f8f}
       20:17 · 143,328 views ·
       16% still watching at the halfway mark · 
       3 drop-offs, 3 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-25
     </p>
   </div>
   
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video sheds 62.3% in its first minute and finishes 70th of 71 at halfway — the opening trades the reveal away before it starts.</p>
+<p class="lede" style="margin:-14px 0 26px">This video ranks 294 of 300 at halfway and loses 20.1pp more in the opening than the channel&#39;s median video.</p>
 
 <div class="viewer">
   <div>
@@ -540,73 +665,73 @@ table.obs td.no{color:#ff8f8f}
     <h3>6 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:11</span><span class="kind">Drop-off</span></span>
-  <span class="what">The opening seconds bleed audience faster than the channel&#39;s own intros (17.49% stop rate, 1.7x channel norm, 52,757 viewers gone).</span>
+  <span class="what">The opening 13 seconds shed nearly a quarter of the audience, well past what this channel usually loses here (17.48% stop rate, 1.7x channel norm, 52,760 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>The host opens on distress and admin instead of the bike: &quot;I am so not okay right now&quot; then pivots to selling Opa and the &quot;$119,000&quot; price.
-    <span class="quote">“I am so not okay”</span>
-    <span class="lab">The fix</span>Recut 0:03-0:24 to open on the new bike&#39;s reveal shot and sound, then drop the sale context in one line.
-    <span class="lab">Why that works</span>The thumbnail promises a brand-new $6,500 motorcycle; the open delivers a sale problem instead, and 24 of 70 sibling videos hold 0:30 better.
+    <span class="lab">Why</span>The hook opens on a vague emotional confession about selling the old bike rather than the new $6,500 motorcycle the title promised: &quot;I am so not okay right now&quot;.
+    <span class="quote">“I am so not okay right now”</span>
+    <span class="lab">The fix</span>Recut 0:03-0:24 to open on the new bike reveal from 13:46-13:54, modeled on &quot;Learning The Hard Way... Close To Home&quot; which lost 0.0% here.
+    <span class="lab">Why that works</span>Packaging promised a new motorcycle; the current open delivers grief about the old one, so intent and content disagree and viewers bail.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">2:14</span><span class="kind">Drop-off</span></span>
-  <span class="what">A recap of the old bike loses viewers at 2.4x the channel&#39;s rate for this position (4.57% stop rate, 3.3x spike, 13,581 viewers).</span>
+  <span class="what">The recap-and-explain beat about the old bike loses viewers at over triple the local norm (4.57% stop rate, 3.3x channel norm, 13,582 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>The host pauses the purchase story to plug the previous video: &quot;check out this video right here&quot; and re-list Opa&#39;s memories.
+    <span class="lab">Why</span>She points viewers to an older video and re-explains why she is selling, ground already covered: &quot;check out this video right here&quot;.
     <span class="quote">“check out this video right here”</span>
-    <span class="lab">The fix</span>Cut 2:00-2:32 entirely and rejoin on &quot;I need to go make sure I can still ride this damn&quot; bike.
-    <span class="lab">Why that works</span>Kill repetition — viewers who clicked a NEW-bike title do not want the old bike&#39;s backstory; only 4 of 70 siblings hold 2:00 worse.
+    <span class="lab">The fix</span>Cut 2:00-2:37 entirely and jump from the ride prep at 1:53 straight into the trade-in drive, deleting the recap and card pitch.
+    <span class="lab">Why that works</span>Repeating what the intro already established violates the no-repetition rule; the channel&#39;s best intro at 0:00 avoids recap entirely.
     
   </span>
 </button>
 <button class="m peak" data-i="2" type="button">
   <span class="h"><span class="ts">10:09</span><span class="kind">Viewers came back</span></span>
-  <span class="what">Audience climbs sharply mid-video and holds for 30 samples (+13.2% of the room, 7,497 viewers regained, 73rd percentile vs similar).</span>
+  <span class="what">Audience climbs sharply here and holds, above nearly three-quarters of comparable videos at this mark (+13.2% of the room, 7,498 viewers regained, 73rd percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind to the dealership arrival and the coupon-code aside: &quot;I have a 10% off coupon code linked down below.&quot;
-    <span class="quote">“10% off coupon code linked”</span>
-    <span class="lab">Do more of this</span>Move the coupon/affiliate mention to a mid-anticipation beat around 10:00 in future videos, right before the dealership walk-in.
-    <span class="lab">Why that works</span>The rewind proves this beat holds attention; ads placed at live anticipation, not after payoff, keep the room instead of releasing it.
+    <span class="lab">Why</span>Viewers are scrubbing back to the coupon-code beat and first look at the new bike: &quot;10% off coupon code linked down&quot;.
+    <span class="quote">“10% off coupon code linked down”</span>
+    <span class="lab">Do more of this</span>Tease this dealership arrival in the first 20 seconds of the video as a cold-open flash, then return to it in full at 10:09.
+    <span class="lab">Why that works</span>A moment earning rewinds mid-video is a proven anchor; front-loading a glimpse closes the packaging gap the opening currently leaves.
     
   </span>
 </button>
 <button class="m peak" data-i="3" type="button">
   <span class="h"><span class="ts">10:21</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A second replay sits on the dealership walk-in (+10.1% of the room, 6,500 viewers regained, 74th percentile vs similar).</span>
+  <span class="what">Audience rises again seconds later and stays elevated for roughly 28 samples (+10.1% of the room, 6,501 viewers regained, 74th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers scrub back to the tease before the reveal: &quot;let&#39;s go inside Pharaoh Harley-Davidson&quot; and the &quot;your addiction / my addiction&quot; exchange.
-    <span class="quote">“let&#39;s go inside Pharaoh Harley-Davidson”</span>
-    <span class="lab">Do more of this</span>Front-load a 10-second version of this walk-in and banter into the intro to teach viewers the video moves toward this room.
-    <span class="lab">Why that works</span>The rewind is a reveal-anticipation asset; teasing it early gives the collapsing 0:30-2:00 stretch a reason to keep watching.
+    <span class="lab">Why</span>This is the walk-in and first banter inside the dealership before the reveal candidate: &quot;your addiction my addiction&quot;.
+    <span class="quote">“your addiction my addiction”</span>
+    <span class="lab">Do more of this</span>Start a riser under this line at 10:19 and hold it through 10:50 to stretch the anticipation into the actual bike sighting.
+    <span class="lab">Why that works</span>Anticipatory audio 20 seconds ahead of a reveal flattens the curve into the payoff; the peak proves viewers already lean in here.
     
   </span>
 </button>
 <button class="m peak" data-i="4" type="button">
   <span class="h"><span class="ts">10:33</span><span class="kind">Viewers came back</span></span>
-  <span class="what">A third replay lands on the bike identification itself (+8.7% of the room, 6,141 viewers regained, 74th percentile vs similar).</span>
+  <span class="what">Third consecutive replay peak on the same beat, still well above peers (+8.7% of the room, 6,142 viewers regained, 74th percentile).</span>
   <span class="body">
-    <span class="lab">Why</span>Viewers rewind the reveal line: &quot;2024 Harley-Davidson pan Amica special&quot; and the &quot;tobacco fade&quot; call-out.
-    <span class="quote">“2024 Harley-Davidson pan Amica special”</span>
-    <span class="lab">Do more of this</span>Hold this reveal on a clean wide shot with risers starting 20 seconds earlier and no cross-talk over the model name.
-    <span class="lab">Why that works</span>Reveals that earn rewinds should be structured toward, not stumbled into; a 20-second riser buildup holds up to ~10% more of the room.
+    <span class="lab">Why</span>This is the fake-out and pan onto the real target bike: &quot;beautiful tobacco fade Ultra M&quot;.
+    <span class="quote">“beautiful tobacco fade Ultra M”</span>
+    <span class="lab">Do more of this</span>Hold the fake-out beat at 10:35-10:44 in silence with no music, then let the tobacco-fade reveal land uncut.
+    <span class="lab">Why that works</span>Stripping music on a conflict beat can triple its screen time with stable retention; the rewinds show viewers want to relive this moment.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">14:12</span><span class="kind">Drop-off</span></span>
-  <span class="what">A full minute of highway ride-away costs more than five times the channel&#39;s typical loss here (4.69% stop rate, 5.5x channel norm, 13,708 viewers).</span>
+  <span class="what">A full minute on the highway on-ramp bleeds viewers at more than five times the channel&#39;s usual rate for this position (4.70% stop rate, 5.4x channel norm, 13,728 viewers).</span>
   <span class="body">
-    <span class="lab">Why</span>The tension is spent — the bike is bought and rolling — and the host narrates babying it: &quot;I&#39;m going to be babying the out of this bike.&quot;
-    <span class="quote">“babying the out of this bike”</span>
-    <span class="lab">The fix</span>Cut 14:12-15:13 to a 15-second highway montage and hold a new question (first fault, first fear) before the ride settles.
-    <span class="lab">Why that works</span>Retention drops the moment tension resolves; a minute of settled cruising with no new stake leaks the room at 5.5x norm.
+    <span class="lab">Why</span>Tension collapses right after the reveal: she is babying a new motor at low speed with filler narration, &quot;I forgot what this bike sounded like&quot;.
+    <span class="quote">“I forgot what this bike sounded like”</span>
+    <span class="lab">The fix</span>Cut 14:12-15:13 down to a 15-second beat ending on the first confident throttle, then jump to the next destination or obstacle.
+    <span class="lab">Why that works</span>The reveal payoff at 13:46 released tension; a slow highway montage with no new stake cannot hold the room afterward.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"2_4iTlCAV-g","durationSec":1217,"curve":[{"p":1,"w":0.921},{"p":2,"w":0.762},{"p":3,"w":0.582},{"p":4,"w":0.498},{"p":5,"w":0.377},{"p":6,"w":0.371},{"p":7,"w":0.374},{"p":8,"w":0.378},{"p":9,"w":0.361},{"p":10,"w":0.344},{"p":11,"w":0.35},{"p":12,"w":0.329},{"p":13,"w":0.3},{"p":14,"w":0.284},{"p":15,"w":0.276},{"p":16,"w":0.265},{"p":17,"w":0.25},{"p":18,"w":0.236},{"p":19,"w":0.223},{"p":20,"w":0.215},{"p":21,"w":0.21},{"p":22,"w":0.205},{"p":23,"w":0.198},{"p":24,"w":0.19},{"p":25,"w":0.185},{"p":26,"w":0.18},{"p":27,"w":0.179},{"p":28,"w":0.183},{"p":29,"w":0.178},{"p":30,"w":0.183},{"p":31,"w":0.186},{"p":32,"w":0.177},{"p":33,"w":0.176},{"p":34,"w":0.171},{"p":35,"w":0.165},{"p":36,"w":0.164},{"p":37,"w":0.158},{"p":38,"w":0.15},{"p":39,"w":0.144},{"p":40,"w":0.14},{"p":41,"w":0.137},{"p":42,"w":0.136},{"p":43,"w":0.136},{"p":44,"w":0.134},{"p":45,"w":0.131},{"p":46,"w":0.128},{"p":47,"w":0.128},{"p":48,"w":0.13},{"p":49,"w":0.143},{"p":50,"w":0.161},{"p":51,"w":0.178},{"p":52,"w":0.193},{"p":53,"w":0.207},{"p":54,"w":0.219},{"p":55,"w":0.226},{"p":56,"w":0.227},{"p":57,"w":0.235},{"p":58,"w":0.237},{"p":59,"w":0.243},{"p":60,"w":0.253},{"p":61,"w":0.25},{"p":62,"w":0.237},{"p":63,"w":0.232},{"p":64,"w":0.231},{"p":65,"w":0.227},{"p":66,"w":0.223},{"p":67,"w":0.229},{"p":68,"w":0.237},{"p":69,"w":0.246},{"p":70,"w":0.246},{"p":71,"w":0.241},{"p":72,"w":0.232},{"p":73,"w":0.221},{"p":74,"w":0.208},{"p":75,"w":0.194},{"p":76,"w":0.18},{"p":77,"w":0.176},{"p":78,"w":0.173},{"p":79,"w":0.166},{"p":80,"w":0.154},{"p":81,"w":0.141},{"p":82,"w":0.136},{"p":83,"w":0.13},{"p":84,"w":0.127},{"p":85,"w":0.124},{"p":86,"w":0.123},{"p":87,"w":0.122},{"p":88,"w":0.12},{"p":89,"w":0.116},{"p":90,"w":0.111},{"p":91,"w":0.108},{"p":92,"w":0.107},{"p":93,"w":0.104},{"p":94,"w":0.102},{"p":95,"w":0.107},{"p":96,"w":0.113},{"p":97,"w":0.116},{"p":98,"w":0.106},{"p":99,"w":0.097},{"p":100,"w":0.091}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening seconds bleed audience faster than the channel's own intros (17.49% stop rate, 1.7x channel norm, 52,757 viewers gone)."},{"t":"2:14","sec":134,"kind":"drop","what":"A recap of the old bike loses viewers at 2.4x the channel's rate for this position (4.57% stop rate, 3.3x spike, 13,581 viewers)."},{"t":"10:09","sec":609,"kind":"peak","what":"Audience climbs sharply mid-video and holds for 30 samples (+13.2% of the room, 7,497 viewers regained, 73rd percentile vs similar)."},{"t":"10:21","sec":621,"kind":"peak","what":"A second replay sits on the dealership walk-in (+10.1% of the room, 6,500 viewers regained, 74th percentile vs similar)."},{"t":"10:33","sec":633,"kind":"peak","what":"A third replay lands on the bike identification itself (+8.7% of the room, 6,141 viewers regained, 74th percentile vs similar)."},{"t":"14:12","sec":852,"kind":"drop","what":"A full minute of highway ride-away costs more than five times the channel's typical loss here (4.69% stop rate, 5.5x channel norm, 13,708 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"2_4iTlCAV-g","durationSec":1217,"curve":[{"p":1,"w":0.921},{"p":2,"w":0.762},{"p":3,"w":0.582},{"p":4,"w":0.498},{"p":5,"w":0.378},{"p":6,"w":0.371},{"p":7,"w":0.374},{"p":8,"w":0.378},{"p":9,"w":0.361},{"p":10,"w":0.344},{"p":11,"w":0.35},{"p":12,"w":0.329},{"p":13,"w":0.3},{"p":14,"w":0.284},{"p":15,"w":0.276},{"p":16,"w":0.265},{"p":17,"w":0.25},{"p":18,"w":0.236},{"p":19,"w":0.223},{"p":20,"w":0.215},{"p":21,"w":0.21},{"p":22,"w":0.205},{"p":23,"w":0.198},{"p":24,"w":0.19},{"p":25,"w":0.185},{"p":26,"w":0.18},{"p":27,"w":0.179},{"p":28,"w":0.183},{"p":29,"w":0.178},{"p":30,"w":0.183},{"p":31,"w":0.186},{"p":32,"w":0.177},{"p":33,"w":0.176},{"p":34,"w":0.171},{"p":35,"w":0.165},{"p":36,"w":0.164},{"p":37,"w":0.158},{"p":38,"w":0.15},{"p":39,"w":0.144},{"p":40,"w":0.14},{"p":41,"w":0.137},{"p":42,"w":0.136},{"p":43,"w":0.136},{"p":44,"w":0.134},{"p":45,"w":0.131},{"p":46,"w":0.128},{"p":47,"w":0.128},{"p":48,"w":0.13},{"p":49,"w":0.143},{"p":50,"w":0.161},{"p":51,"w":0.178},{"p":52,"w":0.193},{"p":53,"w":0.207},{"p":54,"w":0.219},{"p":55,"w":0.226},{"p":56,"w":0.227},{"p":57,"w":0.235},{"p":58,"w":0.237},{"p":59,"w":0.243},{"p":60,"w":0.253},{"p":61,"w":0.25},{"p":62,"w":0.237},{"p":63,"w":0.232},{"p":64,"w":0.231},{"p":65,"w":0.227},{"p":66,"w":0.223},{"p":67,"w":0.229},{"p":68,"w":0.237},{"p":69,"w":0.246},{"p":70,"w":0.246},{"p":71,"w":0.241},{"p":72,"w":0.232},{"p":73,"w":0.221},{"p":74,"w":0.208},{"p":75,"w":0.194},{"p":76,"w":0.18},{"p":77,"w":0.176},{"p":78,"w":0.173},{"p":79,"w":0.166},{"p":80,"w":0.154},{"p":81,"w":0.141},{"p":82,"w":0.136},{"p":83,"w":0.13},{"p":84,"w":0.127},{"p":85,"w":0.124},{"p":86,"w":0.123},{"p":87,"w":0.122},{"p":88,"w":0.12},{"p":89,"w":0.116},{"p":90,"w":0.111},{"p":91,"w":0.108},{"p":92,"w":0.107},{"p":93,"w":0.104},{"p":94,"w":0.102},{"p":95,"w":0.107},{"p":96,"w":0.113},{"p":97,"w":0.116},{"p":98,"w":0.106},{"p":99,"w":0.097},{"p":100,"w":0.091}],"moments":[{"t":"0:11","sec":11,"kind":"drop","what":"The opening 13 seconds shed nearly a quarter of the audience, well past what this channel usually loses here (17.48% stop rate, 1.7x channel norm, 52,760 viewers)."},{"t":"2:14","sec":134,"kind":"drop","what":"The recap-and-explain beat about the old bike loses viewers at over triple the local norm (4.57% stop rate, 3.3x channel norm, 13,582 viewers)."},{"t":"10:09","sec":609,"kind":"peak","what":"Audience climbs sharply here and holds, above nearly three-quarters of comparable videos at this mark (+13.2% of the room, 7,498 viewers regained, 73rd percentile)."},{"t":"10:21","sec":621,"kind":"peak","what":"Audience rises again seconds later and stays elevated for roughly 28 samples (+10.1% of the room, 6,501 viewers regained, 74th percentile)."},{"t":"10:33","sec":633,"kind":"peak","what":"Third consecutive replay peak on the same beat, still well above peers (+8.7% of the room, 6,142 viewers regained, 74th percentile)."},{"t":"14:12","sec":852,"kind":"drop","what":"A full minute on the highway on-ramp bleeds viewers at more than five times the channel's usual rate for this position (4.70% stop rate, 5.4x channel norm, 13,728 viewers)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

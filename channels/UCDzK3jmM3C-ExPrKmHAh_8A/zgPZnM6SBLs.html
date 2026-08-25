@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -513,7 +638,7 @@ table.obs td.no{color:#ff8f8f}
       6:41 · 9,398 views ·
       59% still watching at the halfway mark · 
       3 drop-offs, 2 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-25
     </p>
   </div>
   
@@ -595,7 +720,7 @@ table.obs td.no{color:#ff8f8f}
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"zgPZnM6SBLs","durationSec":401,"curve":[{"p":1,"w":0.962},{"p":2,"w":0.803},{"p":3,"w":0.807},{"p":4,"w":0.783},{"p":5,"w":0.748},{"p":6,"w":0.742},{"p":7,"w":0.73},{"p":8,"w":0.71},{"p":9,"w":0.709},{"p":10,"w":0.7},{"p":11,"w":0.698},{"p":12,"w":0.697},{"p":13,"w":0.685},{"p":14,"w":0.686},{"p":15,"w":0.681},{"p":16,"w":0.691},{"p":17,"w":0.685},{"p":18,"w":0.68},{"p":19,"w":0.682},{"p":20,"w":0.667},{"p":21,"w":0.663},{"p":22,"w":0.669},{"p":23,"w":0.665},{"p":24,"w":0.668},{"p":25,"w":0.648},{"p":26,"w":0.645},{"p":27,"w":0.645},{"p":28,"w":0.632},{"p":29,"w":0.615},{"p":30,"w":0.608},{"p":31,"w":0.613},{"p":32,"w":0.635},{"p":33,"w":0.632},{"p":34,"w":0.643},{"p":35,"w":0.649},{"p":36,"w":0.652},{"p":37,"w":0.647},{"p":38,"w":0.641},{"p":39,"w":0.636},{"p":40,"w":0.624},{"p":41,"w":0.613},{"p":42,"w":0.602},{"p":43,"w":0.603},{"p":44,"w":0.594},{"p":45,"w":0.59},{"p":46,"w":0.592},{"p":47,"w":0.576},{"p":48,"w":0.583},{"p":49,"w":0.597},{"p":50,"w":0.591},{"p":51,"w":0.595},{"p":52,"w":0.584},{"p":53,"w":0.582},{"p":54,"w":0.571},{"p":55,"w":0.56},{"p":56,"w":0.544},{"p":57,"w":0.532},{"p":58,"w":0.512},{"p":59,"w":0.511},{"p":60,"w":0.5},{"p":61,"w":0.493},{"p":62,"w":0.495},{"p":63,"w":0.498},{"p":64,"w":0.503},{"p":65,"w":0.492},{"p":66,"w":0.501},{"p":67,"w":0.502},{"p":68,"w":0.5},{"p":69,"w":0.503},{"p":70,"w":0.504},{"p":71,"w":0.507},{"p":72,"w":0.505},{"p":73,"w":0.502},{"p":74,"w":0.502},{"p":75,"w":0.496},{"p":76,"w":0.489},{"p":77,"w":0.475},{"p":78,"w":0.467},{"p":79,"w":0.455},{"p":80,"w":0.445},{"p":81,"w":0.432},{"p":82,"w":0.43},{"p":83,"w":0.429},{"p":84,"w":0.427},{"p":85,"w":0.425},{"p":86,"w":0.426},{"p":87,"w":0.425},{"p":88,"w":0.411},{"p":89,"w":0.348},{"p":90,"w":0.297},{"p":91,"w":0.242},{"p":92,"w":0.209},{"p":93,"w":0.183},{"p":94,"w":0.171},{"p":95,"w":0.156},{"p":96,"w":0.143},{"p":97,"w":0.129},{"p":98,"w":0.121},{"p":99,"w":0.111},{"p":100,"w":0.1}],"moments":[{"t":"0:03","sec":3,"kind":"drop","what":"One in five viewers leaves in the first five seconds as the music sting resolves into a channel-style greeting (4.4x the surrounding stop rate, 42,199 viewers)."},{"t":"2:16","sec":136,"kind":"peak","what":"Audience rises 1.7% and holds five samples as the first planed face is revealed (3,153 viewers regained, 64.3% present, 57th percentile)."},{"t":"2:20","sec":140,"kind":"peak","what":"A second smaller replay peak sits four seconds later on the same reveal beat (0.9% rise, 1,768 viewers regained, 64.8% present)."},{"t":"3:25","sec":205,"kind":"drop","what":"A mid-video dip loses 6,750 viewers over twenty seconds as the host caveats the first piece's finish (2.9x the surrounding stop rate, 1.8x the channel norm here)."},{"t":"5:49","sec":349,"kind":"drop","what":"The audience halves in sixteen seconds as the payoff ends and a t-shirt pitch begins (17.4x the surrounding stop rate, 42,622 viewers, 42.5% down to 24.2%)."}]}</script>
+<script>window.__VIDEO__={"videoId":"zgPZnM6SBLs","durationSec":401,"curve":[{"p":1,"w":0.962},{"p":2,"w":0.803},{"p":3,"w":0.807},{"p":4,"w":0.783},{"p":5,"w":0.748},{"p":6,"w":0.742},{"p":7,"w":0.73},{"p":8,"w":0.71},{"p":9,"w":0.709},{"p":10,"w":0.7},{"p":11,"w":0.698},{"p":12,"w":0.697},{"p":13,"w":0.685},{"p":14,"w":0.686},{"p":15,"w":0.681},{"p":16,"w":0.691},{"p":17,"w":0.685},{"p":18,"w":0.68},{"p":19,"w":0.682},{"p":20,"w":0.667},{"p":21,"w":0.663},{"p":22,"w":0.669},{"p":23,"w":0.665},{"p":24,"w":0.668},{"p":25,"w":0.648},{"p":26,"w":0.645},{"p":27,"w":0.645},{"p":28,"w":0.632},{"p":29,"w":0.615},{"p":30,"w":0.608},{"p":31,"w":0.613},{"p":32,"w":0.635},{"p":33,"w":0.632},{"p":34,"w":0.643},{"p":35,"w":0.649},{"p":36,"w":0.652},{"p":37,"w":0.647},{"p":38,"w":0.641},{"p":39,"w":0.636},{"p":40,"w":0.624},{"p":41,"w":0.613},{"p":42,"w":0.602},{"p":43,"w":0.603},{"p":44,"w":0.594},{"p":45,"w":0.59},{"p":46,"w":0.592},{"p":47,"w":0.576},{"p":48,"w":0.583},{"p":49,"w":0.597},{"p":50,"w":0.59},{"p":51,"w":0.595},{"p":52,"w":0.584},{"p":53,"w":0.582},{"p":54,"w":0.571},{"p":55,"w":0.56},{"p":56,"w":0.544},{"p":57,"w":0.532},{"p":58,"w":0.512},{"p":59,"w":0.511},{"p":60,"w":0.5},{"p":61,"w":0.493},{"p":62,"w":0.495},{"p":63,"w":0.498},{"p":64,"w":0.503},{"p":65,"w":0.492},{"p":66,"w":0.501},{"p":67,"w":0.502},{"p":68,"w":0.5},{"p":69,"w":0.503},{"p":70,"w":0.504},{"p":71,"w":0.507},{"p":72,"w":0.505},{"p":73,"w":0.502},{"p":74,"w":0.502},{"p":75,"w":0.496},{"p":76,"w":0.489},{"p":77,"w":0.475},{"p":78,"w":0.467},{"p":79,"w":0.455},{"p":80,"w":0.445},{"p":81,"w":0.432},{"p":82,"w":0.43},{"p":83,"w":0.429},{"p":84,"w":0.427},{"p":85,"w":0.425},{"p":86,"w":0.426},{"p":87,"w":0.425},{"p":88,"w":0.411},{"p":89,"w":0.348},{"p":90,"w":0.297},{"p":91,"w":0.242},{"p":92,"w":0.209},{"p":93,"w":0.183},{"p":94,"w":0.171},{"p":95,"w":0.156},{"p":96,"w":0.143},{"p":97,"w":0.129},{"p":98,"w":0.121},{"p":99,"w":0.111},{"p":100,"w":0.1}],"moments":[{"t":"0:03","sec":3,"kind":"drop","what":"One in five viewers leaves in the first five seconds as the music sting resolves into a channel-style greeting (4.4x the surrounding stop rate, 42,199 viewers)."},{"t":"2:16","sec":136,"kind":"peak","what":"Audience rises 1.7% and holds five samples as the first planed face is revealed (3,153 viewers regained, 64.3% present, 57th percentile)."},{"t":"2:20","sec":140,"kind":"peak","what":"A second smaller replay peak sits four seconds later on the same reveal beat (0.9% rise, 1,768 viewers regained, 64.8% present)."},{"t":"3:25","sec":205,"kind":"drop","what":"A mid-video dip loses 6,750 viewers over twenty seconds as the host caveats the first piece's finish (2.9x the surrounding stop rate, 1.8x the channel norm here)."},{"t":"5:49","sec":349,"kind":"drop","what":"The audience halves in sixteen seconds as the payoff ends and a t-shirt pitch begins (17.4x the surrounding stop rate, 42,622 viewers, 42.5% down to 24.2%)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

@@ -123,6 +123,79 @@ a{color:var(--teal)}
 .wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
 .v.hide{display:none}
 .freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
 /* The action list. Ordered, numbered, and led by the instruction — a creator
    reading this should be able to act without reading anything below it. */
 .actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
@@ -253,20 +326,48 @@ svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(-
 
 .cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
         padding:18px 20px 12px; margin-bottom:10px}
-.cohort .bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
 .cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
 .cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
                   color:var(--grey); margin-right:2px}
 .cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
 @media(max-width:760px){
   .cohort{padding:14px 12px 10px}
   .cohort .spacer{display:none}
-  .cohort .bar{gap:6px}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
   .clegend{grid-template-columns:1fr}
 }
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
 .cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
-svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/420; display:block; overflow:visible}
-@media(max-width:760px){ svg.cohortsvg{aspect-ratio:4/3} }
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
 svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
 svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
 svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
@@ -276,8 +377,8 @@ svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-lin
    fat twin that takes the pointer. Without it you can only select by legend. */
 svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
 /* The 3D stack needs vertical room the flat view would waste. */
-svg.cohortsvg.deep{aspect-ratio:1000/520}
-@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:1/1} }
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
 svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
 svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
 svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
@@ -285,6 +386,17 @@ svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
    faint: at 30 curves anything heavier becomes an opaque wall. */
 svg.cohortsvg .rib{opacity:.16; pointer-events:none}
 svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
 svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
 svg.cohortsvg.hasel .rib{opacity:.03}
 svg.cohortsvg.hasel .rib.on{opacity:.22}
@@ -302,8 +414,21 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
 .clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
-         margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
 .clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
            font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
@@ -510,15 +635,15 @@ table.obs td.no{color:#ff8f8f}
     <h1 style="font-size:clamp(24px,3.2vw,38px);margin-bottom:10px">Keep Your Door LOCKED in ROBLOX at 3AM...</h1>
     <p class="vmeta">
       <a href="../UCvEtdkmA1aR9Tt7iXIiQXbw.html">MoreNizarisaqt</a> ·
-      18:59 · 275,814 views ·
-      43% still watching at the halfway mark · 
+      18:59 · 315,796 views ·
+      42% still watching at the halfway mark · 
       8 drop-offs, 0 replay peaks
-       · retention pulled 2026-08-19
+       · retention pulled 2026-08-24
     </p>
   </div>
-  <span class="badge" style="color:var(--teal)">DEEP DIVE</span>
+  
 </div>
-<p class="lede" style="margin:-14px 0 26px">This video&#39;s 1:00 mark holds only 65.5%, beating just 2 of 74 channel siblings — the opening minute is where it breaks from the channel.</p>
+<p class="lede" style="margin:-14px 0 26px">The one-minute mark holds just 64.6%, ranking 2 of 82 on the channel — the rules explainer and horror-hate aside cost 5.6pp against the channel median before gameplay starts.</p>
 
 <div class="viewer">
   <div>
@@ -540,95 +665,95 @@ table.obs td.no{color:#ff8f8f}
     <h3>8 flagged moments</h3>
     <button class="m drop" data-i="0" type="button">
   <span class="h"><span class="ts">0:10</span><span class="kind">Drop-off</span></span>
-  <span class="what">The intro shed 18 points of the room in twelve seconds (4.7x surrounding stop rate, 38,837 viewers, 8.01% vs 6.09% channel norm).</span>
+  <span class="what">The narrator&#39;s rules pitch bleeds 45,856 viewers between 0:10 and 0:23, running 1.3x the channel&#39;s own opening pace (8.25% vs 6.53% typical, spikeRatio 4.9x).</span>
   <span class="body">
-    <span class="lab">Why</span>The open restates the thumbnail premise then greets the audience about being scared: &quot;I hate horror games cuz I genuinely get scared.&quot;
+    <span class="lab">Why</span>The host restates the premise the thumbnail already sold, then breaks to a horror-hate aside: &quot;I hate horror games cuz I genuinely get scared.&quot;
     <span class="quote">“I hate horror games cuz”</span>
-    <span class="lab">The fix</span>Cut 0:18-0:30 greeting and warning read; open cold on the 0:35 &quot;Welcome to our hotel&quot; cue with the rules on screen.
-    <span class="lab">Why that works</span>Channel-best intro loses 0.0% by skipping the greeting; the thumbnail already sold the premise, restating it costs the 1:00 mark.
+    <span class="lab">The fix</span>Cut 0:18-0:30 entirely and open cold on the first knock, so the ringing at 3:47 or a jump-scare beat lands inside the first ten seconds.
+    <span class="lab">Why that works</span>Intro loss of 16.1% already sits above the channel&#39;s 14.0% intro average; a cold-open removes the restated premise Joos flags as the fastest way to bleed viewers who came for gameplay.
     
   </span>
 </button>
 <button class="m drop" data-i="1" type="button">
   <span class="h"><span class="ts">3:02</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 1.7-point dip during a breaker-box detour (3.8x spike but only 1.1x the channel norm, 3,380 viewers).</span>
+  <span class="what">3,763 viewers exit during the breaker-box detour (spikeRatio 3.7x, but stopRate 1.26% barely above the channel&#39;s 1.20% typical).</span>
   <span class="body">
-    <span class="lab">Why</span>This is the channel&#39;s standing habit at this position — the stop rate barely exceeds the norm and typicalForChannel is true.
-    <span class="quote">“Did I do it? Did”</span>
-    <span class="lab">The fix</span>Leave 3:02 as-is; the delta is inside the channel&#39;s usual behaviour and fixing it displaces effort from the 11:23 and 7:13 loops.
-    <span class="lab">Why that works</span>Acting on a moment that matches the channel&#39;s own pattern chases noise; the real leverage sits on the 2-3x-norm spikes above.
+    <span class="lab">Why</span>The host stalls on &quot;Let me check cams&quot; four times in a row while nothing new appears on screen.
+    <span class="quote">“Let me check cams. Let me check cams”</span>
+    <span class="lab">The fix</span>Cut 3:08-3:14 to a single &quot;let me check cams&quot; and jump to &quot;The lady is back. Zoom in on her.&quot;
+    <span class="lab">Why that works</span>typicalForChannel is true and the stopRate barely exceeds the channel norm, so this is the channel&#39;s habit rather than a defect — but the four-fold &quot;check cams&quot; repeat is still the exact Joos violation worth tightening.
     
   </span>
 </button>
 <button class="m drop" data-i="2" type="button">
   <span class="h"><span class="ts">4:11</span><span class="kind">Drop-off</span></span>
-  <span class="what">A 34-second stretch bled 2.7 points at more than eleven times the surrounding rate (11.2x spike, 1.9x channel norm, 11,554 viewers).</span>
+  <span class="what">12,970 viewers exit across 34 seconds of the receptionist&#39;s second-night speech (spikeRatio 10.8x, 2.1x the channel norm here).</span>
   <span class="body">
-    <span class="lab">Why</span>The receptionist delivers slow expository dialogue: &quot;it gets worse the longer you stay&quot; with no visible threat on screen.
-    <span class="quote">“it gets worse the longer”</span>
-    <span class="lab">The fix</span>Trim 3:55-4:15 to two lines of receptionist dialogue and cut straight to the 4:31 &quot;Jump scare incoming&quot; beat.
-    <span class="lab">Why that works</span>Conflict is absent for twenty seconds while exposition runs; compressing dead air to the next tension beat holds the room through the valley.
+    <span class="lab">Why</span>The NPC delivers backstory the viewer already inferred: &quot;I&#39;m not going to lie to you and say you&#39;ll be fine.&quot;
+    <span class="quote">“gets worse the longer you stay”</span>
+    <span class="lab">The fix</span>Trim 3:55-4:15 down to the single line &quot;it gets worse the longer you stay&quot; and cut straight to the door-banging at 4:22.
+    <span class="lab">Why that works</span>The 34-second window is exposition with no new information — Joos&#39;s rule is something visible must change every five seconds, and the banging is already the next beat waiting.
     
   </span>
 </button>
 <button class="m drop" data-i="3" type="button">
   <span class="h"><span class="ts">6:04</span><span class="kind">Drop-off</span></span>
-  <span class="what">Flagged as a spike but this video actually held BETTER than the channel here (0.57% vs 0.93% norm, 0.6x channel norm, 1,843 viewers).</span>
+  <span class="what">2,057 viewers exit across 23 seconds during the spider-warning couple&#39;s entry (stopRate 0.59% is actually 0.7x the channel norm here).</span>
   <span class="body">
-    <span class="lab">Why</span>The spiders-in-the-ceiling reveal lands cleanly: &quot;We found movement above the ceiling. Those spiders could come out at any moment.&quot;
-    <span class="quote">“movement above the ceiling”</span>
-    <span class="lab">The fix</span>Keep 6:04-6:27 intact and use its structure — reveal, invite in, immediate new threat — as the template for rewriting 4:11.
-    <span class="lab">Why that works</span>This moment outperforms the channel at a position where 4:11 underperforms it 1.9x; the difference is a live threat instead of exposition.
+    <span class="lab">Why</span>The host stalls on &quot;Come on in&quot; four times while the couple is already crossing the threshold.
+    <span class="quote">“Come on in. Come on in”</span>
+    <span class="lab">The fix</span>Cut 6:14-6:17 to a single &quot;Come on in&quot; and jump on &quot;Kill that thing&quot; into the day-four card.
+    <span class="lab">Why that works</span>This one under-performs the channel norm, so it is not a defect — but trimming the fourfold &quot;come on in&quot; repetition is the cheap gain Joos names for any static beat where nothing visible changes.
     
   </span>
 </button>
 <button class="m drop" data-i="4" type="button">
   <span class="h"><span class="ts">7:13</span><span class="kind">Drop-off</span></span>
-  <span class="what">A four-point drop in eleven seconds right on the body reveal (20.7x spike, 2.1x channel norm, 10,316 viewers).</span>
+  <span class="what">10,524 viewers drop while the host repeats &quot;He killed him&quot; four times over the dead-body reveal (spikeRatio 18.8x, 1.8x the channel norm).</span>
   <span class="body">
-    <span class="lab">Why</span>The creator repeats &quot;He killed him&quot; four times, then immediately repeats &quot;check cams&quot; five times into the next beat.
-    <span class="quote">“He killed him. He killed”</span>
-    <span class="lab">The fix</span>Cut the repeated &quot;He killed him&quot; lines at 7:13-7:15 to one delivery, and collapse the 7:33-7:36 &quot;check cams&quot; stack to one.
-    <span class="lab">Why that works</span>The reveal itself is strong; verbal looping after it releases tension. Tighten to keep the micro-suspense layer live into grandpa&#39;s arrival.
+    <span class="lab">Why</span>Verbal repetition stalls a moment that already landed: &quot;He killed him. He killed him. He killed him. He killed him.&quot;
+    <span class="quote">“He killed him. He killed him”</span>
+    <span class="lab">The fix</span>Cut the repeats between 7:13 and 7:15 to a single &quot;He killed him&quot; and hard-cut into the grandpa knock at 7:26.
+    <span class="lab">Why that works</span>Joos: kill all repetition — visual, verbal, narrative. The reveal itself is fine; the four-fold restatement is what bleeds the room during a moment that should flatten retention.
     
   </span>
 </button>
 <button class="m drop" data-i="5" type="button">
   <span class="h"><span class="ts">11:23</span><span class="kind">Drop-off</span></span>
-  <span class="what">The largest anomaly on the chart: 4.9 points gone in eleven seconds (29.0x spike, 3.1x channel norm, 13,076 viewers).</span>
+  <span class="what">13,445 viewers leave across eleven seconds while the sheriff dictates the lights-off rule (spikeRatio 26.4x, stopRate 2.61% vs 1.03% typical).</span>
   <span class="body">
-    <span class="lab">Why</span>The creator repeats the same instruction four times back-to-back: &quot;Turn off the light when I go to sleep. Remember that.&quot;
-    <span class="quote">“Turn off the light when”</span>
-    <span class="lab">The fix</span>Cut 11:13-11:17 to a single delivery of the rule, then hard-cut to 11:22 &quot;check cams&quot; on the knife reveal.
-    <span class="lab">Why that works</span>Verbal repetition kills pacing; killing three of the four restatements restores the ~5-second new-information cadence the channel usually runs.
+    <span class="lab">Why</span>The host parrots the instruction four times before acting: &quot;Turn off the light when I go to sleep. Remember that, guys. Remember that.&quot;
+    <span class="quote">“Remember that. Turn off the light”</span>
+    <span class="lab">The fix</span>Cut the three repeated &quot;Remember that&quot; beats between 11:14 and 11:17 and jump straight from the sheriff&#39;s warning to &quot;Wait, why do I have a flashlight?&quot;
+    <span class="lab">Why that works</span>Joos treats verbal repetition as the specific pacing killer; a 2.5x-above-normal drop on a moment of pure repetition is exactly that failure, and cutting it preserves the rule reveal.
     
   </span>
 </button>
 <button class="m drop" data-i="6" type="button">
   <span class="h"><span class="ts">13:51</span><span class="kind">Drop-off</span></span>
-  <span class="what">Flagged but essentially in-line with the channel (2.7x surrounding rate, 0.9x channel norm, 750 viewers, typicalForChannel true).</span>
+  <span class="what">2,419 viewers leave during the pizza-boy aftermath in eleven seconds (spikeRatio 7.4x, stopRate 0.88% versus 0.89% typical).</span>
   <span class="body">
-    <span class="lab">Why</span>The pizza-boy jump scare and cat check land normally: &quot;TECHNICALLY, we didn&#39;t get jump scare.&quot;
-    <span class="quote">“TECHNICALLY, we didn&#39;t get jump”</span>
-    <span class="lab">The fix</span>Leave 13:51 alone; the 0.71% stop rate is under the 0.81% channel norm and the moment is doing its job.
-    <span class="lab">Why that works</span>Editing a moment that matches or beats the channel norm risks removing a working beat; prioritise the 11:23 and 15:23 loops instead.
+    <span class="lab">Why</span>The host loops &quot;Open the door&quot; six times back-to-back: &quot;Open the door. Open the door. Open the door. Open the door. Open the door. Open the door.&quot;
+    <span class="quote">“Open the door. Open the door”</span>
+    <span class="lab">The fix</span>Cut 14:14-14:18 to two &quot;Open the door&quot; beats and hard-cut on &quot;Hey, leave.&quot;
+    <span class="lab">Why that works</span>The moment is typicalForChannel and matches the channel&#39;s stopRate, so this is habit-tightening, not surgery — but the six-fold repeat still burns the eleven seconds Joos would spend on new information.
     
   </span>
 </button>
 <button class="m drop" data-i="7" type="button">
   <span class="h"><span class="ts">15:23</span><span class="kind">Drop-off</span></span>
-  <span class="what">3.2 points lost in eleven seconds late in the video (14.8x spike, 2.9x channel norm, 8,306 viewers).</span>
+  <span class="what">8,578 viewers leave during the possessed-guest exchange in eleven seconds (spikeRatio 13.7x, 2.3x the channel norm here, vsSimilarVideos 46%).</span>
   <span class="body">
-    <span class="lab">Why</span>The creator triple-repeats the safety line: &quot;No, I&#39;m not safe. I don&#39;t think I&#39;m safe. I do not think I&#39;m safe.&quot;
-    <span class="quote">“I do not think I&#39;m”</span>
-    <span class="lab">The fix</span>Cut 15:25-15:32 to one delivery of &quot;I&#39;m not safe&quot; and jump-cut to the 15:32 knock &quot;Who is it?&quot;
-    <span class="lab">Why that works</span>By 82% through, remaining viewers are the stickiest — verbal looping is the specific thing shaking them loose, not fatigue with the format.
+    <span class="lab">Why</span>The host loops the same denial three times: &quot;No, I&#39;m not safe. I don&#39;t think I&#39;m safe. I do not think I&#39;m safe.&quot;
+    <span class="quote">“I do not think I&#39;m safe”</span>
+    <span class="lab">The fix</span>Trim 15:25-15:30 to the single line &quot;Absolutely not, you ugly baboon&quot; and cut straight to the sheriff knock at 15:32.
+    <span class="lab">Why that works</span>Retention collapses here at 46% of similar videos while three near-identical safety lines run — the repetition is exactly the pacing failure Joos names, and the sheriff beat restores forward motion.
     
   </span>
 </button>
   </div>
 </div>
-<script>window.__VIDEO__={"videoId":"5hwV95hXSN4","durationSec":1139,"curve":[{"p":1,"w":0.968},{"p":2,"w":0.82},{"p":3,"w":0.737},{"p":4,"w":0.698},{"p":5,"w":0.655},{"p":6,"w":0.626},{"p":7,"w":0.613},{"p":8,"w":0.604},{"p":9,"w":0.595},{"p":10,"w":0.583},{"p":11,"w":0.575},{"p":12,"w":0.568},{"p":13,"w":0.56},{"p":14,"w":0.557},{"p":15,"w":0.557},{"p":16,"w":0.552},{"p":17,"w":0.535},{"p":18,"w":0.529},{"p":19,"w":0.526},{"p":20,"w":0.523},{"p":21,"w":0.521},{"p":22,"w":0.517},{"p":23,"w":0.508},{"p":24,"w":0.53},{"p":25,"w":0.49},{"p":26,"w":0.485},{"p":27,"w":0.482},{"p":28,"w":0.479},{"p":29,"w":0.479},{"p":30,"w":0.479},{"p":31,"w":0.476},{"p":32,"w":0.477},{"p":33,"w":0.473},{"p":34,"w":0.467},{"p":35,"w":0.466},{"p":36,"w":0.464},{"p":37,"w":0.468},{"p":38,"w":0.502},{"p":39,"w":0.462},{"p":40,"w":0.455},{"p":41,"w":0.452},{"p":42,"w":0.451},{"p":43,"w":0.448},{"p":44,"w":0.442},{"p":45,"w":0.441},{"p":46,"w":0.439},{"p":47,"w":0.435},{"p":48,"w":0.431},{"p":49,"w":0.429},{"p":50,"w":0.43},{"p":51,"w":0.431},{"p":52,"w":0.428},{"p":53,"w":0.424},{"p":54,"w":0.425},{"p":55,"w":0.425},{"p":56,"w":0.421},{"p":57,"w":0.417},{"p":58,"w":0.42},{"p":59,"w":0.423},{"p":60,"w":0.453},{"p":61,"w":0.404},{"p":62,"w":0.406},{"p":63,"w":0.407},{"p":64,"w":0.401},{"p":65,"w":0.396},{"p":66,"w":0.391},{"p":67,"w":0.388},{"p":68,"w":0.385},{"p":69,"w":0.384},{"p":70,"w":0.383},{"p":71,"w":0.381},{"p":72,"w":0.379},{"p":73,"w":0.377},{"p":74,"w":0.373},{"p":75,"w":0.37},{"p":76,"w":0.366},{"p":77,"w":0.362},{"p":78,"w":0.36},{"p":79,"w":0.359},{"p":80,"w":0.355},{"p":81,"w":0.376},{"p":82,"w":0.344},{"p":83,"w":0.339},{"p":84,"w":0.336},{"p":85,"w":0.334},{"p":86,"w":0.331},{"p":87,"w":0.329},{"p":88,"w":0.328},{"p":89,"w":0.327},{"p":90,"w":0.326},{"p":91,"w":0.325},{"p":92,"w":0.324},{"p":93,"w":0.323},{"p":94,"w":0.322},{"p":95,"w":0.319},{"p":96,"w":0.319},{"p":97,"w":0.319},{"p":98,"w":0.317},{"p":99,"w":0.316},{"p":100,"w":0.309}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The intro shed 18 points of the room in twelve seconds (4.7x surrounding stop rate, 38,837 viewers, 8.01% vs 6.09% channel norm)."},{"t":"3:02","sec":182,"kind":"drop","what":"A 1.7-point dip during a breaker-box detour (3.8x spike but only 1.1x the channel norm, 3,380 viewers)."},{"t":"4:11","sec":251,"kind":"drop","what":"A 34-second stretch bled 2.7 points at more than eleven times the surrounding rate (11.2x spike, 1.9x channel norm, 11,554 viewers)."},{"t":"6:04","sec":364,"kind":"drop","what":"Flagged as a spike but this video actually held BETTER than the channel here (0.57% vs 0.93% norm, 0.6x channel norm, 1,843 viewers)."},{"t":"7:13","sec":433,"kind":"drop","what":"A four-point drop in eleven seconds right on the body reveal (20.7x spike, 2.1x channel norm, 10,316 viewers)."},{"t":"11:23","sec":683,"kind":"drop","what":"The largest anomaly on the chart: 4.9 points gone in eleven seconds (29.0x spike, 3.1x channel norm, 13,076 viewers)."},{"t":"13:51","sec":831,"kind":"drop","what":"Flagged but essentially in-line with the channel (2.7x surrounding rate, 0.9x channel norm, 750 viewers, typicalForChannel true)."},{"t":"15:23","sec":923,"kind":"drop","what":"3.2 points lost in eleven seconds late in the video (14.8x spike, 2.9x channel norm, 8,306 viewers)."}]}</script>
+<script>window.__VIDEO__={"videoId":"5hwV95hXSN4","durationSec":1139,"curve":[{"p":1,"w":0.967},{"p":2,"w":0.811},{"p":3,"w":0.727},{"p":4,"w":0.687},{"p":5,"w":0.645},{"p":6,"w":0.616},{"p":7,"w":0.603},{"p":8,"w":0.594},{"p":9,"w":0.585},{"p":10,"w":0.573},{"p":11,"w":0.564},{"p":12,"w":0.557},{"p":13,"w":0.55},{"p":14,"w":0.547},{"p":15,"w":0.546},{"p":16,"w":0.541},{"p":17,"w":0.525},{"p":18,"w":0.519},{"p":19,"w":0.516},{"p":20,"w":0.513},{"p":21,"w":0.51},{"p":22,"w":0.506},{"p":23,"w":0.497},{"p":24,"w":0.52},{"p":25,"w":0.479},{"p":26,"w":0.475},{"p":27,"w":0.472},{"p":28,"w":0.469},{"p":29,"w":0.469},{"p":30,"w":0.468},{"p":31,"w":0.465},{"p":32,"w":0.466},{"p":33,"w":0.462},{"p":34,"w":0.457},{"p":35,"w":0.455},{"p":36,"w":0.453},{"p":37,"w":0.457},{"p":38,"w":0.487},{"p":39,"w":0.452},{"p":40,"w":0.445},{"p":41,"w":0.442},{"p":42,"w":0.44},{"p":43,"w":0.437},{"p":44,"w":0.432},{"p":45,"w":0.431},{"p":46,"w":0.429},{"p":47,"w":0.425},{"p":48,"w":0.421},{"p":49,"w":0.419},{"p":50,"w":0.42},{"p":51,"w":0.421},{"p":52,"w":0.417},{"p":53,"w":0.414},{"p":54,"w":0.415},{"p":55,"w":0.415},{"p":56,"w":0.411},{"p":57,"w":0.407},{"p":58,"w":0.41},{"p":59,"w":0.412},{"p":60,"w":0.439},{"p":61,"w":0.394},{"p":62,"w":0.397},{"p":63,"w":0.398},{"p":64,"w":0.393},{"p":65,"w":0.387},{"p":66,"w":0.382},{"p":67,"w":0.379},{"p":68,"w":0.376},{"p":69,"w":0.375},{"p":70,"w":0.374},{"p":71,"w":0.372},{"p":72,"w":0.375},{"p":73,"w":0.372},{"p":74,"w":0.362},{"p":75,"w":0.359},{"p":76,"w":0.355},{"p":77,"w":0.352},{"p":78,"w":0.35},{"p":79,"w":0.349},{"p":80,"w":0.345},{"p":81,"w":0.364},{"p":82,"w":0.334},{"p":83,"w":0.329},{"p":84,"w":0.326},{"p":85,"w":0.325},{"p":86,"w":0.322},{"p":87,"w":0.319},{"p":88,"w":0.318},{"p":89,"w":0.318},{"p":90,"w":0.317},{"p":91,"w":0.316},{"p":92,"w":0.315},{"p":93,"w":0.314},{"p":94,"w":0.313},{"p":95,"w":0.31},{"p":96,"w":0.31},{"p":97,"w":0.31},{"p":98,"w":0.308},{"p":99,"w":0.307},{"p":100,"w":0.299}],"moments":[{"t":"0:10","sec":10,"kind":"drop","what":"The narrator's rules pitch bleeds 45,856 viewers between 0:10 and 0:23, running 1.3x the channel's own opening pace (8.25% vs 6.53% typical, spikeRatio 4.9x)."},{"t":"3:02","sec":182,"kind":"drop","what":"3,763 viewers exit during the breaker-box detour (spikeRatio 3.7x, but stopRate 1.26% barely above the channel's 1.20% typical)."},{"t":"4:11","sec":251,"kind":"drop","what":"12,970 viewers exit across 34 seconds of the receptionist's second-night speech (spikeRatio 10.8x, 2.1x the channel norm here)."},{"t":"6:04","sec":364,"kind":"drop","what":"2,057 viewers exit across 23 seconds during the spider-warning couple's entry (stopRate 0.59% is actually 0.7x the channel norm here)."},{"t":"7:13","sec":433,"kind":"drop","what":"10,524 viewers drop while the host repeats \"He killed him\" four times over the dead-body reveal (spikeRatio 18.8x, 1.8x the channel norm)."},{"t":"11:23","sec":683,"kind":"drop","what":"13,445 viewers leave across eleven seconds while the sheriff dictates the lights-off rule (spikeRatio 26.4x, stopRate 2.61% vs 1.03% typical)."},{"t":"13:51","sec":831,"kind":"drop","what":"2,419 viewers leave during the pizza-boy aftermath in eleven seconds (spikeRatio 7.4x, stopRate 0.88% versus 0.89% typical)."},{"t":"15:23","sec":923,"kind":"drop","what":"8,578 viewers leave during the possessed-guest exchange in eleven seconds (spikeRatio 13.7x, 2.3x the channel norm here, vsSimilarVideos 46%)."}]}</script>
 <script>
 (function(){
   var D = window.__VIDEO__; if(!D) return;

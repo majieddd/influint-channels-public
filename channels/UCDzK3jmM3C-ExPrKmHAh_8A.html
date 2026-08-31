@@ -498,6 +498,40 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
   .mc-rn{display:none}
 }
 
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 6px}
+.dim{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.dim-off{opacity:.72}
+.dim-h{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dim-badge{font-size:9px;letter-spacing:.04em;text-transform:none;border:1px solid var(--line);border-radius:999px;padding:1px 6px;color:var(--grey)}
+.dim-v{font-size:30px;line-height:1.05;font-weight:600;overflow-wrap:anywhere}
+.dim-2{font-size:12px;color:var(--grey);margin-top:4px;overflow-wrap:anywhere}
+.dim-note{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-none{font-size:19px;font-weight:500;color:var(--grey)}
+.dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
+.mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.mcrow.top{border-color:color-mix(in oklab,var(--teal) 45%,var(--line))}
+.mcrow.low{border-color:color-mix(in oklab,var(--hot) 45%,var(--line))}
+.mchead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mcname{font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.mcnum{font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;white-space:nowrap}
+.mv{font-size:9px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 7px;margin-left:6px;white-space:nowrap;border:1px solid var(--line);color:var(--grey)}
+.mv-top{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.mv-low{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+.mcbar{width:100%;height:26px;display:block;margin:8px 0 2px}
+.mcdesc{font-size:12px;margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcmeta{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcdet{margin-top:8px}
+.mcdet summary{font-size:11px;color:var(--grey);cursor:pointer}
+.mcex{margin:8px 0 0;padding-left:16px;font-size:11px;line-height:1.6}
+.mcex li{margin-bottom:8px;overflow-wrap:anywhere}
+.mck{font-weight:600}
+.mcq{color:var(--grey);font-style:italic}
+.mccav{border-left:2px solid var(--line);padding-left:10px}
+.mcfoot{font-size:11px}
+
 .intel-hero{max-width:74ch}
 .intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
   border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -697,9 +731,26 @@ table.obs td.no{color:#ff8f8f}
   <img class="av" src="https://yt3.ggpht.com/ytc/AIdro_k8uxmZNMKfUrxu2Ww4MxTAjHTrHbzbPUnScSpgKxKXW88=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Jonny Builds</h1>
-    <p class="lede" style="margin:0">knowledge base last updated 2026-08-26</p>
+    <p class="lede" style="margin:0">knowledge base last updated 2026-08-31</p>
   </div>
 </div>
+<div class="dims">
+  <div class="dim dim-off">
+    <div class="dim-h">Clickability</div>
+    <div class="dim-none">Not measured</div><p class="dim-why">No Studio pull yet. Click-through cannot be derived from any public source, so this stays blank until one is run.</p>
+  </div>
+  <div class="dim ">
+    <div class="dim-h">Watchability <span class="dim-badge" title="Computed from stored retention curves, not reported by Studio.">derived</span></div>
+    <div class="dim-v">43.3%</div>
+    <div class="dim-2">of each video watched (median)</div>
+    <p class="dim-note">Derived from 139 stored retention curves. Where Studio's own figure also exists it runs about 3 points lower, so treat this as the channel's shape rather than its exact number.</p>
+  </div>
+  <div class="dim dim-off">
+    <div class="dim-h">Replayability</div>
+    <div class="dim-none">Not measured</div><p class="dim-why">No Studio pull yet. The Regular/Casual/New split is channel-level inside Studio and no public source reports it.</p>
+  </div>
+</div>
+<p class="dim-foot">No Studio pull for this channel yet. Click-through and the viewer split have no public equivalent, so they stay blank rather than being estimated.</p>
 <div class="stats">
   <div class="stat"><div class="v">61K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">41</div><div class="k">Breakouts (2×+)</div></div>
@@ -4802,6 +4853,166 @@ formats over the same months is what makes them comparable.</p>
   draw();
 })();
 </script>
+<h2>What works inside the videos</h2>
+<p class="legend"><strong>Personal aside or life tangent costs more.</strong> Everything else on this channel had no consistent effect either way, which is itself worth knowing.</p>
+<p class="legend">Each bar is the group's median effect against <em>a typical flagged moment of the same kind at the same point in the video</em>. Zero is ordinary. Comparing within kind on purpose: a drop loses audience by definition, so measuring one against the whole curve would only restate the label the analysis had already given it. <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed counted on this channel</span></p>
+<p class="legend mccav">These are moments the analysis FLAGGED — places where retention moved unusually — not every time each beat occurs. So a row says which way that beat goes when it moves the needle and by how much, not that it always does this.</p>
+<div class="mcgrid">
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Return to build after sponsor <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+15.1pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Return to build after sponsor: +15.1pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="144" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments where the audience climbs as the narration exits the sponsor read and resumes the project.</p>
+  <p class="mcmeta">8 moments across 8 videos · bleed depth 0.0% · 7 of 8 beat the norm · p=0.070 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=djmiM-n54Ro&amp;t=384s" target="_blank" rel="noopener">6:24</a> in <em>Building Her DREAM CHAIR</em> — +26.1pp<br><span class="mcq">"okay up next I need to make these tenin"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=9QwY7X9nqVA&amp;t=500s" target="_blank" rel="noopener">8:20</a> in <em>20 years later, I quit.</em> — −3.5pp<br><span class="mcq">"100 mile I signed up"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Mistake, failure or fix on camera <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+1.2pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Mistake, failure or fix on camera: +1.2pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="11.424460714095403" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments where something goes wrong, the creator admits a screw-up, or shows the repair for it.</p>
+  <p class="mcmeta">11 moments across 9 videos · bleed depth 0.0% · 8 of 9 beat the norm · p=0.039 · 82% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=aa8bh9R3v18&amp;t=487s" target="_blank" rel="noopener">8:07</a> in <em>$10,000 Bed Build</em> — +4.6pp<br><span class="mcq">"something that I've never done"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=AJ8goYdKZ3I&amp;t=448s" target="_blank" rel="noopener">7:28</a> in <em>Say Goodbye to Epoxy</em> — −0.7pp<br><span class="mcq">"I ruined it again"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Day or scene transition <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.7pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Day or scene transition: +0.7pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="6.503291314313117" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments marking a jump between days, locations, or a segue into the next phase of the build.</p>
+  <p class="mcmeta">11 moments across 8 videos · bleed depth 3.7% · 6 of 11 beat the norm · p=1.000 · 27% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=-HD_B_qXUfg&amp;t=721s" target="_blank" rel="noopener">12:01</a> in <em>We Build 2 Tables - Robot vs. Man</em> — +5.6pp<br><span class="mcq">"day three and I'm already a full day behind"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=avK2e8JItrQ&amp;t=512s" target="_blank" rel="noopener">8:32</a> in <em>Epic 10 Month Kitchen Remodel Start to Finish</em> — −5.4pp<br><span class="mcq">"bringing in those appliances starting with the vent Hood"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Technique or tool demonstration <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.5pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Technique or tool demonstration: +0.5pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="4.466589969292045" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments where a specific process, jig, tool or method is being explained or shown in action.</p>
+  <p class="mcmeta">30 moments across 21 videos · bleed depth 1.3% · 16 of 29 beat the norm · p=0.711 · 73% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=q0R0YhJrmtc&amp;t=472s" target="_blank" rel="noopener">7:52</a> in <em>She Told Me Not To Build This...Her Reaction Is PRICELESS!</em> — +12.3pp<br><span class="mcq">"step one when pouring epoxy wear gloves"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=-mCb8bivRwg&amp;t=707s" target="_blank" rel="noopener">11:47</a> in <em>The $11,000 Cabinet That Shocked Everyone</em> — −7.6pp<br><span class="mcq">"ripped the slab in half into two 4T sections"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Outro, sign-off and merch/CTA <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.0pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Outro, sign-off and merch/CTA: +0.0pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">End-of-video wrap moments, final sign-offs, and merch/patreon/subscribe pitches.</p>
+  <p class="mcmeta">15 moments across 15 videos · bleed depth 5.2% · 8 of 14 beat the norm · p=0.791 · 27% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=UraaO6WhTts&amp;t=2028s" target="_blank" rel="noopener">33:48</a> in <em>Secrets Behind My Toughest Build Yet</em> — +9.3pp<br><span class="mcq">"the doors are finally done and they look really really good"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=67WLsVJ0TXQ&amp;t=507s" target="_blank" rel="noopener">8:27</a> in <em>How To Build Kitchen Cabinets The Easy Way</em> — −11.8pp<br><span class="mcq">"easier than you think and any"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Finished-piece reveal or reaction <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.4pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Finished-piece reveal or reaction: −0.4pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="146.61381965670645" y="8" width="3.386180343293546" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments showing a finished build, client/spouse reaction, or the on-camera 'wow' at a completed result.</p>
+  <p class="mcmeta">15 moments across 13 videos · bleed depth 0.0% · 6 of 15 beat the norm · p=0.607 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=Cl_M2fht7As&amp;t=724s" target="_blank" rel="noopener">12:04</a> in <em>$12,000 Table Paid With Something BETTER</em> — +6.3pp<br><span class="mcq">"holy crap this thing looks so good"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=EO1rBRYBUEQ&amp;t=1123s" target="_blank" rel="noopener">18:43</a> in <em>Impossible Animal Carving Table</em> — −18.3pp<br><span class="mcq">"looks like what prison food tastes like"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Explaining the plan or design <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.8pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Explaining the plan or design: −0.8pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="142.46930945848334" y="8" width="7.5306905415166625" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments where the creator lays out what they're about to build, sketches the concept, or reframes the project's arc.</p>
+  <p class="mcmeta">12 moments across 9 videos · bleed depth 1.6% · 3 of 10 beat the norm · p=0.344 · 83% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=o9O8cthWvB0&amp;t=1492s" target="_blank" rel="noopener">24:52</a> in <em>I Spent 213 Hours Turning 2200 Yr Old Wood into $12,000 Ta</em> — +2.4pp<br><span class="mcq">"most expensive wood... also the most challenging"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=326QyhTEyGA&amp;t=572s" target="_blank" rel="noopener">9:32</a> in <em>I Build Dream DIY Bed for $250</em> — −5.2pp<br><span class="mcq">"this is where it all starts to unravel"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow low">
+  <div class="mchead">
+    <div class="mcname">Personal aside or life tangent <span class="mv mv-low">Low moment</span></div>
+    <div class="mcnum">−2.1pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Personal aside or life tangent: −2.1pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="130.2468242716135" y="8" width="19.75317572838651" height="10" fill="var(--hot)" opacity="0.95"/>
+</svg>
+  <p class="mcdesc">Moments where the creator steps away from the build for personal backstory, humor, or off-topic chat.</p>
+  <p class="mcmeta">10 moments across 10 videos · bleed depth 5.1% · 0 of 8 beat the norm · p=0.008 · 40% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=ecxqsYxBVGw&amp;t=1309s" target="_blank" rel="noopener">21:49</a> in <em>I Built the Table of My Dreams</em> — +0.0pp<br><span class="mcq">"limit to what I'm capable of"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=aa8bh9R3v18&amp;t=419s" target="_blank" rel="noopener">6:59</a> in <em>$10,000 Bed Build</em> — −20.3pp<br><span class="mcq">"what is the best bedroom song"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Sponsor read <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−7.6pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Sponsor read: −7.6pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="77.46662722690225" y="8" width="72.53337277309775" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Moments where the video pauses to deliver a paid sponsor read or hand off into one.</p>
+  <p class="mcmeta">13 moments across 13 videos · bleed depth 15.6% · 4 of 13 beat the norm · p=0.267 · 0% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=NjEfg4fhjVM&amp;t=791s" target="_blank" rel="noopener">13:11</a> in <em>The Hidden Art of 753 Newspapers and Epoxy Revealed</em> — +4.3pp<br><span class="mcq">"the sponsor of this video and that's North one"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=xyiJhjXHJSA&amp;t=304s" target="_blank" rel="noopener">5:04</a> in <em>300 Degree Epoxy Table</em> — −27.1pp<br><span class="mcq">"wanted to take a minute to talk about being prepared"</span></li>
+  </ul></details>
+</div>
+</div>
+<p class="legend mcfoot">Built from the 40 most recent analysed uploads; 125 moments were grouped from 36 of them. Not included: 38 in the first 30 seconds (the intro is its own problem), 9 on curves too coarse to measure a 30-second span, 76 with no usable curve at that point, 7 that fell into no group. 7 of 132 measured moments fell into no category and are not represented below.</p>
 
 <!-- Freshness is provenance, not headline: it answers "how current is this?"
      only once the reader has decided to trust something. Collapsed by default
@@ -4809,7 +5020,7 @@ formats over the same months is what makes them comparable.</p>
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-26</span><span class="ago">5 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-26</span><span class="ago">5 days ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-26</span><span class="ago">5 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-25</span><span class="ago">6 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-24</span><span class="ago">7 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">11 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">11 days ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-08-31</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-26</span><span class="ago">5 days ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-26</span><span class="ago">5 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-25</span><span class="ago">6 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-24</span><span class="ago">7 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">11 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">11 days ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

@@ -188,6 +188,13 @@ a{color:var(--teal)}
 .samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
   letter-spacing:.1em;margin-right:4px}
 .sabut{color:var(--grey);font-style:italic}
+.sasrc{margin:8px 0 2px;font-size:12.5px}
+.sasrc>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+               text-transform:uppercase;letter-spacing:.1em}
+.sasrc>summary::-webkit-details-marker{display:none}
+.sasrc>summary::before{content:"▸ ";color:var(--teal)}
+.sasrc[open]>summary::before{content:"▾ "}
+.sasrc p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55}
 .sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
 .sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
 .sx-worst-case{border-left-color:#f0787a}
@@ -217,7 +224,13 @@ a{color:var(--teal)}
   overflow-wrap:anywhere}
 .actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
   letter-spacing:.1em; margin-right:4px}
-.actbut{color:var(--grey); font-style:italic}
+.actbut{margin:8px 0 0;font-size:12.5px}
+.actbut>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+                text-transform:uppercase;letter-spacing:.1em}
+.actbut>summary::-webkit-details-marker{display:none}
+.actbut>summary::before{content:"▸ ";color:var(--teal)}
+.actbut[open]>summary::before{content:"▾ "}
+.actbut p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55;font-style:normal}
 @media(max-width:640px){
   .act{padding:12px 13px}
   .actdo{font-size:14.5px}
@@ -434,6 +447,56 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .clegend a:hover{background:var(--panel-raised); color:var(--white)}
 .clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
 .clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+
+/* Micro-charts. A picture with its figure on it, and a badge saying what kind
+   of evidence it is, replacing a paragraph that explained the same number. */
+.mc{margin:12px 0 10px;padding:0}
+.mc-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 6px;
+         font-size:13px;line-height:1.4}
+.mc-head b{font-weight:600}
+.mc-val{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-svg{width:100%;height:auto;display:block;overflow:visible}
+.mc-note{margin:5px 0 0;font-size:11.5px;color:var(--grey);line-height:1.5}
+.mc-track{stroke:var(--line);stroke-width:2}
+.mc-iqr{fill:rgba(141,216,211,.22)}
+.mc-dot{fill:var(--teal);stroke:var(--ink);stroke-width:2}
+.mc-flag{stroke:var(--warn);stroke-width:1.4;stroke-dasharray:3 3}
+.mc-flaglab{fill:var(--warn);font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+.mc-end{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-axis{stroke:rgba(141,216,211,.35);stroke-width:1}
+.mc-tick{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-pt{fill:var(--teal-mid);opacity:.75}
+.mc-pt.on{fill:#ffd166;opacity:1}
+.mc-trend{stroke:var(--teal);stroke-width:1.6;stroke-dasharray:5 4;opacity:.8}
+.mc-stat{font-size:11px;font-family:ui-monospace,Menlo,monospace}
+.mc-rho{fill:var(--teal);font-weight:600}
+.mc-p{fill:var(--grey)}
+.mc-curve{fill:none;stroke:var(--teal);stroke-width:2;stroke-linejoin:round}
+.mc-band{opacity:.22}
+.mc-band.drop{fill:var(--cold)}
+.mc-band.hold{fill:var(--hot)}
+.mc-bars{display:flex;flex-direction:column;gap:5px}
+.mc-row{display:grid;grid-template-columns:minmax(90px,auto) 1fr auto auto;gap:10px;
+        align-items:center;font-size:12.5px}
+.mc-rl{color:var(--white)}
+.mc-bar{display:block;height:12px;background:rgba(141,216,211,.10);border-radius:3px;overflow:hidden}
+.mc-bar i{display:block;height:100%;width:var(--w);background:var(--teal-deep);border-radius:3px}
+.mc-rv{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-rn{color:var(--grey);font-size:11px;font-variant-numeric:tabular-nums}
+/* Evidence badges. The rung matters more than the colour, so they are quiet. */
+.evchip{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+        padding:.14rem .4rem;border-radius:3px;cursor:help;white-space:nowrap}
+.ev-obs{background:#22303a;color:#9fc0d0}
+.ev-corr{background:#123240;color:#8fd6f0}
+.ev-cons{background:#12402f;color:#7ff0bd}
+.ev-dose{background:#1b3a2a;color:#9ce8bd}
+.ev-temp{background:#2a3320;color:#cfe08a}
+.ev-int{background:#33301a;color:#f6c344}
+@media(max-width:640px){
+  .mc-row{grid-template-columns:minmax(70px,auto) 1fr auto;gap:7px}
+  .mc-rn{display:none}
+}
 
 .intel-hero{max-width:74ch}
 .intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
@@ -1031,5 +1094,5 @@ table.obs td.no{color:#ff8f8f}
 })();
 </script>
 
-<footer>Generated from the yt-audit pipeline · public view: figures here come from data YouTube already shows publicly.</footer>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
 </div></body></html>

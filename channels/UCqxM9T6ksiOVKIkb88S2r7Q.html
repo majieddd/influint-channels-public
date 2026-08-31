@@ -719,6 +719,24 @@ table.obs td.no{color:#ff8f8f}
 .standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
 .standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
 .standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
+
+.ccfig{margin:14px 0 6px;padding:0}
+.ccfig svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.ccdot{fill:var(--teal);opacity:.38}
+.ccmed{fill:none;stroke:var(--white);stroke-width:2.4;stroke-linejoin:round}
+.ccfit{stroke:var(--hot);stroke-width:1.6;stroke-dasharray:7 4}
+.ccgrid{stroke:var(--line);stroke-width:.6;opacity:.55}
+.ccax{fill:var(--grey);font-size:11px}
+.ccfitnote{fill:var(--hot);font-size:11px;font-weight:600}
+.ccbar{fill:var(--teal);opacity:.85}
+.cclab{fill:var(--grey);font-size:11px}
+.ccval{fill:var(--white);font-size:11px;font-weight:600}
+.ccn{fill:var(--grey);font-weight:400}
+.ccmajor{stroke:var(--grey);stroke-width:1;stroke-dasharray:4 4}
+.cccap{font-size:11px;color:var(--grey);line-height:1.55;margin-top:6px;overflow-wrap:anywhere}
+.ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
+.ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -822,7 +840,7 @@ means two things move together on this channel, which is not the same as one cau
 <li class="act">
   <div class="acthead">
     <span class="actn">3</span>
-    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~158K viewers at stake</span>
   </div>
   <p class="actdo">Publish every 28 days, even when the video is smaller than you wanted.</p>
@@ -952,7 +970,7 @@ means two things move together on this channel, which is not the same as one cau
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 84. Advice is about the channel being run now.</p>
-<p class="capnote">6 of 7 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
+<p class="capnote">5 of 7 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 
 
 
@@ -3819,16 +3837,16 @@ formats over the same months is what makes them comparable.</p>
 <div class="mcgrid">
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Build resumes after sponsor <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+9.4pp</div>
+    <div class="mcname">Return from sponsor to build <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+6.8pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Build resumes after sponsor: +9.4pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Return from sponsor to build: +6.8pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="94.14637086560174" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="68.2674732761069" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">The instant the ad ends and the video returns to the project, often drawing rewinds.</p>
-  <p class="mcmeta">12 moments across 9 videos · bleed depth 0.0% · 9 of 12 beat the norm · p=0.146 · 100% were flagged as lifts</p>
+  <p class="mcdesc">The instant the ad ends and the video resumes the project, often triggering large rewinds.</p>
+  <p class="mcmeta">11 moments across 9 videos · bleed depth 0.0% · 8 of 11 beat the norm · p=0.227 · 100% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=banc9b1zcNM&amp;t=716s" target="_blank" rel="noopener">11:56</a> in <em>I built a MODERN Vita...</em> — +25.7pp<br><span class="mcq">"that's enough about NAS is"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=YExRqH7l92c&amp;t=747s" target="_blank" rel="noopener">12:27</a> in <em>&quot;Modern&quot; furniture is a LIE...</em> — −2.2pp<br><span class="mcq">"there have been some recent innovations in the space"</span></li>
@@ -3836,33 +3854,16 @@ formats over the same months is what makes them comparable.</p>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Non-sponsor announcement or aside <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+1.2pp</div>
+    <div class="mcname">On-camera mistake, failure, or 'didn't work' beat <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.4pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Non-sponsor announcement or aside: +1.2pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="On-camera mistake, failure, or 'didn't work' beat: +0.4pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="12.526007810464392" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="4.102743305169696" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">Creator breaks from the build for a personal announcement, poll question, or off-topic aside.</p>
-  <p class="mcmeta">14 moments across 9 videos · bleed depth 1.6% · 9 of 14 beat the norm · p=0.424 · 57% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=DXxcW_riS1U&amp;t=507s" target="_blank" rel="noopener">8:27</a> in <em>I can't believe I beat Microsoft to it...</em> — +15.0pp<br><span class="mcq">"use my codes to save"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=c9-c5M8reXI&amp;t=293s" target="_blank" rel="noopener">4:53</a> in <em>I don't understand why people buy Steam Decks...</em> — −3.4pp<br><span class="mcq">"heatsink comes painted black"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Mistake, setback or 'didn't work' beat <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.8pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Mistake, setback or 'didn't work' beat: +0.8pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="8.075650708410961" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">On-camera admission that something failed, was harder than expected, or needs a redo.</p>
-  <p class="mcmeta">18 moments across 16 videos · bleed depth 4.2% · 10 of 18 beat the norm · p=0.815 · 33% were flagged as lifts</p>
+  <p class="mcdesc">A build problem, stripped screw, disappointing result, or self-deprecating error moment.</p>
+  <p class="mcmeta">18 moments across 14 videos · bleed depth 4.1% · 10 of 18 beat the norm · p=0.815 · 22% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=banc9b1zcNM&amp;t=544s" target="_blank" rel="noopener">9:04</a> in <em>I built a MODERN Vita...</em> — +5.0pp<br><span class="mcq">"trim out a bit more plastic"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=0SerEuqAlAA&amp;t=1364s" target="_blank" rel="noopener">22:44</a> in <em>I built a MODERN apple iPod...</em> — −19.4pp<br><span class="mcq">"weren't quite as fantastic as I had hoped"</span></li>
@@ -3870,67 +3871,50 @@ formats over the same months is what makes them comparable.</p>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Close-up technique or design explainer <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.0pp</div>
+    <div class="mcname">Outro / postmortem wrap-up <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.4pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Close-up technique or design explainer: +0.0pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Outro / postmortem wrap-up: +0.4pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="3.722282973220956" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">Camera settles on how a specific part, wire, cut, or fix works while the creator explains it.</p>
-  <p class="mcmeta">37 moments across 26 videos · bleed depth 0.4% · 18 of 31 beat the norm · p=0.473 · 100% were flagged as lifts</p>
+  <p class="mcdesc">End-of-video reflection, feature recap, objective-met statement, and sign-off.</p>
+  <p class="mcmeta">9 moments across 9 videos · bleed depth 5.1% · 5 of 9 beat the norm · p=1.000 · 0% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=-Yfpf3JGQcI&amp;t=644s" target="_blank" rel="noopener">10:44</a> in <em>I dont understand why more people dont MOD their 3d printe</em> — +31.6pp<br><span class="mcq">"speaking of peaceful silence"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=qDT7KZjdlpc&amp;t=998s" target="_blank" rel="noopener">16:38</a> in <em>I built a MODERN Nintendo Gameboy...</em> — −14.7pp<br><span class="mcq">"who did it better?"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Segue between build phases <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">−0.1pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Segue between build phases: −0.1pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="149.12634020144876" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">Transitional narration handing off from one section of the build to the next, or teasing what's coming.</p>
-  <p class="mcmeta">28 moments across 21 videos · bleed depth 5.1% · 11 of 25 beat the norm · p=0.690 · 11% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=DXxcW_riS1U&amp;t=1126s" target="_blank" rel="noopener">18:46</a> in <em>I can't believe I beat Microsoft to it...</em> — +4.2pp<br><span class="mcq">"came with a matching controller"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=T9ADLQGeBFw&amp;t=643s" target="_blank" rel="noopener">10:43</a> in <em>I can't believe people still have entertainment units...</em> — −5.9pp<br><span class="mcq">"Rubio monocoat I just haven't really given it a fair shake"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Postmortem / outro wrap-up <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">−0.1pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Postmortem / outro wrap-up: −0.1pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="148.8070260763553" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">End-of-video summary, 'what I'd do differently,' final feature walk-through and sign-off.</p>
-  <p class="mcmeta">8 moments across 7 videos · bleed depth 6.2% · 4 of 8 beat the norm · p=1.000 · 13% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=J6YWQOid3ik&amp;t=1121s" target="_blank" rel="noopener">18:41</a> in <em>Your speakers are a waste of space</em> — +2.7pp<br><span class="mcq">"dive right into the post mortem analysis"</span></li>
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=TXVqewM_aq4&amp;t=1151s" target="_blank" rel="noopener">19:11</a> in <em>I built an OUTDOOR Movie Theater...</em> — +4.1pp<br><span class="mcq">"drawing less than 100W of power"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=D2jJzJkFZS4&amp;t=1217s" target="_blank" rel="noopener">20:17</a> in <em>I built a MODERN Sony PlayerStation 2...</em> — −6.6pp<br><span class="mcq">"So let's talk postmortem analysis"</span></li>
   </ul></details>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Working reveal / it-boots moment <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">−1.2pp</div>
+    <div class="mcname">Explaining the plan or design principle <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.0pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Working reveal / it-boots moment: −1.2pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Explaining the plan or design principle: +0.0pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="137.7712341991707" y="8" width="12.228765800829308" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">The payoff shot where the finished build powers on, boots, or is shown assembled and working.</p>
-  <p class="mcmeta">14 moments across 14 videos · bleed depth 1.5% · 3 of 13 beat the norm · p=0.092 · 100% were flagged as lifts</p>
+  <p class="mcdesc">Pre-build narration explaining why a part, mod, or approach was chosen.</p>
+  <p class="mcmeta">22 moments across 19 videos · bleed depth 0.4% · 11 of 19 beat the norm · p=0.648 · 91% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=4fhuBRxQwL0&amp;t=472s" target="_blank" rel="noopener">7:52</a> in <em>Your 3D printer is now obsolete...</em> — +6.3pp<br><span class="mcq">"had one huge flaw that I intended"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=qDT7KZjdlpc&amp;t=998s" target="_blank" rel="noopener">16:38</a> in <em>I built a MODERN Nintendo Gameboy...</em> — −14.7pp<br><span class="mcq">"who did it better?"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Finished-piece reveal or payoff <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.0pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Finished-piece reveal or payoff: +0.0pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Cuts to the completed build, final look, or 'look at this' payoff shot.</p>
+  <p class="mcmeta">11 moments across 9 videos · bleed depth 1.8% · 4 of 9 beat the norm · p=1.000 · 100% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=hkWhrfKNmR8&amp;t=905s" target="_blank" rel="noopener">15:05</a> in <em>I built the ULTIMATE GAMING phone...</em> — +3.0pp<br><span class="mcq">"finally got all the software up and running"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=D2jJzJkFZS4&amp;t=897s" target="_blank" rel="noopener">14:57</a> in <em>I built a MODERN Sony PlayerStation 2...</em> — −6.6pp<br><span class="mcq">"printed in Creality's hyper PLA"</span></li>
@@ -3938,32 +3922,100 @@ formats over the same months is what makes them comparable.</p>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Performance numbers / test results read out <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">−2.1pp</div>
+    <div class="mcname">Mid-build tangent, announcement, or segue <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.0pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Performance numbers / test results read out: −2.1pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Mid-build tangent, announcement, or segue: +0.0pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="129.42129453372735" y="8" width="20.578705466272652" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">Frames, temperatures, wattage, benchmarks or comparison figures being narrated on screen.</p>
-  <p class="mcmeta">14 moments across 13 videos · bleed depth 2.1% · 5 of 13 beat the norm · p=0.581 · 100% were flagged as lifts</p>
+  <p class="mcdesc">The creator pauses the build for an announcement, cross-promo, inbox reference, or segue to another location/topic.</p>
+  <p class="mcmeta">18 moments across 15 videos · bleed depth 5.4% · 8 of 15 beat the norm · p=1.000 · 0% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=bono4ifnuwE&amp;t=894s" target="_blank" rel="noopener">14:54</a> in <em>I can't believe more people don't have THIS...</em> — +2.0pp<br><span class="mcq">"thermal sensor that you then plug into your phone"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=sFCkj2yKWck&amp;t=1020s" target="_blank" rel="noopener">17:00</a> in <em>THIS changes DIY Audio...</em> — −5.3pp<br><span class="mcq">"how our new subwoofer sounds compared"</span></li>
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=sljz1teGoEk&amp;t=701s" target="_blank" rel="noopener">11:41</a> in <em>I can't believe I beat Valve to it...</em> — +4.7pp<br><span class="mcq">"my inbox is flooded with people"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=DXxcW_riS1U&amp;t=1188s" target="_blank" rel="noopener">19:48</a> in <em>I can't believe I beat Microsoft to it...</em> — −5.2pp<br><span class="mcq">"wish more manufacturers would bring back"</span></li>
   </ul></details>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Sponsor read starts / mid-roll ad <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcname">Fix, workaround, or process step resolving a problem <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.0pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Fix, workaround, or process step resolving a problem: −0.0pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="149.89447093793208" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Hands-on procedural moments where a fix is applied, wired, crimped, or a workaround succeeds.</p>
+  <p class="mcmeta">11 moments across 11 videos · bleed depth 0.9% · 5 of 11 beat the norm · p=1.000 · 82% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=YExRqH7l92c&amp;t=733s" target="_blank" rel="noopener">12:13</a> in <em>&quot;Modern&quot; furniture is a LIE...</em> — +17.2pp<br><span class="mcq">"let's get back to building these nightstands"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=qDT7KZjdlpc&amp;t=998s" target="_blank" rel="noopener">16:38</a> in <em>I built a MODERN Nintendo Gameboy...</em> — −9.2pp<br><span class="mcq">"I currently have no working relationship with them"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">It boots / it works reveal <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.7pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="It boots / it works reveal: −0.7pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="142.619102486142" y="8" width="7.380897513858002" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">The moment a rebuilt device is powered on for the first time and shown functioning.</p>
+  <p class="mcmeta">6 moments across 6 videos · bleed depth 1.2% · 1 of 6 beat the norm · p=0.219 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=DXxcW_riS1U&amp;t=928s" target="_blank" rel="noopener">15:28</a> in <em>I can't believe I beat Microsoft to it...</em> — +1.2pp<br><span class="mcq">"right away it spins up"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=yK68PRlDr54&amp;t=1044s" target="_blank" rel="noopener">17:24</a> in <em>I built a MODERN N64...</em> — −6.3pp<br><span class="mcq">"connected and running to a modern TV"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Performance / test-result callout <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.9pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Performance / test-result callout: −0.9pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="141.43269641174265" y="8" width="8.567303588257346" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Reading out benchmark numbers, temps, overclocks, or measured results on camera.</p>
+  <p class="mcmeta">12 moments across 11 videos · bleed depth 1.2% · 5 of 11 beat the norm · p=1.000 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=DFQRPPwcLsI&amp;t=989s" target="_blank" rel="noopener">16:29</a> in <em>Why don't more people do this...?</em> — +4.0pp<br><span class="mcq">"if there's enough clearance between the slides"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=banc9b1zcNM&amp;t=1202s" target="_blank" rel="noopener">20:02</a> in <em>I built a MODERN Vita...</em> — −5.0pp<br><span class="mcq">"almost six hours on a single charge"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Introducing a new part, tool, or product <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−1.4pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Introducing a new part, tool, or product: −1.4pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="136.10310428712745" y="8" width="13.89689571287255" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Naming and showing a specific component, tool, or gadget being brought into the build.</p>
+  <p class="mcmeta">18 moments across 13 videos · bleed depth 2.3% · 6 of 16 beat the norm · p=0.454 · 94% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=-Yfpf3JGQcI&amp;t=644s" target="_blank" rel="noopener">10:44</a> in <em>I dont understand why more people dont MOD their 3d printe</em> — +31.6pp<br><span class="mcq">"speaking of peaceful silence"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=pxy_Oc3zHuk&amp;t=549s" target="_blank" rel="noopener">9:09</a> in <em>I built a MODERN PlayStation Portable...</em> — −6.8pp<br><span class="mcq">"puncture the skin of a lithium ion battery"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Sponsor read starts <span class="mv mv-mix">No consistent effect</span></div>
     <div class="mcnum">−14.4pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Sponsor read starts / mid-roll ad: −14.4pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Sponsor read starts: −14.4pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
   <rect x="6" y="8" width="144" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">Moments where the creator pivots from build content into a paid sponsor segment.</p>
+  <p class="mcdesc">The moment the creator pivots from build content into a paid ad segment.</p>
   <p class="mcmeta">14 moments across 14 videos · bleed depth 18.6% · 4 of 14 beat the norm · p=0.180 · 0% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=-Yfpf3JGQcI&amp;t=550s" target="_blank" rel="noopener">9:10</a> in <em>I dont understand why more people dont MOD their 3d printe</em> — +1.9pp<br><span class="mcq">"the sponsor of today's video Incogni"</span></li>
@@ -3971,7 +4023,7 @@ formats over the same months is what makes them comparable.</p>
   </ul></details>
 </div>
 </div>
-<p class="legend mcfoot">Built from the 40 most recent analysed uploads; 159 moments were grouped from 37 of them. Not included: 39 in the first 30 seconds (the intro is its own problem), 6 on curves too coarse to measure a 30-second span, 46 with no usable curve at that point.</p>
+<p class="legend mcfoot">Built from the 40 most recent analysed uploads; 150 moments were grouped from 37 of them. Not included: 39 in the first 30 seconds (the intro is its own problem), 6 on curves too coarse to measure a 30-second span, 46 with no usable curve at that point, 9 that fell into no group. 9 of 159 measured moments fell into no category and are not represented below.</p>
 
 <!-- Freshness is provenance, not headline: it answers "how current is this?"
      only once the reader has decided to trust something. Collapsed by default

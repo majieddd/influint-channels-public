@@ -719,6 +719,24 @@ table.obs td.no{color:#ff8f8f}
 .standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
 .standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
 .standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
+
+.ccfig{margin:14px 0 6px;padding:0}
+.ccfig svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.ccdot{fill:var(--teal);opacity:.38}
+.ccmed{fill:none;stroke:var(--white);stroke-width:2.4;stroke-linejoin:round}
+.ccfit{stroke:var(--hot);stroke-width:1.6;stroke-dasharray:7 4}
+.ccgrid{stroke:var(--line);stroke-width:.6;opacity:.55}
+.ccax{fill:var(--grey);font-size:11px}
+.ccfitnote{fill:var(--hot);font-size:11px;font-weight:600}
+.ccbar{fill:var(--teal);opacity:.85}
+.cclab{fill:var(--grey);font-size:11px}
+.ccval{fill:var(--white);font-size:11px;font-weight:600}
+.ccn{fill:var(--grey);font-weight:400}
+.ccmajor{stroke:var(--grey);stroke-width:1;stroke-dasharray:4 4}
+.cccap{font-size:11px;color:var(--grey);line-height:1.55;margin-top:6px;overflow-wrap:anywhere}
+.ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
+.ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -770,7 +788,7 @@ means two things move together on this channel, which is not the same as one cau
 <ol class="actions"><li class="act">
   <div class="acthead">
     <span class="actn">1</span>
-    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~24K viewers at stake</span>
   </div>
   <p class="actdo">Publish every 7 days, even when the video is smaller than you wanted.</p>
@@ -821,7 +839,6 @@ means two things move together on this channel, which is not the same as one cau
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 261. Advice is about the channel being run now.</p>
-<p class="capnote">1 of 2 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 <p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
 
 
@@ -7573,16 +7590,84 @@ means two things move together on this channel, which is not the same as one cau
 <div class="mcgrid">
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Transitions and segue asides <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.4pp</div>
+    <div class="mcname">Personal aside, reflection, or honest admission <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.5pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Transitions and segue asides: +0.4pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Personal aside, reflection, or honest admission: +0.5pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="12.45435476849184" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="150" y="8" width="15.60975609756099" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">Short bridges between segments — location changes, church breaks, construction asides, recaps, or setup narration before the next beat.</p>
-  <p class="mcmeta">12 moments across 12 videos · bleed depth 4.2% · 8 of 11 beat the norm · p=0.227 · 0% were flagged as lifts</p>
+  <p class="mcdesc">The creator talks directly about feelings, admissions, opinions, or life context rather than the task at hand.</p>
+  <p class="mcmeta">13 moments across 12 videos · bleed depth 0.0% · 8 of 12 beat the norm · p=0.388 · 69% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=BBRWEGmPKb0&amp;t=1420s" target="_blank" rel="noopener">23:40</a> in <em>The Best Upgrade Yet at My Remote Cabin!</em> — +6.8pp<br><span class="mcq">"I am going to Hawaii"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=6fOP7Qhtew8&amp;t=668s" target="_blank" rel="noopener">11:08</a> in <em>I Completely Transformed the Inside of my Remote Cabin</em> — −5.1pp<br><span class="mcq">"Dad may or may not be"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Transitioning to a new scene, location, or activity <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.4pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Transitioning to a new scene, location, or activity: +0.4pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="12.589374698908188" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">The video cuts away to a different place, day, or activity block.</p>
+  <p class="mcmeta">9 moments across 8 videos · bleed depth 2.2% · 5 of 9 beat the norm · p=1.000 · 67% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=Rr8G5GmO0XU&amp;t=1268s" target="_blank" rel="noopener">21:08</a> in <em>I Live Alone in the Woods &amp; I Finally Did This</em> — +4.0pp<br><span class="mcq">"I just got back to my cabin"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=Prx6POkx984&amp;t=805s" target="_blank" rel="noopener">13:25</a> in <em>Plans For My Remote Cabin Have Shifted...</em> — −3.6pp<br><span class="mcq">"go enjoy this day with some friends"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Encountering wildlife or a nature sighting <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.3pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Encountering wildlife or a nature sighting: +0.3pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="8.067226890756302" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">An animal, bird, plant, or natural feature is discovered or observed on camera.</p>
+  <p class="mcmeta">9 moments across 6 videos · bleed depth 0.0% · 5 of 8 beat the norm · p=0.727 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=vGZbwPi8BSs&amp;t=536s" target="_blank" rel="noopener">8:56</a> in <em>Remote Cabin Life Alone with My Dog</em> — +1.1pp<br><span class="mcq">"coyotes or the panther that lives"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=oWbNp4Qseh0&amp;t=1341s" target="_blank" rel="noopener">22:21</a> in <em>My Remote Cabin is in Trouble. Big Decisions to Make...</em> — −2.8pp<br><span class="mcq">"there's a beaver in my yard"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Reveal or payoff moment landing <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.1pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Reveal or payoff moment landing: +0.1pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="1.6427391691016737" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">A build, install, cook, or discovery reaches its visible result on camera.</p>
+  <p class="mcmeta">18 moments across 15 videos · bleed depth 0.0% · 9 of 17 beat the norm · p=1.000 · 100% were flagged as lifts</p>
+  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=JTBtOI_LHck&amp;t=662s" target="_blank" rel="noopener">11:02</a> in <em>Remote Cabin Living: Two Upgrades I Had to Finish Before W</em> — +7.1pp<br><span class="mcq">"two full compactor bags of trash"</span></li>
+<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=_E1epdl9MB0&amp;t=753s" target="_blank" rel="noopener">12:33</a> in <em>Coming Home to My Cabin…Only to Find Major Issues</em> — −4.1pp<br><span class="mcq">"WE DO! OH MY GOSH"</span></li>
+  </ul></details>
+</div>
+<div class="mcrow mixed">
+  <div class="mchead">
+    <div class="mcname">Showing a struggle, mistake, or ongoing problem <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">+0.0pp</div>
+  </div>
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Showing a struggle, mistake, or ongoing problem: +0.0pp against a typical flagged moment of the same kind">
+  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
+  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
+  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
+</svg>
+  <p class="mcdesc">Something is broken, difficult, failing, or being worked through on camera.</p>
+  <p class="mcmeta">9 moments across 8 videos · bleed depth 3.8% · 4 of 8 beat the norm · p=1.000 · 22% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=_E1epdl9MB0&amp;t=753s" target="_blank" rel="noopener">12:33</a> in <em>Coming Home to My Cabin…Only to Find Major Issues</em> — +3.3pp<br><span class="mcq">"go to Lowe's, make a list"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=zQpD64yfcbw&amp;t=950s" target="_blank" rel="noopener">15:50</a> in <em>Solving Big Problems at my Remote Cabin Before Winter &amp; Fo</em> — −5.5pp<br><span class="mcq">"Some of them are already starting to die off"</span></li>
@@ -7590,117 +7675,49 @@ means two things move together on this channel, which is not the same as one cau
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Explaining the plan or how something works <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.2pp</div>
+    <div class="mcname">Explaining the plan, product, or how something works <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−0.1pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Explaining the plan or how something works: +0.2pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Explaining the plan, product, or how something works: −0.1pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="6.145057512500557" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="148.35726083089833" y="8" width="1.6427391691016737" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">The creator walks through what they're doing, what a tool does, or the method behind the current build/task.</p>
-  <p class="mcmeta">18 moments across 11 videos · bleed depth 0.0% · 10 of 17 beat the norm · p=0.629 · 100% were flagged as lifts</p>
+  <p class="mcdesc">The creator narrates a method, tool, ingredient list, or spec before or during work.</p>
+  <p class="mcmeta">12 moments across 10 videos · bleed depth 0.0% · 5 of 11 beat the norm · p=1.000 · 100% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=JTBtOI_LHck&amp;t=662s" target="_blank" rel="noopener">11:02</a> in <em>Remote Cabin Living: Two Upgrades I Had to Finish Before W</em> — +7.1pp<br><span class="mcq">"two full compactor bags of trash"</span></li>
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=NNkeyNKNq5c&amp;t=608s" target="_blank" rel="noopener">10:08</a> in <em>Starting a New Project At My Cabin But First I Had To Leav</em> — +5.5pp<br><span class="mcq">"lemon thyme, cilantro, basil, and dill"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=JTBtOI_LHck&amp;t=702s" target="_blank" rel="noopener">11:42</a> in <em>Remote Cabin Living: Two Upgrades I Had to Finish Before W</em> — −1.7pp<br><span class="mcq">"working on my well pump"</span></li>
   </ul></details>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">Wrap-up and outro housekeeping <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.1pp</div>
+    <div class="mcname">Recapping prior events or setting up context <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcnum">−1.4pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Wrap-up and outro housekeeping: +0.1pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Recapping prior events or setting up context: −1.4pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="4.146935616709925" height="10" fill="var(--grey)" opacity="0.45"/>
+  <rect x="108.24856258292787" y="8" width="41.751437417072125" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">The creator signals the video is ending or pivots to schedule/housekeeping talk.</p>
-  <p class="mcmeta">9 moments across 9 videos · bleed depth 4.5% · 5 of 7 beat the norm · p=0.453 · 22% were flagged as lifts</p>
+  <p class="mcdesc">The creator refers back to previous episodes, decisions already made, or ongoing storylines.</p>
+  <p class="mcmeta">7 moments across 6 videos · bleed depth 2.8% · 3 of 7 beat the norm · p=1.000 · 57% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=BBRWEGmPKb0&amp;t=1420s" target="_blank" rel="noopener">23:40</a> in <em>The Best Upgrade Yet at My Remote Cabin!</em> — +6.8pp<br><span class="mcq">"I am going to Hawaii"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=HxqPha1-Qa0&amp;t=1475s" target="_blank" rel="noopener">24:35</a> in <em>We Had to Redo Everything…Potential DISASTER At My Remote </em> — −4.5pp<br><span class="mcq">"going to do it for this week's episode"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Reveal or payoff moment <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.1pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Reveal or payoff moment: +0.1pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="1.6427391691016737" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">The finished-piece, first-look, or 'moment of truth' reveal where something completed is shown on camera.</p>
-  <p class="mcmeta">14 moments across 12 videos · bleed depth 0.0% · 7 of 13 beat the norm · p=1.000 · 100% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=j6-9cLRRdwo&amp;t=999s" target="_blank" rel="noopener">16:39</a> in <em>This Problem Has Gone Too Far.</em> — +2.9pp<br><span class="mcq">"the moment of truth"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=_E1epdl9MB0&amp;t=753s" target="_blank" rel="noopener">12:33</a> in <em>Coming Home to My Cabin…Only to Find Major Issues</em> — −4.1pp<br><span class="mcq">"WE DO! OH MY GOSH"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Animal or wildlife sighting <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.0pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Animal or wildlife sighting: +0.0pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">Discovering, meeting, or watching an animal — pets, wildlife, or nature encounters on camera.</p>
-  <p class="mcmeta">9 moments across 7 videos · bleed depth 0.0% · 3 of 7 beat the norm · p=1.000 · 100% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=vGZbwPi8BSs&amp;t=536s" target="_blank" rel="noopener">8:56</a> in <em>Remote Cabin Life Alone with My Dog</em> — +1.1pp<br><span class="mcq">"coyotes or the panther that lives"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=Prx6POkx984&amp;t=638s" target="_blank" rel="noopener">10:38</a> in <em>Plans For My Remote Cabin Have Shifted...</em> — −3.1pp<br><span class="mcq">"there are baby birds in here"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Personal aside or reflective monologue <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">+0.0pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Personal aside or reflective monologue: +0.0pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="150" y="8" width="1.5" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">The creator shares a feeling, admission, personal update, or emotional beat unrelated to the current task.</p>
-  <p class="mcmeta">12 moments across 8 videos · bleed depth 0.3% · 6 of 12 beat the norm · p=1.000 · 100% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=Rr8G5GmO0XU&amp;t=1268s" target="_blank" rel="noopener">21:08</a> in <em>I Live Alone in the Woods &amp; I Finally Did This</em> — +4.0pp<br><span class="mcq">"I just got back to my cabin"</span></li>
+<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=JTBtOI_LHck&amp;t=682s" target="_blank" rel="noopener">11:22</a> in <em>Remote Cabin Living: Two Upgrades I Had to Finish Before W</em> — +3.7pp<br><span class="mcq">"tomorrow we got a whole lot"</span></li>
 <li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=q-UFZ-VeUR0&amp;t=570s" target="_blank" rel="noopener">9:30</a> in <em>Waiting for a Severe Storm Alone at My Remote Cabin</em> — −8.0pp<br><span class="mcq">"just serving the peace"</span></li>
   </ul></details>
 </div>
 <div class="mcrow mixed">
   <div class="mchead">
-    <div class="mcname">On-site activity or adventure beat <span class="mv mv-mix">No consistent effect</span></div>
-    <div class="mcnum">−0.2pp</div>
-  </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="On-site activity or adventure beat: −0.2pp against a typical flagged moment of the same kind">
-  <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
-  <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
-  <rect x="143.4062699308247" y="8" width="6.593730069175308" height="10" fill="var(--grey)" opacity="0.45"/>
-</svg>
-  <p class="mcdesc">The creator is out doing an activity — hiking, magnet fishing, driving somewhere, exploring a new spot.</p>
-  <p class="mcmeta">9 moments across 7 videos · bleed depth 0.0% · 4 of 9 beat the norm · p=1.000 · 89% were flagged as lifts</p>
-  <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
-<li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=q-UFZ-VeUR0&amp;t=670s" target="_blank" rel="noopener">11:10</a> in <em>Waiting for a Severe Storm Alone at My Remote Cabin</em> — +5.2pp<br><span class="mcq">"gluten-free apple cinnamon muffins"</span></li>
-<li><span class="mck">Worst</span> <a href="https://www.youtube.com/watch?v=yJRY2g8kJw8&amp;t=492s" target="_blank" rel="noopener">8:12</a> in <em>The Aftermath of a Historic Winter Storm at My Remote Cabi</em> — −1.8pp<br><span class="mcq">"Toby and I barely made it up this trail"</span></li>
-  </ul></details>
-</div>
-<div class="mcrow mixed">
-  <div class="mchead">
-    <div class="mcname">Sponsor read <span class="mv mv-mix">No consistent effect</span></div>
+    <div class="mcname">Sponsor read starting or being handed off to <span class="mv mv-mix">No consistent effect</span></div>
     <div class="mcnum">−1.9pp</div>
   </div>
-  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Sponsor read: −1.9pp against a typical flagged moment of the same kind">
+  <svg class="mcbar" viewBox="0 0 300 26" role="img" aria-label="Sponsor read starting or being handed off to: −1.9pp against a typical flagged moment of the same kind">
   <line x1="6" y1="13" x2="294" y2="13" stroke="var(--line)" stroke-width="1"/>
   <line x1="150" y1="4" x2="150" y2="22" stroke="var(--line)" stroke-width="1"/>
   <rect x="96.6583233365984" y="8" width="53.3416766634016" height="10" fill="var(--grey)" opacity="0.45"/>
 </svg>
-  <p class="mcdesc">A branded segment where the creator hands off to a sponsor product pitch.</p>
+  <p class="mcdesc">The video pivots into a paid promotion, product handoff, or supplement/service pitch.</p>
   <p class="mcmeta">15 moments across 15 videos · bleed depth 6.7% · 5 of 14 beat the norm · p=0.424 · 0% were flagged as lifts</p>
   <details class="mcdet"><summary>The strongest and weakest instance</summary><ul class="mcex">
 <li><span class="mck">Best</span> <a href="https://www.youtube.com/watch?v=vGZbwPi8BSs&amp;t=411s" target="_blank" rel="noopener">6:51</a> in <em>Remote Cabin Life Alone with My Dog</em> — +2.6pp<br><span class="mcq">"Dutch is an affordable online veterinarian"</span></li>
@@ -7708,7 +7725,7 @@ means two things move together on this channel, which is not the same as one cau
   </ul></details>
 </div>
 </div>
-<p class="legend mcfoot">Built from the 40 most recent analysed uploads; 98 moments were grouped from 32 of them. Not included: 35 in the first 30 seconds (the intro is its own problem), 22 on curves too coarse to measure a 30-second span, 69 with no usable curve at that point.</p>
+<p class="legend mcfoot">Built from the 40 most recent analysed uploads; 95 moments were grouped from 31 of them. Not included: 35 in the first 30 seconds (the intro is its own problem), 22 on curves too coarse to measure a 30-second span, 69 with no usable curve at that point, 3 that fell into no group. 3 of 98 measured moments fell into no category and are not represented below.</p>
 
 <!-- Freshness is provenance, not headline: it answers "how current is this?"
      only once the reader has decided to trust something. Collapsed by default

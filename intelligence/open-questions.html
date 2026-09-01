@@ -538,6 +538,19 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .sstrata td:nth-child(4){font-variant-numeric:tabular-nums}
 .sstrata tr.sbelow td{color:var(--grey)}
 .snote{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.5}
+.q-datasays{margin:14px 0;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:10px;padding:10px 14px;background:rgba(141,216,211,.04)}
+.q-dstitle{margin:0 0 6px;font-size:13px}
+.q-dssvg{display:block;width:100%;max-width:640px;height:auto}
+.q-dsband{fill:rgba(141,216,211,.16)}
+.q-dsmedian{stroke:var(--teal,#8dd8d3);stroke-width:2}
+.q-dsmedlabel{fill:var(--teal,#8dd8d3);font-size:11px;text-anchor:middle}
+.q-dsclaim{stroke:var(--warn,#f6c344);stroke-width:2;stroke-dasharray:4 3}
+.q-dsclaimlabel{fill:var(--warn,#f6c344);font-size:11px;text-anchor:middle}
+.q-dsdot{fill:var(--white,#fff);opacity:.75}
+.q-dsaxis,.q-dstick{stroke:rgba(255,255,255,.25)}
+.q-dslabel{fill:var(--grey,#8a9a9a);font-size:10px;text-anchor:middle}
+.q-dsrestate{margin:8px 0 3px;font-size:13px;line-height:1.55}
+.q-dswindow{margin:0;font-size:11px;color:var(--grey,#8a9a9a)}
 .obs-lifetime td{opacity:.55}
 .basis-tag{font-size:10px;color:var(--grey);border:1px solid var(--line,#333);border-radius:4px;padding:0 4px;white-space:nowrap}
 
@@ -803,6 +816,14 @@ table.obs td.no{color:#ff8f8f}
 .q-pcbar{position:absolute;top:0;bottom:0;border-radius:5px}
 .q-pc-lt{background:rgba(138,154,154,.55)}
 .q-pcval{flex:0 0 66px;font-size:.72rem;color:var(--grey,#8a9a9a);white-space:nowrap}
+.q-sides{display:flex;flex-wrap:wrap;gap:8px;margin:.5em 0 .2em}
+.q-side{flex:1 1 240px;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:8px;padding:.45em .7em}
+.q-sidehead{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.q-side-for .q-sidehead{color:var(--hot,#5ad8a6)}
+.q-side-against .q-sidehead{color:var(--cold,#ff6b6b)}
+.q-sidenums{font-size:.78rem;color:var(--grey,#8a9a9a);margin-top:2px}
+.q-sidenums b{color:inherit}
+.q-calibration{margin:.35em 0 .2em;font-size:.82rem;line-height:1.5;color:var(--warn,#f6c344);max-width:78ch}
 .q-datasays{margin:.8em 0;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:10px;padding:.7em .9em;background:rgba(141,216,211,.04)}
 .q-dstitle{margin:0 0 .4em;font-size:.85rem}
 .q-dssvg{display:block;width:100%;max-width:640px;height:auto}
@@ -827,124 +848,6 @@ and the readings behind the detection, so it can be decided from this page alone
 <p class="q-legend">Bars show the share of readings that landed the way the claim predicts. The two ticks are the
 detector's own gates: below 40% the evidence fails the claim, above 70% it supports it.</p>
 <p class="q-how">Resolve with <code>RESOLVED_BY=&lt;name&gt; npm run intel:adjudicate -- --resolve &lt;id&gt; "reason"</code></p>
-<h2>Signature vs data (1)</h2>
-<p class="q-explain">A human signed this as a Law; the measurements since disagree. The signature stands until a person re-adjudicates — data alone never erases a signature.</p>
-
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">signature-vs-data</span><code class="q-id">d652b94cd8f8</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">A claim majied signed is contested by its own measurements: Signed off as a Law, but our own measurements disagree: it held in only 7% of readings across 18 channels.</p>
-    
-    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><span class="q-signer">signed by majied</span><p>The first 30 seconds is the most important stretch of a long-form video, and on average roughly the first 30% of viewers are gone by the 30-60 second mark — so a fixed diagnostic pass belongs on the 0-60s window of every video.</p></blockquote>
-    <p class="q-probe">The question put to the data: <i>Does surviving the first 30 seconds predict a video's views?</i></p>
-    
-    <div class="q-bars"><div class="q-reading">
-      <div class="q-rlabel">the measured record</div>
-      <div class="q-track"><span class="q-fill q-lo" style="width:7%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
-      <div class="q-rmeta">7% held · 18 channels · 60 readings · median |effect| 0.16</div>
-      
-    </div></div>
-    
-    <div class="q-datasays">
-      <p class="q-dstitle"><b>What the data says instead</b> &mdash; Share of viewers gone by 0:30, per channel (median over its analysed videos)</p>
-      <svg viewBox="0 0 600 78" class="q-dssvg" role="img" aria-label="Distribution of per-channel values with the claim's asserted value marked">
-        <rect x="378.8" y="34" width="97.6" height="24" class="q-dsband"><title>middle half of channels: 29.3&ndash;37.5%</title></rect>
-        <line x1="447.9" y1="28" x2="447.9" y2="64" class="q-dsmedian"><title>median channel: 35.1%</title></line>
-        <text x="447.9" y="22" class="q-dsmedlabel">data: 35.1%</text>
-        <line x1="387.1" y1="28" x2="387.1" y2="64" class="q-dsclaim"/>
-        <text x="387.1" y="12" class="q-dsclaimlabel">the claim says ~30% by 0:30-1:00</text>
-        <circle cx="186.0" cy="46" r="4.5" class="q-dsdot"><title>Man Made: 13.1%</title></circle><circle cx="341.9" cy="46" r="4.5" class="q-dsdot"><title>Kelly Hays: 26.2%</title></circle><circle cx="347.9" cy="46" r="4.5" class="q-dsdot"><title>MoreNizarisaqt: 26.7%</title></circle><circle cx="369.3" cy="46" r="4.5" class="q-dsdot"><title>Mind Of A Criminal: 28.5%</title></circle><circle cx="378.8" cy="46" r="4.5" class="q-dsdot"><title>Her Two Wheels: 29.3%</title></circle><circle cx="394.3" cy="46" r="4.5" class="q-dsdot"><title>Emma Shaye: 30.6%</title></circle><circle cx="426.4" cy="46" r="4.5" class="q-dsdot"><title>The BlackVeil Files: 33.3%</title></circle><circle cx="439.5" cy="46" r="4.5" class="q-dsdot"><title>Jonny Builds: 34.4%</title></circle><circle cx="445.5" cy="46" r="4.5" class="q-dsdot"><title>Zac Builds: 34.9%</title></circle><circle cx="449.0" cy="46" r="4.5" class="q-dsdot"><title>Phoebe Taylor: 35.2%</title></circle><circle cx="468.1" cy="46" r="4.5" class="q-dsdot"><title>Morley Kert: 36.8%</title></circle><circle cx="472.9" cy="46" r="4.5" class="q-dsdot"><title>The Carpenters Daughter: 37.2%</title></circle><circle cx="474.0" cy="46" r="4.5" class="q-dsdot"><title>The Mountain Maker: 37.3%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Tropical Russian: 37.5%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Coffey Custom Builds: 37.5%</title></circle><circle cx="495.5" cy="46" r="4.5" class="q-dsdot"><title>Visual Thinker: 39.1%</title></circle><circle cx="502.6" cy="46" r="4.5" class="q-dsdot"><title>Studio NOHA: 39.7%</title></circle><circle cx="518.1" cy="46" r="4.5" class="q-dsdot"><title>Isabella Demarko: 41%</title></circle>
-        <line x1="30" y1="58" x2="570" y2="58" class="q-dsaxis"/>
-        <line x1="30.0" y1="56" x2="30.0" y2="60" class="q-dstick"/><text x="30.0" y="72" class="q-dslabel">0%</text><line x1="208.6" y1="56" x2="208.6" y2="60" class="q-dstick"/><text x="208.6" y="72" class="q-dslabel">15%</text><line x1="387.1" y1="56" x2="387.1" y2="60" class="q-dstick"/><text x="387.1" y="72" class="q-dslabel">30%</text><line x1="565.7" y1="56" x2="565.7" y2="60" class="q-dstick"/><text x="565.7" y="72" class="q-dslabel">45%</text>
-      </svg>
-      <p class="q-dsrestate">Measured directly: the median channel has lost 35.1% of viewers by 0:30 (middle half of channels: 29.3-37.5%), and 44.7% by 1:00. A precise re-signing would say "roughly 35% are gone by 0:30, 45% by 1:00" — the claim's 30% sits inside what the curves show — imprecise rather than wrong. Note the bound probe tests something else entirely (whether intro hold correlates with views), which is what the 7%-held record refutes — the claim's own number was never the thing failing.</p>
-      <p class="q-dswindow">Window: 18 channels with 8+ usable curves; every analysed video, not a recent-window slice. Each dot is one channel's median; hover a dot for its name.</p>
-    </div>
-    <details class="q-more"><summary>Per-channel readings (18) — chart + table</summary>
-      <div class="q-pcsort">sort: <button type="button" class="q-sortbtn" data-qsort="effect">by effect</button><button type="button" class="q-sortbtn" data-qsort="name">by name</button>
-        <span class="q-pckey">bar right of centre = supports the claim &middot; <span class="q-pclt-key">lt</span> = lifetime views, excluded from figures</span></div>
-      <div class="q-pcchart"><div class="q-pcrow" data-effect="0.3" data-name="Man Made" title="Man Made: effect +0.30 toward the claim, held, n=10, measured 2026-09-01">
-        <span class="q-pcname">Man Made</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-hi" style="left:50%;width:30.0%"></i></span>
-        <span class="q-pcval">+0.30</span>
-      </div><div class="q-pcrow" data-effect="0.12" data-name="Isabella Demarko" title="Isabella Demarko: effect +0.12 toward the claim, did not hold, n=204, measured 2026-09-01">
-        <span class="q-pcname">Isabella Demarko</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:12.0%"></i></span>
-        <span class="q-pcval">+0.12</span>
-      </div><div class="q-pcrow" data-effect="0.11" data-name="The Mountain Maker" title="The Mountain Maker: effect +0.11 toward the claim, did not hold, n=149, measured 2026-09-01">
-        <span class="q-pcname">The Mountain Maker</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:11.0%"></i></span>
-        <span class="q-pcval">+0.11</span>
-      </div><div class="q-pcrow" data-effect="0.11" data-name="MoreNizarisaqt" title="MoreNizarisaqt: effect +0.11 toward the claim, did not hold, n=470, measured 2026-09-01">
-        <span class="q-pcname">MoreNizarisaqt</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:11.0%"></i></span>
-        <span class="q-pcval">+0.11</span>
-      </div><div class="q-pcrow" data-effect="-0.03" data-name="The BlackVeil Files" title="The BlackVeil Files: effect -0.03 toward the claim, did not hold, n=27, measured 2026-09-01">
-        <span class="q-pcname">The BlackVeil Files</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:3.0%"></i></span>
-        <span class="q-pcval">-0.03</span>
-      </div><div class="q-pcrow" data-effect="-0.05" data-name="Morley Kert" title="Morley Kert: effect -0.05 toward the claim, did not hold, n=226, measured 2026-09-01">
-        <span class="q-pcname">Morley Kert</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:5.0%"></i></span>
-        <span class="q-pcval">-0.05</span>
-      </div><div class="q-pcrow" data-effect="-0.09" data-name="Phoebe Taylor" title="Phoebe Taylor: effect -0.09 toward the claim, did not hold, n=149, measured 2026-09-01">
-        <span class="q-pcname">Phoebe Taylor</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:9.0%"></i></span>
-        <span class="q-pcval">-0.09</span>
-      </div><div class="q-pcrow" data-effect="-0.12" data-name="Zac Builds" title="Zac Builds: effect -0.12 toward the claim, did not hold, n=84, measured 2026-09-01">
-        <span class="q-pcname">Zac Builds</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:12.0%"></i></span>
-        <span class="q-pcval">-0.12</span>
-      </div><div class="q-pcrow" data-effect="-0.15" data-name="Her Two Wheels" title="Her Two Wheels: effect -0.15 toward the claim, did not hold, n=302, measured 2026-09-01">
-        <span class="q-pcname">Her Two Wheels</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
-        <span class="q-pcval">-0.15</span>
-      </div><div class="q-pcrow" data-effect="-0.15" data-name="Emma Shaye" title="Emma Shaye: effect -0.15 toward the claim, did not hold, n=106, measured 2026-09-01">
-        <span class="q-pcname">Emma Shaye</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
-        <span class="q-pcval">-0.15</span>
-      </div><div class="q-pcrow" data-effect="-0.15" data-name="The Carpenters Daughter" title="The Carpenters Daughter: effect -0.15 toward the claim, did not hold, n=292, measured 2026-09-01">
-        <span class="q-pcname">The Carpenters Daughter</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
-        <span class="q-pcval">-0.15</span>
-      </div><div class="q-pcrow" data-effect="-0.19" data-name="Coffey Custom Builds" title="Coffey Custom Builds: effect -0.19 toward the claim, did not hold, n=33, measured 2026-09-01">
-        <span class="q-pcname">Coffey Custom Builds</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:19.0%"></i></span>
-        <span class="q-pcval">-0.19</span>
-      </div><div class="q-pcrow" data-effect="-0.2" data-name="Jonny Builds" title="Jonny Builds: effect -0.20 toward the claim, did not hold, n=139, measured 2026-09-01">
-        <span class="q-pcname">Jonny Builds</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:20.0%"></i></span>
-        <span class="q-pcval">-0.20</span>
-      </div><div class="q-pcrow" data-effect="-0.26" data-name="Kelly Hays" title="Kelly Hays: effect -0.26 toward the claim, did not hold, n=261, measured 2026-09-01">
-        <span class="q-pcname">Kelly Hays</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:26.0%"></i></span>
-        <span class="q-pcval">-0.26</span>
-      </div><div class="q-pcrow" data-effect="-0.28" data-name="Studio NOHA" title="Studio NOHA: effect -0.28 toward the claim, did not hold, n=14, measured 2026-09-01">
-        <span class="q-pcname">Studio NOHA</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:28.0%"></i></span>
-        <span class="q-pcval">-0.28</span>
-      </div><div class="q-pcrow" data-effect="-0.31" data-name="Visual Thinker" title="Visual Thinker: effect -0.31 toward the claim, did not hold, n=14, measured 2026-09-01">
-        <span class="q-pcname">Visual Thinker</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:31.0%"></i></span>
-        <span class="q-pcval">-0.31</span>
-      </div><div class="q-pcrow" data-effect="-0.45" data-name="Tropical Russian" title="Tropical Russian: effect -0.45 toward the claim, did not hold, n=60, measured 2026-09-01">
-        <span class="q-pcname">Tropical Russian</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:45.0%"></i></span>
-        <span class="q-pcval">-0.45</span>
-      </div><div class="q-pcrow" data-effect="-0.48" data-name="Mind Of A Criminal" title="Mind Of A Criminal: effect -0.48 toward the claim, did not hold, n=32, measured 2026-09-01">
-        <span class="q-pcname">Mind Of A Criminal</span>
-        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:48.0%"></i></span>
-        <span class="q-pcval">-0.48</span>
-      </div></div>
-      <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel readings (scrolls sideways)"><table class="obs">
-        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>n</th><th>Measured</th><th>Views basis</th></tr></thead>
-        <tbody><tr class=""><td>Man Made</td><td class="ok">held</td><td>+0.30</td><td>10</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Isabella Demarko</td><td class="no">did not hold</td><td>+0.12</td><td>204</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The Mountain Maker</td><td class="no">did not hold</td><td>+0.11</td><td>149</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>MoreNizarisaqt</td><td class="no">did not hold</td><td>+0.11</td><td>470</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The BlackVeil Files</td><td class="no">did not hold</td><td>-0.03</td><td>27</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Morley Kert</td><td class="no">did not hold</td><td>-0.05</td><td>226</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Phoebe Taylor</td><td class="no">did not hold</td><td>-0.09</td><td>149</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Zac Builds</td><td class="no">did not hold</td><td>-0.12</td><td>84</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Her Two Wheels</td><td class="no">did not hold</td><td>-0.15</td><td>302</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Emma Shaye</td><td class="no">did not hold</td><td>-0.15</td><td>106</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The Carpenters Daughter</td><td class="no">did not hold</td><td>-0.15</td><td>292</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Coffey Custom Builds</td><td class="no">did not hold</td><td>-0.19</td><td>33</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Jonny Builds</td><td class="no">did not hold</td><td>-0.20</td><td>139</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Kelly Hays</td><td class="no">did not hold</td><td>-0.26</td><td>261</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Studio NOHA</td><td class="no">did not hold</td><td>-0.28</td><td>14</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Visual Thinker</td><td class="no">did not hold</td><td>-0.31</td><td>14</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Tropical Russian</td><td class="no">did not hold</td><td>-0.45</td><td>60</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Mind Of A Criminal</td><td class="no">did not hold</td><td>-0.48</td><td>32</td><td>2026-09-01</td><td>first-28d</td></tr></tbody></table></div>
-    </details>
-    
-    <p class="q-gate"><b>Why this fired:</b> A signature is only challenged at 3+ channels holding under 40% — one bad channel cannot do this. The signature stands until a person re-adjudicates.</p>
-    <p class="q-action"><b>To resolve:</b> The discriminating question: Is the test measuring what the claim actually asserts, or does the claim hold under conditions the test does not capture? Re-sign it with a narrower scope, reject it, or fault the test.</p>
-    
-  </div>
 <h2>Blocked pulls (2)</h2>
 <p class="q-explain">Channels no connected account can read analytics for. Each names exactly what a permission grant would unlock.</p>
 
@@ -952,6 +855,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     <div class="q-head"><span class="q-kind">pull-blocked</span><code class="q-id">467a6620a481</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">Nizarisaqt is Studio-blocked from every signed-in account. Needs a permission grant (Studio -&gt; Settings -&gt; Permissions) or stays public-seed only.</p>
+    
     
     
     
@@ -975,6 +879,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     
     
+    
     <div class="q-channel"><b>Mercanthony</b> · 2356 videos · proposed niche: <b>gaming</b> (tags nothing until confirmed)
           <div class="q-unlocks"><span class="q-unlock">retention curves (per-video, 100-point)</span><span class="q-unlock">CTR + impressions (first-28d and lifetime)</span><span class="q-unlock">viewer cohorts (regular/casual/new)</span></div></div>
     
@@ -984,7 +889,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     <p class="q-action"><b>To resolve:</b> Have the channel owner add analytics@influint.co (or any connected account) in Studio -&gt; Settings -&gt; Permissions at Analyst or higher, then resolve this item.</p>
     
   </div>
-<h2>Standing moves (11)</h2>
+<h2>Standing moves (12)</h2>
 <p class="q-explain">The evidence ladder moved a claim since the last sync. This is the system working — filed here so no move happens silently. Resolving just acknowledges it.</p>
 
   <div class="q-card q-open">
@@ -1001,6 +906,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">33% held · 18 channels · 27 readings · median |effect| 0.19</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>578</b> videos behind them &middot; median |effect| <b>0.94</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>11</b> channels &middot; <b>2,663</b> videos behind them &middot; median |effect| <b>0.09</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (43) — chart + table</summary>
@@ -1202,6 +1120,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>567</b> videos behind them &middot; median |effect| <b>0.54</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>10</b> channels &middot; <b>2,568</b> videos behind them &middot; median |effect| <b>0.03</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (60) — chart + table</summary>
@@ -1471,6 +1402,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">40% held · 5 channels · 10 readings · median |effect| 0.43</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>2</b> channels &middot; <b>16</b> videos behind them &middot; median |effect| <b>0.43</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>3</b> channels &middot; <b>25</b> videos behind them &middot; median |effect| <b>0.34</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (6) — chart + table</summary>
@@ -1524,6 +1468,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">33% held · 18 channels · 27 readings · median |effect| 0.19</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>578</b> videos behind them &middot; median |effect| <b>0.94</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>11</b> channels &middot; <b>2,663</b> videos behind them &middot; median |effect| <b>0.09</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (43) — chart + table</summary>
@@ -1725,6 +1682,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>567</b> videos behind them &middot; median |effect| <b>0.54</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>10</b> channels &middot; <b>2,568</b> videos behind them &middot; median |effect| <b>0.03</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (60) — chart + table</summary>
@@ -1994,6 +1964,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>567</b> videos behind them &middot; median |effect| <b>0.54</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>10</b> channels &middot; <b>2,568</b> videos behind them &middot; median |effect| <b>0.03</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (60) — chart + table</summary>
@@ -2263,6 +2246,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">40% held · 5 channels · 10 readings · median |effect| 0.43</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>2</b> channels &middot; <b>16</b> videos behind them &middot; median |effect| <b>0.43</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>3</b> channels &middot; <b>25</b> videos behind them &middot; median |effect| <b>0.34</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (6) — chart + table</summary>
@@ -2310,12 +2306,8 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>The phrase 'thanks to our sponsor' plus the brand name is itself the skip trigger; showing the product solving the problem FIRST and naming the sponsor only at the end of the segment reduces the drop.</p></blockquote>
     <p class="q-probe">The question put to the data: <i>Do sponsor reads that open by naming the sponsor bleed more of the audience than reads that open some other way?</i></p>
     <p class="q-move"><span class="q-chip qs-theory">theory</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-rej">rejected</span></p>
-    <div class="q-bars"><div class="q-reading">
-      <div class="q-rlabel">evidence at the time of the move</div>
-      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
-      <div class="q-rmeta">0% held · 0 readings · median |effect| 0.00</div>
-      
-    </div></div>
+    
+    
     
     
     
@@ -2332,12 +2324,8 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>Saying the sponsor's name at the START of an integration is itself the trigger for the retention dip — it is an auditory cue that tells viewers exactly when to skip. Moving the words 'this video is sponsored by' to the END of the segment removes the cue.</p></blockquote>
     <p class="q-probe">The question put to the data: <i>Do sponsor reads that open by naming the sponsor bleed more of the audience than reads that open some other way?</i></p>
     <p class="q-move"><span class="q-chip qs-theory">theory</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-rej">rejected</span></p>
-    <div class="q-bars"><div class="q-reading">
-      <div class="q-rlabel">evidence at the time of the move</div>
-      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
-      <div class="q-rmeta">0% held · 0 readings · median |effect| 0.00</div>
-      
-    </div></div>
+    
+    
     
     
     
@@ -2360,6 +2348,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">58% held · 18 channels · 50 readings · median |effect| 0.23</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>12</b> channels &middot; <b>1,238</b> videos behind them &middot; median |effect| <b>0.38</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>6</b> channels &middot; <b>1,338</b> videos behind them &middot; median |effect| <b>0.11</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (18) — chart + table</summary>
@@ -2461,6 +2462,19 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
       
     </div></div>
+    <div class="q-sides">
+      
+      <div class="q-side q-side-for">
+        <div class="q-sidehead">Supports the claim</div>
+        <div class="q-sidenums"><b>7</b> channels &middot; <b>567</b> videos behind them &middot; median |effect| <b>0.54</b></div>
+      </div>
+      
+      <div class="q-side q-side-against">
+        <div class="q-sidehead">Does not</div>
+        <div class="q-sidenums"><b>10</b> channels &middot; <b>2,568</b> videos behind them &middot; median |effect| <b>0.03</b></div>
+      </div>
+    </div>
+    
     
     
     <details class="q-more"><summary>Per-channel readings (60) — chart + table</summary>
@@ -2716,6 +2730,38 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     <p class="q-action"><b>To resolve:</b> Nothing is required — this is the ladder working. Resolve to acknowledge, or open the claim page if the move looks wrong.</p>
     
   </div>
+  <div class="q-card q-open">
+    <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">38ed63ebd0bc</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"The first 30 seconds is the most important stretch of a long-form video: across our measur" moved candidate-law -&gt; law on this sync.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-law">law</span><span class="q-signer">signed by majied</span><p>The first 30 seconds is the most important stretch of a long-form video: across our measured channels a median 35.1% of viewers are gone by 0:30 (middle half of channels 29.3-37.5%) and 44.7% by 1:00, so a fixed diagnostic pass belongs on the 0-60s window of every video.</p></blockquote>
+    
+    <p class="q-move"><span class="q-chip qs-cand">candidate-law</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-law">law</span></p>
+    
+    
+    
+    <div class="q-datasays">
+    <p class="q-dstitle"><b>Measured refinement</b> &mdash; Share of viewers gone by 0:30, per channel (median over its analysed videos)</p>
+    <svg viewBox="0 0 600 78" class="q-dssvg" role="img" aria-label="Distribution of per-channel values with the claim's asserted value marked">
+      <rect x="378.8" y="34" width="97.6" height="24" class="q-dsband"><title>middle half of channels: 29.3&ndash;37.5%</title></rect>
+      <line x1="447.9" y1="28" x2="447.9" y2="64" class="q-dsmedian"><title>median channel: 35.1%</title></line>
+      <text x="447.9" y="22" class="q-dsmedlabel">data: 35.1%</text>
+      <line x1="387.1" y1="28" x2="387.1" y2="64" class="q-dsclaim"/>
+      <text x="387.1" y="12" class="q-dsclaimlabel">the claim says ~30% by 0:30-1:00</text>
+      <circle cx="186.0" cy="46" r="4.5" class="q-dsdot"><title>Man Made: 13.1%</title></circle><circle cx="341.9" cy="46" r="4.5" class="q-dsdot"><title>Kelly Hays: 26.2%</title></circle><circle cx="347.9" cy="46" r="4.5" class="q-dsdot"><title>MoreNizarisaqt: 26.7%</title></circle><circle cx="369.3" cy="46" r="4.5" class="q-dsdot"><title>Mind Of A Criminal: 28.5%</title></circle><circle cx="378.8" cy="46" r="4.5" class="q-dsdot"><title>Her Two Wheels: 29.3%</title></circle><circle cx="394.3" cy="46" r="4.5" class="q-dsdot"><title>Emma Shaye: 30.6%</title></circle><circle cx="426.4" cy="46" r="4.5" class="q-dsdot"><title>The BlackVeil Files: 33.3%</title></circle><circle cx="439.5" cy="46" r="4.5" class="q-dsdot"><title>Jonny Builds: 34.4%</title></circle><circle cx="445.5" cy="46" r="4.5" class="q-dsdot"><title>Zac Builds: 34.9%</title></circle><circle cx="449.0" cy="46" r="4.5" class="q-dsdot"><title>Phoebe Taylor: 35.2%</title></circle><circle cx="468.1" cy="46" r="4.5" class="q-dsdot"><title>Morley Kert: 36.8%</title></circle><circle cx="472.9" cy="46" r="4.5" class="q-dsdot"><title>The Carpenters Daughter: 37.2%</title></circle><circle cx="474.0" cy="46" r="4.5" class="q-dsdot"><title>The Mountain Maker: 37.3%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Tropical Russian: 37.5%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Coffey Custom Builds: 37.5%</title></circle><circle cx="495.5" cy="46" r="4.5" class="q-dsdot"><title>Visual Thinker: 39.1%</title></circle><circle cx="502.6" cy="46" r="4.5" class="q-dsdot"><title>Studio NOHA: 39.7%</title></circle><circle cx="518.1" cy="46" r="4.5" class="q-dsdot"><title>Isabella Demarko: 41%</title></circle>
+      <line x1="30" y1="58" x2="570" y2="58" class="q-dsaxis"/>
+      <line x1="30.0" y1="56" x2="30.0" y2="60" class="q-dstick"/><text x="30.0" y="72" class="q-dslabel">0%</text><line x1="208.6" y1="56" x2="208.6" y2="60" class="q-dstick"/><text x="208.6" y="72" class="q-dslabel">15%</text><line x1="387.1" y1="56" x2="387.1" y2="60" class="q-dstick"/><text x="387.1" y="72" class="q-dslabel">30%</text><line x1="565.7" y1="56" x2="565.7" y2="60" class="q-dstick"/><text x="565.7" y="72" class="q-dslabel">45%</text>
+    </svg>
+    <p class="q-dsrestate">Measured directly: the median channel has lost 35.1% of viewers by 0:30 (middle half of channels: 29.3-37.5%), and 44.7% by 1:00. A precise re-signing would say &quot;roughly 35% are gone by 0:30, 45% by 1:00&quot; — the claim&#39;s 30% sits inside what the curves show — imprecise rather than wrong. Note: the probe this claim was once bound to tested something else entirely (whether intro hold correlates with views) — its 7%-held record never measured the claim&#39;s own number, and that binding was removed by adjudication on 2026-09-01.</p>
+    <p class="q-dswindow">Window: 18 channels with 8+ usable curves; every analysed video, not a recent-window slice. Each dot is one channel's median; hover a dot for its name.</p>
+  </div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Standings re-derive from the ledger every sync; only a human signature reaches Law, and a human reject outranks any data.</p>
+    <p class="q-action"><b>To resolve:</b> Nothing is required — this is the ladder working. Resolve to acknowledge, or open the claim page if the move looks wrong.</p>
+    
+  </div>
 <details><summary>Lapsed &mdash; no longer detected, never decided (13)</summary>
   <div class="q-card q-lapsed">
     <div class="q-head"><span class="q-kind">niche-unconfirmed</span><code class="q-id">cb3cb285cfe3</code>
@@ -2836,6 +2882,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     
     
+    
     <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
     <p class="q-action"><b>To resolve:</b> Either re-scope the claim to vanlife-travel (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
     
@@ -2899,6 +2946,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
       <div class="q-rchannels">Cody Leach, Josh Prime, ModernGurlz</div>
     </div></div>
+    
     
     
     
@@ -2970,6 +3018,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     
     
+    
     <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
     <p class="q-action"><b>To resolve:</b> Either re-scope the claim to true-crime (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
     
@@ -2998,6 +3047,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
       <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
       <div class="q-rchannels">Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
     </div></div>
+    
     
     
     
@@ -3069,11 +3119,12 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     
     
+    
     <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
     <p class="q-action"><b>To resolve:</b> Either re-scope the claim to true-crime (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
     
   </div></details>
-<details><summary>Resolved (3)</summary>
+<details><summary>Resolved (4)</summary>
   <div class="q-card q-resolved">
     <div class="q-head"><span class="q-kind">redundancy</span><code class="q-id">74a116f205aa</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
@@ -3081,6 +3132,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     <blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>The explicit sponsor callout phrase itself causes the drop, not the ad content: naming the sponsor up front is consistently followed by a retention decline, and disclosing AFTER demonstrating the product (framed as gratitude) avoids it.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>The phrase 'thanks to our sponsor' plus the brand name is itself the skip trigger; showing the product solving the problem FIRST and naming the sponsor only at the end of the segment reduces the drop.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>Saying the sponsor's name at the START of an integration is itself the trigger for the retention dip — it is an auditory cue that tells viewers exactly when to skip. Moving the words 'this video is sponsored by' to the END of the segment removes the cue.</p></blockquote>
     <p class="q-probe">The question put to the data: <i>Do sponsor reads that open by naming the sponsor bleed more of the audience than reads that open some other way?</i></p>
+    
     
     
     
@@ -3104,9 +3156,126 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     
     
+    
     <p class="q-gate"><b>Why this fired:</b> All 2 are graded by the SAME arithmetic in the same direction, so any "how many claims are measured" tally counts one test 2 times.</p>
     <p class="q-action"><b>To resolve:</b> Merge them into one claim (keeping the others as mergedFrom), or add a note naming the nuance that keeps them separate. Until then the honest measured-claims count subtracts the duplicates.</p>
     <p class="q-resolution">Resolved by majied: Merge directed in chat 2026-09-01, executed by Claude: kept the signed 6442f0e91c5f; duplicate was observation-only phrasing.</p>
+  </div>
+  <div class="q-card q-resolved">
+    <div class="q-head"><span class="q-kind">signature-vs-data</span><code class="q-id">d652b94cd8f8</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">A claim majied signed is contested by its own measurements: Signed off as a Law, but our own measurements disagree: it held in only 7% of readings across 18 channels.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><span class="q-signer">signed by majied</span><p>The first 30 seconds is the most important stretch of a long-form video, and on average roughly the first 30% of viewers are gone by the 30-60 second mark — so a fixed diagnostic pass belongs on the 0-60s window of every video.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Does surviving the first 30 seconds predict a video's views?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">the measured record</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:7%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">7% held · 18 channels · 60 readings · median |effect| 0.16</div>
+      
+    </div></div>
+    
+    
+    <div class="q-datasays">
+    <p class="q-dstitle"><b>Measured refinement</b> &mdash; Share of viewers gone by 0:30, per channel (median over its analysed videos)</p>
+    <svg viewBox="0 0 600 78" class="q-dssvg" role="img" aria-label="Distribution of per-channel values with the claim's asserted value marked">
+      <rect x="378.8" y="34" width="97.6" height="24" class="q-dsband"><title>middle half of channels: 29.3&ndash;37.5%</title></rect>
+      <line x1="447.9" y1="28" x2="447.9" y2="64" class="q-dsmedian"><title>median channel: 35.1%</title></line>
+      <text x="447.9" y="22" class="q-dsmedlabel">data: 35.1%</text>
+      <line x1="387.1" y1="28" x2="387.1" y2="64" class="q-dsclaim"/>
+      <text x="387.1" y="12" class="q-dsclaimlabel">the claim says ~30% by 0:30-1:00</text>
+      <circle cx="186.0" cy="46" r="4.5" class="q-dsdot"><title>Man Made: 13.1%</title></circle><circle cx="341.9" cy="46" r="4.5" class="q-dsdot"><title>Kelly Hays: 26.2%</title></circle><circle cx="347.9" cy="46" r="4.5" class="q-dsdot"><title>MoreNizarisaqt: 26.7%</title></circle><circle cx="369.3" cy="46" r="4.5" class="q-dsdot"><title>Mind Of A Criminal: 28.5%</title></circle><circle cx="378.8" cy="46" r="4.5" class="q-dsdot"><title>Her Two Wheels: 29.3%</title></circle><circle cx="394.3" cy="46" r="4.5" class="q-dsdot"><title>Emma Shaye: 30.6%</title></circle><circle cx="426.4" cy="46" r="4.5" class="q-dsdot"><title>The BlackVeil Files: 33.3%</title></circle><circle cx="439.5" cy="46" r="4.5" class="q-dsdot"><title>Jonny Builds: 34.4%</title></circle><circle cx="445.5" cy="46" r="4.5" class="q-dsdot"><title>Zac Builds: 34.9%</title></circle><circle cx="449.0" cy="46" r="4.5" class="q-dsdot"><title>Phoebe Taylor: 35.2%</title></circle><circle cx="468.1" cy="46" r="4.5" class="q-dsdot"><title>Morley Kert: 36.8%</title></circle><circle cx="472.9" cy="46" r="4.5" class="q-dsdot"><title>The Carpenters Daughter: 37.2%</title></circle><circle cx="474.0" cy="46" r="4.5" class="q-dsdot"><title>The Mountain Maker: 37.3%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Tropical Russian: 37.5%</title></circle><circle cx="476.4" cy="46" r="4.5" class="q-dsdot"><title>Coffey Custom Builds: 37.5%</title></circle><circle cx="495.5" cy="46" r="4.5" class="q-dsdot"><title>Visual Thinker: 39.1%</title></circle><circle cx="502.6" cy="46" r="4.5" class="q-dsdot"><title>Studio NOHA: 39.7%</title></circle><circle cx="518.1" cy="46" r="4.5" class="q-dsdot"><title>Isabella Demarko: 41%</title></circle>
+      <line x1="30" y1="58" x2="570" y2="58" class="q-dsaxis"/>
+      <line x1="30.0" y1="56" x2="30.0" y2="60" class="q-dstick"/><text x="30.0" y="72" class="q-dslabel">0%</text><line x1="208.6" y1="56" x2="208.6" y2="60" class="q-dstick"/><text x="208.6" y="72" class="q-dslabel">15%</text><line x1="387.1" y1="56" x2="387.1" y2="60" class="q-dstick"/><text x="387.1" y="72" class="q-dslabel">30%</text><line x1="565.7" y1="56" x2="565.7" y2="60" class="q-dstick"/><text x="565.7" y="72" class="q-dslabel">45%</text>
+    </svg>
+    <p class="q-dsrestate">Measured directly: the median channel has lost 35.1% of viewers by 0:30 (middle half of channels: 29.3-37.5%), and 44.7% by 1:00. A precise re-signing would say &quot;roughly 35% are gone by 0:30, 45% by 1:00&quot; — the claim&#39;s 30% sits inside what the curves show — imprecise rather than wrong. Note the bound probe tests something else entirely (whether intro hold correlates with views), which is what the 7%-held record refutes — the claim&#39;s own number was never the thing failing.</p>
+    <p class="q-dswindow">Window: 18 channels with 8+ usable curves; every analysed video, not a recent-window slice. Each dot is one channel's median; hover a dot for its name.</p>
+  </div>
+    <details class="q-more"><summary>Per-channel readings (18) — chart + table</summary>
+      <div class="q-pcsort">sort: <button type="button" class="q-sortbtn" data-qsort="effect">by effect</button><button type="button" class="q-sortbtn" data-qsort="name">by name</button>
+        <span class="q-pckey">bar right of centre = supports the claim &middot; <span class="q-pclt-key">lt</span> = lifetime views, excluded from figures</span></div>
+      <div class="q-pcchart"><div class="q-pcrow" data-effect="0.3" data-name="Man Made" title="Man Made: effect +0.30 toward the claim, held, n=10, measured 2026-09-01">
+        <span class="q-pcname">Man Made</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-hi" style="left:50%;width:30.0%"></i></span>
+        <span class="q-pcval">+0.30</span>
+      </div><div class="q-pcrow" data-effect="0.12" data-name="Isabella Demarko" title="Isabella Demarko: effect +0.12 toward the claim, did not hold, n=204, measured 2026-09-01">
+        <span class="q-pcname">Isabella Demarko</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:12.0%"></i></span>
+        <span class="q-pcval">+0.12</span>
+      </div><div class="q-pcrow" data-effect="0.11" data-name="The Mountain Maker" title="The Mountain Maker: effect +0.11 toward the claim, did not hold, n=149, measured 2026-09-01">
+        <span class="q-pcname">The Mountain Maker</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:11.0%"></i></span>
+        <span class="q-pcval">+0.11</span>
+      </div><div class="q-pcrow" data-effect="0.11" data-name="MoreNizarisaqt" title="MoreNizarisaqt: effect +0.11 toward the claim, did not hold, n=470, measured 2026-09-01">
+        <span class="q-pcname">MoreNizarisaqt</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="left:50%;width:11.0%"></i></span>
+        <span class="q-pcval">+0.11</span>
+      </div><div class="q-pcrow" data-effect="-0.03" data-name="The BlackVeil Files" title="The BlackVeil Files: effect -0.03 toward the claim, did not hold, n=27, measured 2026-09-01">
+        <span class="q-pcname">The BlackVeil Files</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:3.0%"></i></span>
+        <span class="q-pcval">-0.03</span>
+      </div><div class="q-pcrow" data-effect="-0.05" data-name="Morley Kert" title="Morley Kert: effect -0.05 toward the claim, did not hold, n=226, measured 2026-09-01">
+        <span class="q-pcname">Morley Kert</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:5.0%"></i></span>
+        <span class="q-pcval">-0.05</span>
+      </div><div class="q-pcrow" data-effect="-0.09" data-name="Phoebe Taylor" title="Phoebe Taylor: effect -0.09 toward the claim, did not hold, n=149, measured 2026-09-01">
+        <span class="q-pcname">Phoebe Taylor</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:9.0%"></i></span>
+        <span class="q-pcval">-0.09</span>
+      </div><div class="q-pcrow" data-effect="-0.12" data-name="Zac Builds" title="Zac Builds: effect -0.12 toward the claim, did not hold, n=84, measured 2026-09-01">
+        <span class="q-pcname">Zac Builds</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:12.0%"></i></span>
+        <span class="q-pcval">-0.12</span>
+      </div><div class="q-pcrow" data-effect="-0.15" data-name="Her Two Wheels" title="Her Two Wheels: effect -0.15 toward the claim, did not hold, n=302, measured 2026-09-01">
+        <span class="q-pcname">Her Two Wheels</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
+        <span class="q-pcval">-0.15</span>
+      </div><div class="q-pcrow" data-effect="-0.15" data-name="Emma Shaye" title="Emma Shaye: effect -0.15 toward the claim, did not hold, n=106, measured 2026-09-01">
+        <span class="q-pcname">Emma Shaye</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
+        <span class="q-pcval">-0.15</span>
+      </div><div class="q-pcrow" data-effect="-0.15" data-name="The Carpenters Daughter" title="The Carpenters Daughter: effect -0.15 toward the claim, did not hold, n=292, measured 2026-09-01">
+        <span class="q-pcname">The Carpenters Daughter</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:15.0%"></i></span>
+        <span class="q-pcval">-0.15</span>
+      </div><div class="q-pcrow" data-effect="-0.19" data-name="Coffey Custom Builds" title="Coffey Custom Builds: effect -0.19 toward the claim, did not hold, n=33, measured 2026-09-01">
+        <span class="q-pcname">Coffey Custom Builds</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:19.0%"></i></span>
+        <span class="q-pcval">-0.19</span>
+      </div><div class="q-pcrow" data-effect="-0.2" data-name="Jonny Builds" title="Jonny Builds: effect -0.20 toward the claim, did not hold, n=139, measured 2026-09-01">
+        <span class="q-pcname">Jonny Builds</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:20.0%"></i></span>
+        <span class="q-pcval">-0.20</span>
+      </div><div class="q-pcrow" data-effect="-0.26" data-name="Kelly Hays" title="Kelly Hays: effect -0.26 toward the claim, did not hold, n=261, measured 2026-09-01">
+        <span class="q-pcname">Kelly Hays</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:26.0%"></i></span>
+        <span class="q-pcval">-0.26</span>
+      </div><div class="q-pcrow" data-effect="-0.28" data-name="Studio NOHA" title="Studio NOHA: effect -0.28 toward the claim, did not hold, n=14, measured 2026-09-01">
+        <span class="q-pcname">Studio NOHA</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:28.0%"></i></span>
+        <span class="q-pcval">-0.28</span>
+      </div><div class="q-pcrow" data-effect="-0.31" data-name="Visual Thinker" title="Visual Thinker: effect -0.31 toward the claim, did not hold, n=14, measured 2026-09-01">
+        <span class="q-pcname">Visual Thinker</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:31.0%"></i></span>
+        <span class="q-pcval">-0.31</span>
+      </div><div class="q-pcrow" data-effect="-0.45" data-name="Tropical Russian" title="Tropical Russian: effect -0.45 toward the claim, did not hold, n=60, measured 2026-09-01">
+        <span class="q-pcname">Tropical Russian</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:45.0%"></i></span>
+        <span class="q-pcval">-0.45</span>
+      </div><div class="q-pcrow" data-effect="-0.48" data-name="Mind Of A Criminal" title="Mind Of A Criminal: effect -0.48 toward the claim, did not hold, n=32, measured 2026-09-01">
+        <span class="q-pcname">Mind Of A Criminal</span>
+        <span class="q-pctrack"><i class="q-pczero"></i><i class="q-pcbar q-lo" style="right:50%;width:48.0%"></i></span>
+        <span class="q-pcval">-0.48</span>
+      </div></div>
+      <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel readings (scrolls sideways)"><table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>n</th><th>Measured</th><th>Views basis</th></tr></thead>
+        <tbody><tr class=""><td>Man Made</td><td class="ok">held</td><td>+0.30</td><td>10</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Isabella Demarko</td><td class="no">did not hold</td><td>+0.12</td><td>204</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The Mountain Maker</td><td class="no">did not hold</td><td>+0.11</td><td>149</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>MoreNizarisaqt</td><td class="no">did not hold</td><td>+0.11</td><td>470</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The BlackVeil Files</td><td class="no">did not hold</td><td>-0.03</td><td>27</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Morley Kert</td><td class="no">did not hold</td><td>-0.05</td><td>226</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Phoebe Taylor</td><td class="no">did not hold</td><td>-0.09</td><td>149</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Zac Builds</td><td class="no">did not hold</td><td>-0.12</td><td>84</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Her Two Wheels</td><td class="no">did not hold</td><td>-0.15</td><td>302</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Emma Shaye</td><td class="no">did not hold</td><td>-0.15</td><td>106</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>The Carpenters Daughter</td><td class="no">did not hold</td><td>-0.15</td><td>292</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Coffey Custom Builds</td><td class="no">did not hold</td><td>-0.19</td><td>33</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Jonny Builds</td><td class="no">did not hold</td><td>-0.20</td><td>139</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Kelly Hays</td><td class="no">did not hold</td><td>-0.26</td><td>261</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Studio NOHA</td><td class="no">did not hold</td><td>-0.28</td><td>14</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Visual Thinker</td><td class="no">did not hold</td><td>-0.31</td><td>14</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Tropical Russian</td><td class="no">did not hold</td><td>-0.45</td><td>60</td><td>2026-09-01</td><td>first-28d</td></tr><tr class=""><td>Mind Of A Criminal</td><td class="no">did not hold</td><td>-0.48</td><td>32</td><td>2026-09-01</td><td>first-28d</td></tr></tbody></table></div>
+    </details>
+    
+    <p class="q-gate"><b>Why this fired:</b> A signature is only challenged at 3+ channels holding under 40% — one bad channel cannot do this. The signature stands until a person re-adjudicates.</p>
+    <p class="q-action"><b>To resolve:</b> The discriminating question: Is the test measuring what the claim actually asserts, or does the claim hold under conditions the test does not capture? Re-sign it with a narrower scope, reject it, or fault the test.</p>
+    <p class="q-resolution">Resolved by majied: Directed in chat 2026-09-01, executed by Claude: re-signed at Law with the refiner's measured figures (35.1% gone by 0:30, middle half 29.3-37.5%; 44.7% by 1:00). The 7%-held record measured a different question (intro-hold vs views correlation) — that mis-binding was removed with its observations backed up, and the claim text now carries the real numbers.</p>
   </div>
   <div class="q-card q-resolved">
     <div class="q-head"><span class="q-kind">redundancy</span><code class="q-id">5db79727488e</code>
@@ -3115,6 +3284,7 @@ detector's own gates: below 40% the evidence fails the claim, above 70% it suppo
     
     <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Consistency of cadence matters more than the cadence itself. Whatever the interval, holding it reliably programs the audience to expect the next video; an erratic schedule costs more than a slow one. Frequency should then be set by niche: fast-moving interests (gaming, news) reward more frequent, lower-production uploads because timeliness is the value, while slower niches (homemaking, long-form build) can carry a monthly cadence when production quality is the value.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly patterns; consistency of rhythm matters, not just raw frequency.</p></blockquote>
     <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    
     
     
     

@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Open questions (18) · Influint intelligence</title>
+<title>Open questions (13) · Influint intelligence</title>
 <link rel="icon" href="../assets/brand/influint-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -755,153 +755,298 @@ table.obs td.no{color:#ff8f8f}
 </header>
 
 <style>
-.q-card{border:1px solid var(--line,#2a2a33);border-radius:10px;padding:12px 16px;margin:10px 0;background:var(--card,#141419)}
-.q-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:.8rem}
-.q-kind{font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent,#e6007e)}
-.q-id{opacity:.7}.q-dates{opacity:.55;margin-left:auto}
-.q-summary{margin:.5em 0 .2em;font-size:.95rem}
+.q-card{border:1px solid var(--line,rgba(141,216,211,.16));border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel,#081c1c)}
+.q-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:.78rem}
+.q-kind{font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal,#8dd8d3)}
+.q-id{opacity:.6}.q-dates{opacity:.5;margin-left:auto}
+.q-summary{margin:.55em 0 .35em;font-size:.95rem;line-height:1.5}
+.q-explain{color:var(--grey,#8a9a9a);font-size:.85rem;max-width:72ch;margin:.2em 0 .6em;line-height:1.55}
 .q-evidence{margin:0;font-size:.8rem;opacity:.7;overflow-wrap:anywhere}
-.q-resolution{margin:.4em 0 0;font-size:.85rem;color:#7dd07d}
+.q-claim{margin:.55em 0;padding:.55em .9em;border-left:3px solid var(--teal-deep,#0b6374);background:rgba(141,216,211,.05);border-radius:0 8px 8px 0}
+.q-claim p{margin:.3em 0 0;font-size:.88rem;line-height:1.5;font-style:italic}
+.q-chip{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:.05em .6em;margin-right:.5em}
+.qs-law{color:var(--hot,#5ad8a6)}.qs-cand{color:#b6d94c}.qs-theory{color:#7ee3f5}.qs-warn{color:var(--warn,#f6c344)}.qs-rej{color:var(--cold,#ff6b6b)}
+.q-signer{font-size:.72rem;color:var(--grey,#8a9a9a)}
+.q-probe{font-size:.82rem;color:var(--grey,#8a9a9a);margin:.4em 0}
+.q-move{display:flex;align-items:center;gap:.4em;margin:.5em 0}
+.q-arrow{color:var(--grey,#8a9a9a)}
+.q-bars{margin:.6em 0 .2em}
+.q-reading{margin:.55em 0}
+.q-rlabel{font-size:.8rem;margin-bottom:3px;overflow-wrap:anywhere}
+.q-track{position:relative;height:12px;border-radius:6px;background:rgba(141,216,211,.09);overflow:hidden}
+.q-fill{position:absolute;inset:0 auto 0 0;border-radius:6px}
+.q-hi{background:var(--hot,#5ad8a6)}.q-lo{background:var(--cold,#ff6b6b)}.q-mid{background:var(--warn,#f6c344)}
+.q-tick{position:absolute;top:-2px;bottom:-2px;width:1px;background:rgba(255,255,255,.35)}
+.q-rmeta{font-size:.72rem;color:var(--grey,#8a9a9a);margin-top:3px}
+.q-rchannels{font-size:.7rem;color:var(--grey,#8a9a9a);opacity:.8;overflow-wrap:anywhere}
+.q-channel{font-size:.85rem;margin:.5em 0}
+.q-unlocks{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.q-unlock{font-size:.72rem;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:999px;padding:.15em .7em;color:var(--teal,#8dd8d3)}
+.q-gate,.q-action{font-size:.8rem;color:var(--grey,#8a9a9a);margin:.45em 0 0;line-height:1.5;max-width:78ch}
+.q-action{color:inherit;opacity:.92}
+.q-resolution{margin:.5em 0 0;font-size:.85rem;color:var(--hot,#5ad8a6)}
 .q-lapsed{opacity:.6}.q-resolved{opacity:.75}
-.q-how{font-size:.85rem;opacity:.8}
+.q-how{font-size:.85rem;opacity:.8;overflow-wrap:anywhere}
+.q-legend{font-size:.75rem;color:var(--grey,#8a9a9a);margin:0 0 8px}
 </style>
 <h1>Open questions</h1>
 <p class="lede">Everything the intelligence loop found that only a person may settle. Code detects and
 re-detects; nothing here resolves itself. An item that stops being detected LAPSES &mdash; lapsed is not
-settled, and a resolved item that is detected again reopens.</p>
+settled, and a resolved item that is detected again reopens. Every card carries the full claim wording
+and the readings behind the detection, so it can be decided from this page alone.</p>
+<p class="q-legend">Bars show the share of readings that landed the way the claim predicts. The two ticks are the
+detector's own gates: below 40% the evidence fails the claim, above 70% it supports it.</p>
 <p class="q-how">Resolve with <code>RESOLVED_BY=&lt;name&gt; npm run intel:adjudicate -- --resolve &lt;id&gt; "reason"</code></p>
-<h2>redundancy (3)</h2>
+<h2>Redundancies (3)</h2>
+<p class="q-explain">Several claims are graded by the same arithmetic in the same direction — one measurement wearing several names. Any tally of measured claims double-counts them until they are merged or deliberately kept apart.</p>
+
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">redundancy</span><code class="q-id">74a116f205aa</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">3 claims ride the same probe and direction (named-sponsor-opener-vs-ad-loss up) — one measurement counted 3 times. Merging is a human call; they may carry nuance the probe cannot see.</p>
-    <p class="q-evidence">0 observations across the group, 0 distinct</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>The explicit sponsor callout phrase itself causes the drop, not the ad content: naming the sponsor up front is consistently followed by a retention decline, and disclosing AFTER demonstrating the product (framed as gratitude) avoids it.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>The phrase 'thanks to our sponsor' plus the brand name is itself the skip trigger; showing the product solving the problem FIRST and naming the sponsor only at the end of the segment reduces the drop.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-theory">theory</span><p>Saying the sponsor's name at the START of an integration is itself the trigger for the retention dip — it is an auditory cue that tells viewers exactly when to skip. Moving the words 'this video is sponsored by' to the END of the segment removes the cue.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do sponsor reads that open by naming the sponsor bleed more of the audience than reads that open some other way?</i></p>
+    
+    
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> All 3 are graded by the SAME arithmetic in the same direction, so any "how many claims are measured" tally counts one test 3 times.</p>
+    <p class="q-action"><b>To resolve:</b> Merge them into one claim (keeping the others as mergedFrom), or add a note naming the nuance that keeps them separate. Until then the honest measured-claims count subtracts the duplicates.</p>
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">redundancy</span><code class="q-id">d486c2bcca02</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">2 claims ride the same probe and direction (retention-half-vs-views down) — one measurement counted 2 times. Merging is a human call; they may carry nuance the probe cannot see.</p>
-    <p class="q-evidence">116 observations across the group, 66 distinct</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><span class="q-signer">signed by majied</span><p>Videos with more views systematically show LOWER average retention on the same channel, because wider reach pulls in newer, less-sticky viewers. A retention drop after a repackage is therefore not abnormal and is not by itself evidence the repackage failed — but it is not the desired outcome either: the aim is for retention to hold or improve as reach widens.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Within a channel, videos with the HIGHEST view counts systematically sit BELOW the channel's average retention, because wider reach pulls in newer, less sticky viewers — so falling retention on a breakout is expected, not a defect.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do the videos that hold viewers to halfway also get the most views?</i></p>
+    
+    
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> All 2 are graded by the SAME arithmetic in the same direction, so any "how many claims are measured" tally counts one test 2 times.</p>
+    <p class="q-action"><b>To resolve:</b> Merge them into one claim (keeping the others as mergedFrom), or add a note naming the nuance that keeps them separate. Until then the honest measured-claims count subtracts the duplicates.</p>
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">redundancy</span><code class="q-id">5db79727488e</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">2 claims ride the same probe and direction (cadence-consistency-vs-views up) — one measurement counted 2 times. Merging is a human call; they may carry nuance the probe cannot see.</p>
-    <p class="q-evidence">120 observations across the group, 60 distinct</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Consistency of cadence matters more than the cadence itself. Whatever the interval, holding it reliably programs the audience to expect the next video; an erratic schedule costs more than a slow one. Frequency should then be set by niche: fast-moving interests (gaming, news) reward more frequent, lower-production uploads because timeliness is the value, while slower niches (homemaking, long-form build) can carry a monthly cadence when production quality is the value.</p></blockquote><blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly patterns; consistency of rhythm matters, not just raw frequency.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    
+    
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> All 2 are graded by the SAME arithmetic in the same direction, so any "how many claims are measured" tally counts one test 2 times.</p>
+    <p class="q-action"><b>To resolve:</b> Merge them into one claim (keeping the others as mergedFrom), or add a note naming the nuance that keeps them separate. Until then the honest measured-claims count subtracts the duplicates.</p>
     
   </div>
-<h2>signature-vs-data (1)</h2>
+<h2>Signature vs data (1)</h2>
+<p class="q-explain">A human signed this as a Law; the measurements since disagree. The signature stands until a person re-adjudicates — data alone never erases a signature.</p>
+
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">signature-vs-data</span><code class="q-id">d652b94cd8f8</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">A claim majied signed is contested by its own measurements: Signed off as a Law, but our own measurements disagree: it held in only 7% of readings across 18 channels.</p>
-    <p class="q-evidence">Is the test measuring what the claim actually asserts, or does the claim hold under conditions the test does not capture?</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><span class="q-signer">signed by majied</span><p>The first 30 seconds is the most important stretch of a long-form video, and on average roughly the first 30% of viewers are gone by the 30-60 second mark — so a fixed diagnostic pass belongs on the 0-60s window of every video.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Does surviving the first 30 seconds predict a video's views?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">the measured record</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:7%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">7% held · 18 channels · 60 readings · median |effect| 0.16</div>
+      
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> A signature is only challenged at 3+ channels holding under 40% — one bad channel cannot do this. The signature stands until a person re-adjudicates.</p>
+    <p class="q-action"><b>To resolve:</b> The discriminating question: Is the test measuring what the claim actually asserts, or does the claim hold under conditions the test does not capture? Re-sign it with a narrower scope, reject it, or fault the test.</p>
     
   </div>
-<h2>pull-blocked (2)</h2>
+<h2>Blocked pulls (2)</h2>
+<p class="q-explain">Channels no connected account can read analytics for. Each names exactly what a permission grant would unlock.</p>
+
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">pull-blocked</span><code class="q-id">467a6620a481</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">Nizarisaqt is Studio-blocked from every signed-in account. Needs a permission grant (Studio -&gt; Settings -&gt; Permissions) or stays public-seed only.</p>
-    <p class="q-evidence">roster state: blocked</p>
+    
+    
+    
+    
+    
+    <div class="q-channel"><b>Nizarisaqt</b> · 2245 videos · proposed niche: <b>gaming</b> (tags nothing until confirmed)
+          <div class="q-unlocks"><span class="q-unlock">retention curves (per-video, 100-point)</span><span class="q-unlock">CTR + impressions (first-28d and lifetime)</span><span class="q-unlock">viewer cohorts (regular/casual/new)</span></div></div>
+    
+    <p class="q-gate"><b>Why this fired:</b> Every signed-in account was probed; all combinations returned 403. Switcher visibility is not Studio permission.</p>
+    <p class="q-action"><b>To resolve:</b> Have the channel owner add analytics@influint.co (or any connected account) in Studio -&gt; Settings -&gt; Permissions at Analyst or higher, then resolve this item.</p>
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">pull-blocked</span><code class="q-id">79ef3d7d19f2</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">Mercanthony is Studio-blocked from every signed-in account. Needs a permission grant (Studio -&gt; Settings -&gt; Permissions) or stays public-seed only.</p>
-    <p class="q-evidence">roster state: blocked</p>
+    
+    
+    
+    
+    
+    <div class="q-channel"><b>Mercanthony</b> · 2356 videos · proposed niche: <b>gaming</b> (tags nothing until confirmed)
+          <div class="q-unlocks"><span class="q-unlock">retention curves (per-video, 100-point)</span><span class="q-unlock">CTR + impressions (first-28d and lifetime)</span><span class="q-unlock">viewer cohorts (regular/casual/new)</span></div></div>
+    
+    <p class="q-gate"><b>Why this fired:</b> Every signed-in account was probed; all combinations returned 403. Switcher visibility is not Studio permission.</p>
+    <p class="q-action"><b>To resolve:</b> Have the channel owner add analytics@influint.co (or any connected account) in Studio -&gt; Settings -&gt; Permissions at Analyst or higher, then resolve this item.</p>
     
   </div>
-<h2>standing-flip (7)</h2>
+<h2>Standing moves (7)</h2>
+<p class="q-explain">The evidence ladder moved a claim since the last sync. This is the system working — filed here so no move happens silently. Resolving just acknowledges it.</p>
+
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">fcdbb2950320</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Making a subject the 'world's largest/fastest/most expensive' version of a thing is a desi" moved rejected -&gt; candidate-law on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>Making a subject the 'world's largest/fastest/most expensive' version of a thing is a design decision that manufactures uniqueness, because a superlative topic has no direct competition on YouTube by construction.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do titles escalating to a superlative earn more views than plain ones?</i></p>
+    <p class="q-move"><span class="q-chip qs-rej">rejected</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-cand">candidate-law</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:33%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">33% held · 18 channels · 27 readings · median |effect| 0.19</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">1eee6d6a4f93</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly p" moved candidate-law -&gt; rejected on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly patterns; consistency of rhythm matters, not just raw frequency.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    <p class="q-move"><span class="q-chip qs-cand">candidate-law</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-rej">rejected</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-mid" style="width:41%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">e36060bf96ca</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Prefer video ideas built on formats you can repeat five to ten times with new packaging; o" moved candidate-law -&gt; rejected on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Prefer video ideas built on formats you can repeat five to ten times with new packaging; one-off unrepeatable ideas make every future video a from-scratch invention and starve the pipeline.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do formats that ran for more episodes perform better than short-lived ones?</i></p>
+    <p class="q-move"><span class="q-chip qs-cand">candidate-law</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-rej">rejected</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:40%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">40% held · 5 channels · 10 readings · median |effect| 0.43</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">495391be915e</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Making a subject the 'world's largest/fastest/most expensive' version of a thing is a desi" moved candidate-law -&gt; rejected on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>Making a subject the 'world's largest/fastest/most expensive' version of a thing is a design decision that manufactures uniqueness, because a superlative topic has no direct competition on YouTube by construction.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do titles escalating to a superlative earn more views than plain ones?</i></p>
+    <p class="q-move"><span class="q-chip qs-cand">candidate-law</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-rej">rejected</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:33%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">33% held · 18 channels · 27 readings · median |effect| 0.19</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">5c614dba6aa9</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Consistency of cadence matters more than the cadence itself. Whatever the interval, holdin" moved rejected -&gt; candidate-law on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Consistency of cadence matters more than the cadence itself. Whatever the interval, holding it reliably programs the audience to expect the next video; an erratic schedule costs more than a slow one. Frequency should then be set by niche: fast-moving interests (gaming, news) reward more frequent, lower-production uploads because timeliness is the value, while slower niches (homemaking, long-form build) can carry a monthly cadence when production quality is the value.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    <p class="q-move"><span class="q-chip qs-rej">rejected</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-cand">candidate-law</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-mid" style="width:41%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">426ba20b486e</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly p" moved rejected -&gt; candidate-law on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly patterns; consistency of rhythm matters, not just raw frequency.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    <p class="q-move"><span class="q-chip qs-rej">rejected</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-cand">candidate-law</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-mid" style="width:41%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">41% held · 17 channels · 17 readings · median |effect| 0.13</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
   <div class="q-card q-open">
     <div class="q-head"><span class="q-kind">standing-flip</span><code class="q-id">11c6f8e00a76</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Prefer video ideas built on formats you can repeat five to ten times with new packaging; o" moved rejected -&gt; candidate-law on this sync.</p>
-    <p class="q-evidence">recomputeStandings with current ledger facts</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Prefer video ideas built on formats you can repeat five to ten times with new packaging; one-off unrepeatable ideas make every future video a from-scratch invention and starve the pipeline.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do formats that ran for more episodes perform better than short-lived ones?</i></p>
+    <p class="q-move"><span class="q-chip qs-rej">rejected</span><span class="q-arrow">&rarr;</span><span class="q-chip qs-cand">candidate-law</span></p>
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">evidence as of the latest sync (backfilled — the item predates context)</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:40%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">40% held · 5 channels · 10 readings · median |effect| 0.43</div>
+      
+    </div></div>
+    
+    
+    
+    
     
   </div>
-<h2>niche-divergence (5)</h2>
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">d9b4af8b8e3c</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">"Longer videos do not reduce view counts: on a 30-video retention chart the longest-running" holds in vanlife-travel and fails in restoration. Likely a niched truth wearing a general label.</p>
-    <p class="q-evidence">vanlife-travel: held 100% (3 ch); restoration: held 0% (7 ch)</p>
-    
-  </div>
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">c58facf10023</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">"Consistency of cadence matters more than the cadence itself. Whatever the interval, holdin" holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
-    <p class="q-evidence">true-crime: held 100% (3 ch); restoration: held 0% (7 ch)</p>
-    
-  </div>
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">3ca2297b023a</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">"Numbered/listicle titles are among the strongest title structures because the number sets " holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
-    <p class="q-evidence">true-crime: held 100% (3 ch); restoration: held 0% (7 ch)</p>
-    
-  </div>
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">d6f16efd1be2</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">"When you stack a new upload within about a day and a half of your previous one, that burst" holds in gaming and fails in thrift-flip. Likely a niched truth wearing a general label.</p>
-    <p class="q-evidence">gaming: held 100% (3 ch); thrift-flip: held 0% (3 ch)</p>
-    
-  </div>
-  <div class="q-card q-open">
-    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">262995502b67</code>
-      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
-    <p class="q-summary">"Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly p" holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
-    <p class="q-evidence">true-crime: held 100% (3 ch); restoration: held 0% (7 ch)</p>
-    
-  </div>
-<details><summary>Lapsed &mdash; no longer detected, never decided (8)</summary>
+<details><summary>Lapsed &mdash; no longer detected, never decided (13)</summary>
   <div class="q-card q-lapsed">
     <div class="q-head"><span class="q-kind">niche-unconfirmed</span><code class="q-id">cb3cb285cfe3</code>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
@@ -956,6 +1101,296 @@ settled, and a resolved item that is detected again reopens.</p>
       <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
     <p class="q-summary">"Consistency of cadence matters more than the cadence itself. Whatever the interval, holdin" holds in true-crime and fails in vlog-lifestyle. Likely a niched truth wearing a general label.</p>
     <p class="q-evidence">true-crime: held 100% (3 ch); vlog-lifestyle: held 0% (3 ch)</p>
+    
+  </div>
+  <div class="q-card q-lapsed">
+    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">d9b4af8b8e3c</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"Longer videos do not reduce view counts: on a 30-video retention chart the longest-running" holds in vanlife-travel and fails in restoration. Likely a niched truth wearing a general label.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>Longer videos do not reduce view counts: on a 30-video retention chart the longest-running curves were disproportionately the high-view ones, so length is not the constraint many creators assume.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do longer videos earn more or fewer first-28-day views?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">vanlife-travel</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 0.20</div>
+      <div class="q-rchannels">Tropical Russian, Mobile Dwellings, Ame in a van</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">maker-build</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:31%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">31% held · 9 channels · 42 readings · median |effect| 0.14</div>
+      <div class="q-rchannels">Morley Kert, Jonny Builds, Emma Shaye, Zac Builds, Man Made, Studio NOHA, The Mountain Maker, The Carpenters Daughter, Coffey Custom Builds</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">motorcycle-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:14%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">14% held · 3 channels · 9 readings · median |effect| 0.14</div>
+      <div class="q-rchannels">Her Two Wheels, Rosie Gabrielle, Becky "Axel" Goebel</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">restoration</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 7 channels · 7 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Bus Grease Monkey, Flippingdrawers, BOAT BUSTERS, Dashner Design &amp; Restoration, Upcycle Furniture Finds, Mayfield Restorations, Emma Repairs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">thrift-flip</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 5 channels · 5 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Haley's Corner, Vintage Bombshell, Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">gaming</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 9 readings · median |effect| 0.10</div>
+      <div class="q-rchannels">MoreNizarisaqt, Mercanthony, Nizarisaqt</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vlog-lifestyle</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 6 readings · median |effect| 0.12</div>
+      <div class="q-rchannels">Kelly Hays, Phoebe Taylor, Isabella Demarko</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">true-crime</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.15</div>
+      <div class="q-rchannels">Mind Of A Criminal, The BlackVeil Files, Women Of Crime</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">home-renovation</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Living to DIY with Rachel Metz, Thrift Diving (Serena Appiah), The Nomadic Movement</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">commentary</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Cody Leach, Josh Prime, ModernGurlz</div>
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
+    <p class="q-action"><b>To resolve:</b> Either re-scope the claim to vanlife-travel (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
+    
+  </div>
+  <div class="q-card q-lapsed">
+    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">c58facf10023</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"Consistency of cadence matters more than the cadence itself. Whatever the interval, holdin" holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Consistency of cadence matters more than the cadence itself. Whatever the interval, holding it reliably programs the audience to expect the next video; an erratic schedule costs more than a slow one. Frequency should then be set by niche: fast-moving interests (gaming, news) reward more frequent, lower-production uploads because timeliness is the value, while slower niches (homemaking, long-form build) can carry a monthly cadence when production quality is the value.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">true-crime</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 0.47</div>
+      <div class="q-rchannels">Mind Of A Criminal, The BlackVeil Files, Women Of Crime</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">maker-build</div>
+      <div class="q-track"><span class="q-fill q-mid" style="width:63%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">63% held · 8 channels · 8 readings · median |effect| 0.36</div>
+      <div class="q-rchannels">Morley Kert, Jonny Builds, Emma Shaye, Zac Builds, Studio NOHA, The Mountain Maker, The Carpenters Daughter, Coffey Custom Builds</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">restoration</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 7 channels · 7 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Bus Grease Monkey, Flippingdrawers, BOAT BUSTERS, Dashner Design &amp; Restoration, Upcycle Furniture Finds, Mayfield Restorations, Emma Repairs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">thrift-flip</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 5 channels · 5 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Haley's Corner, Vintage Bombshell, Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vlog-lifestyle</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.05</div>
+      <div class="q-rchannels">Kelly Hays, Phoebe Taylor, Isabella Demarko</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">gaming</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.13</div>
+      <div class="q-rchannels">MoreNizarisaqt, Mercanthony, Nizarisaqt</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">motorcycle-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.02</div>
+      <div class="q-rchannels">Her Two Wheels, Rosie Gabrielle, Becky "Axel" Goebel</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vanlife-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.03</div>
+      <div class="q-rchannels">Tropical Russian, Mobile Dwellings, Ame in a van</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">home-renovation</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Living to DIY with Rachel Metz, Thrift Diving (Serena Appiah), The Nomadic Movement</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">commentary</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Cody Leach, Josh Prime, ModernGurlz</div>
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
+    <p class="q-action"><b>To resolve:</b> Either re-scope the claim to true-crime (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
+    
+  </div>
+  <div class="q-card q-lapsed">
+    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">3ca2297b023a</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"Numbered/listicle titles are among the strongest title structures because the number sets " holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-rej">rejected</span><p>Numbered/listicle titles are among the strongest title structures because the number sets an explicit expectation of scope and implied duration before the click.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>Do titles containing a number out-perform titles without one?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">true-crime</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 1.66</div>
+      <div class="q-rchannels">Mind Of A Criminal, The BlackVeil Files, Women Of Crime</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vanlife-travel</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 0.35</div>
+      <div class="q-rchannels">Tropical Russian, Mobile Dwellings, Ame in a van</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">maker-build</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:24%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">24% held · 8 channels · 33 readings · median |effect| 0.22</div>
+      <div class="q-rchannels">Morley Kert, Jonny Builds, Emma Shaye, Zac Builds, Man Made, The Mountain Maker, The Carpenters Daughter, Coffey Custom Builds</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vlog-lifestyle</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:17%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">17% held · 3 channels · 6 readings · median |effect| 0.04</div>
+      <div class="q-rchannels">Kelly Hays, Phoebe Taylor, Isabella Demarko</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">restoration</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 7 channels · 7 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Bus Grease Monkey, Flippingdrawers, BOAT BUSTERS, Dashner Design &amp; Restoration, Upcycle Furniture Finds, Mayfield Restorations, Emma Repairs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">thrift-flip</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 4 channels · 4 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Haley's Corner, Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">gaming</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 8 readings · median |effect| 0.07</div>
+      <div class="q-rchannels">MoreNizarisaqt, Mercanthony, Nizarisaqt</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">motorcycle-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 8 readings · median |effect| 0.04</div>
+      <div class="q-rchannels">Her Two Wheels, Rosie Gabrielle, Becky "Axel" Goebel</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">home-renovation</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Living to DIY with Rachel Metz, Thrift Diving (Serena Appiah), The Nomadic Movement</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">commentary</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Cody Leach, Josh Prime, ModernGurlz</div>
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
+    <p class="q-action"><b>To resolve:</b> Either re-scope the claim to true-crime (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
+    
+  </div>
+  <div class="q-card q-lapsed">
+    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">d6f16efd1be2</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"When you stack a new upload within about a day and a half of your previous one, that burst" holds in gaming and fails in thrift-flip. Likely a niched truth wearing a general label.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>When you stack a new upload within about a day and a half of your previous one, that burst video tends to get roughly 25% fewer age-adjusted views than your typical non-burst upload — a pattern that held across 8 separate channels.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived in a daily burst (within ~1.5 days of the previous upload) underperform the channel's non-burst baseline?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">gaming</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 0.22</div>
+      <div class="q-rchannels">MoreNizarisaqt, Mercanthony, Nizarisaqt</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">maker-build</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:80%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">80% held · 5 channels · 5 readings · median |effect| 0.44</div>
+      <div class="q-rchannels">Morley Kert, Jonny Builds, Zac Builds, The Mountain Maker, The Carpenters Daughter</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">thrift-flip</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
+    <p class="q-action"><b>To resolve:</b> Either re-scope the claim to gaming (a niched truth wearing a general label), or name the confound that makes thrift-flip different. Splitting is a human decision.</p>
+    
+  </div>
+  <div class="q-card q-lapsed">
+    <div class="q-head"><span class="q-kind">niche-divergence</span><code class="q-id">262995502b67</code>
+      <span class="q-dates">first 2026-09-01 &middot; last 2026-09-01</span></div>
+    <p class="q-summary">"Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly p" holds in true-crime and fails in restoration. Likely a niched truth wearing a general label.</p>
+    
+    <blockquote class="q-claim"><span class="q-chip qs-cand">candidate-law</span><p>Find a stable upload cadence and keep it, so the channel becomes part of viewers' weekly patterns; consistency of rhythm matters, not just raw frequency.</p></blockquote>
+    <p class="q-probe">The question put to the data: <i>On this channel, do uploads that arrived on the channel's usual rhythm out-perform ones that broke it?</i></p>
+    
+    <div class="q-bars"><div class="q-reading">
+      <div class="q-rlabel">true-crime</div>
+      <div class="q-track"><span class="q-fill q-hi" style="width:100%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">100% held · 3 channels · 3 readings · median |effect| 0.47</div>
+      <div class="q-rchannels">Mind Of A Criminal, The BlackVeil Files, Women Of Crime</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">maker-build</div>
+      <div class="q-track"><span class="q-fill q-mid" style="width:63%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">63% held · 8 channels · 8 readings · median |effect| 0.36</div>
+      <div class="q-rchannels">Morley Kert, Jonny Builds, Emma Shaye, Zac Builds, Studio NOHA, The Mountain Maker, The Carpenters Daughter, Coffey Custom Builds</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">restoration</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 7 channels · 7 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Bus Grease Monkey, Flippingdrawers, BOAT BUSTERS, Dashner Design &amp; Restoration, Upcycle Furniture Finds, Mayfield Restorations, Emma Repairs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">thrift-flip</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 5 channels · 5 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Haley's Corner, Vintage Bombshell, Thrilled Thrifter, Julie Thrifts, Julie's Designs and Signs</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vlog-lifestyle</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.05</div>
+      <div class="q-rchannels">Kelly Hays, Phoebe Taylor, Isabella Demarko</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">gaming</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.13</div>
+      <div class="q-rchannels">MoreNizarisaqt, Mercanthony, Nizarisaqt</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">motorcycle-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.02</div>
+      <div class="q-rchannels">Her Two Wheels, Rosie Gabrielle, Becky "Axel" Goebel</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">vanlife-travel</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.03</div>
+      <div class="q-rchannels">Tropical Russian, Mobile Dwellings, Ame in a van</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">home-renovation</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Living to DIY with Rachel Metz, Thrift Diving (Serena Appiah), The Nomadic Movement</div>
+    </div><div class="q-reading">
+      <div class="q-rlabel">commentary</div>
+      <div class="q-track"><span class="q-fill q-lo" style="width:0%"></span><i class="q-tick" style="left:40%"></i><i class="q-tick" style="left:70%"></i></div>
+      <div class="q-rmeta">0% held · 3 channels · 3 readings · median |effect| 0.00</div>
+      <div class="q-rchannels">Cody Leach, Josh Prime, ModernGurlz</div>
+    </div></div>
+    
+    
+    <p class="q-gate"><b>Why this fired:</b> Fires at ≥70% held in one niche and ≤40% in another, each with 3+ channels. Strata never move standing on their own.</p>
+    <p class="q-action"><b>To resolve:</b> Either re-scope the claim to true-crime (a niched truth wearing a general label), or name the confound that makes restoration different. Splitting is a human decision.</p>
     
   </div></details>
 

@@ -475,6 +475,8 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .st-intro{font-size:16px;max-width:76ch}
 .st-callout{background:var(--panel);border-left:4px solid #E0202A;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;max-width:80ch}
 .st-callout.st-neutral{border-left-color:var(--line)}
+.st-callout.st-good{border-left-color:#6fd39b}
+.st-callout.st-bad{border-left-color:#ff5a5f}
 .st-two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
 @media (max-width:820px){.st-two{grid-template-columns:1fr}}
 .st-chapters{display:grid;grid-template-columns:84px 1fr;gap:6px 14px;font-size:14px;max-width:780px}
@@ -852,6 +854,8 @@ table.obs td.no{color:#ff8f8f}
 .is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
 .is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
 .is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-deliverable{border-left:3px solid #6fd39b}
+.is-runs{color:var(--grey);font-size:13px;margin-top:6px}
 .is-search{margin:14px 0}
 .is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
 .is-list{list-style:none;padding:0;margin:8px 0}
@@ -951,6 +955,36 @@ it produces. The analyst traces below show the same method applied to a specific
       <p class="is-gate"><b>Gate:</b> Routing mode is stamped in the header so a widened pool never masquerades as a routed one. Every measured line carries derived provenance.</p>
       <p class="is-where">src/lib/intelligence/brief.ts</p>
     </div>
+<h2>Processes by deliverable</h2>
+<p class="lede">The layers above are the order of the logic. The work is shaped by what is being delivered: each
+deliverable is a department's pass over the same record, defined by its link to clickability, watchability and
+replayability so its effect can be cross-examined against the others, and each writes back to the channel's
+knowledge base so the next one starts further along. The general channel audit comes first.</p>
+<div class="is-layer is-deliverable">
+      <div><h3>1 · Channel audit</h3><p>The general pass, first: clickability (impressions to views to engaged views, with CTR at each step), watchability (AVD and APV together, the curves, the overlay), replayability (returning, regular, casual and new viewers, net subscribers, rhythm).</p><p class="is-runs"><b>Runs:</b> Studio pull or Analytics API; regression cohort; V3 deck and sheet; dimensions header; &quot;What the numbers show&quot;; action list.</p></div>
+      <p class="is-gate"><b>Dimension:</b> All three dimensions, in that order.</p>
+      <p class="is-where">src/lib/output/slides.ts · src/lib/site/dimensions.ts · src/lib/site/channel-charts.ts · src/lib/insights/action-list.ts</p>
+    </div>
+<div class="is-layer is-deliverable">
+      <div><h3>2 · Ideation audit</h3><p>Three rings: the channel's established ideas and what the marketplace already rewards; what the community and competitors ship; the landscape beyond, with the abandonment test applied before any expansion is proposed (a large, held audience is moved at a cost; a genuinely different audience deserves a second channel).</p><p class="is-runs"><b>Runs:</b> Format library; peers resolved then crawled; trending and search; recombination with arithmetic projections; a published idea set.</p></div>
+      <p class="is-gate"><b>Dimension:</b> Clickability first (does the premise earn the click on this audience), then replayability (does it bring them back).</p>
+      <p class="is-where">src/lib/ideas/* · src/lib/site/channel-formats.ts · scripts/ideas-pipeline.ts</p>
+    </div>
+<div class="is-layer is-deliverable">
+      <div><h3>3 · Packaging audit</h3><p>Visual format, title format and idea format, and how they combine: which combinations synthesise into the most clickable package, and what those combinations do to watchability and replayability, so a package that clicks and bleeds is caught.</p><p class="is-runs"><b>Runs:</b> Thumbnail read on real thumbnails; title-lead and keyword bars; length against CTR; superlative and numbered families against their fleet records; openings against the first minute; a study with angles, charts, claims, mocks and a Test &amp; compare plan.</p></div>
+      <p class="is-gate"><b>Dimension:</b> Clickability, then the watchability check that a package which changes who arrives changes who stays.</p>
+      <p class="is-where">src/lib/site/study.ts · data/studies/&lt;channelId&gt;/</p>
+    </div>
+<div class="is-layer is-deliverable">
+      <div><h3>4 · Retention audit (creative and content)</h3><p>What happens inside the video: hazard at each flagged moment against the channel's own benchmarks, replay peaks separated from skip landings, the sponsor read measured as bleed depth in its own category, WHAT / WHY / HOW with a transcript quote and the frame at that second.</p><p class="is-runs"><b>Runs:</b> Curve (API or Studio); transcript and frames; per-video notes; moment census; the retention section of a study.</p></div>
+      <p class="is-gate"><b>Dimension:</b> Watchability, with the replayability check that a beat viewers scrub back to is a premise worth repeating.</p>
+      <p class="is-where">src/lib/analysis/retention.ts · src/lib/insights/video-retention.ts · src/lib/analysis/moment-census.ts</p>
+    </div>
+<div class="is-layer is-deliverable">
+      <div><h3>5 · Production and post-production</h3><p>The cost side of every finding: runtime, cadence, the effort a shape demands, sponsor placement and cross-cutting, the opening's promise delay, the outro.</p><p class="is-runs"><b>Runs:</b> The same curves and the rhythm strip, filed against the dimension each moves.</p></div>
+      <p class="is-gate"><b>Dimension:</b> A cross-cut read is a watchability finding; a held rhythm is a replayability finding.</p>
+      <p class="is-where">src/lib/analysis/segments.ts · src/lib/site/channel-charts.ts</p>
+    </div>
 <h2>Analyst traces</h2>
 <p class="lede">Pick a channel, then a video, to see exactly how its retention was broken down, what the
 arithmetic said at each flagged moment, what evidence the note rested on, how the format library and
@@ -974,7 +1008,8 @@ measurement ledger. Only channels analysed in this style are listed.</p>
 <li data-name="the blackveil files"><a href="intelligence-system/UCCxZcnp5W46e6kfQ49CxLLw.html">The BlackVeil Files</a><span class="m">27 analysed of 27 videos</span></li>
 <li data-name="studio noha"><a href="intelligence-system/UCsF-SfQ6_7UZZgNrO-E6qxA.html">Studio NOHA</a><span class="m">14 analysed of 14 videos</span></li>
 <li data-name="visual thinker"><a href="intelligence-system/UCYFp9tOZEXOj0TSBqwKyxZQ.html">Visual Thinker</a><span class="m">14 analysed of 14 videos</span></li>
-<li data-name="man made"><a href="intelligence-system/UCSNgS5ZY7JudYXoK6N3dqFA.html">Man Made</a><span class="m">10 analysed of 10 videos</span></li></ul>
+<li data-name="man made"><a href="intelligence-system/UCSNgS5ZY7JudYXoK6N3dqFA.html">Man Made</a><span class="m">10 analysed of 10 videos</span></li>
+<li data-name="hannah's happy home"><a href="intelligence-system/UC1STjuGMAzbdmv0YRyAkl1w.html">Hannah's Happy Home</a><span class="m">1 analysed of 666 videos</span></li></ul>
 <script>
 (function(){var q=document.getElementById('is-q');var rows=Array.prototype.slice.call(document.querySelectorAll('#is-list li'));
 q.addEventListener('input',function(){var v=q.value.toLowerCase();rows.forEach(function(r){r.hidden=v&&r.getAttribute('data-name').indexOf(v)<0;});});})();

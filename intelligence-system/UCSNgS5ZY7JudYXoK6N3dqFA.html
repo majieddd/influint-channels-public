@@ -884,7 +884,7 @@ table.obs td.no{color:#ff8f8f}
 <h1>Man Made · analyst trace</h1>
 <p class="lede">The method, video by video. Pick a video to see how its retention was broken down, what evidence each note rested on, where its moments sit in the channel's census, which shape it belongs to, and what it fed the ledger. The channel-level sections (ideas, action list) follow.</p>
 <div class="tr-pick"><label>Video <select id="tr-select"><option value="TKxghFFz87k">2026-08-18 · I Turned My Boring Office Into A Starlit Cabin</option><option value="EAOutIsbJLk">2026-02-06 · I made this cause I needed a nap lol</option><option value="k5eHSd-p3x0">2025-12-12 · I Made a Desk For Endless Fidgeting</option><option value="D3XFIa7Fz80">2025-09-15 · They said I needed an Engineer for this......lol</option><option value="QbMK26dwUgg">2025-06-06 · The Most Exhausting 2 Weeks of my Life</option><option value="wPiriQu3N6I">2025-04-04 · I Hid a Cold Plunge Inside a Firepit</option><option value="FT98_SW67Dg">2024-11-17 · I Made The Most Satisfying Desk</option><option value="b0npGI9WCzs">2024-10-05 · Building a Tiny Office Pod Under My Stairs</option><option value="_W6t2M1RccI">2024-08-22 · I Made a Real Waterfall Dining Table</option><option value="5LsB57hJ-XI">2024-05-31 · I Left 7M Subs to Build My Dream Garage Workshop</option></select></label></div>
-<div class="tr-video" id="tr-TKxghFFz87k" hidden>
+<div id="tr-traces"><div class="tr-video" id="tr-TKxghFFz87k" hidden>
       <h2>I Turned My Boring Office Into A Starlit Cabin</h2>
       <p class="tr-dim">published 2026-08-18 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
@@ -1973,7 +1973,8 @@ table.obs td.no{color:#ff8f8f}
 <div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>4257.000</td><td>0.226</td></tr><tr><td>duration-vs-views</td><td>4257.000</td><td>0.753</td></tr><tr><td>retention-half-vs-views</td><td>0.226</td><td>0.753</td></tr><tr><td>intro-hold-vs-views</td><td>0.969</td><td>0.753</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.969</td><td>0.226</td></tr><tr><td>recency-vs-retention-half</td><td>1717182150000.000</td><td>0.226</td></tr><tr><td>recency-vs-views</td><td>1717182150000.000</td><td>0.753</td></tr><tr><td>title-length-vs-views</td><td>48.000</td><td>0.753</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.753</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.753</td></tr><tr><td>duration-vs-intro-hold</td><td>4257.000</td><td>0.969</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.753</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.226</td></tr><tr><td>title-word-count-vs-views</td><td>10.000</td><td>0.753</td></tr><tr><td>ctr-vs-views</td><td>0.035</td><td>0.753</td></tr><tr><td>ctr-vs-retention-half</td><td>0.035</td><td>0.226</td></tr><tr><td>duration-vs-ctr</td><td>4257.000</td><td>0.035</td></tr><tr><td>title-length-vs-ctr</td><td>10.000</td><td>0.035</td></tr></tbody></table></div>
     <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
-    </div>
+    </div></div>
+<p class="tr-dim" id="tr-loading" hidden>Loading that video's trace&hellip;</p>
 <div class="tr-section"><h3>Channel · Ideas and how they were assembled</h3><p class="tr-dim">Published 2026-08-18. Method: a proven SHAPE from the format library is crossed with a SUBJECT that is surging (trend chart, corpus, or the channel's own catalogue); the model writes the title and premise, code computes the projection.</p>
   <div class="tr-step"><b>Amazon's $400 Pumpkin Storage Bin is a Scam, So I Built My Own</b> <span class="tr-dim">shape: I Built My Own (After Getting Screwed)</span>
       <div class="tr-kv">
@@ -2017,9 +2018,12 @@ table.obs td.no{color:#ff8f8f}
   <h4>Checked and healthy</h4><div class="tr-dim"></div><div class="tr-dim"></div></div>
 <p class="tr-dim"><a href="../intelligence-system.html">&larr; Intelligence system</a> &middot; <a href="../channels/UCSNgS5ZY7JudYXoK6N3dqFA.html">channel page</a></p>
 <script>
-(function(){var s=document.getElementById('tr-select');function show(){var id=s.value;document.querySelectorAll('.tr-video').forEach(function(el){el.hidden=el.id!=='tr-'+id;});
-try{history.replaceState(null,'','#'+id);}catch(e){}}
-var h=location.hash.slice(1);if(h&&document.getElementById('tr-'+h)){s.value=h;}
+(function(){var s=document.getElementById('tr-select');var host=document.getElementById('tr-traces');var loading=document.getElementById('tr-loading');var lazy=null;
+function reveal(id){document.querySelectorAll('.tr-video').forEach(function(el){el.hidden=el.id!=='tr-'+id;});try{history.replaceState(null,'','#'+id);}catch(e){}}
+function show(){var id=s.value;if(document.getElementById('tr-'+id)){reveal(id);return;}
+loading.hidden=false;var p=lazy?Promise.resolve(lazy):fetch('UCSNgS5ZY7JudYXoK6N3dqFA.traces.json').then(function(r){return r.json();}).then(function(j){lazy=j;return j;});
+p.then(function(j){var html=j[id];if(html){var d=document.createElement('div');d.innerHTML=html;host.appendChild(d.firstElementChild);}loading.hidden=true;reveal(id);}).catch(function(){loading.textContent='Could not load that trace.';});}
+var h=location.hash.slice(1);if(h&&Array.prototype.some.call(s.options,function(o){return o.value===h;})){s.value=h;}
 s.addEventListener('change',show);show();})();
 </script>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

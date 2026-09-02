@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Stokes Twins, from the outside · Stokes Twins</title>
+<link rel="icon" href="../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sasrc{margin:8px 0 2px;font-size:12.5px}
+.sasrc>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+               text-transform:uppercase;letter-spacing:.1em}
+.sasrc>summary::-webkit-details-marker{display:none}
+.sasrc>summary::before{content:"▸ ";color:var(--teal)}
+.sasrc[open]>summary::before{content:"▾ "}
+.sasrc p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{margin:8px 0 0;font-size:12.5px}
+.actbut>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+                text-transform:uppercase;letter-spacing:.1em}
+.actbut>summary::-webkit-details-marker{display:none}
+.actbut>summary::before{content:"▸ ";color:var(--teal)}
+.actbut[open]>summary::before{content:"▾ "}
+.actbut p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55;font-style:normal}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.study{max-width:1120px;margin:0 auto}
+.study h1{font-size:clamp(34px,6vw,60px);line-height:1;letter-spacing:-.01em;margin:6px 0 14px;text-transform:uppercase}
+.study h2{font-size:clamp(24px,3.4vw,34px);line-height:1.08;margin:0 0 14px}
+.study h3{font-size:22px;line-height:1.15;margin:0}
+.study p{max-width:70ch}
+.study ul{padding-left:20px}.study li{margin:0 0 6px;max-width:72ch}
+.study table{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel);border:1px solid var(--line)}
+.study th,.study td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.study th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:500}
+.study td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.study .st-tablewrap{overflow-x:auto;margin:12px 0 18px}
+.st-crumbs{color:var(--grey);font-size:13px;margin:0 0 10px}.st-crumbs a{color:var(--grey)}
+.st-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin:0 0 6px}
+.st-top{padding-bottom:22px;border-bottom:1px solid var(--line)}
+.st-lede{font-size:19px;line-height:1.5;max-width:62ch}
+.st-kicker{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--grey);font-size:14px}.st-kicker b{color:var(--white)}
+.st-verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:26px 0 8px}
+.st-stat{background:var(--panel);border:1px solid var(--line);padding:16px 18px;border-radius:12px}
+.st-stat .n{font-size:40px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.st-stat .l{font-size:12px;color:var(--grey);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+.st-stat .d{font-size:13px;margin-top:8px;color:var(--white)}
+.st-stat.st-good .n{color:#6fd39b}.st-stat.st-bad .n{color:#ff5a5f}
+.st-section{margin-top:52px}
+.st-intro{font-size:16px;max-width:76ch}
+.st-callout{background:var(--panel);border-left:4px solid #E0202A;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;max-width:80ch}
+.st-callout.st-neutral{border-left-color:var(--line)}
+.st-callout.st-good{border-left-color:#6fd39b}
+.st-callout.st-bad{border-left-color:#ff5a5f}
+.st-two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media (max-width:820px){.st-two{grid-template-columns:1fr}}
+.st-chapters{display:grid;grid-template-columns:84px 1fr;gap:6px 14px;font-size:14px;max-width:780px}
+.st-chapters .t{color:var(--grey);font-variant-numeric:tabular-nums}
+.st-chapters .hook{color:#ff8a8d;font-weight:600}
+.st-evid{font-size:13px;color:var(--grey)}
+.st-cap{font-size:13px;color:var(--grey)}
+.st-curve{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.st-family{margin-top:34px}
+.st-family-name{font-size:26px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:14px}
+.st-family-name span{display:block;font-weight:400;font-size:15px;color:var(--grey);margin-top:2px}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:820px){.st-grid{grid-template-columns:1fr}}
+.st-angle{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.st-mock{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#111;color:#fff;container-type:inline-size}
+.st-mock .st-plate,.st-mock .st-split>div{position:absolute;inset:0;background-size:cover;background-position:center}
+.st-mock .st-split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.st-mock .st-split>div{position:relative}
+.st-mock .st-split>div:first-child{border-right:4px solid #fff}
+.st-mock .st-tt{position:absolute;font-family:Impact,"Anton","Arial Black",sans-serif;line-height:1;color:#fff;letter-spacing:.01em;-webkit-text-stroke:.06em #000;paint-order:stroke fill;text-shadow:0 .08em .2em rgba(0,0,0,.65);font-size:calc(var(--tt,1) * 8.2cqw);max-width:62%}
+.st-mock .st-inset{position:absolute;aspect-ratio:4/3;background-size:cover;background-position:center;border:3px solid #fff;box-shadow:0 4px 18px rgba(0,0,0,.5);border-radius:6px}
+.st-mock .st-shoot{background:repeating-linear-gradient(135deg,#333 0 8px,#3d3d3d 8px 16px);display:flex;align-items:center;justify-content:center;text-align:center;font-size:2.4cqw;line-height:1.3;color:#eee;padding:6px}
+.st-mock .st-arrow{position:absolute;inset:0;width:100%;height:100%}
+.st-badge{position:absolute;right:8px;bottom:8px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:rgba(0,0,0,.72);color:#fff}
+.st-badge.st-real{background:rgba(46,125,79,.92)}.st-badge.st-mixed{background:rgba(154,106,18,.92)}
+.st-mocknote{font-size:12px;color:var(--grey);margin:0}
+.st-head{display:flex;gap:10px;align-items:baseline}
+.st-id{font-size:12px;color:var(--grey);flex:none}
+.st-chips{display:flex;gap:6px;flex-wrap:wrap}
+.st-chip{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--grey)}
+.st-chip.st-tA{border-color:#6fd39b;color:#6fd39b}.st-chip.st-tB{border-color:var(--white);color:var(--white)}.st-chip.st-tC{border-color:#e3b45a;color:#e3b45a}
+.st-why{font-size:14px;margin:0 0 8px}.st-risk{font-size:14px;color:var(--grey);margin:0}
+.st-fig{margin:6px 0 4px;padding:10px 12px;background:var(--panel-raised);border:1px solid var(--line);border-radius:10px}
+.st-fig figcaption{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;margin-bottom:6px}
+.st-fig-title{font-weight:600}
+.st-chart{width:100%;height:auto;display:block}
+.st-fig-note{font-size:12px;color:var(--grey);margin:6px 0 0;max-width:none}
+.st-family-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
+@media (max-width:820px){.st-family-charts{grid-template-columns:1fr}}
+.st-family-charts .st-fig{margin:0}
+.st-claims{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.st-claim{font-size:11.5px;color:var(--grey);border:1px solid var(--line);border-radius:6px;padding:4px 8px;line-height:1.35}
+.st-claim b{color:var(--white);text-transform:uppercase;letter-spacing:.04em;font-size:10.5px}
+.st-claim code{font-size:10.5px;opacity:.75}
+.st-claim.st-law b{color:#6fd39b}.st-claim.st-candidate-law b{color:#8dd8d3}.st-claim.st-warning b{color:#e3b45a}.st-claim.st-rejected b{color:#ff5a5f}
+.st-plan{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.st-plan ol{padding-left:22px}.st-plan li{margin-bottom:8px}
+.study details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:6px 0}
+.study summary{cursor:pointer;font-weight:500}
+.study details p{font-size:13px;color:var(--grey);margin:8px 0 2px;max-width:none}
+.st-footer{margin-top:60px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--grey)}
+.st-list{display:grid;gap:10px;margin:0 0 30px}
+.st-list-item{display:grid;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:inherit;text-decoration:none}
+.st-list-item:hover{background:var(--panel-raised)}
+.st-list-title{font-size:18px;font-weight:600}.st-list-kicker{font-size:13px;color:var(--grey)}.st-list-date{font-size:12px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+
+
+/* Micro-charts. A picture with its figure on it, and a badge saying what kind
+   of evidence it is, replacing a paragraph that explained the same number. */
+.mc{margin:12px 0 10px;padding:0}
+.mc-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 6px;
+         font-size:13px;line-height:1.4}
+.mc-head b{font-weight:600}
+.mc-val{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-svg{width:100%;height:auto;display:block;overflow:visible}
+.mc-note{margin:5px 0 0;font-size:11.5px;color:var(--grey);line-height:1.5}
+.mc-track{stroke:var(--line);stroke-width:2}
+.mc-iqr{fill:rgba(141,216,211,.22)}
+.mc-dot{fill:var(--teal);stroke:var(--ink);stroke-width:2}
+.mc-flag{stroke:var(--warn);stroke-width:1.4;stroke-dasharray:3 3}
+.mc-flaglab{fill:var(--warn);font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+.mc-end{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-axis{stroke:rgba(141,216,211,.35);stroke-width:1}
+.mc-tick{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-pt{fill:var(--teal-mid);opacity:.75}
+.mc-pt.on{fill:#ffd166;opacity:1}
+.mc-trend{stroke:var(--teal);stroke-width:1.6;stroke-dasharray:5 4;opacity:.8}
+.mc-stat{font-size:11px;font-family:ui-monospace,Menlo,monospace}
+.mc-rho{fill:var(--teal);font-weight:600}
+.mc-p{fill:var(--grey)}
+.mc-curve{fill:none;stroke:var(--teal);stroke-width:2;stroke-linejoin:round}
+.mc-band{opacity:.22}
+.mc-band.drop{fill:var(--cold)}
+.mc-band.hold{fill:var(--hot)}
+.mc-bars{display:flex;flex-direction:column;gap:5px}
+.mc-row{display:grid;grid-template-columns:minmax(90px,auto) 1fr auto auto;gap:10px;
+        align-items:center;font-size:12.5px}
+.mc-rl{color:var(--white)}
+.mc-bar{display:block;height:12px;background:rgba(141,216,211,.10);border-radius:3px;overflow:hidden}
+.mc-bar i{display:block;height:100%;width:var(--w);background:var(--teal-deep);border-radius:3px}
+.mc-rv{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-rn{color:var(--grey);font-size:11px;font-variant-numeric:tabular-nums}
+/* Evidence badges. The rung matters more than the colour, so they are quiet. */
+.evchip{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+        padding:.14rem .4rem;border-radius:3px;cursor:help;white-space:nowrap}
+.ev-obs{background:#22303a;color:#9fc0d0}
+.ev-corr{background:#123240;color:#8fd6f0}
+.ev-cons{background:#12402f;color:#7ff0bd}
+.ev-dose{background:#1b3a2a;color:#9ce8bd}
+.ev-temp{background:#2a3320;color:#cfe08a}
+.ev-int{background:#33301a;color:#f6c344}
+@media(max-width:640px){
+  .mc-row{grid-template-columns:minmax(70px,auto) 1fr auto;gap:7px}
+  .mc-rn{display:none}
+}
+
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 6px}
+.dim{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.dim-off{opacity:.72}
+.dim-h{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dim-badge{font-size:9px;letter-spacing:.04em;text-transform:none;border:1px solid var(--line);border-radius:999px;padding:1px 6px;color:var(--grey)}
+.dim-v{font-size:30px;line-height:1.05;font-weight:600;overflow-wrap:anywhere}
+.dim-2{font-size:12px;color:var(--grey);margin-top:4px;overflow-wrap:anywhere}
+.dim-note{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-none{font-size:19px;font-weight:500;color:var(--grey)}
+.dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
+.mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.mcrow.top{border-color:color-mix(in oklab,var(--teal) 45%,var(--line))}
+.mcrow.low{border-color:color-mix(in oklab,var(--hot) 45%,var(--line))}
+.mchead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mcname{font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.mcnum{font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;white-space:nowrap}
+.mv{font-size:9px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 7px;margin-left:6px;white-space:nowrap;border:1px solid var(--line);color:var(--grey)}
+.mv-top{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.mv-low{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+.mcbar{width:100%;height:26px;display:block;margin:8px 0 2px}
+.mcdesc{font-size:12px;margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcmeta{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcdet{margin-top:8px}
+.mcdet summary{font-size:11px;color:var(--grey);cursor:pointer}
+.mcex{margin:8px 0 0;padding-left:16px;font-size:11px;line-height:1.6}
+.mcex li{margin-bottom:8px;overflow-wrap:anywhere}
+.mck{font-weight:600}
+.mcq{color:var(--grey);font-style:italic}
+.mccav{border-left:2px solid var(--line);padding-left:10px}
+.mcfoot{font-size:11px}
+
+.scoped{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.scomp{font-size:12px;margin:0 0 8px;line-height:1.55}
+.scomp .dim{color:var(--grey);font-weight:400}
+.sstrata td:nth-child(4){font-variant-numeric:tabular-nums}
+.sstrata tr.sbelow td{color:var(--grey)}
+.snote{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.5}
+.q-datasays{margin:14px 0;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:10px;padding:10px 14px;background:rgba(141,216,211,.04)}
+.q-dstitle{margin:0 0 6px;font-size:13px}
+.q-dssvg{display:block;width:100%;max-width:640px;height:auto}
+.q-dsband{fill:rgba(141,216,211,.16)}
+.q-dsmedian{stroke:var(--teal,#8dd8d3);stroke-width:2}
+.q-dsmedlabel{fill:var(--teal,#8dd8d3);font-size:11px;text-anchor:middle}
+.q-dsclaim{stroke:var(--warn,#f6c344);stroke-width:2;stroke-dasharray:4 3}
+.q-dsclaimlabel{fill:var(--warn,#f6c344);font-size:11px;text-anchor:middle}
+.q-dsdot{fill:var(--white,#fff);opacity:.75}
+.q-dsaxis,.q-dstick{stroke:rgba(255,255,255,.25)}
+.q-dslabel{fill:var(--grey,#8a9a9a);font-size:10px;text-anchor:middle}
+.q-dsrestate{margin:8px 0 3px;font-size:13px;line-height:1.55}
+.q-dswindow{margin:0;font-size:11px;color:var(--grey,#8a9a9a)}
+.obs-lifetime td{opacity:.55}
+.basis-tag{font-size:10px;color:var(--grey);border:1px solid var(--line,#333);border-radius:4px;padding:0 4px;white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}
+/* Available to screen readers, invisible on screen. The causal rung's meaning
+   used to exist only in a title attribute, which never fires on touch and
+   cannot be focused. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
+.rej-why{color:#ff8f8f}
+.catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
+.capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+/* A scroll container with no visible edge reads as a clipped table, so it gets
+   a fade on the right and a focus ring for keyboard users. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0;
+  background:linear-gradient(to left,rgba(141,216,211,.13),transparent 2.2rem)}
+.obswrap:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.qbox.live{border-left:2px solid #7a5a1a;background:#1a1408}
+.qbox.live>b{color:#ffb85c}
+.qbox.settled{border-left:2px solid #2b4a4a;background:#0d1616}
+.qbox.settled>b{color:#7fb0b0}
+.qbox.settled .q{color:#cfe;margin-top:.3rem}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
+.claims{display:grid;gap:12px;margin-top:16px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+.opnote{background:rgba(90,216,166,.07);border:1px solid rgba(90,216,166,.28);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.opnote b{color:#5ad8a6;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.opnote p{margin:0;font-size:13px;line-height:1.55}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
+
+.ccfig{margin:14px 0 6px;padding:0}
+.ccfig svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.ccdot{fill:var(--teal);opacity:.38}
+.ccmed{fill:none;stroke:var(--white);stroke-width:2.4;stroke-linejoin:round}
+.ccfit{stroke:var(--hot);stroke-width:1.6;stroke-dasharray:7 4}
+.ccgrid{stroke:var(--line);stroke-width:.6;opacity:.55}
+.ccax{fill:var(--grey);font-size:11px}
+.ccfitnote{fill:var(--hot);font-size:11px;font-weight:600}
+.ccbar{fill:var(--teal);opacity:.85}
+.cclab{fill:var(--grey);font-size:11px}
+.ccval{fill:var(--white);font-size:11px;font-weight:600}
+.ccn{fill:var(--grey);font-weight:400}
+.ccmajor{stroke:var(--grey);stroke-width:1;stroke-dasharray:4 4}
+.cccap{font-size:11px;color:var(--grey);line-height:1.55;margin-top:6px;overflow-wrap:anywhere}
+.ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
+.ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-deliverable{border-left:3px solid #6fd39b}
+.is-runs{color:var(--grey);font-size:13px;margin-top:6px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
+</header>
+<div class="study">
+<p class="st-crumbs"><a href="../channels/UCbp9MyKCTEww4CxEzc_Tp0Q.html">Stokes Twins</a> &rsaquo; Study</p>
+<header class="st-top">
+  <p class="st-eyebrow">Public data only: 200 long-form uploads, their titles, thumbnails, runtimes, lifetime views, likes, comments and the first minute of speech. No click-through, no retention, no viewer split.</p>
+  <h1>Stokes Twins, from the outside</h1>
+  <p class="st-lede">A 145-million-subscriber challenge channel read without any access to its analytics. What the catalogue shows on its own: the channel has changed shape three times, its working length is 25 to 30 minutes and every marathon past it has paid, its strongest recent thrillers borrow a bigger name, and its openings say the title in the first sentence without exception. A typical upload has gathered 55.6M views; the median gap between uploads is 9 days.</p>
+  <div class="st-kicker"><span>Updated 2026-09-02</span></div>
+</header>
+<div class="st-verdict"><div class="st-stat st-good"><div class="n">55.6M</div><div class="l">Median lifetime views per upload</div><div class="d">200 uploads, June 2020 to August 2026. 2024 uploads sit at 146.4M; 2026 uploads are still accruing.</div></div><div class="st-stat st-good"><div class="n">1.07x</div><div class="l">25 to 30 minutes, since 2024</div><div class="d">21 uploads. Over 40 minutes runs 0.68x; the four past 55 minutes are the weakest recent uploads outside the retired shapes.</div></div><div class="st-stat st-good"><div class="n">1.79x</div><div class="l">MrBeast Was Murdered..</div><div class="d">Best upload of the last three years, 205.6M views. The thrillers about the twins themselves read 0.67x and lower.</div></div><div class="st-stat"><div class="n">78%</div><div class="l">Openings that say the title inside ten words</div><div class="d">197 transcripts stored. No variance to measure the opening claims against; they need the curve.</div></div></div>
+<section class="st-section"><p class="st-eyebrow">The catalogue</p><h2>The channel changed shape three times</h2><p>Two hundred long-form uploads, from 2020-06 to 2026-08. In 2026 the twins shipped 16 videos at a median 28 minutes, one every 13 days, and a typical upload has since gathered 28.2M views. By 2026 the count was 16, the median runtime 28 minutes, the gap 13 days and the typical upload 28.2M views. The 2024 cohort sits highest at 146.4M. Three moves are visible in the table below: the pranks-and-crush era of 2020 and 2021, the pivot to spectacle formats in 2022 and 2023 when runtimes doubled and views quadrupled, and the staged-thriller era from 2024 on.</p><p>Read the 2025 and 2026 bars with care. These are lifetime counts, so a 2026 upload is measured a few months into its life against 2024 uploads measured two years in. The store now snapshots views on every ingest, and the first-28-day figures that arrive from the next uploads will say how much of that gap is age. Nothing here is a verdict on decline.</p><p>Public reporting puts the channel's 2024 surge on multi-language dubbing and a heavy Shorts push, with daily views rising from a few million to about fifty million. Neither is visible in this record: Shorts are excluded by design, and dubbed audio tracks count inside the same video's views. What the record does show is that the long-form uploads of that year are the largest the channel has made.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Uploads per year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Uploads per year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="73.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="289.8" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">16 uploads</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="83.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="299.0" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">18 uploads</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="101.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="317.5" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">22 uploads</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="119.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="335.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">26 uploads</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="133.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="349.8" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">29 uploads</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">55 uploads</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="156.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="372.8" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">34 uploads</text></svg><p class="st-fig-note">2026 runs to 29 August.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Median runtime per year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Median runtime per year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="253.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.4" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">27.6 min</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">27.6 min</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="252.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="468.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">27.5 min</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="216.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="432.6" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">23.6 min</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="162.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="378.7" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">17.7 min</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="96.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="312.8" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">10.6 min</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="82.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="298.3" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">9.0 min</text></svg><p class="st-fig-note">Runtime tripled between 2020 and 2024 and has held at about 27 minutes since.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Median lifetime views per upload, by year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Median lifetime views per upload, by year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="48.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="264.9" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">28.2M views</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="148.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="364.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">85.8M views</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">146.4M views</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="175.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="391.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">101.5M views</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="196.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="412.0" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">113.2M views</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="48.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="264.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">28.2M views</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="17.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="233.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">9.9M views</text></svg><p class="st-fig-note">Lifetime counts. The 2025 and 2026 cohorts are still accruing; the gap to 2024 is partly age.</p></figure></section><section class="st-section"><p class="st-eyebrow">Formats</p><h2>Thirteen shapes, and the ones that carry the channel</h2><p>The classifier found thirteen repeatable shapes in the 200 titles and left 98 uploads (49%) as one-offs, which is itself a description of the channel: about half of what they make is a fresh premise. The shapes are ordered by their median score, where 1.0x means typical for the uploads around it in time.</p><p>The shape that built the channel is retired. <strong>___ ___ In 24 Hours</strong> ran 10 times from 2020 to 2023 at 1.33x and has not been used since; <strong>___ For 24 Hours</strong> (1.07x over 10) stopped in 2022. The current carriers are <strong>___ Was Murdered..</strong> (1.14x over 6, the staged thrillers), <strong>I Built ___ Secret Rooms ___</strong> (1.05x over 10) and <strong>I Tested ___ Banned ___</strong> (1.05x over 7). At the bottom sit <strong>Last To Leave ___ Wins $___</strong> (0.88x over 10, still being made), <strong>I Exposed ___ ___</strong> (0.82x) and the 2020 prank shape (0.66x).</p><p>None of the thirteen is era-bound: every shape was interleaved with others in its months, so the score compares a shape against different shapes rather than against itself.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Every repeatable shape, median score</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 316" role="img" aria-label="Every repeatable shape, median score"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">___ ___ In 24 Hours (2021 to 2022)</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.33x, 10 videos</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">___ Was Murdered.. (2023 to 2026)</text><rect x="210" y="43" width="217.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="433.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x, 6 videos</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">___ For 24 Hours (2020 to 2022)</text><rect x="210" y="65" width="204.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="420.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.07x, 10 videos</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">I Spent 24 Hours With The World's ___ ___ (2023 to 2025)</text><rect x="210" y="87" width="204.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="420.1" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.07x, 4 videos</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">I Built ___ Secret Rooms ___ (2024 to 2026)</text><rect x="210" y="109" width="200.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="416.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x, 10 videos</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">I Tested ___ Banned ___ (2023 to 2026)</text><rect x="210" y="131" width="200.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="416.3" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x, 7 videos</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">$1 vs $___ ___ (2022 to 2024)</text><rect x="210" y="153" width="200.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="416.3" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x, 4 videos</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">I Bought ___ ___ Products (2023 to 2024)</text><rect x="210" y="175" width="190.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="406.8" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.00x, 5 videos</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">I Built A Secret ___ In My ___ (2022 to 2024)</text><rect x="210" y="197" width="183.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="399.1" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.96x, 7 videos</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">Busting ___ Myths ___ (2022 to 2026)</text><rect x="210" y="219" width="179.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="395.3" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.94x, 6 videos</text><text x="202" y="251" text-anchor="end" font-size="12" fill="#8a9a9a">Last To Leave ___ Wins $___ (2021 to 2026)</text><rect x="210" y="241" width="167.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="383.9" y="251" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.88x, 10 videos</text><text x="202" y="273" text-anchor="end" font-size="12" fill="#ffffff">I Exposed ___ ___ (2020 to 2026)</text><rect x="210" y="263" width="156.4" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="372.4" y="273" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.82x, 6 videos</text><text x="202" y="295" text-anchor="end" font-size="12" fill="#ffffff">Pranking My Friends With ___ (2020 to 2021)</text><rect x="210" y="285" width="125.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="341.9" y="295" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.66x, 7 videos</text><line x1="400.8" y1="12" x2="400.8" y2="302" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="404.8" y="312" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">Score = lifetime views against the median of the nearest uploads in time. 98 one-offs are not in any shape.</p></figure></section><section class="st-section"><p class="st-eyebrow">Borrowed names</p><h2>The thriller shape lands hardest when the victim is someone bigger</h2><p>Eight uploads since 2023 stage a murder, a disappearance or a kidnapping. The two biggest carry a borrowed name: <strong>MrBeast Was Murdered..</strong> is the best video of the last three years at 1.79x and 205.6M views, and <strong>KPop Demon Hunters Were Murdered..</strong> rode a film franchise to 1.23x. The entries about the twins themselves went 1.15x and 1.13x in 2023, then 0.67x in 2025; the 78-minute <strong>3 YouTubers Were Murdered..</strong> is the weakest at 0.50x.</p><p>The same instinct runs through the metadata. 170 of the 200 uploads tag other creators (Ben Azelart on 133, Brent Rivera on 97, MrBeast on 75), which is a discovery strategy written into every upload rather than an occasional collaboration. The knowledge base files borrowed reach as a reach multiplier and as a warning in the same breath: a single winner may belong to the guest rather than the format, and a viral audience that came for MrBeast is not proof it will stay for the twins.</p><p>What the record cannot separate is name from runtime: the two weakest thrillers are also the two longest (78 and 64 minutes), and the runtime section below shows that length alone explains a lot on this channel.</p><figure class="st-fig"><figcaption><span class="st-fig-title">The staged thrillers, in order of upload</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="The staged thrillers, in order of upload"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2023-06 My Twin Brother Was MURDERED…</text><rect x="210" y="21" width="163.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="379.0" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.15x, 132.2M, 27 min</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2023-09 I Was MURDERED…</text><rect x="210" y="43" width="160.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="376.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.13x, 129.9M, 25 min</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">2024-12 MrBeast Was Murdered..</text><rect x="210" y="65" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.79x, 205.6M, 27 min</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2025-06 Stokes Twins Were Murdered..</text><rect x="210" y="87" width="95.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="311.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.67x, 82.7M, 29 min</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2025-11 3 YouTubers Were Murdered..</text><rect x="210" y="109" width="70.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="286.9" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.50x, 33.5M, 79 min</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#ffffff">2026-01 KPop Demon Hunters Were Murdered..</text><rect x="210" y="131" width="174.3" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="390.3" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.23x, 67.1M, 26 min</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#ffffff">2026-03 KPop Demon Hunters Are MISSING..</text><rect x="210" y="153" width="112.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="328.0" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.79x, 39.2M, 31 min</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#ffffff">2026-04 KPop Demon Hunters Were Kidnapped!</text><rect x="210" y="175" width="121.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="337.9" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x, 37.4M, 64 min</text><line x1="351.7" y1="12" x2="351.7" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="355.7" y="202" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg><p class="st-fig-note">Highlighted bars carry a borrowed name (MrBeast, KPop Demon Hunters).</p></figure></section><section class="st-section"><p class="st-eyebrow">Runtime</p><h2>Twenty-five to thirty minutes is the working length; the marathons pay for it</h2><p>Across all 200 uploads runtime and score are unrelated (rank correlation +0.08), which is the fleet's finding too: the claim that longer videos do not reduce views held on this channel as it has on 176 of 193 readings. Inside the last three years the picture sharpens. The 21 uploads between 25 and 30 minutes run 1.07x; the 7 over 40 minutes run 0.68x, and the four past 55 minutes (132 min at 0.45x, 79 min at 0.37x, 79 min at 0.50x, 64 min at 0.86x, 59 min at 0.72x) are the weakest recent uploads on the channel outside the two shapes discussed below. The correlation within the window is -0.25, and it is those four that carry it.</p><p>The secret-rooms shape shows the same thing inside one format. Ordered by runtime, the 26-to-29-minute entries score 1.68x, 1.77x and 1.51x; the 32-to-37-minute entries 0.86x, 1.02x and 1.08x; the 78-minute entry 0.37x and the 131-minute entry 0.45x. Repeating the shape is not what wears it: the fleet's format-decay claim did not hold here (repeat depth moved with views, +0.16), and the near-duplicate claim read +0.13. Stretching it is.</p><p>No retention curve exists in this record, so whether the long entries lose their audience early or hold a smaller crowd for longer is not knowable here. The fleet measures runtime against the halfway hold on 19 curve-bearing channels (held on 59 of 76 readings); this channel cannot join that measurement until analytics access exists.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Median score by runtime band, uploads since 2024</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 140" role="img" aria-label="Median score by runtime band, uploads since 2024"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">0 to 20 min</text><rect x="210" y="21" width="222.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="438.9" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.94x, 9 uploads</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">20 to 25 min</text><rect x="210" y="43" width="237.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="453.1" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.00x, 8 uploads</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">25 to 30 min</text><rect x="210" y="65" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.07x, 21 uploads</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">30 to 40 min</text><rect x="210" y="87" width="241.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="457.8" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.02x, 11 uploads</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#ffffff">over 40 min</text><rect x="210" y="109" width="161.2" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="377.2" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.68x, 7 uploads</text><line x1="447.1" y1="12" x2="447.1" y2="126" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="451.1" y="136" font-size="11" fill="#8a9a9a">1.0x</text></svg></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Runtime against score, every upload since 2024</span> <span class="evchip ev-corr" title="Two measures move together on this channel. That is not evidence that one causes the other.">Correlation</span></figcaption><svg class="st-chart" viewBox="0 0 560 220" role="img" aria-label="Runtime against score, every upload since 2024"><line x1="44" y1="190" x2="548" y2="190" stroke="rgba(141,216,211,.3)"/><line x1="44" y1="10" x2="44" y2="190" stroke="rgba(141,216,211,.3)"/><circle cx="90.2" cy="144.4" r="3" fill="rgba(141,216,211,.5)"><title>24 Hours In A Country Where It’s Illegal To Be Fat (0.73x, 25 min)</title></circle><circle cx="105.1" cy="163.4" r="3" fill="rgba(141,216,211,.5)"><title>LAST TO LEAVE BACKROOMS! (0.58x, 28 min)</title></circle><circle cx="86.7" cy="120.3" r="3" fill="rgba(141,216,211,.5)"><title>I Survived The Backrooms In Real Life.. (0.92x, 24 min)</title></circle><circle cx="88.5" cy="105.1" r="3" fill="rgba(141,216,211,.5)"><title>I Tested Deadly Childhood Myths! (1.04x, 24 min)</title></circle><circle cx="44.0" cy="144.4" r="3" fill="rgba(141,216,211,.5)"><title>Our Last Video.. (0.73x, 14 min)</title></circle><circle cx="102.6" cy="105.1" r="3" fill="rgba(141,216,211,.5)"><title>I Found 10 Lost Puppies in a Dumpster! (1.04x, 28 min)</title></circle><circle cx="119.2" cy="83.5" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed 100 Evil Kids! (1.21x, 32 min)</title></circle><circle cx="105.6" cy="131.7" r="3" fill="rgba(141,216,211,.5)"><title>Destroy Your Car, Win a New Lamborghini! (0.83x, 28 min)</title></circle><circle cx="233.8" cy="145.6" r="5" fill="#6fd39b"><title>I Tested 1,000 BANNED School Products! (0.72x, 59 min)</title></circle><circle cx="95.7" cy="44.2" r="3" fill="rgba(141,216,211,.5)"><title>I Became A Principal At The World's Strictest Scho (1.52x, 26 min)</title></circle><circle cx="257.7" cy="127.9" r="5" fill="#6fd39b"><title>KPop Demon Hunters Were Kidnapped! (0.86x, 64 min)</title></circle><circle cx="144.5" cy="100.0" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 Secret Rooms To Escape EVIL KPop Demon H (1.08x, 38 min)</title></circle><circle cx="115.4" cy="136.8" r="3" fill="rgba(141,216,211,.5)"><title>KPop Demon Hunters Are MISSING.. (0.79x, 31 min)</title></circle><circle cx="100.9" cy="60.7" r="3" fill="rgba(141,216,211,.5)"><title>I Tested 100 BANNED School Products! (1.39x, 27 min)</title></circle><circle cx="87.6" cy="45.5" r="3" fill="rgba(141,216,211,.5)"><title>Clean The Sports Car, Keep It! (1.51x, 24 min)</title></circle><circle cx="96.2" cy="81.0" r="3" fill="rgba(141,216,211,.5)"><title>KPop Demon Hunters Were Murdered.. (1.23x, 26 min)</title></circle><circle cx="548.0" cy="179.9" r="5" fill="#6fd39b"><title>I Built 67 Secret Rooms In One Color! (0.45x, 132 min)</title></circle><circle cx="62.8" cy="103.8" r="3" fill="rgba(141,216,211,.5)"><title>I Tested BANNED School Products! (1.05x, 19 min)</title></circle><circle cx="89.7" cy="68.3" r="3" fill="rgba(141,216,211,.5)"><title>I Met 9 People You Won't Believe Exist! (1.33x, 25 min)</title></circle><circle cx="319.7" cy="173.5" r="5" fill="#6fd39b"><title>3 YouTubers Were Murdered.. (0.50x, 79 min)</title></circle><circle cx="94.0" cy="101.3" r="3" fill="rgba(141,216,211,.5)"><title>I FILLED MY ENTIRE HOUSE WITH PACKING PEANUTS!! (1.07x, 26 min)</title></circle><circle cx="141.5" cy="107.6" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 SECRET Rooms In School! (1.02x, 37 min)</title></circle><circle cx="48.7" cy="117.7" r="3" fill="rgba(141,216,211,.5)"><title>I Spent 24 Hours with Conjoined Twins! (0.94x, 15 min)</title></circle><circle cx="103.8" cy="125.4" r="3" fill="rgba(141,216,211,.5)"><title>First To Lose 100 LBS, Wins $200,000! (0.88x, 28 min)</title></circle><circle cx="117.5" cy="126.6" r="3" fill="rgba(141,216,211,.5)"><title>Surprising Twin Brother With Dream Vacation! (0.87x, 31 min)</title></circle><circle cx="97.4" cy="12.5" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 SECRET Rooms In ONE COLOR! (1.77x, 27 min)</title></circle><circle cx="107.7" cy="152.0" r="3" fill="rgba(141,216,211,.5)"><title>Stokes Twins Were Murdered.. (0.67x, 29 min)</title></circle><circle cx="97.9" cy="133.0" r="3" fill="rgba(141,216,211,.5)"><title>4 YouTuber Homes You Won’t Believe Exist! (0.82x, 27 min)</title></circle><circle cx="118.4" cy="121.5" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed 5 of the World's Most Evil 10 Year Olds! (0.91x, 31 min)</title></circle><circle cx="86.3" cy="70.8" r="3" fill="rgba(141,216,211,.5)"><title>I Met 7 People You Won't Believe Exist! (1.31x, 24 min)</title></circle><circle cx="100.0" cy="67.0" r="3" fill="rgba(141,216,211,.5)"><title>Walking on Water Prank! (1.34x, 27 min)</title></circle><circle cx="115.8" cy="79.7" r="3" fill="rgba(141,216,211,.5)"><title>I Learned Extreme Camouflage in One Color! (1.24x, 31 min)</title></circle><circle cx="109.4" cy="143.1" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed the World’s Most Evil 10 Year Olds! (0.74x, 29 min)</title></circle><circle cx="64.5" cy="158.3" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed 1-Star Waterparks! (0.62x, 19 min)</title></circle><circle cx="100.4" cy="10.0" r="3" fill="rgba(141,216,211,.5)"><title>MrBeast Was Murdered.. (1.79x, 27 min)</title></circle><circle cx="111.5" cy="75.9" r="3" fill="rgba(141,216,211,.5)"><title>$1 vs $100,000,000 YouTuber Houses! (1.27x, 30 min)</title></circle><circle cx="70.5" cy="113.9" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed The World’s Most DANGEROUS Theme Parks! (0.97x, 20 min)</title></circle><circle cx="101.7" cy="139.3" r="3" fill="rgba(141,216,211,.5)"><title>I Built a Theme Park In My House! (0.77x, 28 min)</title></circle><circle cx="154.7" cy="150.7" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Soccer Field For Ronaldo! (0.68x, 40 min)</title></circle><circle cx="124.4" cy="113.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Lamborghini Dealership! (0.97x, 33 min)</title></circle><circle cx="48.3" cy="83.5" r="3" fill="rgba(141,216,211,.5)"><title>I Spent 24 Hours with the World’s Tallest Man! (1.21x, 15 min)</title></circle><circle cx="96.2" cy="82.3" r="3" fill="rgba(141,216,211,.5)"><title>I Built a WATERPARK In My House! (1.22x, 26 min)</title></circle><circle cx="127.4" cy="79.7" r="3" fill="rgba(141,216,211,.5)"><title>I Built 3 SECRET Rooms In School! (1.24x, 34 min)</title></circle><circle cx="321.4" cy="190.0" r="5" fill="#6fd39b"><title>I Built 10 SECRET Rooms You'll Never Believe Exist (0.37x, 79 min)</title></circle><circle cx="44.4" cy="74.6" r="3" fill="rgba(141,216,211,.5)"><title>I Spent 24 Hours With The World’s SHORTEST Woman! (1.28x, 14 min)</title></circle><circle cx="136.8" cy="84.8" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET McDonald’s In My Room! (1.20x, 36 min)</title></circle><circle cx="108.1" cy="45.5" r="3" fill="rgba(141,216,211,.5)"><title>I Built 4 SECRET Rooms In ONE COLOR! (1.51x, 29 min)</title></circle><circle cx="68.4" cy="115.2" r="3" fill="rgba(141,216,211,.5)"><title>I Survived The World's STRICTEST School! (0.96x, 20 min)</title></circle><circle cx="121.4" cy="127.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built 7 SECRET Rooms You'd Never Find! (0.86x, 32 min)</title></circle><circle cx="71.8" cy="115.2" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET 7-11 in My Room! (0.96x, 21 min)</title></circle><circle cx="63.2" cy="162.1" r="3" fill="rgba(141,216,211,.5)"><title>Eating 100 Years of McDonalds! (0.59x, 19 min)</title></circle><circle cx="98.3" cy="23.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 SECRET Rooms You’d Never Find! (1.68x, 27 min)</title></circle><circle cx="104.3" cy="150.7" r="3" fill="rgba(141,216,211,.5)"><title>I Tested 100 Al Products That Shouldn't Exist! (0.68x, 28 min)</title></circle><circle cx="95.7" cy="119.0" r="3" fill="rgba(141,216,211,.5)"><title>Which Country has the Best School Lunch? (0.93x, 26 min)</title></circle><circle cx="67.5" cy="124.1" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Room You'd Never Find! (0.89x, 20 min)</title></circle><circle cx="189.3" cy="117.7" r="3" fill="rgba(141,216,211,.5)"><title>I Bought 1,000 Cursed Amazon Products! (0.94x, 48 min)</title></circle><text x="548" y="212" text-anchor="end" font-size="11" fill="#8a9a9a">minutes</text><text x="48" y="20" font-size="11" fill="#8a9a9a">score (x)</text><text x="48" y="184" font-size="11" fill="#ffffff">rho -0.25, n=56</text></svg><p class="st-fig-note">Highlighted: the four uploads past 55 minutes. Remove them and the relationship is flat.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">The secret-rooms shape, ordered by runtime</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 250" role="img" aria-label="The secret-rooms shape, ordered by runtime"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">20 min: I Built a SECRET Room You'd Never Find!</text><rect x="210" y="21" width="127.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="343.6" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.89x, 124.6M</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">27 min: I Built 5 SECRET Rooms In ONE COLOR!</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.77x, 178.2M</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">27 min: I Built 5 SECRET Rooms You’d Never Find!</text><rect x="210" y="65" width="240.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="456.8" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.68x, 220.3M</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">29 min: I Built 4 SECRET Rooms In ONE COLOR!</text><rect x="210" y="87" width="216.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="432.4" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.51x, 278.8M</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">32 min: I Built 7 SECRET Rooms You'd Never Find!</text><rect x="210" y="109" width="123.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="339.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x, 177.2M</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">34 min: I Built 3 SECRET Rooms In School!</text><rect x="210" y="131" width="177.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="393.7" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.24x, 222.4M</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">37 min: I Built 5 SECRET Rooms In School!</text><rect x="210" y="153" width="146.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="362.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.02x, 66.4M</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">38 min: I Built 5 Secret Rooms To Escape EVIL KP</text><rect x="210" y="175" width="154.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="370.8" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.08x, 48.2M</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#ffffff">79 min: I Built 10 SECRET Rooms You'll Never Bel</text><rect x="210" y="197" width="53.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="269.0" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.37x, 76.8M</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#ffffff">132 min: I Built 67 Secret Rooms In One Color!</text><rect x="210" y="219" width="64.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="280.5" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.45x, 31.1M</text><line x1="353.3" y1="12" x2="353.3" y2="236" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="357.3" y="246" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg><p class="st-fig-note">Same shape, same years. The three strongest are the three shortest full-size entries.</p></figure></section><section class="st-section"><p class="st-eyebrow">Titles</p><h2>The words that separate, and the levers that do not</h2><p>A recent title here is 7 words, and length does not separate winners from the rest (rank correlation +0.10). The one voice that does is the first-person verb: uploads opening with <em>I tested, I built, I survived, I became</em> run 1.03x against 0.84x for everything else since 2024, and the channel moved to it deliberately: 52% of 2020 titles were all-caps shouts and 2% first-person; by 2024 the caps were gone (0%) and 81% opened in the first person. The knowledge base holds a theory that casing selects a younger audience; this channel dropped the caps while its views quadrupled, though the runtime, the thumbnails and the formats changed in the same months, which is exactly the five-variable postmortem the warning describes.</p><p>The levers the fleet has already rejected do not work here either. A number sits in 104 of 200 titles and separates nothing (1.01x with a number, 0.93x without; the fleet rejected numbered titles as a lever on 79 channels). World-superlatives (<em>world's strictest, most evil</em>) read 0.97x against 0.94x; the fleet's superlative claim is contested and did not hold on this channel. Shorter titles earn a higher click-through on 19 measured channels, but no click-through exists in this record, so that claim cannot be tested here.</p><p>School, kids and myths are the subject words that sit above the line in the recent window, and horror words sit below it; with fewer than ten uploads behind most of these rows they are a direction to test, not a finding.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Median score of uploads whose title carries the word, since 2024</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="Median score of uploads whose title carries the word, since 2024"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">first-person verb (I tested, I built, I survived...)</text><rect x="210" y="21" width="248.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="464.9" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.03x with (n=38) against 0.84x without</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">school, kids, principal</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x with (n=9) against 0.94x without</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">myths, banned, illegal</text><rect x="210" y="65" width="251.3" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="467.3" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.04x with (n=5) against 0.96x without</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">secret, hidden, escape</text><rect x="210" y="87" width="239.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="455.2" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.99x with (n=14) against 0.94x without</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">horror: backrooms, evil, murdered</text><rect x="210" y="109" width="219.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="435.9" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.91x with (n=11) against 0.97x without</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">a count: 100, 1,000</text><rect x="210" y="131" width="219.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="435.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.91x with (n=8) against 0.96x without</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">world's, strictest, most</text><rect x="210" y="153" width="234.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="450.4" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.97x with (n=7) against 0.94x without</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">money: $, rich, Lamborghini</text><rect x="210" y="175" width="224.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="440.7" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.93x with (n=4) against 0.96x without</text><line x1="442.0" y1="12" x2="442.0" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="446.0" y="202" font-size="11" fill="#8a9a9a">recent median 0.96x</text></svg><p class="st-fig-note">Highlighted rows differ from their complement by 0.08x or more. Small groups; a direction, not a finding.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Share of titles in all-caps, by year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Share of titles in all-caps, by year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="28.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="244.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">6%</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="25.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="241.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">6%</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="1.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="216.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0%</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="88.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="304.4" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">19%</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">55%</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="242.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="458.5" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">53%</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="243.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="459.4" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">53%</text></svg></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Share of titles opening in the first person (I, We, My, Our), by year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Share of titles opening in the first person (I, We, My, Our), by year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="174.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="390.4" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">56%</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="206.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="422.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">67%</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">82%</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="119.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="335.3" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">38%</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="21.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="237.4" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">7%</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="11.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="227.3" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4%</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="9.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="225.1" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3%</text></svg></figure></section><section class="st-section"><p class="st-eyebrow">Thumbnails</p><h2>From group shots to movie posters</h2><p>The eight strongest uploads of 2020 and 2021 share one picture: four to six friends in primary-colour clothes, a prop in the middle of the frame, a shocked face or a kiss, and a word or emoji laid over the top. The strongest uploads since 2024 are single staged scenes: the twins in matching outfits, one large legible object (a Lamborghini under lava, a dumpster of Dalmatian puppies, a hospital gurney, a backrooms monster), no more than one word of text, and a colour palette built around a red or a blue. Both languages worked in their era; neither is measured here, because no impression or click-through figure exists in public data. What follows is what is visible, not what clicked.</p><h3 style="margin:18px 0 4px;font-size:15px">The 2020 and 2021 winners</h3><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0"><figure style="margin:0"><img src="public-2026-09/JXOjEDQkXw0.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="How Far Can You SPLIT CHALLENGE! w/ Sofie Dossi"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2020, 7.48x, 38.8M, 13 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/sBkphcVw3jo.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="SPEAKING ONLY CHINESE TO MY FRIENDS FOR 24 HOURS!!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2021, 4.30x, 38.2M, 12 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/SsJ7oOpbmIk.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="Tesla Autopilot For 24 Hours!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2021, 4.25x, 38.3M, 11 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/AwQz703eOt0.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="BUSTING VIRAL TIKTOK GADGETS!!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2021, 4.18x, 28.6M, 11 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/a-8WCFtPhBU.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="SCARY Halloween Prank On Friends!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2020, 2.87x, 31.3M, 8 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/UJhcbgiNdy4.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="SPIN THE BOTTLE CHALLENGE w/ CRUSH!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2021, 2.79x, 42.3M, 10 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/QH0yK6Dn-As.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="What It&#x27;s Like To Be A Twin 3"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2020, 2.74x, 21.6M, 9 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/Zx_rMbPSz3s.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="IGNORING MY TWIN BROTHER ON HIS BIRTHDAY FOR 24 HOURS!!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2020, 2.53x, 25.9M, 9 min</figcaption></figure></div><h3 style="margin:18px 0 4px;font-size:15px">The winners since 2024</h3><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0"><figure style="margin:0"><img src="public-2026-09/Vhlwk1HcFdI.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="MrBeast Was Murdered.."><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2024, 1.79x, 205.6M, 27 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/cfFtBojH_-Y.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Built 5 SECRET Rooms In ONE COLOR!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2025, 1.77x, 178.2M, 27 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/-5bcG6tZKx8.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Built 5 SECRET Rooms You’d Never Find!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2024, 1.68x, 220.3M, 27 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/LJYkuCoTOKg.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Became A Principal At The World&#x27;s Strictest School!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2026, 1.52x, 50.4M, 26 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/6EtuOTq5TmM.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="Clean The Sports Car, Keep It!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2026, 1.51x, 82.2M, 24 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/RqKDKaHPPlQ.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Built 4 SECRET Rooms In ONE COLOR!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2024, 1.51x, 278.8M, 29 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/AKa1N3Mo8mQ.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Tested 100 BANNED School Products!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2026, 1.39x, 60.8M, 27 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/hHdKug_wQkU.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="Walking on Water Prank!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2025, 1.34x, 164.4M, 27 min</figcaption></figure></div><h3 style="margin:18px 0 4px;font-size:15px">The weakest uploads since 2024</h3><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0"><figure style="margin:0"><img src="public-2026-09/raxAy3asJ90.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Built 10 SECRET Rooms You&#x27;ll Never Believe Exist!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2024, 0.37x, 76.8M, 79 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/g3Qjx7y0eag.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="I Built 67 Secret Rooms In One Color!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2025, 0.45x, 31.1M, 132 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/9Ib1rni1SCc.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="3 YouTubers Were Murdered.."><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2025, 0.50x, 33.5M, 79 min</figcaption></figure><figure style="margin:0"><img src="public-2026-09/lFOw4ZuxK4I.jpg" style="width:100%;border-radius:8px;border:1px solid var(--line)" alt="LAST TO LEAVE BACKROOMS!"><figcaption style="font-size:12px;color:var(--grey);margin-top:4px">2026, 0.58x, 13.6M, 28 min</figcaption></figure></div><p>One pattern is checkable against the titles: every winning recent thumbnail can be named in a sentence without the title (a Lamborghini covered in lava; twins chained up holding a DAY 30 sign; a monster behind a boy in a yellow corridor), which is the mechanism test the knowledge base asks of a thumbnail. The weakest recent uploads include the two 78-minute-plus marathons and the two self-referential fake-outs, so the thumbnail is unlikely to be what failed there.</p></section><section class="st-section"><p class="st-eyebrow">Openings</p><h2>Every video says the title in its first sentence</h2><p>197 of the 200 uploads have a transcript, so the first minute of speech is stored for each. Since 2024 the words of the title are spoken by the 5th word on a median video, 78% of recent uploads say them inside the first ten words, and 7% never say them in the first minute. Delivery got faster: a recent first minute holds 178 words against 153 in 2020 and 2021. The premise is sentence one and the stakes are sentence two, without exception in the last two years:</p><ul><li><strong>Clean The Sports Car, Keep It!</strong> opens: <em>If you can clean the Lamborghini, you can keep it. Today, we&#x27;ll be competing to clean two cars completely covered in dirt</em></li><li><strong>24 Hours In A Country Where It’s Illegal To Be Fat..</strong> opens: <em>You&#x27;re fat. &gt;&gt; I don&#x27;t think people here will be too nice to you. You&#x27;re fat. People call South Korea, the country</em></li><li><strong>I Exposed 100 Evil Kids!</strong> opens: <em>These are the world&#x27;s most evil twins. These twins bully people, take whatever they want, &gt;&gt; and treat the entire world like</em></li><li><strong>I Tested 100 BANNED School Products!</strong> opens: <em>You might not see it now, but I&#x27;m actually wearing a product that&#x27;s banned from all schools because today we&#x27;re testing banned</em></li></ul><p>This matters for the intelligence system more than for the twins. Twenty-one claims in the knowledge base are about what the first thirty seconds must do, and they are measured by comparing videos that deliver the promise early against ones that do not. On this channel there is nothing to compare: every upload complies, so the within-channel probe has no variance and reports nothing. The claims can only be tested here against a retention curve, which public data does not carry. The knowledge base also holds a theory that the declarative <em>today I'm doing X</em> opening is a trend audiences are tiring of; the largest challenge channel in the store uses it on every upload, which is worth recording beside that theory even though it settles nothing.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Where the title's own words are first spoken, uploads since 2024</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 44" role="img" aria-label="Where the title's own words are first spoken, uploads since 2024"><rect x="1.0" y="8" width="436.3" height="18" fill="#6fd39b"/><text x="5.0" y="40" font-size="12" fill="#ffffff">inside the first 10 words 43 (78%)</text><rect x="437.3" y="8" width="71.0" height="18" fill="rgba(141,216,211,.55)"/><text x="441.3" y="40" font-size="12" fill="#ffffff">words 11 to 50 7 (12%)</text><rect x="508.3" y="8" width="10.1" height="18" fill="#e3b45a"/><text x="512.3" y="40" font-size="12" fill="#ffffff">later in the minute 1 (1%)</text><rect x="518.4" y="8" width="40.6" height="18" fill="#ff5a5f"/><text x="522.4" y="40" font-size="12" fill="#ffffff">not in the first minute 4 (7%)</text></svg><p class="st-fig-note">Position in the word stream of the first minute; the stored opening has no per-word timings.</p></figure></section><section class="st-section"><p class="st-eyebrow">Engagement</p><h2>Reach dilutes participation</h2><p>Likes and comments are public, and both fell as the channel grew: a 2020 upload drew likes from 4.5% of its viewers, a 2025 upload from 0.68%; comments fell from 36 per ten thousand views to 1.8. That is what an audience broadening looks like, and it is consistent with the reported move to dubbed, international, younger viewers, though the record cannot say which of those it is.</p><p>Within one era the comment rate runs the wrong way: on the 33 uploads published between January 2024 and August 2025 (all at least a year old, so age is not the cause), a higher comment rate goes with a lower score (rank correlation -0.42), while the like rate barely moves (+0.17). The biggest videos have the thinnest comment rates. The likeliest reading is mechanical: the extra views on a breakout come from wider, more passive surfaces, and the denominator grows faster than the commenters. It is an observation about how the counts behave, not a lever, and it is a caution against reading a comment rate as a quality signal on a channel this size.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Likes per hundred views, median by year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Likes per hundred views, median by year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="47.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="263.0" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.83%</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="38.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="254.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.68%</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="48.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="264.7" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86%</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="60.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="276.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.06%</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="79.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="295.8" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.41%</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="195.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="411.4" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.45%</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.48%</text></svg><p class="st-fig-note">Public like counts against lifetime views.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Comments per 10,000 views against score, uploads from Jan 2024 to Aug 2025</span> <span class="evchip ev-corr" title="Two measures move together on this channel. That is not evidence that one causes the other.">Correlation</span></figcaption><svg class="st-chart" viewBox="0 0 560 220" role="img" aria-label="Comments per 10,000 views against score, uploads from Jan 2024 to Aug 2025"><line x1="44" y1="190" x2="548" y2="190" stroke="rgba(141,216,211,.3)"/><line x1="44" y1="10" x2="44" y2="190" stroke="rgba(141,216,211,.3)"/><circle cx="73.9" cy="125.4" r="3" fill="rgba(141,216,211,.5)"><title>First To Lose 100 LBS, Wins $200,000! (0.88x, 1.8 per 10k)</title></circle><circle cx="73.9" cy="126.6" r="3" fill="rgba(141,216,211,.5)"><title>Surprising Twin Brother With Dream Vacation! (0.87x, 1.8 per 10k)</title></circle><circle cx="44.0" cy="12.5" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 SECRET Rooms In ONE COLOR! (1.77x, 1.1 per 10k)</title></circle><circle cx="73.9" cy="152.0" r="3" fill="rgba(141,216,211,.5)"><title>Stokes Twins Were Murdered.. (0.67x, 1.8 per 10k)</title></circle><circle cx="73.9" cy="133.0" r="3" fill="rgba(141,216,211,.5)"><title>4 YouTuber Homes You Won’t Believe Exist! (0.82x, 1.8 per 10k)</title></circle><circle cx="52.5" cy="121.5" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed 5 of the World's Most Evil 10 Year Olds! (0.91x, 1.3 per 10k)</title></circle><circle cx="73.9" cy="70.8" r="3" fill="rgba(141,216,211,.5)"><title>I Met 7 People You Won't Believe Exist! (1.31x, 1.8 per 10k)</title></circle><circle cx="73.9" cy="67.0" r="3" fill="rgba(141,216,211,.5)"><title>Walking on Water Prank! (1.34x, 1.8 per 10k)</title></circle><circle cx="56.8" cy="79.7" r="3" fill="rgba(141,216,211,.5)"><title>I Learned Extreme Camouflage in One Color! (1.24x, 1.4 per 10k)</title></circle><circle cx="108.1" cy="143.1" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed the World’s Most Evil 10 Year Olds! (0.74x, 2.6 per 10k)</title></circle><circle cx="78.2" cy="158.3" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed 1-Star Waterparks! (0.62x, 1.9 per 10k)</title></circle><circle cx="61.1" cy="10.0" r="3" fill="rgba(141,216,211,.5)"><title>MrBeast Was Murdered.. (1.79x, 1.5 per 10k)</title></circle><circle cx="108.1" cy="75.9" r="3" fill="rgba(141,216,211,.5)"><title>$1 vs $100,000,000 YouTuber Houses! (1.27x, 2.6 per 10k)</title></circle><circle cx="103.8" cy="113.9" r="3" fill="rgba(141,216,211,.5)"><title>I Exposed The World’s Most DANGEROUS Theme Parks! (0.97x, 2.5 per 10k)</title></circle><circle cx="61.1" cy="139.3" r="3" fill="rgba(141,216,211,.5)"><title>I Built a Theme Park In My House! (0.77x, 1.5 per 10k)</title></circle><circle cx="138.0" cy="150.7" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Soccer Field For Ronaldo! (0.68x, 3.3 per 10k)</title></circle><circle cx="56.8" cy="113.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Lamborghini Dealership! (0.97x, 1.4 per 10k)</title></circle><circle cx="86.7" cy="83.5" r="3" fill="rgba(141,216,211,.5)"><title>I Spent 24 Hours with the World’s Tallest Man! (1.21x, 2.1 per 10k)</title></circle><circle cx="91.0" cy="82.3" r="3" fill="rgba(141,216,211,.5)"><title>I Built a WATERPARK In My House! (1.22x, 2.2 per 10k)</title></circle><circle cx="69.6" cy="79.7" r="3" fill="rgba(141,216,211,.5)"><title>I Built 3 SECRET Rooms In School! (1.24x, 1.7 per 10k)</title></circle><circle cx="116.6" cy="190.0" r="3" fill="rgba(141,216,211,.5)"><title>I Built 10 SECRET Rooms You'll Never Believe Exist (0.37x, 2.8 per 10k)</title></circle><circle cx="73.9" cy="74.6" r="3" fill="rgba(141,216,211,.5)"><title>I Spent 24 Hours With The World’s SHORTEST Woman! (1.28x, 1.8 per 10k)</title></circle><circle cx="86.7" cy="84.8" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET McDonald’s In My Room! (1.20x, 2.1 per 10k)</title></circle><circle cx="52.5" cy="45.5" r="3" fill="rgba(141,216,211,.5)"><title>I Built 4 SECRET Rooms In ONE COLOR! (1.51x, 1.3 per 10k)</title></circle><circle cx="86.7" cy="115.2" r="3" fill="rgba(141,216,211,.5)"><title>I Survived The World's STRICTEST School! (0.96x, 2.1 per 10k)</title></circle><circle cx="86.7" cy="127.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built 7 SECRET Rooms You'd Never Find! (0.86x, 2.1 per 10k)</title></circle><circle cx="86.7" cy="115.2" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET 7-11 in My Room! (0.96x, 2.1 per 10k)</title></circle><circle cx="95.3" cy="162.1" r="3" fill="rgba(141,216,211,.5)"><title>Eating 100 Years of McDonalds! (0.59x, 2.3 per 10k)</title></circle><circle cx="56.8" cy="23.9" r="3" fill="rgba(141,216,211,.5)"><title>I Built 5 SECRET Rooms You’d Never Find! (1.68x, 1.4 per 10k)</title></circle><circle cx="86.7" cy="150.7" r="3" fill="rgba(141,216,211,.5)"><title>I Tested 100 Al Products That Shouldn't Exist! (0.68x, 2.1 per 10k)</title></circle><circle cx="548.0" cy="119.0" r="3" fill="rgba(141,216,211,.5)"><title>Which Country has the Best School Lunch? (0.93x, 12.9 per 10k)</title></circle><circle cx="52.5" cy="124.1" r="3" fill="rgba(141,216,211,.5)"><title>I Built a SECRET Room You'd Never Find! (0.89x, 1.3 per 10k)</title></circle><circle cx="108.1" cy="117.7" r="3" fill="rgba(141,216,211,.5)"><title>I Bought 1,000 Cursed Amazon Products! (0.94x, 2.6 per 10k)</title></circle><text x="548" y="212" text-anchor="end" font-size="11" fill="#8a9a9a">comments per 10k views</text><text x="48" y="20" font-size="11" fill="#8a9a9a">score (x)</text><text x="48" y="184" font-size="11" fill="#ffffff">rho -0.42, n=33</text></svg><p class="st-fig-note">Age-matched window. The direction is negative; the cause is not identified.</p></figure></section><section class="st-section"><p class="st-eyebrow">Cadence</p><h2>Twice a month, Fridays and Saturdays, and the day does not separate</h2><p>The gap between uploads grew from 5 days in 2020 to 20 in 2025 and 13 so far in 2026, in step with the runtime. The gap before an upload does not predict its score (rank correlation +0.13 since 2024). Friday and Saturday carry 25 of the 56 recent uploads and sit at 0.96x and 0.84x; the weekdays that read higher hold three to seven uploads each, too few to call. The fleet's cadence claim (keep a stable rhythm) did not hold here, as it has not on most channels; its two decomposed children were rejected by the data this week.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Median days between uploads, by year</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Median days between uploads, by year"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2026</text><rect x="210" y="21" width="164.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="380.9" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">13 days</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">2025</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">20 days</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">2024</text><rect x="210" y="65" width="190.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="406.3" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">15 days</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">2023</text><rect x="210" y="87" width="177.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="393.6" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">14 days</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022</text><rect x="210" y="109" width="152.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="368.2" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">12 days</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2021</text><rect x="210" y="131" width="76.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="292.1" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">6 days</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2020</text><rect x="210" y="153" width="63.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="279.4" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">5 days</text></svg></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Median score by upload weekday, since 2024</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="Median score by upload weekday, since 2024"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">Saturday</text><rect x="210" y="21" width="177.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="393.6" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.84x, 14 uploads</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Friday</text><rect x="210" y="43" width="203.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="419.0" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.96x, 11 uploads</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Sunday</text><rect x="210" y="65" width="167.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="383.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.79x, 8 uploads</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Tuesday</text><rect x="210" y="87" width="228.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="444.3" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.08x, 7 uploads</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">Wednesday</text><rect x="210" y="109" width="205.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="421.1" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.97x, 7 uploads</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">Monday</text><rect x="210" y="131" width="243.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="459.1" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.15x, 6 uploads</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">Thursday</text><rect x="210" y="153" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.20x, 3 uploads</text><line x1="421.4" y1="12" x2="421.4" y2="170" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="425.4" y="180" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">Ordered by count. Nothing under ten uploads should be read as a preference.</p></figure></section>
+<section class="st-section">
+  <p class="st-eyebrow">What the record says to test next</p>
+  <h2>Five tests the catalogue itself proposes</h2>
+  <p class="st-intro">Each is a next upload the data points at, with the figures behind it and the knowledge-base claims it would inform. The pictures are the channel's own thumbnails, shown as the reference composition for the shape; none is a proposed image. Tiers rate the evidence, not the idea.</p>
+  <div class="st-callout">Everything below rests on lifetime views and titles. Whether any of it clicked or held is unmeasured here, and the first Studio pull on this channel would re-rank it.</div>
+  <div class="st-family"><h3 class="st-family-name">A borrowed name <span>The thriller shape's two biggest entries carry someone else's name.</span></h3><div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">Thrillers: own name against borrowed name</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="Thrillers: own name against borrowed name"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">MrBeast Was Murdered..</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.79x, 27 min</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">KPop Demon Hunters Were Murdered..</text><rect x="210" y="43" width="174.3" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="390.3" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.23x, 26 min</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">My Twin Brother Was MURDERED…</text><rect x="210" y="65" width="163.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="379.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.15x, 27 min</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">I Was MURDERED…</text><rect x="210" y="87" width="160.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="376.2" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.13x, 25 min</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#ffffff">KPop Demon Hunters Were Kidnapped!</text><rect x="210" y="109" width="121.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="337.9" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x, 64 min</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#ffffff">KPop Demon Hunters Are MISSING..</text><rect x="210" y="131" width="112.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="328.0" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.79x, 31 min</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">Stokes Twins Were Murdered..</text><rect x="210" y="153" width="95.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="311.0" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.67x, 29 min</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">3 YouTubers Were Murdered..</text><rect x="210" y="175" width="70.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="286.9" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.50x, 79 min</text><line x1="351.7" y1="12" x2="351.7" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="355.7" y="202" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></div><div class="st-grid"><article class="st-angle" id="T1">
+  <div class="st-mock" title="Real frame: the 2024 MrBeast thriller's own thumbnail, as the reference composition. Not a proposal for the picture."><div class="st-plate" style="background-image:url('UCbp9MyKCTEww4CxEzc_Tp0Q-public-2026-09/Vhlwk1HcFdI.jpg')"></div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the 2024 MrBeast thriller's own thumbnail, as the reference composition. Not a proposal for the picture.. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">T1</span><h3>MrBeast Went Missing..</h3></div>
+  <div class="st-chips"><span class="st-chip">A borrowed name</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>MrBeast Was Murdered.. is the strongest upload of the last three years at 1.79x and 205.6M views; the KPop entry that borrowed a film franchise reads 1.23x. The thrillers about the twins themselves went 1.15x, 1.13x and then 0.67x.</li><li>Keep it at the working length. The two weakest thrillers are the two longest (78 and 64 minutes); the two strongest are 26 and 27 minutes.</li></ul>
+  
+  <div class="st-claims"><span class="st-claim st-law" title="0cf8b8fc71fe"><b>law</b> · signed, not measured <code>0cf8b8fc71fe</code></span><span class="st-claim st-theory" title="8c5c0fa113be"><b>theory</b> · not measured <code>8c5c0fa113be</code></span><span class="st-claim st-warning" title="ffe7ab00cbfe"><b>warning</b> · not measured <code>ffe7ab00cbfe</code></span></div>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The knowledge base's single-winner law: the win may belong to the guest. A second borrowed-name entry is the test of whether the shape or MrBeast carried the first one. It also needs the guest.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Secret rooms at full size <span>The shape holds when the runtime does.</span></h3><div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">Secret rooms by runtime</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 250" role="img" aria-label="Secret rooms by runtime"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">20 min</text><rect x="210" y="21" width="127.6" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="343.6" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.89x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">27 min</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.77x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">27 min</text><rect x="210" y="65" width="240.8" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="456.8" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.68x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">29 min</text><rect x="210" y="87" width="216.4" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="432.4" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.51x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">32 min</text><rect x="210" y="109" width="123.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="339.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">34 min</text><rect x="210" y="131" width="177.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="393.7" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.24x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">37 min</text><rect x="210" y="153" width="146.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="362.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.02x</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">38 min</text><rect x="210" y="175" width="154.8" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="370.8" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.08x</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">79 min</text><rect x="210" y="197" width="53.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="269.0" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.37x</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">132 min</text><rect x="210" y="219" width="64.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="280.5" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.45x</text><line x1="353.3" y1="12" x2="353.3" y2="236" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="357.3" y="246" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></div><div class="st-grid"><article class="st-angle" id="T2">
+  <div class="st-mock" title="Real frame: the 2025 one-colour secret-rooms thumbnail. Reference only."><div class="st-plate" style="background-image:url('UCbp9MyKCTEww4CxEzc_Tp0Q-public-2026-09/cfFtBojH_-Y.jpg')"></div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the 2025 one-colour secret-rooms thumbnail. Reference only.. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">T2</span><h3>I Built 6 Secret Rooms In ONE COLOR!</h3></div>
+  <div class="st-chips"><span class="st-chip">Secret rooms at full size</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The two one-colour entries are the shape's best: 1.77x (5 rooms, 26 min) and 1.51x (4 rooms, 29 min). Within the shape the three strongest are the three shortest full-size entries; the 78- and 131-minute entries read 0.37x and 0.45x.</li><li>Repetition is not what wears this shape here: the fleet's format-decay claim did not hold on this channel (repeat depth moved with views, +0.16).</li></ul>
+  
+  <div class="st-claims"><span class="st-claim st-rejected" title="f12d6e116bf7"><b>rejected</b> · held 15 of 50 on 17 ch, measured on this channel: did not hold, which favours repeating <code>f12d6e116bf7</code></span><span class="st-claim st-candidate-law" title="30b319487492"><b>candidate-law</b> · held 35 of 52 on 19 ch <code>30b319487492</code></span><span class="st-claim st-candidate-law" title="be05cf1f696d"><b>candidate-law</b> · held 176 of 193 on 84 ch <code>be05cf1f696d</code></span><span class="st-claim st-warning" title="b77e1205fc9a"><b>warning</b> · not measured <code>b77e1205fc9a</code></span></div>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Hold it under 30 minutes. The last attempt at a bigger version (67 rooms, 131 minutes) is the weakest upload of the last three years.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">School as the stage <span>The best upload of 2026 and three of the top ten since 2024.</span></h3><div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">Every school-set upload</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 294" role="img" aria-label="Every school-set upload"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">2026 I Became A Principal At The World's Stri</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.52x, 26 min</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">2026 I Tested 100 BANNED School Products!</text><rect x="210" y="43" width="232.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="448.0" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.39x, 27 min</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">2023 Eating 100 Years of School Lunches!</text><rect x="210" y="65" width="232.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="448.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.39x, 17 min</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">2024 I Built 3 SECRET Rooms In School!</text><rect x="210" y="87" width="207.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="423.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.24x, 34 min</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2025 I Tested BANNED School Products!</text><rect x="210" y="109" width="175.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="391.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x, 19 min</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2025 I Built 5 SECRET Rooms In School!</text><rect x="210" y="131" width="170.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="386.2" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.02x, 37 min</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2024 I Survived The World's STRICTEST School!</text><rect x="210" y="153" width="160.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="376.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.96x, 20 min</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">2024 Which Country has the Best School Lunch?</text><rect x="210" y="175" width="155.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="371.2" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.93x, 26 min</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">2022 Going Back To MIDDLE SCHOOL For A Day!</text><rect x="210" y="197" width="150.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="366.2" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.90x, 14 min</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">2023 Busting 100 School Myths Teachers Lied A</text><rect x="210" y="219" width="140.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="356.2" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.84x, 19 min</text><text x="202" y="251" text-anchor="end" font-size="12" fill="#8a9a9a">2026 I Tested 1,000 BANNED School Products!</text><rect x="210" y="241" width="120.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="336.2" y="251" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.72x, 59 min</text><text x="202" y="273" text-anchor="end" font-size="12" fill="#8a9a9a">2021 Twins Switch Places At School</text><rect x="210" y="263" width="43.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="259.4" y="273" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.26x, 13 min</text><line x1="376.9" y1="12" x2="376.9" y2="280" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="380.9" y="290" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></div><div class="st-grid"><article class="st-angle" id="T3">
+  <div class="st-mock" title="Real frame: the 2026 principal thumbnail. Reference only."><div class="st-plate" style="background-image:url('UCbp9MyKCTEww4CxEzc_Tp0Q-public-2026-09/LJYkuCoTOKg.jpg')"></div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the 2026 principal thumbnail. Reference only.. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">T3</span><h3>I Became A Teacher At The World's Strictest School!</h3></div>
+  <div class="st-chips"><span class="st-chip">School as the stage</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The school set is the channel's most reliable stage since 2024: 1.52x (principal, 26 min), 1.39x (100 banned products, 27 min), 1.24x (3 secret rooms in school, 33 min). Titles carrying school, kids or principal run 1.05x against 0.94x without since 2024.</li><li>The stage's one weak entry is the 58-minute 1,000-products version at 0.72x. Same rule as everywhere on this channel: the set works at 26 to 33 minutes.</li></ul>
+  
+  <div class="st-claims"><span class="st-claim st-law" title="5f7da5d4578d"><b>law</b> · signed, not measured <code>5f7da5d4578d</code></span><span class="st-claim st-warning" title="14d43823c71b"><b>warning</b> · not measured <code>14d43823c71b</code></span></div>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Four school uploads in eight months is a lot of the same room; interleave with other stages so the score keeps comparing against something else.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">24 hours with a rare person <span>Three uploads, all strong, all fifteen minutes, none since 2025.</span></h3><div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">24 hours with a rare person</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 96" role="img" aria-label="24 hours with a rare person"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">I Spent 24 Hours With The World’s SHORTEST W</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.28x, 14 min, likes 1.48%</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">I Spent 24 Hours with the World’s Tallest Ma</text><rect x="210" y="43" width="239.8" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="455.8" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.21x, 15 min, likes 0.80%</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">I Spent 24 Hours with Conjoined Twins!</text><rect x="210" y="65" width="186.3" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="402.3" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.94x, 15 min, likes 0.77%</text><line x1="408.2" y1="12" x2="408.2" y2="82" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="412.2" y="92" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></div><div class="st-grid"><article class="st-angle" id="T4">
+  <div class="st-mock" title="Real frame: the 2024 shortest-woman thumbnail. Reference only."><div class="st-plate" style="background-image:url('UCbp9MyKCTEww4CxEzc_Tp0Q-public-2026-09/TzebVGUMrGU.jpg')"></div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the 2024 shortest-woman thumbnail. Reference only.. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">T4</span><h3>I Spent 24 Hours With The World's Oldest Twins!</h3></div>
+  <div class="st-chips"><span class="st-chip">24 hours with a rare person</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>All three rare-person entries are strong and short: 1.28x (shortest woman, 14 min), 1.21x (tallest man, 15 min), 0.94x (conjoined twins, 15 min). The shortest-woman entry has the highest like rate of any upload since 2024 (1.48%).</li><li>It is the channel's least-used strong shape: three uploads in two years and none since September 2025. A twin-themed subject ties it to the channel's own identity, which the knowledge base's familiar-plus-mysterious law favours.</li></ul>
+  
+  <div class="st-claims"><span class="st-claim st-law" title="5f7da5d4578d"><b>law</b> · signed, not measured <code>5f7da5d4578d</code></span><span class="st-claim st-candidate-law" title="be05cf1f696d"><b>candidate-law</b> · held 176 of 193 on 84 ch <code>be05cf1f696d</code></span></div>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The subject has to be real and willing; the shape is about the person, so the package cannot be tested without one. Fifteen minutes is far below the channel's current working length, which is a production question, not a data one.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Do the task, keep the prize <span>One 1.51x entry and one 0.83x entry: the sign of the task matters.</span></h3><div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">Task-for-a-prize uploads since 2024</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 96" role="img" aria-label="Task-for-a-prize uploads since 2024"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">Clean The Sports Car, Keep It!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.51x, 24 min</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">First To Lose 100 LBS, Wins $200,000!</text><rect x="210" y="43" width="147.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="363.9" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.88x, 28 min</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Destroy Your Car, Win a New Lamborghini!</text><rect x="210" y="65" width="139.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="355.5" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.83x, 28 min</text><line x1="378.0" y1="12" x2="378.0" y2="82" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="382.0" y="92" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></div><div class="st-grid"><article class="st-angle" id="T5">
+  <div class="st-mock" title="Real frame: the February 2026 sports-car thumbnail. Reference only."><div class="st-plate" style="background-image:url('UCbp9MyKCTEww4CxEzc_Tp0Q-public-2026-09/6EtuOTq5TmM.jpg')"></div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the February 2026 sports-car thumbnail. Reference only.. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">T5</span><h3>Clean The Lamborghini, Keep It! (Round 2)</h3></div>
+  <div class="st-chips"><span class="st-chip">Do the task, keep the prize</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Clean The Sports Car, Keep It! is the best non-school upload of 2026 at 1.51x and 82.2M views in 24 minutes. Its mirror image, Destroy Your Car, Win a New Lamborghini!, read 0.83x three months later: the task the audience wants to watch is the satisfying one, not the destructive one.</li><li>The opening already states the deal in sentence one (&quot;If you can clean the Lamborghini, you can keep it&quot;), which is the promise-first opening every upload here uses.</li></ul>
+  
+  <div class="st-claims"><span class="st-claim st-law" title="0cf8b8fc71fe"><b>law</b> · signed, not measured <code>0cf8b8fc71fe</code></span><span class="st-claim st-warning" title="693b8db93f38"><b>warning</b> · not measured <code>693b8db93f38</code></span></div>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">One entry each way is a single winner and a single loser. The second clean-it entry is the test; do not read the pair as a rule yet.</p>
+</article></div></div>
+</section>
+<section class="st-section"><p class="st-eyebrow">Stop</p><h2>Two shapes to retire</h2><p><strong>Last To Leave ___ Wins $___</strong> has run 13 times since 2021 at a median 0.83x. Two entries cleared 1.5x (falling asleep in 2021, the capsule hotel in 2023); the last three read 1.68x, 0.57x and 0.58x, and the August 2026 backrooms entry is the weakest upload of the year. The shape has had five years and two eras to prove itself.</p><p><strong>Fake-outs about the twins themselves.</strong> Our Last Video.. (0.73x), Stokes Twins Were Murdered.. (0.67x) and 3 YouTubers Were Murdered.. (0.50x) are three of the weaker recent uploads, and all three title a thing that did not happen to the channel. The knowledge base's warning that titles must state exactly what happened, and its warning that implausible claims depress clicks, are the two most-cited packaging rules in the store; both are theories, not measurements, and this is the kind of channel-level evidence they wait on.</p><figure class="st-fig"><figcaption><span class="st-fig-title">Last To Leave, every entry in order</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 316" role="img" aria-label="Last To Leave, every entry in order"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">2021-09 LAST TO LEAVE TESLA WINS $10,000!!</text><rect x="210" y="21" width="100.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="316.4" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.89x, 47.8M</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">2021-11 LAST TO FALL ASLEEP WINS $10,000</text><rect x="210" y="43" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.25x, 112.6M</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">2021-12 LAST TO LEAVE ABANDONED BUILDING WIN</text><rect x="210" y="65" width="35.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="251.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.31x, 18.8M</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">2021-12 LAST TO LEAVE BOUNCE HOUSE WINS $10,</text><rect x="210" y="87" width="49.6" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="265.6" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.44x, 39.1M</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">2022-03 LAST TO LEAVE POOL WINS $100,000</text><rect x="210" y="109" width="127.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="343.4" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.13x, 125.1M</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">2022-05 Last To Speak Wins $10,000!</text><rect x="210" y="131" width="75.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="291.5" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.67x, 79.3M</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">2022-06 LAST TO LEAVE BATHROOM WINS $10,000</text><rect x="210" y="153" width="138.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="354.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.23x, 140.9M</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">2022-10 LAST TO LEAVE WATERPARK WINS $100,00</text><rect x="210" y="175" width="98.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="314.1" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.87x, 88.1M</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">2022-10 Last To Leave Conjuring House Wins $</text><rect x="210" y="197" width="93.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="309.6" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.83x, 79.1M</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">2023-01 LAST TO FREEZE WINS $20,000!</text><rect x="210" y="219" width="88.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="304.0" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.78x, 68.0M</text><text x="202" y="251" text-anchor="end" font-size="12" fill="#ffffff">2023-04 Last To Leave Capsule Hotel Wins $10</text><rect x="210" y="241" width="189.4" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="405.4" y="251" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.68x, 140.0M</text><text x="202" y="273" text-anchor="end" font-size="12" fill="#ffffff">2023-05 Last To Scream Wins $50,000!</text><rect x="210" y="263" width="64.3" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="280.3" y="273" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.57x, 57.5M</text><text x="202" y="295" text-anchor="end" font-size="12" fill="#ffffff">2026-08 LAST TO LEAVE BACKROOMS!</text><rect x="210" y="285" width="65.4" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="281.4" y="295" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.58x, 13.6M</text><line x1="322.8" y1="12" x2="322.8" y2="302" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="326.8" y="312" font-size="11" fill="#8a9a9a">1.0x, typical for its neighbours</text></svg></figure></section><section class="st-section"><p class="st-eyebrow">Limits</p><h2>What this record cannot say</h2><ul><li><strong>Clickability:</strong> no impressions and no click-through exist in public data, so nothing here says what a thumbnail or title did to the click. The thumbnail section describes; it does not measure.</li><li><strong>Watchability:</strong> no retention curve, no average view duration. Runtime is the only proxy, and it is a proxy for what was made, not for what was watched.</li><li><strong>Replayability:</strong> no returning-viewer split. The like and comment rates are the only audience-behaviour figures, and the engagement section shows why they are not quality signals at this size.</li><li><strong>Views are lifetime.</strong> Every score compares an upload with its neighbours in time, which handles growth, but a 2026 upload is still accruing. First-28-day figures for new uploads will arrive from the view snapshots the store now takes.</li><li><strong>Shorts and dubbing are invisible</strong>, and public reporting names them as the 2024 growth engine. This study is about the long-form catalogue only.</li></ul><p>With Studio access (an Analyst invite for analytics@influint.co) every one of these gaps closes: the 200 curves, the per-video click-through, the viewer split, and the retention analysis that turns the openings section from a description into a measurement.</p></section><section class="st-section"><p class="st-eyebrow">The store</p><h2>What the crawl added to the intelligence</h2><p>The channel is the first in the <strong>challenge-entertainment</strong> stratum and the first at the over-1m scale band with a catalogue this deep, so every observation it contributes opens a comparison the store could not make before. The re-test entered <strong>16 observations</strong> on it (2 held), all on the lifetime basis and stamped with the new stratum: longer-videos-do-not-reduce-views held (+0.08); numbered titles (+0.09), all-caps words (-0.19), world-superlatives (+0.00) and the three cadence claims did not; the format-decay claim ran the other way (+0.16), which is the one to watch as more challenge channels enter.</p><p>Also stored: 197 spoken openings, 13 title shapes with 98 one-offs, the public like and comment counts for all 200 uploads, and a roster entry. The niche is confirmed from the catalogue, so the stratum is live for the next channel in it.</p></section><section class="st-section"><p class="st-eyebrow">Method</p><h2>How the figures were made</h2><p>Catalogue: the channel's uploads playlist through the public Data API, long-form only (Shorts under three minutes excluded), 200 most recent. Score: lifetime views divided by the median of the nearest uploads in publish date, so 1.0x means typical for the channel at that time. Shapes: recurring n-grams and title signatures mined first, one model call to assign and name them, every figure computed from the assigned videos. Openings: public captions, first sixty seconds. Likes, comments and tags: the public statistics endpoint on 2026-09-02. Correlations are Spearman rank correlations; nothing under about 0.2 in size is read as a relationship, and nothing on a group under ten uploads is read at all.</p></section>
+<footer class="st-footer">Sources: YouTube Data API (uploads playlist, videos.list statistics and snippet), public captions via InnerTube, the yt-audit knowledge base and ledger. Public reporting on the channel's 2024 growth: Wikipedia, Social Blade, Inside Créateurs. Study emitted 2026-09-02 from tmp/stokes/emit-study.py; every figure is computed, none typed.</footer>
+</div>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

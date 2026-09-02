@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Man Cave Repackage · Jonny Builds</title>
+<link rel="icon" href="../assets/brand/influint-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000; --panel:#081c1c; --panel-raised:#0d2b2b;
+  --teal:#8dd8d3; --teal-deep:#0b6374; --teal-mid:#599191;
+  --white:#ffffff; --grey:#8a9a9a; --line:rgba(141,216,211,.16);
+  --hot:#5ad8a6; --cold:#ff6b6b; --warn:#f6c344;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0; background:var(--ink); color:var(--white);
+  font-family:Poppins,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased; text-wrap:pretty;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("../assets/brand/dot-grid.png"); background-size:520px auto;
+  opacity:.32;
+}
+body::after{
+  content:""; position:fixed; inset:0 0 auto 0; height:70vh; pointer-events:none; z-index:0;
+  background:radial-gradient(60% 55% at 22% 0%, rgba(11,99,116,.42), transparent 70%);
+}
+.wrap{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 28px 96px}
+header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
+header.site img{width:30px; height:auto; display:block}
+header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
+header.site nav a{color:var(--grey); text-decoration:none}
+header.site nav a:last-child{color:var(--teal)}
+header.site nav a:hover{color:var(--teal)}
+h1{font-size:clamp(30px,4.6vw,52px); line-height:1.06; margin:0 0 14px; letter-spacing:-.02em; font-weight:600}
+.lede{color:var(--grey); font-size:17px; max-width:64ch; margin:0 0 40px; line-height:1.6}
+h2{font-size:13px; text-transform:uppercase; letter-spacing:.16em; color:var(--teal);
+   margin:56px 0 18px; font-weight:600}
+a{color:var(--teal)}
+
+/* channel index */
+.channels{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px}
+.ch{display:flex; gap:14px; align-items:center; padding:18px; text-decoration:none;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; color:inherit}
+.ch:hover{background:var(--panel-raised)}
+.ch img{width:52px; height:52px; border-radius:50%; object-fit:cover; background:#123}
+.ch .n{font-weight:600; font-size:17px}
+.ch .m{color:var(--grey); font-size:13px; margin-top:3px}
+.ch .when{color:var(--teal-mid); font-size:11.5px; margin-top:3px; font-variant-numeric:tabular-nums}
+.ch .body{min-width:0}
+.ch .n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* profile header */
+.profile{display:flex; gap:22px; align-items:center; margin-bottom:8px}
+.profile img.av{width:92px; height:92px; border-radius:50%; object-fit:cover; background:#123;
+                border:1px solid var(--line)}
+.stats{display:flex; gap:34px; flex-wrap:wrap; margin:26px 0 0; padding:20px 0;
+       border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stat .v{font-size:26px; font-weight:600; font-variant-numeric:tabular-nums}
+.stat .k{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-top:4px}
+
+/* outputs */
+.outs{display:grid; gap:14px}
+.out{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+.out .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.out .tool{font-weight:600; font-size:17px}
+.out .when{color:var(--grey); font-size:13px; font-family:ui-monospace,Menlo,monospace}
+.out .links{margin-left:auto; display:flex; gap:14px; font-size:14px}
+.out ul{margin:14px 0 0; padding-left:18px; color:#cfe0de; line-height:1.65; font-size:14.5px}
+.out .warn{margin-top:12px; font-size:13px; color:var(--warn)}
+
+/* video wall */
+.wall{display:grid; grid-template-columns:repeat(auto-fill,minmax(232px,1fr)); gap:22px 18px}
+.v{text-decoration:none; color:inherit; display:block}
+.v .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--panel-raised)}
+.v .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.v .len{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+        font-size:11.5px; padding:2px 5px; border-radius:4px; font-variant-numeric:tabular-nums}
+.v .score{position:absolute; left:7px; top:7px; font-size:11.5px; font-weight:600;
+          padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.72); border:1px solid currentColor}
+.out-hot{color:var(--hot)} .out-up{color:#b6d94c} .out-mid{color:var(--grey)}
+.out-down{color:var(--warn)} .out-cold{color:var(--cold)}
+.v .t{font-size:14px; font-weight:500; margin:10px 0 4px; line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.v .meta{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v .verdict{margin-top:6px; font-size:11.5px; color:var(--teal)}
+.legend{color:var(--grey); font-size:13.5px; margin:-6px 0 22px; line-height:1.6; max-width:70ch}
+/* Published ideas, dressed as videos — the same argument the app makes: judge
+   it the way a viewer would, thumbnail first. */
+.ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:24px 18px}
+.idea .thumb{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden;
+             display:flex; align-items:center; justify-content:center; padding:0 14px; text-align:center}
+.idea .thumb b{font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1.06;
+               color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.75); font-size:clamp(15px,2.1vw,25px)}
+.idea .tag{position:absolute; left:7px; top:7px; background:rgba(0,0,0,.72); color:#cfe0de;
+           font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:4px}
+.idea .proj{position:absolute; right:7px; bottom:7px; background:rgba(0,0,0,.82); color:#fff;
+            font-size:11.5px; padding:2px 6px; border-radius:4px; font-variant-numeric:tabular-nums}
+.idea .t{font-size:14.5px; font-weight:500; margin:10px 0 4px; line-height:1.35}
+.idea .d{color:var(--grey); font-size:13px; line-height:1.5}
+.idea .meta{color:var(--teal-mid); font-size:12px; margin-top:6px; font-variant-numeric:tabular-nums}
+.idea details{margin-top:8px}
+.idea summary{cursor:pointer; color:var(--teal); font-size:12.5px; list-style:none}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary:hover{text-decoration:underline}
+.idea .basis{color:var(--grey); font-size:12px; line-height:1.55; margin:8px 0 0}
+.idea .ev{margin:8px 0 0; padding-left:0; list-style:none}
+.idea .ev li{font-size:12px; color:var(--grey); display:flex; gap:8px; padding:2px 0}
+.idea .ev b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; min-width:44px}
+.idea .ev a{color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.idea .ev a:hover{color:var(--teal)}
+.wallbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 20px}
+.wallbar .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; color:var(--grey); margin-right:2px}
+.wallbar .spacer{margin-left:auto}
+@media(max-width:760px){ .wallbar .spacer{display:none} .wallbar{gap:6px} }
+.wallbar .count{color:var(--grey); font-size:12.5px; font-variant-numeric:tabular-nums}
+.v.hide{display:none}
+.freshness{display:flex; gap:12px; flex-wrap:wrap}
+/* Survey. Composition first, and visually heavier than any preference below. */
+.svcomp{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 10px;padding:14px 16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.svcomp.svcore{border-color:#7a5a1a}
+.svnum{display:flex;flex-direction:column;min-width:0}
+.svnum b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums}
+.svnum span{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+.xcheck{margin:10px 0;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);border-left-width:3px;min-width:0}
+.xc-agree{border-left-color:#5ad8a6}
+.xc-disagree{border-left-color:#f6c344}
+.xc-untested{border-left-color:#4a6b70}
+.xhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.xpill{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  padding:.14rem .42rem;border-radius:3px;background:#0d2b2b;color:var(--teal);white-space:nowrap}
+.xc-agree .xpill{background:#12402f;color:#7ff0bd}
+.xc-disagree .xpill{background:#33301a;color:#f6c344}
+.xhead b{font-size:14.5px}
+.xrow{margin:.3rem 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+.xk{display:inline-block;min-width:74px;font-size:10px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--grey)}
+.xnote{color:var(--teal-mid);font-style:italic}
+.squestions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sq{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;min-width:0}
+.sq>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;flex-wrap:wrap;
+  gap:4px 14px;align-items:baseline}
+.sq>summary::-webkit-details-marker{display:none}
+.sq>summary:hover{background:var(--panel-raised)}
+.sqq{flex:1 1 auto;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sqn{font-size:11.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.opts{list-style:none;margin:0;padding:2px 14px 14px}
+.opts li{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0;font-size:13px}
+.obar{position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:rgba(141,216,211,.12);
+  border-radius:3px;pointer-events:none}
+.oshare{position:relative;min-width:38px;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.olabel{position:relative;overflow-wrap:anywhere}
+@media(max-width:640px){.svnum b{font-size:19px}.xk{min-width:0;display:block}}
+/* What was examined and came back healthy. Collapsed, because a clean result
+   is reassurance rather than a finding, but present because its absence reads
+   as "nobody looked". */
+.alsochk{margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+         padding:10px 14px}
+.alsochk>summary{cursor:pointer;list-style:none;font-size:11.5px;color:var(--grey);
+                 text-transform:uppercase;letter-spacing:.12em}
+.alsochk>summary::-webkit-details-marker{display:none}
+.alsochk>summary::before{content:"▸ ";color:var(--teal)}
+.alsochk[open]>summary::before{content:"▾ "}
+.alsochk ul{margin:9px 0 2px;padding-left:18px}
+.alsochk li{font-size:13px;line-height:1.55;color:var(--teal-mid);margin:4px 0;overflow-wrap:anywhere}
+/* Survey advice: one card per thing the audience said, with the videos that
+   show it. The verdict chip is the first thing read, because whether the
+   numbers agree changes what the instruction under it means. */
+.sadvice{list-style:none;margin:16px 0 8px;padding:0;display:flex;flex-direction:column;gap:12px}
+.sadv{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.sahead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.sashare{margin-left:auto;font-size:12.5px;color:var(--grey);font-variant-numeric:tabular-nums}
+.c-agree{background:#12402f;color:#7ff0bd}
+.c-disagree{background:#33301a;color:#f6c344}
+.c-untested{background:#2e2e2e;color:#b8b8b8}
+.sasays{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--teal-mid);overflow-wrap:anywhere}
+.samea,.sabut{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+.sado{margin:0 0 8px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.samea b,.sabut b,.sado b{color:var(--grey);text-transform:uppercase;font-size:10.5px;
+  letter-spacing:.1em;margin-right:4px}
+.sabut{color:var(--grey);font-style:italic}
+.sasrc{margin:8px 0 2px;font-size:12.5px}
+.sasrc>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+               text-transform:uppercase;letter-spacing:.1em}
+.sasrc>summary::-webkit-details-marker{display:none}
+.sasrc>summary::before{content:"▸ ";color:var(--teal)}
+.sasrc[open]>summary::before{content:"▾ "}
+.sasrc p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55}
+.sxlist{list-style:none;margin:10px 0 6px;padding:0;display:flex;flex-direction:column;gap:7px}
+.sx{border-left:3px solid var(--line);padding:6px 0 6px 11px;min-width:0}
+.sx-worst-case{border-left-color:#f0787a}
+.sx-model-to-copy{border-left-color:#5ad8a6}
+.sx-counter-example{border-left-color:#8fd6f0}
+.sxrole{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey)}
+.sxtitle{display:block;font-size:13.5px;font-weight:600;overflow-wrap:anywhere}
+.sxnote{display:block;font-size:12.5px;line-height:1.5;color:var(--teal-mid);overflow-wrap:anywhere}
+/* The action list. Ordered, numbered, and led by the instruction — a creator
+   reading this should be able to act without reading anything below it. */
+.actions{list-style:none; margin:18px 0 8px; padding:0; display:flex;
+  flex-direction:column; gap:12px; counter-reset:act}
+.act{background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; min-width:0}
+.acthead{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px}
+.actn{width:22px; height:22px; border-radius:50%; background:var(--teal-deep); color:var(--white);
+  display:grid; place-items:center; font-size:12px; font-weight:700; flex:none}
+.stake{margin-left:auto; font-size:12.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;
+  padding:.16rem .45rem; border-radius:3px; cursor:help; white-space:nowrap}
+.c-law{background:#12402f; color:#7ff0bd}
+.c-meas{background:#123240; color:#8fd6f0}
+.c-chan{background:#33301a; color:#e8d79a}
+.c-theory{background:#2e2e2e; color:#b8b8b8}
+.actdo{margin:0 0 6px; font-size:15px; line-height:1.5; overflow-wrap:anywhere}
+.actwhy,.actbut{margin:0 0 4px; font-size:13px; line-height:1.5; color:var(--teal-mid);
+  overflow-wrap:anywhere}
+.actwhy b,.actbut b{color:var(--grey); text-transform:uppercase; font-size:10.5px;
+  letter-spacing:.1em; margin-right:4px}
+.actbut{margin:8px 0 0;font-size:12.5px}
+.actbut>summary{cursor:pointer;list-style:none;color:var(--grey);font-size:11.5px;
+                text-transform:uppercase;letter-spacing:.1em}
+.actbut>summary::-webkit-details-marker{display:none}
+.actbut>summary::before{content:"▸ ";color:var(--teal)}
+.actbut[open]>summary::before{content:"▾ "}
+.actbut p{margin:6px 0 0;color:var(--teal-mid);line-height:1.55;font-style:normal}
+@media(max-width:640px){
+  .act{padding:12px 13px}
+  .actdo{font-size:14.5px}
+  .stake{margin-left:0; flex-basis:100%}
+}
+/* Format library. Each group is a collapsed disclosure whose summary carries
+   the template and the numbers, so the library can be skimmed without opening
+   anything — the templates ARE the content. */
+.formats{display:flex; flex-direction:column; gap:10px; margin-top:18px}
+.fmt{border:1px solid var(--line); border-radius:10px; background:var(--panel);
+  overflow:hidden}
+.fmt>summary{cursor:pointer; list-style:none; padding:14px 16px; display:flex;
+  flex-wrap:wrap; align-items:baseline; gap:8px 16px}
+.fmt>summary::-webkit-details-marker{display:none}
+.fmt>summary:hover{background:var(--panel-raised)}
+.fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
+.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The slots are the point of a template, so they read as slots. */
+.fmt .tpl{white-space:normal; overflow-wrap:anywhere}
+.fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
+  align-items:baseline}
+.fmt .fstats b{font-size:14px; font-variant-numeric:tabular-nums}
+.f-hot{color:var(--hot)} .f-mid{color:var(--teal)} .f-cold{color:#e07a7a}
+.f-none{color:var(--grey); font-weight:500; font-size:12.5px}
+.fmt .premise{margin:0 16px 4px; font-size:13.5px; color:var(--teal-mid); max-width:70ch}
+.fmt .wall{padding:8px 16px 18px}
+.fmt.oneoff{opacity:.82}
+.fmt.oneoff .tpl{color:var(--grey); font-weight:500}
+@media(max-width:640px){
+  .fmt>summary{padding:12px 13px}
+  .fmt .tpl{font-size:15px; flex-basis:100%}
+  .fmt .wall{padding:6px 12px 14px}
+}
+.freshbox{margin:56px 0 0; border-top:1px solid var(--line); padding-top:20px}
+.freshbox summary{cursor:pointer; list-style:none; font-size:13px; text-transform:uppercase;
+                  letter-spacing:.16em; color:var(--teal); font-weight:600}
+.freshbox summary::-webkit-details-marker{display:none}
+.freshbox summary::before{content:"B8 "; display:inline-block; transition:transform .15s}
+.freshbox[open] summary::before{transform:rotate(90deg)}
+.freshbox summary:hover{color:var(--white)}
+.freshbox .freshness{margin-top:16px}
+.fresh{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px}
+.fresh .k{display:block; font-size:12px; color:var(--grey); text-transform:uppercase; letter-spacing:.1em}
+.fresh .v{display:block; font-size:16px; font-weight:600; margin-top:4px;
+          font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.fresh .ago{display:block; font-size:12px; color:var(--teal-mid); margin-top:2px}
+.empty{color:var(--grey); background:var(--panel); border:1px dashed var(--line);
+       border-radius:14px; padding:26px; font-size:14.5px}
+footer{color:var(--grey); font-size:12.5px; margin-top:70px; padding-top:22px;
+       border-top:1px solid var(--line)}
+@media(max-width:640px){ .wrap{padding:0 18px 60px} .profile{gap:14px} .profile img.av{width:64px;height:64px} }
+
+.viewer{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr); gap:26px; align-items:start}
+@media(max-width:1000px){ .viewer{grid-template-columns:1fr} }
+.player{position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+        background:#000; border:1px solid var(--line)}
+.player iframe{width:100%; height:100%; border:0; display:block}
+.chartcard{margin-top:18px; background:var(--panel); border:1px solid var(--line);
+           border-radius:14px; padding:16px 18px 10px}
+.chartbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.chartbar .title{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:600}
+.chartbar .spacer{margin-left:auto}
+.tgl{background:transparent; color:var(--grey); border:1px solid var(--line); border-radius:999px;
+     padding:5px 12px; font:inherit; font-size:12.5px; cursor:pointer; transition:.15s}
+.tgl:hover{color:var(--white); border-color:var(--teal-mid)}
+.tgl[aria-pressed="true"]{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep)}
+.chartwrap{position:relative}
+svg.curve{width:100%; height:auto; aspect-ratio:1000/320; display:block;
+          overflow:visible; touch-action:none}
+svg.curve .grid{stroke:rgba(141,216,211,.15); stroke-width:1}
+svg.curve .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.curve .line{fill:none; stroke:#7ee3f5; stroke-width:2.5; stroke-linejoin:round}
+svg.curve .band{fill:rgba(126,227,245,.10)}
+svg.curve .tick{fill:var(--grey); font-size:10.5px; font-family:ui-monospace,Menlo,monospace}
+svg.curve .head{stroke:#fff; stroke-width:1.5; opacity:.9}
+svg.curve .mk{cursor:pointer}
+svg.curve .mk circle{stroke:#04100f; stroke-width:1.5; transition:r .12s}
+svg.curve .mk:hover circle, svg.curve .mk.sel circle{r:8.5}
+svg.curve .mk.drop circle{fill:var(--cold)} svg.curve .mk.peak circle{fill:var(--hot)}
+.hint{color:var(--grey); font-size:12px; padding:2px 0 8px}
+
+.moments{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+         max-height:min(78vh,900px); overflow:auto}
+.moments h3{margin:0; padding:15px 18px; font-size:12.5px; text-transform:uppercase;
+            letter-spacing:.14em; color:var(--teal); position:sticky; top:0;
+            background:var(--panel); border-bottom:1px solid var(--line); z-index:2}
+.m{display:block; width:100%; text-align:left; background:transparent; border:0;
+   border-bottom:1px solid var(--line); padding:14px 18px; color:inherit; font:inherit; cursor:pointer}
+.m:hover{background:var(--panel-raised)}
+.m.sel{background:var(--panel-raised); box-shadow:inset 3px 0 0 var(--teal)}
+.m .h{display:flex; align-items:center; gap:9px}
+.m .ts{font-family:ui-monospace,Menlo,monospace; font-size:13px; font-weight:600}
+.m.drop .ts{color:var(--cold)} .m.peak .ts{color:var(--hot)}
+.m .kind{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--grey)}
+.m .what{font-size:13.5px; line-height:1.5; margin-top:7px; color:#cfe0de}
+.m .body{display:none; margin-top:12px; font-size:13px; line-height:1.6}
+.m.sel .body{display:block}
+.m .body .lab{color:var(--teal); font-size:10.5px; text-transform:uppercase;
+              letter-spacing:.1em; display:block; margin:11px 0 3px}
+.m .body .quote{color:#cfe0de; border-left:2px solid var(--teal-deep); padding-left:10px; font-style:italic}
+.m .body .warn{color:var(--warn)}
+.vhead{display:flex; gap:16px; align-items:flex-start; margin-bottom:6px}
+.vhead .badge{font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;
+              border:1px solid currentColor; white-space:nowrap}
+.vmeta{color:var(--grey); font-size:13.5px; font-variant-numeric:tabular-nums; margin:0 0 26px}
+
+.cohort{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+        padding:18px 20px 12px; margin-bottom:10px}
+/* Controls in labelled ROWS rather than one long wrap.
+   Eight groups on one flex line reflowed differently at every width, so the
+   same control moved depending on the viewport and nothing could be found
+   twice in the same place. Each row now states what it governs. */
+.cohort .bar{display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap;
+             padding:7px 0; border-bottom:1px dashed var(--line)}
+.cohort .bar:last-of-type{border-bottom:0}
+.cohort .rowlab{font-size:10px; text-transform:uppercase; letter-spacing:.14em;
+                color:var(--teal-mid); min-width:52px; flex:none}
+.cohort .grp{display:flex; gap:6px; align-items:center; flex-wrap:wrap; min-width:0}
+.cohort .grp .lab{font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+                  color:var(--grey); margin-right:2px}
+.cohort .spacer{margin-left:auto}
+/* Range filters. The slider runs over PERCENTILES of the set, not raw values:
+   views are heavy-tailed, so a linear slider spends nine tenths of its travel
+   on a handful of breakouts and is unusable for the pack. */
+.cohort .rng{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--grey)}
+.cohort .rng input[type=range]{width:112px; accent-color:var(--teal); cursor:pointer}
+.cohort .rng b{color:var(--teal); font-variant-numeric:tabular-nums; font-weight:600;
+               min-width:70px; display:inline-block}
+.cohort .zoomnote{font-size:11.5px; color:var(--grey)}
+.cohort .zoomnote.on{color:var(--warn)}
+@media(max-width:760px){
+  .cohort{padding:14px 12px 10px}
+  .cohort .spacer{display:none}
+  .cohort .bar{gap:6px 10px}
+  .cohort .rowlab{min-width:0; width:100%}
+  .cohort .rng input[type=range]{width:88px}
+  .clegend{grid-template-columns:1fr}
+}
+.cohort .cohortcount{font-size:11px;color:var(--grey);margin-left:4px;font-variant-numeric:tabular-nums}
+.cohort .cohortcount.empty{color:#ff8f8f}
+.clegend a.out{opacity:.32}
+.clegend a.out b{outline:1px dashed rgba(141,216,211,.35);outline-offset:1px}
+.cohort .cap{color:var(--grey); font-size:13px; line-height:1.55; margin:8px 0 4px; max-width:82ch}
+/* Taller than it was (1000x420). Thirty curves in 420 units left roughly 12
+   units between them at the crowded end, which is thinner than the stroke plus
+   its hit target. */
+svg.cohortsvg{width:100%; height:auto; aspect-ratio:1000/620; display:block; overflow:visible;
+              cursor:grab; touch-action:none}
+svg.cohortsvg.dragging{cursor:grabbing}
+@media(max-width:760px){ svg.cohortsvg{aspect-ratio:3/4} }
+svg.cohortsvg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+svg.cohortsvg .axis{stroke:rgba(141,216,211,.4); stroke-width:1}
+svg.cohortsvg .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+svg.cohortsvg .cv{fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round;
+                  opacity:.72; transition:opacity .12s,stroke-width .12s; pointer-events:none}
+/* A 1.7px stroke is an unhittable target, so each curve carries an invisible
+   fat twin that takes the pointer. Without it you can only select by legend. */
+svg.cohortsvg .hit{fill:none; stroke:transparent; stroke-width:14; cursor:pointer}
+/* The 3D stack needs vertical room the flat view would waste. */
+svg.cohortsvg.deep{aspect-ratio:1000/760}
+@media(max-width:760px){ svg.cohortsvg.deep{aspect-ratio:3/4} }
+svg.cohortsvg .zgrid{stroke:rgba(141,216,211,.08)}
+svg.cohortsvg .zaxis{stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .zlab{font-size:10px; letter-spacing:.06em; fill:var(--teal-mid)}
+/* The skirt under each curve is what makes a plane read as a plane. Kept very
+   faint: at 30 curves anything heavier becomes an opaque wall. */
+svg.cohortsvg .rib{opacity:.16; pointer-events:none}
+svg.cohortsvg .zcv{opacity:.95; stroke-width:2.2}
+/* The band view: two nested percentile envelopes plus the median. At a hundred
+   and sixty curves the overlay is a solid mat that answers no question; the
+   band is the same data drawn so its shape can be read. */
+svg.cohortsvg .band{stroke:none}
+svg.cohortsvg .band.outer{fill:rgba(141,216,211,.13)}
+svg.cohortsvg .band.inner{fill:rgba(141,216,211,.30)}
+svg.cohortsvg .bandedge{fill:none; stroke:rgba(141,216,211,.45); stroke-width:1; stroke-dasharray:3 4}
+svg.cohortsvg .bandlab{font-size:10px; fill:var(--teal-mid); letter-spacing:.06em}
+/* Selecting a curve in band mode draws that one video against the envelope,
+   which is the whole point: "where does this sit in the pack". */
+svg.cohortsvg .solo{fill:none; stroke:#ffd166; stroke-width:2.6; opacity:1}
+svg.cohortsvg .planelab{font-size:9.5px; fill:var(--teal-mid); opacity:.75}
+svg.cohortsvg.hasel .rib{opacity:.03}
+svg.cohortsvg.hasel .rib.on{opacity:.22}
+svg.cohortsvg .hit:hover + .cv{opacity:1; stroke-width:3.4}
+svg.cohortsvg.hasel .cv{opacity:.12}
+svg.cohortsvg.hasel .cv.on{opacity:1; stroke-width:3.4}
+/* Dark casing under the median: the recency ramp paints the OLDEST video white,
+   so a bare white dashed line reads as just another curve. The casing plus the
+   end label mark it as annotation rather than data. */
+svg.cohortsvg .medcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 5; pointer-events:none}
+svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
+                      font-family:ui-monospace,Menlo,monospace; pointer-events:none;
+                      paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+.cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
+              margin:2px 0 0; font-variant-numeric:tabular-nums}
+.cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
+/* The legend is a hundred-odd rows on a real channel, which is a wall rather
+   than a key. It collapses, and carries its own filter box. */
+.cohort .legwrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line)}
+.cohort .legwrap>summary{cursor:pointer; list-style:none; display:flex; align-items:center;
+                         gap:10px; font-size:11.5px; color:var(--grey);
+                         text-transform:uppercase; letter-spacing:.12em}
+.cohort .legwrap>summary::-webkit-details-marker{display:none}
+.cohort .legwrap>summary::before{content:"▸"; color:var(--teal); font-size:13px}
+.cohort .legwrap[open]>summary::before{content:"▾"}
+.cohort .legfind{margin:10px 0 0; width:100%; max-width:320px; background:var(--ink);
+                 border:1px solid var(--line); border-radius:8px; color:var(--white);
+                 padding:6px 9px; font:inherit; font-size:12.5px}
+.clegend{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:5px 16px;
+         margin-top:10px; max-height:290px; overflow-y:auto}
+.clegend a.hid{display:none}
+.clegend a{display:flex; gap:8px; align-items:center; text-decoration:none; color:var(--grey);
+           font-size:12.5px; padding:3px 5px; border-radius:7px; line-height:1.3}
+.clegend a:hover{background:var(--panel-raised); color:var(--white)}
+.clegend a b{width:11px; height:11px; border-radius:3px; flex:none}
+.clegend a span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+.study{max-width:1120px;margin:0 auto}
+.study h1{font-size:clamp(34px,6vw,60px);line-height:1;letter-spacing:-.01em;margin:6px 0 14px;text-transform:uppercase}
+.study h2{font-size:clamp(24px,3.4vw,34px);line-height:1.08;margin:0 0 14px}
+.study h3{font-size:22px;line-height:1.15;margin:0}
+.study p{max-width:70ch}
+.study ul{padding-left:20px}.study li{margin:0 0 6px;max-width:72ch}
+.study table{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel);border:1px solid var(--line)}
+.study th,.study td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.study th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:500}
+.study td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.study .st-tablewrap{overflow-x:auto;margin:12px 0 18px}
+.st-crumbs{color:var(--grey);font-size:13px;margin:0 0 10px}.st-crumbs a{color:var(--grey)}
+.st-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin:0 0 6px}
+.st-top{padding-bottom:22px;border-bottom:1px solid var(--line)}
+.st-lede{font-size:19px;line-height:1.5;max-width:62ch}
+.st-kicker{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--grey);font-size:14px}.st-kicker b{color:var(--white)}
+.st-verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:26px 0 8px}
+.st-stat{background:var(--panel);border:1px solid var(--line);padding:16px 18px;border-radius:12px}
+.st-stat .n{font-size:40px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.st-stat .l{font-size:12px;color:var(--grey);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+.st-stat .d{font-size:13px;margin-top:8px;color:var(--white)}
+.st-stat.st-good .n{color:#6fd39b}.st-stat.st-bad .n{color:#ff5a5f}
+.st-section{margin-top:52px}
+.st-intro{font-size:16px;max-width:76ch}
+.st-callout{background:var(--panel);border-left:4px solid #E0202A;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;max-width:80ch}
+.st-callout.st-neutral{border-left-color:var(--line)}
+.st-two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media (max-width:820px){.st-two{grid-template-columns:1fr}}
+.st-chapters{display:grid;grid-template-columns:84px 1fr;gap:6px 14px;font-size:14px;max-width:780px}
+.st-chapters .t{color:var(--grey);font-variant-numeric:tabular-nums}
+.st-chapters .hook{color:#ff8a8d;font-weight:600}
+.st-evid{font-size:13px;color:var(--grey)}
+.st-cap{font-size:13px;color:var(--grey)}
+.st-curve{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.st-family{margin-top:34px}
+.st-family-name{font-size:26px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:14px}
+.st-family-name span{display:block;font-weight:400;font-size:15px;color:var(--grey);margin-top:2px}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:820px){.st-grid{grid-template-columns:1fr}}
+.st-angle{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.st-mock{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#111;color:#fff;container-type:inline-size}
+.st-mock .st-plate,.st-mock .st-split>div{position:absolute;inset:0;background-size:cover;background-position:center}
+.st-mock .st-split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.st-mock .st-split>div{position:relative}
+.st-mock .st-split>div:first-child{border-right:4px solid #fff}
+.st-mock .st-tt{position:absolute;font-family:Impact,"Anton","Arial Black",sans-serif;line-height:1;color:#fff;letter-spacing:.01em;-webkit-text-stroke:.06em #000;paint-order:stroke fill;text-shadow:0 .08em .2em rgba(0,0,0,.65);font-size:calc(var(--tt,1) * 8.2cqw);max-width:62%}
+.st-mock .st-inset{position:absolute;aspect-ratio:4/3;background-size:cover;background-position:center;border:3px solid #fff;box-shadow:0 4px 18px rgba(0,0,0,.5);border-radius:6px}
+.st-mock .st-shoot{background:repeating-linear-gradient(135deg,#333 0 8px,#3d3d3d 8px 16px);display:flex;align-items:center;justify-content:center;text-align:center;font-size:2.4cqw;line-height:1.3;color:#eee;padding:6px}
+.st-mock .st-arrow{position:absolute;inset:0;width:100%;height:100%}
+.st-badge{position:absolute;right:8px;bottom:8px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:rgba(0,0,0,.72);color:#fff}
+.st-badge.st-real{background:rgba(46,125,79,.92)}.st-badge.st-mixed{background:rgba(154,106,18,.92)}
+.st-mocknote{font-size:12px;color:var(--grey);margin:0}
+.st-head{display:flex;gap:10px;align-items:baseline}
+.st-id{font-size:12px;color:var(--grey);flex:none}
+.st-chips{display:flex;gap:6px;flex-wrap:wrap}
+.st-chip{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--grey)}
+.st-chip.st-tA{border-color:#6fd39b;color:#6fd39b}.st-chip.st-tB{border-color:var(--white);color:var(--white)}.st-chip.st-tC{border-color:#e3b45a;color:#e3b45a}
+.st-why{font-size:14px;margin:0 0 8px}.st-risk{font-size:14px;color:var(--grey);margin:0}
+.st-plan{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.st-plan ol{padding-left:22px}.st-plan li{margin-bottom:8px}
+.study details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:6px 0}
+.study summary{cursor:pointer;font-weight:500}
+.study details p{font-size:13px;color:var(--grey);margin:8px 0 2px;max-width:none}
+.st-footer{margin-top:60px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--grey)}
+.st-list{display:grid;gap:10px;margin:0 0 30px}
+.st-list-item{display:grid;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:inherit;text-decoration:none}
+.st-list-item:hover{background:var(--panel-raised)}
+.st-list-title{font-size:18px;font-weight:600}.st-list-kicker{font-size:13px;color:var(--grey)}.st-list-date{font-size:12px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em}
+
+
+/* Micro-charts. A picture with its figure on it, and a badge saying what kind
+   of evidence it is, replacing a paragraph that explained the same number. */
+.mc{margin:12px 0 10px;padding:0}
+.mc-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 6px;
+         font-size:13px;line-height:1.4}
+.mc-head b{font-weight:600}
+.mc-val{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-svg{width:100%;height:auto;display:block;overflow:visible}
+.mc-note{margin:5px 0 0;font-size:11.5px;color:var(--grey);line-height:1.5}
+.mc-track{stroke:var(--line);stroke-width:2}
+.mc-iqr{fill:rgba(141,216,211,.22)}
+.mc-dot{fill:var(--teal);stroke:var(--ink);stroke-width:2}
+.mc-flag{stroke:var(--warn);stroke-width:1.4;stroke-dasharray:3 3}
+.mc-flaglab{fill:var(--warn);font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+.mc-end{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-axis{stroke:rgba(141,216,211,.35);stroke-width:1}
+.mc-tick{fill:var(--grey);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+.mc-pt{fill:var(--teal-mid);opacity:.75}
+.mc-pt.on{fill:#ffd166;opacity:1}
+.mc-trend{stroke:var(--teal);stroke-width:1.6;stroke-dasharray:5 4;opacity:.8}
+.mc-stat{font-size:11px;font-family:ui-monospace,Menlo,monospace}
+.mc-rho{fill:var(--teal);font-weight:600}
+.mc-p{fill:var(--grey)}
+.mc-curve{fill:none;stroke:var(--teal);stroke-width:2;stroke-linejoin:round}
+.mc-band{opacity:.22}
+.mc-band.drop{fill:var(--cold)}
+.mc-band.hold{fill:var(--hot)}
+.mc-bars{display:flex;flex-direction:column;gap:5px}
+.mc-row{display:grid;grid-template-columns:minmax(90px,auto) 1fr auto auto;gap:10px;
+        align-items:center;font-size:12.5px}
+.mc-rl{color:var(--white)}
+.mc-bar{display:block;height:12px;background:rgba(141,216,211,.10);border-radius:3px;overflow:hidden}
+.mc-bar i{display:block;height:100%;width:var(--w);background:var(--teal-deep);border-radius:3px}
+.mc-rv{color:var(--teal);font-variant-numeric:tabular-nums;font-weight:600}
+.mc-rn{color:var(--grey);font-size:11px;font-variant-numeric:tabular-nums}
+/* Evidence badges. The rung matters more than the colour, so they are quiet. */
+.evchip{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+        padding:.14rem .4rem;border-radius:3px;cursor:help;white-space:nowrap}
+.ev-obs{background:#22303a;color:#9fc0d0}
+.ev-corr{background:#123240;color:#8fd6f0}
+.ev-cons{background:#12402f;color:#7ff0bd}
+.ev-dose{background:#1b3a2a;color:#9ce8bd}
+.ev-temp{background:#2a3320;color:#cfe08a}
+.ev-int{background:#33301a;color:#f6c344}
+@media(max-width:640px){
+  .mc-row{grid-template-columns:minmax(70px,auto) 1fr auto;gap:7px}
+  .mc-rn{display:none}
+}
+
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 6px}
+.dim{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.dim-off{opacity:.72}
+.dim-h{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dim-badge{font-size:9px;letter-spacing:.04em;text-transform:none;border:1px solid var(--line);border-radius:999px;padding:1px 6px;color:var(--grey)}
+.dim-v{font-size:30px;line-height:1.05;font-weight:600;overflow-wrap:anywhere}
+.dim-2{font-size:12px;color:var(--grey);margin-top:4px;overflow-wrap:anywhere}
+.dim-note{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-none{font-size:19px;font-weight:500;color:var(--grey)}
+.dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
+.dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
+.mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
+.mcrow.top{border-color:color-mix(in oklab,var(--teal) 45%,var(--line))}
+.mcrow.low{border-color:color-mix(in oklab,var(--hot) 45%,var(--line))}
+.mchead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mcname{font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.mcnum{font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;white-space:nowrap}
+.mv{font-size:9px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 7px;margin-left:6px;white-space:nowrap;border:1px solid var(--line);color:var(--grey)}
+.mv-top{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.mv-low{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+.mcbar{width:100%;height:26px;display:block;margin:8px 0 2px}
+.mcdesc{font-size:12px;margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcmeta{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.mcdet{margin-top:8px}
+.mcdet summary{font-size:11px;color:var(--grey);cursor:pointer}
+.mcex{margin:8px 0 0;padding-left:16px;font-size:11px;line-height:1.6}
+.mcex li{margin-bottom:8px;overflow-wrap:anywhere}
+.mck{font-weight:600}
+.mcq{color:var(--grey);font-style:italic}
+.mccav{border-left:2px solid var(--line);padding-left:10px}
+.mcfoot{font-size:11px}
+
+.scoped{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.scomp{font-size:12px;margin:0 0 8px;line-height:1.55}
+.scomp .dim{color:var(--grey);font-weight:400}
+.sstrata td:nth-child(4){font-variant-numeric:tabular-nums}
+.sstrata tr.sbelow td{color:var(--grey)}
+.snote{font-size:11px;color:var(--grey);margin:8px 0 0;line-height:1.5}
+.q-datasays{margin:14px 0;border:1px solid var(--line,rgba(141,216,211,.16));border-radius:10px;padding:10px 14px;background:rgba(141,216,211,.04)}
+.q-dstitle{margin:0 0 6px;font-size:13px}
+.q-dssvg{display:block;width:100%;max-width:640px;height:auto}
+.q-dsband{fill:rgba(141,216,211,.16)}
+.q-dsmedian{stroke:var(--teal,#8dd8d3);stroke-width:2}
+.q-dsmedlabel{fill:var(--teal,#8dd8d3);font-size:11px;text-anchor:middle}
+.q-dsclaim{stroke:var(--warn,#f6c344);stroke-width:2;stroke-dasharray:4 3}
+.q-dsclaimlabel{fill:var(--warn,#f6c344);font-size:11px;text-anchor:middle}
+.q-dsdot{fill:var(--white,#fff);opacity:.75}
+.q-dsaxis,.q-dstick{stroke:rgba(255,255,255,.25)}
+.q-dslabel{fill:var(--grey,#8a9a9a);font-size:10px;text-anchor:middle}
+.q-dsrestate{margin:8px 0 3px;font-size:13px;line-height:1.55}
+.q-dswindow{margin:0;font-size:11px;color:var(--grey,#8a9a9a)}
+.obs-lifetime td{opacity:.55}
+.basis-tag{font-size:10px;color:var(--grey);border:1px solid var(--line,#333);border-radius:4px;padding:0 4px;white-space:nowrap}
+
+.intel-hero{max-width:74ch}
+.intel-stats{display:flex;gap:28px;flex-wrap:wrap;margin:28px 0 0;padding:20px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intel-stats .v{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.intel-stats .k{color:var(--grey);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.legendbox{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:18px 0 0}
+.legendbox div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.legendbox b{display:block;font-size:13px;margin-bottom:5px}
+.legendbox p{margin:0;color:var(--grey);font-size:12.5px;line-height:1.55}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.s-law{color:#5ad8a6}.s-cand{color:#b6d94c}.s-theory{color:#7ee3f5}
+.s-warn{color:#f6c344}.s-contested{color:#ff9f4a}
+/* Available to screen readers, invisible on screen. The causal rung's meaning
+   used to exist only in a title attribute, which never fires on touch and
+   cannot be focused. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.s-rejected{color:#8a9a9a}
+/* Per-claim evidence chart. */
+.echartwrap{margin:.6rem 0 .2rem}
+svg.echart{width:100%;height:auto;display:block;overflow:visible}
+svg.echart .egrid{stroke:rgba(141,216,211,.10);stroke-width:1}
+svg.echart .ebase{stroke:rgba(141,216,211,.07);stroke-width:1}
+svg.echart .etick{fill:#7a8a8a;font-size:9.5px;font-family:ui-monospace,Menlo,monospace}
+svg.echart .elabel{fill:#9ab;font-size:10.5px}
+svg.echart .ethresh{stroke:#f6c344;stroke-width:1.4;stroke-dasharray:4 4;opacity:.75}
+svg.echart .ethreshlab{fill:#f6c344;font-size:9px;letter-spacing:.06em}
+svg.echart .edot{stroke-width:1.6}
+svg.echart .eheld{fill:#5ad8a6;stroke:#2f7d5e}
+svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
+.echartcap{margin:.25rem 0 0;font-size:.78rem;color:#8a9a9a;line-height:1.5}
+/* Distribution bar. The shape carries the argument the tiles let a reader skim. */
+.distrib{margin:14px 0 6px}
+.dbar{display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.dseg{position:relative;display:grid;place-items:center;min-width:2px}
+.dsegn{font-size:10.5px;font-weight:700;color:#04100f;font-variant-numeric:tabular-nums}
+.d-law{background:#5ad8a6}.d-cand{background:#b6d94c}.d-warn{background:#f6c344}
+.d-theory{background:#4a6b70}.d-rej{background:#6b4a4a}
+.d-theory .dsegn,.d-rej .dsegn{color:#dfe}
+.dlegend{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:12px;color:var(--grey)}
+.dlegend li{display:flex;align-items:center;gap:6px}
+.dlegend b{color:#cfe;font-weight:600}
+.dkey{width:10px;height:10px;border-radius:2px;flex:none}
+.dnote{opacity:.72}
+@media(max-width:640px){.dlegend{gap:5px 12px;font-size:11.5px}svg.echart .elabel{font-size:9.5px}}
+.contra-a,.contra-b{margin:.35rem 0;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.contra-a b{color:#7ff0bd}.contra-b b{color:#ff9f8f}
+.redun{margin:.4rem 0 .3rem;padding-left:1.1rem}
+.redun li{margin:.22rem 0;font-size:.86rem;overflow-wrap:anywhere}
+.rej-why{color:#ff8f8f}
+.catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
+.capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
+/* The evidence strip: grade on the left, causal rung next to it, so the two
+   are read together. They are different questions and the layout says so. */
+.strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
+  font-size:.78rem;letter-spacing:.02em}
+.grade{text-transform:uppercase;font-weight:700;letter-spacing:.08em;padding:.12rem .45rem;
+  border-radius:3px;font-size:.68rem}
+.g-strong{background:#1d4b3a;color:#7ff0bd}
+.g-moderate{background:#40401d;color:#f0e07f}
+.g-weak{background:#3a3a3a;color:#bdbdbd}
+.strength .rung{color:#9fd6ff;border-bottom:1px dotted #4a6b80;cursor:help}
+.strength .num{color:#8a9a9a}
+/* The measurement record, inside the evidence disclosure. */
+.ledger{margin:.85rem 0;padding:.7rem .85rem;background:#101616;border-radius:6px;
+  border-left:2px solid #2b4a4a}
+.ledger>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#7fb0b0}
+.ledger .lever{margin:.4rem 0 .25rem;font-size:.85rem}
+.ledger .lever .dir{color:#8a9a9a}
+.ledger .method{margin:.2rem 0 .55rem;font-size:.8rem;color:#8a9a9a;font-style:italic}
+/* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+/* A scroll container with no visible edge reads as a clipped table, so it gets
+   a fade on the right and a focus ring for keyboard users. */
+.obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.2rem 0 .1rem;min-width:0;
+  background:linear-gradient(to left,rgba(141,216,211,.13),transparent 2.2rem)}
+.obswrap:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+table.obs{width:100%;min-width:22rem;border-collapse:collapse;font-size:.8rem}
+table.obs th{text-align:left;color:#7a8a8a;font-weight:600;padding:.2rem .5rem .3rem 0;
+  border-bottom:1px solid #223}
+table.obs td{padding:.22rem .5rem .22rem 0;border-bottom:1px solid #1a2222}
+table.obs td.ok{color:#7ff0bd}
+table.obs td.no{color:#ff8f8f}
+.rungnote{margin:.6rem 0 0;font-size:.8rem;color:#9aa}
+.ledger .qline{margin:.15rem 0 .35rem;font-size:.85rem;color:#cfe}
+.ledger .signnote,.ledger .rungnote{margin:.5rem 0 0;font-size:.79rem;color:#9aa}
+.caveats{margin:.7rem 0 0;padding:.55rem .7rem;background:#181111;border-radius:5px;
+  border-left:2px solid #6b3a3a}
+.caveats>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#e0a0a0}
+.caveats ul{margin:.35rem 0 0;padding-left:1.1rem}
+.caveats li{margin:.3rem 0;font-size:.82rem;color:#d8c4c4}
+/* Why a claim has no measurement. The two cases are visually distinct because
+   they mean opposite things: one resolves on the next run, one may never. */
+.nomeasure{margin:.5rem 0;padding:.6rem .8rem;border-radius:6px;border-left:2px solid}
+.nomeasure>b{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nomeasure p{margin:.35rem 0 0;font-size:.84rem;line-height:1.5}
+.nomeasure.pending{background:#0f1620;border-color:#3a5a80}
+.nomeasure.pending>b{color:#8fc0f0}
+.nomeasure.unbound{background:#161616;border-color:#4a4a4a}
+.nomeasure.unbound>b{color:#b0b0b0}
+.nomeasure .why2{color:#8a9a9a;font-style:italic}
+.legacy{margin:.7rem 0;padding:.55rem .75rem;background:#12100c;border-radius:5px;
+  border-left:2px solid #5a4a2a}
+.legacy>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#d8b878}
+.legacy p{margin:.3rem 0 0;font-size:.83rem}
+/* Evidence strings are dense runs of figures like "n=4 across 4 channels
+   (0.79x, 1.2x)" with no spaces long enough to break on, so they push the card
+   past the viewport on a phone. Let them break anywhere rather than clip. */
+.claim .txt,.claim .ev,.claim .caveat,.legacy p,.ledger .method,.caveats li,
+.nomeasure p,.contestbox p,.claim blockquote{overflow-wrap:anywhere}
+.legacy i{color:#8a9a9a}
+.qbox.live{border-left:2px solid #7a5a1a;background:#1a1408}
+.qbox.live>b{color:#ffb85c}
+.qbox.settled{border-left:2px solid #2b4a4a;background:#0d1616}
+.qbox.settled>b{color:#7fb0b0}
+.qbox.settled .q{color:#cfe;margin-top:.3rem}
+.contestbox{margin:.7rem 0;padding:.55rem .75rem;background:#1a1408;border-radius:5px;
+  border-left:2px solid #7a5a1a}
+.contestbox>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#ffb85c}
+.contestbox p{margin:.3rem 0 0;font-size:.84rem}
+.contestbox .q{color:#ffd9a0}
+.quotewrap{margin:.8rem 0 0}
+.quotewrap>b{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a8a8a}
+@media(max-width:640px){.ledger{padding:.55rem .6rem}table.obs{font-size:.74rem}
+  .strength{gap:.35rem .6rem}.caveats li{font-size:.79rem}}
+.claims{display:grid;gap:12px;margin-top:16px}
+/* min-width:0 is load-bearing. A grid item defaults to min-width:auto, so it
+   refuses to shrink below its content's min-content width — and the observation
+   table's min-width propagates all the way up here, pushing the whole card wider
+   than the viewport on a phone. The scroll container below needs the same. */
+.claim{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.claim .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
+.claim .txt{font-size:14.5px;line-height:1.55}
+.claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.claim details{margin-top:10px}
+.claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
+.claim summary::-webkit-details-marker{display:none}
+.claim summary:hover{text-decoration:underline}
+.claim .ev{margin-top:9px;font-size:12.5px;line-height:1.6;color:var(--grey)}
+.claim .ev b{color:var(--white)}
+.claim blockquote{margin:9px 0 0;padding-left:11px;border-left:2px solid var(--teal-deep);
+  color:#cfe0de;font-style:italic;font-size:12.5px;line-height:1.55}
+.claim .caveat{margin-top:8px;font-size:12px;color:var(--warn);line-height:1.55}
+.qbox{background:rgba(255,159,74,.08);border:1px solid rgba(255,159,74,.3);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.qbox b{color:#ff9f4a;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.qbox p{margin:0;font-size:13px;line-height:1.55}
+.nichegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:16px}
+.nichecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.nichecard a{text-decoration:none}
+.nichecard .n{font-weight:600;font-size:14.5px}
+.nichecard .c{color:var(--grey);font-size:12.5px;margin-top:3px}
+.opnote{background:rgba(90,216,166,.07);border:1px solid rgba(90,216,166,.28);border-radius:10px;
+  padding:11px 13px;margin-top:10px}
+.opnote b{color:#5ad8a6;font-size:11px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
+.opnote p{margin:0;font-size:13px;line-height:1.55}
+/* review controls */
+.review{display:flex;gap:7px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.rv{width:32px;height:32px;flex:none;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;
+  background:transparent;border:1px solid var(--line);color:var(--grey);transition:.12s}
+.rv:hover{border-color:var(--teal-mid);color:var(--white)}
+.rv.acc[aria-pressed="true"]{background:#1d6b4f;border-color:#5ad8a6;color:#eafff5}
+.rv.rej[aria-pressed="true"]{background:#6e2230;border-color:#ff6b6b;color:#ffecec}
+.rvnote{flex:1;min-width:190px;background:var(--ink);border:1px solid var(--line);border-radius:8px;
+  color:var(--white);font:inherit;font-size:12.5px;padding:7px 10px}
+.rvnote:focus{outline:none;border-color:var(--teal-mid)}
+.claim.reviewed{border-color:var(--teal-deep)}
+/* export dock */
+#rvdock{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--panel-raised);
+  border:1px solid var(--teal-deep);border-radius:14px;padding:13px 15px;max-width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);display:none}
+#rvdock.on{display:block}
+#rvdock .c{font-size:13px;font-weight:600}
+#rvdock .h{color:var(--grey);font-size:11.5px;line-height:1.5;margin:5px 0 9px}
+#rvdock button{background:var(--teal-deep);border:0;color:#fff;font:inherit;font-size:12.5px;
+  padding:7px 12px;border-radius:8px;cursor:pointer;margin-right:6px}
+#rvdock button.ghost{background:transparent;border:1px solid var(--line);color:var(--grey)}
+#rvdock textarea{width:100%;height:120px;margin-top:9px;background:var(--ink);color:var(--white);
+  border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:8px;display:none}
+#rvdock textarea.on{display:block}
+.standinggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.standingcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;display:block;text-decoration:none;color:inherit}
+.standingcard:hover{background:var(--panel-raised);border-color:var(--teal-deep)}
+.standingcard .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.standingcard .d{color:var(--grey);font-size:12px;line-height:1.5;margin-top:5px}
+
+.ccfig{margin:14px 0 6px;padding:0}
+.ccfig svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.ccdot{fill:var(--teal);opacity:.38}
+.ccmed{fill:none;stroke:var(--white);stroke-width:2.4;stroke-linejoin:round}
+.ccfit{stroke:var(--hot);stroke-width:1.6;stroke-dasharray:7 4}
+.ccgrid{stroke:var(--line);stroke-width:.6;opacity:.55}
+.ccax{fill:var(--grey);font-size:11px}
+.ccfitnote{fill:var(--hot);font-size:11px;font-weight:600}
+.ccbar{fill:var(--teal);opacity:.85}
+.cclab{fill:var(--grey);font-size:11px}
+.ccval{fill:var(--white);font-size:11px;font-weight:600}
+.ccn{fill:var(--grey);font-weight:400}
+.ccmajor{stroke:var(--grey);stroke-width:1;stroke-dasharray:4 4}
+.cccap{font-size:11px;color:var(--grey);line-height:1.55;margin-top:6px;overflow-wrap:anywhere}
+.ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
+.ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
+.ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
+</style>
+</head><body><div class="wrap">
+<header class="site">
+  <img src="../assets/brand/influint-mark.png" alt="Influint">
+  <span class="word">Influint · Channel Intelligence</span>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
+</header>
+<div class="study">
+<p class="st-crumbs"><a href="../channels/UCDzK3jmM3C-ExPrKmHAh_8A.html">Jonny Builds</a> &rsaquo; Study</p>
+<header class="st-top">
+  <p class="st-eyebrow">Jonny Builds · upload of 29 Aug 2026 · analysed 2 to 3 Sep 2026 · private, for the Influint team</p>
+  <h1>The Man Cave Repackage</h1>
+  <p class="st-lede">The video holds people better than anything he has shipped this year and the curve confirms it end to end. The click is normal, the reach is thin, and the only weak twenty seconds are the ones where people who clicked for a man cave discovered a build. That is a packaging problem with a specific shape, and it has a fix you can start today.</p>
+  <div class="st-kicker"><span>Video <b>I Built a Hidden 90's Man Cave in my GARAGE</b></span><span><a href="../channels/UCDzK3jmM3C-ExPrKmHAh_8A/XFE_dKQMPHA.html">Open the interactive viewer for this video</a></span><span>Updated 2026-09-03</span></div>
+</header>
+<div class="st-verdict"><div class="st-stat st-bad"><div class="n">558k</div><div class="l">Impressions, six days</div><div class="d">110k to 165k a day and still being served; the Table of My Dreams averaged about 189k a day over its 28-day window with a front-loaded push.</div></div><div class="st-stat"><div class="n">4.05%</div><div class="l">Click-through to date</div><div class="d">Channel norm. His recent uploads run 3.3% to 6.6% (median about 4.4%); day 2 peaked at 4.94%.</div></div><div class="st-stat st-good"><div class="n">46.3%</div><div class="l">Still watching at halfway</div><div class="d">Beats 33 of his last 40 analysed uploads (channel median 36.2%). Average view percentage 43.0% to date, the best of his last eight.</div></div><div class="st-stat"><div class="n">90.7%</div><div class="l">Present at the first sample</div><div class="d">His uploads typically keep 95.8%. Five points of immediate bounce, and the only place Studio's comparable-video series reads negative. The package, not the edit.</div></div></div>
+<section class="st-section"><p class="st-eyebrow">01 · Diagnosis</p><h2>Distribution, not the click, and not the watch</h2>
+<div class="st-two"><div>
+<p>YouTube widens a video's audience when the first people it shows it to click at the rate it expected and then watch. Both are fine here. Six days in, the video has been shown 558k times; the Table of My Dreams was shown 5.3M times across its 28-day window, which is about 189k a day on average with a front-loaded push, while this one has run at 110k to 165k a day and is still being served. The click is normal and the watch is his best. When both of those hold and the reach does not, the thing to look at is who the package speaks to.</p>
+<p>Three quarters of his 90-day audience are people who have never watched him before (381,612 new viewers against 129,727 returning; only 21,398 regulars in 607,958 uniques). His growth comes from strangers in the browse feed, so a package has to work for someone with no idea who he is. <b>&ldquo;my garage&rdquo;</b> and <b>&ldquo;man cave&rdquo;</b> are fan framing: they assume you care whose garage it is, and they describe a category rather than an event.</p>
+<p>The one watch-side symptom of that fit problem is at the very first sample of the retention curve: five points more immediate bounce than his norm, and a -20.9% reading against comparable videos there. People who clicked on a &ldquo;man cave in my garage&rdquo; saw a build-vlog opening and left; everyone who stayed past twenty seconds behaved like his best audience.</p>
+</div><div>
+<div class="st-callout"><b>What the video actually promises (from the edit)</b><br>A secret room behind a three-level puzzle door hidden in a normal garage cabinet. A surprise home gym for his wife, revealed to her on camera. A 90s arcade and TV room built around the idea that streaming took physical media away.</div>
+<div class="st-callout st-neutral"><b>What the package says</b><br>Title: a hidden man cave in a garage. Thumbnail: a white garage exterior (half the frame) and a busy shot of him in the finished room. No door, no puzzle, no wife, no before.</div>
+<div class="st-tablewrap"><table><tr><th>Day</th><th>Views</th><th>Impressions</th><th>CTR</th></tr><tr><td>2026-08-29</td><td class='num'>12,572</td><td class='num'>109,112</td><td class='num'>3.76%</td></tr><tr><td>2026-08-30</td><td class='num'>27,253</td><td class='num'>164,614</td><td class='num'>4.94%</td></tr><tr><td>2026-08-31</td><td class='num'>15,979</td><td class='num'>146,927</td><td class='num'>3.49%</td></tr><tr><td>2026-09-01</td><td class='num'>2,362</td><td class='num'>17,500</td><td class='num'>4.07%</td></tr><tr><td>2026-09-02</td><td class='num'>14,187</td><td class='num'>120,274</td><td class='num'>3.77%</td></tr></table></div>
+<p class="st-cap">Studio, per day, pulled 3 Sep. The 1 Sep row was still filling in when pulled. Totals to date: 72,353 views on 558,427 impressions (4.05%), 43.0% average view percentage, 13:33 average view duration, +148 subscribers.</p>
+</div></div>
+<div class="st-two" style="margin-top:18px"><div><img src="XFE_dKQMPHA/current-thumb.jpg" alt="Current thumbnail: white garage exterior on the left with the words my garage., finished arcade room with Jonny on the right" style="width:100%;border-radius:8px;border:1px solid var(--line)"><p class="st-cap">The current thumbnail. The left half spends 50% of the frame on a pristine white building that reads as a real-estate listing; the right half has eleven objects competing at 120px wide. Warning 789bf7d1054c in the knowledge base: overcrowded thumbnails come from spending time in Photoshop instead of thinking about the shot.</p></div>
+<div><div class="st-tablewrap"><table><tr><th>Upload</th><th>28d views</th><th>Impr.</th><th>CTR</th><th>APV</th></tr>
+<tr><td>Man Cave (to day 6)</td><td class="num">72,353</td><td class="num">558k</td><td class="num">4.05%</td><td class="num"><b>43.0%</b></td></tr>
+<tr><td>Table of My Dreams</td><td class="num">271,145</td><td class="num">5.29M</td><td class="num">3.31%</td><td class="num">31.4%</td></tr>
+<tr><td>Robot vs. Man</td><td class="num">105,025</td><td class="num">1.29M</td><td class="num">4.95%</td><td class="num">38.9%</td></tr>
+<tr><td>$12,000 Mistake</td><td class="num">95,419</td><td class="num">1.25M</td><td class="num">4.60%</td><td class="num">40.9%</td></tr>
+<tr><td>I Could Get Sued</td><td class="num">188,907</td><td class="num">2.31M</td><td class="num">4.79%</td><td class="num">37.6%</td></tr>
+<tr><td>9024 Sheets of Paper</td><td class="num">136,677</td><td class="num">2.18M</td><td class="num">3.72%</td><td class="num">45.9%</td></tr>
+<tr><td>Dream Bed for $250</td><td class="num">120,774</td><td class="num">1.57M</td><td class="num">4.43%</td><td class="num">38.5%</td></tr>
+<tr><td>5 MORE Impossible</td><td class="num">292,816</td><td class="num">4.66M</td><td class="num">3.68%</td><td class="num">36.6%</td></tr></table></div>
+<p class="st-cap">The other rows are full 28-day windows from the Studio pull of 31 Aug; the Man Cave row is six days old, so compare its rates, not its totals. Its score in the store stays &ldquo;unknown&rdquo; until day 28 by rule.</p></div></div>
+</section><section class="st-section"><p class="st-eyebrow">02 · Retention, measured</p><h2>The curve says the edit is fine; the first twenty seconds say the package is not</h2>
+<svg class="st-curve" viewBox="0 0 960 340" role="img" aria-label="Retention curve of the man-cave video against the channel median"><line x1="52" y1="240.4" x2="944" y2="240.4" stroke="rgba(141,216,211,.16)"/><text x="44" y="244.4" fill="#8a9a9a" font-size="11" text-anchor="end">20%</text><line x1="52" y1="184.8" x2="944" y2="184.8" stroke="rgba(141,216,211,.16)"/><text x="44" y="188.8" fill="#8a9a9a" font-size="11" text-anchor="end">40%</text><line x1="52" y1="129.2" x2="944" y2="129.2" stroke="rgba(141,216,211,.16)"/><text x="44" y="133.2" fill="#8a9a9a" font-size="11" text-anchor="end">60%</text><line x1="52" y1="73.6" x2="944" y2="73.6" stroke="rgba(141,216,211,.16)"/><text x="44" y="77.6" fill="#8a9a9a" font-size="11" text-anchor="end">80%</text><line x1="52" y1="18.0" x2="944" y2="18.0" stroke="rgba(141,216,211,.16)"/><text x="44" y="22.0" fill="#8a9a9a" font-size="11" text-anchor="end">100%</text><text x="52.0" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">0:00</text><text x="230.4" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">6:17</text><text x="408.8" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">12:35</text><text x="587.2" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">18:53</text><text x="765.6" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">25:11</text><text x="944.0" y="312" fill="#8a9a9a" font-size="11" text-anchor="middle">31:29</text><path d="M52.0,29.5 L60.9,29.5 L69.8,85.0 L78.8,122.9 L87.7,139.6 L96.6,148.8 L105.5,149.9 L114.4,153.1 L123.4,156.7 L132.3,158.3 L141.2,158.3 L150.1,160.3 L159.0,162.4 L168.0,163.4 L176.9,163.0 L185.8,163.7 L194.7,164.1 L203.6,166.5 L212.6,168.0 L221.5,170.2 L230.4,171.0 L239.3,172.2 L248.2,172.2 L257.2,174.1 L266.1,177.7 L275.0,179.1 L283.9,179.2 L292.8,178.3 L301.8,178.3 L310.7,179.2 L319.6,179.4 L328.5,185.9 L337.4,188.0 L346.4,186.9 L355.3,184.7 L364.2,184.0 L373.1,184.5 L382.0,184.2 L391.0,186.1 L399.9,185.6 L408.8,188.3 L417.7,189.0 L426.6,192.6 L435.6,194.1 L444.5,189.8 L453.4,190.1 L462.3,189.5 L471.2,191.3 L480.2,193.4 L489.1,194.4 L498.0,195.4 L506.9,194.1 L515.8,196.8 L524.8,195.1 L533.7,195.2 L542.6,195.2 L551.5,191.3 L560.4,193.1 L569.4,191.5 L578.3,192.7 L587.2,190.9 L596.1,193.1 L605.0,194.0 L614.0,193.6 L622.9,193.4 L631.8,192.3 L640.7,192.6 L649.6,194.1 L658.6,194.8 L667.5,193.8 L676.4,193.7 L685.3,194.8 L694.2,195.4 L703.2,195.4 L712.1,195.2 L721.0,195.4 L729.9,195.2 L738.8,196.2 L747.8,196.1 L756.7,195.9 L765.6,195.5 L774.5,195.1 L783.4,194.7 L792.4,194.4 L801.3,194.7 L810.2,194.7 L819.1,195.2 L828.0,195.8 L837.0,195.8 L845.9,197.2 L854.8,196.8 L863.7,196.3 L872.6,196.5 L881.6,197.6 L890.5,197.4 L899.4,195.4 L908.3,194.7 L917.2,197.6 L926.2,199.3 L935.1,202.7" fill="none" stroke="#8a9a9a" stroke-width="2" stroke-dasharray="6 5"/><path d="M52.0,43.9 L60.9,89.4 L69.8,121.4 L78.8,135.6 L87.7,138.1 L96.6,140.6 L105.5,141.4 L114.4,146.2 L123.4,147.8 L132.3,146.7 L141.2,149.2 L150.1,145.3 L159.0,150.0 L168.0,149.5 L176.9,151.4 L185.8,152.0 L194.7,151.7 L203.6,151.4 L212.6,151.7 L221.5,153.9 L230.4,155.1 L239.3,155.1 L248.2,156.4 L257.2,156.2 L266.1,156.2 L275.0,157.0 L283.9,153.4 L292.8,159.5 L301.8,160.3 L310.7,161.4 L319.6,161.7 L328.5,162.6 L337.4,161.4 L346.4,162.3 L355.3,163.4 L364.2,162.0 L373.1,162.0 L382.0,160.1 L391.0,163.7 L399.9,163.7 L408.8,164.2 L417.7,164.0 L426.6,160.9 L435.6,166.7 L444.5,166.5 L453.4,166.7 L462.3,167.3 L471.2,167.3 L480.2,167.0 L489.1,167.0 L498.0,167.3 L506.9,167.6 L515.8,167.8 L524.8,168.1 L533.7,167.3 L542.6,167.3 L551.5,169.8 L560.4,169.5 L569.4,166.7 L578.3,167.0 L587.2,168.4 L596.1,169.0 L605.0,169.2 L614.0,169.0 L622.9,169.2 L631.8,169.5 L640.7,169.2 L649.6,168.1 L658.6,167.3 L667.5,170.1 L676.4,170.1 L685.3,171.7 L694.2,172.0 L703.2,171.5 L712.1,171.7 L721.0,170.9 L729.9,171.2 L738.8,163.4 L747.8,169.2 L756.7,171.2 L765.6,171.7 L774.5,172.6 L783.4,172.0 L792.4,170.9 L801.3,169.2 L810.2,168.1 L819.1,168.1 L828.0,164.5 L837.0,162.0 L845.9,164.5 L854.8,164.8 L863.7,164.5 L872.6,164.0 L881.6,165.1 L890.5,165.1 L899.4,164.2 L908.3,165.3 L917.2,169.0 L926.2,176.2 L935.1,191.2" fill="none" stroke="#6fd39b" stroke-width="2.6"/><line x1="499.2" y1="18" x2="499.2" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="502.2" y="30" fill="#ff8a8d" font-size="11">Sponsor read 15:47</text><line x1="584.7" y1="18" x2="584.7" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="587.7" y="43" fill="#ff8a8d" font-size="11">18:48</text><line x1="806.6" y1="18" x2="806.6" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="809.6" y="56" fill="#ff8a8d" font-size="11">26:38</text><line x1="834.9" y1="18" x2="834.9" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="837.9" y="30" fill="#ff8a8d" font-size="11">Gym reveal 27:38</text><line x1="851.0" y1="18" x2="851.0" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="854.0" y="43" fill="#ff8a8d" font-size="11">Puzzle door 28:12</text><line x1="874.6" y1="18" x2="874.6" y2="296" stroke="#ff8a8d" stroke-dasharray="3 4" opacity=".8"/><text x="877.6" y="56" fill="#ff8a8d" font-size="11">Room reveal 29:02</text><text x="944" y="334" fill="#8a9a9a" font-size="11" text-anchor="end">green: this video (Studio, 3 Sep) &middot; dashed: median of the 40 most recent analysed uploads</text></svg>
+<p class="st-cap">Source: Studio's own retention series (AUDIENCE_WATCH_RELATIVE) pulled from the signed-in Studio session on 3 Sep, because the public Analytics API still refuses the channel. Percent axis, so the shapes line up; the dashed line is the median of his 40 most recent analysed uploads at each point.</p>
+<div class="st-tablewrap"><table><tr><th>Checkpoint</th><th>This video</th><th>Channel</th><th>Read</th></tr><tr><td>First sample</td><td class='num'>90.7%</td><td class='num'>95.8%</td><td>38 of 40 recent uploads held more. Five points of immediate bounce above his norm; Studio&#x27;s comparable-video series reads -20.9% here and -5.2% at the next sample, then positive for the rest of the video.</td></tr><tr><td>0:19</td><td class='num'>74.3%</td><td class='num'>75.9%</td><td>25 of 40 held more. Ordinary.</td></tr><tr><td>0:38</td><td class='num'>62.8%</td><td class='num'>62.3%</td><td>18 of 40 held more. Exactly typical: once the bounce is past, the opening minute is the channel&#x27;s normal opening minute.</td></tr><tr><td>0:57</td><td class='num'>57.7%</td><td class='num'>54.4%</td><td>Better than typical.</td></tr><tr><td>Halfway (15:44)</td><td class='num'>46.3%</td><td class='num'>36.2%</td><td>Beats 33 of 40. The flattest middle he has shipped in the stored record: 55.6% at 1:35 to 44.4% at 25:30, eleven points over twenty-four minutes.</td></tr><tr><td>Sponsor read 15:47 to 16:13</td><td class='num'>46.3% to 46.1%</td><td class='num'>11.6% bleed depth is his median read</td><td>A 0.2-point loss. The read placed while the door was hung but untested cost nothing; the channel&#x27;s usual read loses a tenth of the room.</td></tr><tr><td>18:48 to 26:38</td><td class='num'>45.9% to 44.4%</td><td class='num'></td><td>1.5 points over eight minutes. No sag; the hypothesis from the edit was wrong and the curve says so.</td></tr><tr><td>Reveals 27:23 to 29:55</td><td class='num'>47.3% to 48.2%</td><td class='num'></td><td>Higher than the ten minutes before them: viewers scrub back to the gym reveal, the puzzle door and the room. The 24:15 spike (47.7%) is the mosaic going up.</td></tr><tr><td>Last sample</td><td class='num'>37.7%</td><td class='num'>29.8%</td><td>The outro bleed is the final sixty seconds after the room reveal, and it is smaller than his usual end.</td></tr></table></div>
+<p>Three hypotheses were written from the edit before the curve existed: that the sponsor read at 15:47 would show the channel's usual bleed, that the eight minutes of cat wall and mosaic assembly would sag, and that the late reveal would hold. The curve settles them: the read cost 0.2 points, the stretch cost 1.5 points over eight minutes, and the reveal block runs higher than the ten minutes before it. There is nothing to re-cut. Law 78c39cd4325b (a back-half problem is a setup problem, not a length problem) does not even apply, because there is no back-half problem.</p>
+<p>What the curve does show is at the start. Ninety-one percent are present at the first sample where his uploads typically keep ninety-six; Studio's comparable-video series is negative only for those first two samples. That is the signature of viewers who clicked for one thing and saw another, which is the packaging-fit diagnosis from the numbers side. It is small (five points) and it is the only weakness in a 31-minute curve that beats 33 of his last 40 uploads at the halfway mark.</p>
+<p class='st-eyebrow' style='margin-top:18px'>Flagged moments (per-moment analysis, transcript-verified where a quote is shown)</p><div class='st-tablewrap'><table><tr><th>At</th><th>Kind</th><th>What and why</th><th>Move</th></tr><tr><td class='num'>0:00</td><td>drop</td><td>Opening sheds the usual chunk of arrivals through the first 15 seconds (*8.96% stop rate, 3,661 viewers, landing at 90.7%*).<br><span class='st-evid'>The hook lists the whole build up front: &quot;transforming my weird garage into the hidden room&quot; plus the gym surprise and puzzle door.</span><br><em>Transcript: “hidden room of my dreams”</em></td><td>Test: cut 0:12-0:28 planning voiceover and jump from &quot;hidden room of my dreams&quot; straight to the first framing shot.<br><span class='st-evid'>Caution: This removes 16 seconds; verify nothing later in the video depends on what is cut (a setup, a sponsor read, a disclosure). This stop rate is 0.9x the channel&#x27;s own norm at this position, i.e. typical for the channel; it is a standing habit rather than this video&#x27;s defect, so trial the change before committing to it.</span></td></tr><tr><td class='num'>8:11</td><td>drop</td><td>A 19-second lull loses more viewers than the surrounding footage predicts (*13.5x spike, 881 viewers, 51.3% to 49.1%*).<br><span class='st-evid'>A silent music-only build cut runs from 8:00 to 8:14 before he resumes talking about &quot;the coolest parents that just let us watch all the R-rated movies.&quot;</span><br><em>Transcript: “coolest parents that just let us”</em></td><td>Cut the 8:05-8:14 music-only interlude and open the man-cave planning beat directly on &quot;picture the wood paneling.&quot;</td></tr><tr><td class='num'>24:15</td><td>drop</td><td>A sharp exit at the sponsor tag-out costs almost 2.2 points at the 78% mark (*21.2x spike, 865 viewers, 47.7% to 45.6%*).<br><span class='st-evid'>The Greenhinge segment resolves and hands off with &quot;Thanks again to Greenhinge for sponsoring this video&quot; right before ceiling-mosaic assembly.</span><br><em>Transcript: “Thanks again to Greenhinge for sponsoring”</em></td><td>Move the &quot;Thanks again to Greenhinge&quot; tag-out earlier into the noise-test tease at 24:01 so the payoff &quot;Oh, it&#x27;s so much more quiet&quot; lands last.<br><span class='st-evid'>Caution: Verify Greenhinge&#x27;s contract allows the disclosure to sit before the on-camera result; if not, keep placement and shorten the tag to two seconds.</span></td></tr><tr><td class='num'>24:15</td><td>peak</td><td>Viewers scrub back onto the noise-test reveal, lifting the curve at the 77% mark (*+6.2% of audience present, 1,210 viewers regained*).<br><span class='st-evid'>The hinge upgrade&#x27;s before-and-after lands audibly: &quot;That&#x27;s crazy. Oh, it&#x27;s so much more quiet. Wow.&quot;</span><br><em>Transcript: “so much more quiet”</em></td><td>Front-load a five-second version of this quiet-vs-loud comparison in the intro montage before 0:20 to preview the payoff.</td></tr><tr><td class='num'>27:23</td><td>peak</td><td>Audience climbs and holds for nine samples as the finished room is dressed (*+2.8%, 562 viewers regained, sustained to 47.3%*).<br><span class='st-evid'>he teases the aesthetic reveal without spoiling: &quot;little arcade sign, a lava lamp, some movie posters&quot; and the Jurassic Park callout.</span><br><em>Transcript: “arcade sign, a lava lamp”</em></td><td>Cut a 6-second static-to-decorated dissolve of the same wall between 27:14 and 27:33 and hold each prop on screen one full beat.</td></tr><tr><td class='num'>27:42</td><td>peak</td><td>A short second peak lands on Katie&#x27;s gym reveal (*+1.9%, 389 viewers regained, audience at 48.2%*).<br><span class='st-evid'>Her live reaction carries it: &quot;Oh my gosh. Oh my god. Look at the light. So cool.&quot;</span><br><em>Transcript: “Look at the light”</em></td><td>Hold Katie&#x27;s reaction shot from 27:46 to 27:56 uncut instead of cutting away, and delay the puzzle-door tease until after &quot;This is awesome.&quot;</td></tr></table></div>
+<p class="st-evid">Evidence type: this video's measured curve against the channel's own stored curves (channel-relative observation). The comparable-video series is YouTube's, not ours.</p>
+</section>
+<section class="st-section">
+  <p class="st-eyebrow">03 · The angles</p>
+  <h2>Twenty-five packaging angles, ranked by the evidence behind them</h2>
+  <p class="st-intro">Each angle is a title with a thumbnail direction. The mocks are composites: three scene plates were generated with Krea 2 (the anonymous run quota closed after three; the prompt pack for the other eleven is at the end), the rest use real frames from his own thumbnails. &ldquo;Shoot&rdquo; boxes mark a frame that exists in the edit and needs to be pulled at full resolution. Every &ldquo;why&rdquo; cites the channel's own numbers, a claim in the intelligence store by id (with its standing and measurement), or the recommendation rail on the watch page.</p>
+  <div class="st-callout"><b>Do this first.</b> Change the title to <b>A1</b> (or <b>B1</b> if the Katie frame can be pulled today), then open Test &amp; compare in Studio and run three thumbnails against it for at least a week: <b>A1</b> (cabinet open onto the arcade), <b>A3</b> (&ldquo;THIS IS A CABINET.&rdquo;), <b>B1</b> (Katie at the door). YouTube declares the winner on watch-time share, which is the right criterion for a video that already holds this well.</div>
+  <div class="st-family"><h3 class="st-family-name">Secret door <span>His three biggest non-table hits are doors and secret rooms.</span></h3><div class="st-grid"><article class="st-angle" id="A1">
+  <div class="st-mock" title="Krea 2 plate"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p01-cabinet-open-reveal.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M26,43.875 Q33.4,34.25625 52,34.875" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M26,43.875 Q33.4,34.25625 52,34.875" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1">SECRET ARCADE</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A1</span><h3>I Hid a Secret Arcade Inside a Garage Cabinet</h3></div>
+  <div class="st-chips"><span class="st-chip">Secret door</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The three biggest non-table hits in 140 uploads are all doors and secret rooms: Impossible Folding Door (7.8M views, 222x the channel's median at the time), Secret Room (1.67M) and The Door of the Future (320k). This video contains a secret door and the current package never says so.</li><li>Law df126d83e8ed: install something everyone understands (an arcade) in an unused domestic crevice and the format inherits the secret-room appeal. Signed law, human-reviewed.</li><li>Warning 693b8db93f38: state exactly what happened. &quot;Hid&quot;, &quot;secret arcade&quot;, &quot;garage cabinet&quot; are the three literal facts of the build; &quot;man cave&quot; is a category.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The plate must show enough arcade to promise more than a door; a door alone reads as a build tutorial.</p>
+</article><article class="st-angle" id="A2">
+  <div class="st-mock" title="Krea 2 plate"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M78,16.875 Q76.1,24.328125 63,25.875" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M78,16.875 Q76.1,24.328125 63,25.875" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.95">NORMAL CABINET?</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A2</span><h3>The Secret Door Is a Normal Garage Cabinet</h3></div>
+  <div class="st-chips"><span class="st-chip">Secret door</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Law 5f7da5d4578d (familiar + mysterious): a question about an object the viewer already has a relationship with needs no new interest built. Everyone knows a garage cabinet; the light in the gap is the mystery.</li><li>Warning 171390bd2f12 (subject must differ from background): a dark sliver of neon on a pale cabinet is legible at scroll size, where the current thumbnail's busy right half is not.</li><li>It is the exact beat the video builds towards: 6:05 &quot;the most inconspicuous simple garage cabinet you've ever seen&quot;.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Quieter than his usual frame; the sliver of light must read at 120px wide, so keep the cabinet large and the gap bright.</p>
+</article><article class="st-angle" id="A4">
+  <div class="st-mock" title="Krea 2 plate (stand-in for the gym-wide plate in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-inset" style="bottom:4%;left:3%;width:30%;background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-chair-pose.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M70,19.125 Q82.9,19.912499999999998 86,27" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M70,19.125 Q82.9,19.912499999999998 86,27" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;right:4%;text-align:right;--tt:1.1">FIND IT</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in for the gym-wide plate in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A4</span><h3>Can You Find My Secret Room?</h3></div>
+  <div class="st-chips"><span class="st-chip">Secret door</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The video's spine is a three-level puzzle; a challenge title invites the viewer to play it, which is the structure that made Secret Room (1.67M) work for strangers.</li><li>75% of his 90-day audience are new viewers (381,612 new against 129,727 returning; regulars are 3.5% of uniques). A package has to work for someone who has never heard of him, and a hidden-room search does; &quot;my garage&quot; does not.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Phrased as &quot;Nobody can find&quot; it overclaims (warning e41c5dcefb71: implausible claims depress clicks). The question form stays credible.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Wife's verdict <span>“She Asked Me To Build” is the channel's strongest format (3.72x).</span></h3><div class="st-grid"><article class="st-angle" id="B1">
+  <div class="st-mock" title="Krea 2 plate"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-inset st-shoot" style="bottom:4%;right:3%;width:34%"><span>SHOOT<br>Katie at the cabinet (28:12)</span></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.9">SHE HAS TO SOLVE IT</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">B1</span><h3>She Has to Solve a Puzzle Door to Get In</h3></div>
+  <div class="st-chips"><span class="st-chip">Wife's verdict</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>&quot;She Asked Me To Build ___&quot; is the channel's strongest format: median 3.72x over 6 videos, with 5.6x (&quot;Her Reaction Is PRICELESS&quot;) and 5.17x at the top. The man-cave video is that format in disguise: a surprise for Katie, revealed to her on camera.</li><li>Claim 19a509fd7031: adding an emotional promise with a third-party verdict raised both retention and views against the same creator's identical format, with the curve spiking at the reveal. The reveal here runs 27:38 to 29:02.</li><li>The current title mentions neither Katie nor the test, so the format's audience never sees it.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Needs a real frame of Katie at the cabinet (28:12 in the edit, or a re-shoot); the seek-preview frames are 160px and cannot be used.</p>
+</article><article class="st-angle" id="B2">
+  <div class="st-mock" title="Krea 2 plate (stand-in; the from-inside plate is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p01-cabinet-open-reveal.jpg')"></div><div class="st-inset st-shoot" style="bottom:4%;left:3%;width:32%"><span>SHOOT<br>Katie's reaction (27:45)</span></div><div class="st-tt" style="top:5%;right:4%;text-align:right;--tt:1">SHE FOUND IT</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in; the from-inside plate is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">B2</span><h3>I Built a Secret Room and Made My Wife Find It</h3></div>
+  <div class="st-chips"><span class="st-chip">Wife's verdict</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Same evidence as B1 with the secret-room noun leading, so it also reaches the door audience (A1).</li><li>States the whole event in one sentence (warning 693b8db93f38).</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Two promises in one title; keep the thumbnail on one of them (her reaction), not both.</p>
+</article><article class="st-angle" id="B3">
+  <div class="st-mock" title="Krea 2 plate (gym side) beside a real frame of his room (from the current thumbnail)"><div class="st-split"><div style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.9">HER GYM</div><div class="st-tt" style="top:5%;right:4%;text-align:right;--tt:0.9">MY SECRET</div><span class="st-badge st-mixed">Real + AI</span></div><p class="st-mocknote">Krea 2 plate (gym side) beside a real frame of his room (from the current thumbnail). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">B3</span><h3>I Hid an Arcade Behind My Wife's Gym</h3></div>
+  <div class="st-chips"><span class="st-chip">Wife's verdict</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The split is the literal plan (0:11: &quot;split my garage in half&quot;) and gives the frame two subjects with opposite lighting, which reads at scroll size.</li><li>The surprise-while-away structure (description: built while Katie was out of town) supplies stakes without inventing any.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Avoid the tired husband-versus-wife framing; it is a surprise for her, and the copy should say so.</p>
+</article><article class="st-angle" id="B4">
+  <div class="st-mock" title="Krea 2 plate (stand-in; the from-inside plate is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p01-cabinet-open-reveal.jpg')"></div><div class="st-inset st-shoot" style="bottom:4%;right:3%;width:40%"><span>SHOOT<br>Reaction frame (27:45-29:02)</span></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1">SHE FOUND IT</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in; the from-inside plate is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">B4</span><h3>She Found My Secret Room. Here's Her Reaction.</h3></div>
+  <div class="st-chips"><span class="st-chip">Wife's verdict</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The 5.6x precedent on this channel is a reaction title. The reaction exists in the edit, so this is packaging what was shot, not a new promise.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">&quot;PRICELESS&quot;-style phrasing is the vague-curiosity language the ledger's warning says no longer pays; the plain sentence above keeps the fact and drops the hype.</p>
+</article><article class="st-angle" id="B5">
+  <div class="st-mock" title="Real frame: the finished room, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.9">WHILE SHE WAS AWAY</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">B5</span><h3>We Built a Secret Arcade While My Wife Was Away</h3></div>
+  <div class="st-chips"><span class="st-chip">Wife's verdict</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Time-boxed surprise is built-in conflict, which warning e6f8cd5679d9 says an idea needs to hold viewers at all; the description already frames the build this way.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Do not attach a day count unless it is real; the edit never states one.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Object first <span>His best click-through came from a deadpan object frame.</span></h3><div class="st-grid"><article class="st-angle" id="A3">
+  <div class="st-mock" title="Krea 2 plate (closed-cabinet stand-in; the plain-front plate is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-tt" style="top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:92%;--tt:1.15">THIS IS A CABINET.</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (closed-cabinet stand-in; the plain-front plate is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A3</span><h3>This Cabinet Hides a 90s Arcade</h3></div>
+  <div class="st-chips"><span class="st-chip">Object first</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>His best click-through in two years came from the deadpan object frame: &quot;This is a chair&quot; on a man sitting on air (6.57% CTR against a channel median near 4.4%). Same audience, same joke, one line.</li><li>The title carries the second beat the thumbnail withholds (the arcade), so curiosity has a stated payoff: warning 8edb23a48ade says curiosity without importance clicks but does not satisfy.</li><li>Shorter titles go with higher 28-day CTR in the ledger (held on 23 of 45 readings, 18 channels; the discovery run found it consistent across 9 channels).</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Relies on tone. If the cabinet plate is too plain the frame reads as a furniture ad; keep the gym floor and one weight in frame for scale.</p>
+</article><article class="st-angle" id="C1">
+  <div class="st-mock" title="Real frame: the garage exterior, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/garage-exterior.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M72,22.5 Q74.8,33.13125 58,38.25" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M72,22.5 Q74.8,33.13125 58,38.25" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="bottom:6%;left:4%;text-align:left;--tt:1.05">HAS A SECRET</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the garage exterior, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">C1</span><h3>My Garage Has a Secret</h3></div>
+  <div class="st-chips"><span class="st-chip">Object first</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Five words. Shorter titles go with higher 28-day CTR across the fleet (23 of 45 readings held, 18 channels).</li><li>Uses the exterior shot the current thumbnail already spends half its frame on, but with the mystery stated instead of &quot;my garage.&quot;</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Says nothing about the arcade, so it rests on curiosity alone; the payoff is strong enough, but pair it with a thumbnail that shows the glow.</p>
+</article><article class="st-angle" id="C2">
+  <div class="st-mock" title="Krea 2 plate (stand-in for the gym-wide plate in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M48,22.5 Q70.2,18.787499999999998 84,29.25" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M48,22.5 Q70.2,18.787499999999998 84,29.25" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.1">SECRET ROOM</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in for the gym-wide plate in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">C2</span><h3>There's a Secret Room in This Gym</h3></div>
+  <div class="st-chips"><span class="st-chip">Object first</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The gym is the familiar object, the room is the mystery (law 5f7da5d4578d), and Secret Room (1.67M) is the precedent on this exact channel.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The gym has to look finished and ordinary for the arrow to mean anything.</p>
+</article><article class="st-angle" id="C3">
+  <div class="st-mock" title="Krea 2 plate"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p01-cabinet-open-reveal.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M20,22.5 Q32,26.15625 30,33.75" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M20,22.5 Q32,26.15625 30,33.75" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.2">FAKE</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">C3</span><h3>Hidden Arcade Behind a Fake Cabinet</h3></div>
+  <div class="st-chips"><span class="st-chip">Object first</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>&quot;Fake&quot; is the one-word version of familiar + mysterious, and the plate shows the payoff in the same frame.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Near-duplicate of A1; test one of them, not both.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Transformation <span>What the recommendation rail already thinks this video is.</span></h3><div class="st-grid"><article class="st-angle" id="E1">
+  <div class="st-mock" title="Real frame: the finished room, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-inset" style="top:4%;left:3%;width:42%;background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/garage-exterior.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M40,16.875 Q57,18.5625 60,28.125" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M40,16.875 Q57,18.5625 60,28.125" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="bottom:6%;left:4%;text-align:left;--tt:1">USELESS</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">E1</span><h3>Turning a Useless Garage Into a Secret Arcade</h3></div>
+  <div class="st-chips"><span class="st-chip">Transformation</span><span class="st-chip st-tA">Strongest evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The recommendation system is already telling us what it thinks this video is: the watch page pairs it with Foureyes' &quot;I Turned My Garage Into The Nicest Room In My House&quot; (1.4M) and DualEx's &quot;I Transformed My Creepy Old Basement Into a Secret Dream Game Room&quot; (871K). Law 9e642184ef76: independent examples sharing one promise are evidence of a repeatable expectation.</li><li>The current thumbnail attempts a before-and-after but the &quot;before&quot; is a pretty white garage exterior; the video's own before (1:22 to 1:55) is a junk-filled space you cannot park in, which is the frame that earns the arrow.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The before must look genuinely bad or the transformation reads as decoration.</p>
+</article><article class="st-angle" id="E2">
+  <div class="st-mock" title="Real frame: the finished room, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.85">BEST ROOM IN THE HOUSE</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">E2</span><h3>I Turned My Garage Into the Best Room in My House</h3></div>
+  <div class="st-chips"><span class="st-chip">Transformation</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Candidate law 30b319487492 (measured, held on 36 of 48 readings in maker-build): a near-duplicate of a proven format beats a wholly new one. Foureyes' 1.4M title is the proven format; this is the 90/10 version of it.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">It is nearly Foureyes' exact title. Use the structure, not the words; the arcade or the secret must be the 10% twist.</p>
+</article><article class="st-angle" id="E3">
+  <div class="st-mock" title="Real frame: the garage exterior (the junk-filled interior at 1:22 is the shot to use)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/garage-exterior.jpg')"></div><div class="st-inset" style="bottom:4%;right:3%;width:46%;background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p01-cabinet-open-reveal.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.9">BEFORE</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the garage exterior (the junk-filled interior at 1:22 is the shot to use). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">E3</span><h3>My Garage Was Useless. So I Hid an Arcade in It.</h3></div>
+  <div class="st-chips"><span class="st-chip">Transformation</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Two plain sentences that state cause and result (warning 693b8db93f38), with the transformation and the secret in one title.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Long for a mobile title card; the first clause is what survives truncation, so it must carry the hook.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">90s nostalgia <span>The audience the room was built for.</span></h3><div class="st-grid"><article class="st-angle" id="D1">
+  <div class="st-mock" title="Real frame: the finished room (the VHS-wall plate is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:0.8">STREAMING CAN'T DELETE THIS</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room (the VHS-wall plate is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">D1</span><h3>I Built the Room Streaming Killed</h3></div>
+  <div class="st-chips"><span class="st-chip">90s nostalgia</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>It is the video's own thesis: 0:44 to 0:56, physical media and owning what you love. A point of view is a reason to click that a room description is not.</li><li>YouTube already pairs this upload with 90s-tech content on the watch page (Corridor Crew, &quot;Can Modern VFX Artists use 90s Software?&quot;, 1.6M), which is a live signal that the nostalgia audience is reachable from here.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Pulls a different audience than woodworking; expect lower CTR among subscribers and more reach. That trade is the point for a discovery-driven channel, but watch the first 48 hours.</p>
+</article><article class="st-angle" id="D2">
+  <div class="st-mock" title="Real frame: the finished room (the 1995 living-room plate is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:92%;--tt:1.6">1995</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room (the 1995 living-room plate is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">D2</span><h3>I Turned My Garage Into 1995</h3></div>
+  <div class="st-chips"><span class="st-chip">90s nostalgia</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>A year is more specific than a decade (warning 693b8db93f38), and it turns the room into a time capsule, which is a stronger promise than a themed room.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The build is more arcade than living room; the thumbnail should show the CRT-and-couch side (16:13 to 18:48 footage), not the mosaic.</p>
+</article><article class="st-angle" id="D3">
+  <div class="st-mock" title="Real frame: the Mario mosaics on the ceiling, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/mosaic-ceiling.jpg')"></div><div class="st-tt" style="bottom:6%;left:4%;text-align:left;--tt:1.2">90s KIDS</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the Mario mosaics on the ceiling, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">D3</span><h3>Every 90s Kid Needs This Room</h3></div>
+  <div class="st-chips"><span class="st-chip">90s nostalgia</span><span class="st-chip st-tC">Reasoned, weaker evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Identity call-out to the viewer the room was built for, on the most photogenic unique element (the 3D-printed Super Mario 3 mosaics, backlit).</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">&quot;Needs this&quot; is soft; there is no question or conflict in it (warning e6f8cd5679d9). Better as thumbnail text under a secret-room title than as the title itself.</p>
+</article><article class="st-angle" id="D4">
+  <div class="st-mock" title="Real frame: the finished room, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1">SECRET ARCADE</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">D4</span><h3>I Built a Secret 90s Arcade in My Garage</h3></div>
+  <div class="st-chips"><span class="st-chip">90s nostalgia</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>The minimum change from the current title that fixes its two faults: &quot;secret&quot; replaces &quot;hidden man cave&quot; (the format his channel has already proven) and &quot;arcade&quot; names the thing you will see. Keeps &quot;garage&quot; for the transformation audience.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Safe rather than sharp; a good control arm for the test.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">The mechanism <span>The lock is built from scratch on camera.</span></h3><div class="st-grid"><article class="st-angle" id="A5">
+  <div class="st-mock" title="Krea 2 plate (stand-in; the latch macro is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><svg class="st-arrow" viewBox="0 0 100 56.25" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="st-h" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#E0202A"/></marker></defs><path d="M30,45 Q33.7,36 50,34.875" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round" opacity=".55"/><path d="M30,45 Q33.7,36 50,34.875" fill="none" stroke="#E0202A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#st-h)"/></svg><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.1">3 LOCKS</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in; the latch macro is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A5</span><h3>Solving the 3-Lock Puzzle Door to My Secret Room</h3></div>
+  <div class="st-chips"><span class="st-chip">The mechanism</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Mechanism curiosity is his &quot;I Built ___ Impossible ___&quot; family (median 2.96x over 4 videos), and the lock is genuinely built from scratch (10:18 to 11:07).</li><li>Specific beats vague (warning 693b8db93f38): &quot;3-lock puzzle door&quot; is the description's own phrase and the video's actual structure.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Numbered titles measure weak in the ledger (held on 28% of 71 readings across 17 channels): the number is not the lever here, the mechanism is. Do not lead with &quot;3&quot;.</p>
+</article><article class="st-angle" id="A6">
+  <div class="st-mock" title="Krea 2 plate (stand-in; the magnet close-up is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-tt" style="top:5%;right:4%;text-align:right;--tt:1">CARTEL TRICK</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in; the magnet close-up is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">A6</span><h3>The Drug-Cartel Trick That Hides My Secret Room</h3></div>
+  <div class="st-chips"><span class="st-chip">The mechanism</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>It is true and it is in the video: at 10:22 he explains that as a police officer he saw magnet-activated hidden compartments in seized cars, and the lock copies the idea.</li><li>Familiar + mysterious (law 5f7da5d4578d) with a story hook nobody else in the maker niche has.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Borderline sensational; it survives warning e41c5dcefb71 only because it is literal. Check the sponsor (Green Hinge) is comfortable beside the word cartel before testing it.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Cost and time <span>His $ format lands, only with a real figure.</span></h3><div class="st-grid"><article class="st-angle" id="F1">
+  <div class="st-mock" title="Real frame: the finished room, from the current thumbnail"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.3">$?,???</div><span class="st-badge st-real">Real frame</span></div><p class="st-mocknote">Real frame: the finished room, from the current thumbnail. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">F1</span><h3>I Built a Secret Arcade for $[real total]</h3></div>
+  <div class="st-chips"><span class="st-chip">Cost and time</span><span class="st-chip st-tB">Good evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>&quot;I Built ___ For $___&quot; is his fourth-best format (median 1.78x over 10 videos, best 7.23x). The description lists the parts (Arcade1Up cabinet, flooring, nailer), so a real total exists.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Only with the true figure (warning e41c5dcefb71). The &quot;$250 bed&quot; at 0.74x shows the number must surprise in one direction or the other; a boring middle number is worse than none.</p>
+</article><article class="st-angle" id="F2">
+  <div class="st-mock" title="Krea 2 plate (gym side) beside a real frame of his room (from the current thumbnail)"><div class="st-split"><div style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/jonny-room.jpg')"></div></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.2">? DAYS</div><span class="st-badge st-mixed">Real + AI</span></div><p class="st-mocknote">Krea 2 plate (gym side) beside a real frame of his room (from the current thumbnail). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">F2</span><h3>[N] Days to Build a Secret Arcade Before My Wife Got Home</h3></div>
+  <div class="st-chips"><span class="st-chip">Cost and time</span><span class="st-chip st-tC">Reasoned, weaker evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Time pressure is a stake, and his &quot;213 Hours&quot; title (1.57x) shows effort figures land on this channel.</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Conditional on a real day count, which the edit does not state. Do not invent one.</p>
+</article></div></div><div class="st-family"><h3 class="st-family-name">Superlative <span>Weak in the fleet, strong on this channel: test it, don't assume.</span></h3><div class="st-grid"><article class="st-angle" id="G1">
+  <div class="st-mock" title="Krea 2 plate"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1">MOST HIDDEN</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate. Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">G1</span><h3>The Most Hidden Room I've Ever Built</h3></div>
+  <div class="st-chips"><span class="st-chip">Superlative</span><span class="st-chip st-tC">Reasoned, weaker evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>On this channel the precedent is strong: &quot;Coolest Thing I've Ever Made&quot; was the Impossible Folding Door thumbnail (7.8M).</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">Across the fleet superlatives measure weak (held on 12 of 39 readings, 18 channels; the claim is contested and sits at candidate-law only by the operator's override). Channel precedent versus fleet evidence: test, do not assume.</p>
+</article><article class="st-angle" id="G2">
+  <div class="st-mock" title="Krea 2 plate (stand-in; the latch macro is in the prompt pack)"><div class="st-plate" style="background-image:url('UCDzK3jmM3C-ExPrKmHAh_8A-XFE_dKQMPHA/p02-closed-cabinet-glow-gap.jpg')"></div><div class="st-tt" style="top:5%;left:4%;text-align:left;--tt:1.1">IMPOSSIBLE?</div><span class="st-badge st-ai">AI plate</span></div><p class="st-mocknote">Krea 2 plate (stand-in; the latch macro is in the prompt pack). Every mock is a composite for direction, not a finished asset.</p>
+  <div class="st-head"><span class="st-id">G2</span><h3>Impossible Puzzle Door to a Secret 90s Room</h3></div>
+  <div class="st-chips"><span class="st-chip">Superlative</span><span class="st-chip st-tC">Reasoned, weaker evidence</span></div>
+  <p class="st-eyebrow">Why it should work</p><ul class="st-why"><li>Borrows the wording of his &quot;I Built ___ Impossible ___&quot; family (2.96x median).</li></ul>
+  <p class="st-eyebrow">Watch out</p><p class="st-risk">The door is clever, not impossible; warning e41c5dcefb71 says an implausible claim depresses clicks. Included so the family is represented, ranked last for that reason.</p>
+</article></div></div>
+</section>
+<section class="st-section"><p class="st-eyebrow">04 · Test plan</p><h2>How to run it and how to read it</h2>
+<div class="st-plan"><ol>
+<li><b>Today.</b> Title to A1. Thumbnail to the A1 direction: the cabinet swung open onto the glowing room, one line of text, one arrow. Pull a real frame of the open cabinet from the 29:02 reveal footage rather than using the AI plate; the plate is the composition, not the asset.</li>
+<li><b>Today, in Studio.</b> Content &rarr; the video &rarr; Thumbnail &rarr; A/B testing (Test &amp; compare). Upload A1, A3 and B1. Leave the title alone during the test so only one variable moves.</li>
+<li><b>Day 7 to 14.</b> Read the watch-time share. If B1 wins, the wife-verdict family is confirmed for this channel and the next upload should be packaged in it from day one. If A3 wins, the deadpan object frame is a second proven style after &ldquo;This is a chair&rdquo;.</li>
+<li><b>Do not re-cut.</b> The measured curve has no sag and no sponsor bleed; a re-edit would spend a week on a problem that is not there. Put the week into the package.</li>
+<li><b>Measure honestly.</b> The store treats a first-28-day window as unknown until day 28, so this video's real score arrives on 26 Sep. Compare against the 28-day median of the last ten uploads (about 163k), not against the Dream Table.</li>
+</ol></div>
+<p>Expectation, stated plainly: warning 0d9ddb33359f in the store says repackaging rarely rescues an underperforming upload. The reason to do it anyway is that this is the unusual case the warning allows for: the watch is strong, the click is normal, and the package describes the wrong thing.</p>
+</section><section class="st-section"><p class="st-eyebrow">05 · The channel</p><h2>Where Jonny Builds stands, from the same data</h2>
+<div class="st-two"><div>
+<p class="st-eyebrow">Formats, by median outlier score</p>
+<div class="st-tablewrap"><table><tr><th>Shape</th><th>Videos</th><th>Median</th><th>Read</th></tr>
+<tr><td>She Asked Me To Build ___</td><td class="num">6</td><td class="num">3.72x</td><td>Best shape on the channel; the man-cave video belongs here and was not packaged as it.</td></tr>
+<tr><td>I Built ___ Impossible ___</td><td class="num">4</td><td class="num">2.96x</td><td>Includes the 7.8M folding door.</td></tr>
+<tr><td>Trash Wood To Treasure</td><td class="num">8</td><td class="num">2.72x</td><td>Dormant since 2019; a revival is a low-risk upload.</td></tr>
+<tr><td>I Built ___ For $___</td><td class="num">10</td><td class="num">1.78x</td><td>Works when the figure surprises.</td></tr>
+<tr><td>DIY Epoxy Resin ___</td><td class="num">7</td><td class="num">0.70x</td><td>Retire or repackage.</td></tr>
+<tr><td>___ | Free Plans</td><td class="num">7</td><td class="num">0.67x</td><td>Retire the framing; keep the plans in the description.</td></tr>
+<tr><td>How To Build A ___</td><td class="num">10</td><td class="num">0.54x</td><td>Weakest shape; the tutorial frame is not this audience.</td></tr></table></div>
+<p class="st-eyebrow">Audience and rhythm (Studio, 90 days)</p>
+<ul>
+<li>836k views on 12.4M impressions (3.67% CTR); 29.4% average view percentage, 9:30 average view duration.</li>
+<li>75% new viewers. Regulars are 3.5% of unique viewers. This is a discovery channel; packaging for strangers is the whole game.</li>
+<li>Median upload gap 33 days. The ledger's cadence claim (6bf44bfcf572, candidate-law) says uploads on the usual rhythm beat ones that break it; the man-cave video landed 77 days after the Dream Table, the longest gap in the recent window, which is one more reason its opening push was small.</li>
+<li>CTR trend: 4.19% over 360 days, 3.92% over 180, 3.67% over 90, 3.92% over 30. Slowly down, then a small recovery.</li>
+</ul></div>
+<div>
+<p class="st-eyebrow">The action list the system produces (no model involved)</p>
+<ul>
+<li>Ship the next two uploads as <b>She Asked Me To Build ___</b> (about 445k viewers at stake by the estimate).</li>
+<li>Ship more <b>Impossible ___</b> (320k) and revive <b>Trash Wood To Treasure</b> (282k).</li>
+<li>Publish on the 33-day rhythm even when the build is smaller than planned (measured claim).</li>
+<li>Stop <b>How To Build A ___</b>, <b>Free Plans</b> and <b>Epoxy Resin</b> as framings; the premise can stay, the package cannot.</li>
+<li>Open on what the thumbnail showed; the intro is the channel's largest single loss (signed law 19e8d0f92898, measured). On this video it is the only loss.</li>
+</ul>
+<p class="st-eyebrow">Three next uploads that use what this video proved</p>
+<ul>
+<li><b>&ldquo;She Asked for a Reading Nook. I Hid a Door in It.&rdquo;</b> The best format plus the best mechanic, in a domestic crevice (law df126d83e8ed).</li>
+<li><b>&ldquo;I Built a Puzzle Box You Can Sit On&rdquo;</b>: the Impossible family with the lock idea, one object, deadpan frame.</li>
+<li><b>&ldquo;Trash Wood To Treasure: the 90s Arcade Cabinet&rdquo;</b>: a dormant 2.72x shape on the subject that just found him a new audience.</li>
+</ul></div></div>
+</section><section class="st-section"><p class="st-eyebrow">06 · Krea 2 prompt pack</p><h2>The eleven plates still to render</h2><p>Generated with Krea 2 (Turbo checkpoint, 8 steps, 1280&times;720, guidance 0, no LoRA). In the Krea app, add his last five thumbnails as style references at about 40% so the plates inherit his lighting and colour, and keep <em>no people, no faces, no text</em> in every prompt: Jonny and Katie must be real footage, and the text is set in the channel's own type after the fact.</p><details><summary><code>p01-cabinet-open-reveal</code></summary><p>Photograph for a YouTube thumbnail. A plain pale birch plywood garage storage cabinet inside a clean bright home gym with a treadmill and a black dumbbell rack. The cabinet&#x27;s tall door is swung wide open revealing a hidden doorway into a dark retro 1990s arcade room: warm wood panelling, black and white checkered floor, a glowing Ms. Pac-Man arcade cabinet, stacked CRT televisions, neon light spilling out onto the gym floor. Strong contrast between the flat bright gym and the glowing secret room. Wide angle, sharp, realistic, no people, no faces, no text.</p></details><details><summary><code>p02-closed-cabinet-glow-gap</code></summary><p>Photograph for a YouTube thumbnail. A completely ordinary closed pale birch plywood storage cabinet against a white plywood wall in a tidy home gym. A thin sliver of pink and blue neon light leaks from the gap along one edge of the cabinet door onto the floor, hinting at something hidden behind it. Centered, clean, mysterious, realistic, sharp, no people, no text.</p></details><details><summary><code>p03-hand-magnet-plywood</code></summary><p>Photograph, close-up. A tattooed forearm and hand pressing a small round black magnet against a smooth pale birch plywood cabinet panel, dramatic side lighting, a faint glow of neon light from a gap beside the panel. Realistic, sharp detail, shallow depth of field, no face, no text.</p></details><details><summary><code>p04-garage-before-clutter</code></summary><p>Photograph. A narrow one-car garage crammed with junk: cardboard boxes, a ladder, a lawnmower, bins, tools on the floor, bare drywall, a single bulb. Grey daylight from the open garage door. Messy, honest, realistic, no people, no text.</p></details><details><summary><code>p05-vhs-wall-crt-glow</code></summary><p>Photograph. A wall of wooden shelves packed with VHS tapes, cassette tapes and CD jewel cases, a chunky CRT television glowing in the middle showing static blue, a lava lamp and a 1990s boombox on top, dark wood panelling behind, warm moody lighting. Realistic, sharp, nostalgic, no people, no text.</p></details><details><summary><code>p06-mario-mosaic-ceiling</code></summary><p>Photograph looking up at a dark painted ceiling in a small room. Large pixel-art mosaics of classic 8-bit Super Mario Bros 3 sprites (Mario throwing a fireball, Bowser, a question block, a mushroom, a fire flower) made from small tiles, mounted on the ceiling and backlit with soft LED glow. Wood panelling at the edges. Realistic photograph of an installed piece, sharp, no text, no people.</p></details><details><summary><code>p07-pov-hand-opening-cabinet</code></summary><p>First-person point-of-view photograph. A hand pulling open a pale birch plywood cabinet door in a bright home gym; through the opening a dark retro 90s arcade room glows with pink neon and the light of a CRT television, black and white checkered floor visible. Realistic, sharp, cinematic contrast, no face, no text.</p></details><details><summary><code>p08-split-gym-arcade</code></summary><p>Photograph, wide interior. A garage divided by a wall into two halves seen side by side: on the left a bright modern home gym with white plywood walls, rubber floor, a treadmill and weights; on the right, through an open doorway, a dim retro 1990s arcade and TV room with wood panelling, checkered floor, a glowing Ms. Pac-Man arcade cabinet and CRT TVs with neon accents. Realistic, sharp, no people, no text.</p></details><details><summary><code>p09-latch-mechanism-macro</code></summary><p>Macro photograph. A homemade hidden magnetic lock: a black 3D-printed plastic housing with a polished aluminium rod latch, mounted into a routed pocket in the edge of a birch plywood door, a small neodymium magnet beside it on the workbench, sawdust, warm workshop light. Realistic, sharp, no people, no text.</p></details><details><summary><code>p10-1995-living-room</code></summary><p>Photograph. A small 1990s living room recreated exactly: dark wood panelling walls, a big boxy CRT television on a wooden entertainment center with a VCR and a Super Nintendo, a beige couch, a lava lamp, a Jurassic Park movie poster, a rotary phone, shag rug, warm lamp light. Realistic period-accurate photograph, sharp, no people, no text.</p></details><details><summary><code>p11-arcade-room-hero</code></summary><p>Photograph, wide hero shot. A small immersive retro 1990s arcade room in a garage: warm wood panelling, black and white checkered floor, a glowing Ms. Pac-Man arcade cabinet, a stack of CRT televisions playing 90s games, a small bar with a lava lamp, pink and cyan neon strips, pixel-art Super Mario decorations glowing on the dark ceiling. Realistic, sharp, atmospheric, no people, no text.</p></details><details><summary><code>p12-door-ajar-from-inside</code></summary><p>Photograph from inside a dim retro arcade room looking out through a plywood cabinet door that stands half open, bright white light from a home gym pouring in through the gap across a checkered floor, a Ms. Pac-Man cabinet glowing at the edge of frame. Realistic, cinematic, sharp, no people, no text.</p></details><details><summary><code>p13-gym-wide-plain-cabinet</code></summary><p>Photograph, wide interior. A small clean modern home gym built inside a garage: white birch plywood walls, black rubber flooring, a treadmill, a weight rack with black dumbbells, a wall mirror, and in the corner a plain tall pale plywood storage cabinet that looks completely ordinary. Bright even lighting, realistic, sharp, no people, no text.</p></details><details><summary><code>p14-plain-cabinet-front</code></summary><p>Photograph, straight-on product-style shot. A tall plain pale birch plywood storage cabinet with two simple doors and small silver handles, standing against a white plywood wall on a black rubber gym floor, soft even lighting, nothing else in frame. Minimal, clean, realistic, sharp, no people, no text.</p></details></section>
+<footer class="st-footer">Sources: Studio pull of 31 Aug 2026 and the signed-in Studio session of 3 Sep 2026 (retention series, daily impressions); public Data API and InnerTube transcript, 2 Sep; the channel's stored format library, moment census and 40 most recent analysed curves; the intelligence store (claim ids as cited, standings as of 3 Sep 2026). Comments were not read: the API scope on the connected accounts does not include them.</footer>
+</div>
+<footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>
+</div></body></html>

@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/9PGba_NLYOC53EQnGMix3E2fIuY1Ig2ygnppyYJJPTkJnyqJc87b7p1WMDBobB3ElDTiOG2IqA=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Mind Of A Criminal</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@mindofacriminal" target="_blank" rel="noopener">@mindofacriminal</a> · 547K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@mindofacriminal" target="_blank" rel="noopener">@mindofacriminal</a> · 547K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -810,6 +842,84 @@ means two things move together on this channel, which is not the same as one cau
 <ol class="actions"><li class="act">
   <div class="acthead">
     <span class="actn">1</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~938K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;When The Killer ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">When The Killer ___</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">2.63x</span>
+    <span class="mc-rn">n=4</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:38.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=32</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">2</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~679K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;Teen Killer Thinks ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">Teen Killer Thinks ___</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">2.18x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:45.9%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=32</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">3</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~282K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;Clueless Killer ___&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">Clueless Killer ___</span>
+    <span class="mc-bar"><i style="--w:51.0%"></i></span>
+    <span class="mc-rv">0.51x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=32</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">4</span>
     <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~279K viewers at stake</span>
   </div>
@@ -835,7 +945,33 @@ means two things move together on this channel, which is not the same as one cau
 </li>
 <li class="act">
   <div class="acthead">
-    <span class="actn">2</span>
+    <span class="actn">5</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~230K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;The Interrogation Of A ___ Killer&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">The Interrogation Of A ___ K</span>
+    <span class="mc-bar"><i style="--w:60.0%"></i></span>
+    <span class="mc-rv">0.60x</span>
+    <span class="mc-rn">n=4</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=32</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">6</span>
     <span class="chip c-law" title="Rests on a belief measured across independent channels and signed off by a strategist.">Measured law</span>
     <span class="stake">~29K viewers at stake</span>
   </div>
@@ -856,12 +992,13 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Some opening loss is unavoidable: people who clicked the wrong thing leave whatever you do. Only the gap over a quarter is addressable.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (2)</summary>
+<details class="alsochk"><summary>Also checked, no action needed (3)</summary>
   <ul><li>Ending: 7.4% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li>
-<li>Length: 50.5% against 45.1% at halfway. A 5.3% gap, too small to act on.</li></ul>
+<li>Length: 50.5% against 45.1% at halfway. A 5.3% gap, too small to act on.</li>
+<li>Formats: 3 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 32 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
-<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+<p class="capnote">4 of 6 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 
 
 
@@ -1233,6 +1370,434 @@ means two things move together on this channel, which is not the same as one cau
   });
 })();
 </script>
+
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">When The Killer ___</span>
+    <span class="fstats">
+      <b class="f-hot">2.63×</b>
+      <span>4 videos</span>
+      <span>1.8M median views</span>
+      <span>47% at half · 4 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A moment in interrogation where the killer gives themselves away.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/XmJk-i4903A.html" data-pub="1683849600000" data-views="145436" data-out="0.14" data-r50="0.4326" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XmJk-i4903A/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.14×</span>
+    <span class="len">17:39</span>
+  </div>
+  <div class="t">When the KILLER Turns Out to be the Police Officer</div>
+  <div class="meta">145K views (28d) · 3 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/yHDJ0_rQd20.html" data-pub="1680134400000" data-views="1175518" data-out="1.49" data-r50="0.5577" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/yHDJ0_rQd20/mqdefault.jpg" alt="">
+    <span class="score out-up">1.49×</span>
+    <span class="len">13:41</span>
+  </div>
+  <div class="t">When the Killer Slips up during His Interrogation</div>
+  <div class="meta">1.2M views (28d) · 3 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/425pKIxSgek.html" data-pub="1669939200000" data-views="9205652" data-out="18.13" data-r50="0.5056" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/425pKIxSgek/mqdefault.jpg" alt="">
+    <span class="score out-hot">18.13×</span>
+    <span class="len">13:56</span>
+  </div>
+  <div class="t">When the Killer is the First to Arrive at the Murder Scene</div>
+  <div class="meta">9.2M views (28d) · 3 years ago · 51% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/WuthZlj4x2E.html" data-pub="1706832000000" data-views="2416352" data-out="3.77" data-r50="0.4386" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WuthZlj4x2E/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.77×</span>
+    <span class="len">16:01</span>
+  </div>
+  <div class="t">Accidentally Saying Something Only the KILLER Would Know</div>
+  <div class="meta">2.4M views (28d) · 2 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Teen Killer Thinks ___</span>
+    <span class="fstats">
+      <b class="f-hot">2.18×</b>
+      <span>3 videos</span>
+      <span>1.3M median views</span>
+      <span>43% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A young killer&#39;s misguided belief during interrogation.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/9Jk7H3GQZps.html" data-pub="1757116800000" data-views="570735" data-out="1" data-r50="0.4441" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9Jk7H3GQZps/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">32:49</span>
+  </div>
+  <div class="t">Teen Killer Thinks He Can Get Away With Murder</div>
+  <div class="meta">571K views (28d) · 0 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/n0QB-7-K1lE.html" data-pub="1738886400000" data-views="1253861" data-out="2.18" data-r50="0.4249" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/n0QB-7-K1lE/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.18×</span>
+    <span class="len">19:51</span>
+  </div>
+  <div class="t">Clueless 15 year Old Killer Thinks He Can Outsmart the Detective</div>
+  <div class="meta">1.3M views (28d) · 1 year ago · 42% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/HGom9HDc9g8.html" data-pub="1693180800000" data-views="2573412" data-out="2.51" data-r50="0.4122" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HGom9HDc9g8/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.51×</span>
+    <span class="len">24:07</span>
+  </div>
+  <div class="t">Teen Killer Thinks He&#39;s Going Home After Murdering His Mother</div>
+  <div class="meta">2.6M views (28d) · 3 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How A ___ Acts Under Interrogation</span>
+    <span class="fstats">
+      <b class="f-mid">1.17×</b>
+      <span>4 videos</span>
+      <span>609K median views</span>
+      <span>50% at half · 4 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A breakdown of the behavioral tells a specific personality type shows in the interview room.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/jtLW--zrxPs.html" data-pub="1642809600000" data-views="159397" data-out="0.5" data-r50="0.5333" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jtLW--zrxPs/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.50×</span>
+    <span class="len">14:45</span>
+  </div>
+  <div class="t">How a Psychopath Acts Under Interrogation</div>
+  <div class="meta">159K views (28d) · 4 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/IrZobtVsRWs.html" data-pub="1641081600000" data-views="139977" data-out="0.42" data-r50="0.6024" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IrZobtVsRWs/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">14:07</span>
+  </div>
+  <div class="t">The Signs of a Compulsive Liar</div>
+  <div class="meta">140K views (28d) · 4 years ago · 60% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/Ssru6l4NTvM.html" data-pub="1648771200000" data-views="4359424" data-out="29.12" data-r50="0.461" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ssru6l4NTvM/mqdefault.jpg" alt="">
+    <span class="score out-hot">29.12×</span>
+    <span class="len">20:08</span>
+  </div>
+  <div class="t">What It&#39;s Like to Interrogate a Manipulator</div>
+  <div class="meta">4.4M views (28d) · 4 years ago · 46% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/-vM_bW7H3_w.html" data-pub="1731628800000" data-views="1058978" data-out="1.84" data-r50="0.4102" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-vM_bW7H3_w/mqdefault.jpg" alt="">
+    <span class="score out-up">1.84×</span>
+    <span class="len">17:30</span>
+  </div>
+  <div class="t">Detective Leaves the Interview after He Realizes the Suspect is Insane</div>
+  <div class="meta">1.1M views (28d) · 1 year ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">When A ___ Killer ___</span>
+    <span class="fstats">
+      <b class="f-mid">0.93×</b>
+      <span>3 videos</span>
+      <span>874K median views</span>
+      <span>42% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A pivotal interrogation moment involving a specific type of killer.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/HZ0zXMeBOac.html" data-pub="1746316800000" data-views="457163" data-out="0.52" data-r50="0.4157" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HZ0zXMeBOac/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">25:26</span>
+  </div>
+  <div class="t">When A Teen Killer Realizes He&#39;s Getting the Death Penalty</div>
+  <div class="meta">457K views (28d) · 1 year ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/Tp708eRTthY.html" data-pub="1687478400000" data-views="874335" data-out="0.93" data-r50="0.5371" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Tp708eRTthY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">14:11</span>
+  </div>
+  <div class="t">When a Killer gets Manipulated into Confessing</div>
+  <div class="meta">874K views (28d) · 3 years ago · 54% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/tr8CdGWBNR8.html" data-pub="1681948800000" data-views="2714137" data-out="3.45" data-r50="0.4069" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tr8CdGWBNR8/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.45×</span>
+    <span class="len">17:37</span>
+  </div>
+  <div class="t">When a 14 Year Old Killer Tries to Fake Insanity</div>
+  <div class="meta">2.7M views (28d) · 3 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">___ Kills ___ Then ___</span>
+    <span class="fstats">
+      <b class="f-cold">0.84×</b>
+      <span>5 videos</span>
+      <span>688K median views</span>
+      <span>44% at half · 5 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A killer&#39;s bizarre behavior immediately after committing murder.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/m-peEp1BsuI.html" data-pub="1782432000000" data-views="110738" data-out="0.18" data-r50="0.5026" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/m-peEp1BsuI/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.18×</span>
+    <span class="len">16:45</span>
+  </div>
+  <div class="t">Teen Shoots His Mom in Chest With Shotgun then instantly Regrets it</div>
+  <div class="meta">111K views (28d) · 2 months ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/UrAjcHfahms.html" data-pub="1754006400000" data-views="688409" data-out="0.84" data-r50="0.3959" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UrAjcHfahms/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">30:28</span>
+  </div>
+  <div class="t">Man Kills His ENTIRE Family then Asks to Go Home </div>
+  <div class="meta">688K views (28d) · 1 year ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/H4FUk8MnvpY.html" data-pub="1699574400000" data-views="1513518" data-out="1.92" data-r50="0.4373" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/H4FUk8MnvpY/mqdefault.jpg" alt="">
+    <span class="score out-up">1.92×</span>
+    <span class="len">23:09</span>
+  </div>
+  <div class="t">Man Kills &amp; Dissolves Wife in Acid then Acts Like a Concerned Husband</div>
+  <div class="meta">1.5M views (28d) · 2 years ago · 44% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/BW3FR2Tfapw.html" data-pub="1631232000000" data-views="63643" data-out="0.19" data-r50="0.5576" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/BW3FR2Tfapw/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.19×</span>
+    <span class="len">13:31</span>
+  </div>
+  <div class="t">Woman MURDERS Husband Then begs Police to Find Killer</div>
+  <div class="meta">64K views (28d) · 4 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/Zt9nKdsiQjA.html" data-pub="1772150400000" data-views="1310418" data-out="2.55" data-r50="0.38" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Zt9nKdsiQjA/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.55×</span>
+    <span class="len">16:04</span>
+  </div>
+  <div class="t">Mother Leaves 9-Year-Old Inside Car &amp; Comes Back To Murder Scene</div>
+  <div class="meta">1.3M views (28d) · 6 months ago · 38% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">The Interrogation Of A ___ Killer</span>
+    <span class="fstats">
+      <b class="f-cold">0.60×</b>
+      <span>4 videos</span>
+      <span>508K median views</span>
+      <span>50% at half · 4 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A profile of one killer&#39;s interrogation defined by their personality type.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/AzMA0LGSLpM.html" data-pub="1667001600000" data-views="512898" data-out="0.61" data-r50="0.4881" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AzMA0LGSLpM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">22:46</span>
+  </div>
+  <div class="t">The Captivating Interrogation of a Psychopath | Cheyanne Jessie</div>
+  <div class="meta">513K views (28d) · 3 years ago · 49% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/d3-aVSsiRio.html" data-pub="1660003200000" data-views="502807" data-out="0.6" data-r50="0.5245" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/d3-aVSsiRio/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">21:10</span>
+  </div>
+  <div class="t">The Interrogation of a Manipulative Killer</div>
+  <div class="meta">503K views (28d) · 4 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/KeHDe2CQZjs.html" data-pub="1675987200000" data-views="485336" data-out="0.47" data-r50="0.5036" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KeHDe2CQZjs/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.47×</span>
+    <span class="len">15:46</span>
+  </div>
+  <div class="t">An Interview with a Psychopathic Killer</div>
+  <div class="meta">485K views (28d) · 3 years ago · 50% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/XTR6DPrwqOY.html" data-pub="1689120000000" data-views="700583" data-out="0.68" data-r50="0.4692" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XTR6DPrwqOY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">16:35</span>
+  </div>
+  <div class="t">The Most Arrogant Killer Ever</div>
+  <div class="meta">701K views (28d) · 3 years ago · 47% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Clueless Killer ___</span>
+    <span class="fstats">
+      <b class="f-cold">0.51×</b>
+      <span>3 videos</span>
+      <span>581K median views</span>
+      <span>46% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A killer whose obvious mistakes hand police the case.</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/PrpbQx50jsU.html" data-pub="1778889600000" data-views="318660" data-out="0.51" data-r50="0.4582" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PrpbQx50jsU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.51×</span>
+    <span class="len">19:43</span>
+  </div>
+  <div class="t">Clueless Killer leads Cops to his Home after Murder</div>
+  <div class="meta">319K views (28d) · 3 months ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/xoMCTRtPikU.html" data-pub="1766102400000" data-views="1521106" data-out="2.96" data-r50="0.467" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xoMCTRtPikU/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.96×</span>
+    <span class="len">16:39</span>
+  </div>
+  <div class="t">Hit and Run Driver Thinks She&#39;s Getting a Ticket For Murder</div>
+  <div class="meta">1.5M views (28d) · 8 months ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/FD8vSL7rl34.html" data-pub="1717200000000" data-views="580527" data-out="0.5" data-r50="0.4483" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FD8vSL7rl34/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.50×</span>
+    <span class="len">17:00</span>
+  </div>
+  <div class="t">Killer Goes to Public Library to Research Where he Hid The Body</div>
+  <div class="meta">581K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>6 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/5e5jW4u332A.html" data-pub="1751155200000" data-views="444134" data-out="0.51" data-r50="0.4663" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5e5jW4u332A/mqdefault.jpg" alt="">
+    <span class="score out-down">0.51×</span>
+    <span class="len">30:30</span>
+  </div>
+  <div class="t">Teen&#39;s Chilling Confession Forces Detective to Walk Out</div>
+  <div class="meta">444K views (28d) · 1 year ago · 47% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/HycNgW-3-Q8.html" data-pub="1727481600000" data-views="154066" data-out="0.18" data-r50="0.5655" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HycNgW-3-Q8/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.18×</span>
+    <span class="len">15:04</span>
+  </div>
+  <div class="t">Genius Detective Tricks Suspect into Confessing</div>
+  <div class="meta">154K views (28d) · 1 year ago · 57% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/mq8TTIOT_9c.html" data-pub="1684627200000" data-views="433090" data-out="0.42" data-r50="0.492" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mq8TTIOT_9c/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">19:38</span>
+  </div>
+  <div class="t">A Killer Mother&#39;s Hysterical Acting</div>
+  <div class="meta">433K views (28d) · 3 years ago · 49% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/3_geD93CbGA.html" data-pub="1663372800000" data-views="1536047" data-out="1.82" data-r50="0.5208" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3_geD93CbGA/mqdefault.jpg" alt="">
+    <span class="score out-up">1.82×</span>
+    <span class="len">20:13</span>
+  </div>
+  <div class="t">&quot;I snapped&quot;</div>
+  <div class="meta">1.5M views (28d) · 3 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/O-Bvt7qKTKc.html" data-pub="1634428800000" data-views="23989" data-out="0.07" data-r50="0.5602" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/O-Bvt7qKTKc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.07×</span>
+    <span class="len">14:44</span>
+  </div>
+  <div class="t">The Bizzare Case of The Identical Murder Suspects</div>
+  <div class="meta">24K views (28d) · 4 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UC2oyGvGVpag7aRvEbvFGw3g/7_WLbVFvlEg.html" data-pub="1632096000000" data-views="57780" data-out="0.17" data-r50="0.4673" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7_WLbVFvlEg/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.17×</span>
+    <span class="len">18:27</span>
+  </div>
+  <div class="t">When a Suspect Crumbles Under Pressure</div>
+  <div class="meta">58K views (28d) · 4 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">26 of 32 videos sit in a named format · library built 2026-09-02.</p>
 
 
 
@@ -2244,7 +2809,7 @@ means two things move together on this channel, which is not the same as one cau
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

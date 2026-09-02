@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,12 +760,43 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <h1><span class="pill s-law">Law</span></h1>
@@ -1009,11 +1041,17 @@ panel in the corner when you are done.</p>
     
     
   </div>
-  
+  <div class="strength">
+    <span class="grade g-weak">weak</span>
+    <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
+    <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
+    <span class="num">held 89% of 18 measurements</span>
+    <span class="num">18 channels</span>
+  </div>
   <div class="txt">The first 30 seconds is the most important stretch of a long-form video: across our measured channels a median 35.1% of viewers are gone by 0:30 (middle half of channels 29.3-37.5%) and 44.7% by 1:00, so a fixed diagnostic pass belongs on the 0-60s window of every video.</div>
   <div class="src">Source: Derrel Eves</div>
   
-  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>First 0-30s is the most important, but true that on average the first 30% of viewers tend to drop Re-signed with measured figures (directed in chat 2026-09-01). Figures computed by the refinement registry over 18 channels&#39; stored curves, not asserted. The previous 7%-held record measured a different question (intro-hold vs views correlation) and was removed as a mis-binding with its observations backed up.</p></div>
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>First 0-30s is the most important, but true that on average the first 30% of viewers tend to drop Re-signed with measured figures (directed in chat 2026-09-01). Figures computed by the refinement registry over 18 channels&#39; stored curves, not asserted. The previous 7%-held record measured a different question (intro-hold vs views correlation) and was removed as a mis-binding with its observations backed up. Bound by hand to gone-by-30s-vs-asserted by our strategist (directed in chat 2026-09-02, executed by Claude) (2026-09-02).</p></div>
   <div class="review" data-id="c045919f3c7a">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -1021,15 +1059,236 @@ panel in the corner when you are done.</p>
   </div>
   <details>
     <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      so its Law standing rests on a human sign-off and earlier manual checks, NOT on the measurement ledger. Treat it as the team's settled judgement rather than a measured result.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
+    <div class="ledger">
+    <b>Measurement record</b>
+    <p class="lever">Tested as: <b>the first 30 seconds of a long-form video</b> &rarr; share of viewers gone by 0:30, measured against the 35.1% the claim asserts
+             <span class="dir">(the claim predicts this goes differs)</span></p>
+    <p class="qline">The question put to the data: <i>Does the median share of viewers gone by 0:30 on this channel land near the 35.1% the first-30-seconds Law asserts?</i></p>
+    <p class="method"><b>Exact arithmetic:</b> Channel median over videos of (1 - audience share still watching at 0:30) x 100, from the stored curve. Asserted 35.1; effect = (measured - asserted) / asserted.</p>
+    <div class="echartwrap">
+  <svg class="echart" viewBox="0 0 620 408" role="img"
+       aria-label="Effect size per channel, with the threshold for counting as held">
+    <line class="egrid" x1="116.0" y1="18" x2="116.0" y2="388"/><text class="etick" x="116.0" y="401" text-anchor="middle">-1</text>
+<line class="egrid" x1="237.5" y1="18" x2="237.5" y2="388"/><text class="etick" x="237.5" y="401" text-anchor="middle">-0.5</text>
+<line class="egrid" x1="359.0" y1="18" x2="359.0" y2="388"/><text class="etick" x="359.0" y="401" text-anchor="middle">0</text>
+<line class="egrid" x1="480.5" y1="18" x2="480.5" y2="388"/><text class="etick" x="480.5" y="401" text-anchor="middle">0.5</text>
+<line class="egrid" x1="602.0" y1="18" x2="602.0" y2="388"/><text class="etick" x="602.0" y="401" text-anchor="middle">1</text>
+    <line class="ethresh" x1="407.6" y1="18" x2="407.6" y2="388"/>
+    <text class="ethreshlab" x="412.6" y="14">held from here &rarr;</text>
+    <line class="ebase" x1="116" y1="30" x2="602" y2="30"/>
+<text class="elabel" x="108" y="33.5" text-anchor="end">Isabella Demarko</text>
+<circle class="edot eheld" cx="399.8" cy="30" r="5">
+  <title>Isabella Demarko: +0.17 over 204 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="50" x2="602" y2="50"/>
+<text class="elabel" x="108" y="53.5" text-anchor="end">Studio NOHA</text>
+<circle class="edot eheld" cx="391.1" cy="50" r="5">
+  <title>Studio NOHA: +0.13 over 14 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
+<text class="elabel" x="108" y="73.5" text-anchor="end">Visual Thinker</text>
+<circle class="edot eheld" cx="386.7" cy="70" r="5">
+  <title>Visual Thinker: +0.11 over 14 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
+<text class="elabel" x="108" y="93.5" text-anchor="end">Coffey Custom Buil</text>
+<circle class="edot eheld" cx="375.8" cy="90" r="5">
+  <title>Coffey Custom Builds: +0.07 over 33 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="110" x2="602" y2="110"/>
+<text class="elabel" x="108" y="113.5" text-anchor="end">Tropical Russian</text>
+<circle class="edot eheld" cx="375.7" cy="110" r="5">
+  <title>Tropical Russian: +0.07 over 60 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
+<text class="elabel" x="108" y="133.5" text-anchor="end">The Mountain Maker</text>
+<circle class="edot eheld" cx="374.0" cy="130" r="5">
+  <title>The Mountain Maker: +0.06 over 149 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
+<text class="elabel" x="108" y="153.5" text-anchor="end">The Carpenters Dau</text>
+<circle class="edot eheld" cx="373.7" cy="150" r="5">
+  <title>The Carpenters Daughter: +0.06 over 292 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="170" x2="602" y2="170"/>
+<text class="elabel" x="108" y="173.5" text-anchor="end">Channel F</text>
+<circle class="edot eheld" cx="370.8" cy="170" r="5">
+  <title>Channel F: +0.05 over 226 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="190" x2="602" y2="190"/>
+<text class="elabel" x="108" y="193.5" text-anchor="end">Phoebe Taylor</text>
+<circle class="edot eheld" cx="359.7" cy="190" r="5">
+  <title>Phoebe Taylor: +0.00 over 149 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="210" x2="602" y2="210"/>
+<text class="elabel" x="108" y="213.5" text-anchor="end">Channel G</text>
+<circle class="edot eheld" cx="357.6" cy="210" r="5">
+  <title>Channel G: -0.01 over 84 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="230" x2="602" y2="230"/>
+<text class="elabel" x="108" y="233.5" text-anchor="end">Channel H</text>
+<circle class="edot eheld" cx="354.2" cy="230" r="5">
+  <title>Channel H: -0.02 over 139 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="250" x2="602" y2="250"/>
+<text class="elabel" x="108" y="253.5" text-anchor="end">The BlackVeil File</text>
+<circle class="edot eheld" cx="346.4" cy="250" r="5">
+  <title>The BlackVeil Files: -0.05 over 27 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="270" x2="602" y2="270"/>
+<text class="elabel" x="108" y="273.5" text-anchor="end">Channel C</text>
+<circle class="edot eheld" cx="327.2" cy="270" r="5">
+  <title>Channel C: -0.13 over 106 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="290" x2="602" y2="290"/>
+<text class="elabel" x="108" y="293.5" text-anchor="end">Channel D</text>
+<circle class="edot eheld" cx="318.8" cy="290" r="5">
+  <title>Channel D: -0.17 over 302 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="310" x2="602" y2="310"/>
+<text class="elabel" x="108" y="313.5" text-anchor="end">Mind Of A Criminal</text>
+<circle class="edot eheld" cx="313.1" cy="310" r="5">
+  <title>Mind Of A Criminal: -0.19 over 32 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="330" x2="602" y2="330"/>
+<text class="elabel" x="108" y="333.5" text-anchor="end">Channel A</text>
+<circle class="edot eheld" cx="300.9" cy="330" r="5">
+  <title>Channel A: -0.24 over 470 videos — held</title>
+</circle>
+<line class="ebase" x1="116" y1="350" x2="602" y2="350"/>
+<text class="elabel" x="108" y="353.5" text-anchor="end">Channel I</text>
+<circle class="edot efail" cx="297.4" cy="350" r="5">
+  <title>Channel I: -0.25 over 261 videos — did not hold</title>
+</circle>
+<line class="ebase" x1="116" y1="370" x2="602" y2="370"/>
+<text class="elabel" x="108" y="373.5" text-anchor="end">Channel E</text>
+<circle class="edot efail" cx="206.7" cy="370" r="5">
+  <title>Channel E: -0.63 over 10 videos — did not hold</title>
+</circle>
+  </svg>
+  <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
+    hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
+    direction but too small to build a decision on.
+    Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
+    </p>
+</div>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
+      <table class="obs">
+        <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
+        <tbody><tr>
+        <td>Channel D</td>
+        <td class="ok">held</td>
+        <td>-0.17</td>
+        <td>302</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Visual Thinker</td>
+        <td class="ok">held</td>
+        <td>+0.11</td>
+        <td>14</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Isabella Demarko</td>
+        <td class="ok">held</td>
+        <td>+0.17</td>
+        <td>204</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Channel A</td>
+        <td class="ok">held</td>
+        <td>-0.24</td>
+        <td>470</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Coffey Custom Builds</td>
+        <td class="ok">held</td>
+        <td>+0.07</td>
+        <td>33</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>The Carpenters Daughter</td>
+        <td class="ok">held</td>
+        <td>+0.06</td>
+        <td>292</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Channel E</td>
+        <td class="no">did not hold</td>
+        <td>-0.63</td>
+        <td>10</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Tropical Russian</td>
+        <td class="ok">held</td>
+        <td>+0.07</td>
+        <td>60</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Studio NOHA</td>
+        <td class="ok">held</td>
+        <td>+0.13</td>
+        <td>14</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>-0.01</td>
+        <td>84</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>The Mountain Maker</td>
+        <td class="ok">held</td>
+        <td>+0.06</td>
+        <td>149</td>
+        <td>2026-09-02</td>
+      </tr>
+<tr>
+        <td>Channel C</td>
+        <td class="ok">held</td>
+        <td>-0.13</td>
+        <td>106</td>
+        <td>2026-09-02</td>
+      </tr></tbody>
+      </table>
+    </div>
+    <p class="capnote">Showing the 12 most recent of 18 readings.</p>
+    <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
+      prediction showed up, whichever way the raw statistic pointed.
+      Figures are calibration.</p>
+    <p class="rungnote"><b>Reproduced.</b> The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</p>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest group behind this is 10 videos. At that size a couple of unusual uploads can carry the whole result.</li>
+<li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
+<li>It did NOT hold on Channel I, Channel E. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
+  </div><div class="scoped">
+    <p class="scomp"><b>Evidence composition:</b> 18 channels — 9 maker-build, 3 vlog-lifestyle, 2 true-crime, 1 vanlife-travel, 1 gaming, 1 education, 1 motorcycle-travel.</p>
+    <div class="obswrap" tabindex="0" role="region" aria-label="Strength within each stratum (scrolls sideways)">
+      <table class="obs sstrata">
+        <thead><tr><th>Split</th><th>Group</th><th>Channels</th><th>Effect</th></tr></thead>
+        <tbody><tr class=""><td>By niche</td><td>maker-build</td><td>9</td><td>|effect| 0.06 · held 89%</td></tr>
+<tr class=""><td>By niche</td><td>vlog-lifestyle</td><td>3</td><td>|effect| 0.17 · held 67%</td></tr>
+<tr class="sbelow"><td>By niche</td><td>true-crime</td><td>2</td><td><i>below floor — no figure</i></td></tr>
+<tr class="sbelow"><td>By niche</td><td>vanlife-travel</td><td>1</td><td><i>below floor — no figure</i></td></tr>
+<tr class="sbelow"><td>By niche</td><td>gaming</td><td>1</td><td><i>below floor — no figure</i></td></tr>
+<tr class="sbelow"><td>By niche</td><td>education</td><td>1</td><td><i>below floor — no figure</i></td></tr>
+<tr class="sbelow"><td>By niche</td><td>motorcycle-travel</td><td>1</td><td><i>below floor — no figure</i></td></tr>
+<tr class=""><td>By channel size</td><td>50k-250k</td><td>6</td><td>|effect| 0.12 · held 83%</td></tr>
+<tr class=""><td>By channel size</td><td>250k-1m</td><td>6</td><td>|effect| 0.15 · held 100%</td></tr>
+<tr class=""><td>By channel size</td><td>under-50k</td><td>4</td><td>|effect| 0.07 · held 100%</td></tr>
+<tr class="sbelow"><td>By channel size</td><td>over-1m</td><td>2</td><td><i>below floor — no figure</i></td></tr>
+<tr class=""><td>By audience mix</td><td>discovery-driven</td><td>13</td><td>|effect| 0.07 · held 92%</td></tr>
+<tr class=""><td>By audience mix</td><td>mixed</td><td>5</td><td>|effect| 0.17 · held 80%</td></tr></tbody>
+      </table></div>
+      <p class="snote">A group needs 3 channels before it gets a figure. Fewer is not "untested there" — it is measured and under-sampled, so the row stays and the number does not. These splits never move a claim's standing; they only say who the evidence came from.</p>
   </div>
     <div class="q-datasays">
     <p class="q-dstitle"><b>Measured refinement</b> &mdash; Share of viewers gone by 0:30, per channel (median over its analysed videos)</p>
@@ -1049,7 +1308,7 @@ panel in the corner when you are done.</p>
     <div class="legacy">
              <b>Earlier one-off check</b>
              <p><i>Predates the measurement ledger — a single manual pass, not a repeated test.
-               With nothing measured yet, this check is the only evidence behind the standing above.</i></p>
+               The measured record above is what this claim's standing now rests on.</i></p>
              <p class="ev"><b>Supported:</b> By 30s only 8 of 119 videos had lost 30%; by 60s 100 of 119 had; by 120s 117 of 119 had. Median retention: 77.5% at 30s, 61.6% at 60s, 54.1% at 120s. So the 30% threshold is crossed inside the 30-60s window for the large majority. Per channel at 60s: Channel C 30/30, Channel D 30/30, Channel F 10/10, Channel G 10/10, Channel E 6/9, Channel A 14/30. Median loss by window confirms the shape: 0-15s loses 6.5-9.4%, 15-30s loses 0-19.1%, 30-60s loses 9.7-24.9%.</p>
              <p class="caveat">Caveat: Channel A (Roblox gaming, 19-min median) is a genuine partial exception — fewer than half its videos cross 30% loss by 60s, and it needs ~120s. Channel E (52-min median) loses almost nothing between 15s and 30s (0.0% median) but then drops 24.9% in the 30-60s band, so the window shifts with runtime. The claim&#39;s diagnostic prescription is sound; the word &#39;always&#39; is not.</p>
            </div>
@@ -2047,7 +2306,7 @@ Like you have a main payoff, and then the experimental of something that may or 
     <p>Another claim in this base says something incompatible, and it is not a contradiction &mdash;
       the two apply to different kinds of channel. The question that separates them:</p>
     <p class="q">Is the comparison WITHIN one video (same audience composition, before-vs-after an edit) or ACROSS videos in a catalogue (audience width varying)? Eves is asserting a counterfactual on a fixed audience; Joos is describing a cross-sectional correlation in which audience breadth is the confounder and dominates. Restated conditionally: (a) holding reach constant, later 50%-departure raises AVD and is worth editing for; (b) across a channel&#39;s catalogue, retention-at-50% is a proxy for audience narrowness and predicts FEWER views, so it must never be used as a cross-video ranking of quality.</p></div>
-  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>This is true only if impressions or views on the same video is low, and its not ALWAYS evidence of narrow appeal as some videos can legitimately be high retention and wide appeal.  You need other stats to contextualize whether or not this is true</p></div>
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>This is true only if impressions or views on the same video is low, and its not ALWAYS evidence of narrow appeal as some videos can legitimately be high retention and wide appeal.  You need other stats to contextualize whether or not this is true Merged 1 duplicate (2026-09-02): The duplicate was filed as a WARNING: the failure mode is reading a high flat curve as broad appeal. The Law keeps the rule; the warning framing is worth remembering when advising.</p></div>
   <div class="review" data-id="eb9447a562fd">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>

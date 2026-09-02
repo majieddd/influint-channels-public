@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/pMRtCEuWVAbGhIl-B2AC-03d7808FdXPoIEf-fFRkb2fvfP9nPOTxUy1kQxCluyvQMMyTnnOGA=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>The Carpenters Daughter</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@thecarpentersdaughteruk" target="_blank" rel="noopener">@thecarpentersdaughteruk</a> · 162K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@thecarpentersdaughteruk" target="_blank" rel="noopener">@thecarpentersdaughteruk</a> · 162K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -810,6 +842,32 @@ means two things move together on this channel, which is not the same as one cau
 <ol class="actions"><li class="act">
   <div class="acthead">
     <span class="actn">1</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~9K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;DIY ___&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">DIY ___</span>
+    <span class="mc-bar"><i style="--w:72.0%"></i></span>
+    <span class="mc-rv">0.72x</span>
+    <span class="mc-rn">n=22</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">2</span>
     <span class="chip c-law" title="Rests on a belief measured across independent channels and signed off by a strategist.">Measured law</span>
     <span class="stake">~2K viewers at stake</span>
   </div>
@@ -830,14 +888,15 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Some opening loss is unavoidable: people who clicked the wrong thing leave whatever you do. Only the gap over a quarter is addressable.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (3)</summary>
+<details class="alsochk"><summary>Also checked, no action needed (4)</summary>
   <ul><li>Ending: 3.8% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li>
 <li>Length: 52.5% against 45.8% at halfway. A 6.7% gap, too small to act on.</li>
-<li>Cadence: 1.02x on rhythm against 0.97x off it. Too close to call.</li></ul>
+<li>Cadence: 1.02x on rhythm against 0.97x off it. Too close to call.</li>
+<li>Formats: 7 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 295. Advice is about the channel being run now.</p>
-<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+<p class="capnote">1 of 2 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 
 
 
@@ -3890,6 +3949,3126 @@ means two things move together on this channel, which is not the same as one cau
 })();
 </script>
 
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To Build A ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.26×</b>
+      <span>17 videos</span>
+      <span>9K median views</span>
+      <span>35% at half · 17 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A start-to-finish build tutorial for a specific structure or piece.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/No7nkvWYqeg.html" data-pub="1761436800000" data-views="21709" data-out="1.29" data-r50="0.4603" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/No7nkvWYqeg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.29×</span>
+    <span class="len">27:04</span>
+  </div>
+  <div class="t">How to build a Predator-Proof DIY chicken coop run</div>
+  <div class="meta">22K views (28d) · 10 months ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DcA6Tow6tVM.html" data-pub="1759622400000" data-views="17134" data-out="1.02" data-r50="0.5096" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DcA6Tow6tVM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">24:24</span>
+  </div>
+  <div class="t">I cut into my brick barn to build a £25 DIY chicken coop door (+ automatic opener!)</div>
+  <div class="meta">17K views (28d) · 11 months ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Bl05x6xNdtU.html" data-pub="1632787200000" data-views="2362" data-out="0.44" data-r50="0.2743" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Bl05x6xNdtU/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.44×</span>
+    <span class="len">6:55</span>
+  </div>
+  <div class="t">How to Build a Shed With Serving Hatch in 7 minutes (8x7) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 4 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/zl97gEhfpM8.html" data-pub="1632614400000" data-views="7272" data-out="1.73" data-r50="0.1996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zl97gEhfpM8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.73×</span>
+    <span class="len">24:37</span>
+  </div>
+  <div class="t">DIY Garden Bar Shed with Serving Hatch From Start to Finish (Kids Football Club Charity Build)</div>
+  <div class="meta">7K views (28d) · 4 years ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/SB8LJqsQH7I.html" data-pub="1632009600000" data-views="3797" data-out="0.56" data-r50="0.304" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SB8LJqsQH7I/mqdefault.jpg" alt="">
+    <span class="score out-down">0.56×</span>
+    <span class="len">10:17</span>
+  </div>
+  <div class="t">How to Build a Bird Table Feeder + FREE PLANS | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 4 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/NWFUJGPlfpU.html" data-pub="1629158400000" data-views="24583" data-out="3.65" data-r50="0.3429" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NWFUJGPlfpU/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.65×</span>
+    <span class="len">17:00</span>
+  </div>
+  <div class="t">How to Build a Lean to Shed From Scratch (Outdoor Storage on a Budget) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">25K views (28d) · 5 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/PAzP7TNnPHc.html" data-pub="1662249600000" data-views="4392" data-out="1.01" data-r50="0.3502" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PAzP7TNnPHc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">5:52</span>
+  </div>
+  <div class="t">#ad How to Build a Picnic Bench Table from a Discarded Cable Drum Reel</div>
+  <div class="meta">4K views (28d) · 3 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EyV8AL-AlAE.html" data-pub="1598745600000" data-views="5559" data-out="0.7" data-r50="0.4204" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EyV8AL-AlAE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">6:18</span>
+  </div>
+  <div class="t">Building a Summerhouse Shed From Scratch (Fast Version) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 6 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/coJRC9IFtDg.html" data-pub="1596931200000" data-views="42984" data-out="4.03" data-r50="0.4001" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/coJRC9IFtDg/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.03×</span>
+    <span class="len">9:11</span>
+  </div>
+  <div class="t">DIY Summerhouse Shed: Base &amp; Frame Part 1 (Garden Room) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">43K views (28d) · 6 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/OAF4xyesZ6M.html" data-pub="1597536000000" data-views="16487" data-out="2.07" data-r50="0.4567" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OAF4xyesZ6M/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.07×</span>
+    <span class="len">7:06</span>
+  </div>
+  <div class="t">Cladding The Summerhouse Shed Part 2  | The Carpenter&#39;s Daughter</div>
+  <div class="meta">16K views (28d) · 6 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/AKdsOIh24eo.html" data-pub="1598140800000" data-views="10360" data-out="1.26" data-r50="0.5274" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AKdsOIh24eo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.26×</span>
+    <span class="len">10:38</span>
+  </div>
+  <div class="t">Roofing The Summerhouse &amp; Windows/Doors Part 3 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">10K views (28d) · 6 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/LQ0D4A-SVxQ.html" data-pub="1617494400000" data-views="31447" data-out="4.72" data-r50="0.1823" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LQ0D4A-SVxQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.72×</span>
+    <span class="len">23:15</span>
+  </div>
+  <div class="t">Making a 7x4 Pent Bike Shed DIY (Outdoor Storage) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">31K views (28d) · 5 years ago · 18% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/w81hgQ4W-iY.html" data-pub="1656547200000" data-views="3841" data-out="0.7" data-r50="0.2524" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/w81hgQ4W-iY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">8:01</span>
+  </div>
+  <div class="t">How to make an EPIC DIY dog food dispenser for biscuits &amp; cans!</div>
+  <div class="meta">4K views (28d) · 4 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/GwLh_MG8Skw.html" data-pub="1575158400000" data-views="8830" data-out="1.22" data-r50="0.4491" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GwLh_MG8Skw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">8:31</span>
+  </div>
+  <div class="t">Building a Partition Wall | The Carpenter&#39;s Daughter</div>
+  <div class="meta">9K views (28d) · 6 years ago · 45% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ceaq9guULBk.html" data-pub="1573516800000" data-views="17326" data-out="2.03" data-r50="0.3919" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ceaq9guULBk/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.03×</span>
+    <span class="len">14:59</span>
+  </div>
+  <div class="t">Building a Shed With Shelf Storage | AD | The Carpenter&#39;s Daughter</div>
+  <div class="meta">17K views (28d) · 6 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/CgXjyAUB4FI.html" data-pub="1601164800000" data-views="5411" data-out="1.6" data-r50="0.2827" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/CgXjyAUB4FI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.60×</span>
+    <span class="len">10:23</span>
+  </div>
+  <div class="t">DIY Chicken Coop Build | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 5 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/j9GnslEcvW8.html" data-pub="1602979200000" data-views="2456" data-out="0.59" data-r50="0.3533" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j9GnslEcvW8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">6:15</span>
+  </div>
+  <div class="t">Building a Chicken Pen for a Coop | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 5 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">We Bought An Abandoned ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.13×</b>
+      <span>14 videos</span>
+      <span>34K median views</span>
+      <span>45% at half · 14 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Exploring and reckoning with what came with the abandoned farm/property they bought.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/95E7L26LjnQ.html" data-pub="1787443200000" data-views="35429" data-out="0.94" data-r50="0.5653" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/95E7L26LjnQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">17:18</span>
+  </div>
+  <div class="t">Three Years Later: Reclaiming Our Abandoned Farm</div>
+  <div class="meta">35K views (28d) · 10 days ago · 57% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/_cwd1D20Zks.html" data-pub="1786233600000" data-views="89459" data-out="2.64" data-r50="0.4116" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_cwd1D20Zks/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.64×</span>
+    <span class="len">19:25</span>
+  </div>
+  <div class="t">We Bought an Abandoned Farm… But Couldn’t Reach This Part</div>
+  <div class="meta">89K views (28d) · 24 days ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/b1fZXXcI-lg.html" data-pub="1785024000000" data-views="32352" data-out="0.82" data-r50="0.5763" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/b1fZXXcI-lg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">25:00</span>
+  </div>
+  <div class="t">I Finally Looked Inside This Forgotten Part of Our Farm</div>
+  <div class="meta">32K views (28d) · 1 month ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cKlr_5HMl_E.html" data-pub="1783814400000" data-views="24190" data-out="0.61" data-r50="0.5798" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cKlr_5HMl_E/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">15:49</span>
+  </div>
+  <div class="t">We Bought an Abandoned Farm… It’s Getting Out of Control</div>
+  <div class="meta">24K views (28d) · 1 month ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZG7J7u3WPj0.html" data-pub="1782000000000" data-views="58476" data-out="1.73" data-r50="0.4522" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZG7J7u3WPj0/mqdefault.jpg" alt="">
+    <span class="score out-up">1.73×</span>
+    <span class="len">19:00</span>
+  </div>
+  <div class="t">I Bought an Abandoned Farm... But This Was Holding Us Back</div>
+  <div class="meta">58K views (28d) · 2 months ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/znlOQ3xlunQ.html" data-pub="1780185600000" data-views="165825" data-out="4.17" data-r50="0.2808" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/znlOQ3xlunQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.17×</span>
+    <span class="len">22:22</span>
+  </div>
+  <div class="t">We Bought an Abandoned Farm With a Forgotten Outbuilding… Here’s What Was Inside</div>
+  <div class="meta">166K views (28d) · 3 months ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DNcvLcD7D_E.html" data-pub="1775347200000" data-views="50673" data-out="1.57" data-r50="0.453" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DNcvLcD7D_E/mqdefault.jpg" alt="">
+    <span class="score out-up">1.57×</span>
+    <span class="len">4:15</span>
+  </div>
+  <div class="t">I Bought an Abandoned Farmhouse With No Water - Starting over at 40</div>
+  <div class="meta">51K views (28d) · 5 months ago · 45% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/LBbhhtfnefk.html" data-pub="1728777600000" data-views="24007" data-out="0.8" data-r50="0.3827" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LBbhhtfnefk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.80×</span>
+    <span class="len">20:04</span>
+  </div>
+  <div class="t">Step inside my 200+ year old abandoned cottage in the Lincolnshire Countryside</div>
+  <div class="meta">24K views (28d) · 1 year ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZMDHhOOpr5g.html" data-pub="1700956800000" data-views="22221" data-out="0.89" data-r50="0.4835" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZMDHhOOpr5g/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">20:35</span>
+  </div>
+  <div class="t">The UGLY TRUTH about our ABANDONED FARM &amp; 200 YEAR OLD COTTAGE we bought at AUCTION!</div>
+  <div class="meta">22K views (28d) · 2 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-lxV55nVelo.html" data-pub="1700352000000" data-views="29724" data-out="1.32" data-r50="0.457" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-lxV55nVelo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.32×</span>
+    <span class="len">21:00</span>
+  </div>
+  <div class="t">We tried to fix the leaks but FOUND MORE PROBLEMS in our new auction property!</div>
+  <div class="meta">30K views (28d) · 2 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/HNvkIW95siw.html" data-pub="1699747200000" data-views="83922" data-out="3.73" data-r50="0.2777" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HNvkIW95siw/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.73×</span>
+    <span class="len">17:57</span>
+  </div>
+  <div class="t">We moved into our new auction property but it&#39;s WORSE than we thought!!</div>
+  <div class="meta">84K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/VUqRhnC2gnE.html" data-pub="1698537600000" data-views="13109" data-out="0.52" data-r50="0.5417" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VUqRhnC2gnE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">15:11</span>
+  </div>
+  <div class="t">We RISKED IT ALL bidding on an auction property!</div>
+  <div class="meta">13K views (28d) · 2 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/2a5UEX5fgjw.html" data-pub="1697932800000" data-views="16776" data-out="0.67" data-r50="0.409" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2a5UEX5fgjw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.67×</span>
+    <span class="len">10:15</span>
+  </div>
+  <div class="t">We could&#39;ve been PROSECUTED &amp; EVICTED from our dream home (but you could too!)</div>
+  <div class="meta">17K views (28d) · 2 years ago · 41% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/zVr0dQeUQNA.html" data-pub="1699142400000" data-views="48454" data-out="2.16" data-r50="0.2812" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zVr0dQeUQNA/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.16×</span>
+    <span class="len">24:18</span>
+  </div>
+  <div class="t">FULL HOME TOUR: I bought this problem house but NEED YOUR DIY IDEAS!</div>
+  <div class="meta">48K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">I Tried ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.08×</b>
+      <span>20 videos</span>
+      <span>24K median views</span>
+      <span>44% at half · 20 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A DIY attempt that goes sideways or reveals hidden problems.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/RmzyZ7KWv5U.html" data-pub="1776556800000" data-views="30714" data-out="0.78" data-r50="0.5283" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RmzyZ7KWv5U/mqdefault.jpg" alt="">
+    <span class="score out-down">0.78×</span>
+    <span class="len">16:44</span>
+  </div>
+  <div class="t">I tried building my biggest barn doors (on my own)</div>
+  <div class="meta">31K views (28d) · 4 months ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/hB6Ub9q4k2k.html" data-pub="1762041600000" data-views="16737" data-out="0.99" data-r50="0.5495" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hB6Ub9q4k2k/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">11:58</span>
+  </div>
+  <div class="t">Building a predator-proof chicken pen… then everything went SIDEWAYS!</div>
+  <div class="meta">17K views (28d) · 10 months ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/uZpO_i33VtM.html" data-pub="1760227200000" data-views="24922" data-out="1.47" data-r50="0.4365" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uZpO_i33VtM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.47×</span>
+    <span class="len">15:20</span>
+  </div>
+  <div class="t">I tried to fix everything in one day - and accidentally saved £5,000!</div>
+  <div class="meta">25K views (28d) · 10 months ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ejGzHuZSM4w.html" data-pub="1716076800000" data-views="21347" data-out="0.88" data-r50="0.5758" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ejGzHuZSM4w/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">23:59</span>
+  </div>
+  <div class="t">I tried clearing out the gutters, but things were worse than we thought!</div>
+  <div class="meta">21K views (28d) · 2 years ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EPQdu-j4WqQ.html" data-pub="1713052800000" data-views="16241" data-out="0.62" data-r50="0.3907" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EPQdu-j4WqQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">31:58</span>
+  </div>
+  <div class="t">I tried growing veg in hoop houses, but hadn&#39;t prepared for THIS!</div>
+  <div class="meta">16K views (28d) · 2 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ifpTRn64ORo.html" data-pub="1711238400000" data-views="17911" data-out="0.66" data-r50="0.4531" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ifpTRn64ORo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.66×</span>
+    <span class="len">35:42</span>
+  </div>
+  <div class="t">I tried building a hinged hoop house, raised bed baths but it was a BATTLE!</div>
+  <div class="meta">18K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/dn_5fZFZuC8.html" data-pub="1710633600000" data-views="25699" data-out="1.15" data-r50="0.4344" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dn_5fZFZuC8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">37:57</span>
+  </div>
+  <div class="t">I tried restoring my glass greenhouse, but it went WRONG! {+ Potting Bench}</div>
+  <div class="meta">26K views (28d) · 2 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/O8uQ61Oto30.html" data-pub="1709424000000" data-views="41455" data-out="1.69" data-r50="0.3162" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/O8uQ61Oto30/mqdefault.jpg" alt="">
+    <span class="score out-up">1.69×</span>
+    <span class="len">21:54</span>
+  </div>
+  <div class="t">I tried installing a Ring CCTV camera security system, but found someone else owns our land!</div>
+  <div class="meta">41K views (28d) · 2 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/vYyk4I64aXQ.html" data-pub="1706400000000" data-views="46668" data-out="1.9" data-r50="0.2335" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vYyk4I64aXQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.90×</span>
+    <span class="len">19:42</span>
+  </div>
+  <div class="t">I tried installing loft insulation to save money but found it was the WORST DIY EVER!</div>
+  <div class="meta">47K views (28d) · 2 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/p9JD2v61MII.html" data-pub="1701561600000" data-views="27418" data-out="1.22" data-r50="0.3841" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p9JD2v61MII/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">29:49</span>
+  </div>
+  <div class="t">I tried plasterboarding my ceiling solo, but found DIY Youtubers are LYING to you!</div>
+  <div class="meta">27K views (28d) · 2 years ago · 38% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/MleqoqUYYSU.html" data-pub="1763856000000" data-views="31361" data-out="1.87" data-r50="0.4678" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MleqoqUYYSU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.87×</span>
+    <span class="len">13:39</span>
+  </div>
+  <div class="t">I tried building a roof, then Dad showed me the RIGHT WAY</div>
+  <div class="meta">31K views (28d) · 9 months ago · 47% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/E5YZ2B953TA.html" data-pub="1742688000000" data-views="23157" data-out="0.97" data-r50="0.4418" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/E5YZ2B953TA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">39:27</span>
+  </div>
+  <div class="t">I tried laying plank flooring but it wasn&#39;t straightforward!</div>
+  <div class="meta">23K views (28d) · 1 year ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/8LVpLxGnes8.html" data-pub="1740268800000" data-views="77545" data-out="3.16" data-r50="0.2292" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8LVpLxGnes8/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.16×</span>
+    <span class="len">41:15</span>
+  </div>
+  <div class="t">I tried self levelling compound, but it was a DISASTER!!!</div>
+  <div class="meta">78K views (28d) · 1 year ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DYOaFV_YQ3Q.html" data-pub="1733011200000" data-views="96291" data-out="3.38" data-r50="0.377" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DYOaFV_YQ3Q/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.38×</span>
+    <span class="len">27:12</span>
+  </div>
+  <div class="t">Was trying to convert a window to French doors a MISTAKE?</div>
+  <div class="meta">96K views (28d) · 1 year ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/jwcPzapqgAY.html" data-pub="1726963200000" data-views="20103" data-out="0.79" data-r50="0.5036" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jwcPzapqgAY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">16:14</span>
+  </div>
+  <div class="t">I tried installing a boxed lipped 2 piece granite fire hearth but ended on the roof!</div>
+  <div class="meta">20K views (28d) · 1 year ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ws-b9av1kTM.html" data-pub="1723334400000" data-views="20163" data-out="1.07" data-r50="0.463" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ws-b9av1kTM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">15:11</span>
+  </div>
+  <div class="t">I tried installing a fireplace lintel for a log burner, but couldn&#39;t finish it..</div>
+  <div class="meta">20K views (28d) · 2 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/0LXLvOdUCyw.html" data-pub="1722729600000" data-views="20456" data-out="1.09" data-r50="0.5152" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0LXLvOdUCyw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">20:44</span>
+  </div>
+  <div class="t">I tried fitting hot and cold outside taps, but ended up with MORE JOBS TO FIX!</div>
+  <div class="meta">20K views (28d) · 2 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/gykqpuHoA0I.html" data-pub="1721520000000" data-views="16939" data-out="0.9" data-r50="0.5259" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gykqpuHoA0I/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">18:32</span>
+  </div>
+  <div class="t">I tried bricklaying on my chimney breast, but things didn&#39;t go to plan!</div>
+  <div class="meta">17K views (28d) · 2 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/E_2voUOxkUc.html" data-pub="1729382400000" data-views="33054" data-out="1.3" data-r50="0.4469" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/E_2voUOxkUc/mqdefault.jpg" alt="">
+    <span class="score out-up">1.30×</span>
+    <span class="len">17:05</span>
+  </div>
+  <div class="t">I tried skimming my ceiling, but OPENED A CAN OF WORMS!</div>
+  <div class="meta">33K views (28d) · 1 year ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/XhN0a9-Wuj0.html" data-pub="1654819200000" data-views="4356" data-out="0.62" data-r50="0.4296" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XhN0a9-Wuj0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">7:01</span>
+  </div>
+  <div class="t">I Take a Beginner Dovetail Joint Class | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 4 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Fitting ___ Kitchen ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.06×</b>
+      <span>15 videos</span>
+      <span>5K median views</span>
+      <span>51% at half · 15 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A step in fitting out a kitchen, from units to worktops to sinks.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/NJqS_rue2K4.html" data-pub="1595721600000" data-views="14878" data-out="1.12" data-r50="0.4083" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NJqS_rue2K4/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.12×</span>
+    <span class="len">15:09</span>
+  </div>
+  <div class="t">Fitting Maxtop Quartz Kitchen Worktops Review | UNPAID AD/GIFTED | The Carpenter&#39;s Daughter</div>
+  <div class="meta">15K views (28d) · 6 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/J0tdOoC5w_Y.html" data-pub="1594512000000" data-views="10946" data-out="0.69" data-r50="0.3865" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J0tdOoC5w_Y/mqdefault.jpg" alt="">
+    <span class="score out-down">0.69×</span>
+    <span class="len">10:31</span>
+  </div>
+  <div class="t">Fitting a New Kitchen in the Bungalow | The Carpenter&#39;s Daughter</div>
+  <div class="meta">11K views (28d) · 6 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/lVyMzvgiScQ.html" data-pub="1589673600000" data-views="8067" data-out="0.62" data-r50="0.3656" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lVyMzvgiScQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">7:04</span>
+  </div>
+  <div class="t">Pop Up Socket Kitchen Worktop Installation | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 6 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/oCmE5gagEOs.html" data-pub="1553385600000" data-views="6528" data-out="1.52" data-r50="0.2171" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oCmE5gagEOs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.52×</span>
+    <span class="len">6:04</span>
+  </div>
+  <div class="t">Fitting a Kitchen Worktop Taller than a Window Sill | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 7 years ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZXGexAOTG3A.html" data-pub="1552780800000" data-views="4025" data-out="0.88" data-r50="0.5602" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZXGexAOTG3A/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">3:25</span>
+  </div>
+  <div class="t">Fitting Kitchen Worktop Corner Joint Trim | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/RTG6SRIi2I8.html" data-pub="1552176000000" data-views="4571" data-out="1.07" data-r50="0.5461" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RTG6SRIi2I8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">5:30</span>
+  </div>
+  <div class="t">Fitting &amp; Sealing a Kitchen Sink | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/eHqfkTGE99g.html" data-pub="1558224000000" data-views="5036" data-out="0.83" data-r50="0.5196" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/eHqfkTGE99g/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.83×</span>
+    <span class="len">4:22</span>
+  </div>
+  <div class="t">Fitting Kitchen Plinths | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 52% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/_wBtFnV-bBs.html" data-pub="1541894400000" data-views="4233" data-out="1.25" data-r50="0.5647" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_wBtFnV-bBs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.25×</span>
+    <span class="len">6:24</span>
+  </div>
+  <div class="t">Fitting Kitchen Base Units: Utility Part 3 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 56% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/2GGdA1StXkc.html" data-pub="1542499200000" data-views="2846" data-out="0.82" data-r50="0.4781" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2GGdA1StXkc/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">4:01</span>
+  </div>
+  <div class="t">Fitting Kitchen Unit Hinges &amp; Handles (Part 4) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Uc65kMYRMKo.html" data-pub="1538870400000" data-views="5170" data-out="1.35" data-r50="0.4521" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Uc65kMYRMKo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.35×</span>
+    <span class="len">6:43</span>
+  </div>
+  <div class="t">Utility Kitchen DIY Part 1 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/wAjWbRICm-w.html" data-pub="1540080000000" data-views="7226" data-out="1.87" data-r50="0.5594" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/wAjWbRICm-w/mqdefault.jpg" alt="">
+    <span class="score out-up">1.87×</span>
+    <span class="len">7:34</span>
+  </div>
+  <div class="t">Utility Kitchen Part 2: Speedfit Plumbing DIY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 7 years ago · 56% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1kZo7KL5bdk.html" data-pub="1543708800000" data-views="3467" data-out="1.04" data-r50="0.6012" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1kZo7KL5bdk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">5:53</span>
+  </div>
+  <div class="t">Cutting Laminate Worktop for a Kitchen Sink: Part 6 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 60% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cZM-fGiKzo0.html" data-pub="1543104000000" data-views="3515" data-out="1.06" data-r50="0.6259" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cZM-fGiKzo0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.06×</span>
+    <span class="len">5:09</span>
+  </div>
+  <div class="t">Applying a Laminate Worktop Edging Strip: Kitchen Part 5 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 63% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/P2UM6W0hUr4.html" data-pub="1544313600000" data-views="3703" data-out="1.18" data-r50="0.3928" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/P2UM6W0hUr4/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.18×</span>
+    <span class="len">9:15</span>
+  </div>
+  <div class="t">Plumbing Tap &amp; Sink Waste: Kitchen Part 7 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/qegD99OupQg.html" data-pub="1558828800000" data-views="6140" data-out="1" data-r50="0.5066" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qegD99OupQg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">10:35</span>
+  </div>
+  <div class="t">Finishing My DIY Utility Kitchen | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 7 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">___ Camper Van / Narrowboat ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.06×</b>
+      <span>13 videos</span>
+      <span>7K median views</span>
+      <span>45% at half · 13 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Travel or life-update from the camper van or narrowboat.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1zyFx7Klwlk.html" data-pub="1549756800000" data-views="2693" data-out="0.76" data-r50="0.4517" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1zyFx7Klwlk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">12:17</span>
+  </div>
+  <div class="t">Camper Van Roadtrip: New Forest &amp; Isle of Wight | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/mOFC5lZwkTY.html" data-pub="1548547200000" data-views="3104" data-out="0.9" data-r50="0.4305" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mOFC5lZwkTY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">14:51</span>
+  </div>
+  <div class="t">Christmas Camper Van France &amp; Spain Vlog | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/irtJ0w5OhIA.html" data-pub="1535846400000" data-views="3407" data-out="0.94" data-r50="0.5289" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/irtJ0w5OhIA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">5:31</span>
+  </div>
+  <div class="t">Mercedes Vito Campervan in  Borth, Wales | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 8 years ago · 53% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/OOXIu4f1j9Q.html" data-pub="1534636800000" data-views="2965" data-out="0.82" data-r50="0.5963" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OOXIu4f1j9Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">5:20</span>
+  </div>
+  <div class="t">Northumbria, Cumbria &amp; Rutland Camper Van Vlog | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 8 years ago · 60% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/2l9P1UdMetk.html" data-pub="1528675200000" data-views="6523" data-out="1.29" data-r50="0.3301" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2l9P1UdMetk/mqdefault.jpg" alt="">
+    <span class="score out-up">1.29×</span>
+    <span class="len">9:58</span>
+  </div>
+  <div class="t">Mercedes Vito Camper Van Conversion Tour | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 8 years ago · 33% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ObghHq6P6kY.html" data-pub="1524960000000" data-views="3884" data-out="0.84" data-r50="0.5008" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ObghHq6P6kY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">4:25</span>
+  </div>
+  <div class="t">Fitting Driveaway Camper Van Awning Rail | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Wp-1LfbfEtY.html" data-pub="1627171200000" data-views="10127" data-out="0.79" data-r50="0.2811" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Wp-1LfbfEtY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">21:53</span>
+  </div>
+  <div class="t">Stainforth to Leeds &amp; Shipley Narrowboat Holiday | The Carpenter&#39;s Daughter</div>
+  <div class="meta">10K views (28d) · 5 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/tvrP_8tOeic.html" data-pub="1623542400000" data-views="16732" data-out="1.43" data-r50="0.4505" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tvrP_8tOeic/mqdefault.jpg" alt="">
+    <span class="score out-up">1.43×</span>
+    <span class="len">12:40</span>
+  </div>
+  <div class="t">Our Buying a Narrowboat Experience | The Carpenter&#39;s Daughter</div>
+  <div class="meta">17K views (28d) · 5 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/KReqX-rpfmU.html" data-pub="1622332800000" data-views="16228" data-out="1.11" data-r50="0.3183" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KReqX-rpfmU/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">20:52</span>
+  </div>
+  <div class="t">Our 57ft Narrowboat Tour (Reverse Layout Interior &amp; Cruiser Stern) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">16K views (28d) · 5 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/uPi0_zC03T4.html" data-pub="1619913600000" data-views="32659" data-out="2.41" data-r50="0.5295" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uPi0_zC03T4/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.41×</span>
+    <span class="len">11:04</span>
+  </div>
+  <div class="t">Bye House, Hello Narrowboat (&amp; More) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">33K views (28d) · 5 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/88yvcvWEbQ8.html" data-pub="1608768000000" data-views="13629" data-out="2.74" data-r50="0.2535" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/88yvcvWEbQ8/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.74×</span>
+    <span class="len">19:45</span>
+  </div>
+  <div class="t">Spending Christmas on a Narrowboat | The Carpenter&#39;s Daughter</div>
+  <div class="meta">14K views (28d) · 5 years ago · 25% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ryRLJfkJ3rs.html" data-pub="1555200000000" data-views="5044" data-out="1.06" data-r50="0.4315" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ryRLJfkJ3rs/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.06×</span>
+    <span class="len">17:32</span>
+  </div>
+  <div class="t">Narrowboat Hire Honeymoon Adventure | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 43% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/9fZE3ylgSeQ.html" data-pub="1538265600000" data-views="6581" data-out="1.9" data-r50="0.4572" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9fZE3ylgSeQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.90×</span>
+    <span class="len">11:27</span>
+  </div>
+  <div class="t">We&#39;re in a Motorhome! | Gifted | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 7 years ago · 46% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Don&#39;t ___ Until You&#39;ve Watched This!</span>
+    <span class="fstats">
+      <b class="f-mid">0.99×</b>
+      <span>6 videos</span>
+      <span>23K median views</span>
+      <span>35% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A warning-framed video about avoiding a common DIY mistake.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/k2EL5UJdUP4.html" data-pub="1752969600000" data-views="12776" data-out="0.52" data-r50="0.5565" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/k2EL5UJdUP4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">23:47</span>
+  </div>
+  <div class="t">DON&#39;T HANG CURTAIN &amp; POLES until you&#39;ve WATCHED THIS!</div>
+  <div class="meta">13K views (28d) · 1 year ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/70Uj6uToGFU.html" data-pub="1750550400000" data-views="20171" data-out="0.84" data-r50="0.3626" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/70Uj6uToGFU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">25:08</span>
+  </div>
+  <div class="t">DON&#39;T buy a Eufy x10 pro omni robot vacuum until you&#39;ve watched THIS!</div>
+  <div class="meta">20K views (28d) · 1 year ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/N2E1dGCV5m8.html" data-pub="1749340800000" data-views="37054" data-out="1.76" data-r50="0.2989" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/N2E1dGCV5m8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.76×</span>
+    <span class="len">31:04</span>
+  </div>
+  <div class="t">DON&#39;T split wood with an axe until you’ve watched THIS!</div>
+  <div class="meta">37K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/gWMW6sdfTxo.html" data-pub="1746921600000" data-views="25951" data-out="1.15" data-r50="0.3376" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gWMW6sdfTxo/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">32:36</span>
+  </div>
+  <div class="t">BEWARE of these HUGE SKIRTING BOARD MISTAKES!</div>
+  <div class="meta">26K views (28d) · 1 year ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/KxUfNAl080U.html" data-pub="1731801600000" data-views="99774" data-out="3.5" data-r50="0.3" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KxUfNAl080U/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.50×</span>
+    <span class="len">16:24</span>
+  </div>
+  <div class="t">DON’T INSTALL A LOG BURNER until you’ve watched this!</div>
+  <div class="meta">100K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/RksF8Xczl6w.html" data-pub="1708819200000" data-views="15293" data-out="0.46" data-r50="0.464" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RksF8Xczl6w/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.46×</span>
+    <span class="len">26:36</span>
+  </div>
+  <div class="t">DON&#39;T make cheap raised beds until you&#39;ve seen THIS SECRET TECHNIQUE to preserve them!</div>
+  <div class="meta">15K views (28d) · 2 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Installing ___</span>
+    <span class="fstats">
+      <b class="f-mid">0.94×</b>
+      <span>14 videos</span>
+      <span>7K median views</span>
+      <span>45% at half · 14 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Fitting or installing a specific fixture or fitting in the home.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/svl-Xdnge5k.html" data-pub="1718496000000" data-views="14843" data-out="0.82" data-r50="0.5533" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/svl-Xdnge5k/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">23:15</span>
+  </div>
+  <div class="t">Installing new NIGHTMARE LIGHTS in our auction property</div>
+  <div class="meta">15K views (28d) · 2 years ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/nZRJW9-vWek.html" data-pub="1717891200000" data-views="18911" data-out="0.98" data-r50="0.4151" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nZRJW9-vWek/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">27:38</span>
+  </div>
+  <div class="t">How I installed electrics for a media wall double socket, then prepped for ethernet &amp; TV aerial</div>
+  <div class="meta">19K views (28d) · 2 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ahcxrf8PF_A.html" data-pub="1702166400000" data-views="22545" data-out="0.9" data-r50="0.348" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ahcxrf8PF_A/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">27:45</span>
+  </div>
+  <div class="t">How l installed a DIY loft ladder hatch kit without a PRO!</div>
+  <div class="meta">23K views (28d) · 2 years ago · 35% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1ixzBoud8kI.html" data-pub="1614470400000" data-views="7002" data-out="0.96" data-r50="0.3531" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1ixzBoud8kI/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">8:36</span>
+  </div>
+  <div class="t">Installing a Wooden Loft Ladder and Hatch | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 5 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/AdkoBPa6S_I.html" data-pub="1621728000000" data-views="10906" data-out="0.76" data-r50="0.6049" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AdkoBPa6S_I/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">6:47</span>
+  </div>
+  <div class="t">Installing Privacy Film on Narrowboat Windows | The Carpenter&#39;s Daughter</div>
+  <div class="meta">11K views (28d) · 5 years ago · 60% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/j4PJjbEl2Jc.html" data-pub="1610841600000" data-views="7521" data-out="1.47" data-r50="0.4404" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j4PJjbEl2Jc/mqdefault.jpg" alt="">
+    <span class="score out-up">1.47×</span>
+    <span class="len">5:17</span>
+  </div>
+  <div class="t">Installing Metal Driveway Gates | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 5 years ago · 44% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Ado2eN2WoG4.html" data-pub="1587254400000" data-views="12721" data-out="1.64" data-r50="0.4135" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ado2eN2WoG4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.64×</span>
+    <span class="len">7:02</span>
+  </div>
+  <div class="t">Installing a Carport Roof &amp; Guttering | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 6 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/pGbBNgteZ-U.html" data-pub="1592092800000" data-views="16375" data-out="1.27" data-r50="0.3831" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pGbBNgteZ-U/mqdefault.jpg" alt="">
+    <span class="score out-up">1.27×</span>
+    <span class="len">9:45</span>
+  </div>
+  <div class="t">UPVC Porch Installation DIY (Recycled)  | The Carpenter&#39;s Daughter</div>
+  <div class="meta">16K views (28d) · 6 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/5rKTX4Lq3B4.html" data-pub="1583625600000" data-views="6913" data-out="0.87" data-r50="0.6257" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5rKTX4Lq3B4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">4:34</span>
+  </div>
+  <div class="t">Fitting Double Glazed Windows | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 6 years ago · 63% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cJGJOc_AigQ.html" data-pub="1581206400000" data-views="6476" data-out="0.95" data-r50="0.4041" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cJGJOc_AigQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">8:00</span>
+  </div>
+  <div class="t">Installing Guttering &amp; New Roof Update | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 6 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/SdVQcuzrFV4.html" data-pub="1524355200000" data-views="5773" data-out="1.25" data-r50="0.4598" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SdVQcuzrFV4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.25×</span>
+    <span class="len">5:59</span>
+  </div>
+  <div class="t">Installing &amp; Making Laminate Flooring Beading | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 8 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/zzEuuBZXdsU.html" data-pub="1523145600000" data-views="5064" data-out="0.94" data-r50="0.5941" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zzEuuBZXdsU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">2:24</span>
+  </div>
+  <div class="t">Installing a Single Built-in Electric Oven | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 59% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-J8RpvwaPB4.html" data-pub="1539475200000" data-views="3313" data-out="0.75" data-r50="0.4751" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-J8RpvwaPB4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">5:40</span>
+  </div>
+  <div class="t">Measure &amp; Install Perfect Fit Blinds (Gifted) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/67o7zJ3h_xw.html" data-pub="1556409600000" data-views="3740" data-out="0.74" data-r50="0.4724" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/67o7zJ3h_xw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">5:02</span>
+  </div>
+  <div class="t">Installing Kitchen End Panels &amp; Between Appliances | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 47% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">DIY ___</span>
+    <span class="fstats">
+      <b class="f-cold">0.72×</b>
+      <span>22 videos</span>
+      <span>5K median views</span>
+      <span>39% at half · 22 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A self-contained small DIY project, usually furniture or accessories from wood.</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/hbR-827FxUA.html" data-pub="1630195200000" data-views="13256" data-out="1.97" data-r50="0.2945" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hbR-827FxUA/mqdefault.jpg" alt="">
+    <span class="score out-up">1.97×</span>
+    <span class="len">10:16</span>
+  </div>
+  <div class="t">DIY Wall Mounted Folding/Floating Desk/Table | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 5 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/xwu2GAlKDss.html" data-pub="1567296000000" data-views="5216" data-out="0.92" data-r50="0.4855" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xwu2GAlKDss/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">7:48</span>
+  </div>
+  <div class="t">DIY Filing Cabinet Box | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Nbp9VBWnODY.html" data-pub="1559433600000" data-views="14447" data-out="2.38" data-r50="0.2862" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Nbp9VBWnODY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.38×</span>
+    <span class="len">9:42</span>
+  </div>
+  <div class="t">DIY Radiator Cover | The Carpenter&#39;s Daughter</div>
+  <div class="meta">14K views (28d) · 7 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/fduBysIH2JQ.html" data-pub="1635638400000" data-views="3722" data-out="0.65" data-r50="0.3574" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fduBysIH2JQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.65×</span>
+    <span class="len">13:43</span>
+  </div>
+  <div class="t">DIY Dog Bed with Toy Drawer Storage - Space Saving | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 4 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/MYVhPLiRFII.html" data-pub="1555718400000" data-views="4542" data-out="0.82" data-r50="0.2848" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MYVhPLiRFII/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">13:54</span>
+  </div>
+  <div class="t">DIY Dog House For Big Dogs Outdoor (Customized Easy Kennel) | (AD) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DfsIDQgx-ew.html" data-pub="1604793600000" data-views="3166" data-out="0.76" data-r50="0.3961" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DfsIDQgx-ew/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">4:14</span>
+  </div>
+  <div class="t">Homemade Mud Kitchen DIY (Cheap &amp; Easy)   | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 5 years ago · 40% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EOuhdZTnXVw.html" data-pub="1604188800000" data-views="2284" data-out="0.55" data-r50="0.3243" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EOuhdZTnXVw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">2:29</span>
+  </div>
+  <div class="t">DIY Wood Plant Stand - (Upcycled Drawer) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 5 years ago · 32% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/xGuzbpeRDz0.html" data-pub="1602374400000" data-views="3605" data-out="0.86" data-r50="0.3592" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xGuzbpeRDz0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">4:50</span>
+  </div>
+  <div class="t">DIY Insect Hotel From a Drawer (or Offcuts) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/B77p6gRgJoQ.html" data-pub="1584835200000" data-views="4234" data-out="0.44" data-r50="0.4053" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/B77p6gRgJoQ/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.44×</span>
+    <span class="len">3:23</span>
+  </div>
+  <div class="t">DIY Skylight Sun Tunnel with Plasterboard | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 6 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-dEgpSStx-c.html" data-pub="1612051200000" data-views="3034" data-out="0.43" data-r50="0.3843" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-dEgpSStx-c/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.43×</span>
+    <span class="len">5:35</span>
+  </div>
+  <div class="t">DIY Dumbbell Tree Rack (3 Tier) &amp; Free Plans | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 5 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/iqAiEeay6O4.html" data-pub="1618704000000" data-views="5700" data-out="0.42" data-r50="0.412" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iqAiEeay6O4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">5:22</span>
+  </div>
+  <div class="t">Narrowboat DIY Boat Fender Hangers (&amp; Free Templates) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 5 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rr0vHwaI1I0.html" data-pub="1527379200000" data-views="3865" data-out="0.82" data-r50="0.4508" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rr0vHwaI1I0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">5:21</span>
+  </div>
+  <div class="t">DIY Window Boxes &amp; Gallows Brackets | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ph6XzBNC9T8.html" data-pub="1545523200000" data-views="2344" data-out="0.71" data-r50="0.507" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ph6XzBNC9T8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">5:37</span>
+  </div>
+  <div class="t">DIY Faux Marble Desk with Hairpin Legs | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 7 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/giNlpnEPNHg.html" data-pub="1537056000000" data-views="4601" data-out="1.33" data-r50="0.3776" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/giNlpnEPNHg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.33×</span>
+    <span class="len">8:12</span>
+  </div>
+  <div class="t">DIY Garden Outdoor Storage Box/Unit - Waterproof with Felted Hinged Lid!</div>
+  <div class="meta">5K views (28d) · 7 years ago · 38% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/hXFmSvMsf0g.html" data-pub="1575763200000" data-views="2965" data-out="0.35" data-r50="0.4245" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hXFmSvMsf0g/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.35×</span>
+    <span class="len">5:51</span>
+  </div>
+  <div class="t">DIY Lap Desk/ Laptop Tray (Christmas Present) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 6 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Gvl4HfbmhYk.html" data-pub="1576368000000" data-views="6289" data-out="0.74" data-r50="0.3799" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Gvl4HfbmhYk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">7:53</span>
+  </div>
+  <div class="t">DIY DVD Storage Pine Shelf | AD | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 6 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/K-MCa5pb4-U.html" data-pub="1576972800000" data-views="5007" data-out="0.64" data-r50="0.2852" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/K-MCa5pb4-U/mqdefault.jpg" alt="">
+    <span class="score out-down">0.64×</span>
+    <span class="len">12:07</span>
+  </div>
+  <div class="t">DIY Treadmill Desk: Exercise at Work | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 6 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/3c3AaKkgpL8.html" data-pub="1649548800000" data-views="5186" data-out="0.45" data-r50="0.3944" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3c3AaKkgpL8/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.45×</span>
+    <span class="len">4:47</span>
+  </div>
+  <div class="t">DIY Ladder Shelf for Plants (Indoor or Outdoor Stand) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 4 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DVAfil0TrYc.html" data-pub="1651968000000" data-views="13174" data-out="1.9" data-r50="0.3916" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DVAfil0TrYc/mqdefault.jpg" alt="">
+    <span class="score out-up">1.90×</span>
+    <span class="len">4:13</span>
+  </div>
+  <div class="t">DIY Raised Garden Bed with Railway Sleepers &amp; Decking Trim | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 4 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/AjwbE92KmNE.html" data-pub="1566086400000" data-views="5824" data-out="1.09" data-r50="0.5555" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AjwbE92KmNE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">9:23</span>
+  </div>
+  <div class="t">DIY Farmhouse Coffee Table With Storage &amp; Decorated in Homemade Chalk Paint</div>
+  <div class="meta">6K views (28d) · 7 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/m7ApVGzAwh8.html" data-pub="1569110400000" data-views="3683" data-out="0.6" data-r50="0.4559" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/m7ApVGzAwh8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">7:41</span>
+  </div>
+  <div class="t">Trellis Planter DIY Using Offcuts | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 6 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cwpjnbAMG90.html" data-pub="1648339200000" data-views="6242" data-out="0.55" data-r50="0.4569" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cwpjnbAMG90/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">7:04</span>
+  </div>
+  <div class="t">My DISASTROUS DIY Console Table/Desk with Hairpin Legs | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 4 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>179 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/SYAVXjlB5kg.html" data-pub="1788048000000" data-views="55604" data-out="1.64" data-r50="0.5728" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SYAVXjlB5kg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.64×</span>
+    <span class="len">16:23</span>
+  </div>
+  <div class="t">We Ran Out of Space… So I&#39;m Building Something HUMONGOUS!</div>
+  <div class="meta">56K views (28d) · 3 days ago · 57% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/4BkZX99bQTg.html" data-pub="1785628800000" data-views="95042" data-out="2.8" data-r50="0.3405" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4BkZX99bQTg/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.80×</span>
+    <span class="len">18:36</span>
+  </div>
+  <div class="t">I Nearly Paid to Get Rid of This... Now It&#39;s One of My Best Ideas</div>
+  <div class="meta">95K views (28d) · 1 month ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/60bGb6MNN-0.html" data-pub="1784419200000" data-views="43389" data-out="1.28" data-r50="0.4403" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/60bGb6MNN-0/mqdefault.jpg" alt="">
+    <span class="score out-up">1.28×</span>
+    <span class="len">30:16</span>
+  </div>
+  <div class="t">We Had to Call for Help!</div>
+  <div class="meta">43K views (28d) · 1 month ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cW0uRc_00kM.html" data-pub="1783209600000" data-views="31394" data-out="0.92" data-r50="0.5246" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cW0uRc_00kM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">24:03</span>
+  </div>
+  <div class="t">I Built My Husband a HUGE Mobile Workbench for His Workshop</div>
+  <div class="meta">31K views (28d) · 1 month ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/2G-laOwLV3U.html" data-pub="1782604800000" data-views="30940" data-out="0.9" data-r50="0.5222" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2G-laOwLV3U/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">15:45</span>
+  </div>
+  <div class="t">One Wrong Step… and I’d Fall Through the Roof</div>
+  <div class="meta">31K views (28d) · 2 months ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/mlSt2M7Gnls.html" data-pub="1781395200000" data-views="36140" data-out="0.97" data-r50="0.588" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mlSt2M7Gnls/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">16:08</span>
+  </div>
+  <div class="t">One Small Job Turned Into a Week of Hard Labour</div>
+  <div class="meta">36K views (28d) · 2 months ago · 59% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/B4MBEhYjzfQ.html" data-pub="1780790400000" data-views="31318" data-out="0.79" data-r50="0.5962" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/B4MBEhYjzfQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">15:27</span>
+  </div>
+  <div class="t">Making Space For What&#39;s Next</div>
+  <div class="meta">31K views (28d) · 2 months ago · 60% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/zw156ZJy364.html" data-pub="1779580800000" data-views="46717" data-out="1.17" data-r50="0.4661" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zw156ZJy364/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.17×</span>
+    <span class="len">19:36</span>
+  </div>
+  <div class="t">I opened one socket… and REGRETTED EVERYTHING!</div>
+  <div class="meta">47K views (28d) · 3 months ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/gl3qR829ccQ.html" data-pub="1778976000000" data-views="43469" data-out="1.24" data-r50="0.4973" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gl3qR829ccQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.24×</span>
+    <span class="len">26:41</span>
+  </div>
+  <div class="t">I Didn’t Realise How Bad It Got…</div>
+  <div class="meta">43K views (28d) · 3 months ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/bzsxE9EDQJw.html" data-pub="1778371200000" data-views="33933" data-out="0.75" data-r50="0.4597" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bzsxE9EDQJw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">20:24</span>
+  </div>
+  <div class="t">No Budget, Just Offcuts... Organising This Hazard Into a Workshop</div>
+  <div class="meta">34K views (28d) · 3 months ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DyetWQqDZKk.html" data-pub="1777766400000" data-views="66698" data-out="1.48" data-r50="0.3794" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DyetWQqDZKk/mqdefault.jpg" alt="">
+    <span class="score out-up">1.48×</span>
+    <span class="len">18:21</span>
+  </div>
+  <div class="t">It Got Out of Hand... Turning This Hazard Into My Workshop</div>
+  <div class="meta">67K views (28d) · 4 months ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/0jDrJ8KRDK8.html" data-pub="1777161600000" data-views="25205" data-out="0.56" data-r50="0.5393" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0jDrJ8KRDK8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.56×</span>
+    <span class="len">23:23</span>
+  </div>
+  <div class="t">The Real Reason Every DIY Job Took FOREVER</div>
+  <div class="meta">25K views (28d) · 4 months ago · 54% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/hEVfYty8Tvo.html" data-pub="1775952000000" data-views="46630" data-out="1.35" data-r50="0.3764" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hEVfYty8Tvo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.35×</span>
+    <span class="len">18:47</span>
+  </div>
+  <div class="t">A lot more work than I expected</div>
+  <div class="meta">47K views (28d) · 4 months ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-I9st3ENRE8.html" data-pub="1774742400000" data-views="34985" data-out="1.08" data-r50="0.4347" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-I9st3ENRE8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.08×</span>
+    <span class="len">11:41</span>
+  </div>
+  <div class="t">I thought a simple life was meant to be easy… I was wrong</div>
+  <div class="meta">35K views (28d) · 5 months ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/XKC80eHQ5RE.html" data-pub="1774137600000" data-views="16124" data-out="0.47" data-r50="0.5232" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XKC80eHQ5RE/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.47×</span>
+    <span class="len">20:42</span>
+  </div>
+  <div class="t">We slept on concrete floors for 3 YEARS… </div>
+  <div class="meta">16K views (28d) · 5 months ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/3ooCrCoAl6o.html" data-pub="1772928000000" data-views="13663" data-out="0.4" data-r50="0.6282" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3ooCrCoAl6o/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.40×</span>
+    <span class="len">11:02</span>
+  </div>
+  <div class="t">I had to replace the skirting… but the furniture was built on top of it!</div>
+  <div class="meta">14K views (28d) · 5 months ago · 63% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rc5OnPHQM-Q.html" data-pub="1772323200000" data-views="33965" data-out="1.13" data-r50="0.4187" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rc5OnPHQM-Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">30:37</span>
+  </div>
+  <div class="t">I cut into my walls… but found a MUCH bigger problem</div>
+  <div class="meta">34K views (28d) · 6 months ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/sQoezTK4ip0.html" data-pub="1771113600000" data-views="61623" data-out="2.08" data-r50="0.3571" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sQoezTK4ip0/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.08×</span>
+    <span class="len">19:26</span>
+  </div>
+  <div class="t">How I rescued a wardrobe worth THOUSANDS for just £65!</div>
+  <div class="meta">62K views (28d) · 6 months ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rdjzkP6HKIQ.html" data-pub="1770508800000" data-views="11614" data-out="0.39" data-r50="0.5786" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rdjzkP6HKIQ/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.39×</span>
+    <span class="len">10:42</span>
+  </div>
+  <div class="t">6 chickens, 1 dog, ZERO EXPERIENCE. What could go wrong?! 😬</div>
+  <div class="meta">12K views (28d) · 6 months ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/erdRBOQhvkg.html" data-pub="1769904000000" data-views="25155" data-out="1" data-r50="0.4357" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/erdRBOQhvkg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">21:54</span>
+  </div>
+  <div class="t">Before I can start my bedroom makeover, I had to fix THIS!</div>
+  <div class="meta">25K views (28d) · 7 months ago · 44% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/d3TtwbmMzDE.html" data-pub="1765670400000" data-views="14156" data-out="0.61" data-r50="0.3902" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/d3TtwbmMzDE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">10:59</span>
+  </div>
+  <div class="t">This tiny Dremel 8150 rotary tool might replace half my tools… here’s why</div>
+  <div class="meta">14K views (28d) · 8 months ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/moTpWshmqoY.html" data-pub="1760832000000" data-views="16824" data-out="0.87" data-r50="0.5587" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/moTpWshmqoY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">19:29</span>
+  </div>
+  <div class="t">Let&#39;s fix the WORST ROOF EVER!</div>
+  <div class="meta">17K views (28d) · 10 months ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/UxYaUiYuImc.html" data-pub="1759017600000" data-views="14736" data-out="0.87" data-r50="0.5797" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UxYaUiYuImc/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">18:33</span>
+  </div>
+  <div class="t">Scrapheap DIY: Rebuilding a rotten barn window with no lintel &amp; crooked bricks!</div>
+  <div class="meta">15K views (28d) · 11 months ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1SeIsVVTekQ.html" data-pub="1758412800000" data-views="15807" data-out="0.81" data-r50="0.4564" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1SeIsVVTekQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">19:47</span>
+  </div>
+  <div class="t">HIGH WINDS turn our barn to chicken coop door prep into a NIGHTMARE!</div>
+  <div class="meta">16K views (28d) · 11 months ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/NXwWZ3IbAfE.html" data-pub="1757203200000" data-views="39263" data-out="2.41" data-r50="0.3532" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NXwWZ3IbAfE/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.41×</span>
+    <span class="len">20:21</span>
+  </div>
+  <div class="t">We tried using our first ever tractor… but RAN INTO TROUBLE!</div>
+  <div class="meta">39K views (28d) · 0 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/iW2tPZzIlLk.html" data-pub="1755993600000" data-views="14298" data-out="0.87" data-r50="0.2427" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iW2tPZzIlLk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">28:06</span>
+  </div>
+  <div class="t">The ONLY how to fit coving tutorial you’ll EVER NEED! (No, SERIOUSLY!)</div>
+  <div class="meta">14K views (28d) · 1 year ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/VQOsRpIiJoo.html" data-pub="1755388800000" data-views="150443" data-out="9.85" data-r50="0.3089" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VQOsRpIiJoo/mqdefault.jpg" alt="">
+    <span class="score out-hot">9.85×</span>
+    <span class="len">17:09</span>
+  </div>
+  <div class="t">This tiny Dremel Blueprint saw surprised me – Game Changer or Gimmick?</div>
+  <div class="meta">150K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Y498PUvO2D8.html" data-pub="1754179200000" data-views="12753" data-out="0.71" data-r50="0.4421" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Y498PUvO2D8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">20:06</span>
+  </div>
+  <div class="t">Is growing your own veg ACTUALLY worth it?!</div>
+  <div class="meta">13K views (28d) · 1 year ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/uEKjKSeRZU4.html" data-pub="1751155200000" data-views="28823" data-out="1.43" data-r50="0.2902" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uEKjKSeRZU4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.43×</span>
+    <span class="len">28:01</span>
+  </div>
+  <div class="t">Cleanest TV wall setup ever? Hidden sockets, fast ethernet &amp; ZERO CLUTTER!</div>
+  <div class="meta">29K views (28d) · 1 year ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-Q5azqlIVo8.html" data-pub="1748131200000" data-views="20255" data-out="0.85" data-r50="0.4805" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-Q5azqlIVo8/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">22:22</span>
+  </div>
+  <div class="t">This viral hack DESTROYED my paint job!</div>
+  <div class="meta">20K views (28d) · 1 year ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/_tWqBK7Sv6s.html" data-pub="1745712000000" data-views="21904" data-out="0.89" data-r50="0.4506" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_tWqBK7Sv6s/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">21:23</span>
+  </div>
+  <div class="t">Was gluing this HUGE threshold a BIG DIY MISTAKE?</div>
+  <div class="meta">22K views (28d) · 1 year ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/nYwZHEy9USg.html" data-pub="1745107200000" data-views="29562" data-out="1.2" data-r50="0.3914" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nYwZHEy9USg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">17:09</span>
+  </div>
+  <div class="t">This tiny flooring mistake can RUIN your DIY!</div>
+  <div class="meta">30K views (28d) · 1 year ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/LEr2A08OgJ4.html" data-pub="1743897600000" data-views="17388" data-out="0.71" data-r50="0.4114" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LEr2A08OgJ4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">42:17</span>
+  </div>
+  <div class="t">Building these HUGE compost bins from junk changed EVERYTHING!</div>
+  <div class="meta">17K views (28d) · 1 year ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/DNbtfBwzNhU.html" data-pub="1741478400000" data-views="40226" data-out="1.79" data-r50="0.2975" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DNbtfBwzNhU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.79×</span>
+    <span class="len">39:23</span>
+  </div>
+  <div class="t">How I laid oak engineered parquet herringbone flooring</div>
+  <div class="meta">40K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/u5tsQZnli4Q.html" data-pub="1739059200000" data-views="20816" data-out="0.6" data-r50="0.3691" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/u5tsQZnli4Q/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">30:57</span>
+  </div>
+  <div class="t">Adding colour to our DIY home renovation, but did we get it WRONG?</div>
+  <div class="meta">21K views (28d) · 1 year ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ldFzLn6xKnw.html" data-pub="1734220800000" data-views="53808" data-out="1.22" data-r50="0.4259" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ldFzLn6xKnw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">13:38</span>
+  </div>
+  <div class="t">AVOID THIS PLASTERING MISTAKE around door and window reveals!</div>
+  <div class="meta">54K views (28d) · 1 year ago · 43% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/NBZNYs6AqpI.html" data-pub="1729987200000" data-views="54995" data-out="1.93" data-r50="0.3351" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NBZNYs6AqpI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.93×</span>
+    <span class="len">26:46</span>
+  </div>
+  <div class="t">I got quoted £2800 to install UPVC French doors, so tried fitting them myself</div>
+  <div class="meta">55K views (28d) · 1 year ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/T3nfm2NWJRk.html" data-pub="1728172800000" data-views="19698" data-out="0.66" data-r50="0.308" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/T3nfm2NWJRk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.66×</span>
+    <span class="len">43:24</span>
+  </div>
+  <div class="t">How to tile a WHOLE fireplace: EXTREME DIY makeover (BEGINNER&#39;S GUIDE)</div>
+  <div class="meta">20K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/T4rilxaUIqI.html" data-pub="1726358400000" data-views="20307" data-out="0.8" data-r50="0.4661" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/T4rilxaUIqI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.80×</span>
+    <span class="len">28:04</span>
+  </div>
+  <div class="t">I knocked down my wall for an open plan living room but can I plaster it like a PRO?</div>
+  <div class="meta">20K views (28d) · 1 year ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/-Lcm6xzQAek.html" data-pub="1725753600000" data-views="26809" data-out="1.32" data-r50="0.3164" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-Lcm6xzQAek/mqdefault.jpg" alt="">
+    <span class="score out-up">1.32×</span>
+    <span class="len">22:15</span>
+  </div>
+  <div class="t">Why I installed cement board on my WHOLE chimney breast instead of plasterboard!</div>
+  <div class="meta">27K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/VoeTZpehR0c.html" data-pub="1724544000000" data-views="33516" data-out="1.66" data-r50="0.305" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VoeTZpehR0c/mqdefault.jpg" alt="">
+    <span class="score out-up">1.66×</span>
+    <span class="len">11:17</span>
+  </div>
+  <div class="t">I opened up my chimney breast but had to brick it back up...</div>
+  <div class="meta">34K views (28d) · 2 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Ew7fLIugTwY.html" data-pub="1722124800000" data-views="17189" data-out="0.85" data-r50="0.4807" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ew7fLIugTwY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">27:54</span>
+  </div>
+  <div class="t">We bought a HOT TUB, but needed to install a gravel base</div>
+  <div class="meta">17K views (28d) · 2 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/aClQhvaHG_g.html" data-pub="1720915200000" data-views="17093" data-out="0.94" data-r50="0.5393" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aClQhvaHG_g/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">22:38</span>
+  </div>
+  <div class="t">It&#39;s DESTRUCTION TIME in our auction farmhouse property!</div>
+  <div class="meta">17K views (28d) · 2 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/JSp_PoZXhAQ.html" data-pub="1720310400000" data-views="17386" data-out="0.96" data-r50="0.4549" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JSp_PoZXhAQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">17:58</span>
+  </div>
+  <div class="t">Simple plasterboard hack to repair large holes that BEGINNERS should know!</div>
+  <div class="meta">17K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/iPxry6HlK-g.html" data-pub="1719100800000" data-views="29004" data-out="1.69" data-r50="0.324" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iPxry6HlK-g/mqdefault.jpg" alt="">
+    <span class="score out-up">1.69×</span>
+    <span class="len">19:10</span>
+  </div>
+  <div class="t">Why I DITCHED dot &amp; dabbed plasterboard for a batten wall</div>
+  <div class="meta">29K views (28d) · 2 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EF8rGb3dh6A.html" data-pub="1717286400000" data-views="17140" data-out="0.79" data-r50="0.4921" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EF8rGb3dh6A/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">21:32</span>
+  </div>
+  <div class="t">We weren&#39;t expecting this - Restoring cracked ceilings and walls in our farmhouse auction property</div>
+  <div class="meta">17K views (28d) · 2 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/jze9FHgHLlY.html" data-pub="1716681600000" data-views="21928" data-out="0.91" data-r50="0.4706" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jze9FHgHLlY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.91×</span>
+    <span class="len">24:20</span>
+  </div>
+  <div class="t">The remodelling of our auction farmhouse property in Lincolnshire STARTS HERE!</div>
+  <div class="meta">22K views (28d) · 2 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/XPO4sUkAp_o.html" data-pub="1715472000000" data-views="26703" data-out="1.33" data-r50="0.4524" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XPO4sUkAp_o/mqdefault.jpg" alt="">
+    <span class="score out-up">1.33×</span>
+    <span class="len">21:37</span>
+  </div>
+  <div class="t">I knocked down a brick wall but now we NEED HELP!</div>
+  <div class="meta">27K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/6x7kgQC2bAg.html" data-pub="1714262400000" data-views="28489" data-out="1.4" data-r50="0.3574" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6x7kgQC2bAg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">19:59</span>
+  </div>
+  <div class="t">Is no dig gardening a CON? The REAL COST EXPOSED as a BEGINNER</div>
+  <div class="meta">28K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/y1MZaRJdEbo.html" data-pub="1713657600000" data-views="124258" data-out="5.74" data-r50="0.2489" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y1MZaRJdEbo/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.74×</span>
+    <span class="len">28:36</span>
+  </div>
+  <div class="t">We tried recovering the abandoned boat but RAN INTO TROUBLE!</div>
+  <div class="meta">124K views (28d) · 2 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/0X6FdHBvkt0.html" data-pub="1711843200000" data-views="19317" data-out="0.71" data-r50="0.516" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0X6FdHBvkt0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">14:48</span>
+  </div>
+  <div class="t">We discovered a lost bridge on the farm, but it&#39;s NOT WHAT WE THOUGHT!</div>
+  <div class="meta">19K views (28d) · 2 years ago · 52% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1QHf3TpDr3I.html" data-pub="1710028800000" data-views="96245" data-out="4.46" data-r50="0.2598" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1QHf3TpDr3I/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.46×</span>
+    <span class="len">20:46</span>
+  </div>
+  <div class="t">I went on a treasure hunt to find what was REALLY in our mysterious barn</div>
+  <div class="meta">96K views (28d) · 2 years ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/GD1esQL4QaA.html" data-pub="1708214400000" data-views="25191" data-out="0.75" data-r50="0.467" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GD1esQL4QaA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">31:08</span>
+  </div>
+  <div class="t">We tried clearing our abandoned garden but it&#39;s WORSE than we thought!</div>
+  <div class="meta">25K views (28d) · 2 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/IkFtorYDbmo.html" data-pub="1707609600000" data-views="23841" data-out="0.71" data-r50="0.2989" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IkFtorYDbmo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">26:21</span>
+  </div>
+  <div class="t">You said DON&#39;T DIY taping and jointing plasterboard (+ TV Show News!)</div>
+  <div class="meta">24K views (28d) · 2 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/y8zC6EE1rXA.html" data-pub="1707004800000" data-views="42292" data-out="1.66" data-r50="0.3182" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y8zC6EE1rXA/mqdefault.jpg" alt="">
+    <span class="score out-up">1.66×</span>
+    <span class="len">17:23</span>
+  </div>
+  <div class="t">How I Transformed My Loft Storage with This Simple Trick</div>
+  <div class="meta">42K views (28d) · 2 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/9txeJ8E4D-0.html" data-pub="1703376000000" data-views="17246" data-out="0.6" data-r50="0.4105" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9txeJ8E4D-0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">12:28</span>
+  </div>
+  <div class="t">We had an INTRUDER in our HOUSE this Christmas!!</div>
+  <div class="meta">17K views (28d) · 2 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/jJZWOgjBC_o.html" data-pub="1702771200000" data-views="22468" data-out="0.79" data-r50="0.28" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jJZWOgjBC_o/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">28:11</span>
+  </div>
+  <div class="t">The BEST attic/loft lights installation for BEGINNERS? {No Electrician Needed!}</div>
+  <div class="meta">22K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/5mxlSr4Z4zk.html" data-pub="1696723200000" data-views="12479" data-out="0.5" data-r50="0.2888" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5mxlSr4Z4zk/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.50×</span>
+    <span class="len">16:34</span>
+  </div>
+  <div class="t">The real reason why I&#39;ve not been sharing DIY projects / Bed Lift Storage</div>
+  <div class="meta">12K views (28d) · 2 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ogdvBRHqKQs.html" data-pub="1682812800000" data-views="2303" data-out="0.87" data-r50="0.5295" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ogdvBRHqKQs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">1:20</span>
+  </div>
+  <div class="t">Will I see you at Makers Central 2023??🤔</div>
+  <div class="meta">2K views (28d) · 3 years ago · 53% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/qFz0kyN7e7Q.html" data-pub="1675555200000" data-views="21810" data-out="8.72" data-r50="0.1725" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qFz0kyN7e7Q/mqdefault.jpg" alt="">
+    <span class="score out-hot">8.72×</span>
+    <span class="len">10:25</span>
+  </div>
+  <div class="t">5 Easy DIY Shed Shelf Ideas + House Update</div>
+  <div class="meta">22K views (28d) · 3 years ago · 17% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Wu_EpOn-yBc.html" data-pub="1674950400000" data-views="2621" data-out="1.03" data-r50="0.4217" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Wu_EpOn-yBc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.03×</span>
+    <span class="len">8:00</span>
+  </div>
+  <div class="t">How people are paying $70 for this dumb Valentine&#39;s Day wreath</div>
+  <div class="meta">3K views (28d) · 3 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/taT5OVe8wB0.html" data-pub="1673395200000" data-views="2785" data-out="1.11" data-r50="0.3635" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/taT5OVe8wB0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">8:10</span>
+  </div>
+  <div class="t">Transform your ugly garden corner with this beautiful DIY bird feeder idea!</div>
+  <div class="meta">3K views (28d) · 3 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rFCjB9owFf4.html" data-pub="1671148800000" data-views="6616" data-out="4.37" data-r50="0.3312" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rFCjB9owFf4/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.37×</span>
+    <span class="len">8:30</span>
+  </div>
+  <div class="t">12 LAST MINUTE Woodworking gift ideas you can make or sell with scrap wood</div>
+  <div class="meta">7K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/9V529ZgIBc4.html" data-pub="1670803200000" data-views="2696" data-out="1.78" data-r50="0.4683" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9V529ZgIBc4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.78×</span>
+    <span class="len">7:01</span>
+  </div>
+  <div class="t">Which Mod Podge is best for photo transfer to wood?</div>
+  <div class="meta">3K views (28d) · 3 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cWm6EMNKAQE.html" data-pub="1670716800000" data-views="2382" data-out="1.57" data-r50="0.3686" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cWm6EMNKAQE/mqdefault.jpg" alt="">
+    <span class="score out-up">1.57×</span>
+    <span class="len">2:50</span>
+  </div>
+  <div class="t">DIY Fender Guitar Bookends + FREE TEMPLATE | 12 Days of Giftmas #11 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/jMBo8QappAM.html" data-pub="1670630400000" data-views="1520" data-out="0.89" data-r50="0.5387" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jMBo8QappAM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">2:34</span>
+  </div>
+  <div class="t">Old Fence Post Clock | 12 Days of Giftmas #10 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 54% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/4KT4lcEkD_A.html" data-pub="1670544000000" data-views="1506" data-out="1" data-r50="0.5155" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4KT4lcEkD_A/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">2:15</span>
+  </div>
+  <div class="t">Man Cave DIY Plinko Drinko Beer Cap Bottle Opener | 12 days of Giftmas #9 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rrbeFmLCoTU.html" data-pub="1670457600000" data-views="1085" data-out="0.72" data-r50="0.6366" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rrbeFmLCoTU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">1:28</span>
+  </div>
+  <div class="t">How to Make Bookmarks | 12 Days of Giftmas #8 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">1K views (28d) · 3 years ago · 64% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/mMP7LvK7LoE.html" data-pub="1670371200000" data-views="1416" data-out="0.94" data-r50="0.628" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mMP7LvK7LoE/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">1:47</span>
+  </div>
+  <div class="t">Gift Hamper Wooden Serving Tray | 12 Days of Giftmas #7 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">1K views (28d) · 3 years ago · 63% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/QgLkkxN93og.html" data-pub="1670284800000" data-views="1917" data-out="1.28" data-r50="0.5543" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QgLkkxN93og/mqdefault.jpg" alt="">
+    <span class="score out-up">1.28×</span>
+    <span class="len">1:44</span>
+  </div>
+  <div class="t">Magnetic Cat Butt DIY Bottle Opener +  | 12 Days of Giftmas #6 | Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Bz7zuOiG0ko.html" data-pub="1670198400000" data-views="1396" data-out="0.92" data-r50="0.5849" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Bz7zuOiG0ko/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">1:20</span>
+  </div>
+  <div class="t">DIY Wine Caddy + FREE TEMPLATE | 12 Days of Giftmas #5 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">1K views (28d) · 3 years ago · 58% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/J8G0LrJaU_o.html" data-pub="1670112000000" data-views="1496" data-out="0.99" data-r50="0.4835" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J8G0LrJaU_o/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">1:48</span>
+  </div>
+  <div class="t">Easy DIY Cook Book Stand | 12 Days of Giftmas #4 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">1K views (28d) · 3 years ago · 48% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/f225liKlHAQ.html" data-pub="1670025600000" data-views="1517" data-out="1.01" data-r50="0.5285" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/f225liKlHAQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">2:17</span>
+  </div>
+  <div class="t">Dog Wine Bottle Holder/Rack DIY | 12 Days of Giftmas #3 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 53% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/N0EfWhM8XfY.html" data-pub="1669939200000" data-views="2966" data-out="1.98" data-r50="0.6246" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/N0EfWhM8XfY/mqdefault.jpg" alt="">
+    <span class="score out-up">1.98×</span>
+    <span class="len">1:27</span>
+  </div>
+  <div class="t">Thumb Book Page Holder DIY | 12 Days of Giftmas #2 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 3 years ago · 62% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/eFnRaE8ek8g.html" data-pub="1669852800000" data-views="2273" data-out="1.51" data-r50="0.5559" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/eFnRaE8ek8g/mqdefault.jpg" alt="">
+    <span class="score out-up">1.51×</span>
+    <span class="len">1:44</span>
+  </div>
+  <div class="t">Folding Kitchen Step Stool DIY Hack | 12 Days of Giftmas #1 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 3 years ago · 56% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/mDOVAGsLaPo.html" data-pub="1668902400000" data-views="2686" data-out="1.56" data-r50="0.6638" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mDOVAGsLaPo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.56×</span>
+    <span class="len">2:10</span>
+  </div>
+  <div class="t">This DIY Log Reindeer went VIRAL on TikTok! | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 3 years ago · 66% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/GScId_3uPZw.html" data-pub="1667779200000" data-views="3878" data-out="2.26" data-r50="0.3971" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GScId_3uPZw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.26×</span>
+    <span class="len">4:54</span>
+  </div>
+  <div class="t">Can I Build a Garden Wishing Well from an Old Cable Reel??</div>
+  <div class="meta">4K views (28d) · 3 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/yswDirAGnWc.html" data-pub="1664064000000" data-views="4544" data-out="1.07" data-r50="0.7063" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/yswDirAGnWc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">0:32</span>
+  </div>
+  <div class="t">Is this the EASIEST Garden Shed? (+Woodyard &amp; Narrowboat Tour) #Shorts</div>
+  <div class="meta">5K views (28d) · 3 years ago · 71% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/TYhlVSge9B8.html" data-pub="1662854400000" data-views="5977" data-out="1.4" data-r50="0.4478" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TYhlVSge9B8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">6:08</span>
+  </div>
+  <div class="t">Workshop Tour 2022 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 3 years ago · 45% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Kaq9PxRSVQI.html" data-pub="0" data-views="0" data-out="null" data-r50="0.1667" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Kaq9PxRSVQI/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">6:38</span>
+  </div>
+  <div class="t">Go on.. have a nose into our last bungalow (Silent House Tour)</div>
+  <div class="meta">0 views (28d) · 56 years ago · 17% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/VugbcAdB9KQ.html" data-pub="1659830400000" data-views="4118" data-out="0.92" data-r50="0.5049" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VugbcAdB9KQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">7:19</span>
+  </div>
+  <div class="t">This chess table DIY turned out SO COOL!</div>
+  <div class="meta">4K views (28d) · 4 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/YCpgwMv8Nsc.html" data-pub="1659225600000" data-views="9859" data-out="2.25" data-r50="0.5379" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YCpgwMv8Nsc/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.25×</span>
+    <span class="len">2:47</span>
+  </div>
+  <div class="t">Time to move on...</div>
+  <div class="meta">10K views (28d) · 4 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/H-MDN24Cjlw.html" data-pub="1658620800000" data-views="5573" data-out="1.27" data-r50="0.5802" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/H-MDN24Cjlw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.27×</span>
+    <span class="len">3:33</span>
+  </div>
+  <div class="t">Woodworkers Who Ignore this WILL HAVE AN ACCIDENT!</div>
+  <div class="meta">6K views (28d) · 4 years ago · 58% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/jiuZ1orvfZc.html" data-pub="0" data-views="0" data-out="null" data-r50="0.7692" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jiuZ1orvfZc/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:12</span>
+  </div>
+  <div class="t">PLANS for my Dog Food Dispenser/Feeding Station | The Carpenter&#39;s Daughter</div>
+  <div class="meta">0 views (28d) · 56 years ago · 77% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/GOMxSjphq_Q.html" data-pub="0" data-views="0" data-out="null" data-r50="1" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GOMxSjphq_Q/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:11</span>
+  </div>
+  <div class="t">Clothes Drying Rack Plans (in comments)</div>
+  <div class="meta">0 views (28d) · 56 years ago · 100% at half</div>
+  <div class="verdict">2 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/nsFyFPzgx7U.html" data-pub="1655596800000" data-views="4076" data-out="0.74" data-r50="0.3868" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nsFyFPzgx7U/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">5:07</span>
+  </div>
+  <div class="t">How to make a DIY Clothes Horse Drying Rack</div>
+  <div class="meta">4K views (28d) · 4 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/NwB0bHOWPGc.html" data-pub="0" data-views="0" data-out="null" data-r50="0.0769" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NwB0bHOWPGc/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">19:23</span>
+  </div>
+  <div class="t">YT Members Dovetail Joinery with Karl Pope</div>
+  <div class="meta">0 views (28d) · 56 years ago · 8% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=SfOuMlx-vzo" target="_blank" rel="noopener" data-pub="0" data-views="0" data-out="null" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SfOuMlx-vzo/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:08</span>
+  </div>
+  <div class="t">Shop Stool with Pull Out Step PLANS</div>
+  <div class="meta">0 views (28d) · 56 years ago</div>
+  
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/fLqsBnygDOY.html" data-pub="1654214400000" data-views="5412" data-out="0.77" data-r50="0.3438" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fLqsBnygDOY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.77×</span>
+    <span class="len">8:11</span>
+  </div>
+  <div class="t">This DIY Workshop to Step Ladder Will Save You Space &amp; Money!💲</div>
+  <div class="meta">5K views (28d) · 4 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/E37T0LLfVGU.html" data-pub="0" data-views="0" data-out="null" data-r50="0.2308" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/E37T0LLfVGU/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">11:08</span>
+  </div>
+  <div class="t">Behind the Scenes Update April 2022</div>
+  <div class="meta">0 views (28d) · 56 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/aGprMqef-g4.html" data-pub="0" data-views="0" data-out="null" data-r50="0.8462" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aGprMqef-g4/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:20</span>
+  </div>
+  <div class="t">Wardrobe SWEARING Uncensored Scene</div>
+  <div class="meta">0 views (28d) · 56 years ago · 85% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/_mPzVvo8zAE.html" data-pub="0" data-views="0" data-out="null" data-r50="0.4286" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_mPzVvo8zAE/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">8:09</span>
+  </div>
+  <div class="t">Behind the Scenes Update &amp; Clean With Me Workshop (Oct 2021)</div>
+  <div class="meta">0 views (28d) · 56 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=DV54DkiIq68" target="_blank" rel="noopener" data-pub="0" data-views="0" data-out="null" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DV54DkiIq68/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:49</span>
+  </div>
+  <div class="t">Stainless Steel Sink Restoration Bloopers</div>
+  <div class="meta">0 views (28d) · 56 years ago</div>
+  
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/sNNzoUyHIrM.html" data-pub="0" data-views="0" data-out="null" data-r50="0.5385" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sNNzoUyHIrM/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">2:09</span>
+  </div>
+  <div class="t">How to Replace a UPVC Door Handle</div>
+  <div class="meta">0 views (28d) · 56 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/JxU5bUeF5-s.html" data-pub="0" data-views="0" data-out="null" data-r50="0.2857" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JxU5bUeF5-s/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">10:48</span>
+  </div>
+  <div class="t">House Tour (Last House - 2021)</div>
+  <div class="meta">0 views (28d) · 56 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=gJE4yH9cHyQ" target="_blank" rel="noopener" data-pub="0" data-views="0" data-out="null" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gJE4yH9cHyQ/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">1:37</span>
+  </div>
+  <div class="t">DIY Wooden Maple Leaf Trivet (Oct 2019)</div>
+  <div class="meta">0 views (28d) · 56 years ago</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=BUgWXPwqS58" target="_blank" rel="noopener" data-pub="0" data-views="0" data-out="null" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/BUgWXPwqS58/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">7:48</span>
+  </div>
+  <div class="t">Upcoming Projects Chit Chat 1 (May 14, 2021) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">0 views (28d) · 56 years ago</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=_HqbhZsm47M" target="_blank" rel="noopener" data-pub="0" data-views="0" data-out="null" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_HqbhZsm47M/mqdefault.jpg" alt="">
+    <span class="score out-cold">unrated</span>
+    <span class="len">0:06</span>
+  </div>
+  <div class="t">DIY Mobile Mitre Saw Stand Plans &amp; Cut List</div>
+  <div class="meta">0 views (28d) · 56 years ago</div>
+  
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cAo-PMLa99Y.html" data-pub="1653004800000" data-views="19964" data-out="3.77" data-r50="0.2725" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cAo-PMLa99Y/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.77×</span>
+    <span class="len">9:06</span>
+  </div>
+  <div class="t">DIY Mitre Saw Stand /Folding Mobile Station with Wheels &amp; Stop Block | The Carpenter&#39;s Daughter</div>
+  <div class="meta">20K views (28d) · 4 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/OXukHncS8k4.html" data-pub="1651190400000" data-views="8434" data-out="0.87" data-r50="0.2916" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OXukHncS8k4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">9:26</span>
+  </div>
+  <div class="t">Subway Tile Backsplash Installation Behind My Kitchen Hob (DIY)  | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 4 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/OyPDWJjxXTs.html" data-pub="1649980800000" data-views="77401" data-out="8.53" data-r50="0.4005" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OyPDWJjxXTs/mqdefault.jpg" alt="">
+    <span class="score out-hot">8.53×</span>
+    <span class="len">3:34</span>
+  </div>
+  <div class="t">PROS &amp; CONS of the Fiskars Xact Weed Puller | Lawn Gardening Tool Review | The Carpenter&#39;s Daughter</div>
+  <div class="meta">77K views (28d) · 4 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/prslvCM0hUM.html" data-pub="1648944000000" data-views="21513" data-out="2.37" data-r50="0.363" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/prslvCM0hUM/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.37×</span>
+    <span class="len">4:26</span>
+  </div>
+  <div class="t">Easy Garden Edge Border for Beginners / Lawn Edging DIY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">22K views (28d) · 4 years ago · 36% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/y8ze-5fntMs.html" data-pub="1647129600000" data-views="6324" data-out="0.7" data-r50="0.4564" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y8ze-5fntMs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">5:34</span>
+  </div>
+  <div class="t">Cast Iron Garden Bench Restoration With Wood | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 4 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/6Yr7oqu73QM.html" data-pub="1646352000000" data-views="9709" data-out="1.32" data-r50="0.371" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6Yr7oqu73QM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.32×</span>
+    <span class="len">4:00</span>
+  </div>
+  <div class="t">Non-Slip DIY Bench Hook for Carving Wood Block &amp; Linocut Printmaking | The Carpenter&#39;s Daughter</div>
+  <div class="meta">10K views (28d) · 4 years ago · 37% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EtmmsS-SBm4.html" data-pub="1645747200000" data-views="15804" data-out="2.14" data-r50="0.2959" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EtmmsS-SBm4/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.14×</span>
+    <span class="len">14:21</span>
+  </div>
+  <div class="t">How to Install an EASY Paver Walkway For BEGINNERS</div>
+  <div class="meta">16K views (28d) · 4 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/UtEGmQB4Rjk.html" data-pub="1643328000000" data-views="4745" data-out="0.3" data-r50="0.3047" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UtEGmQB4Rjk/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.30×</span>
+    <span class="len">5:38</span>
+  </div>
+  <div class="t">36 Uses for Blu Tack - Home DIY &amp; Workshop Hacks (ad) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 4 years ago · 30% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/cPDXxOmVpns.html" data-pub="1639267200000" data-views="33528" data-out="5.82" data-r50="0.4059" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cPDXxOmVpns/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.82×</span>
+    <span class="len">5:22</span>
+  </div>
+  <div class="t">Unboxing New DIY Woodworking Tools in my Workshop | The Carpenter&#39;s Daughter</div>
+  <div class="meta">34K views (28d) · 4 years ago · 41% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/T3wELNG6VIU.html" data-pub="1638489600000" data-views="15953" data-out="2.77" data-r50="0.4808" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/T3wELNG6VIU/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.77×</span>
+    <span class="len">4:51</span>
+  </div>
+  <div class="t">7 Easy Tool Shed/Workshop Organization Ideas | The Carpenter&#39;s Daughter</div>
+  <div class="meta">16K views (28d) · 4 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZYcuj03L1Ro.html" data-pub="1637884800000" data-views="85069" data-out="14.76" data-r50="0.3966" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZYcuj03L1Ro/mqdefault.jpg" alt="">
+    <span class="score out-hot">14.76×</span>
+    <span class="len">5:30</span>
+  </div>
+  <div class="t">DIY Tools I Wish I Had as a Beginner in Woodworking | The Carpenter&#39;s Daughter</div>
+  <div class="meta">85K views (28d) · 4 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/rCJAqhX2RnE.html" data-pub="1637625600000" data-views="7783" data-out="1.35" data-r50="0.2993" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rCJAqhX2RnE/mqdefault.jpg" alt="">
+    <span class="score out-up">1.35×</span>
+    <span class="len">8:30</span>
+  </div>
+  <div class="t">DIY Fitted Wardrobe Doors Installation | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 4 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/st3ybRYEm7U.html" data-pub="1636243200000" data-views="5441" data-out="0.78" data-r50="0.5123" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/st3ybRYEm7U/mqdefault.jpg" alt="">
+    <span class="score out-down">0.78×</span>
+    <span class="len">3:38</span>
+  </div>
+  <div class="t">STOP following YouTube tutorials to fix your car&#39;s peeling lacquer!</div>
+  <div class="meta">5K views (28d) · 4 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/WkisLaWe-xo.html" data-pub="1635033600000" data-views="3162" data-out="0.55" data-r50="0.4944" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WkisLaWe-xo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">5:17</span>
+  </div>
+  <div class="t">2 Ways to Make a Log Bird House | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 4 years ago · 49% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/EZte-GOMYPE.html" data-pub="1634428800000" data-views="6086" data-out="1.45" data-r50="0.4709" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EZte-GOMYPE/mqdefault.jpg" alt="">
+    <span class="score out-up">1.45×</span>
+    <span class="len">3:55</span>
+  </div>
+  <div class="t">How to Restore a Stainless Steel Kitchen Sink - Remove Scratches &amp; Polish it to NEW again!</div>
+  <div class="meta">6K views (28d) · 4 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/QngR5JrLRwU.html" data-pub="1633219200000" data-views="4595" data-out="0.99" data-r50="0.4089" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QngR5JrLRwU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">9:01</span>
+  </div>
+  <div class="t">Restoring a Wooden Kitchen Worktop | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 4 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/MpslEnlsAac.html" data-pub="1631404800000" data-views="6709" data-out="1.05" data-r50="0.4182" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MpslEnlsAac/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.05×</span>
+    <span class="len">7:21</span>
+  </div>
+  <div class="t">How to Felt a Shed Roof + Tips &amp; Tricks | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 4 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/uiv81sJqHgA.html" data-pub="1629590400000" data-views="6747" data-out="0.97" data-r50="0.3552" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uiv81sJqHgA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">8:33</span>
+  </div>
+  <div class="t">Painting a Rusty Metal Gate (Restoration) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Di3E_3TK-l4.html" data-pub="1626566400000" data-views="6130" data-out="0.41" data-r50="0.395" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Di3E_3TK-l4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.41×</span>
+    <span class="len">5:44</span>
+  </div>
+  <div class="t">How to Install Perfect Fit Blinds in UPVC Windows - No Drill &amp; REALLY EASY!</div>
+  <div class="meta">6K views (28d) · 5 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/je6pcpt5whQ.html" data-pub="1625356800000" data-views="52032" data-out="3.62" data-r50="0.3556" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/je6pcpt5whQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.62×</span>
+    <span class="len">14:07</span>
+  </div>
+  <div class="t">18 Easy Tool Shed/Workshop Organization Ideas for BEGINNERS!</div>
+  <div class="meta">52K views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/wf0FHxCmfQg.html" data-pub="1624752000000" data-views="12501" data-out="0.92" data-r50="0.2829" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/wf0FHxCmfQg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">5:33</span>
+  </div>
+  <div class="t">Boxing in Pipes | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 5 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/N6rI9iN-CEg.html" data-pub="1622937600000" data-views="19940" data-out="1.39" data-r50="0.2362" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/N6rI9iN-CEg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.39×</span>
+    <span class="len">5:24</span>
+  </div>
+  <div class="t">DIY Bird Feeder Station Table &amp; Suet Log | The Carpenter&#39;s Daughter</div>
+  <div class="meta">20K views (28d) · 5 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/gcZUAlmd8Ko.html" data-pub="1621296000000" data-views="4300" data-out="0.3" data-r50="0.5122" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gcZUAlmd8Ko/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.30×</span>
+    <span class="len">10:02</span>
+  </div>
+  <div class="t">Replacing a Leaking Basin Waste on the Narrowboat | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 5 years ago · 51% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/YTFM19z1HRc.html" data-pub="1620518400000" data-views="6312" data-out="0.38" data-r50="0.4831" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YTFM19z1HRc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.38×</span>
+    <span class="len">9:00</span>
+  </div>
+  <div class="t">Changing a Leaking Mixer Tap  | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 5 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/pWGFsrR6lJU.html" data-pub="1615680000000" data-views="5009" data-out="0.71" data-r50="0.3545" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pWGFsrR6lJU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">5:49</span>
+  </div>
+  <div class="t">DIY Veg Rack (Z Shelf Trolley Kitchen Organizer) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 5 years ago · 35% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/JLbm1Cm1wt8.html" data-pub="1613260800000" data-views="7077" data-out="1.11" data-r50="0.4202" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JLbm1Cm1wt8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">3:36</span>
+  </div>
+  <div class="t">Double Roller Blinds Review &amp; Fitting | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 5 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Lz-dKHRBVE8.html" data-pub="1607212800000" data-views="4742" data-out="1.4" data-r50="0.2521" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Lz-dKHRBVE8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">12:58</span>
+  </div>
+  <div class="t">How to Paint a Panel Door With Glass | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 5 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/J--RckVXISQ.html" data-pub="1606003200000" data-views="5211" data-out="1.25" data-r50="0.4162" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J--RckVXISQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.25×</span>
+    <span class="len">3:17</span>
+  </div>
+  <div class="t">Applying Edge Banding to Melamine | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 5 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZcjUKkM7Mdc.html" data-pub="1599609600000" data-views="682" data-out="0.12" data-r50="0.7604" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZcjUKkM7Mdc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.12×</span>
+    <span class="len">0:36</span>
+  </div>
+  <div class="t">Fitting a Spring Door Stop (1 Minute DIY) | The Carpenter&#39;s Daughter</div>
+  <div class="meta">682 views (28d) · 5 years ago · 76% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/0jEkW_FIHRk.html" data-pub="1599350400000" data-views="5387" data-out="0.98" data-r50="0.3755" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0jEkW_FIHRk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">7:38</span>
+  </div>
+  <div class="t">Bookcase for Alan Titchmarsh&#39;s Love Your Weekend | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 5 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/j7eoei-ZKPo.html" data-pub="1593302400000" data-views="24613" data-out="1.62" data-r50="0.3467" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j7eoei-ZKPo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.62×</span>
+    <span class="len">8:59</span>
+  </div>
+  <div class="t">Making a Narrow Wooden Gate DIY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">25K views (28d) · 6 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/YvTp6-wE9XY.html" data-pub="1592697600000" data-views="15529" data-out="1.2" data-r50="0.701" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YvTp6-wE9XY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">1:27</span>
+  </div>
+  <div class="t">Fitting Fence Post Extensions Above Concrete Posts | The Carpenter&#39;s Daughter</div>
+  <div class="meta">16K views (28d) · 6 years ago · 70% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/i10NBPDNHes.html" data-pub="1590883200000" data-views="5340" data-out="0.39" data-r50="0.4252" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/i10NBPDNHes/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.39×</span>
+    <span class="len">6:30</span>
+  </div>
+  <div class="t">How to Make a Laptop Monitor Desk With OffCuts | #AD &amp; GIVEAWAY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 6 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/1GXcJvZphYI.html" data-pub="1588464000000" data-views="7461" data-out="0.68" data-r50="0.3949" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1GXcJvZphYI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">9:15</span>
+  </div>
+  <div class="t">How to Hang a Door With Flush Hinges | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 6 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/hn9lQod_EV8.html" data-pub="1586044800000" data-views="9193" data-out="1.01" data-r50="0.7764" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hn9lQod_EV8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">1:05</span>
+  </div>
+  <div class="t">How To Change a uPVC Door Lock | The Carpenter&#39;s Daughter</div>
+  <div class="meta">9K views (28d) · 6 years ago · 78% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ZWhEotfr46Y.html" data-pub="1585440000000" data-views="13260" data-out="1.59" data-r50="0.147" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZWhEotfr46Y/mqdefault.jpg" alt="">
+    <span class="score out-up">1.59×</span>
+    <span class="len">8:25</span>
+  </div>
+  <div class="t">How I&#39;m Self Isolating &amp; Treadmill Desk Update | PR Discount | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 6 years ago · 15% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/fkKoY4KUsXE.html" data-pub="1584230400000" data-views="23644" data-out="2.94" data-r50="0.3786" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fkKoY4KUsXE/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.94×</span>
+    <span class="len">10:20</span>
+  </div>
+  <div class="t">Garage Conversion to En Suite: Studded Walls | The Carpenter&#39;s Daughter</div>
+  <div class="meta">24K views (28d) · 6 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/8uRmQz8MBTE.html" data-pub="1583020800000" data-views="10093" data-out="1.48" data-r50="0.4662" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8uRmQz8MBTE/mqdefault.jpg" alt="">
+    <span class="score out-up">1.48×</span>
+    <span class="len">5:11</span>
+  </div>
+  <div class="t">Fitting Skirting Boards and Door Architrave | The Carpenter&#39;s Daughter</div>
+  <div class="meta">10K views (28d) · 6 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Gcd11soNnSg.html" data-pub="1582416000000" data-views="3176" data-out="0.39" data-r50="0.2566" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Gcd11soNnSg/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.39×</span>
+    <span class="len">18:16</span>
+  </div>
+  <div class="t">DIY Block Printing Fabric (T-shirts) - The WHOLE PROCESS! | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 6 years ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/aMem02O1e6M.html" data-pub="1581811200000" data-views="6756" data-out="0.84" data-r50="0.3252" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aMem02O1e6M/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">10:01</span>
+  </div>
+  <div class="t">Learning How to Wire a Double Plug Socket | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 6 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/kJzZEMmD-J8.html" data-pub="1574553600000" data-views="11177" data-out="1.54" data-r50="0.3998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/kJzZEMmD-J8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.54×</span>
+    <span class="len">10:26</span>
+  </div>
+  <div class="t">Bungalow House Renovations Update So Far | The Carpenter&#39;s Daughter</div>
+  <div class="meta">11K views (28d) · 6 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/6BCfKxkwktM.html" data-pub="1573344000000" data-views="14897" data-out="1.75" data-r50="0.4598" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6BCfKxkwktM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.75×</span>
+    <span class="len">6:46</span>
+  </div>
+  <div class="t">Knocking Brick Wall Through For Doorway | The Carpenter&#39;s Daughter</div>
+  <div class="meta">15K views (28d) · 6 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/52rRjul7V_Q.html" data-pub="1572134400000" data-views="8241" data-out="0.82" data-r50="0.3143" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/52rRjul7V_Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">7:06</span>
+  </div>
+  <div class="t">Brick Lay In An Old Fireplace Hole | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 6 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/FCAmPP92STg.html" data-pub="1571529600000" data-views="3876" data-out="0.4" data-r50="0.5888" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FCAmPP92STg/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.40×</span>
+    <span class="len">4:05</span>
+  </div>
+  <div class="t">My Wallpaper Stripping Tips | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 6 years ago · 59% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/daKC0Q42jK8.html" data-pub="1570924800000" data-views="12568" data-out="1.64" data-r50="0.3473" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/daKC0Q42jK8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.64×</span>
+    <span class="len">5:34</span>
+  </div>
+  <div class="t">Removing a Chimney Breast &amp; More | The Carpenter&#39;s Daughter</div>
+  <div class="meta">13K views (28d) · 6 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/AeoTazfoJ-w.html" data-pub="1569715200000" data-views="7089" data-out="1.16" data-r50="0.5093" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AeoTazfoJ-w/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">5:47</span>
+  </div>
+  <div class="t">Renovating Another Bungalow! | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 6 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Ulv-m5m9IJY.html" data-pub="1568505600000" data-views="6430" data-out="1.16" data-r50="0.3371" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ulv-m5m9IJY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">5:12</span>
+  </div>
+  <div class="t">Making Fan Trellis &amp; Fix to Wall | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 6 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/kSluzZdXKLU.html" data-pub="1565481600000" data-views="2933" data-out="0.55" data-r50="0.5269" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/kSluzZdXKLU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">6:27</span>
+  </div>
+  <div class="t">Making an S Shaped Side Table | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/GOvj9eiqTnM.html" data-pub="1564876800000" data-views="5016" data-out="0.88" data-r50="0.4054" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GOvj9eiqTnM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">10:29</span>
+  </div>
+  <div class="t">3 Easy DIY Kitchen Projects on a Budget for Kitchen Organisation | AD | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Ofqe6hWORlo.html" data-pub="1563667200000" data-views="5518" data-out="1" data-r50="0.5425" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ofqe6hWORlo/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">4:09</span>
+  </div>
+  <div class="t">Restoring an Oak Table Skip Find | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 7 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/SiaqRGw2jvU.html" data-pub="1563062400000" data-views="5969" data-out="1.05" data-r50="0.6269" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SiaqRGw2jvU/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.05×</span>
+    <span class="len">4:32</span>
+  </div>
+  <div class="t">Wrapping a Kitchen Door Using Fablon | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 7 years ago · 63% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/j-42ubP7aBI.html" data-pub="1562457600000" data-views="3954" data-out="0.67" data-r50="0.6781" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/j-42ubP7aBI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.67×</span>
+    <span class="len">1:44</span>
+  </div>
+  <div class="t">Integrated Fridge Freezer Door Slider Installation | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 7 years ago · 68% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/PQaMXEF-Lsw.html" data-pub="1561248000000" data-views="6275" data-out="1.05" data-r50="0.3403" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PQaMXEF-Lsw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.05×</span>
+    <span class="len">10:22</span>
+  </div>
+  <div class="t">Trio Hidden Recycling Bins Cabinet with Storage | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 7 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/S0zPIAGsDrk.html" data-pub="1560038400000" data-views="18835" data-out="3.15" data-r50="0.4028" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/S0zPIAGsDrk/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.15×</span>
+    <span class="len">6:06</span>
+  </div>
+  <div class="t">Boarding up Open Risers on Stairs | The Carpenter&#39;s Daughter</div>
+  <div class="meta">19K views (28d) · 7 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/_JWly7DTU9k.html" data-pub="1557705600000" data-views="5989" data-out="1.07" data-r50="0.1506" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_JWly7DTU9k/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">35:18</span>
+  </div>
+  <div class="t">April Wilkerson Q&amp;A - Makers Central 2019</div>
+  <div class="meta">6K views (28d) · 7 years ago · 15% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/2sIFkBknn10.html" data-pub="1557619200000" data-views="5015" data-out="0.83" data-r50="0.3921" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2sIFkBknn10/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.83×</span>
+    <span class="len">10:32</span>
+  </div>
+  <div class="t">Makers Central 2019 Vlog &amp; GIVEAWAY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 7 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/p6sliUYM5TQ.html" data-pub="1557014400000" data-views="8044" data-out="1.6" data-r50="0.5275" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p6sliUYM5TQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.60×</span>
+    <span class="len">10:31</span>
+  </div>
+  <div class="t">Tiling a Kitchen Splashback: Metro Tiles | The Carpenter&#39;s Daughter</div>
+  <div class="meta">8K views (28d) · 7 years ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/7YmfjfOvORw.html" data-pub="1553990400000" data-views="7261" data-out="1.59" data-r50="0.4845" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7YmfjfOvORw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.59×</span>
+    <span class="len">3:15</span>
+  </div>
+  <div class="t">Our Dog Friendly Wedding | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 7 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/PTO508w7R0s.html" data-pub="1554336000000" data-views="630" data-out="0.13" data-r50="0.6585" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PTO508w7R0s/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.13×</span>
+    <span class="len">1:06</span>
+  </div>
+  <div class="t">Quick &amp; Easy Wood Resin Rings | The Carpenter&#39;s Daughter</div>
+  <div class="meta">630 views (28d) · 7 years ago · 66% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/bBkTp25rIUM.html" data-pub="1550361600000" data-views="1542" data-out="0.36" data-r50="0.2812" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bBkTp25rIUM/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.36×</span>
+    <span class="len">5:41</span>
+  </div>
+  <div class="t">DIY Dog Backpack: Julius K9 Harness | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 7 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/YGKQpemVsNs.html" data-pub="1544918400000" data-views="3172" data-out="0.97" data-r50="0.5364" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YGKQpemVsNs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">5:11</span>
+  </div>
+  <div class="t">Painting a Washing Machine: Rustoleum Appliance Enamel Review</div>
+  <div class="meta">3K views (28d) · 7 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/06lMbOWZww8.html" data-pub="1540684800000" data-views="2360" data-out="0.61" data-r50="0.506" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/06lMbOWZww8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">3:26</span>
+  </div>
+  <div class="t">I WON! (Amara Interior Blog Awards) IBA18 | The Carpenter&#39;s Daughter</div>
+  <div class="meta">2K views (28d) · 7 years ago · 51% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/XBm4GQLzmvU.html" data-pub="1536451200000" data-views="3382" data-out="0.97" data-r50="0.4607" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XBm4GQLzmvU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">8:22</span>
+  </div>
+  <div class="t">Learning Woodturning with Record Power | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 7 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/RTVPzQzwhDo.html" data-pub="1535241600000" data-views="3510" data-out="0.98" data-r50="0.3853" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RTVPzQzwhDo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">8:19</span>
+  </div>
+  <div class="t">Chalk Paint Decorating on Walls &amp; Furniture | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/nXON2K0v69A.html" data-pub="1534032000000" data-views="3460" data-out="0.96" data-r50="0.4679" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nXON2K0v69A/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.96×</span>
+    <span class="len">6:00</span>
+  </div>
+  <div class="t">Scribing Wardrobe/Chimney Breast Filler Pieces | The Carpenter&#39;s Daughter</div>
+  <div class="meta">3K views (28d) · 8 years ago · 47% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/KRvvGtjVPuI.html" data-pub="1533427200000" data-views="3723" data-out="1" data-r50="0.3118" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KRvvGtjVPuI/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">6:22</span>
+  </div>
+  <div class="t">Concealing &amp; Coving Around Pipes | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/UtYqnuqXkfg.html" data-pub="1532822400000" data-views="3932" data-out="0.93" data-r50="0.2689" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UtYqnuqXkfg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">23:48</span>
+  </div>
+  <div class="t">Q&amp;A: YouTube Advice, Goals &amp; Marriage | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/mldzDljjcCc.html" data-pub="1532217600000" data-views="4926" data-out="1.13" data-r50="0.3258" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mldzDljjcCc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">9:09</span>
+  </div>
+  <div class="t">JYSK Bedroom Build &amp; Makeover Reveal | GIFTED | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/ltYOPkMNx9U.html" data-pub="1531612800000" data-views="6603" data-out="1.36" data-r50="0.5157" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ltYOPkMNx9U/mqdefault.jpg" alt="">
+    <span class="score out-up">1.36×</span>
+    <span class="len">9:31</span>
+  </div>
+  <div class="t">Fitting Coving: Bedroom Makeover | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 8 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/WCQo0GllHQg.html" data-pub="1531008000000" data-views="4774" data-out="0.85" data-r50="0.444" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WCQo0GllHQg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">6:17</span>
+  </div>
+  <div class="t">Making an Electric Fire Plumb &amp; Creating Brackets | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Q_1IWH2msM8.html" data-pub="1530403200000" data-views="5938" data-out="1.11" data-r50="0.4745" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Q_1IWH2msM8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">11:06</span>
+  </div>
+  <div class="t">Hanging Doors &amp; TV SHOW NEWS! | The Carpenter&#39;s Daughter</div>
+  <div class="meta">6K views (28d) · 8 years ago · 47% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/lItltha_EpI.html" data-pub="1529798400000" data-views="5304" data-out="0.94" data-r50="0.4659" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lItltha_EpI/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">11:11</span>
+  </div>
+  <div class="t">Bedroom Makeover: Painting a Room | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/7txbWowFP_I.html" data-pub="1529193600000" data-views="10654" data-out="1.99" data-r50="0.3857" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7txbWowFP_I/mqdefault.jpg" alt="">
+    <span class="score out-up">1.99×</span>
+    <span class="len">8:39</span>
+  </div>
+  <div class="t">Wagner Fence &amp; Decking Sprayer Review | The Carpenter&#39;s Daughter</div>
+  <div class="meta">11K views (28d) · 8 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/h-d4gi8-ci0.html" data-pub="1527984000000" data-views="5393" data-out="1.14" data-r50="0.4579" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/h-d4gi8-ci0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.14×</span>
+    <span class="len">7:50</span>
+  </div>
+  <div class="t">Making Strong &amp; Cheap Sawhorses | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 46% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/9pkPXJQmdIQ.html" data-pub="1526774400000" data-views="4169" data-out="0.9" data-r50="0.3042" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9pkPXJQmdIQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">6:50</span>
+  </div>
+  <div class="t">How to Make a Swing Chair Canopy | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/YpKl1XuPY7c.html" data-pub="1525910400000" data-views="3725" data-out="0.81" data-r50="0.4969" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YpKl1XuPY7c/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">6:33</span>
+  </div>
+  <div class="t">Makers Central 2018: Best Bits | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/pq_Tpv0bZxU.html" data-pub="1525564800000" data-views="3503" data-out="0.76" data-r50="0.4674" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pq_Tpv0bZxU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">4:37</span>
+  </div>
+  <div class="t">How to Install Flower Hanging Baskets | The Carpenter&#39;s Daughter</div>
+  <div class="meta">4K views (28d) · 8 years ago · 47% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/Hh2UUdaCAMA.html" data-pub="1523750400000" data-views="5050" data-out="0.93" data-r50="0.4998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Hh2UUdaCAMA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">5:24</span>
+  </div>
+  <div class="t">Changing A Door Mortice Sash Lock | The Carpenter&#39;s Daughter</div>
+  <div class="meta">5K views (28d) · 8 years ago · 50% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/LGrVXjm-Rds.html" data-pub="1522540800000" data-views="10433" data-out="2.06" data-r50="0.5034" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LGrVXjm-Rds/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.06×</span>
+    <span class="len">6:31</span>
+  </div>
+  <div class="t">Laying a Garden Patio DIY | The Carpenter&#39;s Daughter</div>
+  <div class="meta">10K views (28d) · 8 years ago · 50% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/eiFXvAzVzDY.html" data-pub="1521936000000" data-views="7012" data-out="1.39" data-r50="0.5391" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/eiFXvAzVzDY/mqdefault.jpg" alt="">
+    <span class="score out-up">1.39×</span>
+    <span class="len">5:34</span>
+  </div>
+  <div class="t">Applying Silicone Sealant Around UPVC Door / The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 8 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCu46Dpf61TAL0zVMLsJ_K1g/alOL27CX_xw.html" data-pub="1521331200000" data-views="6933" data-out="1.37" data-r50="0.5233" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/alOL27CX_xw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.37×</span>
+    <span class="len">8:48</span>
+  </div>
+  <div class="t">VAX Platinum PowerMax Carpet Cleaner Review | The Carpenter&#39;s Daughter</div>
+  <div class="meta">7K views (28d) · 8 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">121 of 300 videos sit in a named format · library built 2026-09-02.</p>
+
 
 
 
@@ -4866,7 +8045,7 @@ means two things move together on this channel, which is not the same as one cau
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

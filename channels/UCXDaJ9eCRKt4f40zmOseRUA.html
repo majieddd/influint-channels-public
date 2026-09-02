@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/g0ET1Qtgsz8BFg6he_cKmnfFLBW50ELDAAReaf1pYQKOpSIaR6YmM2aWXEV6nv1QaogO4BsmWw=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Isabella Demarko</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@isabellademarko" target="_blank" rel="noopener">@isabellademarko</a> · 375K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@isabellademarko" target="_blank" rel="noopener">@isabellademarko</a> · 375K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -810,6 +842,84 @@ means two things move together on this channel, which is not the same as one cau
 <ol class="actions"><li class="act">
   <div class="acthead">
     <span class="actn">1</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~21K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;Journey To Waist Length | ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">Journey To Waist Length | __</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">2.73x</span>
+    <span class="mc-rn">n=8</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:36.6%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">2</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~8K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;Restoring My Entire Bratz Collection | ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">Restoring My Entire Bratz Co</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.67x</span>
+    <span class="mc-rn">n=8</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:59.9%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">3</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~6K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;The Curly Girl Method | ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">The Curly Girl Method | ___</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.52x</span>
+    <span class="mc-rn">n=8</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:65.8%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">4</span>
     <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~6K viewers at stake</span>
   </div>
@@ -835,7 +945,111 @@ means two things move together on this channel, which is not the same as one cau
 </li>
 <li class="act">
   <div class="acthead">
-    <span class="actn">2</span>
+    <span class="actn">5</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~6K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;I Try ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">I Try ___</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.47x</span>
+    <span class="mc-rn">n=21</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:68.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">6</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~5K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;How To ___ Hair&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">How To ___ Hair</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.40x</span>
+    <span class="mc-rn">n=11</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:71.4%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">7</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~4K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;How To ___ Nails&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">How To ___ Nails</span>
+    <span class="mc-bar"><i style="--w:66.0%"></i></span>
+    <span class="mc-rv">0.66x</span>
+    <span class="mc-rn">n=10</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">8</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~4K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;A Day In My Life | ___&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">A Day In My Life | ___</span>
+    <span class="mc-bar"><i style="--w:68.0%"></i></span>
+    <span class="mc-rv">0.68x</span>
+    <span class="mc-rn">n=14</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=40</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">9</span>
     <span class="chip c-law" title="Rests on a belief measured across independent channels and signed off by a strategist.">Measured law</span>
     <span class="stake">~1K viewers at stake</span>
   </div>
@@ -857,7 +1071,7 @@ means two things move together on this channel, which is not the same as one cau
 </li>
 <li class="act">
   <div class="acthead">
-    <span class="actn">3</span>
+    <span class="actn">10</span>
     <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
     <span class="stake">~185 viewers at stake</span>
   </div>
@@ -878,13 +1092,13 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Some end loss is structural: people leave once they have what they came for. The recoverable share is the smaller part.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (1)</summary>
-  <ul><li>Length: 36.7% against 30.1% at halfway. A 6.6% gap, too small to act on.</li></ul>
+<details class="alsochk"><summary>Also checked, no action needed (2)</summary>
+  <ul><li>Length: 36.7% against 30.1% at halfway. A 6.6% gap, too small to act on.</li>
+<li>Formats: 2 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 205. Advice is about the channel being run now.</p>
-<p class="capnote">1 of 3 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
-<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+<p class="capnote">8 of 10 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 
 
 
@@ -2987,6 +3201,2188 @@ means two things move together on this channel, which is not the same as one cau
 })();
 </script>
 
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">Journey To Waist Length | ___</span>
+    <span class="fstats">
+      <b class="f-hot">2.73×</b>
+      <span>8 videos</span>
+      <span>47K median views</span>
+      <span>37% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A progress check-in on her long-term hair growth project.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/BsiPkNjDyOs.html" data-pub="1748649600000" data-views="47284" data-out="2.63" data-r50="0.2836" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/BsiPkNjDyOs/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.63×</span>
+    <span class="len">18:56</span>
+  </div>
+  <div class="t">Why Your Hair Won’t Grow Long and Beautiful | 9 month growth update.</div>
+  <div class="meta">47K views (28d) · 1 year ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OHNFGeuHoh0.html" data-pub="1741996800000" data-views="47568" data-out="3.27" data-r50="0.3898" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OHNFGeuHoh0/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.27×</span>
+    <span class="len">17:58</span>
+  </div>
+  <div class="t">I Ruined my hair in 2 months...  | Journey To Waist Length (Month 6)</div>
+  <div class="meta">48K views (28d) · 1 year ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/JaCMzlTzuVY.html" data-pub="1735603200000" data-views="33663" data-out="2.83" data-r50="0.3226" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JaCMzlTzuVY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.83×</span>
+    <span class="len">21:10</span>
+  </div>
+  <div class="t">Everything I&#39;ve done to Grow my Hair | Journey to Waist Length (month 4)</div>
+  <div class="meta">34K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/oEdOoC8FXNQ.html" data-pub="1728518400000" data-views="29092" data-out="2.24" data-r50="0.3471" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oEdOoC8FXNQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.24×</span>
+    <span class="len">18:32</span>
+  </div>
+  <div class="t">Growing My Hair To Waist Length | 2 Month Growth Progress</div>
+  <div class="meta">29K views (28d) · 1 year ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/d1lvOkIwubM.html" data-pub="1724457600000" data-views="12753" data-out="1.24" data-r50="0.5909" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/d1lvOkIwubM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.24×</span>
+    <span class="len">6:10</span>
+  </div>
+  <div class="t">FIRST HAIRCUT IN 2 YEARS | New Journey to Waist Length  + Measurements!</div>
+  <div class="meta">13K views (28d) · 2 years ago · 59% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/zu-I-QeS0XM.html" data-pub="1579651200000" data-views="445029" data-out="2.33" data-r50="0.3328" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zu-I-QeS0XM/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.33×</span>
+    <span class="len">13:32</span>
+  </div>
+  <div class="t">I&#39;m Starting Again... again | The Journey to Nice Hair.</div>
+  <div class="meta">445K views (28d) · 6 years ago · 33% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ZeS3fDZTi7U.html" data-pub="1570838400000" data-views="926351" data-out="10.35" data-r50="0.4623" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZeS3fDZTi7U/mqdefault.jpg" alt="">
+    <span class="score out-hot">10.35×</span>
+    <span class="len">11:49</span>
+  </div>
+  <div class="t">Fixing my Frizzy Hair | The Journey to Nice Hair.</div>
+  <div class="meta">926K views (28d) · 6 years ago · 46% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/HlFw0h582Gs.html" data-pub="1568419200000" data-views="2538872" data-out="86.73" data-r50="0.4284" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HlFw0h582Gs/mqdefault.jpg" alt="">
+    <span class="score out-hot">86.73×</span>
+    <span class="len">12:45</span>
+  </div>
+  <div class="t">The Journey To Waist Length | My Hair Story.</div>
+  <div class="meta">2.5M views (28d) · 6 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Restoring My Entire Bratz Collection | ___</span>
+    <span class="fstats">
+      <b class="f-hot">1.67×</b>
+      <span>8 videos</span>
+      <span>77K median views</span>
+      <span>37% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An episode in her Bratz doll restoration series.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Zfhys7rLQdE.html" data-pub="1721260800000" data-views="4244" data-out="0.68" data-r50="0.3834" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Zfhys7rLQdE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">18:37</span>
+  </div>
+  <div class="t">The FINAL episode of my Bratz Restoration Series | Restoring my Bratz posters</div>
+  <div class="meta">4K views (28d) · 2 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/gL6Zn12eKq4.html" data-pub="1673308800000" data-views="190057" data-out="13.79" data-r50="0.3963" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gL6Zn12eKq4/mqdefault.jpg" alt="">
+    <span class="score out-hot">13.79×</span>
+    <span class="len">27:00</span>
+  </div>
+  <div class="t">Restoring 4 DISGUSTING Giant Bratz Dolls</div>
+  <div class="meta">190K views (28d) · 3 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/dO6k3jftH1o.html" data-pub="1630627200000" data-views="52384" data-out="2.76" data-r50="0.2938" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dO6k3jftH1o/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.76×</span>
+    <span class="len">48:45</span>
+  </div>
+  <div class="t">Restoring my Entire Bratz Collection | THE FINAL EPISODE</div>
+  <div class="meta">52K views (28d) · 5 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/lzSL4Y2VKdg.html" data-pub="1621036800000" data-views="62050" data-out="1.97" data-r50="0.3226" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lzSL4Y2VKdg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.97×</span>
+    <span class="len">36:51</span>
+  </div>
+  <div class="t">Restoring My Entire Bratz Collection | Episode 5</div>
+  <div class="meta">62K views (28d) · 5 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/70NtwRvypH8.html" data-pub="1614384000000" data-views="92369" data-out="1.08" data-r50="0.3777" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/70NtwRvypH8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.08×</span>
+    <span class="len">23:55</span>
+  </div>
+  <div class="t">Restoring My Entire Bratz Collection | Episode 4</div>
+  <div class="meta">92K views (28d) · 5 years ago · 38% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/p8sEy66TFVI.html" data-pub="1608768000000" data-views="113460" data-out="1.38" data-r50="0.2499" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p8sEy66TFVI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.38×</span>
+    <span class="len">27:14</span>
+  </div>
+  <div class="t">Restoring my Entire Bratz Collection | Episode 3</div>
+  <div class="meta">113K views (28d) · 5 years ago · 25% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/6wcY18hjMKc.html" data-pub="1604534400000" data-views="186856" data-out="2.42" data-r50="0.3993" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6wcY18hjMKc/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.42×</span>
+    <span class="len">22:47</span>
+  </div>
+  <div class="t">Restoring my Entire Bratz Collection | Episode 2</div>
+  <div class="meta">187K views (28d) · 5 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Ak0M5hRImWA.html" data-pub="1601683200000" data-views="46575" data-out="0.6" data-r50="0.3681" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ak0M5hRImWA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">19:56</span>
+  </div>
+  <div class="t">Restoring my Entire Bratz Collection | Episode 1</div>
+  <div class="meta">47K views (28d) · 5 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">The Curly Girl Method | ___</span>
+    <span class="fstats">
+      <b class="f-hot">1.52×</b>
+      <span>8 videos</span>
+      <span>161K median views</span>
+      <span>42% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An update on her ongoing Curly Girl Method experiment.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/EvFqqXYIOds.html" data-pub="1721865600000" data-views="36156" data-out="5.76" data-r50="0.4152" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EvFqqXYIOds/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.76×</span>
+    <span class="len">17:49</span>
+  </div>
+  <div class="t">It&#39;s been 3 years since I Quit the Curly Girl Method... Let&#39;s try it again.</div>
+  <div class="meta">36K views (28d) · 2 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/GeqTD6hNZlc.html" data-pub="1603065600000" data-views="178708" data-out="3.63" data-r50="0.3901" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GeqTD6hNZlc/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.63×</span>
+    <span class="len">14:08</span>
+  </div>
+  <div class="t">6 months Curly Girl Method (why i&#39;m quitting... sort of.)</div>
+  <div class="meta">179K views (28d) · 5 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/tzZ-29NO7Xs.html" data-pub="1595980800000" data-views="125548" data-out="0.92" data-r50="0.4255" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tzZ-29NO7Xs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">10:47</span>
+  </div>
+  <div class="t">5 months on the curly girl method. (it got better)</div>
+  <div class="meta">126K views (28d) · 6 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/RmxBQxsZ1sw.html" data-pub="1595635200000" data-views="157859" data-out="1.31" data-r50="0.3572" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RmxBQxsZ1sw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.31×</span>
+    <span class="len">13:53</span>
+  </div>
+  <div class="t">4 months of CGM | my hair got bad (and addressing the hair obsession)</div>
+  <div class="meta">158K views (28d) · 6 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ix9yKXUW2GE.html" data-pub="1590796800000" data-views="164860" data-out="1.24" data-r50="0.4192" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ix9yKXUW2GE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.24×</span>
+    <span class="len">15:01</span>
+  </div>
+  <div class="t">3 Months on The Curly Girl Method.</div>
+  <div class="meta">165K views (28d) · 6 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Ng8D-Dh1iIU.html" data-pub="1588204800000" data-views="217638" data-out="1.72" data-r50="0.2626" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ng8D-Dh1iIU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.72×</span>
+    <span class="len">19:40</span>
+  </div>
+  <div class="t">2 Months of Curly Girl Method... Here&#39;s What I Learned.</div>
+  <div class="meta">218K views (28d) · 6 years ago · 26% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/UG-CMivSZaU.html" data-pub="1583020800000" data-views="1189267" data-out="6.22" data-r50="0.4442" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UG-CMivSZaU/mqdefault.jpg" alt="">
+    <span class="score out-hot">6.22×</span>
+    <span class="len">9:00</span>
+  </div>
+  <div class="t">I Start the Curly Girl Method... again (but properly).</div>
+  <div class="meta">1.2M views (28d) · 6 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/cN8nshEvjv4.html" data-pub="1563926400000" data-views="48293" data-out="0.15" data-r50="0.4474" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cN8nshEvjv4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.15×</span>
+    <span class="len">11:38</span>
+  </div>
+  <div class="t">Is my Straight Hair turning CURLY? I try the Curly Girl Method.</div>
+  <div class="meta">48K views (28d) · 7 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">I Try ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.47×</b>
+      <span>21 videos</span>
+      <span>35K median views</span>
+      <span>38% at half · 21 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">She tests a specific hair product, tool or technique and shows the results.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/QUOLokfBIqU.html" data-pub="1785369600000" data-views="10604" data-out="2.09" data-r50="0.3653" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QUOLokfBIqU/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.09×</span>
+    <span class="len">13:59</span>
+  </div>
+  <div class="t">Eggs = stronger, healthier, shinier hair | Let’s try it.</div>
+  <div class="meta">11K views (28d) · 1 month ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/3Q3lAYt6Feo.html" data-pub="1784160000000" data-views="7742" data-out="1.53" data-r50="0.4237" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3Q3lAYt6Feo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.53×</span>
+    <span class="len">15:45</span>
+  </div>
+  <div class="t">I FINALLY tried the Rosemary water hair rinse...</div>
+  <div class="meta">8K views (28d) · 1 month ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/5aAE4ei0UcQ.html" data-pub="1743206400000" data-views="14836" data-out="0.43" data-r50="0.3068" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5aAE4ei0UcQ/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.43×</span>
+    <span class="len">13:08</span>
+  </div>
+  <div class="t">The Red Yao Women sent me their REAL Rice Water. Let&#39;s try it.</div>
+  <div class="meta">15K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/hHXvDNbtcgg.html" data-pub="1727827200000" data-views="7383" data-out="0.52" data-r50="0.276" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hHXvDNbtcgg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">15:40</span>
+  </div>
+  <div class="t">Trying Eco Styler gel on white girl hair. (and is it really Toxic?)</div>
+  <div class="meta">7K views (28d) · 1 year ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/XjWRye2tuPg.html" data-pub="1661990400000" data-views="9443" data-out="0.91" data-r50="0.3073" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XjWRye2tuPg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.91×</span>
+    <span class="len">10:13</span>
+  </div>
+  <div class="t">I Try Zig Zag Hair.</div>
+  <div class="meta">9K views (28d) · 4 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/p9wjIQ6wCeM.html" data-pub="1658707200000" data-views="22824" data-out="2.21" data-r50="0.3867" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p9wjIQ6wCeM/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.21×</span>
+    <span class="len">7:45</span>
+  </div>
+  <div class="t">I Try Dying My Hair Copper With Glaze.</div>
+  <div class="meta">23K views (28d) · 4 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/E5ZYz5vw1jA.html" data-pub="1657929600000" data-views="34821" data-out="3.37" data-r50="0.4531" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/E5ZYz5vw1jA/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.37×</span>
+    <span class="len">8:54</span>
+  </div>
+  <div class="t">I try cutting my own hair in layers.</div>
+  <div class="meta">35K views (28d) · 4 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/16XYIA-h8do.html" data-pub="1657324800000" data-views="9807" data-out="0.58" data-r50="0.4232" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/16XYIA-h8do/mqdefault.jpg" alt="">
+    <span class="score out-down">0.58×</span>
+    <span class="len">10:42</span>
+  </div>
+  <div class="t">I try drying my hair with LIGHT?</div>
+  <div class="meta">10K views (28d) · 4 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/y-v39vNFcpw.html" data-pub="1651622400000" data-views="15945" data-out="2.08" data-r50="0.3753" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y-v39vNFcpw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.08×</span>
+    <span class="len">14:27</span>
+  </div>
+  <div class="t">I try dying my Blonde extensions Red.</div>
+  <div class="meta">16K views (28d) · 4 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YQ9NAhOPymM.html" data-pub="1650153600000" data-views="47986" data-out="6.4" data-r50="0.4522" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YQ9NAhOPymM/mqdefault.jpg" alt="">
+    <span class="score out-hot">6.40×</span>
+    <span class="len">3:46</span>
+  </div>
+  <div class="t">I tried red with blonde | Hair transformation.</div>
+  <div class="meta">48K views (28d) · 4 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Y0TAaXLLwEQ.html" data-pub="1644019200000" data-views="25821" data-out="2.65" data-r50="0.2376" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Y0TAaXLLwEQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.65×</span>
+    <span class="len">9:14</span>
+  </div>
+  <div class="t">I try dying my own hair ginger. (ft. my boyfriend)</div>
+  <div class="meta">26K views (28d) · 4 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/QuQXlv_uwXg.html" data-pub="1629849600000" data-views="33626" data-out="1.77" data-r50="0.2913" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QuQXlv_uwXg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.77×</span>
+    <span class="len">7:41</span>
+  </div>
+  <div class="t">I Try Dubur Amla Hair Oil // Before &amp; After Results</div>
+  <div class="meta">34K views (28d) · 5 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/hAFNV7OH-uY.html" data-pub="1614988800000" data-views="58026" data-out="1.04" data-r50="0.5378" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hAFNV7OH-uY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">6:50</span>
+  </div>
+  <div class="t">I Try Olaplex No. 3</div>
+  <div class="meta">58K views (28d) · 5 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/3cgBGep34to.html" data-pub="1610064000000" data-views="126487" data-out="1.68" data-r50="0.2953" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3cgBGep34to/mqdefault.jpg" alt="">
+    <span class="score out-up">1.68×</span>
+    <span class="len">10:50</span>
+  </div>
+  <div class="t">I try 80p hair gel.</div>
+  <div class="meta">126K views (28d) · 5 years ago · 30% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/PaWv4M331L4.html" data-pub="1608508800000" data-views="115149" data-out="1.41" data-r50="0.4181" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PaWv4M331L4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.41×</span>
+    <span class="len">10:38</span>
+  </div>
+  <div class="t">I try robe curls. (the better way)</div>
+  <div class="meta">115K views (28d) · 5 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4_FX2zCPGOk.html" data-pub="1607126400000" data-views="49420" data-out="0.42" data-r50="0.2859" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4_FX2zCPGOk/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">8:24</span>
+  </div>
+  <div class="t">I Try Curl Mousse for the First Time.</div>
+  <div class="meta">49K views (28d) · 5 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/9J1IajaZlLc.html" data-pub="1588896000000" data-views="148545" data-out="1.1" data-r50="0.4926" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9J1IajaZlLc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.10×</span>
+    <span class="len">12:37</span>
+  </div>
+  <div class="t">Trying Flaxseed Gel on My Hair.</div>
+  <div class="meta">149K views (28d) · 6 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/U6jbQPSAPcY.html" data-pub="1586217600000" data-views="95998" data-out="0.52" data-r50="0.5149" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/U6jbQPSAPcY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">6:54</span>
+  </div>
+  <div class="t">I try Washing my Hair with Aritha Powder. (it works)</div>
+  <div class="meta">96K views (28d) · 6 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/M6eMiRXX1kI.html" data-pub="1585612800000" data-views="621308" data-out="3.39" data-r50="0.3219" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/M6eMiRXX1kI/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.39×</span>
+    <span class="len">13:24</span>
+  </div>
+  <div class="t">I tried the Curly Girl Method for 30 days.</div>
+  <div class="meta">621K views (28d) · 6 years ago · 32% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/K0Ow8vIH-1w.html" data-pub="1583798400000" data-views="281454" data-out="1.47" data-r50="0.3792" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/K0Ow8vIH-1w/mqdefault.jpg" alt="">
+    <span class="score out-up">1.47×</span>
+    <span class="len">7:23</span>
+  </div>
+  <div class="t">I Try The Pony-O...</div>
+  <div class="meta">281K views (28d) · 6 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/rQ2cE5IzHHU.html" data-pub="1577404800000" data-views="130782" data-out="0.51" data-r50="0.4975" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rQ2cE5IzHHU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.51×</span>
+    <span class="len">9:31</span>
+  </div>
+  <div class="t">I tried the Reviv3 Hair Kit for 30 days.</div>
+  <div class="meta">131K views (28d) · 6 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To ___ Hair</span>
+    <span class="fstats">
+      <b class="f-mid">1.40×</b>
+      <span>11 videos</span>
+      <span>33K median views</span>
+      <span>34% at half · 11 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A tutorial teaching a specific hair technique or routine.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YqYPZlpWAgY.html" data-pub="1778803200000" data-views="22758" data-out="4.49" data-r50="0.2971" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YqYPZlpWAgY/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.49×</span>
+    <span class="len">23:16</span>
+  </div>
+  <div class="t">Let’s fix my hair.</div>
+  <div class="meta">23K views (28d) · 3 months ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/_EHP89y6xds.html" data-pub="1744675200000" data-views="21079" data-out="0.68" data-r50="0.3668" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_EHP89y6xds/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">26:19</span>
+  </div>
+  <div class="t">7 days of haircare | Overnight blow out &amp; blow dry straightening</div>
+  <div class="meta">21K views (28d) · 1 year ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/B1Bye6ISeIo.html" data-pub="1730678400000" data-views="20816" data-out="1.4" data-r50="0.3488" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/B1Bye6ISeIo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">8:05</span>
+  </div>
+  <div class="t">How to Straighten Hair with No Heat. The Wrap Method Tutorial.</div>
+  <div class="meta">21K views (28d) · 1 year ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1Yj5rWgquzA.html" data-pub="1717200000000" data-views="33274" data-out="5.9" data-r50="0.2903" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1Yj5rWgquzA/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.90×</span>
+    <span class="len">15:58</span>
+  </div>
+  <div class="t">7 DAYS OF HAIRCARE ( as a girl with Dry Hair )</div>
+  <div class="meta">33K views (28d) · 2 years ago · 29% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/bk36gy5jmpA.html" data-pub="1710201600000" data-views="33406" data-out="3.89" data-r50="0.3532" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bk36gy5jmpA/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.89×</span>
+    <span class="len">17:09</span>
+  </div>
+  <div class="t">I have dry hair, this is my New Hair Care Routine.</div>
+  <div class="meta">33K views (28d) · 2 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/QR2DcKd_KfM.html" data-pub="1682812800000" data-views="8746" data-out="0.84" data-r50="0.2943" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QR2DcKd_KfM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">9:25</span>
+  </div>
+  <div class="t">How to Co-Wash | The Benefits of Co-washing for Dry Hair.</div>
+  <div class="meta">9K views (28d) · 3 years ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4XFm1MdLIlE.html" data-pub="1627430400000" data-views="89056" data-out="3.74" data-r50="0.3755" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4XFm1MdLIlE/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.74×</span>
+    <span class="len">13:36</span>
+  </div>
+  <div class="t">My Entire Hair Care Routine.</div>
+  <div class="meta">89K views (28d) · 5 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/lQl4j2yqKT8.html" data-pub="1619481600000" data-views="49668" data-out="1.04" data-r50="0.3282" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lQl4j2yqKT8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.04×</span>
+    <span class="len">21:00</span>
+  </div>
+  <div class="t">How I Blowout my Hair Straight with curled in ends.</div>
+  <div class="meta">50K views (28d) · 5 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Slo6tgKnvSc.html" data-pub="1599350400000" data-views="105270" data-out="0.74" data-r50="0.5555" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Slo6tgKnvSc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">5:08</span>
+  </div>
+  <div class="t">What happens if I don&#39;t use hair gel | Taming my Frizzy Hair.</div>
+  <div class="meta">105K views (28d) · 5 years ago · 56% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/KinoFMs2uOs.html" data-pub="1555286400000" data-views="4591" data-out="0.16" data-r50="0.2779" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KinoFMs2uOs/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.16×</span>
+    <span class="len">17:42</span>
+  </div>
+  <div class="t">My Hair Care and Styling Routine for Dry, Frizzy Hair</div>
+  <div class="meta">5K views (28d) · 7 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/qYfcTtjfKYM.html" data-pub="1562371200000" data-views="622686" data-out="83.91" data-r50="0.3414" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qYfcTtjfKYM/mqdefault.jpg" alt="">
+    <span class="score out-hot">83.91×</span>
+    <span class="len">10:01</span>
+  </div>
+  <div class="t">How to Straighten Hair with No Heat. (Every girl should know)</div>
+  <div class="meta">623K views (28d) · 7 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">My Entire ___ Journey</span>
+    <span class="fstats">
+      <b class="f-mid">1.21×</b>
+      <span>10 videos</span>
+      <span>15K median views</span>
+      <span>27% at half · 10 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A retrospective on a personal cosmetic or body-modification experience.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/TozVKG2OWgM.html" data-pub="1687996800000" data-views="10459" data-out="0.98" data-r50="0.2462" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TozVKG2OWgM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">18:30</span>
+  </div>
+  <div class="t">How Braces changed my face | my Entire Dental journey + photos</div>
+  <div class="meta">10K views (28d) · 3 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/GZIXhDBGlOw.html" data-pub="1676073600000" data-views="11169" data-out="0.76" data-r50="0.3274" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GZIXhDBGlOw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">16:31</span>
+  </div>
+  <div class="t">EVERYTHING I DIDN&#39;T EXPECT AFTER BRACES...</div>
+  <div class="meta">11K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1TemdjOpKYM.html" data-pub="1680220800000" data-views="12953" data-out="1.35" data-r50="0.2276" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1TemdjOpKYM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.35×</span>
+    <span class="len">8:54</span>
+  </div>
+  <div class="t">Getting my BELLY BUTTON PIERCED | Vlog</div>
+  <div class="meta">13K views (28d) · 3 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OZZsMm4x9jU.html" data-pub="1680393600000" data-views="7706" data-out="0.71" data-r50="0.3297" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OZZsMm4x9jU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">10:44</span>
+  </div>
+  <div class="t">Belly Button Piercing Aftercare | Everything you need to know</div>
+  <div class="meta">8K views (28d) · 3 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YwUumU3sNWg.html" data-pub="1659744000000" data-views="22811" data-out="2.37" data-r50="0.3333" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YwUumU3sNWg/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.37×</span>
+    <span class="len">14:58</span>
+  </div>
+  <div class="t">1 YEAR WITH BRACES. Tips, experience, progress, face changes. (before &amp; after photos)</div>
+  <div class="meta">23K views (28d) · 4 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Zhk1D8QL4-s.html" data-pub="1633996800000" data-views="17199" data-out="1.23" data-r50="0.2372" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Zhk1D8QL4-s/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.23×</span>
+    <span class="len">18:15</span>
+  </div>
+  <div class="t">3 MONTHS WITH BRACES | My Entire Dental Hygiene Routine.</div>
+  <div class="meta">17K views (28d) · 4 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/gWVL4f8ZJNc.html" data-pub="1626652800000" data-views="20710" data-out="0.66" data-r50="0.1662" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gWVL4f8ZJNc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.66×</span>
+    <span class="len">28:55</span>
+  </div>
+  <div class="t">Everything I ate | First week of Braces</div>
+  <div class="meta">21K views (28d) · 5 years ago · 17% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Y3eEJcPJBwk.html" data-pub="1625184000000" data-views="28663" data-out="1.2" data-r50="0.3643" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Y3eEJcPJBwk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.20×</span>
+    <span class="len">5:27</span>
+  </div>
+  <div class="t">Seeing my Braces for the first time // Reaction and First Impressions.</div>
+  <div class="meta">29K views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/PpdMv85Bl0w.html" data-pub="1646870400000" data-views="23644" data-out="1.58" data-r50="0.2447" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PpdMv85Bl0w/mqdefault.jpg" alt="">
+    <span class="score out-up">1.58×</span>
+    <span class="len">24:30</span>
+  </div>
+  <div class="t">Let&#39;s talk about Lip Fillers. (+ my experience)</div>
+  <div class="meta">24K views (28d) · 4 years ago · 24% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/7sbbsIeM7YU.html" data-pub="1516233600000" data-views="11501" data-out="2.27" data-r50="0.2842" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7sbbsIeM7YU/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.27×</span>
+    <span class="len">10:42</span>
+  </div>
+  <div class="t">I GOT LIP FILLERS | My Experience (video footage)</div>
+  <div class="meta">12K views (28d) · 8 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To Become A ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.02×</b>
+      <span>8 videos</span>
+      <span>11K median views</span>
+      <span>39% at half · 8 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">She explains how she achieved a specific identity or role.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4Y9Yjj50KPc.html" data-pub="1780272000000" data-views="2996" data-out="0.43" data-r50="0.2247" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4Y9Yjj50KPc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.43×</span>
+    <span class="len">27:50</span>
+  </div>
+  <div class="t">How to become &#39;Her&#39;. 8 specific traits to become Top Tier.</div>
+  <div class="meta">3K views (28d) · 3 months ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/vOLWv5CKJj0.html" data-pub="1778112000000" data-views="6049" data-out="1.02" data-r50="0.2636" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vOLWv5CKJj0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">20:09</span>
+  </div>
+  <div class="t">Master becoming &#39;Her&#39; and they&#39;ll never forget you again.</div>
+  <div class="meta">6K views (28d) · 3 months ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/GZIPQlY3XvM.html" data-pub="1698883200000" data-views="10014" data-out="0.84" data-r50="0.3309" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GZIPQlY3XvM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">26:38</span>
+  </div>
+  <div class="t">How I became a Burlesque Starlet in 15 months.</div>
+  <div class="meta">10K views (28d) · 2 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ieO78mGG_uA.html" data-pub="1697241600000" data-views="11368" data-out="1.01" data-r50="0.5023" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ieO78mGG_uA/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">19:25</span>
+  </div>
+  <div class="t">How I Became a Show Girl in 1 Year.</div>
+  <div class="meta">11K views (28d) · 2 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4YnZZ1vgwDA.html" data-pub="1696032000000" data-views="12553" data-out="1.23" data-r50="0.4796" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4YnZZ1vgwDA/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.23×</span>
+    <span class="len">16:46</span>
+  </div>
+  <div class="t">How to become a Burlesque Dancer.</div>
+  <div class="meta">13K views (28d) · 2 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/kuVvJ3AWljg.html" data-pub="1695340800000" data-views="16386" data-out="1.6" data-r50="0.503" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/kuVvJ3AWljg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.60×</span>
+    <span class="len">13:21</span>
+  </div>
+  <div class="t">How to become a Showgirl (I did it in 1 year).</div>
+  <div class="meta">16K views (28d) · 2 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1lyL6EnhUWI.html" data-pub="1694822400000" data-views="19808" data-out="1.94" data-r50="0.4515" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1lyL6EnhUWI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.94×</span>
+    <span class="len">10:52</span>
+  </div>
+  <div class="t">How to become a Burlesque Dancer.</div>
+  <div class="meta">20K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/AxrFji3SjH4.html" data-pub="1536537600000" data-views="4266" data-out="1.03" data-r50="0.2181" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AxrFji3SjH4/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.03×</span>
+    <span class="len">19:18</span>
+  </div>
+  <div class="t">How to Become Confident.</div>
+  <div class="meta">4K views (28d) · 7 years ago · 22% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">A Day In My Life | ___</span>
+    <span class="fstats">
+      <b class="f-cold">0.68×</b>
+      <span>14 videos</span>
+      <span>5K median views</span>
+      <span>33% at half · 14 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A vlog following her through daily life in a specific place or phase.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/mjTurZyEWro.html" data-pub="1715990400000" data-views="5044" data-out="0.8" data-r50="0.3165" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mjTurZyEWro/mqdefault.jpg" alt="">
+    <span class="score out-down">0.80×</span>
+    <span class="len">27:59</span>
+  </div>
+  <div class="t">Come to Italy with us | Italy, Sicily &amp; Rome VLOG</div>
+  <div class="meta">5K views (28d) · 2 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/B1czolUylrY.html" data-pub="1652227200000" data-views="5657" data-out="0.53" data-r50="0.3099" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/B1czolUylrY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.53×</span>
+    <span class="len">10:42</span>
+  </div>
+  <div class="t">VLOG | A Day In My Life At My Boyfriends House.</div>
+  <div class="meta">6K views (28d) · 4 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/yuE7q74NDRM.html" data-pub="1643760000000" data-views="5791" data-out="0.41" data-r50="0.3237" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/yuE7q74NDRM/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.41×</span>
+    <span class="len">22:51</span>
+  </div>
+  <div class="t">Ranch Life in Tennessee | Episode 3</div>
+  <div class="meta">6K views (28d) · 4 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/nqh3RY_mPsI.html" data-pub="1643414400000" data-views="4064" data-out="0.29" data-r50="0.3524" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nqh3RY_mPsI/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.29×</span>
+    <span class="len">10:53</span>
+  </div>
+  <div class="t">Ranch Life in Tennessee | Tour of Were I Worked!</div>
+  <div class="meta">4K views (28d) · 4 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/mYbKa6i_gJ0.html" data-pub="1642982400000" data-views="5348" data-out="0.38" data-r50="0.397" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mYbKa6i_gJ0/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.38×</span>
+    <span class="len">16:53</span>
+  </div>
+  <div class="t">Ranch Life in Tennessee | Episode 2</div>
+  <div class="meta">5K views (28d) · 4 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/aZ8bEecoRCE.html" data-pub="1641945600000" data-views="10500" data-out="1.17" data-r50="0.2831" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aZ8bEecoRCE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.17×</span>
+    <span class="len">19:57</span>
+  </div>
+  <div class="t">A British girl tries Ranch Life in Tennessee.</div>
+  <div class="meta">11K views (28d) · 4 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/v7I3Ttl_yOw.html" data-pub="1639008000000" data-views="9350" data-out="0.87" data-r50="0.5015" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/v7I3Ttl_yOw/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">11:43</span>
+  </div>
+  <div class="t">My first 2 weeks in the USA.</div>
+  <div class="meta">9K views (28d) · 4 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1GPtK8_E0K4.html" data-pub="1634774400000" data-views="9553" data-out="0.62" data-r50="0.4522" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1GPtK8_E0K4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">11:32</span>
+  </div>
+  <div class="t">VLOG | A Day in My Life Living in a Seaside Town.</div>
+  <div class="meta">10K views (28d) · 4 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/58zZvd9AonI.html" data-pub="1589846400000" data-views="35817" data-out="0.23" data-r50="0.393" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/58zZvd9AonI/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.23×</span>
+    <span class="len">14:26</span>
+  </div>
+  <div class="t">a day in my life | lockdown edition</div>
+  <div class="meta">36K views (28d) · 6 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/vJHnDByFpkg.html" data-pub="1538784000000" data-views="2847" data-out="0.63" data-r50="0.3329" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vJHnDByFpkg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.63×</span>
+    <span class="len">9:09</span>
+  </div>
+  <div class="t">First week back | UNI VLOGS</div>
+  <div class="meta">3K views (28d) · 7 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/HFtNL8doEc8.html" data-pub="1534118400000" data-views="3493" data-out="0.73" data-r50="0.4113" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HFtNL8doEc8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.73×</span>
+    <span class="len">7:25</span>
+  </div>
+  <div class="t">When a Baby Seagul gets in your flat | Vlog</div>
+  <div class="meta">3K views (28d) · 8 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/2bKklSYh4vo.html" data-pub="1527292800000" data-views="4303" data-out="0.94" data-r50="0.277" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2bKklSYh4vo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">9:06</span>
+  </div>
+  <div class="t">Having the time of our lives | STUDENT VLOG</div>
+  <div class="meta">4K views (28d) · 8 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/iQgQODcWtF4.html" data-pub="1525219200000" data-views="3905" data-out="0.85" data-r50="0.2994" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iQgQODcWtF4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">7:10</span>
+  </div>
+  <div class="t">I passed my Clown Exam! | Student Vlog</div>
+  <div class="meta">4K views (28d) · 8 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/xACZgS_ni6s.html" data-pub="1521417600000" data-views="4102" data-out="0.81" data-r50="0.3174" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xACZgS_ni6s/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.81×</span>
+    <span class="len">8:54</span>
+  </div>
+  <div class="t">VLOG | Chubby Bunny, student films &amp; Beach evening</div>
+  <div class="meta">4K views (28d) · 8 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To ___ Nails</span>
+    <span class="fstats">
+      <b class="f-cold">0.66×</b>
+      <span>10 videos</span>
+      <span>18K median views</span>
+      <span>36% at half · 10 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A tutorial or routine for growing, fixing or doing her natural nails.</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ZibkZUKmy0w.html" data-pub="1747008000000" data-views="6222" data-out="0.18" data-r50="0.3691" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZibkZUKmy0w/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.18×</span>
+    <span class="len">13:54</span>
+  </div>
+  <div class="t">how to paint your nails PERFECTLY.</div>
+  <div class="meta">6K views (28d) · 1 year ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/IhhYMPXrn6E.html" data-pub="1734307200000" data-views="14509" data-out="0.99" data-r50="0.2644" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IhhYMPXrn6E/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">18:34</span>
+  </div>
+  <div class="t">How to grow your natural nails really long.</div>
+  <div class="meta">15K views (28d) · 1 year ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/A76T-Dg0Muw.html" data-pub="1731628800000" data-views="15130" data-out="1.29" data-r50="0.2966" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/A76T-Dg0Muw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.29×</span>
+    <span class="len">15:11</span>
+  </div>
+  <div class="t">How to grow your nails. 10 steps to REAL nail growth.</div>
+  <div class="meta">15K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/sD9c071RRHY.html" data-pub="1722902400000" data-views="6547" data-out="0.7" data-r50="0.3404" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sD9c071RRHY/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">27:49</span>
+  </div>
+  <div class="t">I show you how i do my natural nails (while we have a girly chat and catch up)</div>
+  <div class="meta">7K views (28d) · 2 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/GfcJZ9sx1tk.html" data-pub="1717804800000" data-views="3704" data-out="0.6" data-r50="0.6488" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GfcJZ9sx1tk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">4:29</span>
+  </div>
+  <div class="t">How to fix a broken nail with a tea bag.</div>
+  <div class="meta">4K views (28d) · 2 years ago · 65% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/AbCfi8N8h0M.html" data-pub="1606176000000" data-views="22411" data-out="0.2" data-r50="0.3378" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AbCfi8N8h0M/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.20×</span>
+    <span class="len">15:30</span>
+  </div>
+  <div class="t">My Winter Nail Care Routine.</div>
+  <div class="meta">22K views (28d) · 5 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/TYmCEgvsHz8.html" data-pub="1584576000000" data-views="104512" data-out="0.47" data-r50="0.3942" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TYmCEgvsHz8/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.47×</span>
+    <span class="len">7:10</span>
+  </div>
+  <div class="t">Growing Out Damaged Nails for 30 Days.</div>
+  <div class="meta">105K views (28d) · 6 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/FAWyM5Z0RwE.html" data-pub="1580860800000" data-views="154557" data-out="0.61" data-r50="0.2428" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FAWyM5Z0RwE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">7:37</span>
+  </div>
+  <div class="t">Cutting off my long natural nails... again.</div>
+  <div class="meta">155K views (28d) · 6 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YOhDtNl3MYw.html" data-pub="1530576000000" data-views="20216" data-out="4.71" data-r50="0.3981" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YOhDtNl3MYw/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.71×</span>
+    <span class="len">8:21</span>
+  </div>
+  <div class="t">HOW I FIXED MY DAMAGED NAILS</div>
+  <div class="meta">20K views (28d) · 8 years ago · 40% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Aoyz-JeLItA.html" data-pub="1471910400000" data-views="23400" data-out="1.13" data-r50="0.4377" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Aoyz-JeLItA/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">6:46</span>
+  </div>
+  <div class="t">How To: Natural Coffin Nails 💅🏼⎮Isabella</div>
+  <div class="meta">23K views (28d) · 10 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>107 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/UdkOXOAQ9XI.html" data-pub="1787788800000" data-views="11909" data-out="2.35" data-r50="0.3175" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UdkOXOAQ9XI/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.35×</span>
+    <span class="len">28:31</span>
+  </div>
+  <div class="t">Building my Fabulous Era wardrobe | Everything I bought in 9 months in Bali.</div>
+  <div class="meta">12K views (28d) · 6 days ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YN8iPI-LDvw.html" data-pub="1782950400000" data-views="4089" data-out="0.59" data-r50="0.2674" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YN8iPI-LDvw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">31:22</span>
+  </div>
+  <div class="t">I tried RF on my face for 27 days...</div>
+  <div class="meta">4K views (28d) · 2 months ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/70zVBKBfOd8.html" data-pub="1780963200000" data-views="3704" data-out="0.54" data-r50="0.3962" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/70zVBKBfOd8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.54×</span>
+    <span class="len">13:24</span>
+  </div>
+  <div class="t">Let&#39;s fix my &#39;alcohol face&#39;.</div>
+  <div class="meta">4K views (28d) · 2 months ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/tX9m1fGJszc.html" data-pub="1779062400000" data-views="3549" data-out="0.51" data-r50="0.2717" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tX9m1fGJszc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.51×</span>
+    <span class="len">18:44</span>
+  </div>
+  <div class="t">How the Clothes you chose changes your Brain.</div>
+  <div class="meta">4K views (28d) · 3 months ago · 27% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/6Ymd5KXu5VY.html" data-pub="1777075200000" data-views="17786" data-out="3.51" data-r50="0.3347" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6Ymd5KXu5VY/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.51×</span>
+    <span class="len">30:18</span>
+  </div>
+  <div class="t">Why left my YouTube channel.</div>
+  <div class="meta">18K views (28d) · 4 months ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/AiSaPCeb_Bw.html" data-pub="1774915200000" data-views="14872" data-out="2.93" data-r50="0.3568" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AiSaPCeb_Bw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.93×</span>
+    <span class="len">18:42</span>
+  </div>
+  <div class="t">I moved to Bali and THIS is how it&#39;s changed my hair...</div>
+  <div class="meta">15K views (28d) · 5 months ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/JOxka8ohMxo.html" data-pub="1740787200000" data-views="72132" data-out="4.02" data-r50="0.3709" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JOxka8ohMxo/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.02×</span>
+    <span class="len">23:26</span>
+  </div>
+  <div class="t">5 Years of hair growth | Don’t make these mistakes if you want LONG HAIR.</div>
+  <div class="meta">72K views (28d) · 1 year ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1PA1oCVDn3o.html" data-pub="1739145600000" data-views="9526" data-out="0.39" data-r50="0.2424" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1PA1oCVDn3o/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.39×</span>
+    <span class="len">31:41</span>
+  </div>
+  <div class="t">How to make the most of things when you&#39;re lonely, stuck and uninspired.</div>
+  <div class="meta">10K views (28d) · 1 year ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/waPNPZVNXC0.html" data-pub="1737417600000" data-views="14285" data-out="1.19" data-r50="0.4146" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/waPNPZVNXC0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.19×</span>
+    <span class="len">16:47</span>
+  </div>
+  <div class="t">Which Volume Product Works Best? Let&#39;s test them.</div>
+  <div class="meta">14K views (28d) · 1 year ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OZV5_2jzr-I.html" data-pub="1736726400000" data-views="566321" data-out="47.57" data-r50="0.1923" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OZV5_2jzr-I/mqdefault.jpg" alt="">
+    <span class="score out-hot">47.57×</span>
+    <span class="len">19:37</span>
+  </div>
+  <div class="t">Why you will never get ‘That Hair’. (I tried for 10 years, brutally honest)</div>
+  <div class="meta">566K views (28d) · 1 year ago · 19% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/w_rQfW_B-T4.html" data-pub="1736121600000" data-views="8288" data-out="0.58" data-r50="0.3509" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/w_rQfW_B-T4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.58×</span>
+    <span class="len">29:40</span>
+  </div>
+  <div class="t">Attempting to Decorate.</div>
+  <div class="meta">8K views (28d) · 1 year ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/LOXW90lvYHE.html" data-pub="1733702400000" data-views="8963" data-out="0.6" data-r50="0.3122" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LOXW90lvYHE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">13:01</span>
+  </div>
+  <div class="t">wearing my blonde wig in public... how to prep, style &amp; wear the Raregen Cleo wig!</div>
+  <div class="meta">9K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/9FpHFiEz5QQ.html" data-pub="1733097600000" data-views="6868" data-out="0.46" data-r50="0.3142" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9FpHFiEz5QQ/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.46×</span>
+    <span class="len">16:21</span>
+  </div>
+  <div class="t">The BEST HAIR MASKS according to commenters.</div>
+  <div class="meta">7K views (28d) · 1 year ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Hz_ZianF-u0.html" data-pub="1725926400000" data-views="44070" data-out="4.38" data-r50="0.2976" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Hz_ZianF-u0/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.38×</span>
+    <span class="len">10:09</span>
+  </div>
+  <div class="t">I tried CASTOR OIL on just 1 eyebrow for 60 days. My growth results.</div>
+  <div class="meta">44K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/V7ucNdG4jHs.html" data-pub="1725148800000" data-views="13231" data-out="1.31" data-r50="0.5248" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/V7ucNdG4jHs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.31×</span>
+    <span class="len">8:18</span>
+  </div>
+  <div class="t">I got a BAD Hair cut... Styling my hair until i like it again.</div>
+  <div class="meta">13K views (28d) · 2 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/7Qndkak6beE.html" data-pub="1723852800000" data-views="5432" data-out="0.54" data-r50="0.3858" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7Qndkak6beE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.54×</span>
+    <span class="len">15:24</span>
+  </div>
+  <div class="t">Beauty Maintenance &amp; Skincare Pamper Routine | Reset with me</div>
+  <div class="meta">5K views (28d) · 2 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/pw-XupXj_3E.html" data-pub="1719792000000" data-views="6017" data-out="1.02" data-r50="0.3058" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pw-XupXj_3E/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">24:04</span>
+  </div>
+  <div class="t">7 days of skincare | Daily skin routine &amp; preparing for aging in my late 20s.</div>
+  <div class="meta">6K views (28d) · 2 years ago · 31% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ZouNnl3ecBs.html" data-pub="1718582400000" data-views="5269" data-out="0.85" data-r50="0.2796" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZouNnl3ecBs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">21:20</span>
+  </div>
+  <div class="t">My Perfect Dewy Glowy Makeup for Summer (in depth tutorial)</div>
+  <div class="meta">5K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/p0XMOIsq7Bs.html" data-pub="1716595200000" data-views="8629" data-out="1.41" data-r50="0.3397" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p0XMOIsq7Bs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.41×</span>
+    <span class="len">31:42</span>
+  </div>
+  <div class="t">Failures, Earnings, Relationships, Inner Healing | Answering your questions</div>
+  <div class="meta">9K views (28d) · 2 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/NuiwS1NQXtE.html" data-pub="1714780800000" data-views="6345" data-out="0.86" data-r50="0.4861" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/NuiwS1NQXtE/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">13:31</span>
+  </div>
+  <div class="t">Travel Beauty Routine &amp; Prep | Pack with me for SICILY</div>
+  <div class="meta">6K views (28d) · 2 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/R-OTLw8_Pj4.html" data-pub="1712966400000" data-views="6207" data-out="0.72" data-r50="0.4083" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/R-OTLw8_Pj4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">16:47</span>
+  </div>
+  <div class="t">Productive RESET | Doing the things nobody likes doing...</div>
+  <div class="meta">6K views (28d) · 2 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/wVjopAbAUs4.html" data-pub="1712361600000" data-views="10877" data-out="1.46" data-r50="0.4145" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/wVjopAbAUs4/mqdefault.jpg" alt="">
+    <span class="score out-up">1.46×</span>
+    <span class="len">18:06</span>
+  </div>
+  <div class="t">48h+ Pamper &amp; Beauty Reset | Self Care, Maintenance &amp; Glow Up!</div>
+  <div class="meta">11K views (28d) · 2 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/mRDE94cBhyU.html" data-pub="1707696000000" data-views="8528" data-out="1.15" data-r50="0.3621" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mRDE94cBhyU/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">26:26</span>
+  </div>
+  <div class="t">Rebranding my style to &#39;Mob Wife&#39; &amp; Bold Glamour in 2025</div>
+  <div class="meta">9K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/PePgPxPBzUw.html" data-pub="1705104000000" data-views="20662" data-out="2.42" data-r50="0.3573" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/PePgPxPBzUw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.42×</span>
+    <span class="len">18:18</span>
+  </div>
+  <div class="t">Re-branding my Aesthetic 2025 | MOB WIFE, Dark Feminine, Old Money, Femme Fatale, Vintage Glam.</div>
+  <div class="meta">21K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/MV3b5Aez8_w.html" data-pub="1702684800000" data-views="6175" data-out="0.58" data-r50="0.5023" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MV3b5Aez8_w/mqdefault.jpg" alt="">
+    <span class="score out-down">0.58×</span>
+    <span class="len">9:05</span>
+  </div>
+  <div class="t">How Much do Burlesque Dancers Earn? | Revealing my earnings so far</div>
+  <div class="meta">6K views (28d) · 2 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/9zBXnWub4ZM.html" data-pub="1700697600000" data-views="5944" data-out="0.5" data-r50="0.2813" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9zBXnWub4ZM/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.50×</span>
+    <span class="len">10:40</span>
+  </div>
+  <div class="t">Revealing HOW MUCH I SPENT to become a Burlesque Dancer.</div>
+  <div class="meta">6K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/sNhCaBwvR5o.html" data-pub="1699660800000" data-views="8516" data-out="0.71" data-r50="0.275" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sNhCaBwvR5o/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">27:42</span>
+  </div>
+  <div class="t">Burlesque Q&amp;A | familys reaction, creepy men, stage fails, nerves, pay?</div>
+  <div class="meta">9K views (28d) · 2 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Tk65vk9CTg8.html" data-pub="1682121600000" data-views="4995" data-out="0.48" data-r50="0.337" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Tk65vk9CTg8/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.48×</span>
+    <span class="len">11:36</span>
+  </div>
+  <div class="t">Daily Skincare Routine for C L E A R Skin.</div>
+  <div class="meta">5K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/lxJ4qmrt5Bc.html" data-pub="1679270400000" data-views="5631" data-out="0.52" data-r50="0.4178" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lxJ4qmrt5Bc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">6:55</span>
+  </div>
+  <div class="t">Let&#39;s try a black wig... plus vintage styling.</div>
+  <div class="meta">6K views (28d) · 3 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/d54wdm1KB6I.html" data-pub="1674691200000" data-views="10431" data-out="0.63" data-r50="0.4647" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/d54wdm1KB6I/mqdefault.jpg" alt="">
+    <span class="score out-down">0.63×</span>
+    <span class="len">14:44</span>
+  </div>
+  <div class="t">I Bought Everything from the Bratz Primark range…</div>
+  <div class="meta">10K views (28d) · 3 years ago · 46% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Tejh8XV2wOY.html" data-pub="1674345600000" data-views="16809" data-out="1.22" data-r50="0.3423" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Tejh8XV2wOY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">15:35</span>
+  </div>
+  <div class="t">guys, I think this product made my hair fall out.</div>
+  <div class="meta">17K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/SwjbZ1sKJ3o.html" data-pub="1672358400000" data-views="16386" data-out="1.17" data-r50="0.4036" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/SwjbZ1sKJ3o/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.17×</span>
+    <span class="len">3:27</span>
+  </div>
+  <div class="t">Whole bottle of conditioner on my hair.</div>
+  <div class="meta">16K views (28d) · 3 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/YQ4NxFeLf6Q.html" data-pub="1671235200000" data-views="21870" data-out="1.63" data-r50="0.3409" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/YQ4NxFeLf6Q/mqdefault.jpg" alt="">
+    <span class="score out-up">1.63×</span>
+    <span class="len">15:13</span>
+  </div>
+  <div class="t">Hair Update | products, haircare, routine, styling.</div>
+  <div class="meta">22K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OXjZ6j0qy78.html" data-pub="1670630400000" data-views="30330" data-out="2.26" data-r50="0.39" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OXjZ6j0qy78/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.26×</span>
+    <span class="len">10:58</span>
+  </div>
+  <div class="t">What Happened to My Hair Content?</div>
+  <div class="meta">30K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/6-WsJw_PK0A.html" data-pub="1669507200000" data-views="7843" data-out="0.47" data-r50="0.4819" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6-WsJw_PK0A/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.47×</span>
+    <span class="len">5:27</span>
+  </div>
+  <div class="t">how I RUINED my splits progress.</div>
+  <div class="meta">8K views (28d) · 3 years ago · 48% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Nc4SfxK0sws.html" data-pub="1668816000000" data-views="4548" data-out="0.27" data-r50="0.341" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Nc4SfxK0sws/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.27×</span>
+    <span class="len">20:45</span>
+  </div>
+  <div class="t">VLOG | Eco-friendly things Ido.</div>
+  <div class="meta">5K views (28d) · 3 years ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/jX_4Vi53-K8.html" data-pub="1667347200000" data-views="5075" data-out="0.59" data-r50="0.4121" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jX_4Vi53-K8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">15:49</span>
+  </div>
+  <div class="t">Re-creating ICONIC Pamela outfits from Pam &amp; Tommy.</div>
+  <div class="meta">5K views (28d) · 3 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/t01Sa0n4kmo.html" data-pub="1665792000000" data-views="5207" data-out="0.6" data-r50="0.2467" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/t01Sa0n4kmo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">21:35</span>
+  </div>
+  <div class="t">I&#39;ve had sleep paralysis for 3 years | My experience.</div>
+  <div class="meta">5K views (28d) · 3 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/IN588O9gyd0.html" data-pub="1662768000000" data-views="7658" data-out="0.74" data-r50="0.4277" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IN588O9gyd0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.74×</span>
+    <span class="len">15:36</span>
+  </div>
+  <div class="t">My Morning Routine Living with Mum.</div>
+  <div class="meta">8K views (28d) · 3 years ago · 43% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OT19aGDF4OY.html" data-pub="1660953600000" data-views="10835" data-out="1.13" data-r50="0.2783" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OT19aGDF4OY/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.13×</span>
+    <span class="len">16:32</span>
+  </div>
+  <div class="t">How I Learned To Lucid Dream.</div>
+  <div class="meta">11K views (28d) · 4 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/5tC2ec1FZK4.html" data-pub="1654992000000" data-views="9259" data-out="0.72" data-r50="0.374" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5tC2ec1FZK4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">5:48</span>
+  </div>
+  <div class="t">How I do my &quot;natural&#39; fake freckles.</div>
+  <div class="meta">9K views (28d) · 4 years ago · 37% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/TIGltvDcmXg.html" data-pub="1653696000000" data-views="55664" data-out="5.84" data-r50="0.2018" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TIGltvDcmXg/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.84×</span>
+    <span class="len">18:46</span>
+  </div>
+  <div class="t">My hair splitting compulsion | How I ruined my hair.</div>
+  <div class="meta">56K views (28d) · 4 years ago · 20% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/6SE546O5CSE.html" data-pub="1653091200000" data-views="6050" data-out="0.56" data-r50="0.2607" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6SE546O5CSE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.56×</span>
+    <span class="len">35:40</span>
+  </div>
+  <div class="t">Pamela Anderson&#39;s outfits from Pam &amp; Tommy | Deep Dive</div>
+  <div class="meta">6K views (28d) · 4 years ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/g-AlBD4E42A.html" data-pub="1650672000000" data-views="3467" data-out="0.25" data-r50="0.2256" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/g-AlBD4E42A/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.25×</span>
+    <span class="len">31:47</span>
+  </div>
+  <div class="t">Pam &amp; Tommy Deep Dive | What Really Happened?</div>
+  <div class="meta">3K views (28d) · 4 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/LCPW-Nvqkcw.html" data-pub="1648944000000" data-views="11896" data-out="0.7" data-r50="0.2541" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LCPW-Nvqkcw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">21:16</span>
+  </div>
+  <div class="t">I took 30 days off social media. This is what happened.</div>
+  <div class="meta">12K views (28d) · 4 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/AYBGlSMpH04.html" data-pub="1648857600000" data-views="5706" data-out="0.34" data-r50="0.2824" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AYBGlSMpH04/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.34×</span>
+    <span class="len">13:47</span>
+  </div>
+  <div class="t">Finally talking about my phone addiction.</div>
+  <div class="meta">6K views (28d) · 4 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/caoSP5anDXU.html" data-pub="1648252800000" data-views="33888" data-out="2.27" data-r50="0.3085" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/caoSP5anDXU/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.27×</span>
+    <span class="len">22:48</span>
+  </div>
+  <div class="t">I got a Microscopic Hair Analysis...</div>
+  <div class="meta">34K views (28d) · 4 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/_0Z2NOSDGs0.html" data-pub="1647388800000" data-views="8953" data-out="0.43" data-r50="0.307" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_0Z2NOSDGs0/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.43×</span>
+    <span class="len">24:13</span>
+  </div>
+  <div class="t">Reacting to old videos &amp; photos from my 2007 phone. (you&#39;re welcome)</div>
+  <div class="meta">9K views (28d) · 4 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/tjsMhpSY-Gc.html" data-pub="1646006400000" data-views="17959" data-out="1.1" data-r50="0.4306" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tjsMhpSY-Gc/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.10×</span>
+    <span class="len">7:24</span>
+  </div>
+  <div class="t">Learning The Splits | 30 Day Challenge Results.</div>
+  <div class="meta">18K views (28d) · 4 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/K0eCObxDzMw.html" data-pub="1645833600000" data-views="28776" data-out="2.14" data-r50="0.4331" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/K0eCObxDzMw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.14×</span>
+    <span class="len">8:14</span>
+  </div>
+  <div class="t">Learning The Splits | Where I Went Wrong.</div>
+  <div class="meta">29K views (28d) · 4 years ago · 43% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/uBXOi_9Y2Z8.html" data-pub="1639526400000" data-views="8625" data-out="0.85" data-r50="0.4071" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/uBXOi_9Y2Z8/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">9:21</span>
+  </div>
+  <div class="t">Room Tour (while i&#39;m in America.)</div>
+  <div class="meta">9K views (28d) · 4 years ago · 41% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/O_kLghnnabQ.html" data-pub="1636761600000" data-views="11020" data-out="0.99" data-r50="0.4207" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/O_kLghnnabQ/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">12:14</span>
+  </div>
+  <div class="t">Bratz Haul (but i don&#39;t know who they are)</div>
+  <div class="meta">11K views (28d) · 4 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Bq2zv7FyFWs.html" data-pub="1637452800000" data-views="15523" data-out="1.5" data-r50="0.493" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Bq2zv7FyFWs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.50×</span>
+    <span class="len">9:09</span>
+  </div>
+  <div class="t">Getting myself out of a rut.</div>
+  <div class="meta">16K views (28d) · 4 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/X-aXgA-DkWM.html" data-pub="1638057600000" data-views="9687" data-out="0.9" data-r50="0.3535" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/X-aXgA-DkWM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">19:01</span>
+  </div>
+  <div class="t">What I packed | Travelling to America</div>
+  <div class="meta">10K views (28d) · 4 years ago · 35% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/5t__4O2zckE.html" data-pub="1636156800000" data-views="12672" data-out="1.22" data-r50="0.2579" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5t__4O2zckE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">18:23</span>
+  </div>
+  <div class="t">Bedroom Tour (at my mums house.)</div>
+  <div class="meta">13K views (28d) · 4 years ago · 26% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/3aJomNb8Ukw.html" data-pub="1635379200000" data-views="152426" data-out="12.87" data-r50="0.4407" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3aJomNb8Ukw/mqdefault.jpg" alt="">
+    <span class="score out-hot">12.87×</span>
+    <span class="len">4:10</span>
+  </div>
+  <div class="t">Dying My Hair Red.</div>
+  <div class="meta">152K views (28d) · 4 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/U2FygJ0aFdg.html" data-pub="1631750400000" data-views="15342" data-out="0.51" data-r50="0.359" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/U2FygJ0aFdg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.51×</span>
+    <span class="len">25:00</span>
+  </div>
+  <div class="t">Flat Tour | I show you around my UK flat</div>
+  <div class="meta">15K views (28d) · 4 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/DzKwiXGvJuE.html" data-pub="1629244800000" data-views="11631" data-out="0.42" data-r50="0.377" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DzKwiXGvJuE/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">25:59</span>
+  </div>
+  <div class="t">The Story Of My Nightmare Driving Test.</div>
+  <div class="meta">12K views (28d) · 5 years ago · 38% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/rJ7Hd25XwW0.html" data-pub="1628812800000" data-views="26911" data-out="1.09" data-r50="0.4659" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rJ7Hd25XwW0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">6:51</span>
+  </div>
+  <div class="t">Removing my Acrylics the Messy way...</div>
+  <div class="meta">27K views (28d) · 5 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Wd3cx8bdDto.html" data-pub="1627084800000" data-views="15493" data-out="0.5" data-r50="0.3511" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Wd3cx8bdDto/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.50×</span>
+    <span class="len">15:42</span>
+  </div>
+  <div class="t">I got the Bratz Makeup.</div>
+  <div class="meta">15K views (28d) · 5 years ago · 35% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/JThpcssHAms.html" data-pub="1622851200000" data-views="64665" data-out="2.06" data-r50="0.5687" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/JThpcssHAms/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.06×</span>
+    <span class="len">5:14</span>
+  </div>
+  <div class="t">I dyed my hair for the first time ever.</div>
+  <div class="meta">65K views (28d) · 5 years ago · 57% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/WXy9QRqJqlw.html" data-pub="1620950400000" data-views="9532" data-out="0.23" data-r50="0.7975" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WXy9QRqJqlw/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.23×</span>
+    <span class="len">0:27</span>
+  </div>
+  <div class="t">Bratz but it&#39;s BoJack Horseman.</div>
+  <div class="meta">10K views (28d) · 5 years ago · 80% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/bNgPEzuX7ps.html" data-pub="1618012800000" data-views="34230" data-out="0.57" data-r50="0.4873" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bNgPEzuX7ps/mqdefault.jpg" alt="">
+    <span class="score out-down">0.57×</span>
+    <span class="len">7:18</span>
+  </div>
+  <div class="t">Olaplex Explained.</div>
+  <div class="meta">34K views (28d) · 5 years ago · 49% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/N4JVyr9XQmo.html" data-pub="1613779200000" data-views="37910" data-out="0.37" data-r50="0.3608" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/N4JVyr9XQmo/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.37×</span>
+    <span class="len">19:03</span>
+  </div>
+  <div class="t">24 Hour FULL GLAM Glow Up Transformation.</div>
+  <div class="meta">38K views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Rr1EipmCW0Y.html" data-pub="1611964800000" data-views="120248" data-out="1.6" data-r50="0.4438" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Rr1EipmCW0Y/mqdefault.jpg" alt="">
+    <span class="score out-up">1.60×</span>
+    <span class="len">12:32</span>
+  </div>
+  <div class="t">is conditioner actually damaging our hair?</div>
+  <div class="meta">120K views (28d) · 5 years ago · 44% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/mZzc-e2BSCA.html" data-pub="1603843200000" data-views="48989" data-out="0.45" data-r50="0.3269" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mZzc-e2BSCA/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.45×</span>
+    <span class="len">16:21</span>
+  </div>
+  <div class="t">Autumn GRWM | Life Update &amp; Chat</div>
+  <div class="meta">49K views (28d) · 5 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/fLgzO2rcZT4.html" data-pub="1598400000000" data-views="32820" data-out="0.27" data-r50="0.3481" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fLgzO2rcZT4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.27×</span>
+    <span class="len">10:44</span>
+  </div>
+  <div class="t">I learn to Rollerblade in 5 days.</div>
+  <div class="meta">33K views (28d) · 6 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/odgvjQkc-jY.html" data-pub="1597449600000" data-views="43165" data-out="0.36" data-r50="0.3659" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/odgvjQkc-jY/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.36×</span>
+    <span class="len">15:07</span>
+  </div>
+  <div class="t">Skincare habits I formed in the last 6 years.</div>
+  <div class="meta">43K views (28d) · 6 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/1mkB-ENIeco.html" data-pub="1596585600000" data-views="289424" data-out="2.61" data-r50="0.3241" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1mkB-ENIeco/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.61×</span>
+    <span class="len">8:39</span>
+  </div>
+  <div class="t">I actually found a really good wig.</div>
+  <div class="meta">289K views (28d) · 6 years ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/I8aoat64qWM.html" data-pub="1595030400000" data-views="166208" data-out="1.37" data-r50="0.4826" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/I8aoat64qWM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.37×</span>
+    <span class="len">4:18</span>
+  </div>
+  <div class="t">what happens when i brush out my wavy hair.</div>
+  <div class="meta">166K views (28d) · 6 years ago · 48% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Qx92v2zLcII.html" data-pub="1594425600000" data-views="116325" data-out="0.82" data-r50="0.3835" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Qx92v2zLcII/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">10:10</span>
+  </div>
+  <div class="t">Hair Struggles | Why it&#39;s not &quot;Just Hair.&quot;</div>
+  <div class="meta">116K views (28d) · 6 years ago · 38% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/DxsCFdn1lBY.html" data-pub="1587513600000" data-views="36878" data-out="0.24" data-r50="0.3349" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DxsCFdn1lBY/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.24×</span>
+    <span class="len">27:46</span>
+  </div>
+  <div class="t">Re-organising my Entire Wardrobe.</div>
+  <div class="meta">37K views (28d) · 6 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/K9Ie7aeyYqg.html" data-pub="1582156800000" data-views="228075" data-out="1.05" data-r50="0.5159" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/K9Ie7aeyYqg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.05×</span>
+    <span class="len">13:26</span>
+  </div>
+  <div class="t">THE REAL WAY to do the Rice Water Hair Rinse | Yao Women&#39;s Recipe</div>
+  <div class="meta">228K views (28d) · 6 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/TjwCXJqeYrI.html" data-pub="1572307200000" data-views="200747" data-out="0.7" data-r50="0.4812" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TjwCXJqeYrI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">17:48</span>
+  </div>
+  <div class="t">The Only video you need to watch about Apple Cider Vinegar Hair Rinsing.</div>
+  <div class="meta">201K views (28d) · 6 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/tABTkyubapQ.html" data-pub="1569628800000" data-views="1247525" data-out="42.62" data-r50="0.4995" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/tABTkyubapQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">42.62×</span>
+    <span class="len">5:11</span>
+  </div>
+  <div class="t">I left my shellac for 100 days.</div>
+  <div class="meta">1.2M views (28d) · 6 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/QdtGU1NSd2M.html" data-pub="1566864000000" data-views="10251" data-out="0.03" data-r50="0.1285" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QdtGU1NSd2M/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.03×</span>
+    <span class="len">11:42</span>
+  </div>
+  <div class="t">90s/00s Thrifted Holiday Outfits | Shop my closet</div>
+  <div class="meta">10K views (28d) · 7 years ago · 13% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/7BHVfCCKO8c.html" data-pub="1565827200000" data-views="3804" data-out="0.01" data-r50="0.2104" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7BHVfCCKO8c/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.01×</span>
+    <span class="len">16:33</span>
+  </div>
+  <div class="t">ROOM TOUR 🐰University Student Edition</div>
+  <div class="meta">4K views (28d) · 7 years ago · 21% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/ntDkhGr4EoU.html" data-pub="1565222400000" data-views="3683" data-out="0.01" data-r50="0.2543" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ntDkhGr4EoU/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.01×</span>
+    <span class="len">15:40</span>
+  </div>
+  <div class="t">TOUR OF MY FLAT as a University Student</div>
+  <div class="meta">4K views (28d) · 7 years ago · 25% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/jZ2GFgxaxXM.html" data-pub="1563580800000" data-views="3568" data-out="0.01" data-r50="0.1638" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jZ2GFgxaxXM/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.01×</span>
+    <span class="len">13:33</span>
+  </div>
+  <div class="t">I try to make my Holiday look like it&#39;s 2002.</div>
+  <div class="meta">4K views (28d) · 7 years ago · 16% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/f62eJBrfQf4.html" data-pub="1545955200000" data-views="85565" data-out="22.3" data-r50="0.3492" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/f62eJBrfQf4/mqdefault.jpg" alt="">
+    <span class="score out-hot">22.30×</span>
+    <span class="len">21:09</span>
+  </div>
+  <div class="t">GIVING MY NAILS A MAKEOVER!</div>
+  <div class="meta">86K views (28d) · 7 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/-NJzyXitl4M.html" data-pub="1540080000000" data-views="3325" data-out="0.73" data-r50="0.2544" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-NJzyXitl4M/mqdefault.jpg" alt="">
+    <span class="score out-down">0.73×</span>
+    <span class="len">5:11</span>
+  </div>
+  <div class="t">what happens on a night out with drag queens.</div>
+  <div class="meta">3K views (28d) · 7 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/OsCVw9m_f44.html" data-pub="1539043200000" data-views="4782" data-out="1.25" data-r50="0.3766" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OsCVw9m_f44/mqdefault.jpg" alt="">
+    <span class="score out-up">1.25×</span>
+    <span class="len">9:54</span>
+  </div>
+  <div class="t">THIS MADE MY HAIR GROW...</div>
+  <div class="meta">5K views (28d) · 7 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/iCBRwENLzhw.html" data-pub="1537833600000" data-views="3408" data-out="0.75" data-r50="0.455" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iCBRwENLzhw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">10:25</span>
+  </div>
+  <div class="t">Plan with me | Back on track for University</div>
+  <div class="meta">3K views (28d) · 7 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/UeB81cc7F7A.html" data-pub="1537056000000" data-views="3092" data-out="0.68" data-r50="0.3992" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UeB81cc7F7A/mqdefault.jpg" alt="">
+    <span class="score out-down">0.68×</span>
+    <span class="len">7:35</span>
+  </div>
+  <div class="t">Trying to adult.</div>
+  <div class="meta">3K views (28d) · 7 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/QRgxe_JaA5M.html" data-pub="1535587200000" data-views="5043" data-out="1.23" data-r50="0.3008" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QRgxe_JaA5M/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.23×</span>
+    <span class="len">10:02</span>
+  </div>
+  <div class="t">D A r K  &amp;  S P i C y  90s Outfits ♡</div>
+  <div class="meta">5K views (28d) · 8 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/7mLcsIGhR-M.html" data-pub="1535068800000" data-views="5307" data-out="1.29" data-r50="0.325" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7mLcsIGhR-M/mqdefault.jpg" alt="">
+    <span class="score out-up">1.29×</span>
+    <span class="len">11:55</span>
+  </div>
+  <div class="t">I got bangs and creep touches my crotch</div>
+  <div class="meta">5K views (28d) · 8 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Iu7dwlegI8I.html" data-pub="1534636800000" data-views="4911" data-out="1.17" data-r50="0.2711" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Iu7dwlegI8I/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.17×</span>
+    <span class="len">19:36</span>
+  </div>
+  <div class="t">22 Life Lessons In 22 Years.</div>
+  <div class="meta">5K views (28d) · 8 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/AFYA7UcQrO8.html" data-pub="1533772800000" data-views="3942" data-out="0.82" data-r50="0.3998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AFYA7UcQrO8/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">12:31</span>
+  </div>
+  <div class="t">Reset Routine | How to feel better</div>
+  <div class="meta">4K views (28d) · 8 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/IieRI-bbgG8.html" data-pub="1533168000000" data-views="18484" data-out="4.13" data-r50="0.1363" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/IieRI-bbgG8/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.13×</span>
+    <span class="len">10:22</span>
+  </div>
+  <div class="t">Neighbour caught me naked...</div>
+  <div class="meta">18K views (28d) · 8 years ago · 14% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/W9IY4HT8LTY.html" data-pub="1531612800000" data-views="4147" data-out="0.87" data-r50="0.4215" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/W9IY4HT8LTY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">10:34</span>
+  </div>
+  <div class="t">Looking after my mind, body and soul | VLOG</div>
+  <div class="meta">4K views (28d) · 8 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Igk70jlNDac.html" data-pub="1530835200000" data-views="4277" data-out="0.97" data-r50="0.4245" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Igk70jlNDac/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">13:07</span>
+  </div>
+  <div class="t">MOVING INTO MY TOWN FLAT!</div>
+  <div class="meta">4K views (28d) · 8 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/MR3TJ9Qcw0w.html" data-pub="1531267200000" data-views="4670" data-out="1.11" data-r50="0.3922" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MR3TJ9Qcw0w/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">9:30</span>
+  </div>
+  <div class="t">8 HACKS TO MAKE YOUR LIFE EASIER.</div>
+  <div class="meta">5K views (28d) · 8 years ago · 39% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/o83Gj3T8wPQ.html" data-pub="1529020800000" data-views="11537" data-out="2.74" data-r50="0.2696" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/o83Gj3T8wPQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.74×</span>
+    <span class="len">13:29</span>
+  </div>
+  <div class="t">BOOJIE AF ROOM TOUR</div>
+  <div class="meta">12K views (28d) · 8 years ago · 27% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/_hIovJl_-r8.html" data-pub="1528329600000" data-views="2571" data-out="0.6" data-r50="0.3906" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_hIovJl_-r8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.60×</span>
+    <span class="len">4:35</span>
+  </div>
+  <div class="t">Meeting Kameron Michaels!! | DRAG NIGHT</div>
+  <div class="meta">3K views (28d) · 8 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/249D__K49Go.html" data-pub="1525737600000" data-views="3173" data-out="0.69" data-r50="0.2668" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/249D__K49Go/mqdefault.jpg" alt="">
+    <span class="score out-down">0.69×</span>
+    <span class="len">3:44</span>
+  </div>
+  <div class="t">A year of my life</div>
+  <div class="meta">3K views (28d) · 8 years ago · 27% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/-Um4f7XEt6w.html" data-pub="1524268800000" data-views="4858" data-out="1.16" data-r50="0.4169" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-Um4f7XEt6w/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">6:58</span>
+  </div>
+  <div class="t">BIRTHDAY PARTAY GLAMOUR</div>
+  <div class="meta">5K views (28d) · 8 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/Ut4crhWJatI.html" data-pub="1523577600000" data-views="5280" data-out="1.26" data-r50="0.3712" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ut4crhWJatI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.26×</span>
+    <span class="len">5:57</span>
+  </div>
+  <div class="t">What I wore on Holiday 2002 Edition</div>
+  <div class="meta">5K views (28d) · 8 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/eu2f24ZyMSI.html" data-pub="1520121600000" data-views="27980" data-out="6.11" data-r50="0.3405" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/eu2f24ZyMSI/mqdefault.jpg" alt="">
+    <span class="score out-hot">6.11×</span>
+    <span class="len">6:35</span>
+  </div>
+  <div class="t">What Acrylics did to my nails</div>
+  <div class="meta">28K views (28d) · 8 years ago · 34% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/RH1x5uyG2qM.html" data-pub="1514764800000" data-views="11080" data-out="1.07" data-r50="0.2458" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/RH1x5uyG2qM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">5:56</span>
+  </div>
+  <div class="t">MA SPARKLEY ACRYLIC NAILS</div>
+  <div class="meta">11K views (28d) · 8 years ago · 25% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/MQYpNgADIO4.html" data-pub="1508544000000" data-views="60546" data-out="5.4" data-r50="0.2651" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MQYpNgADIO4/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.40×</span>
+    <span class="len">9:22</span>
+  </div>
+  <div class="t">MY FIRST ACRYLIC NAILS</div>
+  <div class="meta">61K views (28d) · 8 years ago · 27% at half</div>
+  <div class="verdict">3 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/5cWzl1wTuAo.html" data-pub="1505260800000" data-views="9433" data-out="0.59" data-r50="0.2241" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5cWzl1wTuAo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">13:05</span>
+  </div>
+  <div class="t">RETRO   2 0 0 1   V I B E S   H A U L ♡ P A R T 2</div>
+  <div class="meta">9K views (28d) · 8 years ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/vXXgbuc4aEg.html" data-pub="1505260800000" data-views="11327" data-out="0.71" data-r50="0.2327" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vXXgbuc4aEg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">15:46</span>
+  </div>
+  <div class="t">2 0 0 1  V I B E S   H A U L ♡ Like. OMG. Totally.</div>
+  <div class="meta">11K views (28d) · 8 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4A7WhzXCx6I.html" data-pub="1502064000000" data-views="20214" data-out="1.77" data-r50="0.2213" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4A7WhzXCx6I/mqdefault.jpg" alt="">
+    <span class="score out-up">1.77×</span>
+    <span class="len">11:26</span>
+  </div>
+  <div class="t">THEY&#39;RE GROWING BACK FAST! | Nail Update</div>
+  <div class="meta">20K views (28d) · 9 years ago · 22% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/HhF7X7U2fsA.html" data-pub="1501459200000" data-views="7560" data-out="0.48" data-r50="0.2585" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HhF7X7U2fsA/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.48×</span>
+    <span class="len">10:52</span>
+  </div>
+  <div class="t">Brazilian Keratin Permenant Straightening Q&amp;A / FAQ ♡</div>
+  <div class="meta">8K views (28d) · 9 years ago · 26% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/J_V3Yt4PC2k.html" data-pub="1490400000000" data-views="44490" data-out="2.14" data-r50="0.3633" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/J_V3Yt4PC2k/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.14×</span>
+    <span class="len">6:47</span>
+  </div>
+  <div class="t">HOW DO I WIPE MY ASS? Long Nails Update</div>
+  <div class="meta">44K views (28d) · 9 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/4rzaZiulcRI.html" data-pub="1484438400000" data-views="63276" data-out="3.04" data-r50="0.1535" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4rzaZiulcRI/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.04×</span>
+    <span class="len">9:12</span>
+  </div>
+  <div class="t">MY REALLY REALLY LONG NAILS</div>
+  <div class="meta">63K views (28d) · 9 years ago · 15% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCXDaJ9eCRKt4f40zmOseRUA/D21UobPaRSo.html" data-pub="1481155200000" data-views="21354" data-out="0.98" data-r50="0.3212" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/D21UobPaRSo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">5:57</span>
+  </div>
+  <div class="t">HOW I DO STUFF WITH LONG ASS NAILS. (Yes, they&#39;re real)</div>
+  <div class="meta">21K views (28d) · 9 years ago · 32% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">98 of 205 videos sit in a named format · library built 2026-09-02.</p>
+
 
 
 
@@ -3997,7 +6393,7 @@ means two things move together on this channel, which is not the same as one cau
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

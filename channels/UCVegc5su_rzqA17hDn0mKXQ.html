@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/qvrKNHdFmPcbDOMSa1kK-S5hR9v_-ykbvueApKOmcGVakzWTF25XE6zJx8sAKkGIBH-c77iIsps=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Coffey Custom Builds</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@coffeycustombuilds" target="_blank" rel="noopener">@coffeycustombuilds</a> · 39K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@coffeycustombuilds" target="_blank" rel="noopener">@coffeycustombuilds</a> · 39K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -810,6 +842,58 @@ means two things move together on this channel, which is not the same as one cau
 <ol class="actions"><li class="act">
   <div class="acthead">
     <span class="actn">1</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~17K viewers at stake</span>
+  </div>
+  <p class="actdo">Ship more &quot;$___ ___ From ___&quot;. Put the next two uploads into this shape.</p>
+  <p class="actwhy">This shape beats the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">$___ ___ From ___</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">2.85x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:35.1%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=33</span>
+  </div></div>
+  <p class="mc-note">A shape that works can wear out. Watch the trend inside the format, not just its median.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A shape that works can be worn out. Watch the per-video scores as you repeat it — a falling trend inside the format matters more than its median.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">2</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~5K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;How To Make ___&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">How To Make ___</span>
+    <span class="mc-bar"><i style="--w:45.0%"></i></span>
+    <span class="mc-rv">0.45x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=33</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">3</span>
     <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~5K viewers at stake</span>
   </div>
@@ -835,7 +919,59 @@ means two things move together on this channel, which is not the same as one cau
 </li>
 <li class="act">
   <div class="acthead">
-    <span class="actn">2</span>
+    <span class="actn">4</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~4K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;The ___ You Need&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">The ___ You Need</span>
+    <span class="mc-bar"><i style="--w:59.0%"></i></span>
+    <span class="mc-rv">0.59x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=33</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">5</span>
+    <span class="chip c-chan" title="Computed from this channel&#39;s own numbers. No cross-channel measurement backs the general principle yet.">This channel</span>
+    <span class="stake">~3K viewers at stake</span>
+  </div>
+  <p class="actdo">Stop shipping &quot;___ Build Gone Wrong: What I Learned&quot;, or repackage the premise.</p>
+  <p class="actwhy">This shape underperforms the channel&#39;s own median.</p>
+  <figure class="mc">
+  <figcaption class="mc-head"><b>Median score against contemporaries</b><span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption>
+  <div class="mc-bars"><div class="mc-row">
+    <span class="mc-rl">___ Build Gone Wrong: What I</span>
+    <span class="mc-bar"><i style="--w:70.0%"></i></span>
+    <span class="mc-rv">0.70x</span>
+    <span class="mc-rn">n=3</span>
+  </div>
+<div class="mc-row">
+    <span class="mc-rl">Channel median</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">1.00x</span>
+    <span class="mc-rn">n=33</span>
+  </div></div>
+  <p class="mc-note">A weak format can be a weak package on a sound premise. Check the thumbnails before retiring the shape.</p>
+</figure>
+  <details class="actbut"><summary>What would make this wrong</summary><p>A weak format is not always a weak idea — it can be a weak package on a sound premise. Check the thumbnails and titles before retiring the shape itself.</p></details>
+</li>
+<li class="act">
+  <div class="acthead">
+    <span class="actn">6</span>
     <span class="chip c-law" title="Rests on a belief measured across independent channels and signed off by a strategist.">Measured law</span>
     <span class="stake">~690 viewers at stake</span>
   </div>
@@ -858,7 +994,7 @@ means two things move together on this channel, which is not the same as one cau
 </li>
 <li class="act">
   <div class="acthead">
-    <span class="actn">3</span>
+    <span class="actn">7</span>
     <span class="chip c-meas" title="Rests on a belief the ledger has measured, but which is not yet settled.">Measured</span>
     <span class="stake">~570 viewers at stake</span>
   </div>
@@ -880,11 +1016,12 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Runtime and ambition move together: the long videos may be the ambitious ones. Cut slack, not scope.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (1)</summary>
-  <ul><li>Ending: 9.8% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li></ul>
+<details class="alsochk"><summary>Also checked, no action needed (2)</summary>
+  <ul><li>Ending: 9.8% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li>
+<li>Formats: 1 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 33 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
-<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+<p class="capnote">4 of 7 actions rest on this channel alone. No cross-channel measurement backs them yet.</p>
 
 
 
@@ -1266,6 +1403,420 @@ means two things move together on this channel, which is not the same as one cau
   });
 })();
 </script>
+
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">$___ ___ From ___</span>
+    <span class="fstats">
+      <b class="f-hot">2.85×</b>
+      <span>3 videos</span>
+      <span>35K median views</span>
+      <span>38% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A high-value furniture build framed by its dollar figure and constraints.</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Vbj1j1Efvmk.html" data-pub="1705708800000" data-views="34778" data-out="2.85" data-r50="0.2739" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Vbj1j1Efvmk/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.85×</span>
+    <span class="len">12:18</span>
+  </div>
+  <div class="t">$2,000 Coffee Table From $200 Of Trash Wood</div>
+  <div class="meta">35K views (28d) · 2 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/34VCkr-yvnw.html" data-pub="1701475200000" data-views="21644" data-out="1.81" data-r50="0.3873" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/34VCkr-yvnw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.81×</span>
+    <span class="len">15:15</span>
+  </div>
+  <div class="t">$6,000 Two Day Table Build</div>
+  <div class="meta">22K views (28d) · 2 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/fv5bqBehcBc.html" data-pub="1687046400000" data-views="41832" data-out="5.8" data-r50="0.3821" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fv5bqBehcBc/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.80×</span>
+    <span class="len">25:31</span>
+  </div>
+  <div class="t">A Woodworkers Dream Desk</div>
+  <div class="meta">42K views (28d) · 3 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">The Hidden Costs Of ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.21×</b>
+      <span>3 videos</span>
+      <span>6K median views</span>
+      <span>45% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An honest look at the real expenses behind a shop tool or system.</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/9fCPDo6wcHI.html" data-pub="1730505600000" data-views="6470" data-out="0.62" data-r50="0.445" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/9fCPDo6wcHI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">14:52</span>
+  </div>
+  <div class="t">The Hidden Costs of Dust Collection</div>
+  <div class="meta">6K views (28d) · 1 year ago · 45% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/GB3zaGtKMO4.html" data-pub="1684627200000" data-views="58787" data-out="8.05" data-r50="0.275" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/GB3zaGtKMO4/mqdefault.jpg" alt="">
+    <span class="score out-hot">8.05×</span>
+    <span class="len">11:48</span>
+  </div>
+  <div class="t">The Hidden Costs of CNC&#39;s!</div>
+  <div class="meta">59K views (28d) · 3 years ago · 28% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/sKipdkBfQA0.html" data-pub="1602892800000" data-views="1998" data-out="1.21" data-r50="0.4872" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/sKipdkBfQA0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.21×</span>
+    <span class="len">7:25</span>
+  </div>
+  <div class="t">Is A $20,000 CNC Worth The Investment</div>
+  <div class="meta">2K views (28d) · 5 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">___ Build Gone Wrong: What I Learned</span>
+    <span class="fstats">
+      <b class="f-cold">0.70×</b>
+      <span>3 videos</span>
+      <span>11K median views</span>
+      <span>36% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A project post-mortem walking through mistakes and lessons.</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/WI4CvH1a8wA.html" data-pub="1720828800000" data-views="8191" data-out="0.7" data-r50="0.3329" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WI4CvH1a8wA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.70×</span>
+    <span class="len">25:37</span>
+  </div>
+  <div class="t">Tambour Build Gone Wrong: What I Learned</div>
+  <div class="meta">8K views (28d) · 2 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/BFADc6LDARI.html" data-pub="1716163200000" data-views="11997" data-out="1" data-r50="0.3897" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/BFADc6LDARI/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">28:19</span>
+  </div>
+  <div class="t">From Design to Disaster: My Chair Build Story</div>
+  <div class="meta">12K views (28d) · 2 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Fe6fVmWBTXA.html" data-pub="1697846400000" data-views="10980" data-out="0.52" data-r50="0.3642" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Fe6fVmWBTXA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">15:25</span>
+  </div>
+  <div class="t">My First Bent Lamination Cabinet—What Went Wrong?</div>
+  <div class="meta">11K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">The ___ You Need</span>
+    <span class="fstats">
+      <b class="f-cold">0.59×</b>
+      <span>3 videos</span>
+      <span>1K median views</span>
+      <span>49% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A pitch for one specific tool or piece of shop gear the viewer should own.</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/EDyoo5yL1fY.html" data-pub="1680998400000" data-views="10457" data-out="2.1" data-r50="0.307" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EDyoo5yL1fY/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.10×</span>
+    <span class="len">22:00</span>
+  </div>
+  <div class="t">This Vise Changed How I Woodwork</div>
+  <div class="meta">10K views (28d) · 3 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/dA-d2aVHgg4.html" data-pub="1588291200000" data-views="1204" data-out="0.59" data-r50="0.4887" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dA-d2aVHgg4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">9:22</span>
+  </div>
+  <div class="t">The Only Vise You Need</div>
+  <div class="meta">1K views (28d) · 6 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/fM4FcCgIBAI.html" data-pub="1583539200000" data-views="1009" data-out="0.49" data-r50="0.5233" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fM4FcCgIBAI/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.49×</span>
+    <span class="len">6:32</span>
+  </div>
+  <div class="t">The Last Workbench You&#39;ll Ever Need</div>
+  <div class="meta">1K views (28d) · 6 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To Make ___</span>
+    <span class="fstats">
+      <b class="f-cold">0.45×</b>
+      <span>3 videos</span>
+      <span>10K median views</span>
+      <span>46% at half · 3 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A step-by-step build or money-making guide for a specific project.</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/dI4TwAsx6Mk.html" data-pub="1693699200000" data-views="10277" data-out="0.45" data-r50="0.2849" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/dI4TwAsx6Mk/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.45×</span>
+    <span class="len">22:23</span>
+  </div>
+  <div class="t">How To Make An Adirondack Chair</div>
+  <div class="meta">10K views (28d) · 3 years ago · 28% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/zu6oh6cTgZM.html" data-pub="1690675200000" data-views="20827" data-out="1.94" data-r50="0.4635" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zu6oh6cTgZM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.94×</span>
+    <span class="len">8:25</span>
+  </div>
+  <div class="t">How To Make Money With A Laser Engraver</div>
+  <div class="meta">21K views (28d) · 3 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Jb2czaie6lg.html" data-pub="1579132800000" data-views="578" data-out="0.28" data-r50="0.5795" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Jb2czaie6lg/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.28×</span>
+    <span class="len">6:11</span>
+  </div>
+  <div class="t">JESSEM MAST-R-LIFT II ROUTER LIFT INSTALL // WOODWORKING // HOW TO // DIY</div>
+  <div class="meta">578 views (28d) · 6 years ago · 58% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>18 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/_U1mlBnKOn4.html" data-pub="1740268800000" data-views="9341" data-out="0.95" data-r50="0.3677" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_U1mlBnKOn4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">17:36</span>
+  </div>
+  <div class="t">I Never Expected to Make Two...</div>
+  <div class="meta">9K views (28d) · 1 year ago · 37% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/hcSltAhx9NI.html" data-pub="1722124800000" data-views="19564" data-out="1.99" data-r50="0.2518" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/hcSltAhx9NI/mqdefault.jpg" alt="">
+    <span class="score out-up">1.99×</span>
+    <span class="len">18:22</span>
+  </div>
+  <div class="t">Ultimate Chisel Storage: Form Meets Function</div>
+  <div class="meta">20K views (28d) · 2 years ago · 25% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/zfS2TElEAxs.html" data-pub="1718409600000" data-views="7567" data-out="0.64" data-r50="0.3281" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zfS2TElEAxs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.64×</span>
+    <span class="len">16:46</span>
+  </div>
+  <div class="t">Why Every Shop Needs These Saw Horses</div>
+  <div class="meta">8K views (28d) · 2 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/aBqzIWf0RlU.html" data-pub="1712361600000" data-views="13361" data-out="1.14" data-r50="0.4345" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aBqzIWf0RlU/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.14×</span>
+    <span class="len">25:57</span>
+  </div>
+  <div class="t">I Never Wanted To Make This</div>
+  <div class="meta">13K views (28d) · 2 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/nq3lOGb-OWE.html" data-pub="1709942400000" data-views="7366" data-out="0.57" data-r50="0.4742" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nq3lOGb-OWE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.57×</span>
+    <span class="len">13:52</span>
+  </div>
+  <div class="t">3 PRO LEVEL wood finishes</div>
+  <div class="meta">7K views (28d) · 2 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/8S1IwxqjiHg.html" data-pub="1708732800000" data-views="11492" data-out="0.89" data-r50="0.3601" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8S1IwxqjiHg/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.89×</span>
+    <span class="len">18:41</span>
+  </div>
+  <div class="t">This is all PLYWOOD</div>
+  <div class="meta">11K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Z2HwIf4G66Q.html" data-pub="1707523200000" data-views="12438" data-out="0.98" data-r50="0.3651" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Z2HwIf4G66Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">13:53</span>
+  </div>
+  <div class="t">This last minute design change MADE this piece</div>
+  <div class="meta">12K views (28d) · 2 years ago · 37% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/6X52P_PvyLE.html" data-pub="1703289600000" data-views="23733" data-out="1.98" data-r50="0.4259" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6X52P_PvyLE/mqdefault.jpg" alt="">
+    <span class="score out-up">1.98×</span>
+    <span class="len">11:46</span>
+  </div>
+  <div class="t">Production Woodshop Tour</div>
+  <div class="meta">24K views (28d) · 2 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/5LIrVoPOAMk.html" data-pub="1688256000000" data-views="4157" data-out="0.39" data-r50="0.3898" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5LIrVoPOAMk/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.39×</span>
+    <span class="len">15:37</span>
+  </div>
+  <div class="t">Mastering Your CNC | Essential First Steps for Beginners</div>
+  <div class="meta">4K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/QybGI3syXZo.html" data-pub="1679788800000" data-views="3543" data-out="0.44" data-r50="0.4916" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/QybGI3syXZo/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.44×</span>
+    <span class="len">11:36</span>
+  </div>
+  <div class="t">Is The Shaper Origin Worth The Money?</div>
+  <div class="meta">4K views (28d) · 3 years ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/1gvj0UQOTS8.html" data-pub="1678752000000" data-views="2028" data-out="0.25" data-r50="0.5823" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1gvj0UQOTS8/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.25×</span>
+    <span class="len">8:41</span>
+  </div>
+  <div class="t">Don&#39;t get SCREWED buying slabs</div>
+  <div class="meta">2K views (28d) · 3 years ago · 58% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/cYXOG3jlmhc.html" data-pub="1677542400000" data-views="3106" data-out="0.38" data-r50="0.4825" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cYXOG3jlmhc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.38×</span>
+    <span class="len">6:57</span>
+  </div>
+  <div class="t">5 Bandsaw Jigs You Need</div>
+  <div class="meta">3K views (28d) · 3 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/qxRMJjh1fF0.html" data-pub="1676937600000" data-views="10912" data-out="2.12" data-r50="0.3734" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qxRMJjh1fF0/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.12×</span>
+    <span class="len">18:57</span>
+  </div>
+  <div class="t">Breadboard ends are easier than you think!</div>
+  <div class="meta">11K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/bY1rLqf9xbw.html" data-pub="1675728000000" data-views="5821" data-out="0.78" data-r50="0.5181" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bY1rLqf9xbw/mqdefault.jpg" alt="">
+    <span class="score out-down">0.78×</span>
+    <span class="len">5:29</span>
+  </div>
+  <div class="t">Do you really need a shaper?</div>
+  <div class="meta">6K views (28d) · 3 years ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Uq9qj3SRSS0.html" data-pub="1672704000000" data-views="4483" data-out="0.55" data-r50="0.5667" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Uq9qj3SRSS0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">3:38</span>
+  </div>
+  <div class="t">You Don&#39;t Need A Flush Trim Bit</div>
+  <div class="meta">4K views (28d) · 3 years ago · 57% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/Lbfq1J0agFs.html" data-pub="1670889600000" data-views="13520" data-out="2.62" data-r50="0.4225" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Lbfq1J0agFs/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.62×</span>
+    <span class="len">14:19</span>
+  </div>
+  <div class="t">Shop Tour 2022 - Tools, Layout and Organization</div>
+  <div class="meta">14K views (28d) · 3 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/5c6U8-8ilvc.html" data-pub="1645401600000" data-views="2100" data-out="0.52" data-r50="0.3485" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5c6U8-8ilvc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">19:13</span>
+  </div>
+  <div class="t">Mid Century Modern Media Console</div>
+  <div class="meta">2K views (28d) · 4 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCVegc5su_rzqA17hDn0mKXQ/cMEtlQ2kqTc.html" data-pub="1612396800000" data-views="1146" data-out="0.56" data-r50="0.4983" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cMEtlQ2kqTc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.56×</span>
+    <span class="len">5:38</span>
+  </div>
+  <div class="t">Use This To Keep Your Table from Getting Warped</div>
+  <div class="meta">1K views (28d) · 5 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">15 of 33 videos sit in a named format · library built 2026-09-02.</p>
 
 
 
@@ -2260,7 +2811,7 @@ means two things move together on this channel, which is not the same as one cau
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

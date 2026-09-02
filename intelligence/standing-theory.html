@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,20 +760,51 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <h1><span class="pill s-theory">Theory</span></h1>
 <p class="lede intel-hero">A gut feeling. Credible, often hard-won, sometimes obviously true — but nobody has yet quantified the cause and effect behind it. Practitioner wisdom lives here until it is measured, which is not a demotion: it is an admission that we have not done the work.</p>
 <div class="intel-stats">
-  <div><div class="v">799</div><div class="k">Claims at this standing</div></div>
-  <div><div class="v">684</div><div class="k">General</div></div>
-  <div><div class="v">115</div><div class="k">Niched</div></div>
+  <div><div class="v">768</div><div class="k">Claims at this standing</div></div>
+  <div><div class="v">655</div><div class="k">General</div></div>
+  <div><div class="v">113</div><div class="k">Niched</div></div>
 </div>
 <p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
 more than the tick alone. Decisions save in this browser as you go; export them from the
@@ -1210,7 +1242,7 @@ panel in the corner when you are done.</p>
   <div class="txt">The dopamine spike happens at the announcement of a reward, not at the moment of the reward itself, so announcing what is coming is what generates motivation to keep watching.</div>
   <div class="src">Source: Mario Joos</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate phrased the consequence: tease the payoff rather than deliver it to motivate.</p></div>
   <div class="review" data-id="03f5b449f52b">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -2946,7 +2978,7 @@ panel in the corner when you are done.</p>
       <blockquote>for educational content, do not hesitate to add comedy to it. It works fantastic</blockquote></div>
   </details>
 </div></div>
-<h2>pacing &middot; 15</h2>
+<h2>pacing &middot; 11</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -3261,158 +3293,6 @@ panel in the corner when you are done.</p>
     
   </div>
   
-  <div class="txt">There is such a thing as cutting too fast: expose a simple shot for at least 0.5-1 second and a complex shot for 1-3 seconds, or viewers hit cognitive overload and the video feels jarring.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="e1bba558f74c">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>you want to have your shot at least exposed for another, for half a second to one second for a simple shot and one to three seconds for a complex shot</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">pacing</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">A constant zigzag pattern in the retention curve means viewers are continuously skipping, which signals weak connectivity and flow between sentences or scenes.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="366e8dcdd174">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>If you have a constant zigzag, that means that people are just continuously skipping.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">pacing</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Introduce information only right before it becomes relevant; front-loading exposition produces a bowl-shaped dip because viewers can&#39;t hold information they don&#39;t yet need.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="bbb0cbe67fbd">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>we only introduce information right before it becomes relevant. That&#39;s the retention rule.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">pacing</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Deliver content people didn&#39;t come for (exposition) in five-second batches, because viewers tolerate roughly five seconds of unwanted content before they start disengaging.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="6e435808a7f3">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>in five second batches because people can stand something for about five seconds after five seconds people start to disengage</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">pacing</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Viewers tolerate roughly 5 seconds of wasted time; anything beyond that loses their interest and some tune out second by second.</div>
   <div class="src">Source: Mario Joos</div>
   
@@ -3516,7 +3396,7 @@ panel in the corner when you are done.</p>
       <blockquote>we&#39;re talking about 10 seconds, 20 seconds before new information properly got revealed. We actually also noticed that retention gets hurt.</blockquote></div>
   </details>
 </div></div>
-<h2>editing &middot; 26</h2>
+<h2>editing &middot; 24</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -3705,44 +3585,6 @@ panel in the corner when you are done.</p>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>There is also a triple split screen, and it does seem to slowly work, especially in short-form content</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">editing</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Isolated animated explanations (cutting to a clean animated graphic to explain rules or plans) show barely any retention losses because they focus attention on one thing and are easy to follow.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="03801ab01837">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>we notice there&#39;s barely any retention losses when you go to animated explanations</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -4237,44 +4079,6 @@ panel in the corner when you are done.</p>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>I told them this one golden rule. Try to overdo risers.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">editing</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Starting anticipatory music roughly 20 seconds before a key moment flattens the retention curve into the payoff, keeping as much as ~10% more of the remaining audience watching to see it.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="3dcd3370a4e5">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>That could sometimes be as much as like 10% of your remaining audience is still watching, just because you use the music there</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -5285,7 +5089,7 @@ panel in the corner when you are done.</p>
   <div class="txt">A retention drop is sometimes caused by the segment BEFORE it: viewers give a weak segment a chance and quit at the start of the next one, so the fix belongs earlier than the dip.</div>
   <div class="src">Source: Mario Joos</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; the duplicate said &#39;often&#39; where the survivor says &#39;sometimes&#39; — the survivor is the safer wording.</p></div>
   <div class="review" data-id="f87cfb122d5c">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -5888,7 +5692,7 @@ panel in the corner when you are done.</p>
       <blockquote>if you&#39;re dubbing, do Spanish and Portuguese first</blockquote></div>
   </details>
 </div></div>
-<h2>suspense &middot; 2</h2>
+<h2>suspense &middot; 1</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -5925,44 +5729,6 @@ panel in the corner when you are done.</p>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>People watch for longer just because there&#39;s suspense. It&#39;s so powerful.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">suspense</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Layer three kinds of suspense — narrative (unresolved until the end), short-term (per-segment conflict/resolution) and micro (seconds-long tension) — because short-term suspense alone loses viewers at every segment boundary.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="ace4c7aaa225">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>if you just do short term, you&#39;re going to lose people after each segment. So combine it with narrative suspense.</blockquote></div>
   </details>
 </div></div>
 <h2>satisfaction &middot; 3</h2>
@@ -6080,7 +5846,7 @@ panel in the corner when you are done.</p>
       <blockquote>if your video is just one linear and there&#39;s no dynamic in emotion, it&#39;s less memorable.</blockquote></div>
   </details>
 </div></div>
-<h2>ideation &middot; 103</h2>
+<h2>ideation &middot; 99</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -6630,7 +6396,7 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
   <div class="txt">An outlier that the creator&#39;s OWN viewers are also watching is a materially stronger signal than an equally high-performing outlier from a merely similar channel — but neither establishes causation.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate added the caution that neither establishes causation.</p></div>
   <div class="review" data-id="8a77b402573c">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -6896,7 +6662,7 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
   <div class="txt">A quantity instruction produces not just more ideas but more ideas rated as GOOD, compared with quality-only or combined instructions — so a raw-volume quota is a defensible step even though it is not a numerical law for creators.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; the duplicate warned against early judgement explicitly.</p></div>
   <div class="review" data-id="5061cc64a307">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -6963,44 +6729,6 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>Set a quota: 30 raw seeds, 15 concrete promises, 10 package pairs, 5 evidence checks, 3 production briefs, 1 priority.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">ideation</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Instructing for QUANTITY produces not just more ideas but more ideas rated as good, compared with quality-only or combined instructions — so early judgment should be separated from generation.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="57e397373f05">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>In the studied brainstorming task, a quantity goal produced more ideas and more ideas rated as good than control, quality-only, or combined instructions.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -8022,44 +7750,6 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
   <div class="top">
     <span class="pill s-theory">Theory</span>
     <span class="cat">ideation</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Borrow formats across niches by matching the underlying functional mechanism, not the subject: Sims build-tutorial formats transfer to homesteading and maker content because both put the viewer in front of an arduous task that needs a method.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="38741054b6e0">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>So getting people that are doing an arduous task that takes a long time that might need some help in the same way that Sims is. And so by taking the title as inspiration due to the fact that you know that the underlying way that this video is going to go about is similar and the underlying desire or interest point for the audience is similar</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">ideation</span>
     <span class="cat">· Gaming</span>
     
     
@@ -8817,44 +8507,6 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>the biggest thing is like when we&#39;re looking at these mini games uh or researching Mr. be stuff. We just see, hey, can we swap in a Sims here instead of a real person? Does it still hold interest and novelty? Cool. If it does, let&#39;s do it.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">ideation</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Formats transfer across totally unrelated niches when the underlying FUNCTIONAL MECHANISM matches (an arduous task the viewer needs help with) — so Sims build-tutorial formats are valid source material for homesteading and maker channels.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="e5507441f5a1">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>you&#39;ll find a lot of similar kind of formats that people will do in that category of Sims because there&#39;s almost a similar functional mechanism that is being deployed in that scenario. So getting people that are doing an arduous task that takes a long time that might need some help in the same way that Sims is.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -9931,44 +9583,6 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
   <div class="top">
     <span class="pill s-theory">Theory</span>
     <span class="cat">ideation</span>
-    <span class="cat">· Maker / build</span>
-    
-    
-    
-  </div>
-  
-  <div class="txt">Audiences differ in WHICH relevance they demand: engineering/maker-space audiences do not care about social relevance (they read high view counts as a credibility stamp instead), while personality-led project channels care strongly about TIME relevance — does this feel like it happened recently.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="3eaccc7f45fc">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>I noticed like engineering maker space audiences they don&#39;t really care about the social aspect of like oh who else watched this or like who but they see it as more of a credibility uh a stamp of credibility if someone has high views.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">ideation</span>
     
     
     
@@ -9978,7 +9592,7 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
   <div class="txt">Formats transfer between unrelated niches when the underlying functional mechanism is the same — Sims build-tutorial formats map onto homesteading and maker content because both are long arduous tasks where the viewer wants to be told how it&#39;s done.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 2 duplicates (2026-09-02): The duplicates named the mechanism to match: an arduous task the viewer needs help with.</p></div>
   <div class="review" data-id="cb009da176b1">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -10117,7 +9731,7 @@ Leader: Series – Great LakesLaggard:Camera/Howto/Review</blockquote></div>
       <blockquote>is it the topic or is it the format that made this video perform better than the other videos around it. You don&#39;t sort by most popular, you look within a certain timeframe.</blockquote></div>
   </details>
 </div></div>
-<h2>packaging &middot; 122</h2>
+<h2>packaging &middot; 112</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -10405,7 +10019,7 @@ Highest outliers all use Hands&gt;face/body</blockquote></div>
   <div class="txt">Packaging is six variables, not two: thumbnail, title, channel name, video age, view count, and video length all feed the viewer&#39;s click decision — so a packaging audit that only inspects title and thumbnail is incomplete.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical six-variable list.</p></div>
   <div class="review" data-id="b26e21e9696d">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -10764,7 +10378,7 @@ Evaluation: Popular machine within the niche</blockquote></div>
   <div class="txt">High CTR combined with a sharp early retention drop indicates a packaging fault (wrong viewer selected, overpromise, or delayed confirmation), NOT a content-quality fault.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical diagnosis; the duplicate called it a &#39;signature&#39;, a useful word for the pattern.</p></div>
   <div class="review" data-id="5b9e710bae07">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -10852,7 +10466,7 @@ Evaluation: Popular machine within the niche</blockquote></div>
   <div class="txt">The title dictates the structural promise, and violating it costs retention: a &#39;10 tips to X&#39; title forces a listicle or stair-step, while &#39;how to X in 10 steps&#39; licenses a connected story — telling a story under a listicle title bores and loses most of the audience.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate named the listicle structure &#39;topic-driven&#39; and noted that telling a story under it bores viewers.</p></div>
   <div class="review" data-id="6a4325e3d215">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -11107,44 +10721,6 @@ Evaluation: Popular machine within the niche</blockquote></div>
     
   </div>
   
-  <div class="txt">Low CTR paired with strong retention among the viewers who did click means the video satisfies a small qualified group — the fix is clearer visual proof or stronger stakes in the package, not a different video.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="5b03dee5798f">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>Low CTR + strong retention among clickers | The video may satisfy a small qualified group; test clearer visual proof or a stronger statement of stakes.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">The native A/B tool selects a winner by watch-time share (not CTR), can test title only, thumbnail only, or both, allows up to three variants on eligible long-form videos, and can return &#39;performed same&#39; or &#39;inconclusive&#39;.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -11209,44 +10785,6 @@ Evaluation: Popular machine within the niche</blockquote></div>
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>Write the first 30 seconds for each. The package that produces the clearest, fastest opening often reveals the strongest idea.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Title and thumbnail must divide labour rather than duplicate each other: the image carries the result, choice, or stakes while the title supplies the cause, the test, or the viewer condition.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="63c79771fa09">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>Thumbnail shows the result; title explains the cause. Image: clean before/after. Title: &quot;I Changed One Roof Rule.&quot;</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -11496,48 +11034,10 @@ Evaluation: Popular machine within the niche</blockquote></div>
     
   </div>
   
-  <div class="txt">High CTR combined with a sharp early retention drop is a PACKAGING failure signature (wrong viewer selected, overpromise, or delayed confirmation) — not a content-quality failure.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="81f2dfbd2fd1">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>High CTR + sharp early drop | The package may select the wrong viewer, overpromise, or delay confirmation.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Low CTR with strong retention among the viewers who did click means the video satisfies a small qualified group — the repair is clearer visual proof or stronger stated stakes in the package, not a change to the video.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; &#39;fix&#39; vs &#39;repair&#39; only.</p></div>
   <div class="review" data-id="06089624dc2a">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -11689,7 +11189,7 @@ Evaluation: Popular machine within the niche</blockquote></div>
   <div class="txt">Title and thumbnail must divide labour rather than echo each other — the image carries one half of the promise (result, choice, stakes, specificity) and the title supplies the other half (cause, test, condition, transformation).</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical division-of-labour rule; the duplicate listed image = result/choice/stakes, title = the rest.</p></div>
   <div class="review" data-id="276ef234433b">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -13241,7 +12741,7 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
   <div class="txt">Repackaging works only when done in bulk across many videos at once; one-by-one repackaging produces a weaker response because volume signals to the algorithm that there is a batch of new content to test.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 2 duplicates (2026-09-02): One duplicate put a number on bulk: about twenty at once.</p></div>
   <div class="review" data-id="49aa550ff948">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -13463,44 +12963,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>while people don&#39;t know uh or might not have a generator or like they won&#39;t necessarily watch a video on how to set up a generator in their um woodlands uh homestead because they might not have a homestead or they might have not have these things. The question itself of how long can I survive in the woods is a very ubiquitous question that everyone might be able to understand.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Pulling BACK from niche depth in packaging increases reach without losing the existing audience, because established subscribers have built-in trust and return on the profile picture and channel name alone.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="d3e956435685">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>pulling back a little from the depth you&#39;ve created actually can help return some more reach to you because what that shows is your audience that you&#39;ve built your depth with, they&#39;re going to come back because they know they see your profile picture.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -13773,44 +13235,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
   <div class="top">
     <span class="pill s-theory">Theory</span>
     <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Repackaging must be done in BULK — twenty at once — because a batch signals to the algorithm that there is a body of new content to test; one-at-a-time repackages often produce no reaction.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="b999ea5fa6c1">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>So then you do it in a bulk volume uh sorry bulk volume and from that it&#39;ll almost like show the algorithm that there&#39;s a lot of new content to test out for you. … But I&#39;ve noticed that if you do it one by one sometimes it doesn&#39;t react as well. It&#39;s kind of like slowly putting it out there, sure, but if you do a bunch in volume, it actually can really help like throw a really big push for you.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
     <span class="cat">· Maker / build</span>
     
     
@@ -13843,82 +13267,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>And so, when we saw how um we were able to change a thumbnail to make, by the way, 45% of the difference, right? … when we set this as the thumbnail is when it shipped up to one out of a 10, which makes sense because if you&#39;re having a 20% differential on a thumbnail, there&#39;s obviously a difference in the type of um uh uh performance you&#39;re going to get out of that.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">The strongest title construction states the setup concretely and withholds the RESULT number, so the only way to close the gap is to click (&#39;I spent seven months in the wilderness. This is how much fish I caught&#39;).</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="b252abcc8b24">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>So, I think it&#39;s more of a point of like how can we juxtaposition your title to put the missing info up front where we&#39;re saying, hey, I spent seven months in the wilderness. This is how much fish I caught. I don&#39;t know if that&#39;s the title exactly, but at least there, you know, you know, someone just like casually browsing it almost like hacks their mind a little bit to be like, &quot;Oh, how much fist</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Deliberately pulling BACK from niche depth in packaging increases reach at low cost, because the existing audience returns on channel identity alone — they recognise the profile picture, so packaging does not need to serve them.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="5d63795cddc3">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>what I&#39;ve always seen is pulling back a little from the depth you&#39;ve created actually can help return some more reach to you because what that shows is your audience that you&#39;ve built your depth with, they&#39;re going to come back because they know they see your profile picture. … there&#39;s a builtin intrinsic trust with the people you&#39;ve already captured.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -14463,44 +13811,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     
   </div>
   
-  <div class="txt">Repackaging only pays when done in BULK — a batch of retitled/rethumbnailed videos signals to the algorithm that there is a lot of new content to test, whereas one-at-a-time repackaging often produces no reaction.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="af7132d6fd3e">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>it only makes a big enough difference if the the effort of it is low enough where you could do it in like a volume ... if you do it one by one sometimes it doesn&#39;t react as well. It&#39;s kind of like slowly putting it out there, sure, but if you do a bunch in volume, it actually can really help like throw a really big push for you.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">A thumbnail must be legible at roughly three pixels — the test is whether an unrecognisable but strikingly-shaped image makes you want to zoom in before you have read the title.</div>
   <div class="src">Source: internal strategy session</div>
   
@@ -14618,7 +13928,7 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
   <div class="txt">Titles should move the missing information to the front — state the investment and withhold the result (&#39;7 months in the wilderness — this is how many fish I caught&#39;), so the only way to close the loop is to click.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate stated the construction generally: concrete setup, withheld RESULT number, the click closes the gap.</p></div>
   <div class="review" data-id="070394ce927b">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -14694,7 +14004,7 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
   <div class="txt">Simplifying packaging and pulling back from niche depth expands total addressable market without costing the existing audience, because established subscribers return on intrinsic trust (they recognise the avatar and channel name) rather than on the specificity of the title.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 2 duplicates (2026-09-02): The duplicates attributed the safety of pulling back to subscriber trust and channel identity; keep that as the reason.</p></div>
   <div class="review" data-id="0e38b7a31735">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -14843,44 +14153,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     
   </div>
   
-  <div class="txt">The title makes a structural promise: a listicle title (&#39;10 tips&#39;) demands a topic-driven bam-bam-bam structure and telling a story under it bores viewers, while a &#39;how to ... in N steps&#39; title licenses a connected story.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="fa783022d6b9">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>if you make a topic-driven structure promise, well if you do a story you&#39;re gonna bore most of your people</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Judge a thumbnail or title change by the change in views per hour after waiting up to two weeks (people live in week cycles), never by the CTR difference — higher CTR with no extra views is a failed test.</div>
   <div class="src">Source: Mario Joos</div>
   
@@ -14908,46 +14180,8 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>if you make a thumbnail change, do not judge that thumbnail change based on the CTR differences. I&#39;ve explained this earlier with the algorithm. Make it based on the view increase.</blockquote></div>
   </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">packaging</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">The click decision rests on six packaging elements, not two: thumbnail, title, channel name, age of the video, view count, and video length all enter the viewer&#39;s choice.</div>
-  <div class="src">Source: Mario Joos</div>
-  
-  
-  <div class="review" data-id="18d3fae4cb36">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>Make a decision based on thumbnail title, channel name, age of the video, view count, and video length. That&#39;s six.</blockquote></div>
-  </details>
 </div></div>
-<h2>retention &middot; 117</h2>
+<h2>retention &middot; 112</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -14961,7 +14195,7 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
   <div class="txt">When a video&#39;s top retention moment occurs late, moving that kind of content earlier improves the video — and top moments should be expanded into entire new videos.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate added: a recurring top moment should become the main promise, not just be moved earlier.</p></div>
   <div class="review" data-id="07967f854da1">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -15629,44 +14863,6 @@ Example: &quot;Optimal Order Of Investing For Self-Employed&quot; (Flop)</blockq
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>Begin movement | Start the first test, build action, route, diagnosis, or decision rather than announcing a long agenda.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">retention</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">When a video&#39;s top retention moment occurs LATE, the corrective action is to move that content earlier; when it recurs, it should become the main promise of a new video.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="5a8368cca422">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>Its guidance suggests moving compelling content earlier when top moments occur late and creating new content by expanding top moments.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -16429,7 +15625,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">Starting the anticipatory music/riser roughly 20 seconds before a payoff moment flattens the curve through the lull preceding it, retaining as much as ~10% of the remaining audience who would otherwise have left before the payoff.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; the duplicate quoted ~10% more retained, the same figure.</p></div>
   <div class="review" data-id="86770d418e56">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -16581,7 +15777,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">Content the viewer did not come for (exposition, setup, necessary but unwanted information) must be delivered in batches of at most five seconds, because disengagement begins after roughly five seconds of it.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical five-second batch rule.</p></div>
   <div class="review" data-id="e4f7d62f9b4d">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -16619,7 +15815,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">A continuous zigzag pattern in the curve means viewers are repeatedly skipping forward, and the underlying cause is poor connectivity between consecutive sentences or scenes rather than any single bad moment.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; the duplicate located the weak connectivity at sentence level.</p></div>
   <div class="review" data-id="94a12309664e">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -16756,44 +15952,6 @@ During the explanation of the liquid pump, you did this fantastically, create a 
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>First of all, every single time you do a brand deal, if you do this one, avoid this negative side undertone that you start with. If you&#39;re like, and we got a brand deal, right? Right off the bat, you get a retention drop. Just remove that alone, that negative undertone, and bam, you will fix this, or you will fix part of it.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">retention</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Dopamine spikes at the ANNOUNCEMENT of a reward, not at the reward itself, which is why teasing a coming payoff — not delivering it — is what motivates continued watching.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  
-  
-  <div class="review" data-id="9a2d82b9ced7">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>hey Mario, did you know that dopamine spikes before the reward as anticipation to the reward? ... if dopamine happens before and it&#39;s related to motivation, can I trigger dopamine early in order to make people watch for longer? The answer is yes</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -17110,44 +16268,6 @@ During the explanation of the liquid pump, you did this fantastically, create a 
     
   </div>
   
-  <div class="txt">An audience that watches mostly on TV (73% here) produces flat retention curves with no rewind spikes, and a drop-off in that context is far stronger evidence of a problem because reaching for a remote is a higher barrier than swiping on a phone.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="ebe92c9c58d4">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>that takes a lot for someone to reach for the remote and like want to shut something off. It&#39;s uh enough of a barrier compared to like being on your phone and just swiping um that it&#39;s significant as data for something we could fix in the future.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">retention</span>
-    <span class="cat">· Outdoors</span>
-    
-    
-    
-  </div>
-  
   <div class="txt">For a TV-watching audience, front-load a teased element whose payoff is withheld (the Pawn Stars technique: show the artifact, hide the price) so the viewer holds an open question through the video instead of reaching for the remote.</div>
   <div class="src">Source: internal strategy session</div>
   
@@ -17212,44 +16332,6 @@ During the explanation of the liquid pump, you did this fantastically, create a 
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>now you should frontload with one they haven&#39;t seen yet for this video and you frontload with one of the new ones we came up with today. Whatever is the easiest if I&#39;m being honest and you just set that up. That&#39;ll be your intro one. That&#39;ll cut down a lot of people.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">retention</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Defining an explicit &#39;why&#39; inside the content raises retention — the reason-why makes the what easier for a viewer to sit through.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="5a67bbe29fde">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>the more that people have a reason why, the easier it is it is to get through what</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -17925,7 +17007,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">Suspense operates in three simultaneous layers — narrative (unresolved across the whole video), short-term (segment-level conflict/resolution), micro (2-second disagreements) — and running only short-term suspense loses viewers at every segment boundary.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical three-layer model.</p></div>
   <div class="review" data-id="b582d09e8638">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -18140,44 +17222,6 @@ During the explanation of the liquid pump, you did this fantastically, create a 
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>I&#39;ve done an analysis on people who have an audience of 50, 60 year olds, and I&#39;ve looked at when their pacing was bad, when their pacing was really slow, like we&#39;re talking about 10 seconds, 20 seconds before new information properly got revealed. We actually also noticed that retention gets hurt. ... the difference isn&#39;t as significant as people think it is.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">retention</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">A retention loss is often caused by the segment BEFORE the one where the drop appears — viewers give a video a chance through one weak segment and quit during the next.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  
-  
-  <div class="review" data-id="b857ee3fb18c">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>sometimes you lose retention not because of that moment, but because of what happened before. Because people tend to give things a shot. And if after one segment they&#39;re like, okay, this video is not for me, in the next segment they could lose their interest. But it&#39;s not because of that. Second segment is because the first segment wasn&#39;t good enough.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -19427,7 +18471,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">An audience that watches mostly on TV (here 73%, with 27.5% aged 65+) produces flat retention curves with no rewind spikes, because rewinding requires a remote. That makes drop-offs unusually meaningful — reaching for a remote is a far higher barrier than a phone swipe — and it argues for front-loading an item of anticipation the way Pawn Stars teases an artefact.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): The duplicate added: on a TV-heavy audience a drop-off is a far stronger signal because rewinds are unavailable.</p></div>
   <div class="review" data-id="813c3071a401">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -19768,7 +18812,7 @@ During the explanation of the liquid pump, you did this fantastically, create a 
   <div class="txt">Information should be introduced only immediately before it becomes relevant; front-loading exposition produces the characteristic bowl-shaped dip in the curve.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical.</p></div>
   <div class="review" data-id="58340fc751b5">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -22545,7 +21589,7 @@ Looking at your best format, we see emotion more integrated, and the video has e
   <div class="txt">Defining an explicit &#39;reason why&#39; in the content improves retention — the psychological principle being that a why makes the what easier to endure.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical.</p></div>
   <div class="review" data-id="234ca5baf711">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -24500,7 +23544,7 @@ Looking at your best format, we see emotion more integrated, and the video has e
       <blockquote>if you have a high retention chart, probably YouTube didn&#39;t feel like your video was widely appealing enough to target more viewers.</blockquote></div>
   </details>
 </div></div>
-<h2>strategy &middot; 104</h2>
+<h2>strategy &middot; 101</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -25569,44 +24613,6 @@ Looking at your best format, we see emotion more integrated, and the video has e
     
   </div>
   
-  <div class="txt">A video watched by YOUR OWN viewers that is also an outlier is stronger evidence than an outlier from a merely similar channel — but neither establishes causation.</div>
-  <div class="src">Source: idea-engine research dossier</div>
-  
-  
-  <div class="review" data-id="cb8b62d4d96d">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>A high-performing video from a similar channel is useful. A high-performing video that your own viewers are also watching is more useful. Neither explains causation; both still require channel fit, creator advantage, and a deliverable package.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">strategy</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Underperformance must be diagnosed by isolating which of four layers failed — demand (idea), package, delivery/content, or timing — because changing many variables at once improves the next video while teaching nothing about the failure.</div>
   <div class="src">Source: idea-engine research dossier</div>
   
@@ -26403,7 +25409,7 @@ Looking at your best format, we see emotion more integrated, and the video has e
   <div class="txt">Split the job by video position: the packaging markets to the wide audience, the body of the video must satisfy both the core and the newcomer, and the BACK END of the video is where you convert new viewers into regulars.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical three-job split; the duplicate said packaging markets ONLY for reach.</p></div>
   <div class="review" data-id="ac8d91551c1f">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -26467,44 +25473,6 @@ Looking at your best format, we see emotion more integrated, and the video has e
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>maybe there&#39;s a little bit of creativity we can have here. Um, like let&#39;s say the first thing like I was saying with the different platform uh or types of posts. So, like either maybe like something in your shorts or live stream, something more experimental, something that is really talking to your core here</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">strategy</span>
-    
-    
-    
-    
-  </div>
-  
-  <div class="txt">Audiences differ in WHICH kind of relevance they demand: project/personality-driven audiences care about TIME relevance (does this feel current, is the progression continuous), while engineering/maker audiences ignore social relevance and read a high view count as a credibility stamp instead.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="bca1cef27c4f">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>I noticed like engineering maker space audiences they don&#39;t really care about the social aspect of like oh who else watched this or like who but they see it as more of a credibility uh a stamp of credibility if someone has high views.</blockquote></div>
   </details>
 </div>
 <div class="claim">
@@ -27476,44 +26444,6 @@ Looking at your best format, we see emotion more integrated, and the video has e
     
   </div>
   
-  <div class="txt">The three layers have different jobs: packaging markets ONLY for reach, the content body must satisfy both new and core viewers, and the back end of the video is where new viewers get converted into regulars.</div>
-  <div class="src">Source: internal strategy session</div>
-  
-  
-  <div class="review" data-id="cba7581b2b67">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>in your clickability, you market for that reach. … In your content, you deliver for both. and towards the back end of your content, you really double down on that audience and trying to capture new people and turn them into your regular audience.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">strategy</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Compilation re-uploads of existing footage perform well but belong on a SEPARATE channel — on the main channel subscribers read them as repetition and it can hurt.</div>
   <div class="src">Source: internal strategy session</div>
   
@@ -27555,7 +26485,7 @@ Looking at your best format, we see emotion more integrated, and the video has e
   <div class="txt">Relevancy splits into SOCIAL relevancy (what everyone is talking about) and TIME relevancy (how recently this happened), and audiences weight them differently: personality/project audiences punish out-of-chronology uploads, while engineering/maker audiences ignore social relevancy and read high view counts as a credibility stamp instead.</div>
   <div class="src">Source: internal strategy session</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 2 duplicates (2026-09-02): The duplicates carried the mapping: engineering/maker audiences do not care about social relevance (they read high view counts as a signal of quality), project/personality audiences want TIME relevance. Keep that mapping when routing by niche.</p></div>
   <div class="review" data-id="ae84e3b91871">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -28618,7 +27548,7 @@ Looking at your best format, we see emotion more integrated, and the video has e
       <blockquote>Youtube will recommend videos to people it thinks will click on that video, so a video might end up being SO niche that it is barely pushed to anyone.</blockquote></div>
   </details>
 </div></div>
-<h2>production &middot; 69</h2>
+<h2>production &middot; 67</h2>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-theory">Theory</span>
@@ -29633,7 +28563,7 @@ Essentially educational in some ways, so people will look at it being more relia
   <div class="txt">Shots must be held roughly 0.5–1 second for a simple shot and 1–3 seconds for a complex one; cutting faster than that causes cognitive overload and jarring, which costs retention — i.e. there is such a thing as editing too fast.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical shot-duration floors.</p></div>
   <div class="review" data-id="0c2f80ae49da">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -29706,44 +28636,6 @@ Essentially educational in some ways, so people will look at it being more relia
     
   </div>
   
-  <div class="txt">Music volume alone can destroy a video&#39;s retention regardless of how good the editing is, and educational content requires markedly lower music levels than entertainment because the voice carries the value.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  
-  
-  <div class="review" data-id="7e948ded12e0">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>music volume alone, no matter how good your editing is, if your music volume overtakes what you&#39;re saying, you could literally have your entire video ruined and retention ruined because of that. ... in educational content, your music volume needs to be a lot lower than in entertainment content because the information you give through your voice is a lot more important.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">production</span>
-    
-    
-    
-    
-  </div>
-  
   <div class="txt">Every kind of repetition — visual (same shot/angle/transition), narrative (identically structured segments), verbal (restating the same point in different words), musical (reusing a loop), and editing (all cuts the same type) — is bad for retention; the exception is educational content where repetition aids recall.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
@@ -29785,7 +28677,7 @@ Essentially educational in some ways, so people will look at it being more relia
   <div class="txt">Isolated animated explanations (a clean animated sequence explaining rules or a build, with nothing else on screen) show almost no retention loss, because they concentrate focus on one thing and are easy to follow.</div>
   <div class="src">Source: Mario Joos (retention courses)</div>
   
-  
+  <div class="opnote"><b>Reviewed by the team&rsquo;s strategist</b><p>Merged 1 duplicate (2026-09-02): Identical; the duplicate stressed &#39;nothing else on screen&#39; as the condition.</p></div>
   <div class="review" data-id="93ec2e98ad95">
     <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
     <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
@@ -30530,44 +29422,6 @@ Essentially educational in some ways, so people will look at it being more relia
     
     <div class="quotewrap"><b>Where the claim came from</b>
       <blockquote>In research, we have found that if you&#39;re actually trying to educate and you&#39;re using music, it can be disruptive and it will not help people remember as much. Typically, what I noticed with educational content is that their music is too loud. What I notice with entertainment content is that they hesitate to put their music too loud.</blockquote></div>
-  </details>
-</div>
-<div class="claim">
-  <div class="top">
-    <span class="pill s-theory">Theory</span>
-    <span class="cat">production</span>
-    <span class="cat">· Documentary / travel</span>
-    
-    
-    
-  </div>
-  
-  <div class="txt">In talking-head video the secondary camera angle is a liability if it is a profile shot: viewers came to connect with a face, so side angles read as cinematic but disengage — use the second angle only to refresh visuals, never to linger.</div>
-  <div class="src">Source: Mario Joos (retention courses)</div>
-  
-  
-  <div class="review" data-id="36030fb70197">
-    <button class="rv acc" data-v="accept" type="button" title="Accept — keep and act on this">&#10003;</button>
-    <button class="rv rej" data-v="reject" type="button" title="Reject — overrule this claim">&#10007;</button>
-    <input class="rvnote" type="text" placeholder="Why? (the reason matters more than the tick)" />
-  </div>
-  <details>
-    <summary>Evidence and caveats &rarr;</summary>
-    <div class="nomeasure unbound">
-    <b>Not measurable by anything we currently compute</b>
-    <p>No test in our battery measures this claim's variables, so it has never been quantified —
-      which is exactly why it sits at Theory rather than higher — the rung means the cause and effect behind it has not been quantified.
-      Our probes run over retention curves, runtime, publish dates, view counts, titles and detected
-      intro / sponsor / payoff / outro segments. Claims about click-through rate, impressions, thumbnails,
-      subscriber behaviour, revenue or a viewer's internal motive are outside that reach.</p>
-    <p class="why2">Binding it to a loosely-related test would be worse than leaving it unmeasured: it would
-      attach a real number to the wrong question, and that number would move this claim's standing.</p>
-  </div>
-    
-    
-    
-    <div class="quotewrap"><b>Where the claim came from</b>
-      <blockquote>your secondary camera angle is not engaging. Nobody likes to look at the side of your face. I don&#39;t know why in documentary videos they tend to do this. They tend to linger on. On the side angle. People don&#39;t come to see that. They want to connect with the human.</blockquote></div>
   </details>
 </div>
 <div class="claim">

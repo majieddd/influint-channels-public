@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/W2wRFcGOWA16LnPodBSNkBkPfHLK17Q9X7ehFvP4E5l6OlJELOF9qG0kjGtBSCDuqoUlua3E=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Emma Shaye</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@emmashaye" target="_blank" rel="noopener">@emmashaye</a> · 325K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@emmashaye" target="_blank" rel="noopener">@emmashaye</a> · 325K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -829,10 +861,11 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Some opening loss is unavoidable: people who clicked the wrong thing leave whatever you do. Only the gap over a quarter is addressable.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (3)</summary>
+<details class="alsochk"><summary>Also checked, no action needed (4)</summary>
   <ul><li>Ending: 10.3% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li>
 <li>Length: 45.1% against 40.5% at halfway. A 4.5% gap, too small to act on.</li>
-<li>Cadence: 0.98x on rhythm against 1.02x off it. Too close to call.</li></ul>
+<li>Cadence: 0.98x on rhythm against 1.02x off it. Too close to call.</li>
+<li>Formats: 2 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 104. Advice is about the channel being run now.</p>
@@ -1006,15 +1039,15 @@ thing to test.</p>
   <figcaption class="mc-head"><b>Share still watching at halfway</b><span class="evchip ev-corr" title="Two measures move together on this channel. That is not evidence that one causes the other.">Correlation</span></figcaption>
   <div class="mc-bars"><div class="mc-row">
     <span class="mc-rl">Same shape again</span>
-    <span class="mc-bar"><i style="--w:96.6%"></i></span>
-    <span class="mc-rv">44%</span>
-    <span class="mc-rn">n=33</span>
+    <span class="mc-bar"><i style="--w:100.0%"></i></span>
+    <span class="mc-rv">46%</span>
+    <span class="mc-rn">n=20</span>
   </div>
 <div class="mc-row">
     <span class="mc-rl">Changed shape</span>
-    <span class="mc-bar"><i style="--w:100.0%"></i></span>
-    <span class="mc-rv">45%</span>
-    <span class="mc-rn">n=6</span>
+    <span class="mc-bar"><i style="--w:84.8%"></i></span>
+    <span class="mc-rv">39%</span>
+    <span class="mc-rn">n=18</span>
   </div></div>
   <p class="mc-note">Only counts people who clicked. Someone who feels fatigue may skip the upload instead.</p>
 </figure>
@@ -1025,12 +1058,12 @@ thing to test.</p>
   <ul class="sxlist"><li class="sx sx-counter-example">
       <span class="sxrole">Counter-example</span>
       <a class="sxtitle" href="https://www.youtube.com/watch?v=vhqzTtjavSg" target="_blank" rel="noopener">My Abandoned General Store: Running Out of Time… and a BIG Reveal! (ep. 52)</a>
-      <span class="sxnote">39th of its shape in a row. Held 42.9% against a 43.8% median.</span>
+      <span class="sxnote">14th of its shape in a row. Held 42.9% against a 44.2% median.</span>
     </li>
 <li class="sx sx-counter-example">
       <span class="sxrole">Counter-example</span>
       <a class="sxtitle" href="https://www.youtube.com/watch?v=kcZ-1EnNlEc" target="_blank" rel="noopener">My Abandoned General Store Gets a Facelift!! (ep. 51)</a>
-      <span class="sxnote">38th of its shape in a row. Held 50.5% against a 43.8% median.</span>
+      <span class="sxnote">13th of its shape in a row. Held 50.5% against a 44.2% median.</span>
     </li></ul>
 </li>
 <li class="sadv">
@@ -2514,379 +2547,309 @@ formats over the same months is what makes them comparable.</p>
 <div class="formats">
 <details class="fmt">
   <summary>
-    <span class="tpl">My Abandoned General Store: ___</span>
+    <span class="tpl">My Abandoned Homestead: ___ (Ep. ___)</span>
     <span class="fstats">
       <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
-      <span>24 videos</span>
-      <span>313K median views</span>
-      <span>44% at half · 24 analysed</span>
+      <span>12 videos</span>
+      <span>90K median views</span>
+      <span>41% at half · 12 analysed</span>
     </span>
   </summary>
-  <p class="premise">A dramatic update on the abandoned general store renovation, framed around a single moment or reveal.</p>
-  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/DFvqtu5EGYk.html" data-pub="1783209600000" data-views="234152" data-out="0.86" data-r50="0.5204" data-analysed="1">
+  <p class="premise">A numbered episode chronicling one step in the homestead renovation.</p>
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/aM0lI3OU3DE.html" data-pub="1745107200000" data-views="83842" data-out="0.97" data-r50="0.45130000000000003" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/DFvqtu5EGYk/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.86×</span>
-    <span class="len">21:25</span>
-  </div>
-  <div class="t">The BIGGEST RISK Yet In My Abandoned General Store</div>
-  <div class="meta">234K views (28d) · 1 month ago · 52% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bkkMdoldsoc.html" data-pub="1780185600000" data-views="270341" data-out="0.94" data-r50="0.5257000000000001" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/bkkMdoldsoc/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.94×</span>
-    <span class="len">23:27</span>
-  </div>
-  <div class="t">My Abandoned General Store Is Finally Starting To Take Shape!</div>
-  <div class="meta">270K views (28d) · 3 months ago · 53% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/5P7Dm0IrNi4.html" data-pub="1779580800000" data-views="309286" data-out="1.11" data-r50="0.5017" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/5P7Dm0IrNi4/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.11×</span>
-    <span class="len">21:49</span>
-  </div>
-  <div class="t">The Most Drastic Change Yet In My Abandoned General Store!!</div>
-  <div class="meta">309K views (28d) · 3 months ago · 50% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/nZwf5F3f8no.html" data-pub="1777766400000" data-views="290935" data-out="0.97" data-r50="0.4817" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/nZwf5F3f8no/mqdefault.jpg" alt="">
+    <img loading="lazy" src="https://i.ytimg.com/vi/aM0lI3OU3DE/mqdefault.jpg" alt="">
     <span class="score out-mid">0.97×</span>
-    <span class="len">20:52</span>
+    <span class="len">34:00</span>
   </div>
-  <div class="t">A Challenging Project At My Abandoned General Store...</div>
-  <div class="meta">291K views (28d) · 4 months ago · 48% at half</div>
+  <div class="t">My Abandoned Homestead: Demolition Begins (ep. 22)</div>
+  <div class="meta">84K views (28d) · 1 year ago · 45% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/b-UUD-23xyE.html" data-pub="1777161600000" data-views="307473" data-out="1.02" data-r50="0.4925" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/xJ_48VNds5M.html" data-pub="1744502400000" data-views="88912" data-out="1.02" data-r50="0.4105" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/b-UUD-23xyE/mqdefault.jpg" alt="">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xJ_48VNds5M/mqdefault.jpg" alt="">
     <span class="score out-mid">1.02×</span>
-    <span class="len">25:06</span>
+    <span class="len">29:21</span>
   </div>
-  <div class="t">I Hope I Like This In My Abandoned General Store</div>
-  <div class="meta">307K views (28d) · 4 months ago · 49% at half</div>
+  <div class="t">My Abandoned Homestead: Rebuilding Original Exterior Stairs (ep. 21)</div>
+  <div class="meta">89K views (28d) · 1 year ago · 41% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TUadeWKOA9s.html" data-pub="1775952000000" data-views="313888" data-out="1.01" data-r50="0.4826" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/MMGgEiQc4TE.html" data-pub="1743897600000" data-views="91155" data-out="1.06" data-r50="0.4572" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/TUadeWKOA9s/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.01×</span>
-    <span class="len">20:21</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/MMGgEiQc4TE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.06×</span>
+    <span class="len">27:02</span>
   </div>
-  <div class="t">My Abandoned General Store Will Never Be The Same</div>
-  <div class="meta">314K views (28d) · 4 months ago · 48% at half</div>
+  <div class="t">My Abandoned Homestead: Preparing For Upstairs Renovations (ep. 20)</div>
+  <div class="meta">91K views (28d) · 1 year ago · 46% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/EkdFgQGlvaI.html" data-pub="1775347200000" data-views="312398" data-out="0.98" data-r50="0.3053" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/MDreSQy6FNw.html" data-pub="1743292800000" data-views="106223" data-out="1.18" data-r50="0.3994" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/EkdFgQGlvaI/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.98×</span>
-    <span class="len">25:43</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/MDreSQy6FNw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.18×</span>
+    <span class="len">27:30</span>
   </div>
-  <div class="t">This Was Hiding Under the Dirt In My Abandoned General Store</div>
-  <div class="meta">312K views (28d) · 5 months ago · 31% at half</div>
+  <div class="t">My Abandoned Homestead: A New Chapter Begins (ep. 19)</div>
+  <div class="meta">106K views (28d) · 1 year ago · 40% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/4RcZMuY0yAU.html" data-pub="1774742400000" data-views="320642" data-out="0.99" data-r50="0.48969999999999997" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/rW52R7TECXo.html" data-pub="1742688000000" data-views="83791" data-out="0.93" data-r50="0.4214" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/4RcZMuY0yAU/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.99×</span>
-    <span class="len">25:00</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/rW52R7TECXo/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">29:02</span>
   </div>
-  <div class="t">My Abandoned General Store Is A Bigger Project Than I Thought</div>
-  <div class="meta">321K views (28d) · 5 months ago · 49% at half</div>
+  <div class="t">Turning My Abandoned General Store into My Dream Homestead: Clearing Land (ep. 18)</div>
+  <div class="meta">84K views (28d) · 1 year ago · 42% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/LLEn5akKCLQ.html" data-pub="1774137600000" data-views="485508" data-out="1.48" data-r50="0.2866" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/B5lZ7HglXBw.html" data-pub="1742083200000" data-views="116613" data-out="1.3" data-r50="0.3379" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/LLEn5akKCLQ/mqdefault.jpg" alt="">
-    <span class="score out-up">1.48×</span>
-    <span class="len">25:34</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/B5lZ7HglXBw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.30×</span>
+    <span class="len">41:54</span>
   </div>
-  <div class="t">Scrapping The Plan at My Abandoned General Store...</div>
-  <div class="meta">486K views (28d) · 5 months ago · 29% at half</div>
+  <div class="t">My Abandoned Homestead: FINISHING The Downstairs Clean-out! (Before &amp; After) (ep. 17)</div>
+  <div class="meta">117K views (28d) · 1 year ago · 34% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/zgk-mEb-Rrk.html" data-pub="1773532800000" data-views="378329" data-out="1.02" data-r50="0.4635" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/z-9Qbl57SVM.html" data-pub="1741478400000" data-views="71795" data-out="0.75" data-r50="0.4182" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/zgk-mEb-Rrk/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.02×</span>
-    <span class="len">25:00</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/z-9Qbl57SVM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.75×</span>
+    <span class="len">20:33</span>
   </div>
-  <div class="t">Hitting Two Huge Setbacks at My Abandoned General Store</div>
-  <div class="meta">378K views (28d) · 5 months ago · 46% at half</div>
+  <div class="t">My Abandoned Homestead: Finally Opening The Upstairs Windows (ft. dad) #016</div>
+  <div class="meta">72K views (28d) · 1 year ago · 42% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bgGcIh74EvI.html" data-pub="1772323200000" data-views="410685" data-out="1" data-r50="0.3406" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/rWPs8jzy9m8.html" data-pub="1739836800000" data-views="93064" data-out="1.47" data-r50="0.40299999999999997" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/bgGcIh74EvI/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.00×</span>
-    <span class="len">29:04</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/rWPs8jzy9m8/mqdefault.jpg" alt="">
+    <span class="score out-up">1.47×</span>
+    <span class="len">18:15</span>
   </div>
-  <div class="t">Fixing the BIGGEST RISK to My Abandoned General Store</div>
-  <div class="meta">411K views (28d) · 6 months ago · 34% at half</div>
+  <div class="t">Cleaning My Abandoned Homestead &amp; Finding Colonial Antiques | #013</div>
+  <div class="meta">93K views (28d) · 1 year ago · 40% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ebU0rjiEbDE.html" data-pub="1771718400000" data-views="333728" data-out="0.73" data-r50="0.3665" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8tvy0qdPHeM.html" data-pub="1739232000000" data-views="97661" data-out="1.94" data-r50="0.3737" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/ebU0rjiEbDE/mqdefault.jpg" alt="">
-    <span class="score out-down">0.73×</span>
-    <span class="len">22:42</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/8tvy0qdPHeM/mqdefault.jpg" alt="">
+    <span class="score out-up">1.94×</span>
+    <span class="len">27:29</span>
   </div>
-  <div class="t">Something Big Is Coming to My Abandoned General Store</div>
-  <div class="meta">334K views (28d) · 6 months ago · 37% at half</div>
+  <div class="t">My Abandoned Homestead Renovation: Finally Making Progress | #012</div>
+  <div class="meta">98K views (28d) · 1 year ago · 37% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8HXAHq0Zrcw.html" data-pub="1771113600000" data-views="440218" data-out="0.99" data-r50="0.43810000000000004" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/sOYk6-TX8_g.html" data-pub="1736812800000" data-views="42542" data-out="0.84" data-r50="0.4819" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/8HXAHq0Zrcw/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.99×</span>
-    <span class="len">28:58</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/sOYk6-TX8_g/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">22:51</span>
   </div>
-  <div class="t">I Couldn&#39;t Save This at My Abandoned General Store...</div>
-  <div class="meta">440K views (28d) · 6 months ago · 44% at half</div>
+  <div class="t">Salvaging Windows For My Abandoned Homestead | #008</div>
+  <div class="meta">43K views (28d) · 1 year ago · 48% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TW5QHbAVXlg.html" data-pub="1770508800000" data-views="480207" data-out="1.22" data-r50="0.4537" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kPirXmZwGik.html" data-pub="1736208000000" data-views="73075" data-out="1.58" data-r50="0.4118" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/TW5QHbAVXlg/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.22×</span>
-    <span class="len">26:02</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/kPirXmZwGik/mqdefault.jpg" alt="">
+    <span class="score out-up">1.58×</span>
+    <span class="len">26:18</span>
   </div>
-  <div class="t">What&#39;s Inside the Walls of My Abandoned General Store?</div>
-  <div class="meta">480K views (28d) · 6 months ago · 45% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
+  <div class="t">My Abandoned Homestead: More Cleaning and New Discoveries | #007</div>
+  <div class="meta">73K views (28d) · 1 year ago · 41% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8hbIH9KvEYs.html" data-pub="1769299200000" data-views="512621" data-out="1.52" data-r50="0.341" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/3T3y1W4ja8I.html" data-pub="1735603200000" data-views="312682" data-out="6.16" data-r50="0.26039999999999996" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/8hbIH9KvEYs/mqdefault.jpg" alt="">
-    <span class="score out-up">1.52×</span>
-    <span class="len">26:32</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/3T3y1W4ja8I/mqdefault.jpg" alt="">
+    <span class="score out-hot">6.16×</span>
+    <span class="len">19:37</span>
   </div>
-  <div class="t">This Was the Only Way Forward at My Abandoned General Store</div>
-  <div class="meta">513K views (28d) · 7 months ago · 34% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/zcSWzSvP3ho.html" data-pub="1768694400000" data-views="339596" data-out="0.95" data-r50="0.4454" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/zcSWzSvP3ho/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.95×</span>
-    <span class="len">19:09</span>
-  </div>
-  <div class="t">My Abandoned General Store Is About to Change Forever...</div>
-  <div class="meta">340K views (28d) · 7 months ago · 45% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/KMRQKGymhCc.html" data-pub="1768089600000" data-views="277089" data-out="0.92" data-r50="0.47859999999999997" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/KMRQKGymhCc/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.92×</span>
-    <span class="len">23:21</span>
-  </div>
-  <div class="t">The Fate of My Abandoned General Store Rests on This One Thing...</div>
-  <div class="meta">277K views (28d) · 7 months ago · 48% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/_vp6nqLn-iM.html" data-pub="1767484800000" data-views="261960" data-out="0.85" data-r50="0.3875" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/_vp6nqLn-iM/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.85×</span>
-    <span class="len">28:50</span>
-  </div>
-  <div class="t">I Risked My Life in My Abandoned General Store &amp; Found 100-Year-Old Treasure!</div>
-  <div class="meta">262K views (28d) · 8 months ago · 39% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/vfBlcmRYsGs.html" data-pub="1766880000000" data-views="178178" data-out="0.58" data-r50="0.42219999999999996" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/vfBlcmRYsGs/mqdefault.jpg" alt="">
-    <span class="score out-down">0.58×</span>
-    <span class="len">20:21</span>
-  </div>
-  <div class="t">I Only Have One Chance to Get This Right on My Abandoned General Store</div>
-  <div class="meta">178K views (28d) · 8 months ago · 42% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/iNW-4Fh5mIM.html" data-pub="1766275200000" data-views="248802" data-out="0.92" data-r50="0.4104" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/iNW-4Fh5mIM/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.92×</span>
-    <span class="len">23:54</span>
-  </div>
-  <div class="t">Just When My Abandoned General Store Started Looking Better, This Happened.</div>
-  <div class="meta">249K views (28d) · 8 months ago · 41% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/VW9XDtokHsI.html" data-pub="1765670400000" data-views="255833" data-out="1" data-r50="0.397" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/VW9XDtokHsI/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.00×</span>
-    <span class="len">17:42</span>
-  </div>
-  <div class="t">My Abandoned General Store Will Never Look The Same...Was The Risk Worth It?</div>
-  <div class="meta">256K views (28d) · 8 months ago · 40% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/qN9CTvXXCo4.html" data-pub="1764460800000" data-views="385175" data-out="2.18" data-r50="0.3521" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/qN9CTvXXCo4/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.18×</span>
-    <span class="len">22:23</span>
-  </div>
-  <div class="t">My Abandoned General Store Looks Dramatically Different Now… For Better or Worse?</div>
-  <div class="meta">385K views (28d) · 9 months ago · 35% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/nAxf3yrtjR0.html" data-pub="1769904000000" data-views="2987622" data-out="7.96" data-r50="0.2097" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/nAxf3yrtjR0/mqdefault.jpg" alt="">
-    <span class="score out-hot">7.96×</span>
-    <span class="len">44:53</span>
-  </div>
-  <div class="t">I Spent a Year Renovating an Abandoned General Store</div>
-  <div class="meta">3.0M views (28d) · 7 months ago · 21% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/cy_3HhssR2c.html" data-pub="1738022400000" data-views="54914" data-out="0.92" data-r50="0.4568" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/cy_3HhssR2c/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.92×</span>
-    <span class="len">24:54</span>
-  </div>
-  <div class="t">Turning My Massive Abandoned House Into A Homestead &amp; Flower Farm | #010</div>
-  <div class="meta">55K views (28d) · 1 year ago · 46% at half</div>
+  <div class="t">My Abandoned Homestead: Cleaning Out + Treasure Hunting | #006</div>
+  <div class="meta">313K views (28d) · 1 year ago · 26% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a></div>
 </details>
 <details class="fmt">
   <summary>
-    <span class="tpl">Vlog: ___</span>
+    <span class="tpl">Van Life | ___</span>
     <span class="fstats">
       <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
-      <span>10 videos</span>
-      <span>279K median views</span>
-      <span>39% at half · 10 analysed</span>
+      <span>15 videos</span>
+      <span>281 median views</span>
+      <span>37% at half · 15 analysed</span>
     </span>
   </summary>
-  <p class="premise">A personal, emotional update on where things stand right now — no episode number, no project frame.</p>
-  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/-D6rX0zpfGo.html" data-pub="1786233600000" data-views="680471" data-out="2.72" data-r50="0.1848" data-analysed="1">
+  <p class="premise">A day-in-the-life vlog from the road in the van.</p>
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/yjEMEa-9iss.html" data-pub="1663027200000" data-views="639" data-out="2.53" data-r50="0.3103" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/-D6rX0zpfGo/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.72×</span>
-    <span class="len">17:21</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/yjEMEa-9iss/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.53×</span>
+    <span class="len">12:11</span>
   </div>
-  <div class="t">This Chapter Is Finally Closing…</div>
-  <div class="meta">680K views (28d) · 24 days ago · 18% at half</div>
+  <div class="t">van life in the most magical place on earth...big sur</div>
+  <div class="meta">639 views (28d) · 3 years ago · 31% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/P3qIj7V0T_Q.html" data-pub="1785628800000" data-views="286257" data-out="1.14" data-r50="0.4594" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/iBVHvfGKb28.html" data-pub="1662249600000" data-views="697" data-out="2.76" data-r50="0.314" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/P3qIj7V0T_Q/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.14×</span>
-    <span class="len">16:12</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/iBVHvfGKb28/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.76×</span>
+    <span class="len">14:12</span>
   </div>
-  <div class="t">It&#39;s Finally Starting to Look Like a Home!</div>
-  <div class="meta">286K views (28d) · 1 month ago · 46% at half</div>
-  <div class="verdict">13 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/pjGxoN1d81Q.html" data-pub="1784419200000" data-views="250337" data-out="0.93" data-r50="0.4557" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/pjGxoN1d81Q/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">21:36</span>
-  </div>
-  <div class="t">I’m Terrified to Attempt This…</div>
-  <div class="meta">250K views (28d) · 1 month ago · 46% at half</div>
-  <div class="verdict">13 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/oE71uM98I9w.html" data-pub="1783814400000" data-views="249970" data-out="0.93" data-r50="0.4637" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/oE71uM98I9w/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">19:07</span>
-  </div>
-  <div class="t">I Nearly Had to Walk Away...</div>
-  <div class="meta">250K views (28d) · 1 month ago · 46% at half</div>
+  <div class="t">a girl, a dog, and a van | a quiet day in van life</div>
+  <div class="meta">697 views (28d) · 3 years ago · 31% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/qG5P5x8CPMo.html" data-pub="1782604800000" data-views="502230" data-out="1.97" data-r50="0.22699999999999998" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/n9QTXatd5z8.html" data-pub="1654560000000" data-views="208" data-out="0.76" data-r50="0.19690000000000002" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/qG5P5x8CPMo/mqdefault.jpg" alt="">
-    <span class="score out-up">1.97×</span>
-    <span class="len">19:20</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/n9QTXatd5z8/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">9:28</span>
   </div>
-  <div class="t">I&#39;m Running Out of Options...</div>
-  <div class="meta">502K views (28d) · 2 months ago · 23% at half</div>
+  <div class="t">VAN LIFE: I didn&#39;t think I&#39;d make it to San Francisco</div>
+  <div class="meta">208 views (28d) · 4 years ago · 20% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/WcaI3lGkx90.html" data-pub="1782000000000" data-views="204857" data-out="0.77" data-r50="0.38049999999999995" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/olbf7vnpax0.html" data-pub="1653782400000" data-views="208" data-out="0.76" data-r50="0.41659999999999997" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/WcaI3lGkx90/mqdefault.jpg" alt="">
-    <span class="score out-down">0.77×</span>
-    <span class="len">33:51</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/olbf7vnpax0/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">12:46</span>
   </div>
-  <div class="t">Addressing The Truth.</div>
-  <div class="meta">205K views (28d) · 2 months ago · 38% at half</div>
+  <div class="t">VAN LIFE: running from coyotes &amp; manifesting reality | truckee, california</div>
+  <div class="meta">208 views (28d) · 4 years ago · 42% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TsxtppUWWZw.html" data-pub="1781395200000" data-views="285357" data-out="1.07" data-r50="0.4" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/04K9bp1ysvE.html" data-pub="1636934400000" data-views="281" data-out="1.03" data-r50="0.2348" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/TsxtppUWWZw/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.07×</span>
-    <span class="len">31:55</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/04K9bp1ysvE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.03×</span>
+    <span class="len">16:23</span>
   </div>
-  <div class="t">This Changed the Entire Property!!</div>
-  <div class="meta">285K views (28d) · 2 months ago · 40% at half</div>
+  <div class="t">VAN LIFE | the best day in my life | peace, reflection, and tears of joy | jug hollow, utah</div>
+  <div class="meta">281 views (28d) · 4 years ago · 23% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/4Z7s9u0a9qw.html" data-pub="1780790400000" data-views="260650" data-out="0.93" data-r50="0.35960000000000003" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/_tESSPKZ9_E.html" data-pub="1634601600000" data-views="274" data-out="0.99" data-r50="0.3703" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/4Z7s9u0a9qw/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">18:26</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/_tESSPKZ9_E/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">14:05</span>
   </div>
-  <div class="t">Something Strange Happened During This Project...</div>
-  <div class="meta">261K views (28d) · 2 months ago · 36% at half</div>
+  <div class="t">VAN LIFE | a day in my life in boulder, colorado | amazing trails, nature, streams and mountains</div>
+  <div class="meta">274 views (28d) · 4 years ago · 37% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kC1ApQsEM4w.html" data-pub="1778976000000" data-views="272377" data-out="0.95" data-r50="0.3754" data-analysed="1">
+<a class="v" href="https://www.youtube.com/watch?v=P8r87KQTFiA" target="_blank" rel="noopener" data-pub="1631664000000" data-views="270" data-out="0.97" data-r50="2.4351" data-analysed="0">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/kC1ApQsEM4w/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.95×</span>
-    <span class="len">17:42</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/P8r87KQTFiA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">8:31</span>
   </div>
-  <div class="t">This Was NOT the Plan… But I Love It!!</div>
-  <div class="meta">272K views (28d) · 3 months ago · 38% at half</div>
+  <div class="t">denver van life | apex park golden, co | beautiful views of forests &amp; mountains</div>
+  <div class="meta">270 views (28d) · 4 years ago · 244% at half</div>
+  
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/p515cOHuNVM.html" data-pub="1629849600000" data-views="314" data-out="1.15" data-r50="0.43939999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/p515cOHuNVM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.15×</span>
+    <span class="len">10:14</span>
+  </div>
+  <div class="t">van life | a scary night &amp; an evening at a vineyard | solo female road trip</div>
+  <div class="meta">314 views (28d) · 5 years ago · 44% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/gsq_KGTQjJk.html" data-pub="1778371200000" data-views="291822" data-out="1.01" data-r50="0.43920000000000003" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/z_f89H4Yyqo.html" data-pub="1629417600000" data-views="179" data-out="0.66" data-r50="0.3736" data-analysed="1">
   <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/gsq_KGTQjJk/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.01×</span>
-    <span class="len">19:16</span>
+    <img loading="lazy" src="https://i.ytimg.com/vi/z_f89H4Yyqo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.66×</span>
+    <span class="len">9:19</span>
   </div>
-  <div class="t">This Was Worth The Wait</div>
-  <div class="meta">292K views (28d) · 3 months ago · 44% at half</div>
+  <div class="t">van life | my van died in oklahoma</div>
+  <div class="meta">179 views (28d) · 5 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/nIbzfKQWmNA.html" data-pub="1628640000000" data-views="825" data-out="3.05" data-r50="0.261" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nIbzfKQWmNA/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.05×</span>
+    <span class="len">7:59</span>
+  </div>
+  <div class="t">van life | spring river, cooking, and meditating in nature</div>
+  <div class="meta">825 views (28d) · 5 years ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/HQwcoLDNoLA.html" data-pub="1628035200000" data-views="187" data-out="0.69" data-r50="0.40240000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HQwcoLDNoLA/mqdefault.jpg" alt="">
+    <span class="score out-down">0.69×</span>
+    <span class="len">10:18</span>
+  </div>
+  <div class="t">van life | wild buffalo, dog-friendly places, and a new stove</div>
+  <div class="meta">187 views (28d) · 5 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ETYOioc6bkM.html" data-pub="1627344000000" data-views="303" data-out="1.12" data-r50="0.36469999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ETYOioc6bkM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.12×</span>
+    <span class="len">9:39</span>
+  </div>
+  <div class="t">van life | slow mornings, state parks, and sad moments in tennessee</div>
+  <div class="meta">303 views (28d) · 5 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=jJzARAMnXBo" target="_blank" rel="noopener" data-pub="1626825600000" data-views="271" data-out="1" data-r50="2.8695999999999997" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jJzARAMnXBo/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">8:37</span>
+  </div>
+  <div class="t">my first day of van life | a relaxing picnic in the park</div>
+  <div class="meta">271 views (28d) · 5 years ago · 287% at half</div>
+  
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/mLSJ5OfH3kQ.html" data-pub="1615420800000" data-views="591" data-out="2.06" data-r50="0.2705" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mLSJ5OfH3kQ/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.06×</span>
+    <span class="len">17:14</span>
+  </div>
+  <div class="t">the reality of van life...my van broke down // day in the life &amp; heart to heart</div>
+  <div class="meta">591 views (28d) · 5 years ago · 27% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/I6Ai6jaob10.html" data-pub="1605657600000" data-views="1586" data-out="5.53" data-r50="0.25370000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/I6Ai6jaob10/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.53×</span>
+    <span class="len">18:31</span>
+  </div>
+  <div class="t">VAN LIFE | I Bought A Van! » Living in a Van Vlog</div>
+  <div class="meta">2K views (28d) · 5 years ago · 25% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a></div>
 </details>
 <details class="fmt">
   <summary>
-    <span class="tpl">My Abandoned ___: ___ (Ep. ___)</span>
+    <span class="tpl">My Abandoned General Store: ___ (Ep. ___)</span>
     <span class="fstats">
       <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
-      <span>51 videos</span>
-      <span>106K median views</span>
-      <span>41% at half · 51 analysed</span>
+      <span>20 videos</span>
+      <span>151K median views</span>
+      <span>44% at half · 20 analysed</span>
     </span>
   </summary>
-  <p class="premise">Numbered episode in an ongoing renovation of an abandoned property.</p>
+  <p class="premise">A numbered episode chronicling one step in the general store renovation.</p>
   <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/vhqzTtjavSg.html" data-pub="1763856000000" data-views="175560" data-out="1.08" data-r50="0.4285" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vhqzTtjavSg/mqdefault.jpg" alt="">
@@ -3027,7 +2990,433 @@ formats over the same months is what makes them comparable.</p>
   <div class="meta">331K views (28d) · 1 year ago · 33% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/vDs6KPvenn4.html" data-pub="1755388800000" data-views="105966" data-out="0.64" data-r50="0.4023" data-analysed="1">
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kYjK6v2NtNA.html" data-pub="1749945600000" data-views="530272" data-out="5.18" data-r50="0.25739999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/kYjK6v2NtNA/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.18×</span>
+    <span class="len">20:01</span>
+  </div>
+  <div class="t">Cleaning My 4,000 sqft ABANDONED General Store | Antiques, Books, Ephemera + Garden Update (Ep. 30)</div>
+  <div class="meta">530K views (28d) · 1 year ago · 26% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ZjuBryqf5XY.html" data-pub="1745712000000" data-views="126290" data-out="1.46" data-r50="0.39770000000000005" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZjuBryqf5XY/mqdefault.jpg" alt="">
+    <span class="score out-up">1.46×</span>
+    <span class="len">29:18</span>
+  </div>
+  <div class="t">My ABANDONED General Store: Cleaning + Finding Antique Treasures (ep. 23)</div>
+  <div class="meta">126K views (28d) · 1 year ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/M6hDT_AYnpk.html" data-pub="1746316800000" data-views="80685" data-out="0.93" data-r50="0.4746" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/M6hDT_AYnpk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">25:22</span>
+  </div>
+  <div class="t">ABANDONED General Store Renovation: Turning the Ceiling Into Homestead Garden Beds (ep. 24)</div>
+  <div class="meta">81K views (28d) · 1 year ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ZvlhyCczjWo.html" data-pub="1737417600000" data-views="46020" data-out="0.72" data-r50="0.4462" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZvlhyCczjWo/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">19:27</span>
+  </div>
+  <div class="t">My Abandoned General Store: Cleaning Out 100-Year Old Store Shelves | #009</div>
+  <div class="meta">46K views (28d) · 1 year ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/Ql-xIQ3RYlw.html" data-pub="1733097600000" data-views="69954" data-out="1.51" data-r50="0.2973" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ql-xIQ3RYlw/mqdefault.jpg" alt="">
+    <span class="score out-up">1.51×</span>
+    <span class="len">19:58</span>
+  </div>
+  <div class="t">Abandoned Early 1900s General Store | FULL DOWNSTAIRS TOUR | #002</div>
+  <div class="meta">70K views (28d) · 1 year ago · 30% at half</div>
+  <div class="verdict">5 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/2qy8lJJNGjE.html" data-pub="1740873600000" data-views="1005376" data-out="11.37" data-r50="0.22260000000000002" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/2qy8lJJNGjE/mqdefault.jpg" alt="">
+    <span class="score out-hot">11.37×</span>
+    <span class="len">23:20</span>
+  </div>
+  <div class="t">My Abandoned Homestead: FULL TOUR | 4,000 sqft Historic 1900s General Store #015</div>
+  <div class="meta">1.0M views (28d) · 1 year ago · 22% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">My Abandoned General Store ___ Transformation/Reveal</span>
+    <span class="fstats">
+      <b class="f-mid">1.01×</b>
+      <span>15 videos</span>
+      <span>309K median views</span>
+      <span>40% at half · 15 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An update showing a dramatic visual change or milestone at the store.</p>
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/P3qIj7V0T_Q.html" data-pub="1785628800000" data-views="286257" data-out="1.14" data-r50="0.4594" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/P3qIj7V0T_Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.14×</span>
+    <span class="len">16:12</span>
+  </div>
+  <div class="t">It&#39;s Finally Starting to Look Like a Home!</div>
+  <div class="meta">286K views (28d) · 1 month ago · 46% at half</div>
+  <div class="verdict">13 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TsxtppUWWZw.html" data-pub="1781395200000" data-views="285357" data-out="1.07" data-r50="0.4" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TsxtppUWWZw/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.07×</span>
+    <span class="len">31:55</span>
+  </div>
+  <div class="t">This Changed the Entire Property!!</div>
+  <div class="meta">285K views (28d) · 2 months ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bkkMdoldsoc.html" data-pub="1780185600000" data-views="270341" data-out="0.94" data-r50="0.5257000000000001" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bkkMdoldsoc/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">23:27</span>
+  </div>
+  <div class="t">My Abandoned General Store Is Finally Starting To Take Shape!</div>
+  <div class="meta">270K views (28d) · 3 months ago · 53% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/5P7Dm0IrNi4.html" data-pub="1779580800000" data-views="309286" data-out="1.11" data-r50="0.5017" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/5P7Dm0IrNi4/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.11×</span>
+    <span class="len">21:49</span>
+  </div>
+  <div class="t">The Most Drastic Change Yet In My Abandoned General Store!!</div>
+  <div class="meta">309K views (28d) · 3 months ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kC1ApQsEM4w.html" data-pub="1778976000000" data-views="272377" data-out="0.95" data-r50="0.3754" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/kC1ApQsEM4w/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">17:42</span>
+  </div>
+  <div class="t">This Was NOT the Plan… But I Love It!!</div>
+  <div class="meta">272K views (28d) · 3 months ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/gsq_KGTQjJk.html" data-pub="1778371200000" data-views="291822" data-out="1.01" data-r50="0.43920000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/gsq_KGTQjJk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">19:16</span>
+  </div>
+  <div class="t">This Was Worth The Wait</div>
+  <div class="meta">292K views (28d) · 3 months ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TUadeWKOA9s.html" data-pub="1775952000000" data-views="313888" data-out="1.01" data-r50="0.4826" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TUadeWKOA9s/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">20:21</span>
+  </div>
+  <div class="t">My Abandoned General Store Will Never Be The Same</div>
+  <div class="meta">314K views (28d) · 4 months ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/EkdFgQGlvaI.html" data-pub="1775347200000" data-views="312398" data-out="0.98" data-r50="0.3053" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EkdFgQGlvaI/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.98×</span>
+    <span class="len">25:43</span>
+  </div>
+  <div class="t">This Was Hiding Under the Dirt In My Abandoned General Store</div>
+  <div class="meta">312K views (28d) · 5 months ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/TW5QHbAVXlg.html" data-pub="1770508800000" data-views="480207" data-out="1.22" data-r50="0.4537" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TW5QHbAVXlg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">26:02</span>
+  </div>
+  <div class="t">What&#39;s Inside the Walls of My Abandoned General Store?</div>
+  <div class="meta">480K views (28d) · 6 months ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/nAxf3yrtjR0.html" data-pub="1769904000000" data-views="2987622" data-out="7.96" data-r50="0.2097" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nAxf3yrtjR0/mqdefault.jpg" alt="">
+    <span class="score out-hot">7.96×</span>
+    <span class="len">44:53</span>
+  </div>
+  <div class="t">I Spent a Year Renovating an Abandoned General Store</div>
+  <div class="meta">3.0M views (28d) · 7 months ago · 21% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/zcSWzSvP3ho.html" data-pub="1768694400000" data-views="339596" data-out="0.95" data-r50="0.4454" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zcSWzSvP3ho/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">19:09</span>
+  </div>
+  <div class="t">My Abandoned General Store Is About to Change Forever...</div>
+  <div class="meta">340K views (28d) · 7 months ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/_vp6nqLn-iM.html" data-pub="1767484800000" data-views="261960" data-out="0.85" data-r50="0.3875" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_vp6nqLn-iM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.85×</span>
+    <span class="len">28:50</span>
+  </div>
+  <div class="t">I Risked My Life in My Abandoned General Store &amp; Found 100-Year-Old Treasure!</div>
+  <div class="meta">262K views (28d) · 8 months ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/VW9XDtokHsI.html" data-pub="1765670400000" data-views="255833" data-out="1" data-r50="0.397" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/VW9XDtokHsI/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">17:42</span>
+  </div>
+  <div class="t">My Abandoned General Store Will Never Look The Same...Was The Risk Worth It?</div>
+  <div class="meta">256K views (28d) · 8 months ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/qN9CTvXXCo4.html" data-pub="1764460800000" data-views="385175" data-out="2.18" data-r50="0.3521" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qN9CTvXXCo4/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.18×</span>
+    <span class="len">22:23</span>
+  </div>
+  <div class="t">My Abandoned General Store Looks Dramatically Different Now… For Better or Worse?</div>
+  <div class="meta">385K views (28d) · 9 months ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ebU0rjiEbDE.html" data-pub="1771718400000" data-views="333728" data-out="0.73" data-r50="0.3665" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ebU0rjiEbDE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.73×</span>
+    <span class="len">22:42</span>
+  </div>
+  <div class="t">Something Big Is Coming to My Abandoned General Store</div>
+  <div class="meta">334K views (28d) · 6 months ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">My Abandoned General Store ___ Setback/Risk ___</span>
+    <span class="fstats">
+      <b class="f-mid">0.98×</b>
+      <span>18 videos</span>
+      <span>284K median views</span>
+      <span>46% at half · 17 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A cliffhanger update where a big problem, risk, or reversal hits the store project.</p>
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/Eqy_2om2rA0.html" data-pub="1786838400000" data-views="253166" data-out="1.01" data-r50="0.47729999999999995" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Eqy_2om2rA0/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">15:06</span>
+  </div>
+  <div class="t">The Vision For My Abandoned General Store Is Changing!</div>
+  <div class="meta">253K views (28d) · 17 days ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/pjGxoN1d81Q.html" data-pub="1784419200000" data-views="250337" data-out="0.93" data-r50="0.4557" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/pjGxoN1d81Q/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">21:36</span>
+  </div>
+  <div class="t">I’m Terrified to Attempt This…</div>
+  <div class="meta">250K views (28d) · 1 month ago · 46% at half</div>
+  <div class="verdict">13 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/oE71uM98I9w.html" data-pub="1783814400000" data-views="249970" data-out="0.93" data-r50="0.4637" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oE71uM98I9w/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">19:07</span>
+  </div>
+  <div class="t">I Nearly Had to Walk Away...</div>
+  <div class="meta">250K views (28d) · 1 month ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/DFvqtu5EGYk.html" data-pub="1783209600000" data-views="234152" data-out="0.86" data-r50="0.5204" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DFvqtu5EGYk/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">21:25</span>
+  </div>
+  <div class="t">The BIGGEST RISK Yet In My Abandoned General Store</div>
+  <div class="meta">234K views (28d) · 1 month ago · 52% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/qG5P5x8CPMo.html" data-pub="1782604800000" data-views="502230" data-out="1.97" data-r50="0.22699999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/qG5P5x8CPMo/mqdefault.jpg" alt="">
+    <span class="score out-up">1.97×</span>
+    <span class="len">19:20</span>
+  </div>
+  <div class="t">I&#39;m Running Out of Options...</div>
+  <div class="meta">502K views (28d) · 2 months ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/4Z7s9u0a9qw.html" data-pub="1780790400000" data-views="260650" data-out="0.93" data-r50="0.35960000000000003" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4Z7s9u0a9qw/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.93×</span>
+    <span class="len">18:26</span>
+  </div>
+  <div class="t">Something Strange Happened During This Project...</div>
+  <div class="meta">261K views (28d) · 2 months ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/nZwf5F3f8no.html" data-pub="1777766400000" data-views="290935" data-out="0.97" data-r50="0.4817" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nZwf5F3f8no/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.97×</span>
+    <span class="len">20:52</span>
+  </div>
+  <div class="t">A Challenging Project At My Abandoned General Store...</div>
+  <div class="meta">291K views (28d) · 4 months ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/b-UUD-23xyE.html" data-pub="1777161600000" data-views="307473" data-out="1.02" data-r50="0.4925" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/b-UUD-23xyE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">25:06</span>
+  </div>
+  <div class="t">I Hope I Like This In My Abandoned General Store</div>
+  <div class="meta">307K views (28d) · 4 months ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/4RcZMuY0yAU.html" data-pub="1774742400000" data-views="320642" data-out="0.99" data-r50="0.48969999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/4RcZMuY0yAU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">25:00</span>
+  </div>
+  <div class="t">My Abandoned General Store Is A Bigger Project Than I Thought</div>
+  <div class="meta">321K views (28d) · 5 months ago · 49% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/LLEn5akKCLQ.html" data-pub="1774137600000" data-views="485508" data-out="1.48" data-r50="0.2866" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LLEn5akKCLQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.48×</span>
+    <span class="len">25:34</span>
+  </div>
+  <div class="t">Scrapping The Plan at My Abandoned General Store...</div>
+  <div class="meta">486K views (28d) · 5 months ago · 29% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/zgk-mEb-Rrk.html" data-pub="1773532800000" data-views="378329" data-out="1.02" data-r50="0.4635" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zgk-mEb-Rrk/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.02×</span>
+    <span class="len">25:00</span>
+  </div>
+  <div class="t">Hitting Two Huge Setbacks at My Abandoned General Store</div>
+  <div class="meta">378K views (28d) · 5 months ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bgGcIh74EvI.html" data-pub="1772323200000" data-views="410685" data-out="1" data-r50="0.3406" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bgGcIh74EvI/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.00×</span>
+    <span class="len">29:04</span>
+  </div>
+  <div class="t">Fixing the BIGGEST RISK to My Abandoned General Store</div>
+  <div class="meta">411K views (28d) · 6 months ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8HXAHq0Zrcw.html" data-pub="1771113600000" data-views="440218" data-out="0.99" data-r50="0.43810000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8HXAHq0Zrcw/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.99×</span>
+    <span class="len">28:58</span>
+  </div>
+  <div class="t">I Couldn&#39;t Save This at My Abandoned General Store...</div>
+  <div class="meta">440K views (28d) · 6 months ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8hbIH9KvEYs.html" data-pub="1769299200000" data-views="512621" data-out="1.52" data-r50="0.341" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8hbIH9KvEYs/mqdefault.jpg" alt="">
+    <span class="score out-up">1.52×</span>
+    <span class="len">26:32</span>
+  </div>
+  <div class="t">This Was the Only Way Forward at My Abandoned General Store</div>
+  <div class="meta">513K views (28d) · 7 months ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/KMRQKGymhCc.html" data-pub="1768089600000" data-views="277089" data-out="0.92" data-r50="0.47859999999999997" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KMRQKGymhCc/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">23:21</span>
+  </div>
+  <div class="t">The Fate of My Abandoned General Store Rests on This One Thing...</div>
+  <div class="meta">277K views (28d) · 7 months ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/vfBlcmRYsGs.html" data-pub="1766880000000" data-views="178178" data-out="0.58" data-r50="0.42219999999999996" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vfBlcmRYsGs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.58×</span>
+    <span class="len">20:21</span>
+  </div>
+  <div class="t">I Only Have One Chance to Get This Right on My Abandoned General Store</div>
+  <div class="meta">178K views (28d) · 8 months ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/iNW-4Fh5mIM.html" data-pub="1766275200000" data-views="248802" data-out="0.92" data-r50="0.4104" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/iNW-4Fh5mIM/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">23:54</span>
+  </div>
+  <div class="t">Just When My Abandoned General Store Started Looking Better, This Happened.</div>
+  <div class="meta">249K views (28d) · 8 months ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=MRwW_1cAyY0" target="_blank" rel="noopener" data-pub="1787443200000" data-views="210079" data-out="0.83" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MRwW_1cAyY0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.83×</span>
+    <span class="len">20:35</span>
+  </div>
+  <div class="t">This Will Completely Change My Abandoned General Store...</div>
+  <div class="meta">210K views (28d) · 10 days ago</div>
+  
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">My Abandoned Home: ___ (Ep. ___)</span>
+    <span class="fstats">
+      <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
+      <span>18 videos</span>
+      <span>102K median views</span>
+      <span>40% at half · 18 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A numbered episode chronicling one step in the abandoned home renovation.</p>
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/vDs6KPvenn4.html" data-pub="1755388800000" data-views="105966" data-out="0.64" data-r50="0.4023" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/vDs6KPvenn4/mqdefault.jpg" alt="">
     <span class="score out-down">0.64×</span>
@@ -3117,16 +3506,6 @@ formats over the same months is what makes them comparable.</p>
   <div class="meta">99K views (28d) · 1 year ago · 43% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kYjK6v2NtNA.html" data-pub="1749945600000" data-views="530272" data-out="5.18" data-r50="0.25739999999999996" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/kYjK6v2NtNA/mqdefault.jpg" alt="">
-    <span class="score out-hot">5.18×</span>
-    <span class="len">20:01</span>
-  </div>
-  <div class="t">Cleaning My 4,000 sqft ABANDONED General Store | Antiques, Books, Ephemera + Garden Update (Ep. 30)</div>
-  <div class="meta">530K views (28d) · 1 year ago · 26% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
 <a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/c-JNqzrhKrY.html" data-pub="1749340800000" data-views="102076" data-out="1.01" data-r50="0.49329999999999996" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/c-JNqzrhKrY/mqdefault.jpg" alt="">
@@ -3177,176 +3556,6 @@ formats over the same months is what makes them comparable.</p>
   <div class="meta">75K views (28d) · 1 year ago · 39% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/M6hDT_AYnpk.html" data-pub="1746316800000" data-views="80685" data-out="0.93" data-r50="0.4746" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/M6hDT_AYnpk/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">25:22</span>
-  </div>
-  <div class="t">ABANDONED General Store Renovation: Turning the Ceiling Into Homestead Garden Beds (ep. 24)</div>
-  <div class="meta">81K views (28d) · 1 year ago · 47% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ZjuBryqf5XY.html" data-pub="1745712000000" data-views="126290" data-out="1.46" data-r50="0.39770000000000005" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/ZjuBryqf5XY/mqdefault.jpg" alt="">
-    <span class="score out-up">1.46×</span>
-    <span class="len">29:18</span>
-  </div>
-  <div class="t">My ABANDONED General Store: Cleaning + Finding Antique Treasures (ep. 23)</div>
-  <div class="meta">126K views (28d) · 1 year ago · 40% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/aM0lI3OU3DE.html" data-pub="1745107200000" data-views="83842" data-out="0.97" data-r50="0.45130000000000003" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/aM0lI3OU3DE/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.97×</span>
-    <span class="len">34:00</span>
-  </div>
-  <div class="t">My Abandoned Homestead: Demolition Begins (ep. 22)</div>
-  <div class="meta">84K views (28d) · 1 year ago · 45% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/xJ_48VNds5M.html" data-pub="1744502400000" data-views="88912" data-out="1.02" data-r50="0.4105" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/xJ_48VNds5M/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.02×</span>
-    <span class="len">29:21</span>
-  </div>
-  <div class="t">My Abandoned Homestead: Rebuilding Original Exterior Stairs (ep. 21)</div>
-  <div class="meta">89K views (28d) · 1 year ago · 41% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/MMGgEiQc4TE.html" data-pub="1743897600000" data-views="91155" data-out="1.06" data-r50="0.4572" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/MMGgEiQc4TE/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.06×</span>
-    <span class="len">27:02</span>
-  </div>
-  <div class="t">My Abandoned Homestead: Preparing For Upstairs Renovations (ep. 20)</div>
-  <div class="meta">91K views (28d) · 1 year ago · 46% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/MDreSQy6FNw.html" data-pub="1743292800000" data-views="106223" data-out="1.18" data-r50="0.3994" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/MDreSQy6FNw/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.18×</span>
-    <span class="len">27:30</span>
-  </div>
-  <div class="t">My Abandoned Homestead: A New Chapter Begins (ep. 19)</div>
-  <div class="meta">106K views (28d) · 1 year ago · 40% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/rW52R7TECXo.html" data-pub="1742688000000" data-views="83791" data-out="0.93" data-r50="0.4214" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/rW52R7TECXo/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.93×</span>
-    <span class="len">29:02</span>
-  </div>
-  <div class="t">Turning My Abandoned General Store into My Dream Homestead: Clearing Land (ep. 18)</div>
-  <div class="meta">84K views (28d) · 1 year ago · 42% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/B5lZ7HglXBw.html" data-pub="1742083200000" data-views="116613" data-out="1.3" data-r50="0.3379" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/B5lZ7HglXBw/mqdefault.jpg" alt="">
-    <span class="score out-up">1.30×</span>
-    <span class="len">41:54</span>
-  </div>
-  <div class="t">My Abandoned Homestead: FINISHING The Downstairs Clean-out! (Before &amp; After) (ep. 17)</div>
-  <div class="meta">117K views (28d) · 1 year ago · 34% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/z-9Qbl57SVM.html" data-pub="1741478400000" data-views="71795" data-out="0.75" data-r50="0.4182" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/z-9Qbl57SVM/mqdefault.jpg" alt="">
-    <span class="score out-down">0.75×</span>
-    <span class="len">20:33</span>
-  </div>
-  <div class="t">My Abandoned Homestead: Finally Opening The Upstairs Windows (ft. dad) #016</div>
-  <div class="meta">72K views (28d) · 1 year ago · 42% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/2qy8lJJNGjE.html" data-pub="1740873600000" data-views="1005376" data-out="11.37" data-r50="0.22260000000000002" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/2qy8lJJNGjE/mqdefault.jpg" alt="">
-    <span class="score out-hot">11.37×</span>
-    <span class="len">23:20</span>
-  </div>
-  <div class="t">My Abandoned Homestead: FULL TOUR | 4,000 sqft Historic 1900s General Store #015</div>
-  <div class="meta">1.0M views (28d) · 1 year ago · 22% at half</div>
-  <div class="verdict">4 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/rWPs8jzy9m8.html" data-pub="1739836800000" data-views="93064" data-out="1.47" data-r50="0.40299999999999997" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/rWPs8jzy9m8/mqdefault.jpg" alt="">
-    <span class="score out-up">1.47×</span>
-    <span class="len">18:15</span>
-  </div>
-  <div class="t">Cleaning My Abandoned Homestead &amp; Finding Colonial Antiques | #013</div>
-  <div class="meta">93K views (28d) · 1 year ago · 40% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8tvy0qdPHeM.html" data-pub="1739232000000" data-views="97661" data-out="1.94" data-r50="0.3737" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/8tvy0qdPHeM/mqdefault.jpg" alt="">
-    <span class="score out-up">1.94×</span>
-    <span class="len">27:29</span>
-  </div>
-  <div class="t">My Abandoned Homestead Renovation: Finally Making Progress | #012</div>
-  <div class="meta">98K views (28d) · 1 year ago · 37% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bstvxI4Wtqc.html" data-pub="1738627200000" data-views="39882" data-out="0.62" data-r50="0.4682" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/bstvxI4Wtqc/mqdefault.jpg" alt="">
-    <span class="score out-down">0.62×</span>
-    <span class="len">32:22</span>
-  </div>
-  <div class="t">Renovating An Abandoned 100 Year Old Tiny House | #011</div>
-  <div class="meta">40K views (28d) · 1 year ago · 47% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/ZvlhyCczjWo.html" data-pub="1737417600000" data-views="46020" data-out="0.72" data-r50="0.4462" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/ZvlhyCczjWo/mqdefault.jpg" alt="">
-    <span class="score out-down">0.72×</span>
-    <span class="len">19:27</span>
-  </div>
-  <div class="t">My Abandoned General Store: Cleaning Out 100-Year Old Store Shelves | #009</div>
-  <div class="meta">46K views (28d) · 1 year ago · 45% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/sOYk6-TX8_g.html" data-pub="1736812800000" data-views="42542" data-out="0.84" data-r50="0.4819" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/sOYk6-TX8_g/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.84×</span>
-    <span class="len">22:51</span>
-  </div>
-  <div class="t">Salvaging Windows For My Abandoned Homestead | #008</div>
-  <div class="meta">43K views (28d) · 1 year ago · 48% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/kPirXmZwGik.html" data-pub="1736208000000" data-views="73075" data-out="1.58" data-r50="0.4118" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/kPirXmZwGik/mqdefault.jpg" alt="">
-    <span class="score out-up">1.58×</span>
-    <span class="len">26:18</span>
-  </div>
-  <div class="t">My Abandoned Homestead: More Cleaning and New Discoveries | #007</div>
-  <div class="meta">73K views (28d) · 1 year ago · 41% at half</div>
-  <div class="verdict">5 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/3T3y1W4ja8I.html" data-pub="1735603200000" data-views="312682" data-out="6.16" data-r50="0.26039999999999996" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/3T3y1W4ja8I/mqdefault.jpg" alt="">
-    <span class="score out-hot">6.16×</span>
-    <span class="len">19:37</span>
-  </div>
-  <div class="t">My Abandoned Homestead: Cleaning Out + Treasure Hunting | #006</div>
-  <div class="meta">313K views (28d) · 1 year ago · 26% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
 <a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/t0WubD66NxE.html" data-pub="1734998400000" data-views="46525" data-out="0.8" data-r50="0.4744" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/t0WubD66NxE/mqdefault.jpg" alt="">
@@ -3377,16 +3586,6 @@ formats over the same months is what makes them comparable.</p>
   <div class="meta">130K views (28d) · 1 year ago · 39% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/Ql-xIQ3RYlw.html" data-pub="1733097600000" data-views="69954" data-out="1.51" data-r50="0.2973" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/Ql-xIQ3RYlw/mqdefault.jpg" alt="">
-    <span class="score out-up">1.51×</span>
-    <span class="len">19:58</span>
-  </div>
-  <div class="t">Abandoned Early 1900s General Store | FULL DOWNSTAIRS TOUR | #002</div>
-  <div class="meta">70K views (28d) · 1 year ago · 30% at half</div>
-  <div class="verdict">5 moments analysed · open viewer →</div>
-</a>
 <a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/hWjpa-ot2t4.html" data-pub="1732492800000" data-views="28908" data-out="0.5" data-r50="0.33140000000000003" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/hWjpa-ot2t4/mqdefault.jpg" alt="">
@@ -3398,118 +3597,36 @@ formats over the same months is what makes them comparable.</p>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a></div>
 </details>
-<details class="fmt">
-  <summary>
-    <span class="tpl">Van Life: ___</span>
-    <span class="fstats">
-      <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
-      <span>9 videos</span>
-      <span>274 median views</span>
-      <span>31% at half · 9 analysed</span>
-    </span>
-  </summary>
-  <p class="premise">A day or moment from solo van life travel in a specific place.</p>
-  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/y0E8EKMPMWo.html" data-pub="1665532800000" data-views="113" data-out="0.42" data-r50="0.14859999999999998" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/y0E8EKMPMWo/mqdefault.jpg" alt="">
-    <span class="score out-cold">0.42×</span>
-    <span class="len">10:00</span>
-  </div>
-  <div class="t">My Self Care Routine While Traveling | A Month in Mexico</div>
-  <div class="meta">113 views (28d) · 3 years ago · 15% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/yjEMEa-9iss.html" data-pub="1663027200000" data-views="639" data-out="2.53" data-r50="0.3103" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/yjEMEa-9iss/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.53×</span>
-    <span class="len">12:11</span>
-  </div>
-  <div class="t">van life in the most magical place on earth...big sur</div>
-  <div class="meta">639 views (28d) · 3 years ago · 31% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/iBVHvfGKb28.html" data-pub="1662249600000" data-views="697" data-out="2.76" data-r50="0.314" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/iBVHvfGKb28/mqdefault.jpg" alt="">
-    <span class="score out-hot">2.76×</span>
-    <span class="len">14:12</span>
-  </div>
-  <div class="t">a girl, a dog, and a van | a quiet day in van life</div>
-  <div class="meta">697 views (28d) · 3 years ago · 31% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/n9QTXatd5z8.html" data-pub="1654560000000" data-views="208" data-out="0.76" data-r50="0.19690000000000002" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/n9QTXatd5z8/mqdefault.jpg" alt="">
-    <span class="score out-down">0.76×</span>
-    <span class="len">9:28</span>
-  </div>
-  <div class="t">VAN LIFE: I didn&#39;t think I&#39;d make it to San Francisco</div>
-  <div class="meta">208 views (28d) · 4 years ago · 20% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/olbf7vnpax0.html" data-pub="1653782400000" data-views="208" data-out="0.76" data-r50="0.41659999999999997" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/olbf7vnpax0/mqdefault.jpg" alt="">
-    <span class="score out-down">0.76×</span>
-    <span class="len">12:46</span>
-  </div>
-  <div class="t">VAN LIFE: running from coyotes &amp; manifesting reality | truckee, california</div>
-  <div class="meta">208 views (28d) · 4 years ago · 42% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/04K9bp1ysvE.html" data-pub="1636934400000" data-views="281" data-out="1.03" data-r50="0.2348" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/04K9bp1ysvE/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.03×</span>
-    <span class="len">16:23</span>
-  </div>
-  <div class="t">VAN LIFE | the best day in my life | peace, reflection, and tears of joy | jug hollow, utah</div>
-  <div class="meta">281 views (28d) · 4 years ago · 23% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/_tESSPKZ9_E.html" data-pub="1634601600000" data-views="274" data-out="0.99" data-r50="0.3703" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/_tESSPKZ9_E/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.99×</span>
-    <span class="len">14:05</span>
-  </div>
-  <div class="t">VAN LIFE | a day in my life in boulder, colorado | amazing trails, nature, streams and mountains</div>
-  <div class="meta">274 views (28d) · 4 years ago · 37% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a>
-<a class="v" href="https://www.youtube.com/watch?v=P8r87KQTFiA" target="_blank" rel="noopener" data-pub="1631664000000" data-views="270" data-out="0.97" data-r50="2.4351" data-analysed="0">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/P8r87KQTFiA/mqdefault.jpg" alt="">
-    <span class="score out-mid">0.97×</span>
-    <span class="len">8:31</span>
-  </div>
-  <div class="t">denver van life | apex park golden, co | beautiful views of forests &amp; mountains</div>
-  <div class="meta">270 views (28d) · 4 years ago · 244% at half</div>
-  
-</a>
-<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/p515cOHuNVM.html" data-pub="1629849600000" data-views="314" data-out="1.15" data-r50="0.43939999999999996" data-analysed="1">
-  <div class="thumb">
-    <img loading="lazy" src="https://i.ytimg.com/vi/p515cOHuNVM/mqdefault.jpg" alt="">
-    <span class="score out-mid">1.15×</span>
-    <span class="len">10:14</span>
-  </div>
-  <div class="t">van life | a scary night &amp; an evening at a vineyard | solo female road trip</div>
-  <div class="meta">314 views (28d) · 5 years ago · 44% at half</div>
-  <div class="verdict">6 moments analysed · open viewer →</div>
-</a></div>
-</details>
 <details class="fmt oneoff">
   <summary>
     <span class="tpl">One-offs</span>
-    <span class="fstats"><span>2 videos</span>
+    <span class="fstats"><span>12 videos</span>
     <span>no repeated shape</span></span>
   </summary>
   <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
     or the start of a format that has not been repeated often enough to count yet (a format needs at least
     3).</p>
-  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8PO6KIXmr7I.html" data-pub="1740355200000" data-views="36344" data-out="0.41" data-r50="0.3325" data-analysed="1">
+  <div class="wall"><a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/-D6rX0zpfGo.html" data-pub="1786233600000" data-views="680471" data-out="2.72" data-r50="0.1848" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/-D6rX0zpfGo/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.72×</span>
+    <span class="len">17:21</span>
+  </div>
+  <div class="t">This Chapter Is Finally Closing…</div>
+  <div class="meta">680K views (28d) · 24 days ago · 18% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/WcaI3lGkx90.html" data-pub="1782000000000" data-views="204857" data-out="0.77" data-r50="0.38049999999999995" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WcaI3lGkx90/mqdefault.jpg" alt="">
+    <span class="score out-down">0.77×</span>
+    <span class="len">33:51</span>
+  </div>
+  <div class="t">Addressing The Truth.</div>
+  <div class="meta">205K views (28d) · 2 months ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/8PO6KIXmr7I.html" data-pub="1740355200000" data-views="36344" data-out="0.41" data-r50="0.3325" data-analysed="1">
   <div class="thumb">
     <img loading="lazy" src="https://i.ytimg.com/vi/8PO6KIXmr7I/mqdefault.jpg" alt="">
     <span class="score out-cold">0.41×</span>
@@ -3517,6 +3634,36 @@ formats over the same months is what makes them comparable.</p>
   </div>
   <div class="t">I Bought an Abandoned Cabin! | Off-Grid Cabin Tour #014</div>
   <div class="meta">36K views (28d) · 1 year ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bstvxI4Wtqc.html" data-pub="1738627200000" data-views="39882" data-out="0.62" data-r50="0.4682" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bstvxI4Wtqc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.62×</span>
+    <span class="len">32:22</span>
+  </div>
+  <div class="t">Renovating An Abandoned 100 Year Old Tiny House | #011</div>
+  <div class="meta">40K views (28d) · 1 year ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/cy_3HhssR2c.html" data-pub="1738022400000" data-views="54914" data-out="0.92" data-r50="0.4568" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/cy_3HhssR2c/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.92×</span>
+    <span class="len">24:54</span>
+  </div>
+  <div class="t">Turning My Massive Abandoned House Into A Homestead &amp; Flower Farm | #010</div>
+  <div class="meta">55K views (28d) · 1 year ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/y0E8EKMPMWo.html" data-pub="1665532800000" data-views="113" data-out="0.42" data-r50="0.14859999999999998" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/y0E8EKMPMWo/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.42×</span>
+    <span class="len">10:00</span>
+  </div>
+  <div class="t">My Self Care Routine While Traveling | A Month in Mexico</div>
+  <div class="meta">113 views (28d) · 3 years ago · 15% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
 </a>
 <a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/w2J8NOfUjrA.html" data-pub="1663632000000" data-views="235" data-out="0.86" data-r50="0.25730000000000003" data-analysed="1">
@@ -3528,10 +3675,60 @@ formats over the same months is what makes them comparable.</p>
   <div class="t">i sold the van (it got broken into) | what’s happening next</div>
   <div class="meta">235 views (28d) · 3 years ago · 26% at half</div>
   <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/bnTqMQ40JZE.html" data-pub="1621987200000" data-views="122" data-out="0.43" data-r50="0.4111" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bnTqMQ40JZE/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.43×</span>
+    <span class="len">13:02</span>
+  </div>
+  <div class="t">VAN BUILD #1 | framing, sound proofing, painting</div>
+  <div class="meta">122 views (28d) · 5 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCO1Ewa1OnZ87iNTVxqxLgwg/_NpyBleyIwg.html" data-pub="1607904000000" data-views="554" data-out="1.93" data-r50="0.40740000000000004" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/_NpyBleyIwg/mqdefault.jpg" alt="">
+    <span class="score out-up">1.93×</span>
+    <span class="len">19:25</span>
+  </div>
+  <div class="t">VAN BUILD | Conversion From Start to Finish (with Before and After Photos) | Solo Female</div>
+  <div class="meta">554 views (28d) · 5 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=8aaN9AnOFS8" target="_blank" rel="noopener" data-pub="1788048000000" data-views="240156" data-out="0.95" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8aaN9AnOFS8/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.95×</span>
+    <span class="len">26:28</span>
+  </div>
+  <div class="t">I Made A Pretty Big Mistake.</div>
+  <div class="meta">240K views (28d) · 3 days ago</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=3ENjWhuS4-Q" target="_blank" rel="noopener" data-pub="1537401600000" data-views="1253" data-out="4.37" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3ENjWhuS4-Q/mqdefault.jpg" alt="">
+    <span class="score out-hot">4.37×</span>
+    <span class="len">2:23</span>
+  </div>
+  <div class="t">&quot;free your inner child&quot; - inspirational short film</div>
+  <div class="meta">1K views (28d) · 7 years ago</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=oEqQ6u_fRWc" target="_blank" rel="noopener" data-pub="1517961600000" data-views="139" data-out="0.32" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/oEqQ6u_fRWc/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.32×</span>
+    <span class="len">2:03</span>
+  </div>
+  <div class="t">THE COSMIC NATURE OF SELF LOVE | a poem.</div>
+  <div class="meta">139 views (28d) · 8 years ago</div>
+  
 </a></div>
 </details>
 </div>
-<p class="capnote">95 of 110 videos sit in a named format · library built 2026-08-19.</p>
+<p class="capnote">98 of 110 videos sit in a named format · library built 2026-09-02.</p>
 
 
 
@@ -4614,7 +4811,7 @@ formats over the same months is what makes them comparable.</p>
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-31</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-26</span><span class="ago">6 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-25</span><span class="ago">8 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-24</span><span class="ago">8 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">13 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-17</span><span class="ago">15 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-17</span><span class="ago">15 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-10</span><span class="ago">23 days ago</span></div><div class="fresh"><span class="k">Channel Audit</span><span class="v">2026-06-01</span><span class="ago">3 months ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-08-31</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-26</span><span class="ago">7 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-25</span><span class="ago">8 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-24</span><span class="ago">8 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-19</span><span class="ago">13 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-17</span><span class="ago">15 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-17</span><span class="ago">15 days ago</span></div><div class="fresh"><span class="k">Video Regression</span><span class="v">2026-08-10</span><span class="ago">23 days ago</span></div><div class="fresh"><span class="k">Channel Audit</span><span class="v">2026-06-01</span><span class="ago">3 months ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

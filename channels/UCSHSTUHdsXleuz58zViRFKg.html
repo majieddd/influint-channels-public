@@ -35,7 +35,8 @@ body::after{
 header.site{display:flex; align-items:center; gap:14px; padding:26px 0 44px}
 header.site img{width:30px; height:auto; display:block}
 header.site .word{font-weight:600; letter-spacing:.14em; font-size:13px; text-transform:uppercase; color:var(--teal)}
-header.site nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
+header.site{flex-wrap:wrap}
+header.site nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:14px 22px; font-size:14px; justify-content:flex-end}
 header.site nav a{color:var(--grey); text-decoration:none}
 header.site nav a:last-child{color:var(--teal)}
 header.site nav a:hover{color:var(--teal)}
@@ -759,19 +760,50 @@ table.obs td.no{color:#ff8f8f}
 .ccchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 7px;margin:1px 2px;white-space:nowrap}
 .ccchip.up{color:var(--teal);border-color:color-mix(in oklab,var(--teal) 50%,var(--line))}
 .ccchip.down{color:var(--hot);border-color:color-mix(in oklab,var(--hot) 50%,var(--line))}
+
+.is-layer{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.9fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0;background:var(--panel)}
+.is-layer h3{margin:0 0 6px;font-size:15px;color:var(--teal)}
+.is-layer p{margin:0;font-size:13px;line-height:1.55}
+.is-layer .is-gate{border-left:3px solid var(--warn);padding-left:10px}
+.is-layer .is-gate b{color:var(--warn)}
+.is-layer .is-where{font-size:11px;color:var(--grey);overflow-wrap:anywhere}
+.is-flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px;font-size:12px}
+.is-flow span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--panel)}
+.is-flow i{color:var(--grey);font-style:normal;padding:3px 2px}
+.is-search{margin:14px 0}
+.is-search input{width:100%;max-width:520px;font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.is-list{list-style:none;padding:0;margin:8px 0}
+.is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.is-list li a{color:inherit;text-decoration:none}
+.is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.tr-pick{margin:14px 0}
+.tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
+.tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
+.tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+.tr-section h4{margin:12px 0 4px;font-size:13px}
+.tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
+.tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
+.tr-quote{font-style:italic;color:var(--grey);font-size:12px}
+.tr-kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 14px;font-size:12px;margin:6px 0}
+.tr-kv b{color:var(--grey);font-weight:500}
+.tr-svg{display:block;width:100%;max-width:820px;height:auto;margin:8px 0}
+.tr-dim{color:var(--grey);font-size:12px}
+.tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
+.tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
+.tr-empty{color:var(--grey);font-size:13px}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
 </header>
 
 <div class="profile">
   <img class="av" src="https://yt3.ggpht.com/Ori0kgJUW8H4BTH3UFfc5GhvcK3EPIu1g0UVUt1TAzV7UPk9envGnDOwKYKWUB6kErA21Sw_=s800-c-k-c0x00ffffff-no-rj" alt="">
   <div>
     <h1>Tropical Russian</h1>
-    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@tropicalrussian" target="_blank" rel="noopener">@tropicalrussian</a> · 36K subscribers · knowledge base last updated 2026-09-01</p>
+    <p class="lede" style="margin:0"><a href="https://www.youtube.com/@tropicalrussian" target="_blank" rel="noopener">@tropicalrussian</a> · 36K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
 <div class="dims">
@@ -829,14 +861,15 @@ means two things move together on this channel, which is not the same as one cau
 </figure>
   <details class="actbut"><summary>What would make this wrong</summary><p>Some opening loss is unavoidable: people who clicked the wrong thing leave whatever you do. Only the gap over a quarter is addressable.</p></details>
 </li></ol>
-<details class="alsochk"><summary>Also checked, no action needed (3)</summary>
+<details class="alsochk"><summary>Also checked, no action needed (4)</summary>
   <ul><li>Ending: 4.8% of those still watching at 90% leave before the card. Under the 20.0% worth fixing.</li>
 <li>Length: 40.1% against 36.6% at halfway. A 3.5% gap, too small to act on.</li>
-<li>Cadence: 0.91x on rhythm against 0.87x off it. Too close to call.</li></ul>
+<li>Cadence: 0.91x on rhythm against 0.87x off it. Too close to call.</li>
+<li>Formats: 4 run between 0.75x and 1.30x. Working as intended.</li></ul>
 </details>
 <p class="capnote">Built from 40 videos with retention data. &quot;Viewers at stake&quot; is an estimate, not a forecast.</p>
 <p class="capnote">Window: the 40 most recent uploads, not all 60. Advice is about the channel being run now.</p>
-<p class="capnote">No format library has been built for this channel, so no format actions appear. Run `npm run formats:classify`.</p>
+<p class="capnote">1 format gave no action: it ran in a block, so performance cannot be separated from when it ran. Interleave two shapes over the same months to compare them.</p>
 
 
 
@@ -1508,6 +1541,710 @@ means two things move together on this channel, which is not the same as one cau
   });
 })();
 </script>
+
+<h2>Formats</h2>
+<p class="legend">The repeatable shapes this channel publishes, written as templates.
+A format is a shape a viewer recognises as &ldquo;another one of those&rdquo; &mdash; so two videos
+belong together when they make the same promise, even if they share no words.
+Ordered by how well the shape performs against the channel&rsquo;s own median, not by how often
+it is used: a format shipped twenty times that underperforms is a habit, not a strength.
+The multiplier is the group&rsquo;s median outlier score, measured against each video&rsquo;s
+contemporaries. A shape marked <b>era-bound</b> ran in a block &mdash; most of its neighbouring uploads share
+the same shape, so its score compares it against itself and cannot be read as performance. Interleaving two
+formats over the same months is what makes them comparable.</p>
+<div class="formats">
+<details class="fmt">
+  <summary>
+    <span class="tpl">I Accidentally ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.19×</b>
+      <span>4 videos</span>
+      <span>8K median views</span>
+      <span>33% at half · 4 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A mishap or unplanned situation she stumbled into.</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/o8hsE_ymvXY.html" data-pub="1777766400000" data-views="5236" data-out="0.87" data-r50="0.297" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/o8hsE_ymvXY/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">23:02</span>
+  </div>
+  <div class="t">I accidentally drank poop water for a week (vanlife in Arkansas)</div>
+  <div class="meta">5K views (28d) · 4 months ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/1eP2DeC1Ahs.html" data-pub="1675900800000" data-views="6411" data-out="0.87" data-r50="0.4609" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/1eP2DeC1Ahs/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">23:07</span>
+  </div>
+  <div class="t">I Accidentally Sent my Date to the Hospital: Motolife edition</div>
+  <div class="meta">6K views (28d) · 3 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/rwBEzVCeyxk.html" data-pub="1671840000000" data-views="9800" data-out="1.5" data-r50="0.3698" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rwBEzVCeyxk/mqdefault.jpg" alt="">
+    <span class="score out-up">1.50×</span>
+    <span class="len">20:27</span>
+  </div>
+  <div class="t">I Accidentally Rafted the Most Dangerous Rapids of Costa Rica</div>
+  <div class="meta">10K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/h4bPBTb8LZI.html" data-pub="1661040000000" data-views="374365" data-out="41.17" data-r50="0.1506" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/h4bPBTb8LZI/mqdefault.jpg" alt="">
+    <span class="score out-hot">41.17×</span>
+    <span class="len">15:31</span>
+  </div>
+  <div class="t">I Accidentally Went on a Date: Van Life Edition</div>
+  <div class="meta">374K views (28d) · 4 years ago · 15% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">I Woke Up In ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.12×</b>
+      <span>6 videos</span>
+      <span>3K median views</span>
+      <span>45% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A day begins in an unexpected place and unfolds from there.</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/UwPEqcLh5LU.html" data-pub="1705276800000" data-views="5233" data-out="0.84" data-r50="0.4494" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UwPEqcLh5LU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.84×</span>
+    <span class="len">11:31</span>
+  </div>
+  <div class="t">I woke up in St. Augustine | Sewing Sidequests</div>
+  <div class="meta">5K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/lobokdR8FRw.html" data-pub="1660435200000" data-views="21084" data-out="2.32" data-r50="0.2962" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lobokdR8FRw/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.32×</span>
+    <span class="len">13:33</span>
+  </div>
+  <div class="t">I Woke Up in West Palm Beach | Environmental Consulting | Van Tour</div>
+  <div class="meta">21K views (28d) · 4 years ago · 30% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/XAdLYJkgXJ4.html" data-pub="1660089600000" data-views="56535" data-out="6.22" data-r50="0.3322" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XAdLYJkgXJ4/mqdefault.jpg" alt="">
+    <span class="score out-hot">6.22×</span>
+    <span class="len">15:15</span>
+  </div>
+  <div class="t">I Woke Up in @hannahleeduggan &#39;s Cottage! ​</div>
+  <div class="meta">57K views (28d) · 4 years ago · 33% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/ezv-3IhxHng.html" data-pub="1656115200000" data-views="442" data-out="0.06" data-r50="0.6174" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ezv-3IhxHng/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.06×</span>
+    <span class="len">9:14</span>
+  </div>
+  <div class="t">I Woke Up in a Tent on the Caribbean | Camping in Puerto Viejo, Costa Rica</div>
+  <div class="meta">442 views (28d) · 4 years ago · 62% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/FnFTdQ-Q0m4.html" data-pub="1654387200000" data-views="344" data-out="0.05" data-r50="0.4589" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/FnFTdQ-Q0m4/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.05×</span>
+    <span class="len">8:57</span>
+  </div>
+  <div class="t">I Woke Up in a Grandma&#39;s House | Driving to the Caribbean (with I friend I made 4 days ago)</div>
+  <div class="meta">344 views (28d) · 4 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/3cH6rg1dh2A.html" data-pub="1646265600000" data-views="930" data-out="1.4" data-r50="0.4787" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/3cH6rg1dh2A/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">12:16</span>
+  </div>
+  <div class="t">I Woke up on a School Bus | Living in Costa Rica</div>
+  <div class="meta">930 views (28d) · 4 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Solo On My Moto ___</span>
+    <span class="fstats">
+      <b class="f-none" title="Most of this format's neighbouring uploads share the same shape, so its score compares it against itself. Its performance cannot be separated from when it ran.">era-bound</b>
+      <span>9 videos</span>
+      <span>11K median views</span>
+      <span>40% at half · 9 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">An episode of the solo motorcycle series through Costa Rica.</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/XiiJDBPYSfQ.html" data-pub="1690934400000" data-views="6517" data-out="0.72" data-r50="0.39" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/XiiJDBPYSfQ/mqdefault.jpg" alt="">
+    <span class="score out-down">0.72×</span>
+    <span class="len">16:26</span>
+  </div>
+  <div class="t">A bird taught me to fly | Solo on my Moto [E9]</div>
+  <div class="meta">7K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/KgDIqy1vDKU.html" data-pub="1689379200000" data-views="8012" data-out="0.91" data-r50="0.4253" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/KgDIqy1vDKU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.91×</span>
+    <span class="len">13:33</span>
+  </div>
+  <div class="t">Guanacaste: Dirt Roads, Night Markets, and Hot Girls | Solo on my Moto [E8]</div>
+  <div class="meta">8K views (28d) · 3 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/6wacuJEqWp8.html" data-pub="1684972800000" data-views="10202" data-out="1.06" data-r50="0.3708" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6wacuJEqWp8/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.06×</span>
+    <span class="len">34:15</span>
+  </div>
+  <div class="t">Crossing rivers on a motorcycle in Costa Rica | [E7]</div>
+  <div class="meta">10K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/saI40Y45Bjs.html" data-pub="1682812800000" data-views="6372" data-out="0.54" data-r50="0.548" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/saI40Y45Bjs/mqdefault.jpg" alt="">
+    <span class="score out-down">0.54×</span>
+    <span class="len">10:01</span>
+  </div>
+  <div class="t">Trusting strangers camping in Mal País, Costa Rica | Solo on my Moto [E6]</div>
+  <div class="meta">6K views (28d) · 3 years ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/jgi27ExM2SA.html" data-pub="1682208000000" data-views="25773" data-out="2.41" data-r50="0.2221" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/jgi27ExM2SA/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.41×</span>
+    <span class="len">19:39</span>
+  </div>
+  <div class="t">I Met an Indigenous Tribe and Gained 5 Kilos of Chocolate | Solo on my Moto (costa rica) [E5]</div>
+  <div class="meta">26K views (28d) · 3 years ago · 22% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/Nm-oDaqATIM.html" data-pub="1680480000000" data-views="11211" data-out="1.09" data-r50="0.4065" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Nm-oDaqATIM/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.09×</span>
+    <span class="len">15:39</span>
+  </div>
+  <div class="t">Surviving on a deserted beach in Costa Rica | Solo on my Moto [E4]</div>
+  <div class="meta">11K views (28d) · 3 years ago · 41% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/eWo3b38LdwQ.html" data-pub="1679875200000" data-views="14192" data-out="1.4" data-r50="0.3897" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/eWo3b38LdwQ/mqdefault.jpg" alt="">
+    <span class="score out-up">1.40×</span>
+    <span class="len">18:28</span>
+  </div>
+  <div class="t">I picked up @hannahleeduggan | Solo on my Moto (costa rica) [E3]</div>
+  <div class="meta">14K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/zcd4cRJnDic.html" data-pub="1679184000000" data-views="12489" data-out="1.46" data-r50="0.4179" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zcd4cRJnDic/mqdefault.jpg" alt="">
+    <span class="score out-up">1.46×</span>
+    <span class="len">19:16</span>
+  </div>
+  <div class="t">Unicorn Saves the Day | Solo on my Moto (costa rica) [E2]</div>
+  <div class="meta">12K views (28d) · 3 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/Ovx6us6Yy8E.html" data-pub="1678665600000" data-views="13054" data-out="1.52" data-r50="0.4027" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Ovx6us6Yy8E/mqdefault.jpg" alt="">
+    <span class="score out-up">1.52×</span>
+    <span class="len">13:48</span>
+  </div>
+  <div class="t">Solo on my Moto (costa rica) | I&#39;m not ready but I&#39;m doing it [E1]</div>
+  <div class="meta">13K views (28d) · 3 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">Vanlife In ___</span>
+    <span class="fstats">
+      <b class="f-mid">1.04×</b>
+      <span>6 videos</span>
+      <span>7K median views</span>
+      <span>39% at half · 6 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">Life on the road in the van in a specific US region.</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/la4EtUuSf6w.html" data-pub="1715472000000" data-views="4836" data-out="0.61" data-r50="0.4974" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/la4EtUuSf6w/mqdefault.jpg" alt="">
+    <span class="score out-down">0.61×</span>
+    <span class="len">17:30</span>
+  </div>
+  <div class="t">I Found Wild Horses in the Outer Banks | Vanlife</div>
+  <div class="meta">5K views (28d) · 2 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/nrnUiH5975I.html" data-pub="1714262400000" data-views="8208" data-out="1.14" data-r50="0.3623" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/nrnUiH5975I/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.14×</span>
+    <span class="len">18:21</span>
+  </div>
+  <div class="t">Vanlife: alone in the Appalachian Mountains</div>
+  <div class="meta">8K views (28d) · 2 years ago · 36% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/A6ynw5-rBYA.html" data-pub="1713052800000" data-views="6789" data-out="0.9" data-r50="0.3993" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/A6ynw5-rBYA/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.90×</span>
+    <span class="len">16:11</span>
+  </div>
+  <div class="t">3 girls 1 van in the Blue Ridge Mountains</div>
+  <div class="meta">7K views (28d) · 2 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/MPn-Iec3in8.html" data-pub="1711238400000" data-views="27325" data-out="5.01" data-r50="0.2404" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MPn-Iec3in8/mqdefault.jpg" alt="">
+    <span class="score out-hot">5.01×</span>
+    <span class="len">12:07</span>
+  </div>
+  <div class="t">2 girls and a van in Dirty Myrtle (south carolina)</div>
+  <div class="meta">27K views (28d) · 2 years ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/7CmuFkHDs6s.html" data-pub="1707177600000" data-views="5669" data-out="0.94" data-r50="0.3981" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7CmuFkHDs6s/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.94×</span>
+    <span class="len">24:42</span>
+  </div>
+  <div class="t">Vanlife: From pooping in the woods to parties in LA</div>
+  <div class="meta">6K views (28d) · 2 years ago · 40% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/Aw9K9EOyZyU.html" data-pub="1704585600000" data-views="7904" data-out="1.37" data-r50="0.3721" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/Aw9K9EOyZyU/mqdefault.jpg" alt="">
+    <span class="score out-up">1.37×</span>
+    <span class="len">14:05</span>
+  </div>
+  <div class="t">Hot Florida Van Life: 10 Survival Tips</div>
+  <div class="meta">8K views (28d) · 2 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt">
+  <summary>
+    <span class="tpl">How To ___</span>
+    <span class="fstats">
+      <b class="f-mid">0.86×</b>
+      <span>4 videos</span>
+      <span>5K median views</span>
+      <span>41% at half · 4 analysed</span>
+    </span>
+  </summary>
+  <p class="premise">A practical how-to drawn from her travel life.</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/6-SWbtp1j28.html" data-pub="1721865600000" data-views="6196" data-out="0.86" data-r50="0.3673" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6-SWbtp1j28/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">10:02</span>
+  </div>
+  <div class="t">How to make Coconut Crepes in a VAN</div>
+  <div class="meta">6K views (28d) · 2 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/TLZyP-Bvkiw.html" data-pub="1716768000000" data-views="76167" data-out="10.55" data-r50="0.157" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TLZyP-Bvkiw/mqdefault.jpg" alt="">
+    <span class="score out-hot">10.55×</span>
+    <span class="len">8:12</span>
+  </div>
+  <div class="t">How to make the BEST empanadas… in a VAN on a BOAT</div>
+  <div class="meta">76K views (28d) · 2 years ago · 16% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/LtgdpLO5GSk.html" data-pub="1705968000000" data-views="3695" data-out="0.59" data-r50="0.4512" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/LtgdpLO5GSk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">8:28</span>
+  </div>
+  <div class="t">How to Buy a Motorcycle in Costa Rica: Step-by-Step Guide</div>
+  <div class="meta">4K views (28d) · 2 years ago · 45% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/TCW1F7xfwIE.html" data-pub="1652832000000" data-views="661" data-out="0.87" data-r50="0.4748" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/TCW1F7xfwIE/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">9:00</span>
+  </div>
+  <div class="t">How to Pack for a Month of Travel in ONE backpack - This Counts as a free Personal Item!!</div>
+  <div class="meta">661 views (28d) · 4 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+<details class="fmt oneoff">
+  <summary>
+    <span class="tpl">One-offs</span>
+    <span class="fstats"><span>33 videos</span>
+    <span>no repeated shape</span></span>
+  </summary>
+  <p class="premise">Videos that do not belong to a repeatable shape &mdash; either genuinely one of a kind,
+    or the start of a format that has not been repeated often enough to count yet (a format needs at least
+    3).</p>
+  <div class="wall"><a class="v" href="UCSHSTUHdsXleuz58zViRFKg/7VXM3v7qvyc.html" data-pub="1768089600000" data-views="3159" data-out="0.52" data-r50="0.3357" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7VXM3v7qvyc/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">18:23</span>
+  </div>
+  <div class="t">The Reality of Traveling With a Cat: Is it Worth It??</div>
+  <div class="meta">3K views (28d) · 7 months ago · 34% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/OgU7gGszzC0.html" data-pub="1760313600000" data-views="5235" data-out="0.87" data-r50="0.3073" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/OgU7gGszzC0/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.87×</span>
+    <span class="len">29:12</span>
+  </div>
+  <div class="t">I Got Arrested in Nicaragua with my Cat (Little Corn Island)</div>
+  <div class="meta">5K views (28d) · 10 months ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=e_VyVjZuiPI" target="_blank" rel="noopener" data-pub="1757683130000" data-views="4601" data-out="0.76" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/e_VyVjZuiPI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.76×</span>
+    <span class="len">50:47</span>
+  </div>
+  <div class="t">I was roofied and left bleeding in a foreign country LIVE</div>
+  <div class="meta">5K views · 11 months ago</div>
+  
+</a>
+<a class="v" href="https://www.youtube.com/watch?v=HEp6khXW5TU" target="_blank" rel="noopener" data-pub="1757615323000" data-views="18437" data-out="3.31" data-r50="" data-analysed="0">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HEp6khXW5TU/mqdefault.jpg" alt="">
+    <span class="score out-hot">3.31×</span>
+    <span class="len">2:07:43</span>
+  </div>
+  <div class="t">Should I travel the world with my cat?? LIVE</div>
+  <div class="meta">18K views · 11 months ago</div>
+  
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/7IpjoFO8pEs.html" data-pub="1751155200000" data-views="14616" data-out="2.63" data-r50="0.2404" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/7IpjoFO8pEs/mqdefault.jpg" alt="">
+    <span class="score out-hot">2.63×</span>
+    <span class="len">19:38</span>
+  </div>
+  <div class="t">I Found a Kitten While Rafting the Most Dangerous River in Costa Rica</div>
+  <div class="meta">15K views (28d) · 1 year ago · 24% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/MzNmL50r9qU.html" data-pub="1729382400000" data-views="5900" data-out="0.82" data-r50="0.3171" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/MzNmL50r9qU/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">21:58</span>
+  </div>
+  <div class="t">Moto Camping Alone on Volcanos in Costa Rica</div>
+  <div class="meta">6K views (28d) · 1 year ago · 32% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/E7MyCrbcwAs.html" data-pub="1719964800000" data-views="7621" data-out="1.01" data-r50="0.3668" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/E7MyCrbcwAs/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.01×</span>
+    <span class="len">17:01</span>
+  </div>
+  <div class="t">Living in a Shipping Container in La Fortuna, Costa Rica [E11]</div>
+  <div class="meta">8K views (28d) · 2 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/UY8kAYlfw1g.html" data-pub="1719100800000" data-views="8813" data-out="1.22" data-r50="0.3085" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/UY8kAYlfw1g/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.22×</span>
+    <span class="len">25:39</span>
+  </div>
+  <div class="t">I Got Adopted at the Border of Costa Rica [E10]</div>
+  <div class="meta">9K views (28d) · 2 years ago · 31% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/8S3KtCjZH2k.html" data-pub="1717372800000" data-views="6825" data-out="0.86" data-r50="0.3504" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/8S3KtCjZH2k/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.86×</span>
+    <span class="len">18:38</span>
+  </div>
+  <div class="t">Can You Survive in the Caribbean with NO MONEY? | Costa Rica</div>
+  <div class="meta">7K views (28d) · 2 years ago · 35% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/q-qzP3a6cUI.html" data-pub="1707955200000" data-views="3648" data-out="0.59" data-r50="0.3986" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/q-qzP3a6cUI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">11:02</span>
+  </div>
+  <div class="t">Authentic Vegan Tacos with Pako from Oaxaca | Heirloom LA</div>
+  <div class="meta">4K views (28d) · 2 years ago · 40% at half</div>
+  <div class="verdict">4 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/vS45vxIM4P4.html" data-pub="1694044800000" data-views="5907" data-out="0.82" data-r50="0.4828" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vS45vxIM4P4/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.82×</span>
+    <span class="len">15:02</span>
+  </div>
+  <div class="t">Hitchhikes to Miami, Gets Robbed: South Florida News</div>
+  <div class="meta">6K views (28d) · 2 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/xqszeg53M0A.html" data-pub="1681084800000" data-views="7430" data-out="0.63" data-r50="0.4348" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/xqszeg53M0A/mqdefault.jpg" alt="">
+    <span class="score out-down">0.63×</span>
+    <span class="len">11:36</span>
+  </div>
+  <div class="t">Q&amp;A: Solo Female Motorcycle Travel in Costa Rica</div>
+  <div class="meta">7K views (28d) · 3 years ago · 43% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/vu2beNEuEqM.html" data-pub="1678320000000" data-views="5267" data-out="0.52" data-r50="0.5355" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vu2beNEuEqM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">16:01</span>
+  </div>
+  <div class="t">Best Spots in Dominical &amp; the Best Chiliguaro</div>
+  <div class="meta">5K views (28d) · 3 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/mfqb-gnamRU.html" data-pub="1678060800000" data-views="8014" data-out="0.79" data-r50="0.3751" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mfqb-gnamRU/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">14:29</span>
+  </div>
+  <div class="t">Costa Rica Thrift Haul | Visiting La Fortuna</div>
+  <div class="meta">8K views (28d) · 3 years ago · 38% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/6h65rh0EmYg.html" data-pub="1677801600000" data-views="9122" data-out="1.24" data-r50="0.3691" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/6h65rh0EmYg/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.24×</span>
+    <span class="len">26:05</span>
+  </div>
+  <div class="t">The Hippies of Ometepe | Nicaragua</div>
+  <div class="meta">9K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/lCbOVoZjmGI.html" data-pub="1676505600000" data-views="6690" data-out="0.91" data-r50="0.4767" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/lCbOVoZjmGI/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.91×</span>
+    <span class="len">23:04</span>
+  </div>
+  <div class="t">Crossing the Nicaragua Border Alone on Foot | Solo Females That Inspire Me</div>
+  <div class="meta">7K views (28d) · 3 years ago · 48% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/HGJmZU3ILcI.html" data-pub="1675382400000" data-views="5829" data-out="0.79" data-r50="0.5379" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/HGJmZU3ILcI/mqdefault.jpg" alt="">
+    <span class="score out-down">0.79×</span>
+    <span class="len">16:35</span>
+  </div>
+  <div class="t">How I Found a Home in Costa Rica... And The Perfect Machete</div>
+  <div class="meta">6K views (28d) · 3 years ago · 54% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/vPGdNJ4Uy0s.html" data-pub="1674691200000" data-views="6627" data-out="0.77" data-r50="0.4219" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/vPGdNJ4Uy0s/mqdefault.jpg" alt="">
+    <span class="score out-down">0.77×</span>
+    <span class="len">22:40</span>
+  </div>
+  <div class="t">An Archaeological Expedition in Costa Rica</div>
+  <div class="meta">7K views (28d) · 3 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/ghlZ21FasJk.html" data-pub="1673740800000" data-views="11788" data-out="1.77" data-r50="0.3924" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ghlZ21FasJk/mqdefault.jpg" alt="">
+    <span class="score out-up">1.77×</span>
+    <span class="len">15:38</span>
+  </div>
+  <div class="t">Moto Fail: Stranded alone in the MUD in a DRESS</div>
+  <div class="meta">12K views (28d) · 3 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/fFsQ7qbGom4.html" data-pub="1673222400000" data-views="61600" data-out="9.25" data-r50="0.229" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/fFsQ7qbGom4/mqdefault.jpg" alt="">
+    <span class="score out-hot">9.25×</span>
+    <span class="len">19:26</span>
+  </div>
+  <div class="t">I was homeless in Costa Rica.. then woke up at a 5-star Hotspring Resort</div>
+  <div class="meta">62K views (28d) · 3 years ago · 23% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/ZqaR8vAgKzk.html" data-pub="1670371200000" data-views="4405" data-out="0.71" data-r50="0.5106" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/ZqaR8vAgKzk/mqdefault.jpg" alt="">
+    <span class="score out-down">0.71×</span>
+    <span class="len">8:55</span>
+  </div>
+  <div class="t">I walked 30 miles to make farmer&#39;s cheese (quajada) | Ranchos Tinamu</div>
+  <div class="meta">4K views (28d) · 3 years ago · 51% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/zRB1vK2wZEM.html" data-pub="1667779200000" data-views="4489" data-out="0.55" data-r50="0.4964" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zRB1vK2wZEM/mqdefault.jpg" alt="">
+    <span class="score out-down">0.55×</span>
+    <span class="len">15:08</span>
+  </div>
+  <div class="t">Secret places you can only access on foot in Costa Rica</div>
+  <div class="meta">4K views (28d) · 3 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/bImMUQO-vDg.html" data-pub="1667088000000" data-views="4809" data-out="0.59" data-r50="0.4972" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/bImMUQO-vDg/mqdefault.jpg" alt="">
+    <span class="score out-down">0.59×</span>
+    <span class="len">15:42</span>
+  </div>
+  <div class="t">Hiking Quetzales National Park, Costa Rica | Armonia Ambiental Lodge</div>
+  <div class="meta">5K views (28d) · 3 years ago · 50% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/CqwDzSAahbE.html" data-pub="1665878400000" data-views="4869" data-out="0.54" data-r50="0.4562" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/CqwDzSAahbE/mqdefault.jpg" alt="">
+    <span class="score out-down">0.54×</span>
+    <span class="len">16:24</span>
+  </div>
+  <div class="t">The coldest place in Costa Rica | Cerro de la Muerte</div>
+  <div class="meta">5K views (28d) · 3 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/DbK_CciLSd4.html" data-pub="1664928000000" data-views="6535" data-out="0.52" data-r50="0.4725" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/DbK_CciLSd4/mqdefault.jpg" alt="">
+    <span class="score out-down">0.52×</span>
+    <span class="len">13:06</span>
+  </div>
+  <div class="t">Crazy Russians in Tulum: The Good, The Bad, The Ugly, &amp; The Men</div>
+  <div class="meta">7K views (28d) · 3 years ago · 47% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/EK1OYRNz_vE.html" data-pub="1662681600000" data-views="11652" data-out="1.16" data-r50="0.4427" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/EK1OYRNz_vE/mqdefault.jpg" alt="">
+    <span class="score out-mid">1.16×</span>
+    <span class="len">14:02</span>
+  </div>
+  <div class="t">I GOT SCAMMED IN MEXICO... by a coconut tree | Holbox Island (Part 2)</div>
+  <div class="meta">12K views (28d) · 3 years ago · 44% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/q0SRuteAd8A.html" data-pub="1662508800000" data-views="13494" data-out="1.48" data-r50="0.3699" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/q0SRuteAd8A/mqdefault.jpg" alt="">
+    <span class="score out-up">1.48×</span>
+    <span class="len">12:12</span>
+  </div>
+  <div class="t">Crazy Russians Reunited in Mexico | Tulum &amp; Holbox Island (Part 1)</div>
+  <div class="meta">13K views (28d) · 3 years ago · 37% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/rKynhCAeB6o.html" data-pub="1658361600000" data-views="1376" data-out="0.11" data-r50="0.5548" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/rKynhCAeB6o/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.11×</span>
+    <span class="len">8:51</span>
+  </div>
+  <div class="t">Fishing &amp; Snorkeling in Quepos, Costa Rica | My First Fish Pic</div>
+  <div class="meta">1K views (28d) · 4 years ago · 55% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/AGydOcBL5eI.html" data-pub="1653350400000" data-views="309" data-out="0.35" data-r50="0.4563" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/AGydOcBL5eI/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.35×</span>
+    <span class="len">10:03</span>
+  </div>
+  <div class="t">Gringo Makes Empanadas for Ticos</div>
+  <div class="meta">309 views (28d) · 4 years ago · 46% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/mCxPaithw7A.html" data-pub="1646006400000" data-views="853" data-out="1.28" data-r50="0.6146" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/mCxPaithw7A/mqdefault.jpg" alt="">
+    <span class="score out-up">1.28×</span>
+    <span class="len">6:12</span>
+  </div>
+  <div class="t">It took me two days to make eggs in Costa Rica</div>
+  <div class="meta">853 views (28d) · 4 years ago · 61% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/zYXmYYWZrX8.html" data-pub="1645401600000" data-views="5887" data-out="8.85" data-r50="0.4187" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/zYXmYYWZrX8/mqdefault.jpg" alt="">
+    <span class="score out-hot">8.85×</span>
+    <span class="len">5:15</span>
+  </div>
+  <div class="t">I Moved to Costa Rica: The World&#39;s Longest Introduction</div>
+  <div class="meta">6K views (28d) · 4 years ago · 42% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/0c_VSn1AL4U.html" data-pub="1645660800000" data-views="669" data-out="0.88" data-r50="0.7214" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/0c_VSn1AL4U/mqdefault.jpg" alt="">
+    <span class="score out-mid">0.88×</span>
+    <span class="len">1:36</span>
+  </div>
+  <div class="t">Moving to Costa Rica: A Vacation That Changed A Life</div>
+  <div class="meta">669 views (28d) · 4 years ago · 72% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a>
+<a class="v" href="UCSHSTUHdsXleuz58zViRFKg/WWGuP1F3TvM.html" data-pub="1614470400000" data-views="143" data-out="0.22" data-r50="0.39" data-analysed="1">
+  <div class="thumb">
+    <img loading="lazy" src="https://i.ytimg.com/vi/WWGuP1F3TvM/mqdefault.jpg" alt="">
+    <span class="score out-cold">0.22×</span>
+    <span class="len">13:17</span>
+  </div>
+  <div class="t">HOW NOT TO SURVIVE IN THE WILD / OYSTER FISHING GONE WRONG</div>
+  <div class="meta">143 views (28d) · 5 years ago · 39% at half</div>
+  <div class="verdict">6 moments analysed · open viewer →</div>
+</a></div>
+</details>
+</div>
+<p class="capnote">29 of 62 videos sit in a named format · library built 2026-09-02.</p>
 
 
 
@@ -2519,7 +3256,7 @@ means two things move together on this channel, which is not the same as one cau
 <details class="freshbox">
   <summary>Data freshness — when each of these was last pulled</summary>
   <div class="freshness">
-<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
+<div class="fresh"><span class="k">Catalogue</span><span class="v">2026-09-02</span><span class="ago">1 day ago</span></div><div class="fresh"><span class="k">Retention curves</span><span class="v">2026-09-01</span><span class="ago">1 day ago</span></div>
   </div>
 </details>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

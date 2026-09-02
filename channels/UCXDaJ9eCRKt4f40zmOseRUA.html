@@ -862,6 +862,18 @@ table.obs td.no{color:#ff8f8f}
 .is-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
 .is-list li a{color:inherit;text-decoration:none}
 .is-list li .m{color:var(--grey);font-size:12px;margin-left:8px}
+.is-review{margin:14px 0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:rgba(255,255,255,.02)}
+.is-review summary{cursor:pointer;font-size:15px}
+.is-review summary .m{color:var(--grey);font-size:12px;margin-left:10px}
+.is-doc{max-width:78ch;font-size:14px;line-height:1.55}
+.is-doc h1{font-size:20px;margin:14px 0 6px}
+.is-doc h2{font-size:16px;margin:18px 0 6px;letter-spacing:0}
+.is-doc h3{font-size:14px;margin:14px 0 4px}
+.is-doc p,.is-doc li{margin:6px 0}
+.is-doc code{font-size:12px;background:rgba(141,216,211,.08);padding:1px 4px;border-radius:4px}
+.is-doc table{border-collapse:collapse;font-size:12px;margin:8px 0;display:block;overflow-x:auto;max-width:100%}
+.is-doc th,.is-doc td{border:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.is-doc th{color:var(--grey);font-weight:600}
 .tr-pick{margin:14px 0}
 .tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
 .tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
@@ -5505,6 +5517,10 @@ formats over the same months is what makes them comparable.</p>
       <button class="tgl" data-win="d90" aria-pressed="false" type="button">90 days</button>
       <button class="tgl" data-win="d365" aria-pressed="false" type="button">1 year</button>
     </span>
+    <span class="rng"><span class="lab">Between</span>
+      <input type="date" id="winfrom" min="2016-08-23" max="2026-08-27" aria-label="Keep videos published on or after this date">
+      <span class="lab">and</span>
+      <input type="date" id="winto" min="2016-08-23" max="2026-08-27" aria-label="Keep videos published on or before this date"></span>
     <span class="rng"><span class="lab">Length</span>
       <input type="range" id="durrange" min="0" max="100" value="100" step="1"
              aria-label="Keep videos no longer than this"><b id="durlab">any</b></span>
@@ -5584,6 +5600,11 @@ formats over the same months is what makes them comparable.</p>
   // filter that hides data by default is a way to mislead yourself. The same
   // rule governs the two range filters below: both start wide open.
   var win = 'all';
+  // A custom time frame: two dates typed by the reader. It is a third kind of
+  // window ("what happened between these dates"), and it replaces the preset
+  // buttons while set, because two windows at once is a filter nobody can
+  // reason about. Both bounds are inclusive, in whole days.
+  var winFrom = 0, winTo = 0;
   var maxDur = Math.max.apply(null, D.videos.map(function(v){ return v.durationSec||1; }));
 
   /**
@@ -5654,6 +5675,10 @@ formats over the same months is what makes them comparable.</p>
     // silently matches nothing, so every window returned the full set and the
     // filter looked like it was doing nothing.
     if (win === 'all') return D.videos;
+    if (win === 'r'){
+      var lo = winFrom || 0, hi = winTo ? winTo + 86400000 : Infinity;
+      return D.videos.filter(function(v){ return (v.pub||0) >= lo && (v.pub||0) < hi; });
+    }
     var m = /^d([0-9]+)$/.exec(win);
     if (m){
       var cutoff = Date.now() - Number(m[1]) * 86400000;
@@ -6161,9 +6186,16 @@ formats over the same months is what makes them comparable.</p>
       draw();
     });
   });
+  var fromEl = document.getElementById('winfrom'), toEl = document.getElementById('winto');
+  function clearCustomWindow(){
+    winFrom = 0; winTo = 0;
+    if (fromEl) fromEl.value = '';
+    if (toEl) toEl.value = '';
+  }
   document.querySelectorAll('[data-win]').forEach(function(b){
     b.addEventListener('click', function(){
       win=b.dataset.win;
+      clearCustomWindow();
       document.querySelectorAll('[data-win]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.win===win)); });
       // The 3D bins are computed from the window, so they must be rebuilt.
       invalidateBins();
@@ -6221,6 +6253,17 @@ formats over the same months is what makes them comparable.</p>
   if (durEl) durEl.addEventListener('input', function(){ durPct = Number(durEl.value); afterFilterChange(); });
   var viewEl = document.getElementById('viewrange');
   if (viewEl) viewEl.addEventListener('input', function(){ viewPct = Number(viewEl.value); afterFilterChange(); });
+  // The custom time frame. Either date alone is a bound on that side only;
+  // typing one switches the window to 'r' and clears the preset buttons.
+  function onCustomWindow(){
+    winFrom = fromEl && fromEl.value ? (Date.parse(fromEl.value) || 0) : 0;
+    winTo = toEl && toEl.value ? (Date.parse(toEl.value) || 0) : 0;
+    win = (winFrom || winTo) ? 'r' : 'all';
+    document.querySelectorAll('[data-win]').forEach(function(o){ o.setAttribute('aria-pressed', String(win==='all' && o.dataset.win==='all')); });
+    afterFilterChange();
+  }
+  if (fromEl) fromEl.addEventListener('change', onCustomWindow);
+  if (toEl) toEl.addEventListener('change', onCustomWindow);
 
   var resetEl = document.getElementById('cohortreset');
   if (resetEl) resetEl.addEventListener('click', function(){
@@ -6229,6 +6272,7 @@ formats over the same months is what makes them comparable.</p>
     if (durEl) durEl.value = 100;
     if (viewEl) viewEl.value = 0;
     win = 'all';
+    clearCustomWindow();
     document.querySelectorAll('[data-win]').forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.win==='all')); });
     sel = null;
     afterFilterChange();

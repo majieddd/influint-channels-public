@@ -1155,6 +1155,9 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .ar-dose td{padding:4px 8px 4px 0; border-bottom:1px solid var(--line);
   font-variant-numeric:tabular-nums}
 .ar-gap-closed{border-left-color:rgba(111,211,155,.6)}
+.ar-verdict-line{font-size:15.5px; line-height:1.5; margin:14px 0 10px; padding:12px 14px;
+  border:1px solid var(--line); border-left:3px solid var(--teal); border-radius:10px;
+  background:var(--panel-raised); max-width:80ch}
 .ar-k-ref .ar-k-why{color:#f0c674}
 .ar-k-rej .ar-k-why{color:#ff9f8f}
 .ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
@@ -1264,49 +1267,95 @@ it: shuffling destroys the differences between shapes, so the null cannot see an
 them. The screen deciding which trials are asked therefore reads a FIXED number of creators whatever the
 evidence size, measured at 3% false positives on corpora where the claim is false by construction, down
 from 13% before.</p>
+<p class="ar-verdict-line">Across 7 independent marketplaces and 1,396 leave-one-out trials, the effect is -0.023 at the median, 3 niches pointing one way and 4 the other. Each niche could have detected an effect of about 0.17, so an effect that size or larger is unlikely to be there. A smaller one would not have shown up here, and this cannot rule it out.</p>
 <p class="legend"><b>Nothing has resolved yet, and that is the reading.</b>
-3 of 4 niches produced a reading and 0 were decisive.
+7 of 7 niches produced a reading and 0 were decisive.
 An unresolved measurement is not written to the ledger, because an observation counts against a claim in
 its consistency score and a shrug is not evidence. Nothing was written, so the claim keeps the standing it had.</p>
-<div class="ar-kept"><div class="ar-gap">
-  <p class="ar-k-claim">homemaking</p>
-  <p class="ar-k-why">No reading: 5 creators with scored English titles, below the floor of 8</p>
+<div class="ar-kept"><div class="ar-k ar-k-inc">
+  <p class="ar-k-claim">homemaking <span class="ar-verdict">inconclusive</span></p>
+  <p class="ar-k-ev">21 creators &middot; 581 videos &middot; 161 shapes &middot; 350 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.039</b>
+    against a shuffled null of <b>0.004</b>, so the effect is
+    <b>-0.043</b>
+    (77% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.11</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>72</td><td>60% of 47</td><td>1.42x</td></tr><tr><td>2</td><td>120</td><td>53% of 77</td><td>1.39x</td></tr><tr><td>3</td><td>132</td><td>61% of 74</td><td>1.28x</td></tr><tr><td>4-5</td><td>198</td><td>56% of 98</td><td>1.32x</td></tr><tr><td>6+</td><td>100</td><td>48% of 54</td><td>1.19x</td></tr></tbody></table>
+  <p class="ar-k-why">Magnitude was a separate and harder question: calibration
+    +0.095, inconclusive.
+    11 trials dropped because the creator shipped the shape in a block,
+    41 shapes collapsed into others they nearly duplicated.</p>
 </div><div class="ar-k ar-k-inc">
   <p class="ar-k-claim">maker-builds <span class="ar-verdict">inconclusive</span></p>
-  <p class="ar-k-ev">14 creators &middot; 330 videos &middot; 18 shapes &middot; 25 leave-one-out trials</p>
-  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.178</b>
-    against a shuffled null of <b>-0.009</b>, so the effect is
-    <b>-0.169</b>
-    (78% of shuffled corpora reach it).</p>
-  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>8</td><td>40% of 5</td><td>1.84x</td></tr><tr><td>2</td><td>12</td><td><i>withheld, 3 trials</i></td><td>1.43x</td></tr><tr><td>3</td><td>24</td><td>36% of 14</td><td>1.63x</td></tr><tr><td>4-5</td><td>11</td><td><i>withheld, 2 trials</i></td><td>1.52x</td></tr><tr><td>6+</td><td>7</td><td><i>withheld, 1 trials</i></td><td>1.46x</td></tr></tbody></table>
+  <p class="ar-k-ev">26 creators &middot; 770 videos &middot; 58 shapes &middot; 107 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>0.154</b>
+    against a shuffled null of <b>0.003</b>, so the effect is
+    <b>+0.150</b>
+    (9% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.18</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>18</td><td>0% of 7</td><td>1.86x</td></tr><tr><td>2</td><td>36</td><td>50% of 20</td><td>1.89x</td></tr><tr><td>3</td><td>76</td><td>31% of 36</td><td>1.61x</td></tr><tr><td>4-5</td><td>47</td><td>56% of 23</td><td>1.59x</td></tr><tr><td>6+</td><td>41</td><td>48% of 21</td><td>1.64x</td></tr></tbody></table>
   <p class="ar-k-why">Magnitude was a separate and harder question: calibration
-    -0.199, inconclusive.
-    1 trials dropped because the creator shipped the shape in a block,
-    3 shapes collapsed into others they nearly duplicated.</p>
+    +0.052, inconclusive.
+    7 trials dropped because the creator shipped the shape in a block,
+    5 shapes collapsed into others they nearly duplicated.</p>
 </div><div class="ar-k ar-k-inc">
   <p class="ar-k-claim">motorcycle <span class="ar-verdict">inconclusive</span></p>
-  <p class="ar-k-ev">21 creators &middot; 399 videos &middot; 27 shapes &middot; 37 leave-one-out trials</p>
-  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>0.152</b>
-    against a shuffled null of <b>-0.014</b>, so the effect is
-    <b>+0.166</b>
-    (15% of shuffled corpora reach it).</p>
-  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>18</td><td>29% of 7</td><td>1.60x</td></tr><tr><td>2</td><td>30</td><td>31% of 13</td><td>1.66x</td></tr><tr><td>3</td><td>20</td><td>36% of 11</td><td>1.97x</td></tr><tr><td>4-5</td><td>11</td><td>50% of 6</td><td>1.75x</td></tr></tbody></table>
+  <p class="ar-k-ev">33 creators &middot; 759 videos &middot; 69 shapes &middot; 153 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>0.057</b>
+    against a shuffled null of <b>0.011</b>, so the effect is
+    <b>+0.045</b>
+    (32% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.17</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>36</td><td>60% of 20</td><td>1.55x</td></tr><tr><td>2</td><td>51</td><td>55% of 31</td><td>1.54x</td></tr><tr><td>3</td><td>64</td><td>45% of 31</td><td>1.81x</td></tr><tr><td>4-5</td><td>63</td><td>52% of 42</td><td>1.96x</td></tr><tr><td>6+</td><td>39</td><td>66% of 29</td><td>1.44x</td></tr></tbody></table>
   <p class="ar-k-why">Magnitude was a separate and harder question: calibration
-    -0.123, inconclusive.
+    -0.033, inconclusive.
     3 trials dropped because the creator shipped the shape in a block,
-    3 shapes collapsed into others they nearly duplicated.</p>
+    8 shapes collapsed into others they nearly duplicated.</p>
+</div><div class="ar-k ar-k-inc">
+  <p class="ar-k-claim">restoration <span class="ar-verdict">inconclusive</span></p>
+  <p class="ar-k-ev">15 creators &middot; 512 videos &middot; 67 shapes &middot; 139 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.041</b>
+    against a shuffled null of <b>0.018</b>, so the effect is
+    <b>-0.058</b>
+    (68% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.17</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>46</td><td>69% of 29</td><td>1.38x</td></tr><tr><td>2</td><td>57</td><td>66% of 41</td><td>1.31x</td></tr><tr><td>3</td><td>56</td><td>53% of 34</td><td>1.69x</td></tr><tr><td>4-5</td><td>37</td><td>59% of 17</td><td>1.62x</td></tr><tr><td>6+</td><td>30</td><td>72% of 18</td><td>1.18x</td></tr></tbody></table>
+  <p class="ar-k-why">Magnitude was a separate and harder question: calibration
+    -0.085, inconclusive.
+    1 trials dropped because the creator shipped the shape in a block,
+    14 shapes collapsed into others they nearly duplicated.</p>
 </div><div class="ar-k ar-k-inc">
   <p class="ar-k-claim">roblox <span class="ar-verdict">inconclusive</span></p>
-  <p class="ar-k-ev">18 creators &middot; 378 videos &middot; 48 shapes &middot; 109 leave-one-out trials</p>
-  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.082</b>
-    against a shuffled null of <b>-0.024</b>, so the effect is
-    <b>-0.058</b>
-    (73% of shuffled corpora reach it).</p>
-  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>10</td><td><i>withheld, 3 trials</i></td><td>1.58x</td></tr><tr><td>2</td><td>42</td><td>58% of 24</td><td>1.61x</td></tr><tr><td>3</td><td>52</td><td>61% of 38</td><td>2.30x</td></tr><tr><td>4-5</td><td>58</td><td>48% of 27</td><td>1.49x</td></tr><tr><td>6+</td><td>45</td><td>35% of 17</td><td>1.34x</td></tr></tbody></table>
+  <p class="ar-k-ev">30 creators &middot; 1106 videos &middot; 181 shapes &middot; 448 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.021</b>
+    against a shuffled null of <b>0.002</b>, so the effect is
+    <b>-0.023</b>
+    (69% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.10</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>66</td><td>50% of 40</td><td>2.01x</td></tr><tr><td>2</td><td>123</td><td>59% of 76</td><td>1.52x</td></tr><tr><td>3</td><td>136</td><td>44% of 64</td><td>1.66x</td></tr><tr><td>4-5</td><td>220</td><td>48% of 108</td><td>1.65x</td></tr><tr><td>6+</td><td>304</td><td>50% of 160</td><td>1.54x</td></tr></tbody></table>
   <p class="ar-k-why">Magnitude was a separate and harder question: calibration
-    +0.009, inconclusive.
-    4 trials dropped because the creator shipped the shape in a block,
-    18 shapes collapsed into others they nearly duplicated.</p>
+    -0.036, inconclusive.
+    7 trials dropped because the creator shipped the shape in a block,
+    49 shapes collapsed into others they nearly duplicated.</p>
+</div><div class="ar-k ar-k-inc">
+  <p class="ar-k-claim">thrift-flip <span class="ar-verdict">inconclusive</span></p>
+  <p class="ar-k-ev">14 creators &middot; 390 videos &middot; 45 shapes &middot; 80 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>0.091</b>
+    against a shuffled null of <b>0.011</b>, so the effect is
+    <b>+0.080</b>
+    (27% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.22</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>30</td><td>50% of 16</td><td>1.26x</td></tr><tr><td>2</td><td>30</td><td>27% of 15</td><td>1.58x</td></tr><tr><td>3</td><td>36</td><td>35% of 20</td><td>1.22x</td></tr><tr><td>4-5</td><td>51</td><td>52% of 29</td><td>1.53x</td></tr></tbody></table>
+  <p class="ar-k-why">Magnitude was a separate and harder question: calibration
+    -0.165, inconclusive.
+    3 trials dropped because the creator shipped the shape in a block,
+    12 shapes collapsed into others they nearly duplicated.</p>
+</div><div class="ar-k ar-k-inc">
+  <p class="ar-k-claim">true-crime <span class="ar-verdict">inconclusive</span></p>
+  <p class="ar-k-ev">16 creators &middot; 543 videos &middot; 68 shapes &middot; 119 leave-one-out trials</p>
+  <p class="ar-k-spec">Does a shape repeat for a new creator? rho <b>-0.065</b>
+    against a shuffled null of <b>0.001</b>, so the effect is
+    <b>-0.066</b>
+    (77% of shuffled corpora reach it), and this niche could have detected an effect of about <b>0.16</b>.</p>
+  <table class="ar-dose"><thead><tr><th>Independent creators</th><th>Trials</th><th>Worked for the next creator</th><th>Typical miss</th></tr></thead><tbody><tr><td>1</td><td>38</td><td>69% of 26</td><td>1.51x</td></tr><tr><td>2</td><td>72</td><td>48% of 27</td><td>1.37x</td></tr><tr><td>3</td><td>40</td><td>57% of 21</td><td>1.64x</td></tr><tr><td>4-5</td><td>53</td><td>39% of 23</td><td>1.28x</td></tr><tr><td>6+</td><td>42</td><td>64% of 22</td><td>1.27x</td></tr></tbody></table>
+  <p class="ar-k-why">Magnitude was a separate and harder question: calibration
+    -0.007, inconclusive.
+    7 trials dropped because the creator shipped the shape in a block,
+    15 shapes collapsed into others they nearly duplicated.</p>
 </div></div>
 
 

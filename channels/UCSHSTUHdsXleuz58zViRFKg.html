@@ -641,6 +641,20 @@ svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
 .dash-legend span{display:inline-flex; align-items:center; gap:6px}
 .dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.c-click{background:#8dd8d3}
+.dash-legend b.c-watch{background:#f0c674}
+.dash-legend b.c-replay{background:#c39bd8}
+.dash-tiles-note{color:var(--grey); font-size:11.5px; line-height:1.5; margin:10px 0 0; max-width:88ch}
+.dash-daily-svg .s-click{stroke:#8dd8d3}
+.dash-daily-svg .s-watch{stroke:#f0c674}
+.dash-daily-svg .s-replay{stroke:#c39bd8}
+.dash-daily-svg .dseries{fill:none; stroke-width:2.2}
+.dash-daily-svg .dpt{stroke:none}
+.dash-daily-svg .dbase{stroke:rgba(141,216,211,.45); stroke-dasharray:5 5}
+.dash-daily-svg .dbaset{fill:rgba(141,216,211,.7)}
+.dash-daily-svg .dpt.p-click{fill:#8dd8d3}
+.dash-daily-svg .dpt.p-watch{fill:#f0c674}
+.dash-daily-svg .dpt.p-replay{fill:#c39bd8}
 .dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
 .dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
 .dash-daily-wrap{position:relative}
@@ -1070,12 +1084,61 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
 .tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
 .tr-empty{color:var(--grey);font-size:13px}
+
+.ar-stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:14px 0}
+.ar-stats .v{font-size:26px; font-weight:600}
+.ar-stats .k{font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.ar-bar{display:flex; height:26px; border-radius:8px; overflow:hidden; margin:10px 0 6px; border:1px solid var(--line)}
+.ar-seg{display:flex; align-items:center; justify-content:center; font-size:10.5px; overflow:hidden; white-space:nowrap}
+.ar-seg span{padding:0 6px; opacity:.9}
+.s-measured{background:rgba(141,216,211,.55)}
+.s-await{background:rgba(240,198,116,.42)}
+.s-unreach{background:rgba(255,255,255,.06); color:var(--grey)}
+.ar-none{color:var(--grey); font-size:13px; margin:8px 0}
+.ar-run{border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:12px 0; background:var(--panel)}
+.ar-run>summary{cursor:pointer; list-style:none; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap}
+.ar-run>summary::-webkit-details-marker{display:none}
+.ar-run>summary::before{content:"▾"; color:var(--grey); font-size:12px}
+.ar-run:not([open])>summary::before{content:"▸"}
+.ar-run .ar-m{color:var(--grey); font-size:12px}
+.ar-runmeta,.ar-sum{color:var(--grey); font-size:12px; margin:6px 0 0}
+.ar-sum{color:inherit; font-size:13px; max-width:80ch}
+.ar-its{margin-top:10px}
+.ar-it{border-top:1px solid var(--line); padding:8px 0}
+.ar-it>summary{cursor:pointer; list-style:none; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; font-size:13px}
+.ar-it>summary::-webkit-details-marker{display:none}
+.ar-n{color:var(--grey); font-size:11px; min-width:1.6em}
+.ar-v{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; padding:1px 7px; border-radius:20px}
+.ar-v-keep{background:rgba(111,211,155,.18); color:#7ff0bd}
+.ar-v-discard{background:rgba(255,143,143,.14); color:#ff9f8f}
+.ar-v-invalid{background:rgba(255,255,255,.07); color:var(--grey)}
+.ar-pair{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--teal)}
+.ar-cl{color:var(--grey); font-size:12px}
+.ar-body{padding:8px 0 4px 26px; max-width:92ch}
+.ar-claim,.ar-think,.ar-why,.ar-meta{margin:6px 0; font-size:13px; line-height:1.55}
+.ar-meta{color:var(--grey); font-size:11.5px}
+.ar-think{color:#cfe9e6}
+.ar-tbl{border-collapse:collapse; font-size:12px; margin:8px 0; display:block; overflow-x:auto; max-width:100%}
+.ar-tbl th,.ar-tbl td{border:1px solid var(--line); padding:3px 9px; text-align:left; white-space:nowrap}
+.ar-tbl th{color:var(--grey); font-weight:600}
+.ar-tbl .n{text-align:right; font-variant-numeric:tabular-nums}
+.ar-kept{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-k{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--panel)}
+.ar-k-claim{font-size:13px; margin:0 0 6px; line-height:1.5}
+.ar-k-spec{font-size:12px; margin:0 0 4px; color:var(--teal)}
+.ar-k-ev{font-size:11.5px; color:var(--grey); margin:0 0 6px}
+.ar-k-why{font-size:12px; color:#cfe9e6; margin:0; line-height:1.5}
+.ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
+.ar-a-pass{color:#7ff0bd}
+.ar-a-fail{color:#ff9f8f}
+.ar-gaps{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-gap{border:1px solid var(--line); border-left:3px solid rgba(240,198,116,.5); border-radius:10px; padding:11px 13px; background:var(--panel)}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a><a href="../autoresearch.html">Autoresearch</a></nav>
 </header>
 
 <div class="profile">
@@ -1097,6 +1160,45 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <div class="dash-through"><i></i>Studio pull Sep 1, 2026 · no day-by-day series stored yet</div>
     </div>
   </div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The three dimensions over time</div>
+        <div class="dash-daily-s" id="dash-daily-s">Studio serves nested trailing windows, so each point below covers the stretch one window adds beyond the next shorter one.</div>
+        <div class="dash-daily-s">Videos (long-form) · indexed to the earliest period = 100, so three different units share one axis</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln c-click"></b>Clickability</span><span><b class="ln c-watch"></b>Watchability</span><span><b class="ln c-replay"></b>Replayability</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Clickability, watchability and replayability over time"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty" hidden></p>
+  </div>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">4.3%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>21K</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:11.1%"></i></span><b>2K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:10.6%"></i></span><b>2K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">0.88×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">196 hours watched</div><div class="dept-l">5:26 average view duration · 29.8% of each video watched</div><div class="dept-l">Implied length 18:16 (duration ÷ percentage) · tracked channels hold 37.3% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.90×<em>−0.02</em></b></div><div class="cmp-r"><span>vanlife-travel median</span><b class="wh">withheld · 1 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.09</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">13%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">283 returning (13%) · 2K new (87%)</div><div class="dept-l">+20 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:3.3%"><title>Regular</title></i><i class="s1" style="width:9.7%"><title>Casual</title></i><i class="s2" style="width:87.0%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 3% · 72</span><span class="s1">Casual 10% · 211</span><span class="s2">New 87% · 2K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+  </div>
+  <div class="dept-panel" id="dept-panel" hidden></div>
   <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
     <div class="dt-k">Views</div>
     <div class="dt-s">Videos (long-form)</div>
@@ -1128,48 +1230,10 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <div class="dt-c">No complete prior 30-day window yet</div>
     <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
   </div></div>
-  <div class="dash-daily">
-    <div class="dash-daily-h">
-      <div>
-        <div class="dash-daily-t">The period, day by day</div>
-        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
-        <div class="dash-daily-s">Videos (long-form)</div>
-      </div>
-      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
-    </div>
-    <div class="dash-daily-sum" id="dash-daily-sum"></div>
-    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
-    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
-  </div>
-  <div class="dash-depts">
-    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">4.3%</div>
-      <div class="dept-s">click-through, Studio&#39;s own figure</div>
-      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>21K</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:11.1%"></i></span><b>2K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:10.6%"></i></span><b>2K</b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">0.88×</div>
-      <div class="dept-s">retention score, length-adjusted</div>
-      <div class="dept-l">196 hours watched</div><div class="dept-l">5:26 average view duration · 29.8% of each video watched</div><div class="dept-l">Implied length 18:16 (duration ÷ percentage) · tracked channels hold 37.3% at that length</div>
-      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.90×<em>−0.02</em></b></div><div class="cmp-r"><span>vanlife-travel median</span><b class="wh">withheld · 1 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.09</em></b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">13%</div>
-      <div class="dept-s">of classified viewers returned</div>
-      <div class="dept-l">283 returning (13%) · 2K new (87%)</div><div class="dept-l">+20 net subscribers over 30 days</div>
-      <div class="seg"><div class="seg-b"><i class="s0" style="width:3.3%"><title>Regular</title></i><i class="s1" style="width:9.7%"><title>Casual</title></i><i class="s2" style="width:87.0%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 3% · 72</span><span class="s1">Casual 10% · 211</span><span class="s2">New 87% · 2K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-  </div>
-  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-tiles-note" id="dash-tiles-note"></p>
   <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-09-01. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
 </section>
-<script>window.__DASH__={"channelId":"UCSHSTUHdsXleuz58zViRFKg","channel":"Tropical Russian","pulledAt":"2026-09-01","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"2K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"196 hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+20","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"5:26","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"21K","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.3%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":20500,"text":"21K","share":1},{"key":"views","label":"Views","value":2278,"text":"2K","share":0.1111219512195122},{"key":"engaged","label":"Engaged views","value":2163,"text":"2K","share":0.10551219512195122}],"note":"21K impressions became 2K views, and 95% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.88×","sub":"retention score, length-adjusted","lines":["196 hours watched","5:26 average view duration · 29.8% of each video watched","Implied length 18:16 (duration ÷ percentage) · tracked channels hold 37.3% at that length"],"score":0.8839981070639225,"compare":[{"label":"This channel, last 360 days","value":"0.90×","delta":"−0.02"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.09"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 12% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"13%","sub":"of classified viewers returned","lines":["283 returning (13%) · 2K new (87%)","+20 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.03317972350230415,"text":"3% · 72"},{"label":"Casual","share":0.09723502304147466,"text":"10% · 211"},{"label":"New","share":0.8695852534562212,"text":"87% · 2K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 72 regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"17K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"1K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+255","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"5:09","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"164K","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.4%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":163827,"text":"164K","share":1},{"key":"views","label":"Views","value":17137,"text":"17K","share":0.10460424716316602},{"key":"engaged","label":"Engaged views","value":17022,"text":"17K","share":0.1039022871687817}],"note":"164K impressions became 17K views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.83×","sub":"retention score, length-adjusted","lines":["1K hours watched","5:09 average view duration · 27.9% of each video watched","Implied length 18:28 (duration ÷ percentage) · tracked channels hold 37.2% at that length"],"score":0.8297840859287493,"compare":[{"label":"This channel, last 360 days","value":"0.90×","delta":"−0.07"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.17"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 17% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"21%","sub":"of classified viewers returned","lines":["10K returning (21%) · 36K new (79%)","+255 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.025095040323466718,"text":"3% · 1K"},{"label":"Casual","share":0.18469685982376338,"text":"18% · 8K"},{"label":"New","share":0.7902080998527699,"text":"79% · 36K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"48K","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"5K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+444","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"6:03","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"565K","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.3%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":564710,"text":"565K","share":1},{"key":"views","label":"Views","value":47839,"text":"48K","share":0.08471427812505535},{"key":"engaged","label":"Engaged views","value":47724,"text":"48K","share":0.08451063377662871}],"note":"565K impressions became 48K views, and 100% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.90×","sub":"retention score, length-adjusted","lines":["5K hours watched","6:03 average view duration · 30.0% of each video watched","Implied length 20:12 (duration ÷ percentage) · tracked channels hold 36.7% at that length"],"score":0.9041449049992752,"compare":[{"label":"This channel, last 720 days","value":"0.87×","delta":"+0.03"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.18"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 10% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"21%","sub":"of classified viewers returned","lines":["10K returning (21%) · 36K new (79%)","+444 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.025095040323466718,"text":"3% · 1K"},{"label":"Casual","share":0.18469685982376338,"text":"18% · 8K"},{"label":"New","share":0.7902080998527699,"text":"79% · 36K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}}],"daily":[],"uploads":[{"d":"2021-02-28","id":"WWGuP1F3TvM","t":"HOW NOT TO SURVIVE IN THE WILD / OYSTER FISHING GONE WRONG"},{"d":"2022-02-21","id":"zYXmYYWZrX8","t":"I Moved to Costa Rica: The World's Longest Introduction"},{"d":"2022-02-24","id":"0c_VSn1AL4U","t":"Moving to Costa Rica: A Vacation That Changed A Life"},{"d":"2022-02-28","id":"mCxPaithw7A","t":"It took me two days to make eggs in Costa Rica"},{"d":"2022-03-03","id":"3cH6rg1dh2A","t":"I Woke up on a School Bus | Living in Costa Rica"},{"d":"2022-05-18","id":"TCW1F7xfwIE","t":"How to Pack for a Month of Travel in ONE backpack - This Counts as a free Personal Item!!"},{"d":"2022-05-24","id":"AGydOcBL5eI","t":"Gringo Makes Empanadas for Ticos"},{"d":"2022-06-05","id":"FnFTdQ-Q0m4","t":"I Woke Up in a Grandma's House | Driving to the Caribbean (with I friend I made 4 days ago)"},{"d":"2022-06-25","id":"ezv-3IhxHng","t":"I Woke Up in a Tent on the Caribbean | Camping in Puerto Viejo, Costa Rica"},{"d":"2022-07-21","id":"rKynhCAeB6o","t":"Fishing & Snorkeling in Quepos, Costa Rica | My First Fish Pic"},{"d":"2022-08-10","id":"XAdLYJkgXJ4","t":"I Woke Up in @hannahleeduggan 's Cottage! ​"},{"d":"2022-08-14","id":"lobokdR8FRw","t":"I Woke Up in West Palm Beach | Environmental Consulting | Van Tour"},{"d":"2022-08-21","id":"h4bPBTb8LZI","t":"I Accidentally Went on a Date: Van Life Edition"},{"d":"2022-09-07","id":"q0SRuteAd8A","t":"Crazy Russians Reunited in Mexico | Tulum & Holbox Island (Part 1)"},{"d":"2022-09-09","id":"EK1OYRNz_vE","t":"I GOT SCAMMED IN MEXICO... by a coconut tree | Holbox Island (Part 2)"},{"d":"2022-10-05","id":"DbK_CciLSd4","t":"Crazy Russians in Tulum: The Good, The Bad, The Ugly, & The Men"},{"d":"2022-10-16","id":"CqwDzSAahbE","t":"The coldest place in Costa Rica | Cerro de la Muerte"},{"d":"2022-10-30","id":"bImMUQO-vDg","t":"Hiking Quetzales National Park, Costa Rica | Armonia Ambiental Lodge"},{"d":"2022-11-07","id":"zRB1vK2wZEM","t":"Secret places you can only access on foot in Costa Rica"},{"d":"2022-12-07","id":"ZqaR8vAgKzk","t":"I walked 30 miles to make farmer's cheese (quajada) | Ranchos Tinamu"},{"d":"2022-12-24","id":"rwBEzVCeyxk","t":"I Accidentally Rafted the Most Dangerous Rapids of Costa Rica"},{"d":"2023-01-09","id":"fFsQ7qbGom4","t":"I was homeless in Costa Rica.. then woke up at a 5-star Hotspring Resort"},{"d":"2023-01-15","id":"ghlZ21FasJk","t":"Moto Fail: Stranded alone in the MUD in a DRESS"},{"d":"2023-01-26","id":"vPGdNJ4Uy0s","t":"An Archaeological Expedition in Costa Rica"},{"d":"2023-02-03","id":"HGJmZU3ILcI","t":"How I Found a Home in Costa Rica... And The Perfect Machete"},{"d":"2023-02-09","id":"1eP2DeC1Ahs","t":"I Accidentally Sent my Date to the Hospital: Motolife edition"},{"d":"2023-02-16","id":"lCbOVoZjmGI","t":"Crossing the Nicaragua Border Alone on Foot | Solo Females That Inspire Me"},{"d":"2023-03-03","id":"6h65rh0EmYg","t":"The Hippies of Ometepe | Nicaragua"},{"d":"2023-03-06","id":"mfqb-gnamRU","t":"Costa Rica Thrift Haul | Visiting La Fortuna"},{"d":"2023-03-09","id":"vu2beNEuEqM","t":"Best Spots in Dominical & the Best Chiliguaro"},{"d":"2023-03-13","id":"Ovx6us6Yy8E","t":"Solo on my Moto (costa rica) | I'm not ready but I'm doing it [E1]"},{"d":"2023-03-19","id":"zcd4cRJnDic","t":"Unicorn Saves the Day | Solo on my Moto (costa rica) [E2]"},{"d":"2023-03-27","id":"eWo3b38LdwQ","t":"I picked up @hannahleeduggan | Solo on my Moto (costa rica) [E3]"},{"d":"2023-04-03","id":"Nm-oDaqATIM","t":"Surviving on a deserted beach in Costa Rica | Solo on my Moto [E4]"},{"d":"2023-04-10","id":"xqszeg53M0A","t":"Q&A: Solo Female Motorcycle Travel in Costa Rica"},{"d":"2023-04-23","id":"jgi27ExM2SA","t":"I Met an Indigenous Tribe and Gained 5 Kilos of Chocolate | Solo on my Moto (costa rica) [E5]"},{"d":"2023-04-30","id":"saI40Y45Bjs","t":"Trusting strangers camping in Mal País, Costa Rica | Solo on my Moto [E6]"},{"d":"2023-05-25","id":"6wacuJEqWp8","t":"Crossing rivers on a motorcycle in Costa Rica | [E7]"},{"d":"2023-07-15","id":"KgDIqy1vDKU","t":"Guanacaste: Dirt Roads, Night Markets, and Hot Girls | Solo on my Moto [E8]"},{"d":"2023-08-02","id":"XiiJDBPYSfQ","t":"A bird taught me to fly | Solo on my Moto [E9]"},{"d":"2023-09-07","id":"vS45vxIM4P4","t":"Hitchhikes to Miami, Gets Robbed: South Florida News"},{"d":"2024-01-07","id":"Aw9K9EOyZyU","t":"Hot Florida Van Life: 10 Survival Tips"},{"d":"2024-01-15","id":"UwPEqcLh5LU","t":"I woke up in St. Augustine | Sewing Sidequests"},{"d":"2024-01-23","id":"LtgdpLO5GSk","t":"How to Buy a Motorcycle in Costa Rica: Step-by-Step Guide"},{"d":"2024-02-06","id":"7CmuFkHDs6s","t":"Vanlife: From pooping in the woods to parties in LA"},{"d":"2024-02-15","id":"q-qzP3a6cUI","t":"Authentic Vegan Tacos with Pako from Oaxaca | Heirloom LA"},{"d":"2024-03-24","id":"MPn-Iec3in8","t":"2 girls and a van in Dirty Myrtle (south carolina)"},{"d":"2024-04-14","id":"A6ynw5-rBYA","t":"3 girls 1 van in the Blue Ridge Mountains"},{"d":"2024-04-28","id":"nrnUiH5975I","t":"Vanlife: alone in the Appalachian Mountains"},{"d":"2024-05-12","id":"la4EtUuSf6w","t":"I Found Wild Horses in the Outer Banks | Vanlife"},{"d":"2024-05-27","id":"TLZyP-Bvkiw","t":"How to make the BEST empanadas… in a VAN on a BOAT"},{"d":"2024-06-03","id":"8S3KtCjZH2k","t":"Can You Survive in the Caribbean with NO MONEY? | Costa Rica"},{"d":"2024-06-23","id":"UY8kAYlfw1g","t":"I Got Adopted at the Border of Costa Rica [E10]"},{"d":"2024-07-03","id":"E7MyCrbcwAs","t":"Living in a Shipping Container in La Fortuna, Costa Rica [E11]"},{"d":"2024-07-25","id":"6-SWbtp1j28","t":"How to make Coconut Crepes in a VAN"},{"d":"2024-10-20","id":"MzNmL50r9qU","t":"Moto Camping Alone on Volcanos in Costa Rica"},{"d":"2025-06-29","id":"7IpjoFO8pEs","t":"I Found a Kitten While Rafting the Most Dangerous River in Costa Rica"},{"d":"2025-09-11","id":"HEp6khXW5TU","t":"Should I travel the world with my cat?? LIVE"},{"d":"2025-09-12","id":"e_VyVjZuiPI","t":"I was roofied and left bleeding in a foreign country LIVE"},{"d":"2025-10-13","id":"OgU7gGszzC0","t":"I Got Arrested in Nicaragua with my Cat (Little Corn Island)"},{"d":"2026-01-11","id":"7VXM3v7qvyc","t":"The Reality of Traveling With a Cat: Is it Worth It??"},{"d":"2026-05-03","id":"o8hsE_ymvXY","t":"I accidentally drank poop water for a week (vanlife in Arkansas)"}],"niche":"vanlife-travel","baseline":{"videos":3813,"channels":19}}</script>
+<script>window.__DASH__={"channelId":"UCSHSTUHdsXleuz58zViRFKg","channel":"Tropical Russian","pulledAt":"2026-09-01","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"2K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day","trend":[846.8861111111111,180.0388888888889,108.22222222222223,124.68888888888888,247.65,75.93333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"196 hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day","trend":[62.700112047839504,15.272987119598765,12.206189716049382,12.825798722222222,21.101004078703703,6.5381046666666665],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+20","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day","trend":[8.419444444444444,1.8083333333333333,0.5388888888888889,1.0222222222222221,3.9166666666666665,0.6666666666666666],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"5:26","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day","trend":[266.5298207288793,305.3937622581541,406.03752238193016,370.30465032970955,306.73779399690426,309.97159964881473],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"21K","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day","trend":[9612.711111111112,2252.1277777777777,1329.4277777777777,1795.4,2388.7833333333333,683.3333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.3%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":20500,"text":"21K","share":1},{"key":"views","label":"Views","value":2278,"text":"2K","share":0.1111219512195122},{"key":"engaged","label":"Engaged views","value":2163,"text":"2K","share":0.10551219512195122}],"note":"21K impressions became 2K views, and 95% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.88×","sub":"retention score, length-adjusted","lines":["196 hours watched","5:26 average view duration · 29.8% of each video watched","Implied length 18:16 (duration ÷ percentage) · tracked channels hold 37.3% at that length"],"score":0.8839981070639225,"compare":[{"label":"This channel, last 360 days","value":"0.90×","delta":"−0.02"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.09"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 12% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"13%","sub":"of classified viewers returned","lines":["283 returning (13%) · 2K new (87%)","+20 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.03317972350230415,"text":"3% · 72"},{"label":"Casual","share":0.09723502304147466,"text":"10% · 211"},{"label":"New","share":0.8695852534562212,"text":"87% · 2K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 72 regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"17K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day","trend":[846.8861111111111,180.0388888888889,108.22222222222223,124.68888888888888,247.65,75.93333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"1K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day","trend":[62.700112047839504,15.272987119598765,12.206189716049382,12.825798722222222,21.101004078703703,6.5381046666666665],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+255","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day","trend":[8.419444444444444,1.8083333333333333,0.5388888888888889,1.0222222222222221,3.9166666666666665,0.6666666666666666],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"5:09","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day","trend":[266.5298207288793,305.3937622581541,406.03752238193016,370.30465032970955,306.73779399690426,309.97159964881473],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"164K","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day","trend":[9612.711111111112,2252.1277777777777,1329.4277777777777,1795.4,2388.7833333333333,683.3333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"3.4%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":163827,"text":"164K","share":1},{"key":"views","label":"Views","value":17137,"text":"17K","share":0.10460424716316602},{"key":"engaged","label":"Engaged views","value":17022,"text":"17K","share":0.1039022871687817}],"note":"164K impressions became 17K views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.83×","sub":"retention score, length-adjusted","lines":["1K hours watched","5:09 average view duration · 27.9% of each video watched","Implied length 18:28 (duration ÷ percentage) · tracked channels hold 37.2% at that length"],"score":0.8297840859287493,"compare":[{"label":"This channel, last 360 days","value":"0.90×","delta":"−0.07"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.17"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 17% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"21%","sub":"of classified viewers returned","lines":["10K returning (21%) · 36K new (79%)","+255 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.025095040323466718,"text":"3% · 1K"},{"label":"Casual","share":0.18469685982376338,"text":"18% · 8K"},{"label":"New","share":0.7902080998527699,"text":"79% · 36K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"48K","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day","trend":[846.8861111111111,180.0388888888889,108.22222222222223,124.68888888888888,247.65,75.93333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"5K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day","trend":[62.700112047839504,15.272987119598765,12.206189716049382,12.825798722222222,21.101004078703703,6.5381046666666665],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+444","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day","trend":[8.419444444444444,1.8083333333333333,0.5388888888888889,1.0222222222222221,3.9166666666666665,0.6666666666666666],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"6:03","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day","trend":[266.5298207288793,305.3937622581541,406.03752238193016,370.30465032970955,306.73779399690426,309.97159964881473],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"565K","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day","trend":[9612.711111111112,2252.1277777777777,1329.4277777777777,1795.4,2388.7833333333333,683.3333333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.3%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":564710,"text":"565K","share":1},{"key":"views","label":"Views","value":47839,"text":"48K","share":0.08471427812505535},{"key":"engaged","label":"Engaged views","value":47724,"text":"48K","share":0.08451063377662871}],"note":"565K impressions became 48K views, and 100% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.90×","sub":"retention score, length-adjusted","lines":["5K hours watched","6:03 average view duration · 30.0% of each video watched","Implied length 20:12 (duration ÷ percentage) · tracked channels hold 36.7% at that length"],"score":0.9041449049992752,"compare":[{"label":"This channel, last 720 days","value":"0.87×","delta":"+0.03"},{"label":"vanlife-travel median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.18"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 10% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"21%","sub":"of classified viewers returned","lines":["10K returning (21%) · 36K new (79%)","+444 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.025095040323466718,"text":"3% · 1K"},{"label":"Casual","share":0.18469685982376338,"text":"18% · 8K"},{"label":"New","share":0.7902080998527699,"text":"79% · 36K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}}],"daily":[],"trend":[{"days":1080,"spanFrom":720,"spanTo":1080,"label":"720–1080 days ago","viewsPerDay":846.8861111111111,"imprPerDay":9612.711111111112,"engagedPerDay":846.8861111111111,"hoursPerDay":62.700112047839504,"subsPerDay":8.419444444444444,"engagedPerMille":88.10065145224378,"avdSec":266.5298207288793,"returnShare":null,"windowCtr":0.0533},{"days":720,"spanFrom":360,"spanTo":720,"label":"360–720 days ago","viewsPerDay":180.0388888888889,"imprPerDay":2252.1277777777777,"engagedPerDay":180.0388888888889,"hoursPerDay":15.272987119598765,"subsPerDay":1.8083333333333333,"engagedPerMille":79.94168477711202,"avdSec":305.3937622581541,"returnShare":null,"windowCtr":0.0455},{"days":360,"spanFrom":180,"spanTo":360,"label":"180–360 days ago","viewsPerDay":108.22222222222223,"imprPerDay":1329.4277777777777,"engagedPerDay":108.22222222222223,"hoursPerDay":12.206189716049382,"subsPerDay":0.5388888888888889,"engagedPerMille":81.40511581841811,"avdSec":406.03752238193016,"returnShare":null,"windowCtr":0.0426},{"days":180,"spanFrom":90,"spanTo":180,"label":"90–180 days ago","viewsPerDay":124.68888888888888,"imprPerDay":1795.4,"engagedPerDay":124.68888888888888,"hoursPerDay":12.825798722222222,"subsPerDay":1.0222222222222221,"engagedPerMille":69.44908593566275,"avdSec":370.30465032970955,"returnShare":null,"windowCtr":0.0382},{"days":90,"spanFrom":30,"spanTo":90,"label":"30–90 days ago","viewsPerDay":247.65,"imprPerDay":2388.7833333333333,"engagedPerDay":247.65,"hoursPerDay":21.101004078703703,"subsPerDay":3.9166666666666665,"engagedPerMille":103.67202271728286,"avdSec":306.73779399690426,"returnShare":0.2097919001472301,"windowCtr":0.0342},{"days":30,"spanFrom":0,"spanTo":30,"label":"Last 30 days","viewsPerDay":75.93333333333334,"imprPerDay":683.3333333333334,"engagedPerDay":72.1,"hoursPerDay":6.5381046666666665,"subsPerDay":0.6666666666666666,"engagedPerMille":105.51219512195122,"avdSec":309.97159964881473,"returnShare":0.1304147465437788,"windowCtr":0.042699999999999995}],"uploads":[{"d":"2021-02-28","id":"WWGuP1F3TvM","t":"HOW NOT TO SURVIVE IN THE WILD / OYSTER FISHING GONE WRONG"},{"d":"2022-02-21","id":"zYXmYYWZrX8","t":"I Moved to Costa Rica: The World's Longest Introduction"},{"d":"2022-02-24","id":"0c_VSn1AL4U","t":"Moving to Costa Rica: A Vacation That Changed A Life"},{"d":"2022-02-28","id":"mCxPaithw7A","t":"It took me two days to make eggs in Costa Rica"},{"d":"2022-03-03","id":"3cH6rg1dh2A","t":"I Woke up on a School Bus | Living in Costa Rica"},{"d":"2022-05-18","id":"TCW1F7xfwIE","t":"How to Pack for a Month of Travel in ONE backpack - This Counts as a free Personal Item!!"},{"d":"2022-05-24","id":"AGydOcBL5eI","t":"Gringo Makes Empanadas for Ticos"},{"d":"2022-06-05","id":"FnFTdQ-Q0m4","t":"I Woke Up in a Grandma's House | Driving to the Caribbean (with I friend I made 4 days ago)"},{"d":"2022-06-25","id":"ezv-3IhxHng","t":"I Woke Up in a Tent on the Caribbean | Camping in Puerto Viejo, Costa Rica"},{"d":"2022-07-21","id":"rKynhCAeB6o","t":"Fishing & Snorkeling in Quepos, Costa Rica | My First Fish Pic"},{"d":"2022-08-10","id":"XAdLYJkgXJ4","t":"I Woke Up in @hannahleeduggan 's Cottage! ​"},{"d":"2022-08-14","id":"lobokdR8FRw","t":"I Woke Up in West Palm Beach | Environmental Consulting | Van Tour"},{"d":"2022-08-21","id":"h4bPBTb8LZI","t":"I Accidentally Went on a Date: Van Life Edition"},{"d":"2022-09-07","id":"q0SRuteAd8A","t":"Crazy Russians Reunited in Mexico | Tulum & Holbox Island (Part 1)"},{"d":"2022-09-09","id":"EK1OYRNz_vE","t":"I GOT SCAMMED IN MEXICO... by a coconut tree | Holbox Island (Part 2)"},{"d":"2022-10-05","id":"DbK_CciLSd4","t":"Crazy Russians in Tulum: The Good, The Bad, The Ugly, & The Men"},{"d":"2022-10-16","id":"CqwDzSAahbE","t":"The coldest place in Costa Rica | Cerro de la Muerte"},{"d":"2022-10-30","id":"bImMUQO-vDg","t":"Hiking Quetzales National Park, Costa Rica | Armonia Ambiental Lodge"},{"d":"2022-11-07","id":"zRB1vK2wZEM","t":"Secret places you can only access on foot in Costa Rica"},{"d":"2022-12-07","id":"ZqaR8vAgKzk","t":"I walked 30 miles to make farmer's cheese (quajada) | Ranchos Tinamu"},{"d":"2022-12-24","id":"rwBEzVCeyxk","t":"I Accidentally Rafted the Most Dangerous Rapids of Costa Rica"},{"d":"2023-01-09","id":"fFsQ7qbGom4","t":"I was homeless in Costa Rica.. then woke up at a 5-star Hotspring Resort"},{"d":"2023-01-15","id":"ghlZ21FasJk","t":"Moto Fail: Stranded alone in the MUD in a DRESS"},{"d":"2023-01-26","id":"vPGdNJ4Uy0s","t":"An Archaeological Expedition in Costa Rica"},{"d":"2023-02-03","id":"HGJmZU3ILcI","t":"How I Found a Home in Costa Rica... And The Perfect Machete"},{"d":"2023-02-09","id":"1eP2DeC1Ahs","t":"I Accidentally Sent my Date to the Hospital: Motolife edition"},{"d":"2023-02-16","id":"lCbOVoZjmGI","t":"Crossing the Nicaragua Border Alone on Foot | Solo Females That Inspire Me"},{"d":"2023-03-03","id":"6h65rh0EmYg","t":"The Hippies of Ometepe | Nicaragua"},{"d":"2023-03-06","id":"mfqb-gnamRU","t":"Costa Rica Thrift Haul | Visiting La Fortuna"},{"d":"2023-03-09","id":"vu2beNEuEqM","t":"Best Spots in Dominical & the Best Chiliguaro"},{"d":"2023-03-13","id":"Ovx6us6Yy8E","t":"Solo on my Moto (costa rica) | I'm not ready but I'm doing it [E1]"},{"d":"2023-03-19","id":"zcd4cRJnDic","t":"Unicorn Saves the Day | Solo on my Moto (costa rica) [E2]"},{"d":"2023-03-27","id":"eWo3b38LdwQ","t":"I picked up @hannahleeduggan | Solo on my Moto (costa rica) [E3]"},{"d":"2023-04-03","id":"Nm-oDaqATIM","t":"Surviving on a deserted beach in Costa Rica | Solo on my Moto [E4]"},{"d":"2023-04-10","id":"xqszeg53M0A","t":"Q&A: Solo Female Motorcycle Travel in Costa Rica"},{"d":"2023-04-23","id":"jgi27ExM2SA","t":"I Met an Indigenous Tribe and Gained 5 Kilos of Chocolate | Solo on my Moto (costa rica) [E5]"},{"d":"2023-04-30","id":"saI40Y45Bjs","t":"Trusting strangers camping in Mal País, Costa Rica | Solo on my Moto [E6]"},{"d":"2023-05-25","id":"6wacuJEqWp8","t":"Crossing rivers on a motorcycle in Costa Rica | [E7]"},{"d":"2023-07-15","id":"KgDIqy1vDKU","t":"Guanacaste: Dirt Roads, Night Markets, and Hot Girls | Solo on my Moto [E8]"},{"d":"2023-08-02","id":"XiiJDBPYSfQ","t":"A bird taught me to fly | Solo on my Moto [E9]"},{"d":"2023-09-07","id":"vS45vxIM4P4","t":"Hitchhikes to Miami, Gets Robbed: South Florida News"},{"d":"2024-01-07","id":"Aw9K9EOyZyU","t":"Hot Florida Van Life: 10 Survival Tips"},{"d":"2024-01-15","id":"UwPEqcLh5LU","t":"I woke up in St. Augustine | Sewing Sidequests"},{"d":"2024-01-23","id":"LtgdpLO5GSk","t":"How to Buy a Motorcycle in Costa Rica: Step-by-Step Guide"},{"d":"2024-02-06","id":"7CmuFkHDs6s","t":"Vanlife: From pooping in the woods to parties in LA"},{"d":"2024-02-15","id":"q-qzP3a6cUI","t":"Authentic Vegan Tacos with Pako from Oaxaca | Heirloom LA"},{"d":"2024-03-24","id":"MPn-Iec3in8","t":"2 girls and a van in Dirty Myrtle (south carolina)"},{"d":"2024-04-14","id":"A6ynw5-rBYA","t":"3 girls 1 van in the Blue Ridge Mountains"},{"d":"2024-04-28","id":"nrnUiH5975I","t":"Vanlife: alone in the Appalachian Mountains"},{"d":"2024-05-12","id":"la4EtUuSf6w","t":"I Found Wild Horses in the Outer Banks | Vanlife"},{"d":"2024-05-27","id":"TLZyP-Bvkiw","t":"How to make the BEST empanadas… in a VAN on a BOAT"},{"d":"2024-06-03","id":"8S3KtCjZH2k","t":"Can You Survive in the Caribbean with NO MONEY? | Costa Rica"},{"d":"2024-06-23","id":"UY8kAYlfw1g","t":"I Got Adopted at the Border of Costa Rica [E10]"},{"d":"2024-07-03","id":"E7MyCrbcwAs","t":"Living in a Shipping Container in La Fortuna, Costa Rica [E11]"},{"d":"2024-07-25","id":"6-SWbtp1j28","t":"How to make Coconut Crepes in a VAN"},{"d":"2024-10-20","id":"MzNmL50r9qU","t":"Moto Camping Alone on Volcanos in Costa Rica"},{"d":"2025-06-29","id":"7IpjoFO8pEs","t":"I Found a Kitten While Rafting the Most Dangerous River in Costa Rica"},{"d":"2025-09-11","id":"HEp6khXW5TU","t":"Should I travel the world with my cat?? LIVE"},{"d":"2025-09-12","id":"e_VyVjZuiPI","t":"I was roofied and left bleeding in a foreign country LIVE"},{"d":"2025-10-13","id":"OgU7gGszzC0","t":"I Got Arrested in Nicaragua with my Cat (Little Corn Island)"},{"d":"2026-01-11","id":"7VXM3v7qvyc","t":"The Reality of Traveling With a Cat: Is it Worth It??"},{"d":"2026-05-03","id":"o8hsE_ymvXY","t":"I accidentally drank poop water for a week (vanlife in Arkansas)"}],"niche":"vanlife-travel","baseline":{"videos":3813,"channels":19}}</script>
 <script>
 (function(){
   var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
@@ -1233,91 +1297,234 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
   function renderTiles(w){
     var box = document.getElementById('dash-tiles'); if (!box) return;
     box.innerHTML = w.tiles.map(tileHtml).join('');
+    // The daily series is the line we want. Where a pull never carried one, the
+    // same metric across the disjoint trailing periods is real data at a coarser
+    // grain, so it is drawn instead and the note under the row says which.
+    var usedTrend = false, drew = false;
     w.tiles.forEach(function(t){
       var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
-      sparkInto(el, t.spark, t.unit);
+      var daily = finite(t.spark || []).length >= 2;
+      var vals = daily ? t.spark : t.trend;
+      if (!daily && vals) usedTrend = true;
+      if (finite(vals || []).length >= 2) drew = true;
+      sparkInto(el, vals, daily ? t.unit : (t.trendNote || t.unit));
     });
+    var note = document.getElementById('dash-tiles-note');
+    if (note){
+      note.textContent = !drew
+        ? 'No line under the tiles: this pull stored a single window, so there is nothing to draw a change against.'
+        : usedTrend
+          ? (w.tiles[0] && w.tiles[0].trendNote) || ''
+          : 'Day by day across the selected window.';
+    }
   }
 
   // ---- the period, day by day ---------------------------------------------
   var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
-  var dayRows = [], dayMax = 1;
+
   function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
-  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+
+  /**
+   * The three dimensions over time.
+   *
+   * Two sources, one shape. With a day-by-day series the points are days and
+   * each dimension is that day's own rate. Without one, the points are the
+   * DISJOINT trailing periods the model differenced out of Studio's nested
+   * windows, and each dimension is the rate derivable from additive quantities
+   * over that stretch: engaged views per thousand impressions, average view
+   * duration, and the returning share where Studio served the split.
+   *
+   * The three carry different units, so each is INDEXED to its own earliest
+   * point at 100 and the axis is that index. The raw figures ride in the
+   * hover, because an index nobody can convert back is not evidence.
+   */
+  var DIMS = [
+    { key: 'click', cls: 's-click', pcls: 'p-click', label: 'Clickability' },
+    { key: 'watch', cls: 's-watch', pcls: 'p-watch', label: 'Watchability' },
+    { key: 'replay', cls: 's-replay', pcls: 'p-replay', label: 'Replayability' },
+  ];
+  var dimPoints = [], dimSeries = [], dimMax = 100, dimLo = 0, dimBasis = 'trend';
+
+  function fmtDim(key, v){
+    if (v == null || !isFinite(v)) return '—';
+    if (key === 'click') return dimBasis === 'daily' ? fmtPct(v) : v.toFixed(1) + ' per 1,000 impressions';
+    if (key === 'watch') return dimBasis === 'daily' ? fmtPct(v) + ' of each video' : mmss(v);
+    return fmtPct(v) + ' returning';
+  }
+
+  function buildDimSeries(w){
+    var rows = rowsIn(w).filter(function(r){ return r.c != null || r.p != null || (r.r != null && r.n != null); });
+    if (rows.length >= 2){
+      dimBasis = 'daily';
+      dimPoints = rows.map(function(r){
+        return {
+          label: fmtDayYear(r.d),
+          short: fmtDay(r.d),
+          day: r.d,
+          click: r.c != null ? r.c : null,
+          watch: r.p != null ? r.p : null,
+          replay: (r.r != null && r.n != null && (r.r + r.n) > 0) ? r.r / (r.r + r.n) : null,
+          extra: r,
+        };
+      });
+    } else {
+      dimBasis = 'trend';
+      dimPoints = (M.trend || []).map(function(t){
+        return {
+          label: t.label,
+          short: t.spanFrom === 0 ? 'now' : t.spanFrom + 'd',
+          day: null,
+          click: t.engagedPerMille,
+          watch: t.avdSec,
+          replay: t.returnShare,
+          extra: t,
+        };
+      });
+    }
+    dimSeries = DIMS.map(function(d){
+      var raw = dimPoints.map(function(p){ return p[d.key]; });
+      var base = null;
+      for (var i = 0; i < raw.length; i++){ if (raw[i] != null && isFinite(raw[i]) && raw[i] !== 0){ base = raw[i]; break; } }
+      return {
+        key: d.key, cls: d.cls, pcls: d.pcls, label: d.label,
+        raw: raw,
+        base: base,
+        idx: raw.map(function(v){ return (base && v != null && isFinite(v)) ? (v / base) * 100 : null; }),
+        n: finite(raw).length,
+      };
+    });
+    // The domain follows the data, with 100 always inside it and drawn as the
+    // baseline. Anchoring an INDEX axis at zero is not honesty here, it is a
+    // chart whose every line sits in the top tenth: the movement is the point,
+    // and the reference the reader needs is 100, not 0.
+    var all = [];
+    dimSeries.forEach(function(s){ s.idx.forEach(function(v){ if (v != null && isFinite(v)) all.push(v); }); });
+    if (!all.length) all = [100];
+    dimLo = Math.min.apply(null, all.concat([100]));
+    dimMax = Math.max.apply(null, all.concat([100]));
+    var pad = Math.max(4, (dimMax - dimLo) * 0.18);
+    dimLo = Math.floor((dimLo - pad) / 5) * 5;
+    dimMax = Math.ceil((dimMax + pad) / 5) * 5;
+    if (dimMax - dimLo < 10) dimMax = dimLo + 10;
+  }
+
   function renderDaily(w){
     var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
-        empty = document.getElementById('dash-daily-empty');
+        empty = document.getElementById('dash-daily-empty'), sub = document.getElementById('dash-daily-s');
     if (!svg) return;
-    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
     hoverIdx = -1;
     var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
-    if (dayRows.length < 2){
+    buildDimSeries(w);
+    var drawable = dimSeries.filter(function(s){ return s.n >= 2; });
+    if (dimPoints.length < 2 || !drawable.length){
       svg.innerHTML = ''; svg.style.display = 'none';
       if (sum) sum.textContent = '';
-      if (empty) empty.hidden = false;
+      if (empty){
+        empty.hidden = false;
+        empty.textContent = 'Nothing to draw over time yet: this pull stored a single window and no day-by-day series, so no dimension has two points to compare.';
+      }
       return;
     }
     svg.style.display = '';
     if (empty) empty.hidden = true;
-    var total = 0; dayRows.forEach(function(r){ total += r.v; });
-    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
-      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
-    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
-    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
-    var parts = [], n = dayRows.length;
-    for (var g = step; g <= dayMax + 1e-9; g += step){
-      var y = yAt(g);
+    if (sub) sub.textContent = dimBasis === 'daily'
+      ? "Move across the chart for each day's figures."
+      : 'Studio serves nested trailing windows, so each point covers the stretch one window adds beyond the next shorter one. Oldest on the left.';
+    var missing = dimSeries.filter(function(s){ return s.n < 2; });
+    if (sum) sum.textContent = dimPoints.length + ' ' + (dimBasis === 'daily' ? 'days' : 'periods') + ' · ' +
+      drawable.map(function(s){ return s.label.toLowerCase(); }).join(', ') + ' drawn' +
+      (missing.length ? ' · ' + missing.map(function(s){ return s.label.toLowerCase(); }).join(' and ') +
+        ' withheld: Studio served it for fewer than two ' + (dimBasis === 'daily' ? 'days' : 'windows') : '');
+
+    var parts = [], n = dimPoints.length;
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var step = niceStep(dimMax - dimLo, 4);
+    for (var g = Math.ceil(dimLo / step) * step; g <= dimMax + 1e-9; g += step){
+      var y = yIdx(g);
       parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
-      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + Math.round(g) + '</text>');
     }
-    var d = '';
-    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
-    var base = yAt(0);
-    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
-    parts.push('<path class="line" d="' + d + '"/>');
-    // Uploads published inside the window, as ticks under the baseline.
-    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
-    (M.uploads || []).forEach(function(u){
-      var i = byDay[u.d]; if (i == null) return;
-      var x = xAt(i, n);
-      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    // The baseline every series is indexed against.
+    parts.push('<line class="dbase" x1="' + DL + '" y1="' + yIdx(100).toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + yIdx(100).toFixed(1) + '"/>');
+    parts.push('<text class="tick dbaset" x="' + (DL+6) + '" y="' + (yIdx(100)-6).toFixed(1) + '" text-anchor="start">earliest period = 100</text>');
+    drawable.forEach(function(s){
+      var d = '', open = false;
+      for (var i = 0; i < n; i++){
+        var v = s.idx[i];
+        if (v == null){ open = false; continue; }
+        d += (open ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yIdx(v).toFixed(1) + ' ';
+        open = true;
+      }
+      parts.push('<path class="dseries ' + s.cls + '" d="' + d + '"/>');
+      for (var j = 0; j < n; j++){
+        if (s.idx[j] == null) continue;
+        parts.push('<circle class="dpt ' + s.pcls + '" cx="' + xAt(j,n).toFixed(1) + '" cy="' + yIdx(s.idx[j]).toFixed(1) + '" r="3"/>');
+      }
     });
-    // Date labels: first, middle, last.
+    // Uploads, when the points are days.
+    if (dimBasis === 'daily'){
+      var byDay = {}; dimPoints.forEach(function(p, i){ byDay[p.day] = i; });
+      var base = DH - DB;
+      (M.uploads || []).forEach(function(u){
+        var i = byDay[u.d]; if (i == null) return;
+        var x = xAt(i, n);
+        parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+      });
+    }
     [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
-      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + esc(dimPoints[i].short) + '</text>');
     });
     parts.push('<g id="dash-hover"></g>');
     parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
     svg.innerHTML = parts.join('');
   }
+
   function showHover(i){
     var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
     if (!svg || !g || !tip) return;
-    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
-    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
-    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
-                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
-    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
-    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
-    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
-    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
-    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
-    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    if (i < 0 || i >= dimPoints.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var p = dimPoints[i], n = dimPoints.length, x = xAt(i,n);
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var marks = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + (DH-DB) + '"/>';
+    dimSeries.forEach(function(s){
+      if (s.n < 2 || s.idx[i] == null) return;
+      marks += '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + yIdx(s.idx[i]).toFixed(1) + '" r="4.5"/>';
+    });
+    g.innerHTML = marks;
+    var lines = ['<div class="d">' + esc(p.label) + '</div>'];
+    dimSeries.forEach(function(s){
+      if (s.n < 2) return;
+      var v = s.raw[i];
+      lines.push('<div class="r"><b>' + esc(fmtDim(s.key, v)) + '</b> ' + esc(s.label.toLowerCase()) +
+        (s.idx[i] != null ? ' · index ' + Math.round(s.idx[i]) : '') + '</div>');
+    });
+    var e = p.extra || {};
+    if (dimBasis === 'daily'){
+      if (e.v != null) lines.push('<div class="r"><b>' + fmtFull(e.v) + '</b> views</div>');
+      if (e.i != null) lines.push('<div class="r"><b>' + fmtN(e.i) + '</b> impressions</div>');
+      if (e.h != null) lines.push('<div class="r"><b>' + fmtN(e.h) + '</b> hours watched</div>');
+      (M.uploads || []).forEach(function(u){ if (u.d === p.day) lines.push('<div class="u">▶ ' + esc(u.t) + '</div>'); });
+    } else {
+      if (e.viewsPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.viewsPerDay) + '</b> views a day</div>');
+      if (e.imprPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.imprPerDay) + '</b> impressions a day</div>');
+      if (e.hoursPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.hoursPerDay) + '</b> hours a day</div>');
+      if (e.windowCtr != null) lines.push('<div class="r">Studio’s own click-through over the trailing ' + e.days + ' days: <b>' + fmtPct(e.windowCtr) + '</b></div>');
+    }
     tip.innerHTML = lines.join('');
     tip.hidden = false;
-    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
-    var left = px + 14, tw = tip.offsetWidth || 220;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width;
+    var left = px + 14, tw = tip.offsetWidth || 240;
     if (left + tw > box.width) left = px - tw - 14;
     tip.style.left = Math.max(0, left) + 'px';
-    tip.style.top = Math.max(0, py - 16) + 'px';
+    tip.style.top = '12px';
   }
   (function wireHover(){
     var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
     svg.addEventListener('pointermove', function(e){
-      if (!dayRows.length) return;
+      if (!dimPoints.length) return;
       var box = svg.getBoundingClientRect();
       var fx = ((e.clientX - box.left) / box.width) * DW;
-      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var t = (fx - DL) / (DW - DL - DR), n = dimPoints.length;
       var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
       if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
     });

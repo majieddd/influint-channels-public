@@ -641,6 +641,20 @@ svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
 .dash-legend span{display:inline-flex; align-items:center; gap:6px}
 .dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.c-click{background:#8dd8d3}
+.dash-legend b.c-watch{background:#f0c674}
+.dash-legend b.c-replay{background:#c39bd8}
+.dash-tiles-note{color:var(--grey); font-size:11.5px; line-height:1.5; margin:10px 0 0; max-width:88ch}
+.dash-daily-svg .s-click{stroke:#8dd8d3}
+.dash-daily-svg .s-watch{stroke:#f0c674}
+.dash-daily-svg .s-replay{stroke:#c39bd8}
+.dash-daily-svg .dseries{fill:none; stroke-width:2.2}
+.dash-daily-svg .dpt{stroke:none}
+.dash-daily-svg .dbase{stroke:rgba(141,216,211,.45); stroke-dasharray:5 5}
+.dash-daily-svg .dbaset{fill:rgba(141,216,211,.7)}
+.dash-daily-svg .dpt.p-click{fill:#8dd8d3}
+.dash-daily-svg .dpt.p-watch{fill:#f0c674}
+.dash-daily-svg .dpt.p-replay{fill:#c39bd8}
 .dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
 .dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
 .dash-daily-wrap{position:relative}
@@ -1070,12 +1084,61 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
 .tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
 .tr-empty{color:var(--grey);font-size:13px}
+
+.ar-stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:14px 0}
+.ar-stats .v{font-size:26px; font-weight:600}
+.ar-stats .k{font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.ar-bar{display:flex; height:26px; border-radius:8px; overflow:hidden; margin:10px 0 6px; border:1px solid var(--line)}
+.ar-seg{display:flex; align-items:center; justify-content:center; font-size:10.5px; overflow:hidden; white-space:nowrap}
+.ar-seg span{padding:0 6px; opacity:.9}
+.s-measured{background:rgba(141,216,211,.55)}
+.s-await{background:rgba(240,198,116,.42)}
+.s-unreach{background:rgba(255,255,255,.06); color:var(--grey)}
+.ar-none{color:var(--grey); font-size:13px; margin:8px 0}
+.ar-run{border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:12px 0; background:var(--panel)}
+.ar-run>summary{cursor:pointer; list-style:none; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap}
+.ar-run>summary::-webkit-details-marker{display:none}
+.ar-run>summary::before{content:"▾"; color:var(--grey); font-size:12px}
+.ar-run:not([open])>summary::before{content:"▸"}
+.ar-run .ar-m{color:var(--grey); font-size:12px}
+.ar-runmeta,.ar-sum{color:var(--grey); font-size:12px; margin:6px 0 0}
+.ar-sum{color:inherit; font-size:13px; max-width:80ch}
+.ar-its{margin-top:10px}
+.ar-it{border-top:1px solid var(--line); padding:8px 0}
+.ar-it>summary{cursor:pointer; list-style:none; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; font-size:13px}
+.ar-it>summary::-webkit-details-marker{display:none}
+.ar-n{color:var(--grey); font-size:11px; min-width:1.6em}
+.ar-v{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; padding:1px 7px; border-radius:20px}
+.ar-v-keep{background:rgba(111,211,155,.18); color:#7ff0bd}
+.ar-v-discard{background:rgba(255,143,143,.14); color:#ff9f8f}
+.ar-v-invalid{background:rgba(255,255,255,.07); color:var(--grey)}
+.ar-pair{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--teal)}
+.ar-cl{color:var(--grey); font-size:12px}
+.ar-body{padding:8px 0 4px 26px; max-width:92ch}
+.ar-claim,.ar-think,.ar-why,.ar-meta{margin:6px 0; font-size:13px; line-height:1.55}
+.ar-meta{color:var(--grey); font-size:11.5px}
+.ar-think{color:#cfe9e6}
+.ar-tbl{border-collapse:collapse; font-size:12px; margin:8px 0; display:block; overflow-x:auto; max-width:100%}
+.ar-tbl th,.ar-tbl td{border:1px solid var(--line); padding:3px 9px; text-align:left; white-space:nowrap}
+.ar-tbl th{color:var(--grey); font-weight:600}
+.ar-tbl .n{text-align:right; font-variant-numeric:tabular-nums}
+.ar-kept{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-k{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--panel)}
+.ar-k-claim{font-size:13px; margin:0 0 6px; line-height:1.5}
+.ar-k-spec{font-size:12px; margin:0 0 4px; color:var(--teal)}
+.ar-k-ev{font-size:11.5px; color:var(--grey); margin:0 0 6px}
+.ar-k-why{font-size:12px; color:#cfe9e6; margin:0; line-height:1.5}
+.ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
+.ar-a-pass{color:#7ff0bd}
+.ar-a-fail{color:#ff9f8f}
+.ar-gaps{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-gap{border:1px solid var(--line); border-left:3px solid rgba(240,198,116,.5); border-radius:10px; padding:11px 13px; background:var(--panel)}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a><a href="../autoresearch.html">Autoresearch</a></nav>
 </header>
 
 <div class="profile">
@@ -1097,6 +1160,45 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <div class="dash-through"><i></i>Studio pull Aug 31, 2026 · no day-by-day series stored yet</div>
     </div>
   </div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The three dimensions over time</div>
+        <div class="dash-daily-s" id="dash-daily-s">Studio serves nested trailing windows, so each point below covers the stretch one window adds beyond the next shorter one.</div>
+        <div class="dash-daily-s">Videos (long-form) · indexed to the earliest period = 100, so three different units share one axis</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln c-click"></b>Clickability</span><span><b class="ln c-watch"></b>Watchability</span><span><b class="ln c-replay"></b>Replayability</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Clickability, watchability and replayability over time"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty" hidden></p>
+  </div>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">4.2%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>2.5M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:7.9%"></i></span><b>198K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.1%"></i></span><b>177K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">0.96×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">13K hours watched</div><div class="dept-l">4:19 average view duration · 34.2% of each video watched</div><div class="dept-l">Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.93×<em>+0.02</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.02</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">46%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">14K returning (46%) · 17K new (54%)</div><div class="dept-l">+2,903 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:3.8%"><title>Regular</title></i><i class="s1" style="width:42.0%"><title>Casual</title></i><i class="s2" style="width:54.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 4% · 1K</span><span class="s1">Casual 42% · 13K</span><span class="s2">New 54% · 17K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+  </div>
+  <div class="dept-panel" id="dept-panel" hidden></div>
   <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
     <div class="dt-k">Views</div>
     <div class="dt-s">Videos (long-form)</div>
@@ -1128,48 +1230,10 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <div class="dt-c">No complete prior 30-day window yet</div>
     <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
   </div></div>
-  <div class="dash-daily">
-    <div class="dash-daily-h">
-      <div>
-        <div class="dash-daily-t">The period, day by day</div>
-        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
-        <div class="dash-daily-s">Videos (long-form)</div>
-      </div>
-      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
-    </div>
-    <div class="dash-daily-sum" id="dash-daily-sum"></div>
-    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
-    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
-  </div>
-  <div class="dash-depts">
-    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">4.2%</div>
-      <div class="dept-s">click-through, Studio&#39;s own figure</div>
-      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>2.5M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:7.9%"></i></span><b>198K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.1%"></i></span><b>177K</b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">0.96×</div>
-      <div class="dept-s">retention score, length-adjusted</div>
-      <div class="dept-l">13K hours watched</div><div class="dept-l">4:19 average view duration · 34.2% of each video watched</div><div class="dept-l">Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length</div>
-      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.93×<em>+0.02</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.02</em></b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">46%</div>
-      <div class="dept-s">of classified viewers returned</div>
-      <div class="dept-l">14K returning (46%) · 17K new (54%)</div><div class="dept-l">+2,903 net subscribers over 30 days</div>
-      <div class="seg"><div class="seg-b"><i class="s0" style="width:3.8%"><title>Regular</title></i><i class="s1" style="width:42.0%"><title>Casual</title></i><i class="s2" style="width:54.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 4% · 1K</span><span class="s1">Casual 42% · 13K</span><span class="s2">New 54% · 17K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-  </div>
-  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-tiles-note" id="dash-tiles-note"></p>
   <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
 </section>
-<script>window.__DASH__={"channelId":"UCsF-SfQ6_7UZZgNrO-E6qxA","channel":"Studio NOHA","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"198K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"13K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+2,903","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:19","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"2.5M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.2%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":2503376,"text":"2.5M","share":1},{"key":"views","label":"Views","value":197784,"text":"198K","share":0.07900690906999189},{"key":"engaged","label":"Engaged views","value":177219,"text":"177K","share":0.07079200247985121}],"note":"2.5M impressions became 198K views, and 90% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["13K hours watched","4:19 average view duration · 34.2% of each video watched","Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length"],"score":0.9567315757527175,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.02"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.02"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"46%","sub":"of classified viewers returned","lines":["14K returning (46%) · 17K new (54%)","+2,903 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.03772856039144991,"text":"4% · 1K"},{"label":"Casual","share":0.42026139582796807,"text":"42% · 13K"},{"label":"New","share":0.542010043780582,"text":"54% · 17K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"507K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"32K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+8,253","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"3:56","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"6.6M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.5%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":6584605,"text":"6.6M","share":1},{"key":"views","label":"Views","value":506802,"text":"507K","share":0.0769677148439428},{"key":"engaged","label":"Engaged views","value":486237,"text":"486K","share":0.07384452066600806}],"note":"6.6M impressions became 507K views, and 96% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["32K hours watched","3:56 average view duration · 35.0% of each video watched","Implied length 11:13 (duration ÷ percentage) · tracked channels hold 40.3% at that length"],"score":0.9600346129734162,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.03"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.04"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+8,253 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"1.8M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"127K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+34,512","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:20","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"24.0M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.6%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":23996577,"text":"24.0M","share":1},{"key":"views","label":"Views","value":1772744,"text":"1.8M","share":0.07387486973662952},{"key":"engaged","label":"Engaged views","value":1752179,"text":"1.8M","share":0.0730178725073997}],"note":"24.0M impressions became 1.8M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.93×","sub":"retention score, length-adjusted","lines":["127K hours watched","4:20 average view duration · 33.3% of each video watched","Implied length 13:03 (duration ÷ percentage) · tracked channels hold 39.4% at that length"],"score":0.9341717186457611,"compare":[{"label":"This channel, last 720 days","value":"0.94×","delta":"−0.01"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.15"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 7% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+34,512 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}}],"daily":[],"uploads":[{"d":"2024-10-13","id":"FofTq546kgM","t":"What is Japanese Woodworking? - An Introduction"},{"d":"2024-11-03","id":"na9e0Pl2Dow","t":"I built a Cabinet to store our memories | Full Build"},{"d":"2024-12-23","id":"KHdX4xWH9YY","t":"A workbench can be as simple as this..."},{"d":"2025-02-02","id":"78ErGTAyFCY","t":"Making a Tea Cabinet | Sashimono Woodworking"},{"d":"2025-05-04","id":"7Gt5nepmzDM","t":"Japanese Joinery is easier than you think..."},{"d":"2025-06-14","id":"TSG8lMrqHQM","t":"This ONE skill will change how you woodwork"},{"d":"2025-09-07","id":"wKg0lMrBOiU","t":"No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life"},{"d":"2025-10-12","id":"kCVcQwG9OE0","t":"A Modern Take on Shoji | Made with Japanese Hand Tools"},{"d":"2026-01-18","id":"75EJtFuDwzc","t":"Which Japanese Woodworking Tools Should You Buy First?"},{"d":"2026-02-22","id":"wpoOzWGm7yU","t":"The Hardest Part of Woodworking"},{"d":"2026-04-12","id":"ZOci3cqFQw4","t":"Is making things by hand still worth it?"},{"d":"2026-05-31","id":"asT3GmPhL1g","t":"Why Beautiful Furniture Starts at the Lumber Yard"},{"d":"2026-07-20","id":"2HuaCh4wl3A","t":"Slowing Down Helped Me Become a Better Craftsman"},{"d":"2026-08-23","id":"b7CZkbBJpZU","t":"The most important part of furniture making"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
+<script>window.__DASH__={"channelId":"UCsF-SfQ6_7UZZgNrO-E6qxA","channel":"Studio NOHA","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"198K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day","trend":[0.044444444444444446,1463.7944444444445,4071.5666666666666,5922.888888888889,5150.3,6592.8],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"13K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day","trend":[0.00298974845678054,85.27519265972224,322.35585150154316,409.3036504537037,317.5458826759259,425.9464745648148],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+2,903","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day","trend":[0,45.78888888888889,87.77222222222223,116.22222222222223,89.16666666666667,96.76666666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:19","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day","trend":[242.16962499922374,209.72254317546108,285.02076974601636,248.77946712752785,221.96089113902747,232.58817322432552],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"2.5M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day","trend":[0.2916666666666667,20188.916666666668,55353.305555555555,82759.74444444444,68020.48333333334,83445.86666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.2%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":2503376,"text":"2.5M","share":1},{"key":"views","label":"Views","value":197784,"text":"198K","share":0.07900690906999189},{"key":"engaged","label":"Engaged views","value":177219,"text":"177K","share":0.07079200247985121}],"note":"2.5M impressions became 198K views, and 90% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["13K hours watched","4:19 average view duration · 34.2% of each video watched","Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length"],"score":0.9567315757527175,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.02"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.02"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"46%","sub":"of classified viewers returned","lines":["14K returning (46%) · 17K new (54%)","+2,903 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.03772856039144991,"text":"4% · 1K"},{"label":"Casual","share":0.42026139582796807,"text":"42% · 13K"},{"label":"New","share":0.542010043780582,"text":"54% · 17K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"507K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day","trend":[0.044444444444444446,1463.7944444444445,4071.5666666666666,5922.888888888889,5150.3,6592.8],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"32K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day","trend":[0.00298974845678054,85.27519265972224,322.35585150154316,409.3036504537037,317.5458826759259,425.9464745648148],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+8,253","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day","trend":[0,45.78888888888889,87.77222222222223,116.22222222222223,89.16666666666667,96.76666666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"3:56","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day","trend":[242.16962499922374,209.72254317546108,285.02076974601636,248.77946712752785,221.96089113902747,232.58817322432552],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"6.6M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day","trend":[0.2916666666666667,20188.916666666668,55353.305555555555,82759.74444444444,68020.48333333334,83445.86666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.5%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":6584605,"text":"6.6M","share":1},{"key":"views","label":"Views","value":506802,"text":"507K","share":0.0769677148439428},{"key":"engaged","label":"Engaged views","value":486237,"text":"486K","share":0.07384452066600806}],"note":"6.6M impressions became 507K views, and 96% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["32K hours watched","3:56 average view duration · 35.0% of each video watched","Implied length 11:13 (duration ÷ percentage) · tracked channels hold 40.3% at that length"],"score":0.9600346129734162,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.03"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.04"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+8,253 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"1.8M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day","trend":[0.044444444444444446,1463.7944444444445,4071.5666666666666,5922.888888888889,5150.3,6592.8],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"127K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day","trend":[0.00298974845678054,85.27519265972224,322.35585150154316,409.3036504537037,317.5458826759259,425.9464745648148],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+34,512","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day","trend":[0,45.78888888888889,87.77222222222223,116.22222222222223,89.16666666666667,96.76666666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:20","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day","trend":[242.16962499922374,209.72254317546108,285.02076974601636,248.77946712752785,221.96089113902747,232.58817322432552],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"24.0M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day","trend":[0.2916666666666667,20188.916666666668,55353.305555555555,82759.74444444444,68020.48333333334,83445.86666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.6%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":23996577,"text":"24.0M","share":1},{"key":"views","label":"Views","value":1772744,"text":"1.8M","share":0.07387486973662952},{"key":"engaged","label":"Engaged views","value":1752179,"text":"1.8M","share":0.0730178725073997}],"note":"24.0M impressions became 1.8M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.93×","sub":"retention score, length-adjusted","lines":["127K hours watched","4:20 average view duration · 33.3% of each video watched","Implied length 13:03 (duration ÷ percentage) · tracked channels hold 39.4% at that length"],"score":0.9341717186457611,"compare":[{"label":"This channel, last 720 days","value":"0.94×","delta":"−0.01"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.15"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 7% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+34,512 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}}],"daily":[],"trend":[{"days":1080,"spanFrom":720,"spanTo":1080,"label":"720–1080 days ago","viewsPerDay":0.044444444444444446,"imprPerDay":0.2916666666666667,"engagedPerDay":0.044444444444444446,"hoursPerDay":0.00298974845678054,"subsPerDay":0,"engagedPerMille":152.3809523809524,"avdSec":242.16962499922374,"returnShare":null,"windowCtr":0.0464},{"days":720,"spanFrom":360,"spanTo":720,"label":"360–720 days ago","viewsPerDay":1463.7944444444445,"imprPerDay":20188.916666666668,"engagedPerDay":1463.7916666666667,"hoursPerDay":85.27519265972224,"subsPerDay":45.78888888888889,"engagedPerMille":72.50471587133204,"avdSec":209.72254317546108,"returnShare":null,"windowCtr":0.0464},{"days":360,"spanFrom":180,"spanTo":360,"label":"180–360 days ago","viewsPerDay":4071.5666666666666,"imprPerDay":55353.305555555555,"engagedPerDay":4071.5666666666666,"hoursPerDay":322.35585150154316,"subsPerDay":87.77222222222223,"engagedPerMille":73.55598054718202,"avdSec":285.02076974601636,"returnShare":null,"windowCtr":0.045599999999999995},{"days":180,"spanFrom":90,"spanTo":180,"label":"90–180 days ago","viewsPerDay":5922.888888888889,"imprPerDay":82759.74444444444,"engagedPerDay":5922.888888888889,"hoursPerDay":409.3036504537037,"subsPerDay":116.22222222222223,"engagedPerMille":71.5672689500008,"avdSec":248.77946712752785,"returnShare":null,"windowCtr":0.045},{"days":90,"spanFrom":30,"spanTo":90,"label":"30–90 days ago","viewsPerDay":5150.3,"imprPerDay":68020.48333333334,"engagedPerDay":5150.3,"hoursPerDay":317.5458826759259,"subsPerDay":89.16666666666667,"engagedPerMille":75.71689802262995,"avdSec":221.96089113902747,"returnShare":0.4108544516707782,"windowCtr":0.0451},{"days":30,"spanFrom":0,"spanTo":30,"label":"Last 30 days","viewsPerDay":6592.8,"imprPerDay":83445.86666666667,"engagedPerDay":5907.3,"hoursPerDay":425.9464745648148,"subsPerDay":96.76666666666667,"engagedPerMille":70.7920024798512,"avdSec":232.58817322432552,"returnShare":0.45798995621941796,"windowCtr":0.042}],"uploads":[{"d":"2024-10-13","id":"FofTq546kgM","t":"What is Japanese Woodworking? - An Introduction"},{"d":"2024-11-03","id":"na9e0Pl2Dow","t":"I built a Cabinet to store our memories | Full Build"},{"d":"2024-12-23","id":"KHdX4xWH9YY","t":"A workbench can be as simple as this..."},{"d":"2025-02-02","id":"78ErGTAyFCY","t":"Making a Tea Cabinet | Sashimono Woodworking"},{"d":"2025-05-04","id":"7Gt5nepmzDM","t":"Japanese Joinery is easier than you think..."},{"d":"2025-06-14","id":"TSG8lMrqHQM","t":"This ONE skill will change how you woodwork"},{"d":"2025-09-07","id":"wKg0lMrBOiU","t":"No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life"},{"d":"2025-10-12","id":"kCVcQwG9OE0","t":"A Modern Take on Shoji | Made with Japanese Hand Tools"},{"d":"2026-01-18","id":"75EJtFuDwzc","t":"Which Japanese Woodworking Tools Should You Buy First?"},{"d":"2026-02-22","id":"wpoOzWGm7yU","t":"The Hardest Part of Woodworking"},{"d":"2026-04-12","id":"ZOci3cqFQw4","t":"Is making things by hand still worth it?"},{"d":"2026-05-31","id":"asT3GmPhL1g","t":"Why Beautiful Furniture Starts at the Lumber Yard"},{"d":"2026-07-20","id":"2HuaCh4wl3A","t":"Slowing Down Helped Me Become a Better Craftsman"},{"d":"2026-08-23","id":"b7CZkbBJpZU","t":"The most important part of furniture making"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
 <script>
 (function(){
   var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
@@ -1233,91 +1297,234 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
   function renderTiles(w){
     var box = document.getElementById('dash-tiles'); if (!box) return;
     box.innerHTML = w.tiles.map(tileHtml).join('');
+    // The daily series is the line we want. Where a pull never carried one, the
+    // same metric across the disjoint trailing periods is real data at a coarser
+    // grain, so it is drawn instead and the note under the row says which.
+    var usedTrend = false, drew = false;
     w.tiles.forEach(function(t){
       var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
-      sparkInto(el, t.spark, t.unit);
+      var daily = finite(t.spark || []).length >= 2;
+      var vals = daily ? t.spark : t.trend;
+      if (!daily && vals) usedTrend = true;
+      if (finite(vals || []).length >= 2) drew = true;
+      sparkInto(el, vals, daily ? t.unit : (t.trendNote || t.unit));
     });
+    var note = document.getElementById('dash-tiles-note');
+    if (note){
+      note.textContent = !drew
+        ? 'No line under the tiles: this pull stored a single window, so there is nothing to draw a change against.'
+        : usedTrend
+          ? (w.tiles[0] && w.tiles[0].trendNote) || ''
+          : 'Day by day across the selected window.';
+    }
   }
 
   // ---- the period, day by day ---------------------------------------------
   var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
-  var dayRows = [], dayMax = 1;
+
   function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
-  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+
+  /**
+   * The three dimensions over time.
+   *
+   * Two sources, one shape. With a day-by-day series the points are days and
+   * each dimension is that day's own rate. Without one, the points are the
+   * DISJOINT trailing periods the model differenced out of Studio's nested
+   * windows, and each dimension is the rate derivable from additive quantities
+   * over that stretch: engaged views per thousand impressions, average view
+   * duration, and the returning share where Studio served the split.
+   *
+   * The three carry different units, so each is INDEXED to its own earliest
+   * point at 100 and the axis is that index. The raw figures ride in the
+   * hover, because an index nobody can convert back is not evidence.
+   */
+  var DIMS = [
+    { key: 'click', cls: 's-click', pcls: 'p-click', label: 'Clickability' },
+    { key: 'watch', cls: 's-watch', pcls: 'p-watch', label: 'Watchability' },
+    { key: 'replay', cls: 's-replay', pcls: 'p-replay', label: 'Replayability' },
+  ];
+  var dimPoints = [], dimSeries = [], dimMax = 100, dimLo = 0, dimBasis = 'trend';
+
+  function fmtDim(key, v){
+    if (v == null || !isFinite(v)) return '—';
+    if (key === 'click') return dimBasis === 'daily' ? fmtPct(v) : v.toFixed(1) + ' per 1,000 impressions';
+    if (key === 'watch') return dimBasis === 'daily' ? fmtPct(v) + ' of each video' : mmss(v);
+    return fmtPct(v) + ' returning';
+  }
+
+  function buildDimSeries(w){
+    var rows = rowsIn(w).filter(function(r){ return r.c != null || r.p != null || (r.r != null && r.n != null); });
+    if (rows.length >= 2){
+      dimBasis = 'daily';
+      dimPoints = rows.map(function(r){
+        return {
+          label: fmtDayYear(r.d),
+          short: fmtDay(r.d),
+          day: r.d,
+          click: r.c != null ? r.c : null,
+          watch: r.p != null ? r.p : null,
+          replay: (r.r != null && r.n != null && (r.r + r.n) > 0) ? r.r / (r.r + r.n) : null,
+          extra: r,
+        };
+      });
+    } else {
+      dimBasis = 'trend';
+      dimPoints = (M.trend || []).map(function(t){
+        return {
+          label: t.label,
+          short: t.spanFrom === 0 ? 'now' : t.spanFrom + 'd',
+          day: null,
+          click: t.engagedPerMille,
+          watch: t.avdSec,
+          replay: t.returnShare,
+          extra: t,
+        };
+      });
+    }
+    dimSeries = DIMS.map(function(d){
+      var raw = dimPoints.map(function(p){ return p[d.key]; });
+      var base = null;
+      for (var i = 0; i < raw.length; i++){ if (raw[i] != null && isFinite(raw[i]) && raw[i] !== 0){ base = raw[i]; break; } }
+      return {
+        key: d.key, cls: d.cls, pcls: d.pcls, label: d.label,
+        raw: raw,
+        base: base,
+        idx: raw.map(function(v){ return (base && v != null && isFinite(v)) ? (v / base) * 100 : null; }),
+        n: finite(raw).length,
+      };
+    });
+    // The domain follows the data, with 100 always inside it and drawn as the
+    // baseline. Anchoring an INDEX axis at zero is not honesty here, it is a
+    // chart whose every line sits in the top tenth: the movement is the point,
+    // and the reference the reader needs is 100, not 0.
+    var all = [];
+    dimSeries.forEach(function(s){ s.idx.forEach(function(v){ if (v != null && isFinite(v)) all.push(v); }); });
+    if (!all.length) all = [100];
+    dimLo = Math.min.apply(null, all.concat([100]));
+    dimMax = Math.max.apply(null, all.concat([100]));
+    var pad = Math.max(4, (dimMax - dimLo) * 0.18);
+    dimLo = Math.floor((dimLo - pad) / 5) * 5;
+    dimMax = Math.ceil((dimMax + pad) / 5) * 5;
+    if (dimMax - dimLo < 10) dimMax = dimLo + 10;
+  }
+
   function renderDaily(w){
     var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
-        empty = document.getElementById('dash-daily-empty');
+        empty = document.getElementById('dash-daily-empty'), sub = document.getElementById('dash-daily-s');
     if (!svg) return;
-    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
     hoverIdx = -1;
     var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
-    if (dayRows.length < 2){
+    buildDimSeries(w);
+    var drawable = dimSeries.filter(function(s){ return s.n >= 2; });
+    if (dimPoints.length < 2 || !drawable.length){
       svg.innerHTML = ''; svg.style.display = 'none';
       if (sum) sum.textContent = '';
-      if (empty) empty.hidden = false;
+      if (empty){
+        empty.hidden = false;
+        empty.textContent = 'Nothing to draw over time yet: this pull stored a single window and no day-by-day series, so no dimension has two points to compare.';
+      }
       return;
     }
     svg.style.display = '';
     if (empty) empty.hidden = true;
-    var total = 0; dayRows.forEach(function(r){ total += r.v; });
-    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
-      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
-    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
-    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
-    var parts = [], n = dayRows.length;
-    for (var g = step; g <= dayMax + 1e-9; g += step){
-      var y = yAt(g);
+    if (sub) sub.textContent = dimBasis === 'daily'
+      ? "Move across the chart for each day's figures."
+      : 'Studio serves nested trailing windows, so each point covers the stretch one window adds beyond the next shorter one. Oldest on the left.';
+    var missing = dimSeries.filter(function(s){ return s.n < 2; });
+    if (sum) sum.textContent = dimPoints.length + ' ' + (dimBasis === 'daily' ? 'days' : 'periods') + ' · ' +
+      drawable.map(function(s){ return s.label.toLowerCase(); }).join(', ') + ' drawn' +
+      (missing.length ? ' · ' + missing.map(function(s){ return s.label.toLowerCase(); }).join(' and ') +
+        ' withheld: Studio served it for fewer than two ' + (dimBasis === 'daily' ? 'days' : 'windows') : '');
+
+    var parts = [], n = dimPoints.length;
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var step = niceStep(dimMax - dimLo, 4);
+    for (var g = Math.ceil(dimLo / step) * step; g <= dimMax + 1e-9; g += step){
+      var y = yIdx(g);
       parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
-      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + Math.round(g) + '</text>');
     }
-    var d = '';
-    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
-    var base = yAt(0);
-    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
-    parts.push('<path class="line" d="' + d + '"/>');
-    // Uploads published inside the window, as ticks under the baseline.
-    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
-    (M.uploads || []).forEach(function(u){
-      var i = byDay[u.d]; if (i == null) return;
-      var x = xAt(i, n);
-      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    // The baseline every series is indexed against.
+    parts.push('<line class="dbase" x1="' + DL + '" y1="' + yIdx(100).toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + yIdx(100).toFixed(1) + '"/>');
+    parts.push('<text class="tick dbaset" x="' + (DL+6) + '" y="' + (yIdx(100)-6).toFixed(1) + '" text-anchor="start">earliest period = 100</text>');
+    drawable.forEach(function(s){
+      var d = '', open = false;
+      for (var i = 0; i < n; i++){
+        var v = s.idx[i];
+        if (v == null){ open = false; continue; }
+        d += (open ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yIdx(v).toFixed(1) + ' ';
+        open = true;
+      }
+      parts.push('<path class="dseries ' + s.cls + '" d="' + d + '"/>');
+      for (var j = 0; j < n; j++){
+        if (s.idx[j] == null) continue;
+        parts.push('<circle class="dpt ' + s.pcls + '" cx="' + xAt(j,n).toFixed(1) + '" cy="' + yIdx(s.idx[j]).toFixed(1) + '" r="3"/>');
+      }
     });
-    // Date labels: first, middle, last.
+    // Uploads, when the points are days.
+    if (dimBasis === 'daily'){
+      var byDay = {}; dimPoints.forEach(function(p, i){ byDay[p.day] = i; });
+      var base = DH - DB;
+      (M.uploads || []).forEach(function(u){
+        var i = byDay[u.d]; if (i == null) return;
+        var x = xAt(i, n);
+        parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+      });
+    }
     [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
-      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + esc(dimPoints[i].short) + '</text>');
     });
     parts.push('<g id="dash-hover"></g>');
     parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
     svg.innerHTML = parts.join('');
   }
+
   function showHover(i){
     var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
     if (!svg || !g || !tip) return;
-    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
-    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
-    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
-                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
-    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
-    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
-    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
-    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
-    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
-    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    if (i < 0 || i >= dimPoints.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var p = dimPoints[i], n = dimPoints.length, x = xAt(i,n);
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var marks = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + (DH-DB) + '"/>';
+    dimSeries.forEach(function(s){
+      if (s.n < 2 || s.idx[i] == null) return;
+      marks += '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + yIdx(s.idx[i]).toFixed(1) + '" r="4.5"/>';
+    });
+    g.innerHTML = marks;
+    var lines = ['<div class="d">' + esc(p.label) + '</div>'];
+    dimSeries.forEach(function(s){
+      if (s.n < 2) return;
+      var v = s.raw[i];
+      lines.push('<div class="r"><b>' + esc(fmtDim(s.key, v)) + '</b> ' + esc(s.label.toLowerCase()) +
+        (s.idx[i] != null ? ' · index ' + Math.round(s.idx[i]) : '') + '</div>');
+    });
+    var e = p.extra || {};
+    if (dimBasis === 'daily'){
+      if (e.v != null) lines.push('<div class="r"><b>' + fmtFull(e.v) + '</b> views</div>');
+      if (e.i != null) lines.push('<div class="r"><b>' + fmtN(e.i) + '</b> impressions</div>');
+      if (e.h != null) lines.push('<div class="r"><b>' + fmtN(e.h) + '</b> hours watched</div>');
+      (M.uploads || []).forEach(function(u){ if (u.d === p.day) lines.push('<div class="u">▶ ' + esc(u.t) + '</div>'); });
+    } else {
+      if (e.viewsPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.viewsPerDay) + '</b> views a day</div>');
+      if (e.imprPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.imprPerDay) + '</b> impressions a day</div>');
+      if (e.hoursPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.hoursPerDay) + '</b> hours a day</div>');
+      if (e.windowCtr != null) lines.push('<div class="r">Studio’s own click-through over the trailing ' + e.days + ' days: <b>' + fmtPct(e.windowCtr) + '</b></div>');
+    }
     tip.innerHTML = lines.join('');
     tip.hidden = false;
-    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
-    var left = px + 14, tw = tip.offsetWidth || 220;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width;
+    var left = px + 14, tw = tip.offsetWidth || 240;
     if (left + tw > box.width) left = px - tw - 14;
     tip.style.left = Math.max(0, left) + 'px';
-    tip.style.top = Math.max(0, py - 16) + 'px';
+    tip.style.top = '12px';
   }
   (function wireHover(){
     var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
     svg.addEventListener('pointermove', function(e){
-      if (!dayRows.length) return;
+      if (!dimPoints.length) return;
       var box = svg.getBoundingClientRect();
       var fx = ((e.clientX - box.left) / box.width) * DW;
-      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var t = (fx - DL) / (DW - DL - DR), n = dimPoints.length;
       var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
       if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
     });

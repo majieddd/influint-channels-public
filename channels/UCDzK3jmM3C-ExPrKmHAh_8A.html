@@ -641,6 +641,20 @@ svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
 .dash-legend span{display:inline-flex; align-items:center; gap:6px}
 .dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.c-click{background:#8dd8d3}
+.dash-legend b.c-watch{background:#f0c674}
+.dash-legend b.c-replay{background:#c39bd8}
+.dash-tiles-note{color:var(--grey); font-size:11.5px; line-height:1.5; margin:10px 0 0; max-width:88ch}
+.dash-daily-svg .s-click{stroke:#8dd8d3}
+.dash-daily-svg .s-watch{stroke:#f0c674}
+.dash-daily-svg .s-replay{stroke:#c39bd8}
+.dash-daily-svg .dseries{fill:none; stroke-width:2.2}
+.dash-daily-svg .dpt{stroke:none}
+.dash-daily-svg .dbase{stroke:rgba(141,216,211,.45); stroke-dasharray:5 5}
+.dash-daily-svg .dbaset{fill:rgba(141,216,211,.7)}
+.dash-daily-svg .dpt.p-click{fill:#8dd8d3}
+.dash-daily-svg .dpt.p-watch{fill:#f0c674}
+.dash-daily-svg .dpt.p-replay{fill:#c39bd8}
 .dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
 .dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
 .dash-daily-wrap{position:relative}
@@ -1070,12 +1084,61 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .tr-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-right:6px}
 .tr-drop{color:var(--cold)}.tr-peak{color:var(--hot)}
 .tr-empty{color:var(--grey);font-size:13px}
+
+.ar-stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:14px 0}
+.ar-stats .v{font-size:26px; font-weight:600}
+.ar-stats .k{font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.ar-bar{display:flex; height:26px; border-radius:8px; overflow:hidden; margin:10px 0 6px; border:1px solid var(--line)}
+.ar-seg{display:flex; align-items:center; justify-content:center; font-size:10.5px; overflow:hidden; white-space:nowrap}
+.ar-seg span{padding:0 6px; opacity:.9}
+.s-measured{background:rgba(141,216,211,.55)}
+.s-await{background:rgba(240,198,116,.42)}
+.s-unreach{background:rgba(255,255,255,.06); color:var(--grey)}
+.ar-none{color:var(--grey); font-size:13px; margin:8px 0}
+.ar-run{border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:12px 0; background:var(--panel)}
+.ar-run>summary{cursor:pointer; list-style:none; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap}
+.ar-run>summary::-webkit-details-marker{display:none}
+.ar-run>summary::before{content:"▾"; color:var(--grey); font-size:12px}
+.ar-run:not([open])>summary::before{content:"▸"}
+.ar-run .ar-m{color:var(--grey); font-size:12px}
+.ar-runmeta,.ar-sum{color:var(--grey); font-size:12px; margin:6px 0 0}
+.ar-sum{color:inherit; font-size:13px; max-width:80ch}
+.ar-its{margin-top:10px}
+.ar-it{border-top:1px solid var(--line); padding:8px 0}
+.ar-it>summary{cursor:pointer; list-style:none; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; font-size:13px}
+.ar-it>summary::-webkit-details-marker{display:none}
+.ar-n{color:var(--grey); font-size:11px; min-width:1.6em}
+.ar-v{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; padding:1px 7px; border-radius:20px}
+.ar-v-keep{background:rgba(111,211,155,.18); color:#7ff0bd}
+.ar-v-discard{background:rgba(255,143,143,.14); color:#ff9f8f}
+.ar-v-invalid{background:rgba(255,255,255,.07); color:var(--grey)}
+.ar-pair{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--teal)}
+.ar-cl{color:var(--grey); font-size:12px}
+.ar-body{padding:8px 0 4px 26px; max-width:92ch}
+.ar-claim,.ar-think,.ar-why,.ar-meta{margin:6px 0; font-size:13px; line-height:1.55}
+.ar-meta{color:var(--grey); font-size:11.5px}
+.ar-think{color:#cfe9e6}
+.ar-tbl{border-collapse:collapse; font-size:12px; margin:8px 0; display:block; overflow-x:auto; max-width:100%}
+.ar-tbl th,.ar-tbl td{border:1px solid var(--line); padding:3px 9px; text-align:left; white-space:nowrap}
+.ar-tbl th{color:var(--grey); font-weight:600}
+.ar-tbl .n{text-align:right; font-variant-numeric:tabular-nums}
+.ar-kept{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-k{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--panel)}
+.ar-k-claim{font-size:13px; margin:0 0 6px; line-height:1.5}
+.ar-k-spec{font-size:12px; margin:0 0 4px; color:var(--teal)}
+.ar-k-ev{font-size:11.5px; color:var(--grey); margin:0 0 6px}
+.ar-k-why{font-size:12px; color:#cfe9e6; margin:0; line-height:1.5}
+.ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
+.ar-a-pass{color:#7ff0bd}
+.ar-a-fail{color:#ff9f8f}
+.ar-gaps{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin:12px 0}
+.ar-gap{border:1px solid var(--line); border-left:3px solid rgba(240,198,116,.5); border-radius:10px; padding:11px 13px; background:var(--panel)}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a><a href="../autoresearch.html">Autoresearch</a></nav>
 </header>
 
 <div class="profile">
@@ -1097,6 +1160,45 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <div class="dash-through"><i></i>Studio pull Aug 31, 2026 · no day-by-day series stored yet</div>
     </div>
   </div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The three dimensions over time</div>
+        <div class="dash-daily-s" id="dash-daily-s">Studio serves nested trailing windows, so each point below covers the stretch one window adds beyond the next shorter one.</div>
+        <div class="dash-daily-s">Videos (long-form) · indexed to the earliest period = 100, so three different units share one axis</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln c-click"></b>Clickability</span><span><b class="ln c-watch"></b>Watchability</span><span><b class="ln c-replay"></b>Replayability</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Clickability, watchability and replayability over time"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty" hidden></p>
+  </div>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">3.9%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>3.2M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:8.6%"></i></span><b>276K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.2%"></i></span><b>231K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">0.90×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">33K hours watched</div><div class="dept-l">8:32 average view duration · 28.0% of each video watched</div><div class="dept-l">Implied length 30:25 (duration ÷ percentage) · tracked channels hold 34.3% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>1.06×<em>−0.15</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.07</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">24%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">18K returning (24%) · 57K new (76%)</div><div class="dept-l">+1,509 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:1.1%"><title>Regular</title></i><i class="s1" style="width:22.7%"><title>Casual</title></i><i class="s2" style="width:76.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 1% · 816</span><span class="s1">Casual 23% · 17K</span><span class="s2">New 76% · 57K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+  </div>
+  <div class="dept-panel" id="dept-panel" hidden></div>
   <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
     <div class="dt-k">Views</div>
     <div class="dt-s">Videos (long-form)</div>
@@ -1128,48 +1230,10 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <div class="dt-c">No complete prior 30-day window yet</div>
     <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
   </div></div>
-  <div class="dash-daily">
-    <div class="dash-daily-h">
-      <div>
-        <div class="dash-daily-t">The period, day by day</div>
-        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
-        <div class="dash-daily-s">Videos (long-form)</div>
-      </div>
-      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
-    </div>
-    <div class="dash-daily-sum" id="dash-daily-sum"></div>
-    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
-    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
-  </div>
-  <div class="dash-depts">
-    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">3.9%</div>
-      <div class="dept-s">click-through, Studio&#39;s own figure</div>
-      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>3.2M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:8.6%"></i></span><b>276K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.2%"></i></span><b>231K</b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">0.90×</div>
-      <div class="dept-s">retention score, length-adjusted</div>
-      <div class="dept-l">33K hours watched</div><div class="dept-l">8:32 average view duration · 28.0% of each video watched</div><div class="dept-l">Implied length 30:25 (duration ÷ percentage) · tracked channels hold 34.3% at that length</div>
-      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>1.06×<em>−0.15</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.07</em></b></div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
-      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
-      <div class="dept-face"><div class="dept-v">24%</div>
-      <div class="dept-s">of classified viewers returned</div>
-      <div class="dept-l">18K returning (24%) · 57K new (76%)</div><div class="dept-l">+1,509 net subscribers over 30 days</div>
-      <div class="seg"><div class="seg-b"><i class="s0" style="width:1.1%"><title>Regular</title></i><i class="s1" style="width:22.7%"><title>Casual</title></i><i class="s2" style="width:76.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 1% · 816</span><span class="s1">Casual 23% · 17K</span><span class="s2">New 76% · 57K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
-      <span class="dept-more">Over time</span>
-    </div>
-  </div>
-  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-tiles-note" id="dash-tiles-note"></p>
   <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
 </section>
-<script>window.__DASH__={"channelId":"UCDzK3jmM3C-ExPrKmHAh_8A","channel":"Jonny Builds","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"276K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"33K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+1,509","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"8:32","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"3.2M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.9%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":3221291,"text":"3.2M","share":1},{"key":"views","label":"Views","value":275545,"text":"276K","share":0.08553868619755248},{"key":"engaged","label":"Engaged views","value":230501,"text":"231K","share":0.07155547263503981}],"note":"3.2M impressions became 276K views, and 84% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.90×","sub":"retention score, length-adjusted","lines":["33K hours watched","8:32 average view duration · 28.0% of each video watched","Implied length 30:25 (duration ÷ percentage) · tracked channels hold 34.3% at that length"],"score":0.9042566842715536,"compare":[{"label":"This channel, last 360 days","value":"1.06×","delta":"−0.15"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.07"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 10% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"24%","sub":"of classified viewers returned","lines":["18K returning (24%) · 57K new (76%)","+1,509 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.010977184674989237,"text":"1% · 816"},{"label":"Casual","share":0.22692907877744295,"text":"23% · 17K"},{"label":"New","share":0.7620937365475678,"text":"76% · 57K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 816 regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"836K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"125K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+5,600","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"9:30","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"12.4M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.7%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":12370427,"text":"12.4M","share":1},{"key":"views","label":"Views","value":836030,"text":"836K","share":0.06758295408881197},{"key":"engaged","label":"Engaged views","value":790951,"text":"791K","share":0.06393885999246429}],"note":"12.4M impressions became 836K views, and 95% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["125K hours watched","9:30 average view duration · 29.4% of each video watched","Implied length 32:21 (duration ÷ percentage) · tracked channels hold 33.8% at that length"],"score":0.9614456266161394,"compare":[{"label":"This channel, last 360 days","value":"1.06×","delta":"−0.10"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.04"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"25%","sub":"of classified viewers returned","lines":["130K returning (25%) · 382K new (75%)","+5,600 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.041846993872949254,"text":"4% · 21K"},{"label":"Casual","share":0.21185358441268903,"text":"21% · 108K"},{"label":"New","share":0.7462994217143617,"text":"75% · 382K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 21K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"3.6M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"553K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+24,820","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"9:26","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"46.8M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.2%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":46831724,"text":"46.8M","share":1},{"key":"views","label":"Views","value":3563808,"text":"3.6M","share":0.07609815944422631},{"key":"engaged","label":"Engaged views","value":3518729,"text":"3.5M","share":0.07513558544203924}],"note":"46.8M impressions became 3.6M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"1.06×","sub":"retention score, length-adjusted","lines":["553K hours watched","9:26 average view duration · 33.1% of each video watched","Implied length 28:29 (duration ÷ percentage) · tracked channels hold 34.7% at that length"],"score":1.0564534482935837,"compare":[{"label":"This channel, last 720 days","value":"0.98×","delta":"+0.07"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.02"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 6% more of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"25%","sub":"of classified viewers returned","lines":["130K returning (25%) · 382K new (75%)","+24,820 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.041846993872949254,"text":"4% · 21K"},{"label":"Casual","share":0.21185358441268903,"text":"21% · 108K"},{"label":"New","share":0.7462994217143617,"text":"75% · 382K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 21K regulars."}}],"daily":[],"uploads":[{"d":"2017-11-15","id":"ETNshZu8dKg","t":"How to Build an Easy Geometric Wall Clock with 2x4's"},{"d":"2017-11-15","id":"kLve5N7qyec","t":"How To Build a Kid's Reading Nook W/ No Sew Cushions"},{"d":"2017-11-15","id":"M_HWJDik_Qs","t":"DIY Modern | Industrial Standing Desk | Welding Project"},{"d":"2017-11-22","id":"7ofSAUTV9-Y","t":"How to Build a Modern Platform Bed w/ Lights | Queen Bed | DIY"},{"d":"2017-11-29","id":"i0LK064Kn3s","t":"Cutting Boards | How to Build Gradient Cutting Boards | DIY"},{"d":"2017-12-06","id":"pHRaK5dpREM","t":"How To Make Homemade Tinker Toys - DIY Gift Idea"},{"d":"2017-12-22","id":"qZhGcaPSsY0","t":"Owl Jewelry Box | DIY Bandsaw Box | How to"},{"d":"2018-01-03","id":"pLRoQFM9gU4","t":"How to Carve Ladle Spoons From Walnut & Maple"},{"d":"2018-01-10","id":"5zwT4eIA5iw","t":"DIY Rustic Industrial Cookbook Stand | Book Stand"},{"d":"2018-01-18","id":"suD0dZ9Gosw","t":"How to Weave a Herringbone Chair Seat - DIY Hardwood Stool"},{"d":"2018-01-28","id":"IcjoAkM8JZk","t":"DIY Modern Plywood Dining Table"},{"d":"2018-02-02","id":"elo1WCPxPAo","t":"How to Build a Mid-Century Modern File Tray | DIY"},{"d":"2018-02-16","id":"2ZgJwGGB3HI","t":"How To Build A Farmhouse Style Desk | DIY"},{"d":"2018-03-08","id":"xLK_FLhSHmg","t":"DIY Floating Drawer Acrylic Table"},{"d":"2018-03-13","id":"MP5H1DpvkF0","t":"How to Make an Acrylic Longboard | Acrylic Skateboard | DIY"},{"d":"2018-03-30","id":"LqLRNYaA-Sc","t":"DIY Kitchen Island w/  Stained Shou Sugi Ban Tabletop"},{"d":"2018-04-02","id":"yS6LcNNrKUg","t":"Stained Shou Sugi Ban Yakisugi Tutorial || How to Burn Wood with Color"},{"d":"2018-04-16","id":"NdIHWX9XJhA","t":"DIY Steel & Wood Stools w/ Shou Sugi Ban | Interlocking | Beginner Welder"},{"d":"2018-04-23","id":"j6TPT5GwKzw","t":"DIY Modern Plywood Chair | How To Make Two Chairs From One Sheet | #rocklerplywoodchallenge"},{"d":"2018-05-08","id":"tEpyK-jQqiY","t":"DIY Modern Outdoor Sofa -  Shou Sugi Ban | Limited Tools | Free Plans"},{"d":"2018-05-24","id":"djgBkkzt4Eo","t":"DIY Coffee Table From One Sheet Of Plywood | #rocklerplywoodchallenge"},{"d":"2018-07-05","id":"4exupeCj120","t":"DIY Outdoor Furniture | Outdoor Rocker w/ Shou Sugi Ban | Beginner DIY Project"},{"d":"2018-07-13","id":"chE3jXFe6lY","t":"DIY Marble Concrete & Steel Bar Cart | GFRC | Modern"},{"d":"2018-08-09","id":"J9dXA33eWr0","t":"DIY Farmhouse Dining Table w/ Epoxy Inlays Using Reclaimed Barnwood"},{"d":"2018-09-11","id":"-1NhDfn880I","t":"DIY Coffee Table w/ Hidden Wireless Charging | Converts to Ottoman | CNC"},{"d":"2018-09-20","id":"U24iVIZs38Y","t":"DIY Live Edge Slab Bench w/ Steel Legs | Easy Welding Project"},{"d":"2018-09-27","id":"zgPZnM6SBLs","t":"Skip Planing Tutorial | Skip Plane & Flatten Reclaimed Wood | How To"},{"d":"2018-10-15","id":"UHSu-FR03o8","t":"DIY Floor Lamp w/ Only 2 Tools | FREE Plans Included"},{"d":"2018-10-26","id":"9ouy-qq4ZNw","t":"How To Make An EPOXY Inlaid Wooden Mallet - Epoxy Resin & Woodworking"},{"d":"2018-11-07","id":"ZlWYl3AbvsI","t":"DIY Coffee Table Using Reclaimed Oak Floor From Horse Barn | Modern Farmhouse"},{"d":"2018-12-05","id":"9-v_YpHN5NI","t":"DIY Modern Industrial \"Tree\" TV Stand/Media Console - Simple Steel Bending Jig"},{"d":"2019-01-08","id":"8jDQxV2l4h0","t":"Trash Wood To Treasure - DIY Epoxy River Floating Shelves - Hidden Hardware"},{"d":"2019-01-28","id":"KpRLOrSUQyo","t":"DIY Industrial Wall Sconce Wall Lamp - ZH Fabrications Inspired"},{"d":"2019-02-20","id":"0gLrQLUItTY","t":"Trash Wood To Treasure - DIY Epoxy Cutting Board / Serving Board"},{"d":"2019-02-28","id":"nn_FBc7ygMk","t":"When Shou Sugi Ban Goes Wrong! (that time I made a dumpster fire)"},{"d":"2019-03-14","id":"LW781YuKX3A","t":"The ULTIMATE diy Dream Desk W/ Epoxy Resin LED's"},{"d":"2019-03-27","id":"exF-RBaq32M","t":"DIY Bike Stand Cabinet | Bicycle Storage Solution for Small Home/Apartment"},{"d":"2019-04-10","id":"rZItwsKJ404","t":"World's Most DANGEROUS Axe Mod"},{"d":"2019-05-04","id":"Bw7C2Lwy_Uk","t":"Extreme Fireplace Makeover/Renovation | DIY"},{"d":"2019-05-09","id":"nS-MH03CDOE","t":"I made a DIY Reclaimed Wood Shiplap Wall from my old FENCE"},{"d":"2019-05-28","id":"mxTMeh_5FjI","t":"ULTIMATE Workbench to ORGANIZE a Messy Shop | Assembly/Outfeed | Free Plans"},{"d":"2019-06-18","id":"pXTBdxaTLiY","t":"DIY Mobile Miter Saw Station | Modular, Storage, Free Plans"},{"d":"2019-06-28","id":"vTq8r8hT7h0","t":"DIY Epoxy Resin Coffee Table | Crop Circle Table 👽"},{"d":"2019-07-30","id":"Z96UlGg19J4","t":"DIY Epoxy Resin Farmhouse Dining Table w/ Reclaimed Barnwood"},{"d":"2019-08-22","id":"nYgp3ZQ1bfs","t":"How To Build a DIY Bookcase w/ Limited Tools | Plus Shou Sugi Ban!"},{"d":"2019-08-31","id":"DMj2QGavv6M","t":"DIY Epoxy Resin Art | Epoxy Clocks"},{"d":"2019-10-20","id":"qoOm-xN62SY","t":"Cheap Axe Modification w/ Skateboard Wood & a Few Extras!"},{"d":"2019-10-31","id":"s8g5QRoLEkU","t":"Making a Forged Knife w/ SPIDER 🕷 in Epoxy Resin Handle / Giveaway"},{"d":"2019-11-26","id":"CN9k7kbmSHk","t":"DIY Carved Plywood TV Stand w/ Epoxy \"River\" | Media Console"},{"d":"2019-12-13","id":"XGo7ebyjwaU","t":"Trash Wood to Treasure - DIY Kitchen Island w/ Epoxy River top"},{"d":"2020-01-11","id":"kOzVTpLvfcQ","t":"DIY Concrete Coffee Table | \"Urban Decay\" Table"},{"d":"2020-01-18","id":"Ep_7yOe4kBw","t":"Making my First Chef's Knife. Will She Like It??"},{"d":"2020-02-19","id":"7PoyMTUWqeM","t":"DIY Modern Indoor/Outdoor Sofa Made From 2x4's"},{"d":"2020-02-29","id":"90Gl-EAhg8M","t":"Cheap Axe from Ebay Modification - Woodturning Scorpion 🦂 Resin Handle"},{"d":"2020-03-26","id":"UUbudihoYMU","t":"Trash Wood To Treasure - Epoxy & Copper Cutting Board | Serving Board"},{"d":"2020-04-16","id":"ms95A5iStvQ","t":"How to Build A Simple Raised Bed Planter Box | Free Plans 🔨"},{"d":"2020-04-30","id":"IzaUW0bYnIg","t":"DIY Concrete Table with Tree Growing Through the Middle | GFRC Concrete"},{"d":"2020-05-20","id":"oLezqbVlP0k","t":"DIY Concrete River Table | How to Build a Concrete Coffee Table"},{"d":"2020-05-29","id":"POyf3RC44GA","t":"Making a Rainbow Plywood Bowl | DIY Skateboard Wood & Epoxy Resin"},{"d":"2020-06-28","id":"XnNk647Ko0E","t":"Impossible Folding Door"},{"d":"2020-07-26","id":"hmR1gGTvHyg","t":"Murder Hornet Insect Resin Casting | How To"},{"d":"2020-08-23","id":"7GF_ShBBK4A","t":"Making a Dagger Fit For 2020! REAL Murder Hornet Knife"},{"d":"2020-08-30","id":"8lsqhADjZXM","t":"Simple DIY Garage Storage Shelves w/ Workbench | FREE PLANS"},{"d":"2020-09-27","id":"Go_9bezZ4D8","t":"DIY Outdoor Bar w/ Epoxy Marble Countertop"},{"d":"2020-10-15","id":"WKVm3gyzask","t":"DIY Two Person Dream Desk Build #rocklerdeskchallenge"},{"d":"2020-11-30","id":"eoZfjsxK1Gc","t":"The Door of the FUTURE!"},{"d":"2020-12-10","id":"nJH6QwrMW_0","t":"Building a CNC Cart & Computer Cabinet for my X-CARVE PRO | Free Plans"},{"d":"2020-12-13","id":"nDkKwquIevI","t":"5 Tools Under $20 You Probably DON'T Have"},{"d":"2021-01-09","id":"WQ2B_-iVyP8","t":"Turning Trash Wood to TREASURE | Scrap Wood & Epoxy Tables"},{"d":"2021-01-31","id":"QWYH8v7zL-I","t":"DIY Garage Storage Shelves | Limited Tools | Free Plans"},{"d":"2021-01-31","id":"RR7hcLIkpak","t":"Build A Workbench In A Weekend With These Free Plans!"},{"d":"2021-03-11","id":"4mPIS_N-GDU","t":"Half Million Dollar Home Tour. Mini Mansion or Money Pit?"},{"d":"2021-04-18","id":"4W799BkGdv8","t":"Inexpensive Bathroom MAKEOVER"},{"d":"2021-04-29","id":"JDtPJm3k63U","t":"Can you make “Marble” with Epoxy Resin? (Yes!)"},{"d":"2021-06-13","id":"S9YCs4jhgL0","t":"DIY Castle Joint Platform Bed made w/ 2x4's Buy vs. DIY"},{"d":"2021-07-08","id":"qw_r5Xrzwis","t":"TRANSFORM Your Old DECK"},{"d":"2021-08-19","id":"sMJNdAuVhcc","t":"Building a MASTERPIECE For MY Wife"},{"d":"2021-09-09","id":"wEKyLmxWQsc","t":"How to build a DIY 2x4 Sofa for $160!"},{"d":"2021-09-18","id":"QnMkd6YXH4Q","t":"This Machine Has Earned Me SO MUCH MONEY"},{"d":"2021-10-01","id":"arR7HM1VZrs","t":"I Found A Secret Room In My House And You'll Never Believe What I Did!"},{"d":"2021-10-17","id":"d7RaTIiUw1Y","t":"$2000 Slab and Epoxy Coffee Table."},{"d":"2021-11-03","id":"6kMliZGXAKg","t":"Building a WORKBENCH That Does Something No Other Workbench Can"},{"d":"2021-11-29","id":"vkizrtg7-D8","t":"How to Hang a Reclaimed Beam Mantel (FULL FIREPLACE MAKEOVER)"},{"d":"2021-12-16","id":"zvoVtNEaMGc","t":"I built a $10,000 Epoxy Table (but made no money)"},{"d":"2022-01-02","id":"fQWjdWgX-QQ","t":"I Could Sell This for $1000, My Wife's Reaction is PRICELESS"},{"d":"2022-01-23","id":"3RpL4rxtROM","t":"My $80,000 Disaster"},{"d":"2022-01-30","id":"UAHxm0ud_c8","t":"She Asked Me To Build This, And I Said Yes!"},{"d":"2022-02-20","id":"kOGlPQitf5E","t":"$5000 For This? No Way! I Couldn't Believe What I Got Instead!"},{"d":"2022-03-18","id":"JJRj-kS8wqY","t":"You Won't Believe What This Workbench Can Do"},{"d":"2022-04-11","id":"-5XXcHHJSzE","t":"Every Star Wars Fan NEEDS This"},{"d":"2022-04-24","id":"Yo6G1N95J9Q","t":"This Wood Is Hated The Most (and I don't know why)"},{"d":"2022-05-29","id":"Om_lfttGmQg","t":"Junk Wood, BUT I'll Sell it for $5000"},{"d":"2022-06-18","id":"rZF12qx9Hzo","t":"Star Wars Mega Fan Builds a Cutting Board"},{"d":"2022-07-17","id":"_bpWgQaJ6rs","t":"She Asked Me to Build This, I ALMOST Said NO"},{"d":"2022-08-21","id":"xTq_mcRuTJA","t":"$6000 Build, but I Use It EVERY DAY"},{"d":"2022-08-28","id":"HYfKiP6dD4o","t":"LIVE Q&A w/ Jonny Builds + 1 Chip Challenge!"},{"d":"2022-10-09","id":"vP2ncBk31so","t":"$10,000 DIY Outdoor Furniture"},{"d":"2022-10-30","id":"GnogpH85gjw","t":"5 Wood Shop Upgrades"},{"d":"2022-11-17","id":"gun6TksQqqI","t":"Table Made with Ancient Japanese Technique"},{"d":"2022-11-20","id":"9QwY7X9nqVA","t":"20 years later, I quit."},{"d":"2022-11-27","id":"5G-HRDZMycY","t":"Building with NO PLAN"},{"d":"2022-12-11","id":"xyiJhjXHJSA","t":"300 Degree Epoxy Table"},{"d":"2022-12-17","id":"xm7csKXVxNA","t":"Jonny Builds Live Q&A plus Epoxy Table GIVEAWAY"},{"d":"2023-01-05","id":"q0R0YhJrmtc","t":"She Told Me Not To Build This...Her Reaction Is PRICELESS!"},{"d":"2023-01-22","id":"aa8bh9R3v18","t":"$10,000 Bed Build"},{"d":"2023-02-26","id":"DJwvSvQZ9qo","t":"Junk Wood To $CASH"},{"d":"2023-03-26","id":"-nTNYg14VnU","t":"Insane Star Wars Mega-Fan Table Build"},{"d":"2023-05-13","id":"j3U3wp612gM","t":"The Forgotten Wood That Will Leave You Speechless"},{"d":"2023-06-04","id":"VjngDLWfQEM","t":"Turning Trash Wood To Stunning Table"},{"d":"2023-07-09","id":"EO1rBRYBUEQ","t":"Impossible Animal Carving Table"},{"d":"2023-07-16","id":"7MYUuwgpunU","t":"1982 Kitchen Remodel Ep. 1 | Demo & Appliances"},{"d":"2023-07-23","id":"djmiM-n54Ro","t":"Building Her DREAM CHAIR"},{"d":"2023-07-30","id":"67WLsVJ0TXQ","t":"How To Build Kitchen Cabinets The Easy Way"},{"d":"2023-08-06","id":"avK2e8JItrQ","t":"Epic 10 Month Kitchen Remodel Start to Finish"},{"d":"2023-08-31","id":"cijPNAytdBM","t":"This Left Her SPEECHLESS"},{"d":"2023-09-17","id":"Cl_M2fht7As","t":"$12,000 Table Paid With Something BETTER"},{"d":"2023-11-12","id":"JsN6af72TeM","t":"Table Made From 5,906 Sheets of Paper"},{"d":"2023-12-29","id":"-jOnmA6NXZw","t":"Modern Table, 1300 Year Old Woodworking Technique"},{"d":"2024-02-04","id":"GHLitfRZRIw","t":"$2000 Table from Only Scrap Wood"},{"d":"2024-03-10","id":"-mCb8bivRwg","t":"The $11,000 Cabinet That Shocked Everyone"},{"d":"2024-04-12","id":"fhsm-ZZLnmk","t":"The Hidden Struggles of Chair Construction"},{"d":"2024-05-05","id":"D-hbA3hndZ8","t":"Crafting a Cabinet from Just 1 Tree"},{"d":"2024-05-31","id":"gOFTQ2WF8n8","t":"Proving Angry Viewers Wrong"},{"d":"2024-06-16","id":"NjEfg4fhjVM","t":"The Hidden Art of 753 Newspapers and Epoxy Revealed"},{"d":"2024-07-14","id":"AJ8goYdKZ3I","t":"Say Goodbye to Epoxy"},{"d":"2024-08-25","id":"UraaO6WhTts","t":"Secrets Behind My Toughest Build Yet"},{"d":"2024-09-29","id":"L-PgSw6KmkE","t":"This Build Was a SCAM"},{"d":"2024-11-19","id":"BIAqB-PkNbM","t":"I 3D Printed 832 Spikes to Build This Cabinet"},{"d":"2025-01-06","id":"f8NCyZUtkog","t":"Confessions of a Struggling Woodworker"},{"d":"2025-02-08","id":"o9O8cthWvB0","t":"I Spent 213 Hours Turning 2200 Yr Old Wood into $12,000 Table"},{"d":"2025-04-24","id":"HU4Nj2YOqEU","t":"I Built 5 Impossible Optical Illusion Chairs"},{"d":"2025-07-13","id":"yt2fSYKclLA","t":"Woodworking Gimmick or Hack? Building a Spirograph Table"},{"d":"2025-08-16","id":"FcJVA4tE_cA","t":"I Built 5 MORE Impossible Woodworking Illusions"},{"d":"2025-09-14","id":"326QyhTEyGA","t":"I Build Dream DIY Bed for $250"},{"d":"2025-11-09","id":"4t6S4tkeJr0","t":"I Turn 9024 Sheets of Paper into My Best Table Yet"},{"d":"2025-12-07","id":"rMEc_lUB6fg","t":"I Could Get Sued If I Sell This"},{"d":"2026-01-18","id":"Zofbncb8hK8","t":"The One Mistake That Could Cost You $12,000"},{"d":"2026-03-08","id":"-HD_B_qXUfg","t":"We Build 2 Tables - Robot vs. Man"},{"d":"2026-06-13","id":"ecxqsYxBVGw","t":"I Built the Table of My Dreams"},{"d":"2026-08-29","id":"XFE_dKQMPHA","t":"I Built a Hidden 90's Man Cave in my GARAGE"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
+<script>window.__DASH__={"channelId":"UCDzK3jmM3C-ExPrKmHAh_8A","channel":"Jonny Builds","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"276K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day","trend":[32411.569444444445,15422.83888888889,12227.377777777778,5853.888888888889,9341.416666666666,9184.833333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"33K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day","trend":[5034.376291382716,2188.030096002315,1964.4467484722218,826.8455296419752,1541.098397263889,1093.051810537037],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+1,509","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day","trend":[265.89166666666665,113.89444444444445,90.07777777777778,33.4,68.18333333333334,50.3],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"8:32","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day","trend":[559.1754722042411,510.73011929620253,578.3748914139852,508.48999070703223,593.90929964049,428.4222015932062],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"3.2M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day","trend":[516842.2944444445,198190.52222222224,155868.13333333333,71167.03333333334,152485.6,107376.36666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"3.9%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":3221291,"text":"3.2M","share":1},{"key":"views","label":"Views","value":275545,"text":"276K","share":0.08553868619755248},{"key":"engaged","label":"Engaged views","value":230501,"text":"231K","share":0.07155547263503981}],"note":"3.2M impressions became 276K views, and 84% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.90×","sub":"retention score, length-adjusted","lines":["33K hours watched","8:32 average view duration · 28.0% of each video watched","Implied length 30:25 (duration ÷ percentage) · tracked channels hold 34.3% at that length"],"score":0.9042566842715536,"compare":[{"label":"This channel, last 360 days","value":"1.06×","delta":"−0.15"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.07"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 10% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"24%","sub":"of classified viewers returned","lines":["18K returning (24%) · 57K new (76%)","+1,509 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.010977184674989237,"text":"1% · 816"},{"label":"Casual","share":0.22692907877744295,"text":"23% · 17K"},{"label":"New","share":0.7620937365475678,"text":"76% · 57K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 816 regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"836K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day","trend":[32411.569444444445,15422.83888888889,12227.377777777778,5853.888888888889,9341.416666666666,9184.833333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"125K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day","trend":[5034.376291382716,2188.030096002315,1964.4467484722218,826.8455296419752,1541.098397263889,1093.051810537037],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+5,600","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day","trend":[265.89166666666665,113.89444444444445,90.07777777777778,33.4,68.18333333333334,50.3],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"9:30","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day","trend":[559.1754722042411,510.73011929620253,578.3748914139852,508.48999070703223,593.90929964049,428.4222015932062],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"12.4M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day","trend":[516842.2944444445,198190.52222222224,155868.13333333333,71167.03333333334,152485.6,107376.36666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"3.7%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":12370427,"text":"12.4M","share":1},{"key":"views","label":"Views","value":836030,"text":"836K","share":0.06758295408881197},{"key":"engaged","label":"Engaged views","value":790951,"text":"791K","share":0.06393885999246429}],"note":"12.4M impressions became 836K views, and 95% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["125K hours watched","9:30 average view duration · 29.4% of each video watched","Implied length 32:21 (duration ÷ percentage) · tracked channels hold 33.8% at that length"],"score":0.9614456266161394,"compare":[{"label":"This channel, last 360 days","value":"1.06×","delta":"−0.10"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.04"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"25%","sub":"of classified viewers returned","lines":["130K returning (25%) · 382K new (75%)","+5,600 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.041846993872949254,"text":"4% · 21K"},{"label":"Casual","share":0.21185358441268903,"text":"21% · 108K"},{"label":"New","share":0.7462994217143617,"text":"75% · 382K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 21K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"3.6M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day","trend":[32411.569444444445,15422.83888888889,12227.377777777778,5853.888888888889,9341.416666666666,9184.833333333334],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"553K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day","trend":[5034.376291382716,2188.030096002315,1964.4467484722218,826.8455296419752,1541.098397263889,1093.051810537037],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+24,820","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day","trend":[265.89166666666665,113.89444444444445,90.07777777777778,33.4,68.18333333333334,50.3],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"9:26","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day","trend":[559.1754722042411,510.73011929620253,578.3748914139852,508.48999070703223,593.90929964049,428.4222015932062],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"46.8M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day","trend":[516842.2944444445,198190.52222222224,155868.13333333333,71167.03333333334,152485.6,107376.36666666667],"trendNote":"By trailing window: last 30 days at the right, 720–1080 days ago at the left. Totals are per day so the periods compare."}],"click":{"headline":"4.2%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":46831724,"text":"46.8M","share":1},{"key":"views","label":"Views","value":3563808,"text":"3.6M","share":0.07609815944422631},{"key":"engaged","label":"Engaged views","value":3518729,"text":"3.5M","share":0.07513558544203924}],"note":"46.8M impressions became 3.6M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"1.06×","sub":"retention score, length-adjusted","lines":["553K hours watched","9:26 average view duration · 33.1% of each video watched","Implied length 28:29 (duration ÷ percentage) · tracked channels hold 34.7% at that length"],"score":1.0564534482935837,"compare":[{"label":"This channel, last 720 days","value":"0.98×","delta":"+0.07"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.02"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 6% more of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"25%","sub":"of classified viewers returned","lines":["130K returning (25%) · 382K new (75%)","+24,820 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.041846993872949254,"text":"4% · 21K"},{"label":"Casual","share":0.21185358441268903,"text":"21% · 108K"},{"label":"New","share":0.7462994217143617,"text":"75% · 382K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 21K regulars."}}],"daily":[],"trend":[{"days":1080,"spanFrom":720,"spanTo":1080,"label":"720–1080 days ago","viewsPerDay":32411.569444444445,"imprPerDay":516842.2944444445,"engagedPerDay":32411.569444444445,"hoursPerDay":5034.376291382716,"subsPerDay":265.89166666666665,"engagedPerMille":62.71075295663206,"avdSec":559.1754722042411,"returnShare":null,"windowCtr":0.0401},{"days":720,"spanFrom":360,"spanTo":720,"label":"360–720 days ago","viewsPerDay":15422.83888888889,"imprPerDay":198190.52222222224,"engagedPerDay":15422.836111111112,"hoursPerDay":2188.030096002315,"subsPerDay":113.89444444444445,"engagedPerMille":77.81823236642047,"avdSec":510.73011929620253,"returnShare":null,"windowCtr":0.0436},{"days":360,"spanFrom":180,"spanTo":360,"label":"180–360 days ago","viewsPerDay":12227.377777777778,"imprPerDay":155868.13333333333,"engagedPerDay":12227.377777777778,"hoursPerDay":1964.4467484722218,"subsPerDay":90.07777777777778,"engagedPerMille":78.44693791019361,"avdSec":578.3748914139852,"returnShare":null,"windowCtr":0.04190000000000001},{"days":180,"spanFrom":90,"spanTo":180,"label":"90–180 days ago","viewsPerDay":5853.888888888889,"imprPerDay":71167.03333333334,"engagedPerDay":5853.888888888889,"hoursPerDay":826.8455296419752,"subsPerDay":33.4,"engagedPerMille":82.25562616148895,"avdSec":508.48999070703223,"returnShare":null,"windowCtr":0.0392},{"days":90,"spanFrom":30,"spanTo":90,"label":"30–90 days ago","viewsPerDay":9341.416666666666,"imprPerDay":152485.6,"engagedPerDay":9340.833333333334,"hoursPerDay":1541.098397263889,"subsPerDay":68.18333333333334,"engagedPerMille":61.257150401961454,"avdSec":593.90929964049,"returnShare":0.2537005782856383,"windowCtr":0.036699999999999997},{"days":30,"spanFrom":0,"spanTo":30,"label":"Last 30 days","viewsPerDay":9184.833333333334,"imprPerDay":107376.36666666667,"engagedPerDay":7683.366666666667,"hoursPerDay":1093.051810537037,"subsPerDay":50.3,"engagedPerMille":71.5554726350398,"avdSec":428.4222015932062,"returnShare":0.2379062634524322,"windowCtr":0.0392}],"uploads":[{"d":"2017-11-15","id":"ETNshZu8dKg","t":"How to Build an Easy Geometric Wall Clock with 2x4's"},{"d":"2017-11-15","id":"kLve5N7qyec","t":"How To Build a Kid's Reading Nook W/ No Sew Cushions"},{"d":"2017-11-15","id":"M_HWJDik_Qs","t":"DIY Modern | Industrial Standing Desk | Welding Project"},{"d":"2017-11-22","id":"7ofSAUTV9-Y","t":"How to Build a Modern Platform Bed w/ Lights | Queen Bed | DIY"},{"d":"2017-11-29","id":"i0LK064Kn3s","t":"Cutting Boards | How to Build Gradient Cutting Boards | DIY"},{"d":"2017-12-06","id":"pHRaK5dpREM","t":"How To Make Homemade Tinker Toys - DIY Gift Idea"},{"d":"2017-12-22","id":"qZhGcaPSsY0","t":"Owl Jewelry Box | DIY Bandsaw Box | How to"},{"d":"2018-01-03","id":"pLRoQFM9gU4","t":"How to Carve Ladle Spoons From Walnut & Maple"},{"d":"2018-01-10","id":"5zwT4eIA5iw","t":"DIY Rustic Industrial Cookbook Stand | Book Stand"},{"d":"2018-01-18","id":"suD0dZ9Gosw","t":"How to Weave a Herringbone Chair Seat - DIY Hardwood Stool"},{"d":"2018-01-28","id":"IcjoAkM8JZk","t":"DIY Modern Plywood Dining Table"},{"d":"2018-02-02","id":"elo1WCPxPAo","t":"How to Build a Mid-Century Modern File Tray | DIY"},{"d":"2018-02-16","id":"2ZgJwGGB3HI","t":"How To Build A Farmhouse Style Desk | DIY"},{"d":"2018-03-08","id":"xLK_FLhSHmg","t":"DIY Floating Drawer Acrylic Table"},{"d":"2018-03-13","id":"MP5H1DpvkF0","t":"How to Make an Acrylic Longboard | Acrylic Skateboard | DIY"},{"d":"2018-03-30","id":"LqLRNYaA-Sc","t":"DIY Kitchen Island w/  Stained Shou Sugi Ban Tabletop"},{"d":"2018-04-02","id":"yS6LcNNrKUg","t":"Stained Shou Sugi Ban Yakisugi Tutorial || How to Burn Wood with Color"},{"d":"2018-04-16","id":"NdIHWX9XJhA","t":"DIY Steel & Wood Stools w/ Shou Sugi Ban | Interlocking | Beginner Welder"},{"d":"2018-04-23","id":"j6TPT5GwKzw","t":"DIY Modern Plywood Chair | How To Make Two Chairs From One Sheet | #rocklerplywoodchallenge"},{"d":"2018-05-08","id":"tEpyK-jQqiY","t":"DIY Modern Outdoor Sofa -  Shou Sugi Ban | Limited Tools | Free Plans"},{"d":"2018-05-24","id":"djgBkkzt4Eo","t":"DIY Coffee Table From One Sheet Of Plywood | #rocklerplywoodchallenge"},{"d":"2018-07-05","id":"4exupeCj120","t":"DIY Outdoor Furniture | Outdoor Rocker w/ Shou Sugi Ban | Beginner DIY Project"},{"d":"2018-07-13","id":"chE3jXFe6lY","t":"DIY Marble Concrete & Steel Bar Cart | GFRC | Modern"},{"d":"2018-08-09","id":"J9dXA33eWr0","t":"DIY Farmhouse Dining Table w/ Epoxy Inlays Using Reclaimed Barnwood"},{"d":"2018-09-11","id":"-1NhDfn880I","t":"DIY Coffee Table w/ Hidden Wireless Charging | Converts to Ottoman | CNC"},{"d":"2018-09-20","id":"U24iVIZs38Y","t":"DIY Live Edge Slab Bench w/ Steel Legs | Easy Welding Project"},{"d":"2018-09-27","id":"zgPZnM6SBLs","t":"Skip Planing Tutorial | Skip Plane & Flatten Reclaimed Wood | How To"},{"d":"2018-10-15","id":"UHSu-FR03o8","t":"DIY Floor Lamp w/ Only 2 Tools | FREE Plans Included"},{"d":"2018-10-26","id":"9ouy-qq4ZNw","t":"How To Make An EPOXY Inlaid Wooden Mallet - Epoxy Resin & Woodworking"},{"d":"2018-11-07","id":"ZlWYl3AbvsI","t":"DIY Coffee Table Using Reclaimed Oak Floor From Horse Barn | Modern Farmhouse"},{"d":"2018-12-05","id":"9-v_YpHN5NI","t":"DIY Modern Industrial \"Tree\" TV Stand/Media Console - Simple Steel Bending Jig"},{"d":"2019-01-08","id":"8jDQxV2l4h0","t":"Trash Wood To Treasure - DIY Epoxy River Floating Shelves - Hidden Hardware"},{"d":"2019-01-28","id":"KpRLOrSUQyo","t":"DIY Industrial Wall Sconce Wall Lamp - ZH Fabrications Inspired"},{"d":"2019-02-20","id":"0gLrQLUItTY","t":"Trash Wood To Treasure - DIY Epoxy Cutting Board / Serving Board"},{"d":"2019-02-28","id":"nn_FBc7ygMk","t":"When Shou Sugi Ban Goes Wrong! (that time I made a dumpster fire)"},{"d":"2019-03-14","id":"LW781YuKX3A","t":"The ULTIMATE diy Dream Desk W/ Epoxy Resin LED's"},{"d":"2019-03-27","id":"exF-RBaq32M","t":"DIY Bike Stand Cabinet | Bicycle Storage Solution for Small Home/Apartment"},{"d":"2019-04-10","id":"rZItwsKJ404","t":"World's Most DANGEROUS Axe Mod"},{"d":"2019-05-04","id":"Bw7C2Lwy_Uk","t":"Extreme Fireplace Makeover/Renovation | DIY"},{"d":"2019-05-09","id":"nS-MH03CDOE","t":"I made a DIY Reclaimed Wood Shiplap Wall from my old FENCE"},{"d":"2019-05-28","id":"mxTMeh_5FjI","t":"ULTIMATE Workbench to ORGANIZE a Messy Shop | Assembly/Outfeed | Free Plans"},{"d":"2019-06-18","id":"pXTBdxaTLiY","t":"DIY Mobile Miter Saw Station | Modular, Storage, Free Plans"},{"d":"2019-06-28","id":"vTq8r8hT7h0","t":"DIY Epoxy Resin Coffee Table | Crop Circle Table 👽"},{"d":"2019-07-30","id":"Z96UlGg19J4","t":"DIY Epoxy Resin Farmhouse Dining Table w/ Reclaimed Barnwood"},{"d":"2019-08-22","id":"nYgp3ZQ1bfs","t":"How To Build a DIY Bookcase w/ Limited Tools | Plus Shou Sugi Ban!"},{"d":"2019-08-31","id":"DMj2QGavv6M","t":"DIY Epoxy Resin Art | Epoxy Clocks"},{"d":"2019-10-20","id":"qoOm-xN62SY","t":"Cheap Axe Modification w/ Skateboard Wood & a Few Extras!"},{"d":"2019-10-31","id":"s8g5QRoLEkU","t":"Making a Forged Knife w/ SPIDER 🕷 in Epoxy Resin Handle / Giveaway"},{"d":"2019-11-26","id":"CN9k7kbmSHk","t":"DIY Carved Plywood TV Stand w/ Epoxy \"River\" | Media Console"},{"d":"2019-12-13","id":"XGo7ebyjwaU","t":"Trash Wood to Treasure - DIY Kitchen Island w/ Epoxy River top"},{"d":"2020-01-11","id":"kOzVTpLvfcQ","t":"DIY Concrete Coffee Table | \"Urban Decay\" Table"},{"d":"2020-01-18","id":"Ep_7yOe4kBw","t":"Making my First Chef's Knife. Will She Like It??"},{"d":"2020-02-19","id":"7PoyMTUWqeM","t":"DIY Modern Indoor/Outdoor Sofa Made From 2x4's"},{"d":"2020-02-29","id":"90Gl-EAhg8M","t":"Cheap Axe from Ebay Modification - Woodturning Scorpion 🦂 Resin Handle"},{"d":"2020-03-26","id":"UUbudihoYMU","t":"Trash Wood To Treasure - Epoxy & Copper Cutting Board | Serving Board"},{"d":"2020-04-16","id":"ms95A5iStvQ","t":"How to Build A Simple Raised Bed Planter Box | Free Plans 🔨"},{"d":"2020-04-30","id":"IzaUW0bYnIg","t":"DIY Concrete Table with Tree Growing Through the Middle | GFRC Concrete"},{"d":"2020-05-20","id":"oLezqbVlP0k","t":"DIY Concrete River Table | How to Build a Concrete Coffee Table"},{"d":"2020-05-29","id":"POyf3RC44GA","t":"Making a Rainbow Plywood Bowl | DIY Skateboard Wood & Epoxy Resin"},{"d":"2020-06-28","id":"XnNk647Ko0E","t":"Impossible Folding Door"},{"d":"2020-07-26","id":"hmR1gGTvHyg","t":"Murder Hornet Insect Resin Casting | How To"},{"d":"2020-08-23","id":"7GF_ShBBK4A","t":"Making a Dagger Fit For 2020! REAL Murder Hornet Knife"},{"d":"2020-08-30","id":"8lsqhADjZXM","t":"Simple DIY Garage Storage Shelves w/ Workbench | FREE PLANS"},{"d":"2020-09-27","id":"Go_9bezZ4D8","t":"DIY Outdoor Bar w/ Epoxy Marble Countertop"},{"d":"2020-10-15","id":"WKVm3gyzask","t":"DIY Two Person Dream Desk Build #rocklerdeskchallenge"},{"d":"2020-11-30","id":"eoZfjsxK1Gc","t":"The Door of the FUTURE!"},{"d":"2020-12-10","id":"nJH6QwrMW_0","t":"Building a CNC Cart & Computer Cabinet for my X-CARVE PRO | Free Plans"},{"d":"2020-12-13","id":"nDkKwquIevI","t":"5 Tools Under $20 You Probably DON'T Have"},{"d":"2021-01-09","id":"WQ2B_-iVyP8","t":"Turning Trash Wood to TREASURE | Scrap Wood & Epoxy Tables"},{"d":"2021-01-31","id":"QWYH8v7zL-I","t":"DIY Garage Storage Shelves | Limited Tools | Free Plans"},{"d":"2021-01-31","id":"RR7hcLIkpak","t":"Build A Workbench In A Weekend With These Free Plans!"},{"d":"2021-03-11","id":"4mPIS_N-GDU","t":"Half Million Dollar Home Tour. Mini Mansion or Money Pit?"},{"d":"2021-04-18","id":"4W799BkGdv8","t":"Inexpensive Bathroom MAKEOVER"},{"d":"2021-04-29","id":"JDtPJm3k63U","t":"Can you make “Marble” with Epoxy Resin? (Yes!)"},{"d":"2021-06-13","id":"S9YCs4jhgL0","t":"DIY Castle Joint Platform Bed made w/ 2x4's Buy vs. DIY"},{"d":"2021-07-08","id":"qw_r5Xrzwis","t":"TRANSFORM Your Old DECK"},{"d":"2021-08-19","id":"sMJNdAuVhcc","t":"Building a MASTERPIECE For MY Wife"},{"d":"2021-09-09","id":"wEKyLmxWQsc","t":"How to build a DIY 2x4 Sofa for $160!"},{"d":"2021-09-18","id":"QnMkd6YXH4Q","t":"This Machine Has Earned Me SO MUCH MONEY"},{"d":"2021-10-01","id":"arR7HM1VZrs","t":"I Found A Secret Room In My House And You'll Never Believe What I Did!"},{"d":"2021-10-17","id":"d7RaTIiUw1Y","t":"$2000 Slab and Epoxy Coffee Table."},{"d":"2021-11-03","id":"6kMliZGXAKg","t":"Building a WORKBENCH That Does Something No Other Workbench Can"},{"d":"2021-11-29","id":"vkizrtg7-D8","t":"How to Hang a Reclaimed Beam Mantel (FULL FIREPLACE MAKEOVER)"},{"d":"2021-12-16","id":"zvoVtNEaMGc","t":"I built a $10,000 Epoxy Table (but made no money)"},{"d":"2022-01-02","id":"fQWjdWgX-QQ","t":"I Could Sell This for $1000, My Wife's Reaction is PRICELESS"},{"d":"2022-01-23","id":"3RpL4rxtROM","t":"My $80,000 Disaster"},{"d":"2022-01-30","id":"UAHxm0ud_c8","t":"She Asked Me To Build This, And I Said Yes!"},{"d":"2022-02-20","id":"kOGlPQitf5E","t":"$5000 For This? No Way! I Couldn't Believe What I Got Instead!"},{"d":"2022-03-18","id":"JJRj-kS8wqY","t":"You Won't Believe What This Workbench Can Do"},{"d":"2022-04-11","id":"-5XXcHHJSzE","t":"Every Star Wars Fan NEEDS This"},{"d":"2022-04-24","id":"Yo6G1N95J9Q","t":"This Wood Is Hated The Most (and I don't know why)"},{"d":"2022-05-29","id":"Om_lfttGmQg","t":"Junk Wood, BUT I'll Sell it for $5000"},{"d":"2022-06-18","id":"rZF12qx9Hzo","t":"Star Wars Mega Fan Builds a Cutting Board"},{"d":"2022-07-17","id":"_bpWgQaJ6rs","t":"She Asked Me to Build This, I ALMOST Said NO"},{"d":"2022-08-21","id":"xTq_mcRuTJA","t":"$6000 Build, but I Use It EVERY DAY"},{"d":"2022-08-28","id":"HYfKiP6dD4o","t":"LIVE Q&A w/ Jonny Builds + 1 Chip Challenge!"},{"d":"2022-10-09","id":"vP2ncBk31so","t":"$10,000 DIY Outdoor Furniture"},{"d":"2022-10-30","id":"GnogpH85gjw","t":"5 Wood Shop Upgrades"},{"d":"2022-11-17","id":"gun6TksQqqI","t":"Table Made with Ancient Japanese Technique"},{"d":"2022-11-20","id":"9QwY7X9nqVA","t":"20 years later, I quit."},{"d":"2022-11-27","id":"5G-HRDZMycY","t":"Building with NO PLAN"},{"d":"2022-12-11","id":"xyiJhjXHJSA","t":"300 Degree Epoxy Table"},{"d":"2022-12-17","id":"xm7csKXVxNA","t":"Jonny Builds Live Q&A plus Epoxy Table GIVEAWAY"},{"d":"2023-01-05","id":"q0R0YhJrmtc","t":"She Told Me Not To Build This...Her Reaction Is PRICELESS!"},{"d":"2023-01-22","id":"aa8bh9R3v18","t":"$10,000 Bed Build"},{"d":"2023-02-26","id":"DJwvSvQZ9qo","t":"Junk Wood To $CASH"},{"d":"2023-03-26","id":"-nTNYg14VnU","t":"Insane Star Wars Mega-Fan Table Build"},{"d":"2023-05-13","id":"j3U3wp612gM","t":"The Forgotten Wood That Will Leave You Speechless"},{"d":"2023-06-04","id":"VjngDLWfQEM","t":"Turning Trash Wood To Stunning Table"},{"d":"2023-07-09","id":"EO1rBRYBUEQ","t":"Impossible Animal Carving Table"},{"d":"2023-07-16","id":"7MYUuwgpunU","t":"1982 Kitchen Remodel Ep. 1 | Demo & Appliances"},{"d":"2023-07-23","id":"djmiM-n54Ro","t":"Building Her DREAM CHAIR"},{"d":"2023-07-30","id":"67WLsVJ0TXQ","t":"How To Build Kitchen Cabinets The Easy Way"},{"d":"2023-08-06","id":"avK2e8JItrQ","t":"Epic 10 Month Kitchen Remodel Start to Finish"},{"d":"2023-08-31","id":"cijPNAytdBM","t":"This Left Her SPEECHLESS"},{"d":"2023-09-17","id":"Cl_M2fht7As","t":"$12,000 Table Paid With Something BETTER"},{"d":"2023-11-12","id":"JsN6af72TeM","t":"Table Made From 5,906 Sheets of Paper"},{"d":"2023-12-29","id":"-jOnmA6NXZw","t":"Modern Table, 1300 Year Old Woodworking Technique"},{"d":"2024-02-04","id":"GHLitfRZRIw","t":"$2000 Table from Only Scrap Wood"},{"d":"2024-03-10","id":"-mCb8bivRwg","t":"The $11,000 Cabinet That Shocked Everyone"},{"d":"2024-04-12","id":"fhsm-ZZLnmk","t":"The Hidden Struggles of Chair Construction"},{"d":"2024-05-05","id":"D-hbA3hndZ8","t":"Crafting a Cabinet from Just 1 Tree"},{"d":"2024-05-31","id":"gOFTQ2WF8n8","t":"Proving Angry Viewers Wrong"},{"d":"2024-06-16","id":"NjEfg4fhjVM","t":"The Hidden Art of 753 Newspapers and Epoxy Revealed"},{"d":"2024-07-14","id":"AJ8goYdKZ3I","t":"Say Goodbye to Epoxy"},{"d":"2024-08-25","id":"UraaO6WhTts","t":"Secrets Behind My Toughest Build Yet"},{"d":"2024-09-29","id":"L-PgSw6KmkE","t":"This Build Was a SCAM"},{"d":"2024-11-19","id":"BIAqB-PkNbM","t":"I 3D Printed 832 Spikes to Build This Cabinet"},{"d":"2025-01-06","id":"f8NCyZUtkog","t":"Confessions of a Struggling Woodworker"},{"d":"2025-02-08","id":"o9O8cthWvB0","t":"I Spent 213 Hours Turning 2200 Yr Old Wood into $12,000 Table"},{"d":"2025-04-24","id":"HU4Nj2YOqEU","t":"I Built 5 Impossible Optical Illusion Chairs"},{"d":"2025-07-13","id":"yt2fSYKclLA","t":"Woodworking Gimmick or Hack? Building a Spirograph Table"},{"d":"2025-08-16","id":"FcJVA4tE_cA","t":"I Built 5 MORE Impossible Woodworking Illusions"},{"d":"2025-09-14","id":"326QyhTEyGA","t":"I Build Dream DIY Bed for $250"},{"d":"2025-11-09","id":"4t6S4tkeJr0","t":"I Turn 9024 Sheets of Paper into My Best Table Yet"},{"d":"2025-12-07","id":"rMEc_lUB6fg","t":"I Could Get Sued If I Sell This"},{"d":"2026-01-18","id":"Zofbncb8hK8","t":"The One Mistake That Could Cost You $12,000"},{"d":"2026-03-08","id":"-HD_B_qXUfg","t":"We Build 2 Tables - Robot vs. Man"},{"d":"2026-06-13","id":"ecxqsYxBVGw","t":"I Built the Table of My Dreams"},{"d":"2026-08-29","id":"XFE_dKQMPHA","t":"I Built a Hidden 90's Man Cave in my GARAGE"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
 <script>
 (function(){
   var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
@@ -1233,91 +1297,234 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
   function renderTiles(w){
     var box = document.getElementById('dash-tiles'); if (!box) return;
     box.innerHTML = w.tiles.map(tileHtml).join('');
+    // The daily series is the line we want. Where a pull never carried one, the
+    // same metric across the disjoint trailing periods is real data at a coarser
+    // grain, so it is drawn instead and the note under the row says which.
+    var usedTrend = false, drew = false;
     w.tiles.forEach(function(t){
       var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
-      sparkInto(el, t.spark, t.unit);
+      var daily = finite(t.spark || []).length >= 2;
+      var vals = daily ? t.spark : t.trend;
+      if (!daily && vals) usedTrend = true;
+      if (finite(vals || []).length >= 2) drew = true;
+      sparkInto(el, vals, daily ? t.unit : (t.trendNote || t.unit));
     });
+    var note = document.getElementById('dash-tiles-note');
+    if (note){
+      note.textContent = !drew
+        ? 'No line under the tiles: this pull stored a single window, so there is nothing to draw a change against.'
+        : usedTrend
+          ? (w.tiles[0] && w.tiles[0].trendNote) || ''
+          : 'Day by day across the selected window.';
+    }
   }
 
   // ---- the period, day by day ---------------------------------------------
   var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
-  var dayRows = [], dayMax = 1;
+
   function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
-  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+
+  /**
+   * The three dimensions over time.
+   *
+   * Two sources, one shape. With a day-by-day series the points are days and
+   * each dimension is that day's own rate. Without one, the points are the
+   * DISJOINT trailing periods the model differenced out of Studio's nested
+   * windows, and each dimension is the rate derivable from additive quantities
+   * over that stretch: engaged views per thousand impressions, average view
+   * duration, and the returning share where Studio served the split.
+   *
+   * The three carry different units, so each is INDEXED to its own earliest
+   * point at 100 and the axis is that index. The raw figures ride in the
+   * hover, because an index nobody can convert back is not evidence.
+   */
+  var DIMS = [
+    { key: 'click', cls: 's-click', pcls: 'p-click', label: 'Clickability' },
+    { key: 'watch', cls: 's-watch', pcls: 'p-watch', label: 'Watchability' },
+    { key: 'replay', cls: 's-replay', pcls: 'p-replay', label: 'Replayability' },
+  ];
+  var dimPoints = [], dimSeries = [], dimMax = 100, dimLo = 0, dimBasis = 'trend';
+
+  function fmtDim(key, v){
+    if (v == null || !isFinite(v)) return '—';
+    if (key === 'click') return dimBasis === 'daily' ? fmtPct(v) : v.toFixed(1) + ' per 1,000 impressions';
+    if (key === 'watch') return dimBasis === 'daily' ? fmtPct(v) + ' of each video' : mmss(v);
+    return fmtPct(v) + ' returning';
+  }
+
+  function buildDimSeries(w){
+    var rows = rowsIn(w).filter(function(r){ return r.c != null || r.p != null || (r.r != null && r.n != null); });
+    if (rows.length >= 2){
+      dimBasis = 'daily';
+      dimPoints = rows.map(function(r){
+        return {
+          label: fmtDayYear(r.d),
+          short: fmtDay(r.d),
+          day: r.d,
+          click: r.c != null ? r.c : null,
+          watch: r.p != null ? r.p : null,
+          replay: (r.r != null && r.n != null && (r.r + r.n) > 0) ? r.r / (r.r + r.n) : null,
+          extra: r,
+        };
+      });
+    } else {
+      dimBasis = 'trend';
+      dimPoints = (M.trend || []).map(function(t){
+        return {
+          label: t.label,
+          short: t.spanFrom === 0 ? 'now' : t.spanFrom + 'd',
+          day: null,
+          click: t.engagedPerMille,
+          watch: t.avdSec,
+          replay: t.returnShare,
+          extra: t,
+        };
+      });
+    }
+    dimSeries = DIMS.map(function(d){
+      var raw = dimPoints.map(function(p){ return p[d.key]; });
+      var base = null;
+      for (var i = 0; i < raw.length; i++){ if (raw[i] != null && isFinite(raw[i]) && raw[i] !== 0){ base = raw[i]; break; } }
+      return {
+        key: d.key, cls: d.cls, pcls: d.pcls, label: d.label,
+        raw: raw,
+        base: base,
+        idx: raw.map(function(v){ return (base && v != null && isFinite(v)) ? (v / base) * 100 : null; }),
+        n: finite(raw).length,
+      };
+    });
+    // The domain follows the data, with 100 always inside it and drawn as the
+    // baseline. Anchoring an INDEX axis at zero is not honesty here, it is a
+    // chart whose every line sits in the top tenth: the movement is the point,
+    // and the reference the reader needs is 100, not 0.
+    var all = [];
+    dimSeries.forEach(function(s){ s.idx.forEach(function(v){ if (v != null && isFinite(v)) all.push(v); }); });
+    if (!all.length) all = [100];
+    dimLo = Math.min.apply(null, all.concat([100]));
+    dimMax = Math.max.apply(null, all.concat([100]));
+    var pad = Math.max(4, (dimMax - dimLo) * 0.18);
+    dimLo = Math.floor((dimLo - pad) / 5) * 5;
+    dimMax = Math.ceil((dimMax + pad) / 5) * 5;
+    if (dimMax - dimLo < 10) dimMax = dimLo + 10;
+  }
+
   function renderDaily(w){
     var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
-        empty = document.getElementById('dash-daily-empty');
+        empty = document.getElementById('dash-daily-empty'), sub = document.getElementById('dash-daily-s');
     if (!svg) return;
-    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
     hoverIdx = -1;
     var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
-    if (dayRows.length < 2){
+    buildDimSeries(w);
+    var drawable = dimSeries.filter(function(s){ return s.n >= 2; });
+    if (dimPoints.length < 2 || !drawable.length){
       svg.innerHTML = ''; svg.style.display = 'none';
       if (sum) sum.textContent = '';
-      if (empty) empty.hidden = false;
+      if (empty){
+        empty.hidden = false;
+        empty.textContent = 'Nothing to draw over time yet: this pull stored a single window and no day-by-day series, so no dimension has two points to compare.';
+      }
       return;
     }
     svg.style.display = '';
     if (empty) empty.hidden = true;
-    var total = 0; dayRows.forEach(function(r){ total += r.v; });
-    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
-      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
-    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
-    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
-    var parts = [], n = dayRows.length;
-    for (var g = step; g <= dayMax + 1e-9; g += step){
-      var y = yAt(g);
+    if (sub) sub.textContent = dimBasis === 'daily'
+      ? "Move across the chart for each day's figures."
+      : 'Studio serves nested trailing windows, so each point covers the stretch one window adds beyond the next shorter one. Oldest on the left.';
+    var missing = dimSeries.filter(function(s){ return s.n < 2; });
+    if (sum) sum.textContent = dimPoints.length + ' ' + (dimBasis === 'daily' ? 'days' : 'periods') + ' · ' +
+      drawable.map(function(s){ return s.label.toLowerCase(); }).join(', ') + ' drawn' +
+      (missing.length ? ' · ' + missing.map(function(s){ return s.label.toLowerCase(); }).join(' and ') +
+        ' withheld: Studio served it for fewer than two ' + (dimBasis === 'daily' ? 'days' : 'windows') : '');
+
+    var parts = [], n = dimPoints.length;
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var step = niceStep(dimMax - dimLo, 4);
+    for (var g = Math.ceil(dimLo / step) * step; g <= dimMax + 1e-9; g += step){
+      var y = yIdx(g);
       parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
-      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + Math.round(g) + '</text>');
     }
-    var d = '';
-    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
-    var base = yAt(0);
-    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
-    parts.push('<path class="line" d="' + d + '"/>');
-    // Uploads published inside the window, as ticks under the baseline.
-    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
-    (M.uploads || []).forEach(function(u){
-      var i = byDay[u.d]; if (i == null) return;
-      var x = xAt(i, n);
-      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    // The baseline every series is indexed against.
+    parts.push('<line class="dbase" x1="' + DL + '" y1="' + yIdx(100).toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + yIdx(100).toFixed(1) + '"/>');
+    parts.push('<text class="tick dbaset" x="' + (DL+6) + '" y="' + (yIdx(100)-6).toFixed(1) + '" text-anchor="start">earliest period = 100</text>');
+    drawable.forEach(function(s){
+      var d = '', open = false;
+      for (var i = 0; i < n; i++){
+        var v = s.idx[i];
+        if (v == null){ open = false; continue; }
+        d += (open ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yIdx(v).toFixed(1) + ' ';
+        open = true;
+      }
+      parts.push('<path class="dseries ' + s.cls + '" d="' + d + '"/>');
+      for (var j = 0; j < n; j++){
+        if (s.idx[j] == null) continue;
+        parts.push('<circle class="dpt ' + s.pcls + '" cx="' + xAt(j,n).toFixed(1) + '" cy="' + yIdx(s.idx[j]).toFixed(1) + '" r="3"/>');
+      }
     });
-    // Date labels: first, middle, last.
+    // Uploads, when the points are days.
+    if (dimBasis === 'daily'){
+      var byDay = {}; dimPoints.forEach(function(p, i){ byDay[p.day] = i; });
+      var base = DH - DB;
+      (M.uploads || []).forEach(function(u){
+        var i = byDay[u.d]; if (i == null) return;
+        var x = xAt(i, n);
+        parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+      });
+    }
     [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
-      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + esc(dimPoints[i].short) + '</text>');
     });
     parts.push('<g id="dash-hover"></g>');
     parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
     svg.innerHTML = parts.join('');
   }
+
   function showHover(i){
     var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
     if (!svg || !g || !tip) return;
-    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
-    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
-    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
-                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
-    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
-    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
-    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
-    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
-    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
-    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    if (i < 0 || i >= dimPoints.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var p = dimPoints[i], n = dimPoints.length, x = xAt(i,n);
+    function yIdx(v){ return DT + (1 - (v - dimLo)/(dimMax - dimLo)) * (DH - DT - DB); }
+    var marks = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + (DH-DB) + '"/>';
+    dimSeries.forEach(function(s){
+      if (s.n < 2 || s.idx[i] == null) return;
+      marks += '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + yIdx(s.idx[i]).toFixed(1) + '" r="4.5"/>';
+    });
+    g.innerHTML = marks;
+    var lines = ['<div class="d">' + esc(p.label) + '</div>'];
+    dimSeries.forEach(function(s){
+      if (s.n < 2) return;
+      var v = s.raw[i];
+      lines.push('<div class="r"><b>' + esc(fmtDim(s.key, v)) + '</b> ' + esc(s.label.toLowerCase()) +
+        (s.idx[i] != null ? ' · index ' + Math.round(s.idx[i]) : '') + '</div>');
+    });
+    var e = p.extra || {};
+    if (dimBasis === 'daily'){
+      if (e.v != null) lines.push('<div class="r"><b>' + fmtFull(e.v) + '</b> views</div>');
+      if (e.i != null) lines.push('<div class="r"><b>' + fmtN(e.i) + '</b> impressions</div>');
+      if (e.h != null) lines.push('<div class="r"><b>' + fmtN(e.h) + '</b> hours watched</div>');
+      (M.uploads || []).forEach(function(u){ if (u.d === p.day) lines.push('<div class="u">▶ ' + esc(u.t) + '</div>'); });
+    } else {
+      if (e.viewsPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.viewsPerDay) + '</b> views a day</div>');
+      if (e.imprPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.imprPerDay) + '</b> impressions a day</div>');
+      if (e.hoursPerDay != null) lines.push('<div class="r"><b>' + fmtN(e.hoursPerDay) + '</b> hours a day</div>');
+      if (e.windowCtr != null) lines.push('<div class="r">Studio’s own click-through over the trailing ' + e.days + ' days: <b>' + fmtPct(e.windowCtr) + '</b></div>');
+    }
     tip.innerHTML = lines.join('');
     tip.hidden = false;
-    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
-    var left = px + 14, tw = tip.offsetWidth || 220;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width;
+    var left = px + 14, tw = tip.offsetWidth || 240;
     if (left + tw > box.width) left = px - tw - 14;
     tip.style.left = Math.max(0, left) + 'px';
-    tip.style.top = Math.max(0, py - 16) + 'px';
+    tip.style.top = '12px';
   }
   (function wireHover(){
     var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
     svg.addEventListener('pointermove', function(e){
-      if (!dayRows.length) return;
+      if (!dimPoints.length) return;
       var box = svg.getBoundingClientRect();
       var fx = ((e.clientX - box.left) / box.width) * DW;
-      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var t = (fx - DL) / (DW - DL - DR), n = dimPoints.length;
       var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
       if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
     });

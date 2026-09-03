@@ -837,6 +837,24 @@ svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
+/* Foldable sections. Open by default on purpose: a reader sees everything the
+   page holds unless they choose to fold it, and the summary carries the count
+   so a closed section still says how much is inside. These pages run to tens
+   of thousands of pixels, which is what made them feel like they would not
+   open at all. */
+.fold{border-top:1px solid var(--line);margin:0}
+.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"▾";color:var(--grey);font-size:12px;align-self:center}
+.fold:not([open])>summary::before{transform:rotate(-90deg);display:inline-block}
+.fold>summary h2{margin:34px 0 18px}
+.fold:not([open])>summary h2{margin-bottom:20px}
+.fold>summary .foldcount{font-size:11.5px;color:var(--grey);letter-spacing:.06em}
+.foldbar{display:flex;gap:8px;align-items:center;margin:26px 0 -18px;flex-wrap:wrap}
+.foldbar button{font:inherit;font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid var(--line);
+  background:var(--panel);color:inherit;cursor:pointer}
+.foldbar button:hover{border-color:var(--teal);color:var(--teal)}
+.foldbar .foldnote{font-size:11.5px;color:var(--grey)}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
@@ -1070,7 +1088,18 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 <p class="legend">Mark each one to keep or overrule, and say why &mdash; the note teaches the system far
 more than the tick alone. Decisions save in this browser as you go; export them from the
 panel in the corner when you are done.</p>
-<h2>editing &middot; 2</h2>
+<div class="foldbar">
+  <button type="button" id="fold-expand">Expand all sections</button>
+  <button type="button" id="fold-collapse">Collapse all sections</button>
+  <span class="foldnote">Sections open by default. Collapse them for a contents list with the counts, then open the one you want.</span>
+</div>
+<script>
+(function(){function fold(o){document.querySelectorAll('details.fold').forEach(function(d){d.open=o;});}
+var e=document.getElementById('fold-expand'),c=document.getElementById('fold-collapse');
+if(e)e.addEventListener('click',function(){fold(true);});
+if(c)c.addEventListener('click',function(){fold(false);});})();
+</script>
+<details class="fold" open><summary><h2>editing</h2><span class="foldcount">2 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1147,7 +1176,8 @@ panel in the corner when you are done.</p>
       <blockquote>That could sometimes be as much as like 10% of your remaining audience is still watching, just because you use the music there</blockquote></div>
   </details>
 </div></div>
-<h2>retention-structure &middot; 1</h2>
+</details>
+<details class="fold" open><summary><h2>retention-structure</h2><span class="foldcount">1 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1186,7 +1216,8 @@ panel in the corner when you are done.</p>
       <blockquote>these are scenes like an explanation scene, your outro, your intro, a conversation, for example, none of them often have tension and suspense</blockquote></div>
   </details>
 </div></div>
-<h2>pacing &middot; 4</h2>
+</details>
+<details class="fold" open><summary><h2>pacing</h2><span class="foldcount">4 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1339,7 +1370,8 @@ panel in the corner when you are done.</p>
       <blockquote>in five second batches because people can stand something for about five seconds after five seconds people start to disengage</blockquote></div>
   </details>
 </div></div>
-<h2>suspense &middot; 1</h2>
+</details>
+<details class="fold" open><summary><h2>suspense</h2><span class="foldcount">1 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -1378,7 +1410,8 @@ panel in the corner when you are done.</p>
       <blockquote>if you just do short term, you&#39;re going to lose people after each segment. So combine it with narrative suspense.</blockquote></div>
   </details>
 </div></div>
-<h2>cadence &middot; 3</h2>
+</details>
+<details class="fold" open><summary><h2>cadence</h2><span class="foldcount">3 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -3261,7 +3294,8 @@ panel in the corner when you are done.</p>
       <blockquote>Find a good cadence. Become part of people, their patterns</blockquote></div>
   </details>
 </div></div>
-<h2>ideation &middot; 12</h2>
+</details>
+<details class="fold" open><summary><h2>ideation</h2><span class="foldcount">12 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -4506,7 +4540,8 @@ panel in the corner when you are done.</p>
       <blockquote>we try to pick formats that we know we can do five or ten videos on.</blockquote></div>
   </details>
 </div></div>
-<h2>packaging &middot; 21</h2>
+</details>
+<details class="fold" open><summary><h2>packaging</h2><span class="foldcount">21 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -15197,7 +15232,8 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>Make a decision based on thumbnail title, channel name, age of the video, view count, and video length. That&#39;s six.</blockquote></div>
   </details>
 </div></div>
-<h2>retention &middot; 16</h2>
+</details>
+<details class="fold" open><summary><h2>retention</h2><span class="foldcount">16 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -19516,7 +19552,8 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>Spearman of publish date against audience share at 50% through. Reproduced on 9 channels.</blockquote></div>
   </details>
 </div></div>
-<h2>storytelling &middot; 9</h2>
+</details>
+<details class="fold" open><summary><h2>storytelling</h2><span class="foldcount">9 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -20451,7 +20488,8 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>it&#39;s a constant game of half half until you get to about 8 to 12 people. When you get to 8 to 12 people statistically I think what we had found is that it&#39;s easier for people to focus on it. ... humans tend to find it easiest to remember up to about 10</blockquote></div>
   </details>
 </div></div>
-<h2>analytics &middot; 17</h2>
+</details>
+<details class="fold" open><summary><h2>analytics</h2><span class="foldcount">17 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -28455,7 +28493,8 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>there is a correlation to the retention of that video lowering overall because you&#39;re getting new audience members with different viewing habits that are new to your channel that might not be as sticky. They might not want to watch for as long.</blockquote></div>
   </details>
 </div></div>
-<h2>strategy &middot; 14</h2>
+</details>
+<details class="fold" open><summary><h2>strategy</h2><span class="foldcount">14 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -30076,7 +30115,8 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>the one thing BOTH always needs for success is consistency in cadence. The more consistent, the more it programs your audience when to expect the next video</blockquote></div>
   </details>
 </div></div>
-<h2>production &middot; 4</h2>
+</details>
+<details class="fold" open><summary><h2>production</h2><span class="foldcount">4 claims</span></summary>
 <div class="claims"><div class="claim">
   <div class="top">
     <span class="pill s-rejected">Rejected</span>
@@ -30229,6 +30269,7 @@ Evaluation: High interest and familiar “going retro” console</blockquote></d
       <blockquote>your secondary camera angle is not engaging. Nobody likes to look at the side of your face. I don&#39;t know why in documentary videos they tend to do this. They tend to linger on. On the side angle. People don&#39;t come to see that. They want to connect with the human.</blockquote></div>
   </details>
 </div></div>
+</details>
 
 <div id="rvdock">
   <div class="c" id="rvcount">0 reviewed</div>

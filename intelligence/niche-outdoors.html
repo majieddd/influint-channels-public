@@ -837,6 +837,24 @@ svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
+/* Foldable sections. Open by default on purpose: a reader sees everything the
+   page holds unless they choose to fold it, and the summary carries the count
+   so a closed section still says how much is inside. These pages run to tens
+   of thousands of pixels, which is what made them feel like they would not
+   open at all. */
+.fold{border-top:1px solid var(--line);margin:0}
+.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"▾";color:var(--grey);font-size:12px;align-self:center}
+.fold:not([open])>summary::before{transform:rotate(-90deg);display:inline-block}
+.fold>summary h2{margin:34px 0 18px}
+.fold:not([open])>summary h2{margin-bottom:20px}
+.fold>summary .foldcount{font-size:11.5px;color:var(--grey);letter-spacing:.06em}
+.foldbar{display:flex;gap:8px;align-items:center;margin:26px 0 -18px;flex-wrap:wrap}
+.foldbar button{font:inherit;font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid var(--line);
+  background:var(--panel);color:inherit;cursor:pointer}
+.foldbar button:hover{border-color:var(--teal);color:var(--teal)}
+.foldbar .foldnote{font-size:11.5px;color:var(--grey)}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;
@@ -1067,7 +1085,18 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
   <div><div class="v">4</div><div class="k">Tested</div></div>
   <div><div class="v">0</div><div class="k">Candidate laws</div></div>
 </div>
-<h2>packaging <span class="catcount">1</span></h2>
+<div class="foldbar">
+  <button type="button" id="fold-expand">Expand all sections</button>
+  <button type="button" id="fold-collapse">Collapse all sections</button>
+  <span class="foldnote">Sections open by default. Collapse them for a contents list with the counts, then open the one you want.</span>
+</div>
+<script>
+(function(){function fold(o){document.querySelectorAll('details.fold').forEach(function(d){d.open=o;});}
+var e=document.getElementById('fold-expand'),c=document.getElementById('fold-collapse');
+if(e)e.addEventListener('click',function(){fold(true);});
+if(c)c.addEventListener('click',function(){fold(false);});})();
+</script>
+<details class="fold" open><summary><h2>packaging <span class="catcount">1</span></h2><span class="foldcount">1 shown</span></summary>
 
 <div class="claims"><div class="claim">
   <div class="top">
@@ -1107,7 +1136,8 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <blockquote>you can&#39;t even edit a f a photo now or a screenshot without them saying you&#39;re using AI. Unsubscribe. Like I&#39;ve got so many of that.</blockquote></div>
   </details>
 </div></div>
-<h2>retention <span class="catcount">3</span></h2>
+</details>
+<details class="fold" open><summary><h2>retention <span class="catcount">3</span></h2><span class="foldcount">3 shown</span></summary>
 
 <div class="claims"><div class="claim">
   <div class="top">
@@ -1223,7 +1253,8 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <blockquote>that takes a lot for someone to reach for the remote and like want to shut something off. It&#39;s uh enough of a barrier compared to like being on your phone and just swiping um that it&#39;s significant as data for something we could fix in the future.</blockquote></div>
   </details>
 </div></div>
-<h2>storytelling <span class="catcount">3</span></h2>
+</details>
+<details class="fold" open><summary><h2>storytelling <span class="catcount">3</span></h2><span class="foldcount">3 shown</span></summary>
 
 <div class="claims"><div class="claim">
   <div class="top">
@@ -1351,7 +1382,8 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <blockquote>whenever they did do go to a new place. It felt like temporary like a a fresh thing that they did and it didn&#39;t like it wasn&#39;t changed from what I was super used to</blockquote></div>
   </details>
 </div></div>
-<h2>analytics <span class="catcount">1</span></h2>
+</details>
+<details class="fold" open><summary><h2>analytics <span class="catcount">1</span></h2><span class="foldcount">1 shown</span></summary>
 
 <div class="claims"><div class="claim">
   <div class="top">
@@ -1391,7 +1423,8 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <blockquote>I would say 55% are the people that really live vicariously through you and then 45% are people that really stay within like uh or like they already do this stuff so it&#39;s like within their own nature.</blockquote></div>
   </details>
 </div></div>
-<h2>strategy <span class="catcount">7</span></h2>
+</details>
+<details class="fold" open><summary><h2>strategy <span class="catcount">7</span></h2><span class="foldcount">7 shown</span></summary>
 
 <div class="claims"><div class="claim">
   <div class="top">
@@ -1673,6 +1706,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
       <blockquote>at the beginning of those hikes, I&#39;ll get a bump in subscribers cuz it&#39;s like, &quot;Oh, cool. She&#39;s doing this thing. We&#39;re interested.&quot; But again, once we hit like day 30, you know, my my audience isn&#39;t growing at all. my reach is like nothing</blockquote></div>
   </details>
 </div></div>
+</details>
 
 <div id="rvdock">
   <div class="c" id="rvcount">0 reviewed</div>

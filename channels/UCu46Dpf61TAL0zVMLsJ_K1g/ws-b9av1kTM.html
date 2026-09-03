@@ -837,6 +837,24 @@ svg.echart .efail{fill:#1a1010;stroke:#ff6b6b}
 .rej-why{color:#ff8f8f}
 .catcount{font-size:.7em;color:var(--grey);font-weight:400;letter-spacing:.06em}
 .capnote{margin:.3rem 0 .6rem;font-size:.8rem;color:var(--grey);font-style:italic}
+/* Foldable sections. Open by default on purpose: a reader sees everything the
+   page holds unless they choose to fold it, and the summary carries the count
+   so a closed section still says how much is inside. These pages run to tens
+   of thousands of pixels, which is what made them feel like they would not
+   open at all. */
+.fold{border-top:1px solid var(--line);margin:0}
+.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"▾";color:var(--grey);font-size:12px;align-self:center}
+.fold:not([open])>summary::before{transform:rotate(-90deg);display:inline-block}
+.fold>summary h2{margin:34px 0 18px}
+.fold:not([open])>summary h2{margin-bottom:20px}
+.fold>summary .foldcount{font-size:11.5px;color:var(--grey);letter-spacing:.06em}
+.foldbar{display:flex;gap:8px;align-items:center;margin:26px 0 -18px;flex-wrap:wrap}
+.foldbar button{font:inherit;font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid var(--line);
+  background:var(--panel);color:inherit;cursor:pointer}
+.foldbar button:hover{border-color:var(--teal);color:var(--teal)}
+.foldbar .foldnote{font-size:11.5px;color:var(--grey)}
 /* The evidence strip: grade on the left, causal rung next to it, so the two
    are read together. They are different questions and the layout says so. */
 .strength{display:flex;flex-wrap:wrap;gap:.5rem .85rem;align-items:center;margin:.55rem 0 .2rem;

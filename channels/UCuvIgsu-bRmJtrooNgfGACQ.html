@@ -248,7 +248,12 @@ a{color:var(--teal)}
 .fmt>summary::-webkit-details-marker{display:none}
 .fmt>summary:hover{background:var(--panel-raised)}
 .fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
-.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The template is what the row is FOR, so it outweighs the figures beside it
+   rather than matching them. At 16px/600 against 14px stats the two read as
+   equals and the eye lands on the number first. */
+.fmt .tpl{font-size:19px; font-weight:700; letter-spacing:-.005em; line-height:1.25;
+  flex:1 1 auto; min-width:0}
+@media (max-width:640px){ .fmt .tpl{font-size:17px} }
 /* The slots are the point of a template, so they read as slots. */
 .fmt .tpl{white-space:normal; overflow-wrap:anywhere}
 .fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
@@ -522,6 +527,16 @@ svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .st-fig{margin:6px 0 4px;padding:10px 12px;background:var(--panel-raised);border:1px solid var(--line);border-radius:10px}
 .st-fig figcaption{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;margin-bottom:6px}
 .st-fig-title{font-weight:600}
+/* A lead caption stacks: the subject on its own line, the explanation under
+   it. The flex row's baseline alignment would otherwise strand the evidence
+   chip against the large type. */
+.st-fig figcaption.has-lead{display:block; margin-bottom:8px}
+.st-fig-lead{display:block; font-size:20px; line-height:1.25; font-weight:700;
+  letter-spacing:-.01em; overflow-wrap:anywhere; margin-bottom:3px}
+.st-fig-sub{display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+  font-size:12.5px; color:var(--grey)}
+.st-fig-sub .st-fig-title{font-weight:500}
+@media (max-width:640px){ .st-fig-lead{font-size:17px} }
 .st-chart{width:100%;height:auto;display:block}
 .st-fig-note{font-size:12px;color:var(--grey);margin:6px 0 0;max-width:none}
 .st-family-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
@@ -1130,6 +1145,16 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .ar-k-why{font-size:12px; color:#cfe9e6; margin:0; line-height:1.5}
 .ar-k-rej{border-left:3px solid rgba(255,143,143,.55)}
 .ar-k-ref{border-left:3px solid rgba(240,198,116,.65)}
+.ar-k-ok{border-left:3px solid rgba(111,211,155,.65)}
+.ar-k-inc{border-left:3px solid var(--line)}
+.ar-verdict{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--grey);
+  border:1px solid var(--line); border-radius:999px; padding:2px 8px; margin-left:6px; white-space:nowrap}
+.ar-dose{width:100%; border-collapse:collapse; margin:8px 0; font-size:12.5px}
+.ar-dose th{text-align:left; font-weight:500; color:var(--grey); border-bottom:1px solid var(--line);
+  padding:4px 8px 4px 0}
+.ar-dose td{padding:4px 8px 4px 0; border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums}
+.ar-gap-closed{border-left-color:rgba(111,211,155,.6)}
 .ar-k-ref .ar-k-why{color:#f0c674}
 .ar-k-rej .ar-k-why{color:#ff9f8f}
 .ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
@@ -1196,7 +1221,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:17</span>
   </div>
   <div class="t">what japan understands about fashion that we don&#39;t</div>
-  <div class="meta">38K views · 5 days ago</div>
+  <div class="meta">38K views · 6 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=i-kjclkC6fg" target="_blank" rel="noopener" data-pub="1787331607000" data-views="19594" data-out="0.72" data-r50="" data-analysed="0">
@@ -1206,7 +1231,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">15:36</span>
   </div>
   <div class="t">stop doing these things and you’ll be instantly stylish</div>
-  <div class="meta">20K views · 12 days ago</div>
+  <div class="meta">20K views · 13 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Aq45sz2b_U0" target="_blank" rel="noopener" data-pub="1784307606000" data-views="13246" data-out="0.49" data-r50="" data-analysed="0">

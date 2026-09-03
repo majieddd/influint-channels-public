@@ -248,7 +248,12 @@ a{color:var(--teal)}
 .fmt>summary::-webkit-details-marker{display:none}
 .fmt>summary:hover{background:var(--panel-raised)}
 .fmt>summary:focus-visible{outline:2px solid var(--teal); outline-offset:-2px}
-.fmt .tpl{font-size:16px; font-weight:600; letter-spacing:.01em; flex:1 1 auto; min-width:0}
+/* The template is what the row is FOR, so it outweighs the figures beside it
+   rather than matching them. At 16px/600 against 14px stats the two read as
+   equals and the eye lands on the number first. */
+.fmt .tpl{font-size:19px; font-weight:700; letter-spacing:-.005em; line-height:1.25;
+  flex:1 1 auto; min-width:0}
+@media (max-width:640px){ .fmt .tpl{font-size:17px} }
 /* The slots are the point of a template, so they read as slots. */
 .fmt .tpl{white-space:normal; overflow-wrap:anywhere}
 .fmt .fstats{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--grey);
@@ -522,6 +527,16 @@ svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .st-fig{margin:6px 0 4px;padding:10px 12px;background:var(--panel-raised);border:1px solid var(--line);border-radius:10px}
 .st-fig figcaption{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;margin-bottom:6px}
 .st-fig-title{font-weight:600}
+/* A lead caption stacks: the subject on its own line, the explanation under
+   it. The flex row's baseline alignment would otherwise strand the evidence
+   chip against the large type. */
+.st-fig figcaption.has-lead{display:block; margin-bottom:8px}
+.st-fig-lead{display:block; font-size:20px; line-height:1.25; font-weight:700;
+  letter-spacing:-.01em; overflow-wrap:anywhere; margin-bottom:3px}
+.st-fig-sub{display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+  font-size:12.5px; color:var(--grey)}
+.st-fig-sub .st-fig-title{font-weight:500}
+@media (max-width:640px){ .st-fig-lead{font-size:17px} }
 .st-chart{width:100%;height:auto;display:block}
 .st-fig-note{font-size:12px;color:var(--grey);margin:6px 0 0;max-width:none}
 .st-family-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
@@ -1130,6 +1145,16 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 .ar-k-why{font-size:12px; color:#cfe9e6; margin:0; line-height:1.5}
 .ar-k-rej{border-left:3px solid rgba(255,143,143,.55)}
 .ar-k-ref{border-left:3px solid rgba(240,198,116,.65)}
+.ar-k-ok{border-left:3px solid rgba(111,211,155,.65)}
+.ar-k-inc{border-left:3px solid var(--line)}
+.ar-verdict{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--grey);
+  border:1px solid var(--line); border-radius:999px; padding:2px 8px; margin-left:6px; white-space:nowrap}
+.ar-dose{width:100%; border-collapse:collapse; margin:8px 0; font-size:12.5px}
+.ar-dose th{text-align:left; font-weight:500; color:var(--grey); border-bottom:1px solid var(--line);
+  padding:4px 8px 4px 0}
+.ar-dose td{padding:4px 8px 4px 0; border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums}
+.ar-gap-closed{border-left-color:rgba(111,211,155,.6)}
 .ar-k-ref .ar-k-why{color:#f0c674}
 .ar-k-rej .ar-k-why{color:#ff9f8f}
 .ar-audit{margin:6px 0; font-size:12.5px; line-height:1.55}
@@ -1196,7 +1221,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">19:51</span>
   </div>
   <div class="t">I&#39;m an ANOMALY in Minecraft!</div>
-  <div class="meta">493K views · 1 day ago</div>
+  <div class="meta">493K views · 2 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=TvpYb-0sNek" target="_blank" rel="noopener" data-pub="1788117300000" data-views="613815" data-out="0.79" data-r50="" data-analysed="0">
@@ -1206,7 +1231,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:36</span>
   </div>
   <div class="t">I’m a SQUISHY KITTEN in Minecraft!</div>
-  <div class="meta">614K views · 3 days ago</div>
+  <div class="meta">614K views · 4 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=9qzSwrKyWIk" target="_blank" rel="noopener" data-pub="1788031078000" data-views="699440" data-out="0.9" data-r50="" data-analysed="0">
@@ -1216,7 +1241,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">19:14</span>
   </div>
   <div class="t">TRAPPING Friends on a FAKE BLOCK!</div>
-  <div class="meta">699K views · 4 days ago</div>
+  <div class="meta">699K views · 5 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vOCoLl3EbxM" target="_blank" rel="noopener" data-pub="1787945873000" data-views="666748" data-out="0.86" data-r50="" data-analysed="0">
@@ -1226,7 +1251,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">22:49</span>
   </div>
   <div class="t">EVERYONE is CRASHING OUT!</div>
-  <div class="meta">667K views · 5 days ago</div>
+  <div class="meta">667K views · 6 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=y6xC1VOoKjk" target="_blank" rel="noopener" data-pub="1787859822000" data-views="851605" data-out="1.21" data-r50="" data-analysed="0">
@@ -1236,7 +1261,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:45</span>
   </div>
   <div class="t">My FRIENDS are BUTTER!</div>
-  <div class="meta">852K views · 6 days ago</div>
+  <div class="meta">852K views · 7 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=jAJA2bKdkvk" target="_blank" rel="noopener" data-pub="1787771709000" data-views="1256171" data-out="1.79" data-r50="" data-analysed="0">
@@ -1246,7 +1271,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:45</span>
   </div>
   <div class="t">The BULLY is OBSESSED with Me!</div>
-  <div class="meta">1.3M views · 7 days ago</div>
+  <div class="meta">1.3M views · 8 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=L0-UqmnR6C4" target="_blank" rel="noopener" data-pub="1787691522000" data-views="704812" data-out="0.91" data-r50="" data-analysed="0">
@@ -1266,7 +1291,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">19:28</span>
   </div>
   <div class="t">I&#39;m NOT JEALOUS in Minecraft!</div>
-  <div class="meta">1.1M views · 10 days ago</div>
+  <div class="meta">1.1M views · 11 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=fvEgxNclEdU" target="_blank" rel="noopener" data-pub="1787426100000" data-views="1212922" data-out="1.59" data-r50="" data-analysed="0">
@@ -1276,7 +1301,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">22:29</span>
   </div>
   <div class="t">Having a VERITY FAMILY!</div>
-  <div class="meta">1.2M views · 11 days ago</div>
+  <div class="meta">1.2M views · 12 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=5iOrE7bg5h4" target="_blank" rel="noopener" data-pub="1787339725000" data-views="408517" data-out="0.53" data-r50="" data-analysed="0">
@@ -1286,7 +1311,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">21:26</span>
   </div>
   <div class="t">My PHONE Can HACK My BOYFRIEND!</div>
-  <div class="meta">409K views · 12 days ago</div>
+  <div class="meta">409K views · 13 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=QhO64pacMWo" target="_blank" rel="noopener" data-pub="1787253771000" data-views="759329" data-out="0.99" data-r50="" data-analysed="0">
@@ -1296,7 +1321,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">19:04</span>
   </div>
   <div class="t">Saved by SPIDER-MAN in Minecraft!</div>
-  <div class="meta">759K views · 13 days ago</div>
+  <div class="meta">759K views · 14 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=0nEPVhR8phg" target="_blank" rel="noopener" data-pub="1787166936000" data-views="762822" data-out="0.85" data-r50="" data-analysed="0">
@@ -1306,7 +1331,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:41</span>
   </div>
   <div class="t">HIDING as FAST FOOD in Meccha Chameleon!</div>
-  <div class="meta">763K views · 14 days ago</div>
+  <div class="meta">763K views · 15 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=sXFM76otEI4" target="_blank" rel="noopener" data-pub="1787080709000" data-views="438042" data-out="0.57" data-r50="" data-analysed="0">
@@ -1316,7 +1341,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">21:04</span>
   </div>
   <div class="t">Aphmau SAVES the BOYS!</div>
-  <div class="meta">438K views · 15 days ago</div>
+  <div class="meta">438K views · 16 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=-vpucWUDQv8" target="_blank" rel="noopener" data-pub="1786910184000" data-views="771194" data-out="1.01" data-r50="" data-analysed="0">
@@ -1326,7 +1351,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:54</span>
   </div>
   <div class="t">My ENDERMAN Forbidden Marriage!</div>
-  <div class="meta">771K views · 17 days ago</div>
+  <div class="meta">771K views · 18 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=EUJQG_HZwJs" target="_blank" rel="noopener" data-pub="1786821333000" data-views="1025711" data-out="1.35" data-r50="" data-analysed="0">
@@ -1336,7 +1361,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:39</span>
   </div>
   <div class="t">Getting REVENGE on My FRIENDS!</div>
-  <div class="meta">1.0M views · 18 days ago</div>
+  <div class="meta">1.0M views · 19 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=0RMY7VmqsqA" target="_blank" rel="noopener" data-pub="1786738540000" data-views="1669293" data-out="2.18" data-r50="" data-analysed="0">
@@ -1346,7 +1371,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:39</span>
   </div>
   <div class="t">Everyone BROKE My HEART!</div>
-  <div class="meta">1.7M views · 19 days ago</div>
+  <div class="meta">1.7M views · 20 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=R-m6PtWhQJY" target="_blank" rel="noopener" data-pub="1786654215000" data-views="752634" data-out="0.78" data-r50="" data-analysed="0">
@@ -1356,7 +1381,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">21:20</span>
   </div>
   <div class="t">Having a VERITY Sleepover!</div>
-  <div class="meta">753K views · 20 days ago</div>
+  <div class="meta">753K views · 21 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=SMZIp9mB5RU" target="_blank" rel="noopener" data-pub="1786567647000" data-views="721924" data-out="0.64" data-r50="" data-analysed="0">
@@ -1366,7 +1391,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:21</span>
   </div>
   <div class="t">Hacker and Admin FORBIDDEN LOVE!</div>
-  <div class="meta">722K views · 21 days ago</div>
+  <div class="meta">722K views · 22 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=LVOXECgkReA" target="_blank" rel="noopener" data-pub="1786481208000" data-views="1862186" data-out="1.92" data-r50="" data-analysed="0">
@@ -1376,7 +1401,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:26</span>
   </div>
   <div class="t">ENDER GIRL Crashes an ALL BOYS Block!</div>
-  <div class="meta">1.9M views · 22 days ago</div>
+  <div class="meta">1.9M views · 23 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=uNLhj-sqVu0" target="_blank" rel="noopener" data-pub="1786304134000" data-views="1226049" data-out="1.47" data-r50="" data-analysed="0">
@@ -1386,7 +1411,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">19:29</span>
   </div>
   <div class="t">EVERYONE Loves ME!</div>
-  <div class="meta">1.2M views · 24 days ago</div>
+  <div class="meta">1.2M views · 25 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=UQx8ZxqTP6I" target="_blank" rel="noopener" data-pub="1786216520000" data-views="913485" data-out="0.99" data-r50="" data-analysed="0">
@@ -1396,7 +1421,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:56</span>
   </div>
   <div class="t">24 HOURS with LOVITY!</div>
-  <div class="meta">913K views · 25 days ago</div>
+  <div class="meta">913K views · 26 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=2TWBwQATZ6Q" target="_blank" rel="noopener" data-pub="1786130107000" data-views="1586788" data-out="1.59" data-r50="" data-analysed="0">
@@ -1406,7 +1431,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:46</span>
   </div>
   <div class="t">I&#39;m a BUTTER DOG!</div>
-  <div class="meta">1.6M views (28d) · 26 days ago</div>
+  <div class="meta">1.6M views (28d) · 27 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Q6ub3uT0q6o" target="_blank" rel="noopener" data-pub="1786043725000" data-views="1087790" data-out="0.97" data-r50="" data-analysed="0">
@@ -1416,7 +1441,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">21:04</span>
   </div>
   <div class="t">Aphmau SNAPPED at Everyone!</div>
-  <div class="meta">1.1M views (28d) · 27 days ago</div>
+  <div class="meta">1.1M views (28d) · 28 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=DulHMUEdWoo" target="_blank" rel="noopener" data-pub="1785957309000" data-views="744564" data-out="0.64" data-r50="" data-analysed="0">
@@ -1426,7 +1451,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">18:23</span>
   </div>
   <div class="t">I’m BABY VERITY in Minecraft!</div>
-  <div class="meta">745K views (28d) · 28 days ago</div>
+  <div class="meta">745K views (28d) · 29 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=FyrE07xdcdk" target="_blank" rel="noopener" data-pub="1785870933000" data-views="652189" data-out="0.62" data-r50="" data-analysed="0">
@@ -1436,7 +1461,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:34</span>
   </div>
   <div class="t">Aphmau’s GLITCH Touch!</div>
-  <div class="meta">652K views (28d) · 29 days ago</div>
+  <div class="meta">652K views (28d) · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=XyzpgXUXCsU" target="_blank" rel="noopener" data-pub="1785700082000" data-views="1645047" data-out="1.56" data-r50="" data-analysed="0">
@@ -1686,7 +1711,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
     <span class="len">20:28</span>
   </div>
   <div class="t">My WITHER Forbidden Boyfriend!</div>
-  <div class="meta">1.2M views · 1 month ago</div>
+  <div class="meta">1.2M views · 2 months ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=cLpC6TT2au8" target="_blank" rel="noopener" data-pub="1783192531000" data-views="1062733" data-out="0.93" data-r50="" data-analysed="0">
@@ -2456,7 +2481,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:26</span>
   </div>
   <div class="t">ENDER GIRL Crashes an ALL BOYS Block!</div>
-  <div class="meta">1.9M views · 22 days ago</div>
+  <div class="meta">1.9M views · 23 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Tuindv4_Zf8" target="_blank" rel="noopener" data-pub="1779392693000" data-views="1041940" data-out="1.27" data-r50="" data-analysed="0">
@@ -2498,7 +2523,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">19:29</span>
   </div>
   <div class="t">EVERYONE Loves ME!</div>
-  <div class="meta">1.2M views · 24 days ago</div>
+  <div class="meta">1.2M views · 25 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=0RMY7VmqsqA" target="_blank" rel="noopener" data-pub="1786738540000" data-views="1669293" data-out="2.18" data-r50="" data-analysed="0">
@@ -2508,7 +2533,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:39</span>
   </div>
   <div class="t">Everyone BROKE My HEART!</div>
-  <div class="meta">1.7M views · 19 days ago</div>
+  <div class="meta">1.7M views · 20 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=OPwjZwPXLIo" target="_blank" rel="noopener" data-pub="1782336985000" data-views="1691471" data-out="1.48" data-r50="" data-analysed="0">
@@ -2528,7 +2553,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:39</span>
   </div>
   <div class="t">Getting REVENGE on My FRIENDS!</div>
-  <div class="meta">1.0M views · 18 days ago</div>
+  <div class="meta">1.0M views · 19 days ago</div>
   
 </a></div>
 </details>
@@ -2776,7 +2801,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:54</span>
   </div>
   <div class="t">My ENDERMAN Forbidden Marriage!</div>
-  <div class="meta">771K views · 17 days ago</div>
+  <div class="meta">771K views · 18 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=SMZIp9mB5RU" target="_blank" rel="noopener" data-pub="1786567647000" data-views="721924" data-out="0.64" data-r50="" data-analysed="0">
@@ -2786,7 +2811,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:21</span>
   </div>
   <div class="t">Hacker and Admin FORBIDDEN LOVE!</div>
-  <div class="meta">722K views · 21 days ago</div>
+  <div class="meta">722K views · 22 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=mxFmK_XE-_4" target="_blank" rel="noopener" data-pub="1783714452000" data-views="967946" data-out="0.84" data-r50="" data-analysed="0">
@@ -2806,7 +2831,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:28</span>
   </div>
   <div class="t">My WITHER Forbidden Boyfriend!</div>
-  <div class="meta">1.2M views · 1 month ago</div>
+  <div class="meta">1.2M views · 2 months ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=c2NpUcJ7eCg" target="_blank" rel="noopener" data-pub="1782587712000" data-views="906577" data-out="0.67" data-r50="" data-analysed="0">
@@ -2868,7 +2893,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:41</span>
   </div>
   <div class="t">HIDING as FAST FOOD in Meccha Chameleon!</div>
-  <div class="meta">763K views · 14 days ago</div>
+  <div class="meta">763K views · 15 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=8KilVV-9YVY" target="_blank" rel="noopener" data-pub="1784920515000" data-views="1430596" data-out="1.38" data-r50="" data-analysed="0">
@@ -2928,7 +2953,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">19:51</span>
   </div>
   <div class="t">I&#39;m an ANOMALY in Minecraft!</div>
-  <div class="meta">493K views · 1 day ago</div>
+  <div class="meta">493K views · 2 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=TvpYb-0sNek" target="_blank" rel="noopener" data-pub="1788117300000" data-views="613815" data-out="0.79" data-r50="" data-analysed="0">
@@ -2938,7 +2963,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:36</span>
   </div>
   <div class="t">I’m a SQUISHY KITTEN in Minecraft!</div>
-  <div class="meta">614K views · 3 days ago</div>
+  <div class="meta">614K views · 4 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=9qzSwrKyWIk" target="_blank" rel="noopener" data-pub="1788031078000" data-views="699440" data-out="0.9" data-r50="" data-analysed="0">
@@ -2948,7 +2973,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">19:14</span>
   </div>
   <div class="t">TRAPPING Friends on a FAKE BLOCK!</div>
-  <div class="meta">699K views · 4 days ago</div>
+  <div class="meta">699K views · 5 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=vOCoLl3EbxM" target="_blank" rel="noopener" data-pub="1787945873000" data-views="666748" data-out="0.86" data-r50="" data-analysed="0">
@@ -2958,7 +2983,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">22:49</span>
   </div>
   <div class="t">EVERYONE is CRASHING OUT!</div>
-  <div class="meta">667K views · 5 days ago</div>
+  <div class="meta">667K views · 6 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=y6xC1VOoKjk" target="_blank" rel="noopener" data-pub="1787859822000" data-views="851605" data-out="1.21" data-r50="" data-analysed="0">
@@ -2968,7 +2993,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:45</span>
   </div>
   <div class="t">My FRIENDS are BUTTER!</div>
-  <div class="meta">852K views · 6 days ago</div>
+  <div class="meta">852K views · 7 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=jAJA2bKdkvk" target="_blank" rel="noopener" data-pub="1787771709000" data-views="1256171" data-out="1.79" data-r50="" data-analysed="0">
@@ -2978,7 +3003,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:45</span>
   </div>
   <div class="t">The BULLY is OBSESSED with Me!</div>
-  <div class="meta">1.3M views · 7 days ago</div>
+  <div class="meta">1.3M views · 8 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=L0-UqmnR6C4" target="_blank" rel="noopener" data-pub="1787691522000" data-views="704812" data-out="0.91" data-r50="" data-analysed="0">
@@ -2998,7 +3023,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">19:28</span>
   </div>
   <div class="t">I&#39;m NOT JEALOUS in Minecraft!</div>
-  <div class="meta">1.1M views · 10 days ago</div>
+  <div class="meta">1.1M views · 11 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=fvEgxNclEdU" target="_blank" rel="noopener" data-pub="1787426100000" data-views="1212922" data-out="1.59" data-r50="" data-analysed="0">
@@ -3008,7 +3033,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">22:29</span>
   </div>
   <div class="t">Having a VERITY FAMILY!</div>
-  <div class="meta">1.2M views · 11 days ago</div>
+  <div class="meta">1.2M views · 12 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=5iOrE7bg5h4" target="_blank" rel="noopener" data-pub="1787339725000" data-views="408517" data-out="0.53" data-r50="" data-analysed="0">
@@ -3018,7 +3043,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">21:26</span>
   </div>
   <div class="t">My PHONE Can HACK My BOYFRIEND!</div>
-  <div class="meta">409K views · 12 days ago</div>
+  <div class="meta">409K views · 13 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=QhO64pacMWo" target="_blank" rel="noopener" data-pub="1787253771000" data-views="759329" data-out="0.99" data-r50="" data-analysed="0">
@@ -3028,7 +3053,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">19:04</span>
   </div>
   <div class="t">Saved by SPIDER-MAN in Minecraft!</div>
-  <div class="meta">759K views · 13 days ago</div>
+  <div class="meta">759K views · 14 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=sXFM76otEI4" target="_blank" rel="noopener" data-pub="1787080709000" data-views="438042" data-out="0.57" data-r50="" data-analysed="0">
@@ -3038,7 +3063,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">21:04</span>
   </div>
   <div class="t">Aphmau SAVES the BOYS!</div>
-  <div class="meta">438K views · 15 days ago</div>
+  <div class="meta">438K views · 16 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=R-m6PtWhQJY" target="_blank" rel="noopener" data-pub="1786654215000" data-views="752634" data-out="0.78" data-r50="" data-analysed="0">
@@ -3048,7 +3073,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">21:20</span>
   </div>
   <div class="t">Having a VERITY Sleepover!</div>
-  <div class="meta">753K views · 20 days ago</div>
+  <div class="meta">753K views · 21 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=UQx8ZxqTP6I" target="_blank" rel="noopener" data-pub="1786216520000" data-views="913485" data-out="0.99" data-r50="" data-analysed="0">
@@ -3058,7 +3083,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:56</span>
   </div>
   <div class="t">24 HOURS with LOVITY!</div>
-  <div class="meta">913K views · 25 days ago</div>
+  <div class="meta">913K views · 26 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=2TWBwQATZ6Q" target="_blank" rel="noopener" data-pub="1786130107000" data-views="1586788" data-out="1.59" data-r50="" data-analysed="0">
@@ -3068,7 +3093,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:46</span>
   </div>
   <div class="t">I&#39;m a BUTTER DOG!</div>
-  <div class="meta">1.6M views (28d) · 26 days ago</div>
+  <div class="meta">1.6M views (28d) · 27 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=Q6ub3uT0q6o" target="_blank" rel="noopener" data-pub="1786043725000" data-views="1087790" data-out="0.97" data-r50="" data-analysed="0">
@@ -3078,7 +3103,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">21:04</span>
   </div>
   <div class="t">Aphmau SNAPPED at Everyone!</div>
-  <div class="meta">1.1M views (28d) · 27 days ago</div>
+  <div class="meta">1.1M views (28d) · 28 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=DulHMUEdWoo" target="_blank" rel="noopener" data-pub="1785957309000" data-views="744564" data-out="0.64" data-r50="" data-analysed="0">
@@ -3088,7 +3113,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">18:23</span>
   </div>
   <div class="t">I’m BABY VERITY in Minecraft!</div>
-  <div class="meta">745K views (28d) · 28 days ago</div>
+  <div class="meta">745K views (28d) · 29 days ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=FyrE07xdcdk" target="_blank" rel="noopener" data-pub="1785870933000" data-views="652189" data-out="0.62" data-r50="" data-analysed="0">
@@ -3098,7 +3123,7 @@ formats over the same months is what makes them comparable.</p>
     <span class="len">20:34</span>
   </div>
   <div class="t">Aphmau’s GLITCH Touch!</div>
-  <div class="meta">652K views (28d) · 29 days ago</div>
+  <div class="meta">652K views (28d) · 1 month ago</div>
   
 </a>
 <a class="v" href="https://www.youtube.com/watch?v=N1Tcp26YSw8" target="_blank" rel="noopener" data-pub="1785611712000" data-views="1023631" data-out="1.05" data-r50="" data-analysed="0">
@@ -3737,7 +3762,7 @@ formats over the same months is what makes them comparable.</p>
 
 <h2>What the numbers show</h2>
 <p class="legend">The channel's own record, drawn. Each chart says what kind of evidence it is: an <em>observation</em> is counted, a <em>correlation</em> is compared, and neither is a cause. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p>
-<div class="st-family-charts"><figure class="st-fig"><figcaption><span class="st-fig-title">“___ On An All Boys Block”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 96" role="img" aria-label="“___ On An All Boys Block”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS Ruins an ALL BOYS One Blo…</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.37x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">ENDER GIRL Crashes an ALL BOYS Block!</text><rect x="210" y="43" width="144.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="360.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.92x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">ROSALINA on an ALL BOYS Block!</text><rect x="210" y="65" width="95.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="311.6" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.27x</text><line x1="285.3" y1="12" x2="285.3" y2="82" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="289.3" y="92" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">3 of 3 videos scored; median 1.92x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“Everyone ___ You”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 118" role="img" aria-label="“Everyone ___ You”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">Everyone BROKE My HEART!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.18x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Everyone WANTS to MARRY YOU!</text><rect x="210" y="43" width="172.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="388.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.48x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">EVERYONE Loves ME!</text><rect x="210" y="65" width="171.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="387.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.47x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Getting REVENGE on My FRIENDS!</text><rect x="210" y="87" width="157.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="373.1" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.35x</text><line x1="326.4" y1="12" x2="326.4" y2="104" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="330.4" y="114" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">4 of 4 videos scored; median 1.48x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“No One Can ___ Aphmau”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="“No One Can ___ Aphmau”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">No One Can SAVE APHMAU!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.32x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">YOU CANNOT Be CONTAINED!</text><rect x="210" y="43" width="101.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="317.0" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.72x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT Be CONTAINED…</text><rect x="210" y="65" width="94.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="310.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.60x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT be HURT!</text><rect x="210" y="87" width="91.6" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="307.6" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.56x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can BEAT APHMAU!</text><rect x="210" y="109" width="74.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="290.6" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.27x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can OUTSMART APHMAU!</text><rect x="210" y="131" width="50.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="266.5" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can STOP APHMAU!</text><rect x="210" y="153" width="41.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="257.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.71x</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can STOP YOU!</text><rect x="210" y="175" width="32.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="248.3" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.55x</text><line x1="268.7" y1="12" x2="268.7" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="272.7" y="202" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">8 of 8 videos scored; median 1.42x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“You Are ___”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="“You Are ___”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">YOU are DEAD!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.08x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">EVERYONE HATES YOU!</text><rect x="210" y="43" width="212.2" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="428.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.74x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">YOU Become a GODDESS!</text><rect x="210" y="65" width="175.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="391.6" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.44x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">YOU Become APHMAU???</text><rect x="210" y="87" width="142.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="358.7" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.17x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">YOU are POSSESSED!</text><rect x="210" y="109" width="139.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="355.0" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">YOU turned EVIL!</text><rect x="210" y="131" width="115.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="331.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.95x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">YOU and Aphmau are LINKED!</text><rect x="210" y="153" width="63.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="279.4" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.52x</text><line x1="332.0" y1="12" x2="332.0" y2="170" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="336.0" y="180" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">7 of 7 videos scored; median 1.17x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“Lily Lovebraids ___”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 118" role="img" aria-label="“Lily Lovebraids ___”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS has been CAPTURED!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.00x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Becoming a LILY LOVEBRAIDS Kitten!</text><rect x="210" y="43" width="152.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="368.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.20x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Trapping FRIENDS in my LILY LOVEBRAIDS Pr…</text><rect x="210" y="65" width="134.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="350.5" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.06x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Having LILY LOVEBRAIDS Twins!</text><rect x="210" y="87" width="76.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="292.1" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.60x</text><line x1="336.9" y1="12" x2="336.9" y2="104" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="340.9" y="114" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">4 of 4 videos scored; median 1.13x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“My ___ Forbidden Love”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="“My ___ Forbidden Love”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">My ENDERMAN Forbidden Love!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.53x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">My WARDEN Forbidden Love!</text><rect x="210" y="43" width="100.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="316.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.40x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">My FORBIDDEN Enderman LOVE STORY!</text><rect x="210" y="65" width="97.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="313.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.35x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">My WITHER Forbidden Boyfriend!</text><rect x="210" y="87" width="81.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="297.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">My ENDERMAN Forbidden Marriage!</text><rect x="210" y="109" width="72.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="288.6" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.01x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">My CREAKING Forbidden Love!</text><rect x="210" y="131" width="60.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="276.4" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.84x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">Our SQUISHY Love is FORBIDDEN!</text><rect x="210" y="153" width="48.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="264.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.67x</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">Hacker and Admin FORBIDDEN LOVE!</text><rect x="210" y="175" width="46.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="262.0" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.64x</text><line x1="281.9" y1="12" x2="281.9" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="285.9" y="202" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">8 of 8 videos scored; median 1.07x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">“Hiding As ___ In Meccha Chameleon”: every scored video in the shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 140" role="img" aria-label="“Hiding As ___ In Meccha Chameleon”: every scored video in the shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING on My Friends in MECCHA CHAMELEON!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.38x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Hiding as APHMAU in MECCHA CHAMELEON!</text><rect x="210" y="43" width="209.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="425.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Hiding as AARON in MECCHA CHAMELEON!</text><rect x="210" y="65" width="193.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="409.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Painting BABY ANIMALS in MECCHA CHAMELEON!</text><rect x="210" y="87" width="171.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="387.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.93x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING as FAST FOOD in Meccha Chameleon!</text><rect x="210" y="109" width="156.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="372.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.85x</text><line x1="393.8" y1="12" x2="393.8" y2="126" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="397.8" y="136" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">5 of 5 videos scored; median 1.05x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Days since the previous upload, most recent first</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 338" role="img" aria-label="Days since the previous upload, most recent first"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">I'm an ANOMALY in Minecraft!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">I’m a SQUISHY KITTEN in Minecraft!</text><rect x="210" y="43" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">TRAPPING Friends on a FAKE BLOCK!</text><rect x="210" y="65" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">EVERYONE is CRASHING OUT!</text><rect x="210" y="87" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">My FRIENDS are BUTTER!</text><rect x="210" y="109" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">The BULLY is OBSESSED with Me!</text><rect x="210" y="131" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">My SHIFT at MIDNIGHT!</text><rect x="210" y="153" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">I'm NOT JEALOUS in Minecraft!</text><rect x="210" y="175" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">Having a VERITY FAMILY!</text><rect x="210" y="197" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">My PHONE Can HACK My BOYFRIEND!</text><rect x="210" y="219" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="251" text-anchor="end" font-size="12" fill="#8a9a9a">Saved by SPIDER-MAN in Minecraft!</text><rect x="210" y="241" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="251" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="273" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING as FAST FOOD in Meccha Cha…</text><rect x="210" y="263" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="273" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="295" text-anchor="end" font-size="12" fill="#8a9a9a">Aphmau SAVES the BOYS!</text><rect x="210" y="285" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="295" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="317" text-anchor="end" font-size="12" fill="#8a9a9a">My ENDERMAN Forbidden Marriage!</text><rect x="210" y="307" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="317" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><line x1="336.9" y1="12" x2="336.9" y2="324" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="340.9" y="334" font-size="11" fill="#8a9a9a">median 1 d</text></svg><p class="st-fig-note">Highlighted bars are more than twice the median gap. The ledger's cadence claim (uploads on the usual rhythm beat ones that break it) is measured on its own claim page.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Biggest uploads, lifetime views</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 162" role="img" aria-label="Biggest uploads, lifetime views"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS Ruins an ALL BOYS One Blo…</text><rect x="210" y="21" width="261.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="477.0" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">5.3M</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">No One Can SAVE APHMAU!</text><rect x="210" y="43" width="245.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="461.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.5M</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">Aphmau's FAMILY Chooses YOU!</text><rect x="210" y="65" width="235.1" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="451.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.0M</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">YOU are DEAD!</text><rect x="210" y="87" width="219.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="435.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.4M</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#ffffff">YOU SNAPPED in Minecraft!</text><rect x="210" y="109" width="217.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="433.5" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.3M</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT Be CONTAINED…</text><rect x="210" y="131" width="210.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="426.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.1M</text><line x1="311.9" y1="12" x2="311.9" y2="148" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="315.9" y="158" font-size="11" fill="#8a9a9a">median of the 40 most recent (950k)</text></svg><p class="st-fig-note">Lifetime views as YouTube shows them. Log scale, because one breakout is usually a hundred times the median.</p></figure></div>
+<div class="st-family-charts"><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">___ On An All Boys Block</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 96" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS Ruins an ALL BOYS One Blo…</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.37x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">ENDER GIRL Crashes an ALL BOYS Block!</text><rect x="210" y="43" width="144.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="360.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.92x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">ROSALINA on an ALL BOYS Block!</text><rect x="210" y="65" width="95.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="311.6" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.27x</text><line x1="285.3" y1="12" x2="285.3" y2="82" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="289.3" y="92" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">3 of 3 videos scored; median 1.92x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">Everyone ___ You</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 118" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">Everyone BROKE My HEART!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.18x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Everyone WANTS to MARRY YOU!</text><rect x="210" y="43" width="172.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="388.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.48x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">EVERYONE Loves ME!</text><rect x="210" y="65" width="171.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="387.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.47x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Getting REVENGE on My FRIENDS!</text><rect x="210" y="87" width="157.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="373.1" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.35x</text><line x1="326.4" y1="12" x2="326.4" y2="104" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="330.4" y="114" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">4 of 4 videos scored; median 1.48x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">No One Can ___ Aphmau</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">No One Can SAVE APHMAU!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.32x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">YOU CANNOT Be CONTAINED!</text><rect x="210" y="43" width="101.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="317.0" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.72x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT Be CONTAINED…</text><rect x="210" y="65" width="94.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="310.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.60x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT be HURT!</text><rect x="210" y="87" width="91.6" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="307.6" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.56x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can BEAT APHMAU!</text><rect x="210" y="109" width="74.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="290.6" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.27x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can OUTSMART APHMAU!</text><rect x="210" y="131" width="50.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="266.5" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.86x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can STOP APHMAU!</text><rect x="210" y="153" width="41.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="257.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.71x</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">No One Can STOP YOU!</text><rect x="210" y="175" width="32.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="248.3" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.55x</text><line x1="268.7" y1="12" x2="268.7" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="272.7" y="202" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">8 of 8 videos scored; median 1.42x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">You Are ___</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 184" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">YOU are DEAD!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.08x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">EVERYONE HATES YOU!</text><rect x="210" y="43" width="212.2" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="428.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.74x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">YOU Become a GODDESS!</text><rect x="210" y="65" width="175.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="391.6" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.44x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">YOU Become APHMAU???</text><rect x="210" y="87" width="142.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="358.7" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.17x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">YOU are POSSESSED!</text><rect x="210" y="109" width="139.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="355.0" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">YOU turned EVIL!</text><rect x="210" y="131" width="115.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="331.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.95x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">YOU and Aphmau are LINKED!</text><rect x="210" y="153" width="63.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="279.4" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.52x</text><line x1="332.0" y1="12" x2="332.0" y2="170" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="336.0" y="180" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">7 of 7 videos scored; median 1.17x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">Lily Lovebraids ___</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 118" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS has been CAPTURED!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2.00x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Becoming a LILY LOVEBRAIDS Kitten!</text><rect x="210" y="43" width="152.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="368.2" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.20x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Trapping FRIENDS in my LILY LOVEBRAIDS Pr…</text><rect x="210" y="65" width="134.5" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="350.5" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.06x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Having LILY LOVEBRAIDS Twins!</text><rect x="210" y="87" width="76.1" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="292.1" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.60x</text><line x1="336.9" y1="12" x2="336.9" y2="104" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="340.9" y="114" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">4 of 4 videos scored; median 1.13x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">My ___ Forbidden Love</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 206" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">My ENDERMAN Forbidden Love!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.53x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">My WARDEN Forbidden Love!</text><rect x="210" y="43" width="100.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="316.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.40x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">My FORBIDDEN Enderman LOVE STORY!</text><rect x="210" y="65" width="97.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="313.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.35x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">My WITHER Forbidden Boyfriend!</text><rect x="210" y="87" width="81.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="297.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">My ENDERMAN Forbidden Marriage!</text><rect x="210" y="109" width="72.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="288.6" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.01x</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">My CREAKING Forbidden Love!</text><rect x="210" y="131" width="60.4" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="276.4" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.84x</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">Our SQUISHY Love is FORBIDDEN!</text><rect x="210" y="153" width="48.2" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="264.2" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.67x</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">Hacker and Admin FORBIDDEN LOVE!</text><rect x="210" y="175" width="46.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="262.0" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.64x</text><line x1="281.9" y1="12" x2="281.9" y2="192" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="285.9" y="202" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">8 of 8 videos scored; median 1.07x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption class="has-lead"><span class="st-fig-lead">Hiding As ___ In Meccha Chameleon</span><span class="st-fig-sub"><span class="st-fig-title">every scored video in this shape</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></span></figcaption><svg class="st-chart" viewBox="0 0 560 140" role="img" aria-label="every scored video in this shape"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING on My Friends in MECCHA CHAMELEON!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.38x</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">Hiding as APHMAU in MECCHA CHAMELEON!</text><rect x="210" y="43" width="209.6" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="425.6" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.14x</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">Hiding as AARON in MECCHA CHAMELEON!</text><rect x="210" y="65" width="193.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="409.0" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1.05x</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">Painting BABY ANIMALS in MECCHA CHAMELEON!</text><rect x="210" y="87" width="171.0" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="387.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.93x</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING as FAST FOOD in Meccha Chameleon!</text><rect x="210" y="109" width="156.3" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="372.3" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">0.85x</text><line x1="393.8" y1="12" x2="393.8" y2="126" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="397.8" y="136" font-size="11" fill="#8a9a9a">1.0x</text></svg><p class="st-fig-note">5 of 5 videos scored; median 1.05x. Score = lifetime views against the median of this narrow recent window (public data only); 1.0x is typical for the window.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Days since the previous upload, most recent first</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 338" role="img" aria-label="Days since the previous upload, most recent first"><text x="202" y="31" text-anchor="end" font-size="12" fill="#8a9a9a">I'm an ANOMALY in Minecraft!</text><rect x="210" y="21" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#8a9a9a">I’m a SQUISHY KITTEN in Minecraft!</text><rect x="210" y="43" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#8a9a9a">TRAPPING Friends on a FAKE BLOCK!</text><rect x="210" y="65" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#8a9a9a">EVERYONE is CRASHING OUT!</text><rect x="210" y="87" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#8a9a9a">My FRIENDS are BUTTER!</text><rect x="210" y="109" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#8a9a9a">The BULLY is OBSESSED with Me!</text><rect x="210" y="131" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="163" text-anchor="end" font-size="12" fill="#8a9a9a">My SHIFT at MIDNIGHT!</text><rect x="210" y="153" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="163" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="185" text-anchor="end" font-size="12" fill="#8a9a9a">I'm NOT JEALOUS in Minecraft!</text><rect x="210" y="175" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="185" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="207" text-anchor="end" font-size="12" fill="#8a9a9a">Having a VERITY FAMILY!</text><rect x="210" y="197" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="207" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="229" text-anchor="end" font-size="12" fill="#8a9a9a">My PHONE Can HACK My BOYFRIEND!</text><rect x="210" y="219" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="229" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="251" text-anchor="end" font-size="12" fill="#8a9a9a">Saved by SPIDER-MAN in Minecraft!</text><rect x="210" y="241" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="251" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="273" text-anchor="end" font-size="12" fill="#8a9a9a">HIDING as FAST FOOD in Meccha Cha…</text><rect x="210" y="263" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="273" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><text x="202" y="295" text-anchor="end" font-size="12" fill="#8a9a9a">Aphmau SAVES the BOYS!</text><rect x="210" y="285" width="253.7" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="469.7" y="295" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">2 d</text><text x="202" y="317" text-anchor="end" font-size="12" fill="#8a9a9a">My ENDERMAN Forbidden Marriage!</text><rect x="210" y="307" width="126.9" height="14" rx="3" fill="rgba(141,216,211,.55)" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="342.9" y="317" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">1 d</text><line x1="336.9" y1="12" x2="336.9" y2="324" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="340.9" y="334" font-size="11" fill="#8a9a9a">median 1 d</text></svg><p class="st-fig-note">Highlighted bars are more than twice the median gap. The ledger's cadence claim (uploads on the usual rhythm beat ones that break it) is measured on its own claim page.</p></figure><figure class="st-fig"><figcaption><span class="st-fig-title">Biggest uploads, lifetime views</span> <span class="evchip ev-obs" title="A count from this channel&#39;s own videos. It describes what happened and claims no cause.">Observed</span></figcaption><svg class="st-chart" viewBox="0 0 560 162" role="img" aria-label="Biggest uploads, lifetime views"><text x="202" y="31" text-anchor="end" font-size="12" fill="#ffffff">LILY LOVEBRAIDS Ruins an ALL BOYS One Blo…</text><rect x="210" y="21" width="261.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="477.0" y="31" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">5.3M</text><text x="202" y="53" text-anchor="end" font-size="12" fill="#ffffff">No One Can SAVE APHMAU!</text><rect x="210" y="43" width="245.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="461.5" y="53" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.5M</text><text x="202" y="75" text-anchor="end" font-size="12" fill="#ffffff">Aphmau's FAMILY Chooses YOU!</text><rect x="210" y="65" width="235.1" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="451.1" y="75" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">4.0M</text><text x="202" y="97" text-anchor="end" font-size="12" fill="#ffffff">YOU are DEAD!</text><rect x="210" y="87" width="219.0" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="435.0" y="97" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.4M</text><text x="202" y="119" text-anchor="end" font-size="12" fill="#ffffff">YOU SNAPPED in Minecraft!</text><rect x="210" y="109" width="217.5" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="433.5" y="119" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.3M</text><text x="202" y="141" text-anchor="end" font-size="12" fill="#ffffff">Aphmau CANNOT Be CONTAINED…</text><rect x="210" y="131" width="210.9" height="14" rx="3" fill="#6fd39b" stroke="none" stroke-width="1.5" stroke-dasharray="0"/><text x="426.9" y="141" font-size="12" fill="#ffffff" font-variant-numeric="tabular-nums">3.1M</text><line x1="311.9" y1="12" x2="311.9" y2="148" stroke="#ffffff" stroke-dasharray="4 4" opacity=".7"/><text x="315.9" y="158" font-size="11" fill="#8a9a9a">median of the 40 most recent (950k)</text></svg><p class="st-fig-note">Lifetime views as YouTube shows them. Log scale, because one breakout is usually a hundred times the median.</p></figure></div>
 
 
 

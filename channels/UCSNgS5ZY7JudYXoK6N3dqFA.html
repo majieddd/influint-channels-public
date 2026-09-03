@@ -425,6 +425,16 @@ svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 
 svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
                       font-family:ui-monospace,Menlo,monospace; pointer-events:none;
                       paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+/* Reference curves: group medians. Dotted, not dashed, so they never read as
+   the channel's own median; each with the same dark casing and an end label. */
+svg.cohortsvg .refcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .refcv{fill:none; stroke-width:2.4; stroke-dasharray:2 5; stroke-linecap:round; pointer-events:none}
+svg.cohortsvg .refcv.ref-all{stroke:#f6c344}
+svg.cohortsvg .refcv.ref-niche{stroke:#b6d94c}
+svg.cohortsvg .reflab{font-size:10.5px; letter-spacing:.14em; font-weight:600; font-family:ui-monospace,Menlo,monospace;
+                      pointer-events:none; paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+svg.cohortsvg .reflab.ref-all{fill:#f6c344}
+svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
@@ -594,6 +604,140 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .dim-none{font-size:19px;font-weight:500;color:var(--grey)}
 .dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
 .dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.dash{margin:24px 0 10px; min-width:0}
+.dash-top{display:flex; justify-content:space-between; align-items:flex-start; gap:14px 24px; flex-wrap:wrap; margin-bottom:16px}
+.dash-eyebrow{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--teal-mid)}
+.dash h2.dash-h{font-size:30px; line-height:1.1; margin:2px 0 6px; letter-spacing:-.02em; text-transform:none; color:var(--white); font-weight:600}
+.dash-sub{color:var(--grey); font-size:13.5px}
+.dash-right{display:flex; flex-direction:column; align-items:flex-end; gap:10px}
+.dash-win{display:inline-flex; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px; flex-wrap:wrap}
+.dw{background:none; border:0; color:var(--grey); font:inherit; font-size:12.5px; padding:7px 14px; border-radius:999px; cursor:pointer}
+.dw:hover{color:var(--white)}
+.dw[aria-pressed=true]{background:var(--panel-raised); color:var(--white); font-weight:600}
+.dash-through{font-size:12px; color:var(--grey); background:var(--panel); border:1px solid var(--line); border-radius:999px;
+              padding:7px 14px; display:inline-flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums}
+.dash-through i{width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; flex:none}
+@media(max-width:760px){ .dash-right{align-items:flex-start} }
+
+/* Headline tiles */
+.dash-tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(176px,1fr)); gap:12px}
+.dt{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 12px; min-width:0}
+.dt-k{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--grey); font-family:ui-monospace,Menlo,monospace}
+.dt-s{font-size:12px; color:var(--grey); margin-top:2px}
+.dt-v{font-size:30px; font-weight:600; margin:8px 0 6px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dt-none{color:var(--grey); font-weight:500; font-size:19px}
+.dt-c{font-size:11.5px; color:var(--grey); border-top:1px dashed var(--line); padding-top:6px; line-height:1.4; min-height:34px; overflow-wrap:anywhere}
+.dt-c.up{color:var(--hot)} .dt-c.down{color:var(--cold)}
+.dt-spark{width:100%; height:44px; display:block; margin-top:6px}
+.dt-spark path{fill:none; stroke:var(--teal); stroke-width:1.6; stroke-linejoin:round; stroke-linecap:round}
+.dt-spark .fill{fill:rgba(141,216,211,.14); stroke:none}
+
+/* The period, day by day */
+.dash-daily{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px 12px; margin-top:12px; min-width:0}
+.dash-daily-h{display:flex; justify-content:space-between; gap:12px 20px; flex-wrap:wrap; align-items:flex-start}
+.dash-daily-t{font-size:17px; font-weight:600}
+.dash-daily-s{font-size:12.5px; color:var(--grey); margin-top:3px}
+.dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
+.dash-legend span{display:inline-flex; align-items:center; gap:6px}
+.dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
+.dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
+.dash-daily-wrap{position:relative}
+.dash-daily-svg{width:100%; height:auto; aspect-ratio:1000/300; display:block; overflow:visible}
+@media(max-width:760px){ .dash-daily-svg{aspect-ratio:5/3} }
+.dash-daily-svg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dash-daily-svg .tick{fill:var(--grey); font-size:12.5px; font-family:ui-monospace,Menlo,monospace}
+.dash-daily-svg .area{fill:rgba(141,216,211,.16); stroke:none}
+.dash-daily-svg .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dash-daily-svg .upl{stroke:var(--grey); stroke-width:2; opacity:.85}
+.dash-daily-svg .upl.hot{stroke:var(--white)}
+.dash-daily-svg .cross{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:3 3; pointer-events:none}
+.dash-daily-svg .dot{fill:var(--white); stroke:var(--panel); stroke-width:2; pointer-events:none}
+.dash-daily-svg .hitrect{fill:transparent; cursor:crosshair}
+.dash-tip{position:absolute; pointer-events:none; background:#04100f; border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+          font-size:12px; line-height:1.45; color:var(--white); max-width:280px; z-index:2; box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.dash-tip .d{color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums}
+.dash-tip .r{color:var(--grey); font-variant-numeric:tabular-nums}
+.dash-tip .r b{color:var(--white); font-weight:600}
+.dash-tip .u{margin-top:4px; color:#cfe0de; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dash-daily-empty{color:var(--grey); font-size:13px; line-height:1.55; margin:12px 0 4px; max-width:78ch}
+
+/* The three dimensions */
+.dash-depts{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; margin-top:12px}
+.dept{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 14px; min-width:0; cursor:pointer;
+      transition:background .12s, border-color .12s; outline:none}
+.dept:hover{background:var(--panel-raised)}
+.dept:focus-visible{border-color:var(--teal)}
+.dept[aria-expanded=true]{border-color:var(--teal); background:var(--panel-raised)}
+.dept-k{display:flex; align-items:center; gap:8px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal);
+        font-family:ui-monospace,Menlo,monospace}
+.dept-k i{width:7px; height:7px; background:var(--teal); transform:rotate(45deg); display:inline-block; flex:none}
+.dept-k .chev{margin-left:auto; color:var(--grey); font-family:Poppins,ui-sans-serif,system-ui,sans-serif; font-size:14px; letter-spacing:0}
+.dept-v{font-size:28px; font-weight:600; margin:10px 0 2px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dept-v .none{color:var(--grey); font-weight:500; font-size:19px}
+.dept-s{font-size:12px; color:var(--grey); border-bottom:1px dashed var(--line); padding-bottom:6px; margin-bottom:8px}
+.dept-l{font-size:12px; color:#cfe0de; line-height:1.5; overflow-wrap:anywhere}
+.dept-l+.dept-l{margin-top:3px}
+.dept-more{display:block; margin-top:10px; font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.dept-more::before{content:"\203A "; color:var(--teal)}
+/* Funnel */
+.fun{margin-top:8px; display:grid; gap:5px}
+.fun-r{display:grid; grid-template-columns:96px 1fr auto; gap:8px; align-items:center; font-size:12px; color:var(--grey)}
+.fun-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.fun-b{height:9px; border-radius:999px; background:rgba(141,216,211,.16); overflow:hidden; min-width:0}
+.fun-b i{display:block; height:100%; background:var(--teal); border-radius:999px; min-width:2px}
+.fun-r.n2 .fun-b i{background:var(--teal-mid)}
+.fun-r.n3 .fun-b i{background:var(--teal-deep)}
+/* Score comparisons */
+.cmp{margin-top:8px; display:grid; gap:4px}
+.cmp-r{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); align-items:baseline}
+.cmp-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
+.cmp-r em{font-style:normal; color:var(--teal-mid); font-variant-numeric:tabular-nums; margin-left:6px}
+.cmp-r .wh{color:var(--grey); font-weight:500; white-space:normal; text-align:right}
+/* Segment bar */
+.seg{margin-top:10px}
+.seg-b{display:flex; height:10px; border-radius:999px; overflow:hidden; background:rgba(141,216,211,.12)}
+.seg-b i{display:block; height:100%}
+.seg-b i.s0{background:var(--teal)} .seg-b i.s1{background:var(--teal-mid)} .seg-b i.s2{background:var(--teal-deep)}
+.seg-k{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; font-size:11.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.seg-k span::before{content:""; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; vertical-align:-1px}
+.seg-k span.s0::before{background:var(--teal)} .seg-k span.s1::before{background:var(--teal-mid)} .seg-k span.s2::before{background:var(--teal-deep)}
+.seg-basis{font-size:11px; color:var(--grey); margin-top:4px}
+
+/* The open dimension's panel, full width under the three cards */
+.dept-panel{background:var(--panel); border:1px solid var(--teal); border-radius:16px; padding:18px 20px 14px; margin-top:12px; min-width:0}
+.dept-panel-h{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.dept-panel-t{font-size:16px; font-weight:600}
+.dept-panel-w{font-size:12px; color:var(--grey)}
+.dept-close{margin-left:auto; background:none; border:1px solid var(--line); color:var(--grey); border-radius:999px; font:inherit;
+            font-size:12px; padding:5px 12px; cursor:pointer}
+.dept-close:hover{color:var(--white); border-color:var(--teal)}
+.dwin{margin-top:14px; overflow-x:auto}
+.dwin table{border-collapse:collapse; font-size:12.5px; min-width:420px}
+.dwin th,.dwin td{padding:5px 12px 5px 0; text-align:left; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums; white-space:nowrap}
+.dwin th{font-weight:500; color:var(--grey); font-size:11px; text-transform:uppercase; letter-spacing:.1em}
+.dwin td.cur{color:var(--teal); font-weight:600}
+.dwin-cap{font-size:11.5px; color:var(--grey); margin:6px 0 0}
+.dcharts{display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:14px 18px; margin-top:16px}
+@media(max-width:520px){ .dcharts{grid-template-columns:1fr} }
+.dchart{min-width:0}
+.dchart-h{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); margin-bottom:4px}
+.dchart-h b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.dchart svg{width:100%; height:auto; aspect-ratio:600/170; display:block; overflow:visible}
+.dchart .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dchart .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+.dchart .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dchart .line.b{stroke:var(--warn)}
+.dchart .area{fill:rgba(141,216,211,.14); stroke:none}
+.dchart .bar{fill:var(--teal)} .dchart .bar.neg{fill:var(--cold)}
+.dchart .ref{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:4 4}
+.dchart .none{fill:var(--grey); font-size:12px}
+.dchart-k{display:flex; gap:12px; font-size:11px; color:var(--grey); margin-top:2px}
+.dchart-k span::before{content:""; display:inline-block; width:12px; height:2px; margin-right:5px; vertical-align:3px; background:var(--teal)}
+.dchart-k span.b::before{background:var(--warn)}
+.dept-note{font-size:12.5px; color:var(--grey); line-height:1.55; margin:14px 0 0; max-width:88ch}
+.dash-foot{font-size:11.5px; color:var(--grey); margin:10px 0 22px; line-height:1.5; max-width:96ch}
 
 .mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
 .mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
@@ -904,27 +1048,420 @@ table.obs td.no{color:#ff8f8f}
     <p class="lede" style="margin:0">1.3M subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
-<div class="dims">
-  <div class="dim ">
-    <div class="dim-h">Clickability</div>
-    <div class="dim-v">4.0%</div>
-    <div class="dim-2">28.9M impressions -&gt; 2.0M views -&gt; 1.9M engaged</div>
-    <p class="dim-note">Median video: 3.7% across 10</p>
+<section class="dash" id="dash" aria-label="Creator dashboard">
+  <div class="dash-top">
+    <div>
+      <div class="dash-eyebrow">Creator dashboard</div>
+      <h2 class="dash-h">Analytics</h2>
+      <div class="dash-sub"><span>Man Made</span> · <span id="dash-winlab">Last 30 days</span></div>
+    </div>
+    <div class="dash-right">
+      <div class="dash-win" role="group" aria-label="Time window"><button type="button" class="dw" data-days="30" aria-pressed="true">30 days</button><button type="button" class="dw" data-days="90" aria-pressed="false">90 days</button><button type="button" class="dw" data-days="360" aria-pressed="false">Last year</button></div>
+      <div class="dash-through"><i></i>Studio pull Aug 31, 2026 · no day-by-day series stored yet</div>
+    </div>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Watchability</div>
-    <div class="dim-v">13:29</div>
-    <div class="dim-2">26.7% of each video watched</div>
-    <p class="dim-note">425K hours watched</p>
+  <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
+    <div class="dt-k">Views</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">1.1M</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="watch">
+    <div class="dt-k">Watch time</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">247K hours</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="subs">
+    <div class="dt-k">Net subscribers gained</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">+7,971</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="avd">
+    <div class="dt-k">Average view duration</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">15:19</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="impr">
+    <div class="dt-k">Impressions</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">15.3M</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div></div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The period, day by day</div>
+        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
+        <div class="dash-daily-s">Videos (long-form)</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Replayability</div>
-    <div class="dim-v">1%</div>
-    <div class="dim-2">of classified viewers are Regulars</div>
-    <p class="dim-note">161K returning vs 626K new · Casual 20% · New 80%</p>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">3.9%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>15.3M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:7.2%"></i></span><b>1.1M</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:6.3%"></i></span><b>967K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">1.17×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">247K hours watched</div><div class="dept-l">15:19 average view duration · 28.7% of each video watched</div><div class="dept-l">Implied length 53:28 (duration ÷ percentage) · tracked channels hold 27.1% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>1.19×<em>−0.03</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>+0.19</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">23%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">32K returning (23%) · 108K new (77%)</div><div class="dept-l">+7,971 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:1.0%"><title>Regular</title></i><i class="s1" style="width:22.0%"><title>Casual</title></i><i class="s2" style="width:77.1%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 1% · 1K</span><span class="s1">Casual 22% · 31K</span><span class="s2">New 77% · 108K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
   </div>
-</div>
-<p class="dim-foot">Studio figures over the last 90 days, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better.</p>
+  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
+</section>
+<script>window.__DASH__={"channelId":"UCSNgS5ZY7JudYXoK6N3dqFA","channel":"Man Made","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"1.1M","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"247K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+7,971","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"15:19","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"15.3M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.9%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":15281014,"text":"15.3M","share":1},{"key":"views","label":"Views","value":1100912,"text":"1.1M","share":0.07204443370053847},{"key":"engaged","label":"Engaged views","value":967277,"text":"967K","share":0.06329926796742677}],"note":"15.3M impressions became 1.1M views, and 88% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"1.17×","sub":"retention score, length-adjusted","lines":["247K hours watched","15:19 average view duration · 28.7% of each video watched","Implied length 53:28 (duration ÷ percentage) · tracked channels hold 27.1% at that length"],"score":1.1681137980162186,"compare":[{"label":"This channel, last 360 days","value":"1.19×","delta":"−0.03"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"+0.19"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 17% more of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"23%","sub":"of classified viewers returned","lines":["32K returning (23%) · 108K new (77%)","+7,971 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.009611143519770073,"text":"1% · 1K"},{"label":"Casual","share":0.21979710598580027,"text":"22% · 31K"},{"label":"New","share":0.7705917504944296,"text":"77% · 108K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"2.0M","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"425K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+15,342","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"13:29","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"28.9M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.0%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":28908198,"text":"28.9M","share":1},{"key":"views","label":"Views","value":2023511,"text":"2.0M","share":0.06999782553032188},{"key":"engaged","label":"Engaged views","value":1889876,"text":"1.9M","share":0.06537508840917722}],"note":"28.9M impressions became 2.0M views, and 93% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"1.06×","sub":"retention score, length-adjusted","lines":["425K hours watched","13:29 average view duration · 26.7% of each video watched","Implied length 50:32 (duration ÷ percentage) · tracked channels hold 27.9% at that length"],"score":1.0565114301992915,"compare":[{"label":"This channel, last 360 days","value":"1.19×","delta":"−0.14"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"+0.06"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 6% more of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"20%","sub":"of classified viewers returned","lines":["161K returning (20%) · 626K new (80%)","+15,342 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.009336300063572792,"text":"1% · 7K"},{"label":"Casual","share":0.195006993006993,"text":"20% · 153K"},{"label":"New","share":0.7956567069294342,"text":"80% · 626K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"10.0M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"2.5M hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+106,508","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"15:03","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"164M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.7%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":164413799,"text":"164M","share":1},{"key":"views","label":"Views","value":9992239,"text":"10.0M","share":0.060774941402576554},{"key":"engaged","label":"Engaged views","value":9858604,"text":"9.9M","share":0.05996214466159255}],"note":"164M impressions became 10.0M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"1.19×","sub":"retention score, length-adjusted","lines":["2.5M hours watched","15:03 average view duration · 30.6% of each video watched","Implied length 49:16 (duration ÷ percentage) · tracked channels hold 28.3% at that length"],"score":1.1941291003039336,"compare":[{"label":"This channel, last 720 days","value":"0.97×","delta":"+0.22"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"+0.11"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 19% more of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"20%","sub":"of classified viewers returned","lines":["161K returning (20%) · 626K new (80%)","+106,508 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.009336300063572792,"text":"1% · 7K"},{"label":"Casual","share":0.195006993006993,"text":"20% · 153K"},{"label":"New","share":0.7956567069294342,"text":"80% · 626K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}}],"daily":[],"uploads":[{"d":"2024-05-31","id":"5LsB57hJ-XI","t":"I Left 7M Subs to Build My Dream Garage Workshop"},{"d":"2024-08-22","id":"_W6t2M1RccI","t":"I Made a Real Waterfall Dining Table"},{"d":"2024-10-05","id":"b0npGI9WCzs","t":"Building a Tiny Office Pod Under My Stairs"},{"d":"2024-11-17","id":"FT98_SW67Dg","t":"I Made The Most Satisfying Desk"},{"d":"2025-04-04","id":"wPiriQu3N6I","t":"I Hid a Cold Plunge Inside a Firepit"},{"d":"2025-06-06","id":"QbMK26dwUgg","t":"The Most Exhausting 2 Weeks of my Life"},{"d":"2025-09-15","id":"D3XFIa7Fz80","t":"They said I needed an Engineer for this......lol"},{"d":"2025-12-12","id":"k5eHSd-p3x0","t":"I Made a Desk For Endless Fidgeting"},{"d":"2026-02-06","id":"EAOutIsbJLk","t":"I made this cause I needed a nap lol"},{"d":"2026-08-18","id":"TKxghFFz87k","t":"I Turned My Boring Office Into A Starlit Cabin"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
+<script>
+(function(){
+  var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
+  var cur = M.defaultDays, openDept = null, hoverIdx = -1;
+  var byDays = {}; M.windows.forEach(function(w){ byDays[w.days] = w; });
+  function W(){ return byDays[cur] || M.windows[0]; }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function fmtN(n){
+    if (n == null || !isFinite(n)) return '\u2014';
+    var a = Math.abs(n), s = n < 0 ? '\u2212' : '';
+    if (a >= 1e9) return s + (a/1e9).toFixed(1) + 'B';
+    if (a >= 1e8) return s + Math.round(a/1e6) + 'M';
+    if (a >= 1e6) return s + (a/1e6).toFixed(1) + 'M';
+    if (a >= 1e3) return s + Math.round(a/1e3) + 'K';
+    return s + Math.round(a);
+  }
+  function fmtFull(n){ return n == null ? '\u2014' : Math.round(n).toLocaleString('en-US'); }
+  function fmtPct(x, dp){ return x == null ? '\u2014' : (x*100).toFixed(dp == null ? 1 : dp) + '%'; }
+  function mmss(sec){ if (sec == null) return '\u2014'; var s = Math.max(0, Math.round(sec)), m = Math.floor(s/60);
+    return (m >= 60 ? Math.floor(m/60) + ':' + String(m%60).padStart(2,'0') : String(m)) + ':' + String(s%60).padStart(2,'0'); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDay(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]); }
+  function fmtDayYear(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]) + ', ' + p[0]; }
+  function rowsIn(w){
+    if (!w.from || !w.to) return [];
+    return M.daily.filter(function(r){ return r.d >= w.from && r.d <= w.to; });
+  }
+  function finite(xs){ return xs.filter(function(x){ return x != null && isFinite(x); }); }
+  function niceStep(max, n){
+    var raw = max / n, p = Math.pow(10, Math.floor(Math.log(raw)/Math.LN10)), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p;
+  }
+
+  // ---- headline tiles ------------------------------------------------------
+  function tileHtml(t){
+    var cls = /^\+/.test(t.compare) ? ' up' : /^\u2212/.test(t.compare) ? ' down' : '';
+    return '<div class="dt" data-tile="' + t.key + '">' +
+      '<div class="dt-k">' + esc(t.name) + '</div><div class="dt-s">' + esc(t.sub) + '</div>' +
+      '<div class="dt-v">' + (t.value != null ? esc(t.value) : '<span class="dt-none">not pulled</span>') + '</div>' +
+      '<div class="dt-c' + cls + '">' + esc(t.compare) + '</div>' +
+      '<svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg></div>';
+  }
+  function sparkInto(svg, values, unit){
+    if (!svg) return;
+    var vals = values || [], fin = finite(vals);
+    if (fin.length < 2){ svg.innerHTML = ''; svg.style.display = 'none'; return; }
+    svg.style.display = '';
+    var lo = Math.min.apply(null, fin), hi = Math.max.apply(null, fin);
+    if (lo > 0) lo = 0;                       // a spark that hides its baseline exaggerates
+    if (hi === lo) hi = lo + 1;
+    var n = vals.length, d = '', first = null, last = null;
+    for (var i = 0; i < n; i++){
+      var v = vals[i]; if (v == null || !isFinite(v)) continue;
+      var x = (n > 1 ? i/(n-1) : 0.5) * 216 + 2, y = 40 - ((v - lo)/(hi - lo)) * 36;
+      d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+      if (first === null) first = x; last = x;
+    }
+    var area = d + 'L' + last.toFixed(1) + ' 42 L' + first.toFixed(1) + ' 42 Z';
+    svg.innerHTML = '<path class="fill" d="' + area + '"/><path d="' + d + '"><title>' + esc(unit) + '</title></path>';
+  }
+  function renderTiles(w){
+    var box = document.getElementById('dash-tiles'); if (!box) return;
+    box.innerHTML = w.tiles.map(tileHtml).join('');
+    w.tiles.forEach(function(t){
+      var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
+      sparkInto(el, t.spark, t.unit);
+    });
+  }
+
+  // ---- the period, day by day ---------------------------------------------
+  var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
+  var dayRows = [], dayMax = 1;
+  function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
+  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+  function renderDaily(w){
+    var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
+        empty = document.getElementById('dash-daily-empty');
+    if (!svg) return;
+    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
+    hoverIdx = -1;
+    var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
+    if (dayRows.length < 2){
+      svg.innerHTML = ''; svg.style.display = 'none';
+      if (sum) sum.textContent = '';
+      if (empty) empty.hidden = false;
+      return;
+    }
+    svg.style.display = '';
+    if (empty) empty.hidden = true;
+    var total = 0; dayRows.forEach(function(r){ total += r.v; });
+    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
+      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
+    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
+    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
+    var parts = [], n = dayRows.length;
+    for (var g = step; g <= dayMax + 1e-9; g += step){
+      var y = yAt(g);
+      parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+    }
+    var d = '';
+    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
+    var base = yAt(0);
+    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
+    parts.push('<path class="line" d="' + d + '"/>');
+    // Uploads published inside the window, as ticks under the baseline.
+    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
+    (M.uploads || []).forEach(function(u){
+      var i = byDay[u.d]; if (i == null) return;
+      var x = xAt(i, n);
+      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    });
+    // Date labels: first, middle, last.
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+    });
+    parts.push('<g id="dash-hover"></g>');
+    parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
+    svg.innerHTML = parts.join('');
+  }
+  function showHover(i){
+    var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
+    if (!svg || !g || !tip) return;
+    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
+    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
+                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
+    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
+    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
+    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
+    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
+    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
+    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    tip.innerHTML = lines.join('');
+    tip.hidden = false;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
+    var left = px + 14, tw = tip.offsetWidth || 220;
+    if (left + tw > box.width) left = px - tw - 14;
+    tip.style.left = Math.max(0, left) + 'px';
+    tip.style.top = Math.max(0, py - 16) + 'px';
+  }
+  (function wireHover(){
+    var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
+    svg.addEventListener('pointermove', function(e){
+      if (!dayRows.length) return;
+      var box = svg.getBoundingClientRect();
+      var fx = ((e.clientX - box.left) / box.width) * DW;
+      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
+      if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
+    });
+    svg.addEventListener('pointerleave', function(){ hoverIdx = -1; showHover(-1); });
+  })();
+
+  // ---- the three dimensions ------------------------------------------------
+  function faceClick(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div><div class="fun">';
+    c.funnel.forEach(function(f, i){
+      h += '<div class="fun-r n' + (i+1) + '"><span>' + esc(f.label) + '</span><span class="fun-b"><i style="width:' +
+           (f.share != null ? (f.share*100).toFixed(1) : 0) + '%"></i></span><b>' + esc(f.text) + '</b></div>';
+    });
+    return h + '</div>';
+  }
+  function faceWatch(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.compare.length){
+      h += '<div class="cmp">';
+      c.compare.forEach(function(r){
+        h += '<div class="cmp-r"><span>' + esc(r.label) + '</span>' +
+             (r.delta != null ? '<b>' + esc(r.value) + '<em>' + esc(r.delta) + '</em></b>' : '<b class="wh">' + esc(r.value) + '</b>') + '</div>';
+      });
+      h += '</div>';
+    }
+    return h;
+  }
+  function faceReplay(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + (c.sourceDays ? ' (' + c.sourceDays + '-day split)' : '') + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.segments.length){
+      h += '<div class="seg"><div class="seg-b">';
+      c.segments.forEach(function(s, i){ h += '<i class="s' + i + '" style="width:' + (s.share*100).toFixed(1) + '%"><title>' + esc(s.label) + '</title></i>'; });
+      h += '</div><div class="seg-k">';
+      c.segments.forEach(function(s, i){ h += '<span class="s' + i + '">' + esc(s.label) + ' ' + esc(s.text) + '</span>'; });
+      h += '</div><div class="seg-basis">' + (c.segmentsBasis === 'watch-time' ? 'share of total watch time hours' : 'share of classified viewers; watch-time split not pulled yet') + '</div></div>';
+    }
+    return h;
+  }
+  function renderDepts(w){
+    var faces = { click: faceClick(w.click), watch: faceWatch(w.watch), replay: faceReplay(w.replay) };
+    Object.keys(faces).forEach(function(k){
+      var el = document.querySelector('.dept[data-dept="' + k + '"] .dept-face');
+      if (el) el.innerHTML = faces[k];
+    });
+  }
+
+  // ---- the open dimension over time ---------------------------------------
+  // Small multiples are drawn at 600 units wide: a 1000-unit box in a
+  // half-width column scales its 11px ticks below legibility.
+  function chartHtml(id, title, right){
+    return '<div class="dchart"><div class="dchart-h"><span>' + esc(title) + '</span><b>' + esc(right || '') + '</b></div><svg viewBox="0 0 600 170" data-c="' + id + '"></svg></div>';
+  }
+  function drawSeries(svg, rows, keys, fmt, kind, opts){
+    if (!svg) return;
+    var L = 54, R = 10, T = 10, B = 26, Wd = 600, Hd = 170;
+    var series = keys.map(function(k){ return rows.map(function(r){ return r[k] == null ? null : r[k]; }); });
+    var all = finite([].concat.apply([], series));
+    if (all.length < 2){ svg.innerHTML = '<text class="none" x="' + L + '" y="' + (Hd/2) + '">Not in the stored day-by-day series.</text>'; return; }
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+    if (kind !== 'bars' && lo > 0) lo = 0;
+    if (opts && opts.ref != null){ lo = Math.min(lo, opts.ref); hi = Math.max(hi, opts.ref); }
+    if (kind === 'bars'){ lo = Math.min(0, lo); hi = Math.max(0, hi); }
+    if (hi === lo) hi = lo + 1;
+    var n = rows.length, parts = [];
+    function x(i){ return L + (n > 1 ? i/(n-1) : 0.5) * (Wd-L-R); }
+    function y(v){ return T + (1 - (v-lo)/(hi-lo)) * (Hd-T-B); }
+    var step = niceStep(hi - lo, 3);
+    for (var g = Math.ceil(lo/step)*step; g <= hi + 1e-9; g += step){
+      parts.push('<line class="grid" x1="' + L + '" y1="' + y(g).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(g).toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (L-8) + '" y="' + (y(g)+4).toFixed(1) + '" text-anchor="end">' + esc(fmt(g)) + '</text>');
+    }
+    if (opts && opts.ref != null){
+      parts.push('<line class="ref" x1="' + L + '" y1="' + y(opts.ref).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(opts.ref).toFixed(1) + '"><title>' + esc(opts.refLabel || '') + '</title></line>');
+    }
+    if (kind === 'bars'){
+      var bw = Math.max(1, (Wd-L-R)/n * 0.7);
+      series[0].forEach(function(v, i){
+        if (v == null) return;
+        var y0 = y(0), y1 = y(v);
+        parts.push('<rect class="bar' + (v < 0 ? ' neg' : '') + '" x="' + (x(i)-bw/2).toFixed(1) + '" y="' + Math.min(y0,y1).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(1, Math.abs(y0-y1)).toFixed(1) + '"><title>' + esc(fmtDay(rows[i].d) + ': ' + fmt(v)) + '</title></rect>');
+      });
+    } else {
+      series.forEach(function(s, si){
+        var d = '', last = null, first = null;
+        s.forEach(function(v, i){
+          if (v == null || !isFinite(v)) return;
+          d += (d ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1) + ' ';
+          if (first === null) first = x(i); last = x(i);
+        });
+        if (!d) return;
+        if (si === 0 && keys.length === 1) parts.push('<path class="area" d="' + d + 'L' + last.toFixed(1) + ' ' + y(lo).toFixed(1) + ' L' + first.toFixed(1) + ' ' + y(lo).toFixed(1) + ' Z"/>');
+        parts.push('<path class="line' + (si ? ' b' : '') + '" d="' + d + '"/>');
+      });
+    }
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      if (i < 0 || i >= n) return;
+      parts.push('<text class="tick" x="' + x(i).toFixed(1) + '" y="' + (Hd-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(rows[i].d) + '</text>');
+    });
+    svg.innerHTML = parts.join('');
+  }
+  function last(rows, k){ for (var i = rows.length-1; i >= 0; i--) if (rows[i][k] != null) return rows[i][k]; return null; }
+  function windowTable(dept){
+    var cols = dept === 'click'
+      ? [['Impressions', function(w){ return w.click.funnel[0].text; }], ['Views', function(w){ return w.click.funnel[1].text; }],
+         ['Engaged', function(w){ return w.click.funnel[2].text; }], ['CTR', function(w){ return w.click.headline || '\u2014'; }]]
+      : dept === 'watch'
+      ? [['Watch time', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'watch'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['AVD', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'avd'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Retention score', function(w){ return w.watch.headline && w.watch.score != null ? w.watch.headline : '\u2014'; }]]
+      : [['Returning', function(w){ return w.replay.headline || '\u2014'; }],
+         ['Net subscribers', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'subs'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Split', function(w){ return w.replay.segments.map(function(s){ return s.label + ' ' + s.text.split(' \u00b7 ')[0]; }).join(', ') || '\u2014'; }]];
+    var h = '<div class="dwin"><table><thead><tr><th>Window</th>' + cols.map(function(c){ return '<th>' + esc(c[0]) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    M.windows.forEach(function(w){
+      h += '<tr><td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(w.label) + (w.label === 'Last year' ? ' (' + w.days + ' days)' : '') + '</td>' +
+           cols.map(function(c){ return '<td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(c[1](w)) + '</td>'; }).join('') + '</tr>';
+    });
+    return h + '</tbody></table><p class="dwin-cap">Each row is one trailing window from Studio, ending on the pull date; the selected window is highlighted. Longer windows contain the shorter ones, so read the drift between rows, not the sum.</p></div>';
+  }
+  function renderPanel(){
+    var panel = document.getElementById('dept-panel'); if (!panel) return;
+    document.querySelectorAll('.dept').forEach(function(d){ d.setAttribute('aria-expanded', String(d.dataset.dept === openDept)); });
+    if (!openDept){ panel.hidden = true; panel.innerHTML = ''; return; }
+    var w = W(), rows = rowsIn(w), names = { click: 'Clickability', watch: 'Watchability', replay: 'Replayability' };
+    var h = '<div class="dept-panel-h"><span class="dept-panel-t">' + names[openDept] + ' over time</span><span class="dept-panel-w">' +
+            (rows.length ? esc(fmtDayYear(w.from) + ' to ' + fmtDayYear(w.to)) : 'by trailing window') + '</span><button type="button" class="dept-close" id="dept-close">Close</button></div>';
+    h += windowTable(openDept);
+    var charts = [];
+    if (rows.length >= 2){
+      if (openDept === 'click'){
+        charts = [['i','Impressions a day', fmtN(last(rows,'i'))], ['v','Views a day', fmtN(last(rows,'v'))], ['e','Engaged views a day', fmtN(last(rows,'e'))], ['c','Click-through by day', fmtPct(last(rows,'c'))]];
+      } else if (openDept === 'watch'){
+        charts = [['h','Hours watched a day', fmtN(last(rows,'h'))], ['a','Average view duration by day', mmss(last(rows,'a'))], ['p','Average view percentage by day', fmtPct(last(rows,'p'))], ['q','Retention score by day', last(rows,'q') != null ? last(rows,'q').toFixed(2) + '\u00d7' : '\u2014']];
+      } else {
+        charts = [['rn','Returning and new viewers a day', fmtN(last(rows,'r')) + ' / ' + fmtN(last(rows,'n'))], ['s','Net subscribers a day', (last(rows,'s') > 0 ? '+' : '') + fmtFull(last(rows,'s'))]];
+      }
+      h += '<div class="dcharts">' + charts.map(function(c){ return chartHtml(c[0], c[1], c[2]); }).join('') + '</div>';
+    } else {
+      h += '<p class="dept-note">No day-by-day series is stored for this channel yet, so the figures above are per trailing window only. The next Studio pull captures the last 365 days day by day and these charts fill in.</p>';
+    }
+    h += '<p class="dept-note">' + esc(w[openDept].note) + '</p>';
+    panel.innerHTML = h;
+    panel.hidden = false;
+    charts.forEach(function(c){
+      var svg = panel.querySelector('svg[data-c="' + c[0] + '"]');
+      if (c[0] === 'rn'){ drawSeries(svg, rows, ['r','n'], fmtN, 'lines'); svg.insertAdjacentHTML('afterend', '<div class="dchart-k"><span>Returning</span><span class="b">New</span></div>'); }
+      else if (c[0] === 's') drawSeries(svg, rows, ['s'], fmtN, 'bars');
+      else if (c[0] === 'c' || c[0] === 'p') drawSeries(svg, rows, [c[0]], function(v){ return fmtPct(v, v < 0.2 ? 1 : 0); }, 'lines');
+      else if (c[0] === 'a') drawSeries(svg, rows, ['a'], mmss, 'lines');
+      else if (c[0] === 'q') drawSeries(svg, rows, ['q'], function(v){ return v.toFixed(2) + '\u00d7'; }, 'lines', { ref: 1, refLabel: '1.00\u00d7 = what tracked channels hold at this length' });
+      else drawSeries(svg, rows, [c[0]], fmtN, 'lines');
+    });
+    var close = document.getElementById('dept-close');
+    if (close) close.addEventListener('click', function(){ openDept = null; renderPanel(); });
+  }
+
+  // ---- wiring ---------------------------------------------------------------
+  function render(){
+    var w = W();
+    var lab = document.getElementById('dash-winlab');
+    if (lab) lab.textContent = w.label === 'Last year' ? 'Last year' : 'Last ' + w.label;
+    document.querySelectorAll('.dw').forEach(function(b){ b.setAttribute('aria-pressed', String(Number(b.dataset.days) === cur)); });
+    renderTiles(w); renderDaily(w); renderDepts(w); renderPanel();
+  }
+  document.querySelectorAll('.dw').forEach(function(b){
+    b.addEventListener('click', function(){ cur = Number(b.dataset.days); render(); });
+  });
+  document.querySelectorAll('.dept').forEach(function(d){
+    function toggle(){ openDept = openDept === d.dataset.dept ? null : d.dataset.dept; renderPanel();
+      if (openDept){ var p = document.getElementById('dept-panel'); if (p && p.scrollIntoView === undefined) return; } }
+    d.addEventListener('click', toggle);
+    d.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+  });
+  render();
+})();
+</script>
 <div class="stats">
   <div class="stat"><div class="v">654K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">3</div><div class="k">Breakouts (2×+)</div></div>
@@ -1366,6 +1903,7 @@ means two things move together on this channel, which is not the same as one cau
       <button class="tgl" data-z="band" aria-pressed="false" type="button">Median band</button>
       <button class="tgl" data-z="time" aria-pressed="false" type="button">By upload date</button>
     </span>
+    <span class="grp"><span class="lab">Compare</span><button class="tgl" data-ref="all" aria-pressed="false" type="button" title="Median retention curve, one vote per channel, over 3240 videos">All tracked channels (19)</button><button class="tgl" disabled type="button" title="Withheld: 9 of 10 channels with curves">maker-build · withheld (9 of 10 channels with curves)</button></span>
     <span class="spacer"></span>
     <span class="zoomnote" id="zoomnote">scroll to zoom, drag to pan</span>
     <button class="tgl" id="cohortreset" type="button">Reset</button>
@@ -1435,12 +1973,18 @@ means two things move together on this channel, which is not the same as one cau
     drawn grey rather than mid-ramp, and the ramp says how many. There is deliberately no returning-viewer
     encoding: that split is not fetched by any run here, and an option that quietly ranked on something else
     would be worse than its absence.</p>
+  <p class="cap"><strong>Compare</strong> draws a reference curve against this channel's own: the median retention curve
+    of every tracked channel, and of the channels in the same confirmed niche once ten or more of them carry
+    curves. Each channel contributes ONE curve (its own median), so a channel with six hundred analysed uploads
+    counts the same as one with twelve, and the line is a statement about the fleet rather than about its
+    largest member. Reference curves live on the % axis only, like the channel median, because clock time has
+    no shared x. The maker-build reference is withheld: 9 of 10 channels with curves.</p>
   <details class="legwrap"><summary>All 10 videos</summary>
     <input class="legfind" id="legfind" type="search" placeholder="Filter this list by title" aria-label="Filter the video list">
     <div class="clegend"><a href="UCSNgS5ZY7JudYXoK6N3dqFA/TKxghFFz87k.html" data-i="0" title="I Turned My Boring Office Into A Starlit Cabin"><b></b><span>I Turned My Boring Office Into A Starlit Cabin</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/EAOutIsbJLk.html" data-i="1" title="I made this cause I needed a nap lol"><b></b><span>I made this cause I needed a nap lol</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/k5eHSd-p3x0.html" data-i="2" title="I Made a Desk For Endless Fidgeting"><b></b><span>I Made a Desk For Endless Fidgeting</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/D3XFIa7Fz80.html" data-i="3" title="They said I needed an Engineer for this......lol"><b></b><span>They said I needed an Engineer for this......lol</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/QbMK26dwUgg.html" data-i="4" title="The Most Exhausting 2 Weeks of my Life"><b></b><span>The Most Exhausting 2 Weeks of my Life</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/wPiriQu3N6I.html" data-i="5" title="I Hid a Cold Plunge Inside a Firepit"><b></b><span>I Hid a Cold Plunge Inside a Firepit</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/FT98_SW67Dg.html" data-i="6" title="I Made The Most Satisfying Desk"><b></b><span>I Made The Most Satisfying Desk</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/b0npGI9WCzs.html" data-i="7" title="Building a Tiny Office Pod Under My Stairs"><b></b><span>Building a Tiny Office Pod Under My Stairs</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/_W6t2M1RccI.html" data-i="8" title="I Made a Real Waterfall Dining Table"><b></b><span>I Made a Real Waterfall Dining Table</span></a><a href="UCSNgS5ZY7JudYXoK6N3dqFA/5LsB57hJ-XI.html" data-i="9" title="I Left 7M Subs to Build My Dream Garage Workshop"><b></b><span>I Left 7M Subs to Build My Dream Garage Workshop</span></a></div>
   </details>
 </div>
-<script>window.__COHORT__={"videos":[{"videoId":"TKxghFFz87k","title":"I Turned My Boring Office Into A Starlit Cabin","durationSec":3513,"pub":1787079639000,"views":529658,"r50":0.337,"avd":1274.5164,"wth":187516.05760866666,"outlier":null,"curve":[{"p":1,"w":0.873},{"p":2,"w":0.58},{"p":3,"w":0.497},{"p":4,"w":0.486},{"p":5,"w":0.464},{"p":6,"w":0.451},{"p":7,"w":0.443},{"p":8,"w":0.435},{"p":9,"w":0.432},{"p":10,"w":0.433},{"p":11,"w":0.442},{"p":12,"w":0.413},{"p":13,"w":0.412},{"p":14,"w":0.406},{"p":15,"w":0.403},{"p":16,"w":0.406},{"p":17,"w":0.407},{"p":18,"w":0.395},{"p":19,"w":0.387},{"p":20,"w":0.399},{"p":21,"w":0.385},{"p":22,"w":0.323},{"p":23,"w":0.371},{"p":24,"w":0.369},{"p":25,"w":0.372},{"p":26,"w":0.377},{"p":27,"w":0.369},{"p":28,"w":0.367},{"p":29,"w":0.362},{"p":30,"w":0.366},{"p":31,"w":0.378},{"p":32,"w":0.362},{"p":33,"w":0.36},{"p":34,"w":0.359},{"p":35,"w":0.363},{"p":36,"w":0.368},{"p":37,"w":0.353},{"p":38,"w":0.352},{"p":39,"w":0.355},{"p":40,"w":0.349},{"p":41,"w":0.349},{"p":42,"w":0.35},{"p":43,"w":0.343},{"p":44,"w":0.343},{"p":45,"w":0.341},{"p":46,"w":0.345},{"p":47,"w":0.358},{"p":48,"w":0.318},{"p":49,"w":0.319},{"p":50,"w":0.337},{"p":51,"w":0.336},{"p":52,"w":0.338},{"p":53,"w":0.333},{"p":54,"w":0.337},{"p":55,"w":0.33},{"p":56,"w":0.33},{"p":57,"w":0.335},{"p":58,"w":0.33},{"p":59,"w":0.329},{"p":60,"w":0.329},{"p":61,"w":0.339},{"p":62,"w":0.334},{"p":63,"w":0.327},{"p":64,"w":0.322},{"p":65,"w":0.322},{"p":66,"w":0.321},{"p":67,"w":0.326},{"p":68,"w":0.318},{"p":69,"w":0.318},{"p":70,"w":0.319},{"p":71,"w":0.32},{"p":72,"w":0.326},{"p":73,"w":0.319},{"p":74,"w":0.319},{"p":75,"w":0.321},{"p":76,"w":0.328},{"p":77,"w":0.321},{"p":78,"w":0.322},{"p":79,"w":0.327},{"p":80,"w":0.325},{"p":81,"w":0.324},{"p":82,"w":0.328},{"p":83,"w":0.327},{"p":84,"w":0.325},{"p":85,"w":0.325},{"p":86,"w":0.32},{"p":87,"w":0.326},{"p":88,"w":0.335},{"p":89,"w":0.327},{"p":90,"w":0.329},{"p":91,"w":0.328},{"p":92,"w":0.328},{"p":93,"w":0.329},{"p":94,"w":0.34},{"p":95,"w":0.344},{"p":96,"w":0.364},{"p":97,"w":0.362},{"p":98,"w":0.352},{"p":99,"w":0.336},{"p":100,"w":0.303}]},{"videoId":"EAOutIsbJLk","title":"I made this cause I needed a nap lol","durationSec":2276,"pub":1770404661000,"views":507546,"r50":0.3403,"avd":848.0376,"wth":119560.581036,"outlier":0.53,"curve":[{"p":1,"w":0.921},{"p":2,"w":0.662},{"p":3,"w":0.549},{"p":4,"w":0.516},{"p":5,"w":0.498},{"p":6,"w":0.478},{"p":7,"w":0.464},{"p":8,"w":0.459},{"p":9,"w":0.45},{"p":10,"w":0.448},{"p":11,"w":0.445},{"p":12,"w":0.436},{"p":13,"w":0.431},{"p":14,"w":0.426},{"p":15,"w":0.426},{"p":16,"w":0.419},{"p":17,"w":0.405},{"p":18,"w":0.415},{"p":19,"w":0.415},{"p":20,"w":0.402},{"p":21,"w":0.404},{"p":22,"w":0.398},{"p":23,"w":0.399},{"p":24,"w":0.395},{"p":25,"w":0.4},{"p":26,"w":0.4},{"p":27,"w":0.394},{"p":28,"w":0.39},{"p":29,"w":0.39},{"p":30,"w":0.396},{"p":31,"w":0.387},{"p":32,"w":0.386},{"p":33,"w":0.388},{"p":34,"w":0.388},{"p":35,"w":0.39},{"p":36,"w":0.375},{"p":37,"w":0.364},{"p":38,"w":0.372},{"p":39,"w":0.364},{"p":40,"w":0.356},{"p":41,"w":0.349},{"p":42,"w":0.343},{"p":43,"w":0.342},{"p":44,"w":0.341},{"p":45,"w":0.34},{"p":46,"w":0.339},{"p":47,"w":0.339},{"p":48,"w":0.338},{"p":49,"w":0.337},{"p":50,"w":0.34},{"p":51,"w":0.339},{"p":52,"w":0.356},{"p":53,"w":0.385},{"p":54,"w":0.338},{"p":55,"w":0.334},{"p":56,"w":0.333},{"p":57,"w":0.332},{"p":58,"w":0.335},{"p":59,"w":0.331},{"p":60,"w":0.331},{"p":61,"w":0.331},{"p":62,"w":0.33},{"p":63,"w":0.331},{"p":64,"w":0.328},{"p":65,"w":0.326},{"p":66,"w":0.328},{"p":67,"w":0.325},{"p":68,"w":0.325},{"p":69,"w":0.332},{"p":70,"w":0.326},{"p":71,"w":0.323},{"p":72,"w":0.321},{"p":73,"w":0.32},{"p":74,"w":0.318},{"p":75,"w":0.317},{"p":76,"w":0.318},{"p":77,"w":0.322},{"p":78,"w":0.324},{"p":79,"w":0.328},{"p":80,"w":0.335},{"p":81,"w":0.328},{"p":82,"w":0.321},{"p":83,"w":0.315},{"p":84,"w":0.316},{"p":85,"w":0.308},{"p":86,"w":0.309},{"p":87,"w":0.309},{"p":88,"w":0.31},{"p":89,"w":0.315},{"p":90,"w":0.32},{"p":91,"w":0.327},{"p":92,"w":0.343},{"p":93,"w":0.349},{"p":94,"w":0.353},{"p":95,"w":0.354},{"p":96,"w":0.349},{"p":97,"w":0.345},{"p":98,"w":0.338},{"p":99,"w":0.322},{"p":100,"w":0.298}]},{"videoId":"k5eHSd-p3x0","title":"I Made a Desk For Endless Fidgeting","durationSec":2098,"pub":1765569939000,"views":1220210,"r50":0.2802,"avd":673.83564,"wth":228394.71841233334,"outlier":1.87,"curve":[{"p":1,"w":0.947},{"p":2,"w":0.738},{"p":3,"w":0.556},{"p":4,"w":0.505},{"p":5,"w":0.47},{"p":6,"w":0.449},{"p":7,"w":0.431},{"p":8,"w":0.416},{"p":9,"w":0.405},{"p":10,"w":0.401},{"p":11,"w":0.396},{"p":12,"w":0.386},{"p":13,"w":0.378},{"p":14,"w":0.363},{"p":15,"w":0.351},{"p":16,"w":0.347},{"p":17,"w":0.346},{"p":18,"w":0.345},{"p":19,"w":0.343},{"p":20,"w":0.343},{"p":21,"w":0.343},{"p":22,"w":0.343},{"p":23,"w":0.341},{"p":24,"w":0.335},{"p":25,"w":0.324},{"p":26,"w":0.331},{"p":27,"w":0.317},{"p":28,"w":0.316},{"p":29,"w":0.316},{"p":30,"w":0.31},{"p":31,"w":0.315},{"p":32,"w":0.313},{"p":33,"w":0.308},{"p":34,"w":0.305},{"p":35,"w":0.304},{"p":36,"w":0.301},{"p":37,"w":0.298},{"p":38,"w":0.297},{"p":39,"w":0.292},{"p":40,"w":0.293},{"p":41,"w":0.298},{"p":42,"w":0.3},{"p":43,"w":0.289},{"p":44,"w":0.287},{"p":45,"w":0.284},{"p":46,"w":0.283},{"p":47,"w":0.282},{"p":48,"w":0.283},{"p":49,"w":0.282},{"p":50,"w":0.28},{"p":51,"w":0.28},{"p":52,"w":0.282},{"p":53,"w":0.279},{"p":54,"w":0.279},{"p":55,"w":0.279},{"p":56,"w":0.278},{"p":57,"w":0.277},{"p":58,"w":0.278},{"p":59,"w":0.286},{"p":60,"w":0.281},{"p":61,"w":0.282},{"p":62,"w":0.278},{"p":63,"w":0.274},{"p":64,"w":0.272},{"p":65,"w":0.271},{"p":66,"w":0.269},{"p":67,"w":0.268},{"p":68,"w":0.267},{"p":69,"w":0.265},{"p":70,"w":0.266},{"p":71,"w":0.272},{"p":72,"w":0.268},{"p":73,"w":0.265},{"p":74,"w":0.271},{"p":75,"w":0.267},{"p":76,"w":0.266},{"p":77,"w":0.265},{"p":78,"w":0.265},{"p":79,"w":0.265},{"p":80,"w":0.265},{"p":81,"w":0.27},{"p":82,"w":0.266},{"p":83,"w":0.266},{"p":84,"w":0.277},{"p":85,"w":0.281},{"p":86,"w":0.278},{"p":87,"w":0.283},{"p":88,"w":0.287},{"p":89,"w":0.293},{"p":90,"w":0.295},{"p":91,"w":0.303},{"p":92,"w":0.313},{"p":93,"w":0.319},{"p":94,"w":0.319},{"p":95,"w":0.316},{"p":96,"w":0.315},{"p":97,"w":0.31},{"p":98,"w":0.304},{"p":99,"w":0.296},{"p":100,"w":0.261}]},{"videoId":"D3XFIa7Fz80","title":"They said I needed an Engineer for this......lol","durationSec":3235,"pub":1757978814000,"views":1337024,"r50":0.3056,"avd":1085.5365999999997,"wth":403163.4686328888,"outlier":2.04,"curve":[{"p":1,"w":0.935},{"p":2,"w":0.596},{"p":3,"w":0.504},{"p":4,"w":0.478},{"p":5,"w":0.459},{"p":6,"w":0.427},{"p":7,"w":0.412},{"p":8,"w":0.406},{"p":9,"w":0.396},{"p":10,"w":0.391},{"p":11,"w":0.384},{"p":12,"w":0.376},{"p":13,"w":0.378},{"p":14,"w":0.368},{"p":15,"w":0.372},{"p":16,"w":0.362},{"p":17,"w":0.356},{"p":18,"w":0.352},{"p":19,"w":0.353},{"p":20,"w":0.35},{"p":21,"w":0.346},{"p":22,"w":0.34},{"p":23,"w":0.336},{"p":24,"w":0.336},{"p":25,"w":0.329},{"p":26,"w":0.328},{"p":27,"w":0.326},{"p":28,"w":0.322},{"p":29,"w":0.319},{"p":30,"w":0.319},{"p":31,"w":0.32},{"p":32,"w":0.315},{"p":33,"w":0.313},{"p":34,"w":0.313},{"p":35,"w":0.309},{"p":36,"w":0.309},{"p":37,"w":0.313},{"p":38,"w":0.307},{"p":39,"w":0.309},{"p":40,"w":0.305},{"p":41,"w":0.307},{"p":42,"w":0.307},{"p":43,"w":0.309},{"p":44,"w":0.31},{"p":45,"w":0.309},{"p":46,"w":0.319},{"p":47,"w":0.317},{"p":48,"w":0.312},{"p":49,"w":0.303},{"p":50,"w":0.306},{"p":51,"w":0.306},{"p":52,"w":0.308},{"p":53,"w":0.307},{"p":54,"w":0.306},{"p":55,"w":0.308},{"p":56,"w":0.305},{"p":57,"w":0.304},{"p":58,"w":0.3},{"p":59,"w":0.295},{"p":60,"w":0.298},{"p":61,"w":0.301},{"p":62,"w":0.305},{"p":63,"w":0.294},{"p":64,"w":0.293},{"p":65,"w":0.295},{"p":66,"w":0.293},{"p":67,"w":0.296},{"p":68,"w":0.293},{"p":69,"w":0.295},{"p":70,"w":0.296},{"p":71,"w":0.298},{"p":72,"w":0.301},{"p":73,"w":0.299},{"p":74,"w":0.299},{"p":75,"w":0.304},{"p":76,"w":0.3},{"p":77,"w":0.305},{"p":78,"w":0.304},{"p":79,"w":0.303},{"p":80,"w":0.308},{"p":81,"w":0.303},{"p":82,"w":0.296},{"p":83,"w":0.295},{"p":84,"w":0.296},{"p":85,"w":0.3},{"p":86,"w":0.301},{"p":87,"w":0.3},{"p":88,"w":0.304},{"p":89,"w":0.311},{"p":90,"w":0.316},{"p":91,"w":0.318},{"p":92,"w":0.322},{"p":93,"w":0.33},{"p":94,"w":0.346},{"p":95,"w":0.346},{"p":96,"w":0.353},{"p":97,"w":0.345},{"p":98,"w":0.349},{"p":99,"w":0.333},{"p":100,"w":0.305}]},{"videoId":"QbMK26dwUgg","title":"The Most Exhausting 2 Weeks of my Life","durationSec":2026,"pub":1749223399000,"views":412394,"r50":0.34979999999999994,"avd":785.0547400000003,"wth":89931.0734576556,"outlier":0.43,"curve":[{"p":1,"w":0.938},{"p":2,"w":0.716},{"p":3,"w":0.603},{"p":4,"w":0.575},{"p":5,"w":0.552},{"p":6,"w":0.533},{"p":7,"w":0.518},{"p":8,"w":0.51},{"p":9,"w":0.503},{"p":10,"w":0.486},{"p":11,"w":0.475},{"p":12,"w":0.475},{"p":13,"w":0.5},{"p":14,"w":0.483},{"p":15,"w":0.458},{"p":16,"w":0.45},{"p":17,"w":0.442},{"p":18,"w":0.436},{"p":19,"w":0.433},{"p":20,"w":0.43},{"p":21,"w":0.43},{"p":22,"w":0.429},{"p":23,"w":0.431},{"p":24,"w":0.421},{"p":25,"w":0.422},{"p":26,"w":0.422},{"p":27,"w":0.4},{"p":28,"w":0.404},{"p":29,"w":0.406},{"p":30,"w":0.408},{"p":31,"w":0.397},{"p":32,"w":0.395},{"p":33,"w":0.391},{"p":34,"w":0.391},{"p":35,"w":0.385},{"p":36,"w":0.384},{"p":37,"w":0.389},{"p":38,"w":0.392},{"p":39,"w":0.387},{"p":40,"w":0.376},{"p":41,"w":0.376},{"p":42,"w":0.367},{"p":43,"w":0.351},{"p":44,"w":0.362},{"p":45,"w":0.361},{"p":46,"w":0.356},{"p":47,"w":0.358},{"p":48,"w":0.352},{"p":49,"w":0.349},{"p":50,"w":0.35},{"p":51,"w":0.346},{"p":52,"w":0.347},{"p":53,"w":0.344},{"p":54,"w":0.346},{"p":55,"w":0.346},{"p":56,"w":0.341},{"p":57,"w":0.336},{"p":58,"w":0.335},{"p":59,"w":0.336},{"p":60,"w":0.335},{"p":61,"w":0.336},{"p":62,"w":0.339},{"p":63,"w":0.339},{"p":64,"w":0.342},{"p":65,"w":0.334},{"p":66,"w":0.333},{"p":67,"w":0.333},{"p":68,"w":0.33},{"p":69,"w":0.329},{"p":70,"w":0.327},{"p":71,"w":0.328},{"p":72,"w":0.328},{"p":73,"w":0.326},{"p":74,"w":0.331},{"p":75,"w":0.339},{"p":76,"w":0.345},{"p":77,"w":0.335},{"p":78,"w":0.331},{"p":79,"w":0.33},{"p":80,"w":0.328},{"p":81,"w":0.325},{"p":82,"w":0.327},{"p":83,"w":0.333},{"p":84,"w":0.328},{"p":85,"w":0.325},{"p":86,"w":0.325},{"p":87,"w":0.326},{"p":88,"w":0.328},{"p":89,"w":0.332},{"p":90,"w":0.336},{"p":91,"w":0.335},{"p":92,"w":0.33},{"p":93,"w":0.329},{"p":94,"w":0.326},{"p":95,"w":0.318},{"p":96,"w":0.32},{"p":97,"w":0.334},{"p":98,"w":0.334},{"p":99,"w":0.317},{"p":100,"w":0.288}]},{"videoId":"wPiriQu3N6I","title":"I Hid a Cold Plunge Inside a Firepit","durationSec":5317,"pub":1743786936000,"views":616908,"r50":0.3297,"avd":1868.9254999999996,"wth":320265.30343166663,"outlier":0.65,"curve":[{"p":1,"w":0.865},{"p":2,"w":0.525},{"p":3,"w":0.513},{"p":4,"w":0.483},{"p":5,"w":0.46},{"p":6,"w":0.454},{"p":7,"w":0.443},{"p":8,"w":0.428},{"p":9,"w":0.418},{"p":10,"w":0.412},{"p":11,"w":0.413},{"p":12,"w":0.398},{"p":13,"w":0.399},{"p":14,"w":0.394},{"p":15,"w":0.392},{"p":16,"w":0.388},{"p":17,"w":0.387},{"p":18,"w":0.381},{"p":19,"w":0.385},{"p":20,"w":0.384},{"p":21,"w":0.388},{"p":22,"w":0.377},{"p":23,"w":0.37},{"p":24,"w":0.369},{"p":25,"w":0.368},{"p":26,"w":0.366},{"p":27,"w":0.363},{"p":28,"w":0.358},{"p":29,"w":0.362},{"p":30,"w":0.361},{"p":31,"w":0.361},{"p":32,"w":0.355},{"p":33,"w":0.359},{"p":34,"w":0.356},{"p":35,"w":0.351},{"p":36,"w":0.347},{"p":37,"w":0.351},{"p":38,"w":0.346},{"p":39,"w":0.344},{"p":40,"w":0.344},{"p":41,"w":0.339},{"p":42,"w":0.336},{"p":43,"w":0.333},{"p":44,"w":0.339},{"p":45,"w":0.332},{"p":46,"w":0.332},{"p":47,"w":0.335},{"p":48,"w":0.331},{"p":49,"w":0.329},{"p":50,"w":0.33},{"p":51,"w":0.33},{"p":52,"w":0.326},{"p":53,"w":0.327},{"p":54,"w":0.328},{"p":55,"w":0.326},{"p":56,"w":0.323},{"p":57,"w":0.326},{"p":58,"w":0.323},{"p":59,"w":0.325},{"p":60,"w":0.328},{"p":61,"w":0.33},{"p":62,"w":0.334},{"p":63,"w":0.324},{"p":64,"w":0.322},{"p":65,"w":0.318},{"p":66,"w":0.317},{"p":67,"w":0.316},{"p":68,"w":0.316},{"p":69,"w":0.314},{"p":70,"w":0.318},{"p":71,"w":0.316},{"p":72,"w":0.314},{"p":73,"w":0.314},{"p":74,"w":0.313},{"p":75,"w":0.315},{"p":76,"w":0.312},{"p":77,"w":0.308},{"p":78,"w":0.306},{"p":79,"w":0.304},{"p":80,"w":0.31},{"p":81,"w":0.306},{"p":82,"w":0.303},{"p":83,"w":0.306},{"p":84,"w":0.304},{"p":85,"w":0.302},{"p":86,"w":0.301},{"p":87,"w":0.302},{"p":88,"w":0.302},{"p":89,"w":0.304},{"p":90,"w":0.304},{"p":91,"w":0.309},{"p":92,"w":0.311},{"p":93,"w":0.312},{"p":94,"w":0.314},{"p":95,"w":0.341},{"p":96,"w":0.33},{"p":97,"w":0.322},{"p":98,"w":0.304},{"p":99,"w":0.275},{"p":100,"w":0.261}]},{"videoId":"FT98_SW67Dg","title":"I Made The Most Satisfying Desk","durationSec":2792,"pub":1731874901000,"views":2708174,"r50":0.2191,"avd":717.8790399999997,"wth":540039.2642424887,"outlier":4.14,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.588},{"p":3,"w":0.483},{"p":4,"w":0.436},{"p":5,"w":0.388},{"p":6,"w":0.377},{"p":7,"w":0.365},{"p":8,"w":0.339},{"p":9,"w":0.333},{"p":10,"w":0.318},{"p":11,"w":0.307},{"p":12,"w":0.305},{"p":13,"w":0.293},{"p":14,"w":0.288},{"p":15,"w":0.271},{"p":16,"w":0.266},{"p":17,"w":0.264},{"p":18,"w":0.27},{"p":19,"w":0.295},{"p":20,"w":0.271},{"p":21,"w":0.259},{"p":22,"w":0.25},{"p":23,"w":0.246},{"p":24,"w":0.243},{"p":25,"w":0.238},{"p":26,"w":0.238},{"p":27,"w":0.236},{"p":28,"w":0.234},{"p":29,"w":0.233},{"p":30,"w":0.233},{"p":31,"w":0.23},{"p":32,"w":0.226},{"p":33,"w":0.225},{"p":34,"w":0.223},{"p":35,"w":0.229},{"p":36,"w":0.231},{"p":37,"w":0.231},{"p":38,"w":0.225},{"p":39,"w":0.223},{"p":40,"w":0.219},{"p":41,"w":0.22},{"p":42,"w":0.219},{"p":43,"w":0.219},{"p":44,"w":0.222},{"p":45,"w":0.219},{"p":46,"w":0.217},{"p":47,"w":0.216},{"p":48,"w":0.214},{"p":49,"w":0.213},{"p":50,"w":0.219},{"p":51,"w":0.213},{"p":52,"w":0.217},{"p":53,"w":0.214},{"p":54,"w":0.214},{"p":55,"w":0.215},{"p":56,"w":0.215},{"p":57,"w":0.216},{"p":58,"w":0.214},{"p":59,"w":0.216},{"p":60,"w":0.215},{"p":61,"w":0.214},{"p":62,"w":0.212},{"p":63,"w":0.215},{"p":64,"w":0.212},{"p":65,"w":0.21},{"p":66,"w":0.209},{"p":67,"w":0.209},{"p":68,"w":0.212},{"p":69,"w":0.209},{"p":70,"w":0.209},{"p":71,"w":0.207},{"p":72,"w":0.21},{"p":73,"w":0.212},{"p":74,"w":0.215},{"p":75,"w":0.217},{"p":76,"w":0.219},{"p":77,"w":0.222},{"p":78,"w":0.223},{"p":79,"w":0.224},{"p":80,"w":0.225},{"p":81,"w":0.226},{"p":82,"w":0.229},{"p":83,"w":0.235},{"p":84,"w":0.235},{"p":85,"w":0.237},{"p":86,"w":0.234},{"p":87,"w":0.238},{"p":88,"w":0.243},{"p":89,"w":0.271},{"p":90,"w":0.29},{"p":91,"w":0.29},{"p":92,"w":0.289},{"p":93,"w":0.284},{"p":94,"w":0.272},{"p":95,"w":0.263},{"p":96,"w":0.252},{"p":97,"w":0.249},{"p":98,"w":0.235},{"p":99,"w":0.224},{"p":100,"w":0.202}]},{"videoId":"b0npGI9WCzs","title":"Building a Tiny Office Pod Under My Stairs","durationSec":3107,"pub":1728122520000,"views":7242999,"r50":0.1986,"avd":776.93642,"wth":1563152.6980898834,"outlier":11.07,"curve":[{"p":1,"w":0.934},{"p":2,"w":0.567},{"p":3,"w":0.41},{"p":4,"w":0.377},{"p":5,"w":0.363},{"p":6,"w":0.357},{"p":7,"w":0.35},{"p":8,"w":0.338},{"p":9,"w":0.324},{"p":10,"w":0.324},{"p":11,"w":0.31},{"p":12,"w":0.296},{"p":13,"w":0.288},{"p":14,"w":0.283},{"p":15,"w":0.277},{"p":16,"w":0.276},{"p":17,"w":0.275},{"p":18,"w":0.273},{"p":19,"w":0.261},{"p":20,"w":0.259},{"p":21,"w":0.252},{"p":22,"w":0.242},{"p":23,"w":0.242},{"p":24,"w":0.237},{"p":25,"w":0.237},{"p":26,"w":0.238},{"p":27,"w":0.24},{"p":28,"w":0.24},{"p":29,"w":0.235},{"p":30,"w":0.232},{"p":31,"w":0.237},{"p":32,"w":0.232},{"p":33,"w":0.223},{"p":34,"w":0.217},{"p":35,"w":0.217},{"p":36,"w":0.218},{"p":37,"w":0.204},{"p":38,"w":0.199},{"p":39,"w":0.197},{"p":40,"w":0.195},{"p":41,"w":0.203},{"p":42,"w":0.208},{"p":43,"w":0.207},{"p":44,"w":0.21},{"p":45,"w":0.203},{"p":46,"w":0.193},{"p":47,"w":0.19},{"p":48,"w":0.19},{"p":49,"w":0.195},{"p":50,"w":0.199},{"p":51,"w":0.2},{"p":52,"w":0.2},{"p":53,"w":0.202},{"p":54,"w":0.196},{"p":55,"w":0.195},{"p":56,"w":0.195},{"p":57,"w":0.197},{"p":58,"w":0.191},{"p":59,"w":0.19},{"p":60,"w":0.191},{"p":61,"w":0.191},{"p":62,"w":0.189},{"p":63,"w":0.189},{"p":64,"w":0.191},{"p":65,"w":0.193},{"p":66,"w":0.2},{"p":67,"w":0.201},{"p":68,"w":0.2},{"p":69,"w":0.197},{"p":70,"w":0.197},{"p":71,"w":0.199},{"p":72,"w":0.2},{"p":73,"w":0.196},{"p":74,"w":0.195},{"p":75,"w":0.197},{"p":76,"w":0.202},{"p":77,"w":0.203},{"p":78,"w":0.227},{"p":79,"w":0.238},{"p":80,"w":0.241},{"p":81,"w":0.223},{"p":82,"w":0.232},{"p":83,"w":0.241},{"p":84,"w":0.251},{"p":85,"w":0.245},{"p":86,"w":0.259},{"p":87,"w":0.251},{"p":88,"w":0.258},{"p":89,"w":0.266},{"p":90,"w":0.28},{"p":91,"w":0.281},{"p":92,"w":0.307},{"p":93,"w":0.336},{"p":94,"w":0.316},{"p":95,"w":0.286},{"p":96,"w":0.261},{"p":97,"w":0.263},{"p":98,"w":0.292},{"p":99,"w":0.263},{"p":100,"w":0.218}]},{"videoId":"_W6t2M1RccI","title":"I Made a Real Waterfall Dining Table","durationSec":5685,"pub":1724363619000,"views":561806,"r50":0.29059999999999997,"avd":1848.9894000000008,"wth":288548.14968233346,"outlier":0.59,"curve":[{"p":1,"w":0.913},{"p":2,"w":0.539},{"p":3,"w":0.488},{"p":4,"w":0.459},{"p":5,"w":0.455},{"p":6,"w":0.437},{"p":7,"w":0.443},{"p":8,"w":0.426},{"p":9,"w":0.41},{"p":10,"w":0.406},{"p":11,"w":0.396},{"p":12,"w":0.395},{"p":13,"w":0.388},{"p":14,"w":0.391},{"p":15,"w":0.38},{"p":16,"w":0.378},{"p":17,"w":0.372},{"p":18,"w":0.368},{"p":19,"w":0.358},{"p":20,"w":0.358},{"p":21,"w":0.351},{"p":22,"w":0.357},{"p":23,"w":0.344},{"p":24,"w":0.343},{"p":25,"w":0.337},{"p":26,"w":0.335},{"p":27,"w":0.332},{"p":28,"w":0.327},{"p":29,"w":0.321},{"p":30,"w":0.321},{"p":31,"w":0.321},{"p":32,"w":0.33},{"p":33,"w":0.317},{"p":34,"w":0.317},{"p":35,"w":0.313},{"p":36,"w":0.31},{"p":37,"w":0.308},{"p":38,"w":0.307},{"p":39,"w":0.303},{"p":40,"w":0.304},{"p":41,"w":0.302},{"p":42,"w":0.305},{"p":43,"w":0.299},{"p":44,"w":0.302},{"p":45,"w":0.295},{"p":46,"w":0.297},{"p":47,"w":0.295},{"p":48,"w":0.296},{"p":49,"w":0.291},{"p":50,"w":0.291},{"p":51,"w":0.287},{"p":52,"w":0.289},{"p":53,"w":0.287},{"p":54,"w":0.291},{"p":55,"w":0.288},{"p":56,"w":0.289},{"p":57,"w":0.288},{"p":58,"w":0.288},{"p":59,"w":0.284},{"p":60,"w":0.282},{"p":61,"w":0.282},{"p":62,"w":0.283},{"p":63,"w":0.282},{"p":64,"w":0.284},{"p":65,"w":0.281},{"p":66,"w":0.281},{"p":67,"w":0.279},{"p":68,"w":0.28},{"p":69,"w":0.276},{"p":70,"w":0.28},{"p":71,"w":0.276},{"p":72,"w":0.274},{"p":73,"w":0.274},{"p":74,"w":0.274},{"p":75,"w":0.271},{"p":76,"w":0.273},{"p":77,"w":0.271},{"p":78,"w":0.28},{"p":79,"w":0.279},{"p":80,"w":0.286},{"p":81,"w":0.284},{"p":82,"w":0.287},{"p":83,"w":0.28},{"p":84,"w":0.274},{"p":85,"w":0.272},{"p":86,"w":0.27},{"p":87,"w":0.271},{"p":88,"w":0.274},{"p":89,"w":0.283},{"p":90,"w":0.278},{"p":91,"w":0.287},{"p":92,"w":0.295},{"p":93,"w":0.305},{"p":94,"w":0.298},{"p":95,"w":0.305},{"p":96,"w":0.321},{"p":97,"w":0.326},{"p":98,"w":0.35},{"p":99,"w":0.322},{"p":100,"w":0.272}]},{"videoId":"5LsB57hJ-XI","title":"I Left 7M Subs to Build My Dream Garage Workshop","durationSec":4257,"pub":1717182150000,"views":691316,"r50":0.2259,"avd":1052.28783,"wth":202073.1704123,"outlier":0.75,"curve":[{"p":1,"w":0.969},{"p":2,"w":0.478},{"p":3,"w":0.422},{"p":4,"w":0.388},{"p":5,"w":0.37},{"p":6,"w":0.356},{"p":7,"w":0.346},{"p":8,"w":0.346},{"p":9,"w":0.321},{"p":10,"w":0.314},{"p":11,"w":0.306},{"p":12,"w":0.295},{"p":13,"w":0.292},{"p":14,"w":0.292},{"p":15,"w":0.306},{"p":16,"w":0.282},{"p":17,"w":0.281},{"p":18,"w":0.279},{"p":19,"w":0.275},{"p":20,"w":0.271},{"p":21,"w":0.276},{"p":22,"w":0.268},{"p":23,"w":0.266},{"p":24,"w":0.266},{"p":25,"w":0.263},{"p":26,"w":0.259},{"p":27,"w":0.258},{"p":28,"w":0.258},{"p":29,"w":0.256},{"p":30,"w":0.258},{"p":31,"w":0.252},{"p":32,"w":0.247},{"p":33,"w":0.248},{"p":34,"w":0.245},{"p":35,"w":0.243},{"p":36,"w":0.245},{"p":37,"w":0.247},{"p":38,"w":0.241},{"p":39,"w":0.243},{"p":40,"w":0.238},{"p":41,"w":0.237},{"p":42,"w":0.236},{"p":43,"w":0.234},{"p":44,"w":0.234},{"p":45,"w":0.236},{"p":46,"w":0.234},{"p":47,"w":0.23},{"p":48,"w":0.229},{"p":49,"w":0.226},{"p":50,"w":0.226},{"p":51,"w":0.228},{"p":52,"w":0.221},{"p":53,"w":0.216},{"p":54,"w":0.216},{"p":55,"w":0.221},{"p":56,"w":0.213},{"p":57,"w":0.212},{"p":58,"w":0.211},{"p":59,"w":0.21},{"p":60,"w":0.215},{"p":61,"w":0.21},{"p":62,"w":0.21},{"p":63,"w":0.209},{"p":64,"w":0.208},{"p":65,"w":0.208},{"p":66,"w":0.205},{"p":67,"w":0.204},{"p":68,"w":0.204},{"p":69,"w":0.204},{"p":70,"w":0.207},{"p":71,"w":0.204},{"p":72,"w":0.201},{"p":73,"w":0.203},{"p":74,"w":0.199},{"p":75,"w":0.198},{"p":76,"w":0.199},{"p":77,"w":0.203},{"p":78,"w":0.2},{"p":79,"w":0.199},{"p":80,"w":0.201},{"p":81,"w":0.203},{"p":82,"w":0.197},{"p":83,"w":0.197},{"p":84,"w":0.197},{"p":85,"w":0.199},{"p":86,"w":0.195},{"p":87,"w":0.199},{"p":88,"w":0.195},{"p":89,"w":0.194},{"p":90,"w":0.2},{"p":91,"w":0.196},{"p":92,"w":0.196},{"p":93,"w":0.202},{"p":94,"w":0.198},{"p":95,"w":0.203},{"p":96,"w":0.201},{"p":97,"w":0.2},{"p":98,"w":0.182},{"p":99,"w":0.173},{"p":100,"w":0.165}]}]}</script>
+<script>window.__COHORT__={"videos":[{"videoId":"TKxghFFz87k","title":"I Turned My Boring Office Into A Starlit Cabin","durationSec":3513,"pub":1787079639000,"views":529658,"r50":0.337,"avd":1274.5164,"wth":187516.05760866666,"outlier":null,"curve":[{"p":1,"w":0.873},{"p":2,"w":0.58},{"p":3,"w":0.497},{"p":4,"w":0.486},{"p":5,"w":0.464},{"p":6,"w":0.451},{"p":7,"w":0.443},{"p":8,"w":0.435},{"p":9,"w":0.432},{"p":10,"w":0.433},{"p":11,"w":0.442},{"p":12,"w":0.413},{"p":13,"w":0.412},{"p":14,"w":0.406},{"p":15,"w":0.403},{"p":16,"w":0.406},{"p":17,"w":0.407},{"p":18,"w":0.395},{"p":19,"w":0.387},{"p":20,"w":0.399},{"p":21,"w":0.385},{"p":22,"w":0.323},{"p":23,"w":0.371},{"p":24,"w":0.369},{"p":25,"w":0.372},{"p":26,"w":0.377},{"p":27,"w":0.369},{"p":28,"w":0.367},{"p":29,"w":0.362},{"p":30,"w":0.366},{"p":31,"w":0.378},{"p":32,"w":0.362},{"p":33,"w":0.36},{"p":34,"w":0.359},{"p":35,"w":0.363},{"p":36,"w":0.368},{"p":37,"w":0.353},{"p":38,"w":0.352},{"p":39,"w":0.355},{"p":40,"w":0.349},{"p":41,"w":0.349},{"p":42,"w":0.35},{"p":43,"w":0.343},{"p":44,"w":0.343},{"p":45,"w":0.341},{"p":46,"w":0.345},{"p":47,"w":0.358},{"p":48,"w":0.318},{"p":49,"w":0.319},{"p":50,"w":0.337},{"p":51,"w":0.336},{"p":52,"w":0.338},{"p":53,"w":0.333},{"p":54,"w":0.337},{"p":55,"w":0.33},{"p":56,"w":0.33},{"p":57,"w":0.335},{"p":58,"w":0.33},{"p":59,"w":0.329},{"p":60,"w":0.329},{"p":61,"w":0.339},{"p":62,"w":0.334},{"p":63,"w":0.327},{"p":64,"w":0.322},{"p":65,"w":0.322},{"p":66,"w":0.321},{"p":67,"w":0.326},{"p":68,"w":0.318},{"p":69,"w":0.318},{"p":70,"w":0.319},{"p":71,"w":0.32},{"p":72,"w":0.326},{"p":73,"w":0.319},{"p":74,"w":0.319},{"p":75,"w":0.321},{"p":76,"w":0.328},{"p":77,"w":0.321},{"p":78,"w":0.322},{"p":79,"w":0.327},{"p":80,"w":0.325},{"p":81,"w":0.324},{"p":82,"w":0.328},{"p":83,"w":0.327},{"p":84,"w":0.325},{"p":85,"w":0.325},{"p":86,"w":0.32},{"p":87,"w":0.326},{"p":88,"w":0.335},{"p":89,"w":0.327},{"p":90,"w":0.329},{"p":91,"w":0.328},{"p":92,"w":0.328},{"p":93,"w":0.329},{"p":94,"w":0.34},{"p":95,"w":0.344},{"p":96,"w":0.364},{"p":97,"w":0.362},{"p":98,"w":0.352},{"p":99,"w":0.336},{"p":100,"w":0.303}]},{"videoId":"EAOutIsbJLk","title":"I made this cause I needed a nap lol","durationSec":2276,"pub":1770404661000,"views":507546,"r50":0.3403,"avd":848.0376,"wth":119560.581036,"outlier":0.53,"curve":[{"p":1,"w":0.921},{"p":2,"w":0.662},{"p":3,"w":0.549},{"p":4,"w":0.516},{"p":5,"w":0.498},{"p":6,"w":0.478},{"p":7,"w":0.464},{"p":8,"w":0.459},{"p":9,"w":0.45},{"p":10,"w":0.448},{"p":11,"w":0.445},{"p":12,"w":0.436},{"p":13,"w":0.431},{"p":14,"w":0.426},{"p":15,"w":0.426},{"p":16,"w":0.419},{"p":17,"w":0.405},{"p":18,"w":0.415},{"p":19,"w":0.415},{"p":20,"w":0.402},{"p":21,"w":0.404},{"p":22,"w":0.398},{"p":23,"w":0.399},{"p":24,"w":0.395},{"p":25,"w":0.4},{"p":26,"w":0.4},{"p":27,"w":0.394},{"p":28,"w":0.39},{"p":29,"w":0.39},{"p":30,"w":0.396},{"p":31,"w":0.387},{"p":32,"w":0.386},{"p":33,"w":0.388},{"p":34,"w":0.388},{"p":35,"w":0.39},{"p":36,"w":0.375},{"p":37,"w":0.364},{"p":38,"w":0.372},{"p":39,"w":0.364},{"p":40,"w":0.356},{"p":41,"w":0.349},{"p":42,"w":0.343},{"p":43,"w":0.342},{"p":44,"w":0.341},{"p":45,"w":0.34},{"p":46,"w":0.339},{"p":47,"w":0.339},{"p":48,"w":0.338},{"p":49,"w":0.337},{"p":50,"w":0.34},{"p":51,"w":0.339},{"p":52,"w":0.356},{"p":53,"w":0.385},{"p":54,"w":0.338},{"p":55,"w":0.334},{"p":56,"w":0.333},{"p":57,"w":0.332},{"p":58,"w":0.335},{"p":59,"w":0.331},{"p":60,"w":0.331},{"p":61,"w":0.331},{"p":62,"w":0.33},{"p":63,"w":0.331},{"p":64,"w":0.328},{"p":65,"w":0.326},{"p":66,"w":0.328},{"p":67,"w":0.325},{"p":68,"w":0.325},{"p":69,"w":0.332},{"p":70,"w":0.326},{"p":71,"w":0.323},{"p":72,"w":0.321},{"p":73,"w":0.32},{"p":74,"w":0.318},{"p":75,"w":0.317},{"p":76,"w":0.318},{"p":77,"w":0.322},{"p":78,"w":0.324},{"p":79,"w":0.328},{"p":80,"w":0.335},{"p":81,"w":0.328},{"p":82,"w":0.321},{"p":83,"w":0.315},{"p":84,"w":0.316},{"p":85,"w":0.308},{"p":86,"w":0.309},{"p":87,"w":0.309},{"p":88,"w":0.31},{"p":89,"w":0.315},{"p":90,"w":0.32},{"p":91,"w":0.327},{"p":92,"w":0.343},{"p":93,"w":0.349},{"p":94,"w":0.353},{"p":95,"w":0.354},{"p":96,"w":0.349},{"p":97,"w":0.345},{"p":98,"w":0.338},{"p":99,"w":0.322},{"p":100,"w":0.298}]},{"videoId":"k5eHSd-p3x0","title":"I Made a Desk For Endless Fidgeting","durationSec":2098,"pub":1765569939000,"views":1220210,"r50":0.2802,"avd":673.83564,"wth":228394.71841233334,"outlier":1.87,"curve":[{"p":1,"w":0.947},{"p":2,"w":0.738},{"p":3,"w":0.556},{"p":4,"w":0.505},{"p":5,"w":0.47},{"p":6,"w":0.449},{"p":7,"w":0.431},{"p":8,"w":0.416},{"p":9,"w":0.405},{"p":10,"w":0.401},{"p":11,"w":0.396},{"p":12,"w":0.386},{"p":13,"w":0.378},{"p":14,"w":0.363},{"p":15,"w":0.351},{"p":16,"w":0.347},{"p":17,"w":0.346},{"p":18,"w":0.345},{"p":19,"w":0.343},{"p":20,"w":0.343},{"p":21,"w":0.343},{"p":22,"w":0.343},{"p":23,"w":0.341},{"p":24,"w":0.335},{"p":25,"w":0.324},{"p":26,"w":0.331},{"p":27,"w":0.317},{"p":28,"w":0.316},{"p":29,"w":0.316},{"p":30,"w":0.31},{"p":31,"w":0.315},{"p":32,"w":0.313},{"p":33,"w":0.308},{"p":34,"w":0.305},{"p":35,"w":0.304},{"p":36,"w":0.301},{"p":37,"w":0.298},{"p":38,"w":0.297},{"p":39,"w":0.292},{"p":40,"w":0.293},{"p":41,"w":0.298},{"p":42,"w":0.3},{"p":43,"w":0.289},{"p":44,"w":0.287},{"p":45,"w":0.284},{"p":46,"w":0.283},{"p":47,"w":0.282},{"p":48,"w":0.283},{"p":49,"w":0.282},{"p":50,"w":0.28},{"p":51,"w":0.28},{"p":52,"w":0.282},{"p":53,"w":0.279},{"p":54,"w":0.279},{"p":55,"w":0.279},{"p":56,"w":0.278},{"p":57,"w":0.277},{"p":58,"w":0.278},{"p":59,"w":0.286},{"p":60,"w":0.281},{"p":61,"w":0.282},{"p":62,"w":0.278},{"p":63,"w":0.274},{"p":64,"w":0.272},{"p":65,"w":0.271},{"p":66,"w":0.269},{"p":67,"w":0.268},{"p":68,"w":0.267},{"p":69,"w":0.265},{"p":70,"w":0.266},{"p":71,"w":0.272},{"p":72,"w":0.268},{"p":73,"w":0.265},{"p":74,"w":0.271},{"p":75,"w":0.267},{"p":76,"w":0.266},{"p":77,"w":0.265},{"p":78,"w":0.265},{"p":79,"w":0.265},{"p":80,"w":0.265},{"p":81,"w":0.27},{"p":82,"w":0.266},{"p":83,"w":0.266},{"p":84,"w":0.277},{"p":85,"w":0.281},{"p":86,"w":0.278},{"p":87,"w":0.283},{"p":88,"w":0.287},{"p":89,"w":0.293},{"p":90,"w":0.295},{"p":91,"w":0.303},{"p":92,"w":0.313},{"p":93,"w":0.319},{"p":94,"w":0.319},{"p":95,"w":0.316},{"p":96,"w":0.315},{"p":97,"w":0.31},{"p":98,"w":0.304},{"p":99,"w":0.296},{"p":100,"w":0.261}]},{"videoId":"D3XFIa7Fz80","title":"They said I needed an Engineer for this......lol","durationSec":3235,"pub":1757978814000,"views":1337024,"r50":0.3056,"avd":1085.5365999999997,"wth":403163.4686328888,"outlier":2.04,"curve":[{"p":1,"w":0.935},{"p":2,"w":0.596},{"p":3,"w":0.504},{"p":4,"w":0.478},{"p":5,"w":0.459},{"p":6,"w":0.427},{"p":7,"w":0.412},{"p":8,"w":0.406},{"p":9,"w":0.396},{"p":10,"w":0.391},{"p":11,"w":0.384},{"p":12,"w":0.376},{"p":13,"w":0.378},{"p":14,"w":0.368},{"p":15,"w":0.372},{"p":16,"w":0.362},{"p":17,"w":0.356},{"p":18,"w":0.352},{"p":19,"w":0.353},{"p":20,"w":0.35},{"p":21,"w":0.346},{"p":22,"w":0.34},{"p":23,"w":0.336},{"p":24,"w":0.336},{"p":25,"w":0.329},{"p":26,"w":0.328},{"p":27,"w":0.326},{"p":28,"w":0.322},{"p":29,"w":0.319},{"p":30,"w":0.319},{"p":31,"w":0.32},{"p":32,"w":0.315},{"p":33,"w":0.313},{"p":34,"w":0.313},{"p":35,"w":0.309},{"p":36,"w":0.309},{"p":37,"w":0.313},{"p":38,"w":0.307},{"p":39,"w":0.309},{"p":40,"w":0.305},{"p":41,"w":0.307},{"p":42,"w":0.307},{"p":43,"w":0.309},{"p":44,"w":0.31},{"p":45,"w":0.309},{"p":46,"w":0.319},{"p":47,"w":0.317},{"p":48,"w":0.312},{"p":49,"w":0.303},{"p":50,"w":0.306},{"p":51,"w":0.306},{"p":52,"w":0.308},{"p":53,"w":0.307},{"p":54,"w":0.306},{"p":55,"w":0.308},{"p":56,"w":0.305},{"p":57,"w":0.304},{"p":58,"w":0.3},{"p":59,"w":0.295},{"p":60,"w":0.298},{"p":61,"w":0.301},{"p":62,"w":0.305},{"p":63,"w":0.294},{"p":64,"w":0.293},{"p":65,"w":0.295},{"p":66,"w":0.293},{"p":67,"w":0.296},{"p":68,"w":0.293},{"p":69,"w":0.295},{"p":70,"w":0.296},{"p":71,"w":0.298},{"p":72,"w":0.301},{"p":73,"w":0.299},{"p":74,"w":0.299},{"p":75,"w":0.304},{"p":76,"w":0.3},{"p":77,"w":0.305},{"p":78,"w":0.304},{"p":79,"w":0.303},{"p":80,"w":0.308},{"p":81,"w":0.303},{"p":82,"w":0.296},{"p":83,"w":0.295},{"p":84,"w":0.296},{"p":85,"w":0.3},{"p":86,"w":0.301},{"p":87,"w":0.3},{"p":88,"w":0.304},{"p":89,"w":0.311},{"p":90,"w":0.316},{"p":91,"w":0.318},{"p":92,"w":0.322},{"p":93,"w":0.33},{"p":94,"w":0.346},{"p":95,"w":0.346},{"p":96,"w":0.353},{"p":97,"w":0.345},{"p":98,"w":0.349},{"p":99,"w":0.333},{"p":100,"w":0.305}]},{"videoId":"QbMK26dwUgg","title":"The Most Exhausting 2 Weeks of my Life","durationSec":2026,"pub":1749223399000,"views":412394,"r50":0.34979999999999994,"avd":785.0547400000003,"wth":89931.0734576556,"outlier":0.43,"curve":[{"p":1,"w":0.938},{"p":2,"w":0.716},{"p":3,"w":0.603},{"p":4,"w":0.575},{"p":5,"w":0.552},{"p":6,"w":0.533},{"p":7,"w":0.518},{"p":8,"w":0.51},{"p":9,"w":0.503},{"p":10,"w":0.486},{"p":11,"w":0.475},{"p":12,"w":0.475},{"p":13,"w":0.5},{"p":14,"w":0.483},{"p":15,"w":0.458},{"p":16,"w":0.45},{"p":17,"w":0.442},{"p":18,"w":0.436},{"p":19,"w":0.433},{"p":20,"w":0.43},{"p":21,"w":0.43},{"p":22,"w":0.429},{"p":23,"w":0.431},{"p":24,"w":0.421},{"p":25,"w":0.422},{"p":26,"w":0.422},{"p":27,"w":0.4},{"p":28,"w":0.404},{"p":29,"w":0.406},{"p":30,"w":0.408},{"p":31,"w":0.397},{"p":32,"w":0.395},{"p":33,"w":0.391},{"p":34,"w":0.391},{"p":35,"w":0.385},{"p":36,"w":0.384},{"p":37,"w":0.389},{"p":38,"w":0.392},{"p":39,"w":0.387},{"p":40,"w":0.376},{"p":41,"w":0.376},{"p":42,"w":0.367},{"p":43,"w":0.351},{"p":44,"w":0.362},{"p":45,"w":0.361},{"p":46,"w":0.356},{"p":47,"w":0.358},{"p":48,"w":0.352},{"p":49,"w":0.349},{"p":50,"w":0.35},{"p":51,"w":0.346},{"p":52,"w":0.347},{"p":53,"w":0.344},{"p":54,"w":0.346},{"p":55,"w":0.346},{"p":56,"w":0.341},{"p":57,"w":0.336},{"p":58,"w":0.335},{"p":59,"w":0.336},{"p":60,"w":0.335},{"p":61,"w":0.336},{"p":62,"w":0.339},{"p":63,"w":0.339},{"p":64,"w":0.342},{"p":65,"w":0.334},{"p":66,"w":0.333},{"p":67,"w":0.333},{"p":68,"w":0.33},{"p":69,"w":0.329},{"p":70,"w":0.327},{"p":71,"w":0.328},{"p":72,"w":0.328},{"p":73,"w":0.326},{"p":74,"w":0.331},{"p":75,"w":0.339},{"p":76,"w":0.345},{"p":77,"w":0.335},{"p":78,"w":0.331},{"p":79,"w":0.33},{"p":80,"w":0.328},{"p":81,"w":0.325},{"p":82,"w":0.327},{"p":83,"w":0.333},{"p":84,"w":0.328},{"p":85,"w":0.325},{"p":86,"w":0.325},{"p":87,"w":0.326},{"p":88,"w":0.328},{"p":89,"w":0.332},{"p":90,"w":0.336},{"p":91,"w":0.335},{"p":92,"w":0.33},{"p":93,"w":0.329},{"p":94,"w":0.326},{"p":95,"w":0.318},{"p":96,"w":0.32},{"p":97,"w":0.334},{"p":98,"w":0.334},{"p":99,"w":0.317},{"p":100,"w":0.288}]},{"videoId":"wPiriQu3N6I","title":"I Hid a Cold Plunge Inside a Firepit","durationSec":5317,"pub":1743786936000,"views":616908,"r50":0.3297,"avd":1868.9254999999996,"wth":320265.30343166663,"outlier":0.65,"curve":[{"p":1,"w":0.865},{"p":2,"w":0.525},{"p":3,"w":0.513},{"p":4,"w":0.483},{"p":5,"w":0.46},{"p":6,"w":0.454},{"p":7,"w":0.443},{"p":8,"w":0.428},{"p":9,"w":0.418},{"p":10,"w":0.412},{"p":11,"w":0.413},{"p":12,"w":0.398},{"p":13,"w":0.399},{"p":14,"w":0.394},{"p":15,"w":0.392},{"p":16,"w":0.388},{"p":17,"w":0.387},{"p":18,"w":0.381},{"p":19,"w":0.385},{"p":20,"w":0.384},{"p":21,"w":0.388},{"p":22,"w":0.377},{"p":23,"w":0.37},{"p":24,"w":0.369},{"p":25,"w":0.368},{"p":26,"w":0.366},{"p":27,"w":0.363},{"p":28,"w":0.358},{"p":29,"w":0.362},{"p":30,"w":0.361},{"p":31,"w":0.361},{"p":32,"w":0.355},{"p":33,"w":0.359},{"p":34,"w":0.356},{"p":35,"w":0.351},{"p":36,"w":0.347},{"p":37,"w":0.351},{"p":38,"w":0.346},{"p":39,"w":0.344},{"p":40,"w":0.344},{"p":41,"w":0.339},{"p":42,"w":0.336},{"p":43,"w":0.333},{"p":44,"w":0.339},{"p":45,"w":0.332},{"p":46,"w":0.332},{"p":47,"w":0.335},{"p":48,"w":0.331},{"p":49,"w":0.329},{"p":50,"w":0.33},{"p":51,"w":0.33},{"p":52,"w":0.326},{"p":53,"w":0.327},{"p":54,"w":0.328},{"p":55,"w":0.326},{"p":56,"w":0.323},{"p":57,"w":0.326},{"p":58,"w":0.323},{"p":59,"w":0.325},{"p":60,"w":0.328},{"p":61,"w":0.33},{"p":62,"w":0.334},{"p":63,"w":0.324},{"p":64,"w":0.322},{"p":65,"w":0.318},{"p":66,"w":0.317},{"p":67,"w":0.316},{"p":68,"w":0.316},{"p":69,"w":0.314},{"p":70,"w":0.318},{"p":71,"w":0.316},{"p":72,"w":0.314},{"p":73,"w":0.314},{"p":74,"w":0.313},{"p":75,"w":0.315},{"p":76,"w":0.312},{"p":77,"w":0.308},{"p":78,"w":0.306},{"p":79,"w":0.304},{"p":80,"w":0.31},{"p":81,"w":0.306},{"p":82,"w":0.303},{"p":83,"w":0.306},{"p":84,"w":0.304},{"p":85,"w":0.302},{"p":86,"w":0.301},{"p":87,"w":0.302},{"p":88,"w":0.302},{"p":89,"w":0.304},{"p":90,"w":0.304},{"p":91,"w":0.309},{"p":92,"w":0.311},{"p":93,"w":0.312},{"p":94,"w":0.314},{"p":95,"w":0.341},{"p":96,"w":0.33},{"p":97,"w":0.322},{"p":98,"w":0.304},{"p":99,"w":0.275},{"p":100,"w":0.261}]},{"videoId":"FT98_SW67Dg","title":"I Made The Most Satisfying Desk","durationSec":2792,"pub":1731874901000,"views":2708174,"r50":0.2191,"avd":717.8790399999997,"wth":540039.2642424887,"outlier":4.14,"curve":[{"p":1,"w":0.973},{"p":2,"w":0.588},{"p":3,"w":0.483},{"p":4,"w":0.436},{"p":5,"w":0.388},{"p":6,"w":0.377},{"p":7,"w":0.365},{"p":8,"w":0.339},{"p":9,"w":0.333},{"p":10,"w":0.318},{"p":11,"w":0.307},{"p":12,"w":0.305},{"p":13,"w":0.293},{"p":14,"w":0.288},{"p":15,"w":0.271},{"p":16,"w":0.266},{"p":17,"w":0.264},{"p":18,"w":0.27},{"p":19,"w":0.295},{"p":20,"w":0.271},{"p":21,"w":0.259},{"p":22,"w":0.25},{"p":23,"w":0.246},{"p":24,"w":0.243},{"p":25,"w":0.238},{"p":26,"w":0.238},{"p":27,"w":0.236},{"p":28,"w":0.234},{"p":29,"w":0.233},{"p":30,"w":0.233},{"p":31,"w":0.23},{"p":32,"w":0.226},{"p":33,"w":0.225},{"p":34,"w":0.223},{"p":35,"w":0.229},{"p":36,"w":0.231},{"p":37,"w":0.231},{"p":38,"w":0.225},{"p":39,"w":0.223},{"p":40,"w":0.219},{"p":41,"w":0.22},{"p":42,"w":0.219},{"p":43,"w":0.219},{"p":44,"w":0.222},{"p":45,"w":0.219},{"p":46,"w":0.217},{"p":47,"w":0.216},{"p":48,"w":0.214},{"p":49,"w":0.213},{"p":50,"w":0.219},{"p":51,"w":0.213},{"p":52,"w":0.217},{"p":53,"w":0.214},{"p":54,"w":0.214},{"p":55,"w":0.215},{"p":56,"w":0.215},{"p":57,"w":0.216},{"p":58,"w":0.214},{"p":59,"w":0.216},{"p":60,"w":0.215},{"p":61,"w":0.214},{"p":62,"w":0.212},{"p":63,"w":0.215},{"p":64,"w":0.212},{"p":65,"w":0.21},{"p":66,"w":0.209},{"p":67,"w":0.209},{"p":68,"w":0.212},{"p":69,"w":0.209},{"p":70,"w":0.209},{"p":71,"w":0.207},{"p":72,"w":0.21},{"p":73,"w":0.212},{"p":74,"w":0.215},{"p":75,"w":0.217},{"p":76,"w":0.219},{"p":77,"w":0.222},{"p":78,"w":0.223},{"p":79,"w":0.224},{"p":80,"w":0.225},{"p":81,"w":0.226},{"p":82,"w":0.229},{"p":83,"w":0.235},{"p":84,"w":0.235},{"p":85,"w":0.237},{"p":86,"w":0.234},{"p":87,"w":0.238},{"p":88,"w":0.243},{"p":89,"w":0.271},{"p":90,"w":0.29},{"p":91,"w":0.29},{"p":92,"w":0.289},{"p":93,"w":0.284},{"p":94,"w":0.272},{"p":95,"w":0.263},{"p":96,"w":0.252},{"p":97,"w":0.249},{"p":98,"w":0.235},{"p":99,"w":0.224},{"p":100,"w":0.202}]},{"videoId":"b0npGI9WCzs","title":"Building a Tiny Office Pod Under My Stairs","durationSec":3107,"pub":1728122520000,"views":7242999,"r50":0.1986,"avd":776.93642,"wth":1563152.6980898834,"outlier":11.07,"curve":[{"p":1,"w":0.934},{"p":2,"w":0.567},{"p":3,"w":0.41},{"p":4,"w":0.377},{"p":5,"w":0.363},{"p":6,"w":0.357},{"p":7,"w":0.35},{"p":8,"w":0.338},{"p":9,"w":0.324},{"p":10,"w":0.324},{"p":11,"w":0.31},{"p":12,"w":0.296},{"p":13,"w":0.288},{"p":14,"w":0.283},{"p":15,"w":0.277},{"p":16,"w":0.276},{"p":17,"w":0.275},{"p":18,"w":0.273},{"p":19,"w":0.261},{"p":20,"w":0.259},{"p":21,"w":0.252},{"p":22,"w":0.242},{"p":23,"w":0.242},{"p":24,"w":0.237},{"p":25,"w":0.237},{"p":26,"w":0.238},{"p":27,"w":0.24},{"p":28,"w":0.24},{"p":29,"w":0.235},{"p":30,"w":0.232},{"p":31,"w":0.237},{"p":32,"w":0.232},{"p":33,"w":0.223},{"p":34,"w":0.217},{"p":35,"w":0.217},{"p":36,"w":0.218},{"p":37,"w":0.204},{"p":38,"w":0.199},{"p":39,"w":0.197},{"p":40,"w":0.195},{"p":41,"w":0.203},{"p":42,"w":0.208},{"p":43,"w":0.207},{"p":44,"w":0.21},{"p":45,"w":0.203},{"p":46,"w":0.193},{"p":47,"w":0.19},{"p":48,"w":0.19},{"p":49,"w":0.195},{"p":50,"w":0.199},{"p":51,"w":0.2},{"p":52,"w":0.2},{"p":53,"w":0.202},{"p":54,"w":0.196},{"p":55,"w":0.195},{"p":56,"w":0.195},{"p":57,"w":0.197},{"p":58,"w":0.191},{"p":59,"w":0.19},{"p":60,"w":0.191},{"p":61,"w":0.191},{"p":62,"w":0.189},{"p":63,"w":0.189},{"p":64,"w":0.191},{"p":65,"w":0.193},{"p":66,"w":0.2},{"p":67,"w":0.201},{"p":68,"w":0.2},{"p":69,"w":0.197},{"p":70,"w":0.197},{"p":71,"w":0.199},{"p":72,"w":0.2},{"p":73,"w":0.196},{"p":74,"w":0.195},{"p":75,"w":0.197},{"p":76,"w":0.202},{"p":77,"w":0.203},{"p":78,"w":0.227},{"p":79,"w":0.238},{"p":80,"w":0.241},{"p":81,"w":0.223},{"p":82,"w":0.232},{"p":83,"w":0.241},{"p":84,"w":0.251},{"p":85,"w":0.245},{"p":86,"w":0.259},{"p":87,"w":0.251},{"p":88,"w":0.258},{"p":89,"w":0.266},{"p":90,"w":0.28},{"p":91,"w":0.281},{"p":92,"w":0.307},{"p":93,"w":0.336},{"p":94,"w":0.316},{"p":95,"w":0.286},{"p":96,"w":0.261},{"p":97,"w":0.263},{"p":98,"w":0.292},{"p":99,"w":0.263},{"p":100,"w":0.218}]},{"videoId":"_W6t2M1RccI","title":"I Made a Real Waterfall Dining Table","durationSec":5685,"pub":1724363619000,"views":561806,"r50":0.29059999999999997,"avd":1848.9894000000008,"wth":288548.14968233346,"outlier":0.59,"curve":[{"p":1,"w":0.913},{"p":2,"w":0.539},{"p":3,"w":0.488},{"p":4,"w":0.459},{"p":5,"w":0.455},{"p":6,"w":0.437},{"p":7,"w":0.443},{"p":8,"w":0.426},{"p":9,"w":0.41},{"p":10,"w":0.406},{"p":11,"w":0.396},{"p":12,"w":0.395},{"p":13,"w":0.388},{"p":14,"w":0.391},{"p":15,"w":0.38},{"p":16,"w":0.378},{"p":17,"w":0.372},{"p":18,"w":0.368},{"p":19,"w":0.358},{"p":20,"w":0.358},{"p":21,"w":0.351},{"p":22,"w":0.357},{"p":23,"w":0.344},{"p":24,"w":0.343},{"p":25,"w":0.337},{"p":26,"w":0.335},{"p":27,"w":0.332},{"p":28,"w":0.327},{"p":29,"w":0.321},{"p":30,"w":0.321},{"p":31,"w":0.321},{"p":32,"w":0.33},{"p":33,"w":0.317},{"p":34,"w":0.317},{"p":35,"w":0.313},{"p":36,"w":0.31},{"p":37,"w":0.308},{"p":38,"w":0.307},{"p":39,"w":0.303},{"p":40,"w":0.304},{"p":41,"w":0.302},{"p":42,"w":0.305},{"p":43,"w":0.299},{"p":44,"w":0.302},{"p":45,"w":0.295},{"p":46,"w":0.297},{"p":47,"w":0.295},{"p":48,"w":0.296},{"p":49,"w":0.291},{"p":50,"w":0.291},{"p":51,"w":0.287},{"p":52,"w":0.289},{"p":53,"w":0.287},{"p":54,"w":0.291},{"p":55,"w":0.288},{"p":56,"w":0.289},{"p":57,"w":0.288},{"p":58,"w":0.288},{"p":59,"w":0.284},{"p":60,"w":0.282},{"p":61,"w":0.282},{"p":62,"w":0.283},{"p":63,"w":0.282},{"p":64,"w":0.284},{"p":65,"w":0.281},{"p":66,"w":0.281},{"p":67,"w":0.279},{"p":68,"w":0.28},{"p":69,"w":0.276},{"p":70,"w":0.28},{"p":71,"w":0.276},{"p":72,"w":0.274},{"p":73,"w":0.274},{"p":74,"w":0.274},{"p":75,"w":0.271},{"p":76,"w":0.273},{"p":77,"w":0.271},{"p":78,"w":0.28},{"p":79,"w":0.279},{"p":80,"w":0.286},{"p":81,"w":0.284},{"p":82,"w":0.287},{"p":83,"w":0.28},{"p":84,"w":0.274},{"p":85,"w":0.272},{"p":86,"w":0.27},{"p":87,"w":0.271},{"p":88,"w":0.274},{"p":89,"w":0.283},{"p":90,"w":0.278},{"p":91,"w":0.287},{"p":92,"w":0.295},{"p":93,"w":0.305},{"p":94,"w":0.298},{"p":95,"w":0.305},{"p":96,"w":0.321},{"p":97,"w":0.326},{"p":98,"w":0.35},{"p":99,"w":0.322},{"p":100,"w":0.272}]},{"videoId":"5LsB57hJ-XI","title":"I Left 7M Subs to Build My Dream Garage Workshop","durationSec":4257,"pub":1717182150000,"views":691316,"r50":0.2259,"avd":1052.28783,"wth":202073.1704123,"outlier":0.75,"curve":[{"p":1,"w":0.969},{"p":2,"w":0.478},{"p":3,"w":0.422},{"p":4,"w":0.388},{"p":5,"w":0.37},{"p":6,"w":0.356},{"p":7,"w":0.346},{"p":8,"w":0.346},{"p":9,"w":0.321},{"p":10,"w":0.314},{"p":11,"w":0.306},{"p":12,"w":0.295},{"p":13,"w":0.292},{"p":14,"w":0.292},{"p":15,"w":0.306},{"p":16,"w":0.282},{"p":17,"w":0.281},{"p":18,"w":0.279},{"p":19,"w":0.275},{"p":20,"w":0.271},{"p":21,"w":0.276},{"p":22,"w":0.268},{"p":23,"w":0.266},{"p":24,"w":0.266},{"p":25,"w":0.263},{"p":26,"w":0.259},{"p":27,"w":0.258},{"p":28,"w":0.258},{"p":29,"w":0.256},{"p":30,"w":0.258},{"p":31,"w":0.252},{"p":32,"w":0.247},{"p":33,"w":0.248},{"p":34,"w":0.245},{"p":35,"w":0.243},{"p":36,"w":0.245},{"p":37,"w":0.247},{"p":38,"w":0.241},{"p":39,"w":0.243},{"p":40,"w":0.238},{"p":41,"w":0.237},{"p":42,"w":0.236},{"p":43,"w":0.234},{"p":44,"w":0.234},{"p":45,"w":0.236},{"p":46,"w":0.234},{"p":47,"w":0.23},{"p":48,"w":0.229},{"p":49,"w":0.226},{"p":50,"w":0.226},{"p":51,"w":0.228},{"p":52,"w":0.221},{"p":53,"w":0.216},{"p":54,"w":0.216},{"p":55,"w":0.221},{"p":56,"w":0.213},{"p":57,"w":0.212},{"p":58,"w":0.211},{"p":59,"w":0.21},{"p":60,"w":0.215},{"p":61,"w":0.21},{"p":62,"w":0.21},{"p":63,"w":0.209},{"p":64,"w":0.208},{"p":65,"w":0.208},{"p":66,"w":0.205},{"p":67,"w":0.204},{"p":68,"w":0.204},{"p":69,"w":0.204},{"p":70,"w":0.207},{"p":71,"w":0.204},{"p":72,"w":0.201},{"p":73,"w":0.203},{"p":74,"w":0.199},{"p":75,"w":0.198},{"p":76,"w":0.199},{"p":77,"w":0.203},{"p":78,"w":0.2},{"p":79,"w":0.199},{"p":80,"w":0.201},{"p":81,"w":0.203},{"p":82,"w":0.197},{"p":83,"w":0.197},{"p":84,"w":0.197},{"p":85,"w":0.199},{"p":86,"w":0.195},{"p":87,"w":0.199},{"p":88,"w":0.195},{"p":89,"w":0.194},{"p":90,"w":0.2},{"p":91,"w":0.196},{"p":92,"w":0.196},{"p":93,"w":0.202},{"p":94,"w":0.198},{"p":95,"w":0.203},{"p":96,"w":0.201},{"p":97,"w":0.2},{"p":98,"w":0.182},{"p":99,"w":0.173},{"p":100,"w":0.165}]}],"refs":[{"key":"all","label":"All tracked channels (19)","short":"ALL TRACKED","curve":[{"p":0,"w":0.961},{"p":2,"w":0.756},{"p":4,"w":0.634},{"p":6,"w":0.577},{"p":8,"w":0.55},{"p":10,"w":0.53},{"p":12,"w":0.519},{"p":14,"w":0.499},{"p":16,"w":0.488},{"p":18,"w":0.476},{"p":20,"w":0.473},{"p":22,"w":0.468},{"p":24,"w":0.459},{"p":26,"w":0.453},{"p":28,"w":0.449},{"p":30,"w":0.441},{"p":32,"w":0.433},{"p":34,"w":0.43},{"p":36,"w":0.421},{"p":38,"w":0.418},{"p":40,"w":0.421},{"p":42,"w":0.417},{"p":44,"w":0.411},{"p":46,"w":0.409},{"p":48,"w":0.4},{"p":50,"w":0.393},{"p":52,"w":0.396},{"p":54,"w":0.395},{"p":56,"w":0.394},{"p":58,"w":0.392},{"p":60,"w":0.394},{"p":62,"w":0.388},{"p":64,"w":0.381},{"p":66,"w":0.374},{"p":68,"w":0.37},{"p":70,"w":0.37},{"p":72,"w":0.366},{"p":74,"w":0.363},{"p":76,"w":0.364},{"p":78,"w":0.363},{"p":80,"w":0.355},{"p":82,"w":0.353},{"p":84,"w":0.356},{"p":86,"w":0.349},{"p":88,"w":0.356},{"p":90,"w":0.341},{"p":92,"w":0.341},{"p":94,"w":0.335},{"p":96,"w":0.314},{"p":98,"w":0.277},{"p":100,"w":0.237}]}]}</script>
 <script>
 (function(){
   var D = window.__COHORT__; if(!D || !D.videos.length) return;
@@ -1458,6 +2002,9 @@ means two things move together on this channel, which is not the same as one cau
   var FLAT_H = 620, DEEP_H = 760;
   var H = FLAT_H;
   var axis = 'percent', colour = 'none', sel = null, depth = 'flat';
+  // Which reference curves are switched on. Off by default: a comparison the
+  // reader did not ask for is one more line on an already dense chart.
+  var refOn = {};
   // The window restricts WHICH videos are drawn. "all" is the default because a
   // filter that hides data by default is a way to mislead yourself. The same
   // rule governs the two range filters below: both start wide open.
@@ -1986,6 +2533,24 @@ means two things move together on this channel, which is not the same as one cau
           '" text-anchor="end">MEDIAN</text>');
       }
     }
+    // Reference curves: group medians on the % axis, drawn in every flat view
+    // (the band included, where "inside the pack or outside it" is exactly
+    // the question they answer). Never in 3D, for the median's reason.
+    if (axis === 'percent' && !threeD){
+      (D.refs || []).forEach(function(rf){
+        if (!refOn[rf.key] || !rf.curve || rf.curve.length < 2) return;
+        var rd = '';
+        for (var ri = 0; ri < rf.curve.length; ri++){
+          var rp = rf.curve[ri];
+          rd += (ri ? 'L' : 'M') + (L + xMap(rp.p/100)*plotW()).toFixed(1) + ' ' + yOf(rp.w,0).toFixed(1) + ' ';
+        }
+        parts.push('<path class="refcase" d="'+rd+'"/>');
+        parts.push('<path class="refcv ref-'+rf.key+'" d="'+rd+'"><title>'+esc(rf.label)+'</title></path>');
+        var rl = rf.curve[rf.curve.length-1];
+        parts.push('<text class="reflab ref-'+rf.key+'" x="'+(L + xMap(rl.p/100)*plotW() - 6).toFixed(1)+'" y="'+
+          (yOf(rl.w,0) + (rf.key === 'all' ? 14 : 26)).toFixed(1)+'" text-anchor="end">'+esc(rf.short)+'</text>');
+      });
+    }
     parts.push('</g>');
     parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0,0)+'" x2="'+(L+plotW())+'" y2="'+yOf(0,0)+'"/>');
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
@@ -2081,6 +2646,13 @@ means two things move together on this channel, which is not the same as one cau
       document.querySelectorAll('[data-col]').forEach(function(o){ o.disabled = depth==='band'; });
       invalidateBins();
       refreshPubRange();
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-ref]').forEach(function(b){
+    b.addEventListener('click', function(){
+      refOn[b.dataset.ref] = !refOn[b.dataset.ref];
+      b.setAttribute('aria-pressed', String(!!refOn[b.dataset.ref]));
       draw();
     });
   });

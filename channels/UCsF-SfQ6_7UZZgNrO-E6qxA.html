@@ -425,6 +425,16 @@ svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 
 svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
                       font-family:ui-monospace,Menlo,monospace; pointer-events:none;
                       paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+/* Reference curves: group medians. Dotted, not dashed, so they never read as
+   the channel's own median; each with the same dark casing and an end label. */
+svg.cohortsvg .refcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .refcv{fill:none; stroke-width:2.4; stroke-dasharray:2 5; stroke-linecap:round; pointer-events:none}
+svg.cohortsvg .refcv.ref-all{stroke:#f6c344}
+svg.cohortsvg .refcv.ref-niche{stroke:#b6d94c}
+svg.cohortsvg .reflab{font-size:10.5px; letter-spacing:.14em; font-weight:600; font-family:ui-monospace,Menlo,monospace;
+                      pointer-events:none; paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+svg.cohortsvg .reflab.ref-all{fill:#f6c344}
+svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
@@ -594,6 +604,140 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .dim-none{font-size:19px;font-weight:500;color:var(--grey)}
 .dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
 .dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.dash{margin:24px 0 10px; min-width:0}
+.dash-top{display:flex; justify-content:space-between; align-items:flex-start; gap:14px 24px; flex-wrap:wrap; margin-bottom:16px}
+.dash-eyebrow{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--teal-mid)}
+.dash h2.dash-h{font-size:30px; line-height:1.1; margin:2px 0 6px; letter-spacing:-.02em; text-transform:none; color:var(--white); font-weight:600}
+.dash-sub{color:var(--grey); font-size:13.5px}
+.dash-right{display:flex; flex-direction:column; align-items:flex-end; gap:10px}
+.dash-win{display:inline-flex; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px; flex-wrap:wrap}
+.dw{background:none; border:0; color:var(--grey); font:inherit; font-size:12.5px; padding:7px 14px; border-radius:999px; cursor:pointer}
+.dw:hover{color:var(--white)}
+.dw[aria-pressed=true]{background:var(--panel-raised); color:var(--white); font-weight:600}
+.dash-through{font-size:12px; color:var(--grey); background:var(--panel); border:1px solid var(--line); border-radius:999px;
+              padding:7px 14px; display:inline-flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums}
+.dash-through i{width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; flex:none}
+@media(max-width:760px){ .dash-right{align-items:flex-start} }
+
+/* Headline tiles */
+.dash-tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(176px,1fr)); gap:12px}
+.dt{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 12px; min-width:0}
+.dt-k{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--grey); font-family:ui-monospace,Menlo,monospace}
+.dt-s{font-size:12px; color:var(--grey); margin-top:2px}
+.dt-v{font-size:30px; font-weight:600; margin:8px 0 6px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dt-none{color:var(--grey); font-weight:500; font-size:19px}
+.dt-c{font-size:11.5px; color:var(--grey); border-top:1px dashed var(--line); padding-top:6px; line-height:1.4; min-height:34px; overflow-wrap:anywhere}
+.dt-c.up{color:var(--hot)} .dt-c.down{color:var(--cold)}
+.dt-spark{width:100%; height:44px; display:block; margin-top:6px}
+.dt-spark path{fill:none; stroke:var(--teal); stroke-width:1.6; stroke-linejoin:round; stroke-linecap:round}
+.dt-spark .fill{fill:rgba(141,216,211,.14); stroke:none}
+
+/* The period, day by day */
+.dash-daily{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px 12px; margin-top:12px; min-width:0}
+.dash-daily-h{display:flex; justify-content:space-between; gap:12px 20px; flex-wrap:wrap; align-items:flex-start}
+.dash-daily-t{font-size:17px; font-weight:600}
+.dash-daily-s{font-size:12.5px; color:var(--grey); margin-top:3px}
+.dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
+.dash-legend span{display:inline-flex; align-items:center; gap:6px}
+.dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
+.dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
+.dash-daily-wrap{position:relative}
+.dash-daily-svg{width:100%; height:auto; aspect-ratio:1000/300; display:block; overflow:visible}
+@media(max-width:760px){ .dash-daily-svg{aspect-ratio:5/3} }
+.dash-daily-svg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dash-daily-svg .tick{fill:var(--grey); font-size:12.5px; font-family:ui-monospace,Menlo,monospace}
+.dash-daily-svg .area{fill:rgba(141,216,211,.16); stroke:none}
+.dash-daily-svg .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dash-daily-svg .upl{stroke:var(--grey); stroke-width:2; opacity:.85}
+.dash-daily-svg .upl.hot{stroke:var(--white)}
+.dash-daily-svg .cross{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:3 3; pointer-events:none}
+.dash-daily-svg .dot{fill:var(--white); stroke:var(--panel); stroke-width:2; pointer-events:none}
+.dash-daily-svg .hitrect{fill:transparent; cursor:crosshair}
+.dash-tip{position:absolute; pointer-events:none; background:#04100f; border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+          font-size:12px; line-height:1.45; color:var(--white); max-width:280px; z-index:2; box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.dash-tip .d{color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums}
+.dash-tip .r{color:var(--grey); font-variant-numeric:tabular-nums}
+.dash-tip .r b{color:var(--white); font-weight:600}
+.dash-tip .u{margin-top:4px; color:#cfe0de; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dash-daily-empty{color:var(--grey); font-size:13px; line-height:1.55; margin:12px 0 4px; max-width:78ch}
+
+/* The three dimensions */
+.dash-depts{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; margin-top:12px}
+.dept{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 14px; min-width:0; cursor:pointer;
+      transition:background .12s, border-color .12s; outline:none}
+.dept:hover{background:var(--panel-raised)}
+.dept:focus-visible{border-color:var(--teal)}
+.dept[aria-expanded=true]{border-color:var(--teal); background:var(--panel-raised)}
+.dept-k{display:flex; align-items:center; gap:8px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal);
+        font-family:ui-monospace,Menlo,monospace}
+.dept-k i{width:7px; height:7px; background:var(--teal); transform:rotate(45deg); display:inline-block; flex:none}
+.dept-k .chev{margin-left:auto; color:var(--grey); font-family:Poppins,ui-sans-serif,system-ui,sans-serif; font-size:14px; letter-spacing:0}
+.dept-v{font-size:28px; font-weight:600; margin:10px 0 2px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dept-v .none{color:var(--grey); font-weight:500; font-size:19px}
+.dept-s{font-size:12px; color:var(--grey); border-bottom:1px dashed var(--line); padding-bottom:6px; margin-bottom:8px}
+.dept-l{font-size:12px; color:#cfe0de; line-height:1.5; overflow-wrap:anywhere}
+.dept-l+.dept-l{margin-top:3px}
+.dept-more{display:block; margin-top:10px; font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.dept-more::before{content:"\203A "; color:var(--teal)}
+/* Funnel */
+.fun{margin-top:8px; display:grid; gap:5px}
+.fun-r{display:grid; grid-template-columns:96px 1fr auto; gap:8px; align-items:center; font-size:12px; color:var(--grey)}
+.fun-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.fun-b{height:9px; border-radius:999px; background:rgba(141,216,211,.16); overflow:hidden; min-width:0}
+.fun-b i{display:block; height:100%; background:var(--teal); border-radius:999px; min-width:2px}
+.fun-r.n2 .fun-b i{background:var(--teal-mid)}
+.fun-r.n3 .fun-b i{background:var(--teal-deep)}
+/* Score comparisons */
+.cmp{margin-top:8px; display:grid; gap:4px}
+.cmp-r{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); align-items:baseline}
+.cmp-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
+.cmp-r em{font-style:normal; color:var(--teal-mid); font-variant-numeric:tabular-nums; margin-left:6px}
+.cmp-r .wh{color:var(--grey); font-weight:500; white-space:normal; text-align:right}
+/* Segment bar */
+.seg{margin-top:10px}
+.seg-b{display:flex; height:10px; border-radius:999px; overflow:hidden; background:rgba(141,216,211,.12)}
+.seg-b i{display:block; height:100%}
+.seg-b i.s0{background:var(--teal)} .seg-b i.s1{background:var(--teal-mid)} .seg-b i.s2{background:var(--teal-deep)}
+.seg-k{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; font-size:11.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.seg-k span::before{content:""; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; vertical-align:-1px}
+.seg-k span.s0::before{background:var(--teal)} .seg-k span.s1::before{background:var(--teal-mid)} .seg-k span.s2::before{background:var(--teal-deep)}
+.seg-basis{font-size:11px; color:var(--grey); margin-top:4px}
+
+/* The open dimension's panel, full width under the three cards */
+.dept-panel{background:var(--panel); border:1px solid var(--teal); border-radius:16px; padding:18px 20px 14px; margin-top:12px; min-width:0}
+.dept-panel-h{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.dept-panel-t{font-size:16px; font-weight:600}
+.dept-panel-w{font-size:12px; color:var(--grey)}
+.dept-close{margin-left:auto; background:none; border:1px solid var(--line); color:var(--grey); border-radius:999px; font:inherit;
+            font-size:12px; padding:5px 12px; cursor:pointer}
+.dept-close:hover{color:var(--white); border-color:var(--teal)}
+.dwin{margin-top:14px; overflow-x:auto}
+.dwin table{border-collapse:collapse; font-size:12.5px; min-width:420px}
+.dwin th,.dwin td{padding:5px 12px 5px 0; text-align:left; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums; white-space:nowrap}
+.dwin th{font-weight:500; color:var(--grey); font-size:11px; text-transform:uppercase; letter-spacing:.1em}
+.dwin td.cur{color:var(--teal); font-weight:600}
+.dwin-cap{font-size:11.5px; color:var(--grey); margin:6px 0 0}
+.dcharts{display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:14px 18px; margin-top:16px}
+@media(max-width:520px){ .dcharts{grid-template-columns:1fr} }
+.dchart{min-width:0}
+.dchart-h{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); margin-bottom:4px}
+.dchart-h b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.dchart svg{width:100%; height:auto; aspect-ratio:600/170; display:block; overflow:visible}
+.dchart .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dchart .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+.dchart .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dchart .line.b{stroke:var(--warn)}
+.dchart .area{fill:rgba(141,216,211,.14); stroke:none}
+.dchart .bar{fill:var(--teal)} .dchart .bar.neg{fill:var(--cold)}
+.dchart .ref{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:4 4}
+.dchart .none{fill:var(--grey); font-size:12px}
+.dchart-k{display:flex; gap:12px; font-size:11px; color:var(--grey); margin-top:2px}
+.dchart-k span::before{content:""; display:inline-block; width:12px; height:2px; margin-right:5px; vertical-align:3px; background:var(--teal)}
+.dchart-k span.b::before{background:var(--warn)}
+.dept-note{font-size:12.5px; color:var(--grey); line-height:1.55; margin:14px 0 0; max-width:88ch}
+.dash-foot{font-size:11.5px; color:var(--grey); margin:10px 0 22px; line-height:1.5; max-width:96ch}
 
 .mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
 .mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
@@ -904,27 +1048,420 @@ table.obs td.no{color:#ff8f8f}
     <p class="lede" style="margin:0"><a href="https://www.youtube.com/@no.hastudio" target="_blank" rel="noopener">@no.hastudio</a> · 67K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
-<div class="dims">
-  <div class="dim ">
-    <div class="dim-h">Clickability</div>
-    <div class="dim-v">4.5%</div>
-    <div class="dim-2">6.6M impressions -&gt; 507K views -&gt; 486K engaged</div>
-    <p class="dim-note">Median video: 4.5% across 14</p>
+<section class="dash" id="dash" aria-label="Creator dashboard">
+  <div class="dash-top">
+    <div>
+      <div class="dash-eyebrow">Creator dashboard</div>
+      <h2 class="dash-h">Analytics</h2>
+      <div class="dash-sub"><span>Studio NOHA</span> · <span id="dash-winlab">Last 30 days</span></div>
+    </div>
+    <div class="dash-right">
+      <div class="dash-win" role="group" aria-label="Time window"><button type="button" class="dw" data-days="30" aria-pressed="true">30 days</button><button type="button" class="dw" data-days="90" aria-pressed="false">90 days</button><button type="button" class="dw" data-days="360" aria-pressed="false">Last year</button></div>
+      <div class="dash-through"><i></i>Studio pull Aug 31, 2026 · no day-by-day series stored yet</div>
+    </div>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Watchability</div>
-    <div class="dim-v">3:56</div>
-    <div class="dim-2">35.0% of each video watched</div>
-    <p class="dim-note">32K hours watched</p>
+  <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
+    <div class="dt-k">Views</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">198K</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="watch">
+    <div class="dt-k">Watch time</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">13K hours</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="subs">
+    <div class="dt-k">Net subscribers gained</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">+2,903</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="avd">
+    <div class="dt-k">Average view duration</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">4:19</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="impr">
+    <div class="dt-k">Impressions</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">2.5M</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div></div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The period, day by day</div>
+        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
+        <div class="dash-daily-s">Videos (long-form)</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Replayability</div>
-    <div class="dim-v">4%</div>
-    <div class="dim-2">of classified viewers are Regulars</div>
-    <p class="dim-note">82K returning vs 118K new · Casual 37% · New 59%</p>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">4.2%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>2.5M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:7.9%"></i></span><b>198K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.1%"></i></span><b>177K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">0.96×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">13K hours watched</div><div class="dept-l">4:19 average view duration · 34.2% of each video watched</div><div class="dept-l">Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.93×<em>+0.02</em></b></div><div class="cmp-r"><span>maker-build median</span><b class="wh">withheld · 9 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.02</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">46%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">14K returning (46%) · 17K new (54%)</div><div class="dept-l">+2,903 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:3.8%"><title>Regular</title></i><i class="s1" style="width:42.0%"><title>Casual</title></i><i class="s2" style="width:54.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 4% · 1K</span><span class="s1">Casual 42% · 13K</span><span class="s2">New 54% · 17K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
   </div>
-</div>
-<p class="dim-foot">Studio figures over the last 90 days, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better.</p>
+  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-08-31. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
+</section>
+<script>window.__DASH__={"channelId":"UCsF-SfQ6_7UZZgNrO-E6qxA","channel":"Studio NOHA","pulledAt":"2026-08-31","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"198K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"13K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+2,903","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:19","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"2.5M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.2%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":2503376,"text":"2.5M","share":1},{"key":"views","label":"Views","value":197784,"text":"198K","share":0.07900690906999189},{"key":"engaged","label":"Engaged views","value":177219,"text":"177K","share":0.07079200247985121}],"note":"2.5M impressions became 198K views, and 90% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["13K hours watched","4:19 average view duration · 34.2% of each video watched","Implied length 12:38 (duration ÷ percentage) · tracked channels hold 39.6% at that length"],"score":0.9567315757527175,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.02"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.02"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"46%","sub":"of classified viewers returned","lines":["14K returning (46%) · 17K new (54%)","+2,903 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.03772856039144991,"text":"4% · 1K"},{"label":"Casual","share":0.42026139582796807,"text":"42% · 13K"},{"label":"New","share":0.542010043780582,"text":"54% · 17K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 1K regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"507K","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"32K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+8,253","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"3:56","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"6.6M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.5%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":6584605,"text":"6.6M","share":1},{"key":"views","label":"Views","value":506802,"text":"507K","share":0.0769677148439428},{"key":"engaged","label":"Engaged views","value":486237,"text":"486K","share":0.07384452066600806}],"note":"6.6M impressions became 507K views, and 96% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.96×","sub":"retention score, length-adjusted","lines":["32K hours watched","3:56 average view duration · 35.0% of each video watched","Implied length 11:13 (duration ÷ percentage) · tracked channels hold 40.3% at that length"],"score":0.9600346129734162,"compare":[{"label":"This channel, last 360 days","value":"0.93×","delta":"+0.03"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.04"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 4% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+8,253 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"1.8M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"127K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+34,512","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"4:20","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"24.0M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.6%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":23996577,"text":"24.0M","share":1},{"key":"views","label":"Views","value":1772744,"text":"1.8M","share":0.07387486973662952},{"key":"engaged","label":"Engaged views","value":1752179,"text":"1.8M","share":0.0730178725073997}],"note":"24.0M impressions became 1.8M views, and 99% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.93×","sub":"retention score, length-adjusted","lines":["127K hours watched","4:20 average view duration · 33.3% of each video watched","Implied length 13:03 (duration ÷ percentage) · tracked channels hold 39.4% at that length"],"score":0.9341717186457611,"compare":[{"label":"This channel, last 720 days","value":"0.94×","delta":"−0.01"},{"label":"maker-build median","value":"withheld · 9 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.15"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 7% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"41%","sub":"of classified viewers returned","lines":["82K returning (41%) · 118K new (59%)","+34,512 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.03713338815379632,"text":"4% · 7K"},{"label":"Casual","share":0.37372106351698187,"text":"37% · 75K"},{"label":"New","share":0.5891455483292218,"text":"59% · 118K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 7K regulars."}}],"daily":[],"uploads":[{"d":"2024-10-13","id":"FofTq546kgM","t":"What is Japanese Woodworking? - An Introduction"},{"d":"2024-11-03","id":"na9e0Pl2Dow","t":"I built a Cabinet to store our memories | Full Build"},{"d":"2024-12-23","id":"KHdX4xWH9YY","t":"A workbench can be as simple as this..."},{"d":"2025-02-02","id":"78ErGTAyFCY","t":"Making a Tea Cabinet | Sashimono Woodworking"},{"d":"2025-05-04","id":"7Gt5nepmzDM","t":"Japanese Joinery is easier than you think..."},{"d":"2025-06-14","id":"TSG8lMrqHQM","t":"This ONE skill will change how you woodwork"},{"d":"2025-09-07","id":"wKg0lMrBOiU","t":"No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life"},{"d":"2025-10-12","id":"kCVcQwG9OE0","t":"A Modern Take on Shoji | Made with Japanese Hand Tools"},{"d":"2026-01-18","id":"75EJtFuDwzc","t":"Which Japanese Woodworking Tools Should You Buy First?"},{"d":"2026-02-22","id":"wpoOzWGm7yU","t":"The Hardest Part of Woodworking"},{"d":"2026-04-12","id":"ZOci3cqFQw4","t":"Is making things by hand still worth it?"},{"d":"2026-05-31","id":"asT3GmPhL1g","t":"Why Beautiful Furniture Starts at the Lumber Yard"},{"d":"2026-07-20","id":"2HuaCh4wl3A","t":"Slowing Down Helped Me Become a Better Craftsman"},{"d":"2026-08-23","id":"b7CZkbBJpZU","t":"The most important part of furniture making"}],"niche":"maker-build","baseline":{"videos":3813,"channels":19}}</script>
+<script>
+(function(){
+  var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
+  var cur = M.defaultDays, openDept = null, hoverIdx = -1;
+  var byDays = {}; M.windows.forEach(function(w){ byDays[w.days] = w; });
+  function W(){ return byDays[cur] || M.windows[0]; }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function fmtN(n){
+    if (n == null || !isFinite(n)) return '\u2014';
+    var a = Math.abs(n), s = n < 0 ? '\u2212' : '';
+    if (a >= 1e9) return s + (a/1e9).toFixed(1) + 'B';
+    if (a >= 1e8) return s + Math.round(a/1e6) + 'M';
+    if (a >= 1e6) return s + (a/1e6).toFixed(1) + 'M';
+    if (a >= 1e3) return s + Math.round(a/1e3) + 'K';
+    return s + Math.round(a);
+  }
+  function fmtFull(n){ return n == null ? '\u2014' : Math.round(n).toLocaleString('en-US'); }
+  function fmtPct(x, dp){ return x == null ? '\u2014' : (x*100).toFixed(dp == null ? 1 : dp) + '%'; }
+  function mmss(sec){ if (sec == null) return '\u2014'; var s = Math.max(0, Math.round(sec)), m = Math.floor(s/60);
+    return (m >= 60 ? Math.floor(m/60) + ':' + String(m%60).padStart(2,'0') : String(m)) + ':' + String(s%60).padStart(2,'0'); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDay(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]); }
+  function fmtDayYear(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]) + ', ' + p[0]; }
+  function rowsIn(w){
+    if (!w.from || !w.to) return [];
+    return M.daily.filter(function(r){ return r.d >= w.from && r.d <= w.to; });
+  }
+  function finite(xs){ return xs.filter(function(x){ return x != null && isFinite(x); }); }
+  function niceStep(max, n){
+    var raw = max / n, p = Math.pow(10, Math.floor(Math.log(raw)/Math.LN10)), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p;
+  }
+
+  // ---- headline tiles ------------------------------------------------------
+  function tileHtml(t){
+    var cls = /^\+/.test(t.compare) ? ' up' : /^\u2212/.test(t.compare) ? ' down' : '';
+    return '<div class="dt" data-tile="' + t.key + '">' +
+      '<div class="dt-k">' + esc(t.name) + '</div><div class="dt-s">' + esc(t.sub) + '</div>' +
+      '<div class="dt-v">' + (t.value != null ? esc(t.value) : '<span class="dt-none">not pulled</span>') + '</div>' +
+      '<div class="dt-c' + cls + '">' + esc(t.compare) + '</div>' +
+      '<svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg></div>';
+  }
+  function sparkInto(svg, values, unit){
+    if (!svg) return;
+    var vals = values || [], fin = finite(vals);
+    if (fin.length < 2){ svg.innerHTML = ''; svg.style.display = 'none'; return; }
+    svg.style.display = '';
+    var lo = Math.min.apply(null, fin), hi = Math.max.apply(null, fin);
+    if (lo > 0) lo = 0;                       // a spark that hides its baseline exaggerates
+    if (hi === lo) hi = lo + 1;
+    var n = vals.length, d = '', first = null, last = null;
+    for (var i = 0; i < n; i++){
+      var v = vals[i]; if (v == null || !isFinite(v)) continue;
+      var x = (n > 1 ? i/(n-1) : 0.5) * 216 + 2, y = 40 - ((v - lo)/(hi - lo)) * 36;
+      d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+      if (first === null) first = x; last = x;
+    }
+    var area = d + 'L' + last.toFixed(1) + ' 42 L' + first.toFixed(1) + ' 42 Z';
+    svg.innerHTML = '<path class="fill" d="' + area + '"/><path d="' + d + '"><title>' + esc(unit) + '</title></path>';
+  }
+  function renderTiles(w){
+    var box = document.getElementById('dash-tiles'); if (!box) return;
+    box.innerHTML = w.tiles.map(tileHtml).join('');
+    w.tiles.forEach(function(t){
+      var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
+      sparkInto(el, t.spark, t.unit);
+    });
+  }
+
+  // ---- the period, day by day ---------------------------------------------
+  var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
+  var dayRows = [], dayMax = 1;
+  function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
+  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+  function renderDaily(w){
+    var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
+        empty = document.getElementById('dash-daily-empty');
+    if (!svg) return;
+    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
+    hoverIdx = -1;
+    var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
+    if (dayRows.length < 2){
+      svg.innerHTML = ''; svg.style.display = 'none';
+      if (sum) sum.textContent = '';
+      if (empty) empty.hidden = false;
+      return;
+    }
+    svg.style.display = '';
+    if (empty) empty.hidden = true;
+    var total = 0; dayRows.forEach(function(r){ total += r.v; });
+    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
+      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
+    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
+    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
+    var parts = [], n = dayRows.length;
+    for (var g = step; g <= dayMax + 1e-9; g += step){
+      var y = yAt(g);
+      parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+    }
+    var d = '';
+    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
+    var base = yAt(0);
+    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
+    parts.push('<path class="line" d="' + d + '"/>');
+    // Uploads published inside the window, as ticks under the baseline.
+    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
+    (M.uploads || []).forEach(function(u){
+      var i = byDay[u.d]; if (i == null) return;
+      var x = xAt(i, n);
+      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    });
+    // Date labels: first, middle, last.
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+    });
+    parts.push('<g id="dash-hover"></g>');
+    parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
+    svg.innerHTML = parts.join('');
+  }
+  function showHover(i){
+    var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
+    if (!svg || !g || !tip) return;
+    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
+    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
+                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
+    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
+    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
+    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
+    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
+    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
+    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    tip.innerHTML = lines.join('');
+    tip.hidden = false;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
+    var left = px + 14, tw = tip.offsetWidth || 220;
+    if (left + tw > box.width) left = px - tw - 14;
+    tip.style.left = Math.max(0, left) + 'px';
+    tip.style.top = Math.max(0, py - 16) + 'px';
+  }
+  (function wireHover(){
+    var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
+    svg.addEventListener('pointermove', function(e){
+      if (!dayRows.length) return;
+      var box = svg.getBoundingClientRect();
+      var fx = ((e.clientX - box.left) / box.width) * DW;
+      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
+      if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
+    });
+    svg.addEventListener('pointerleave', function(){ hoverIdx = -1; showHover(-1); });
+  })();
+
+  // ---- the three dimensions ------------------------------------------------
+  function faceClick(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div><div class="fun">';
+    c.funnel.forEach(function(f, i){
+      h += '<div class="fun-r n' + (i+1) + '"><span>' + esc(f.label) + '</span><span class="fun-b"><i style="width:' +
+           (f.share != null ? (f.share*100).toFixed(1) : 0) + '%"></i></span><b>' + esc(f.text) + '</b></div>';
+    });
+    return h + '</div>';
+  }
+  function faceWatch(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.compare.length){
+      h += '<div class="cmp">';
+      c.compare.forEach(function(r){
+        h += '<div class="cmp-r"><span>' + esc(r.label) + '</span>' +
+             (r.delta != null ? '<b>' + esc(r.value) + '<em>' + esc(r.delta) + '</em></b>' : '<b class="wh">' + esc(r.value) + '</b>') + '</div>';
+      });
+      h += '</div>';
+    }
+    return h;
+  }
+  function faceReplay(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + (c.sourceDays ? ' (' + c.sourceDays + '-day split)' : '') + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.segments.length){
+      h += '<div class="seg"><div class="seg-b">';
+      c.segments.forEach(function(s, i){ h += '<i class="s' + i + '" style="width:' + (s.share*100).toFixed(1) + '%"><title>' + esc(s.label) + '</title></i>'; });
+      h += '</div><div class="seg-k">';
+      c.segments.forEach(function(s, i){ h += '<span class="s' + i + '">' + esc(s.label) + ' ' + esc(s.text) + '</span>'; });
+      h += '</div><div class="seg-basis">' + (c.segmentsBasis === 'watch-time' ? 'share of total watch time hours' : 'share of classified viewers; watch-time split not pulled yet') + '</div></div>';
+    }
+    return h;
+  }
+  function renderDepts(w){
+    var faces = { click: faceClick(w.click), watch: faceWatch(w.watch), replay: faceReplay(w.replay) };
+    Object.keys(faces).forEach(function(k){
+      var el = document.querySelector('.dept[data-dept="' + k + '"] .dept-face');
+      if (el) el.innerHTML = faces[k];
+    });
+  }
+
+  // ---- the open dimension over time ---------------------------------------
+  // Small multiples are drawn at 600 units wide: a 1000-unit box in a
+  // half-width column scales its 11px ticks below legibility.
+  function chartHtml(id, title, right){
+    return '<div class="dchart"><div class="dchart-h"><span>' + esc(title) + '</span><b>' + esc(right || '') + '</b></div><svg viewBox="0 0 600 170" data-c="' + id + '"></svg></div>';
+  }
+  function drawSeries(svg, rows, keys, fmt, kind, opts){
+    if (!svg) return;
+    var L = 54, R = 10, T = 10, B = 26, Wd = 600, Hd = 170;
+    var series = keys.map(function(k){ return rows.map(function(r){ return r[k] == null ? null : r[k]; }); });
+    var all = finite([].concat.apply([], series));
+    if (all.length < 2){ svg.innerHTML = '<text class="none" x="' + L + '" y="' + (Hd/2) + '">Not in the stored day-by-day series.</text>'; return; }
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+    if (kind !== 'bars' && lo > 0) lo = 0;
+    if (opts && opts.ref != null){ lo = Math.min(lo, opts.ref); hi = Math.max(hi, opts.ref); }
+    if (kind === 'bars'){ lo = Math.min(0, lo); hi = Math.max(0, hi); }
+    if (hi === lo) hi = lo + 1;
+    var n = rows.length, parts = [];
+    function x(i){ return L + (n > 1 ? i/(n-1) : 0.5) * (Wd-L-R); }
+    function y(v){ return T + (1 - (v-lo)/(hi-lo)) * (Hd-T-B); }
+    var step = niceStep(hi - lo, 3);
+    for (var g = Math.ceil(lo/step)*step; g <= hi + 1e-9; g += step){
+      parts.push('<line class="grid" x1="' + L + '" y1="' + y(g).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(g).toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (L-8) + '" y="' + (y(g)+4).toFixed(1) + '" text-anchor="end">' + esc(fmt(g)) + '</text>');
+    }
+    if (opts && opts.ref != null){
+      parts.push('<line class="ref" x1="' + L + '" y1="' + y(opts.ref).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(opts.ref).toFixed(1) + '"><title>' + esc(opts.refLabel || '') + '</title></line>');
+    }
+    if (kind === 'bars'){
+      var bw = Math.max(1, (Wd-L-R)/n * 0.7);
+      series[0].forEach(function(v, i){
+        if (v == null) return;
+        var y0 = y(0), y1 = y(v);
+        parts.push('<rect class="bar' + (v < 0 ? ' neg' : '') + '" x="' + (x(i)-bw/2).toFixed(1) + '" y="' + Math.min(y0,y1).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(1, Math.abs(y0-y1)).toFixed(1) + '"><title>' + esc(fmtDay(rows[i].d) + ': ' + fmt(v)) + '</title></rect>');
+      });
+    } else {
+      series.forEach(function(s, si){
+        var d = '', last = null, first = null;
+        s.forEach(function(v, i){
+          if (v == null || !isFinite(v)) return;
+          d += (d ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1) + ' ';
+          if (first === null) first = x(i); last = x(i);
+        });
+        if (!d) return;
+        if (si === 0 && keys.length === 1) parts.push('<path class="area" d="' + d + 'L' + last.toFixed(1) + ' ' + y(lo).toFixed(1) + ' L' + first.toFixed(1) + ' ' + y(lo).toFixed(1) + ' Z"/>');
+        parts.push('<path class="line' + (si ? ' b' : '') + '" d="' + d + '"/>');
+      });
+    }
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      if (i < 0 || i >= n) return;
+      parts.push('<text class="tick" x="' + x(i).toFixed(1) + '" y="' + (Hd-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(rows[i].d) + '</text>');
+    });
+    svg.innerHTML = parts.join('');
+  }
+  function last(rows, k){ for (var i = rows.length-1; i >= 0; i--) if (rows[i][k] != null) return rows[i][k]; return null; }
+  function windowTable(dept){
+    var cols = dept === 'click'
+      ? [['Impressions', function(w){ return w.click.funnel[0].text; }], ['Views', function(w){ return w.click.funnel[1].text; }],
+         ['Engaged', function(w){ return w.click.funnel[2].text; }], ['CTR', function(w){ return w.click.headline || '\u2014'; }]]
+      : dept === 'watch'
+      ? [['Watch time', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'watch'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['AVD', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'avd'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Retention score', function(w){ return w.watch.headline && w.watch.score != null ? w.watch.headline : '\u2014'; }]]
+      : [['Returning', function(w){ return w.replay.headline || '\u2014'; }],
+         ['Net subscribers', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'subs'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Split', function(w){ return w.replay.segments.map(function(s){ return s.label + ' ' + s.text.split(' \u00b7 ')[0]; }).join(', ') || '\u2014'; }]];
+    var h = '<div class="dwin"><table><thead><tr><th>Window</th>' + cols.map(function(c){ return '<th>' + esc(c[0]) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    M.windows.forEach(function(w){
+      h += '<tr><td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(w.label) + (w.label === 'Last year' ? ' (' + w.days + ' days)' : '') + '</td>' +
+           cols.map(function(c){ return '<td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(c[1](w)) + '</td>'; }).join('') + '</tr>';
+    });
+    return h + '</tbody></table><p class="dwin-cap">Each row is one trailing window from Studio, ending on the pull date; the selected window is highlighted. Longer windows contain the shorter ones, so read the drift between rows, not the sum.</p></div>';
+  }
+  function renderPanel(){
+    var panel = document.getElementById('dept-panel'); if (!panel) return;
+    document.querySelectorAll('.dept').forEach(function(d){ d.setAttribute('aria-expanded', String(d.dataset.dept === openDept)); });
+    if (!openDept){ panel.hidden = true; panel.innerHTML = ''; return; }
+    var w = W(), rows = rowsIn(w), names = { click: 'Clickability', watch: 'Watchability', replay: 'Replayability' };
+    var h = '<div class="dept-panel-h"><span class="dept-panel-t">' + names[openDept] + ' over time</span><span class="dept-panel-w">' +
+            (rows.length ? esc(fmtDayYear(w.from) + ' to ' + fmtDayYear(w.to)) : 'by trailing window') + '</span><button type="button" class="dept-close" id="dept-close">Close</button></div>';
+    h += windowTable(openDept);
+    var charts = [];
+    if (rows.length >= 2){
+      if (openDept === 'click'){
+        charts = [['i','Impressions a day', fmtN(last(rows,'i'))], ['v','Views a day', fmtN(last(rows,'v'))], ['e','Engaged views a day', fmtN(last(rows,'e'))], ['c','Click-through by day', fmtPct(last(rows,'c'))]];
+      } else if (openDept === 'watch'){
+        charts = [['h','Hours watched a day', fmtN(last(rows,'h'))], ['a','Average view duration by day', mmss(last(rows,'a'))], ['p','Average view percentage by day', fmtPct(last(rows,'p'))], ['q','Retention score by day', last(rows,'q') != null ? last(rows,'q').toFixed(2) + '\u00d7' : '\u2014']];
+      } else {
+        charts = [['rn','Returning and new viewers a day', fmtN(last(rows,'r')) + ' / ' + fmtN(last(rows,'n'))], ['s','Net subscribers a day', (last(rows,'s') > 0 ? '+' : '') + fmtFull(last(rows,'s'))]];
+      }
+      h += '<div class="dcharts">' + charts.map(function(c){ return chartHtml(c[0], c[1], c[2]); }).join('') + '</div>';
+    } else {
+      h += '<p class="dept-note">No day-by-day series is stored for this channel yet, so the figures above are per trailing window only. The next Studio pull captures the last 365 days day by day and these charts fill in.</p>';
+    }
+    h += '<p class="dept-note">' + esc(w[openDept].note) + '</p>';
+    panel.innerHTML = h;
+    panel.hidden = false;
+    charts.forEach(function(c){
+      var svg = panel.querySelector('svg[data-c="' + c[0] + '"]');
+      if (c[0] === 'rn'){ drawSeries(svg, rows, ['r','n'], fmtN, 'lines'); svg.insertAdjacentHTML('afterend', '<div class="dchart-k"><span>Returning</span><span class="b">New</span></div>'); }
+      else if (c[0] === 's') drawSeries(svg, rows, ['s'], fmtN, 'bars');
+      else if (c[0] === 'c' || c[0] === 'p') drawSeries(svg, rows, [c[0]], function(v){ return fmtPct(v, v < 0.2 ? 1 : 0); }, 'lines');
+      else if (c[0] === 'a') drawSeries(svg, rows, ['a'], mmss, 'lines');
+      else if (c[0] === 'q') drawSeries(svg, rows, ['q'], function(v){ return v.toFixed(2) + '\u00d7'; }, 'lines', { ref: 1, refLabel: '1.00\u00d7 = what tracked channels hold at this length' });
+      else drawSeries(svg, rows, [c[0]], fmtN, 'lines');
+    });
+    var close = document.getElementById('dept-close');
+    if (close) close.addEventListener('click', function(){ openDept = null; renderPanel(); });
+  }
+
+  // ---- wiring ---------------------------------------------------------------
+  function render(){
+    var w = W();
+    var lab = document.getElementById('dash-winlab');
+    if (lab) lab.textContent = w.label === 'Last year' ? 'Last year' : 'Last ' + w.label;
+    document.querySelectorAll('.dw').forEach(function(b){ b.setAttribute('aria-pressed', String(Number(b.dataset.days) === cur)); });
+    renderTiles(w); renderDaily(w); renderDepts(w); renderPanel();
+  }
+  document.querySelectorAll('.dw').forEach(function(b){
+    b.addEventListener('click', function(){ cur = Number(b.dataset.days); render(); });
+  });
+  document.querySelectorAll('.dept').forEach(function(d){
+    function toggle(){ openDept = openDept === d.dataset.dept ? null : d.dataset.dept; renderPanel();
+      if (openDept){ var p = document.getElementById('dept-panel'); if (p && p.scrollIntoView === undefined) return; } }
+    d.addEventListener('click', toggle);
+    d.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+  });
+  render();
+})();
+</script>
 <div class="stats">
   <div class="stat"><div class="v">54K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">1</div><div class="k">Breakouts (2×+)</div></div>
@@ -1207,6 +1744,7 @@ means two things move together on this channel, which is not the same as one cau
       <button class="tgl" data-z="band" aria-pressed="false" type="button">Median band</button>
       <button class="tgl" data-z="time" aria-pressed="false" type="button">By upload date</button>
     </span>
+    <span class="grp"><span class="lab">Compare</span><button class="tgl" data-ref="all" aria-pressed="false" type="button" title="Median retention curve, one vote per channel, over 3240 videos">All tracked channels (19)</button><button class="tgl" disabled type="button" title="Withheld: 9 of 10 channels with curves">maker-build · withheld (9 of 10 channels with curves)</button></span>
     <span class="spacer"></span>
     <span class="zoomnote" id="zoomnote">scroll to zoom, drag to pan</span>
     <button class="tgl" id="cohortreset" type="button">Reset</button>
@@ -1276,12 +1814,18 @@ means two things move together on this channel, which is not the same as one cau
     drawn grey rather than mid-ramp, and the ramp says how many. There is deliberately no returning-viewer
     encoding: that split is not fetched by any run here, and an option that quietly ranked on something else
     would be worse than its absence.</p>
+  <p class="cap"><strong>Compare</strong> draws a reference curve against this channel's own: the median retention curve
+    of every tracked channel, and of the channels in the same confirmed niche once ten or more of them carry
+    curves. Each channel contributes ONE curve (its own median), so a channel with six hundred analysed uploads
+    counts the same as one with twelve, and the line is a statement about the fleet rather than about its
+    largest member. Reference curves live on the % axis only, like the channel median, because clock time has
+    no shared x. The maker-build reference is withheld: 9 of 10 channels with curves.</p>
   <details class="legwrap"><summary>All 14 videos</summary>
     <input class="legfind" id="legfind" type="search" placeholder="Filter this list by title" aria-label="Filter the video list">
     <div class="clegend"><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/b7CZkbBJpZU.html" data-i="0" title="The most important part of furniture making"><b></b><span>The most important part of furniture making</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/2HuaCh4wl3A.html" data-i="1" title="Slowing Down Helped Me Become a Better Craftsman"><b></b><span>Slowing Down Helped Me Become a Better Craftsman</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/asT3GmPhL1g.html" data-i="2" title="Why Beautiful Furniture Starts at the Lumber Yard"><b></b><span>Why Beautiful Furniture Starts at the Lumber Yard</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/ZOci3cqFQw4.html" data-i="3" title="Is making things by hand still worth it?"><b></b><span>Is making things by hand still worth it?</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/wpoOzWGm7yU.html" data-i="4" title="The Hardest Part of Woodworking"><b></b><span>The Hardest Part of Woodworking</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/75EJtFuDwzc.html" data-i="5" title="Which Japanese Woodworking Tools Should You Buy First?"><b></b><span>Which Japanese Woodworking Tools Should You Buy First?</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/kCVcQwG9OE0.html" data-i="6" title="A Modern Take on Shoji | Made with Japanese Hand Tools"><b></b><span>A Modern Take on Shoji | Made with Japanese Hand Tools</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/wKg0lMrBOiU.html" data-i="7" title="No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life"><b></b><span>No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/TSG8lMrqHQM.html" data-i="8" title="This ONE skill will change how you woodwork"><b></b><span>This ONE skill will change how you woodwork</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/7Gt5nepmzDM.html" data-i="9" title="Japanese Joinery is easier than you think..."><b></b><span>Japanese Joinery is easier than you think...</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/78ErGTAyFCY.html" data-i="10" title="Making a Tea Cabinet | Sashimono Woodworking"><b></b><span>Making a Tea Cabinet | Sashimono Woodworking</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/KHdX4xWH9YY.html" data-i="11" title="A workbench can be as simple as this..."><b></b><span>A workbench can be as simple as this...</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/na9e0Pl2Dow.html" data-i="12" title="I built a Cabinet to store our memories | Full Build"><b></b><span>I built a Cabinet to store our memories | Full Build</span></a><a href="UCsF-SfQ6_7UZZgNrO-E6qxA/FofTq546kgM.html" data-i="13" title="What is Japanese Woodworking? - An Introduction"><b></b><span>What is Japanese Woodworking? - An Introduction</span></a></div>
   </details>
 </div>
-<script>window.__COHORT__={"videos":[{"videoId":"b7CZkbBJpZU","title":"The most important part of furniture making","durationSec":812,"pub":1787527863000,"views":40498,"r50":0.3468,"avd":298.5269279999998,"wth":3358.2620917066647,"outlier":null,"curve":[{"p":0,"w":0.9285},{"p":1,"w":0.8386},{"p":2,"w":0.7541},{"p":3,"w":0.6887},{"p":4,"w":0.639},{"p":5,"w":0.5411},{"p":6,"w":0.5267},{"p":7,"w":0.5137},{"p":8,"w":0.4995},{"p":9,"w":0.4919},{"p":10,"w":0.4805},{"p":11,"w":0.4745},{"p":12,"w":0.4655},{"p":13,"w":0.4556},{"p":14,"w":0.4543},{"p":15,"w":0.4461},{"p":16,"w":0.4439},{"p":17,"w":0.4484},{"p":18,"w":0.4351},{"p":19,"w":0.4329},{"p":20,"w":0.4309},{"p":21,"w":0.4258},{"p":22,"w":0.4198},{"p":23,"w":0.4111},{"p":24,"w":0.4109},{"p":25,"w":0.409},{"p":26,"w":0.4018},{"p":27,"w":0.4014},{"p":28,"w":0.3942},{"p":29,"w":0.3886},{"p":30,"w":0.3827},{"p":31,"w":0.3772},{"p":32,"w":0.3762},{"p":33,"w":0.373},{"p":34,"w":0.3695},{"p":35,"w":0.3693},{"p":36,"w":0.3684},{"p":37,"w":0.3579},{"p":38,"w":0.3599},{"p":39,"w":0.3588},{"p":40,"w":0.3532},{"p":41,"w":0.3533},{"p":42,"w":0.3488},{"p":43,"w":0.3488},{"p":44,"w":0.3495},{"p":45,"w":0.3447},{"p":46,"w":0.3436},{"p":47,"w":0.3376},{"p":48,"w":0.3368},{"p":49,"w":0.3359},{"p":50,"w":0.3468},{"p":51,"w":0.3297},{"p":52,"w":0.3247},{"p":53,"w":0.3252},{"p":54,"w":0.3247},{"p":55,"w":0.3222},{"p":56,"w":0.3192},{"p":57,"w":0.315},{"p":58,"w":0.3126},{"p":59,"w":0.3072},{"p":60,"w":0.3079},{"p":61,"w":0.3064},{"p":62,"w":0.3123},{"p":63,"w":0.3095},{"p":64,"w":0.306},{"p":65,"w":0.3055},{"p":66,"w":0.3059},{"p":67,"w":0.303},{"p":68,"w":0.3036},{"p":69,"w":0.3017},{"p":70,"w":0.3025},{"p":71,"w":0.3021},{"p":72,"w":0.2999},{"p":73,"w":0.2998},{"p":74,"w":0.2974},{"p":75,"w":0.294},{"p":76,"w":0.2943},{"p":77,"w":0.2949},{"p":78,"w":0.3023},{"p":79,"w":0.2954},{"p":80,"w":0.2945},{"p":81,"w":0.2963},{"p":82,"w":0.2954},{"p":83,"w":0.2972},{"p":84,"w":0.299},{"p":85,"w":0.2957},{"p":86,"w":0.3023},{"p":87,"w":0.306},{"p":88,"w":0.3077},{"p":89,"w":0.3105},{"p":90,"w":0.3052},{"p":91,"w":0.2991},{"p":92,"w":0.2872},{"p":93,"w":0.2751},{"p":94,"w":0.2393},{"p":95,"w":0.2148},{"p":96,"w":0.1902},{"p":97,"w":0.1726},{"p":98,"w":0.1602},{"p":99,"w":0.1472}]},{"videoId":"2HuaCh4wl3A","title":"Slowing Down Helped Me Become a Better Craftsman","durationSec":317,"pub":1784556000000,"views":36893,"r50":0.4851,"avd":158.51489899999996,"wth":1624.4694913352773,"outlier":0.58,"curve":[{"p":0,"w":0.9571},{"p":1,"w":0.8876},{"p":2,"w":0.8409},{"p":3,"w":0.8256},{"p":4,"w":0.7682},{"p":5,"w":0.7343},{"p":6,"w":0.709},{"p":7,"w":0.6983},{"p":8,"w":0.6901},{"p":9,"w":0.6715},{"p":10,"w":0.6682},{"p":11,"w":0.6625},{"p":12,"w":0.6478},{"p":13,"w":0.6122},{"p":14,"w":0.6048},{"p":15,"w":0.5996},{"p":16,"w":0.5937},{"p":17,"w":0.5857},{"p":18,"w":0.5781},{"p":19,"w":0.5714},{"p":20,"w":0.5676},{"p":21,"w":0.5639},{"p":22,"w":0.5594},{"p":23,"w":0.5581},{"p":24,"w":0.5506},{"p":25,"w":0.5485},{"p":26,"w":0.5457},{"p":27,"w":0.5466},{"p":28,"w":0.5427},{"p":29,"w":0.5418},{"p":30,"w":0.5341},{"p":31,"w":0.535},{"p":32,"w":0.5283},{"p":33,"w":0.5253},{"p":34,"w":0.5187},{"p":35,"w":0.5199},{"p":36,"w":0.5121},{"p":37,"w":0.5102},{"p":38,"w":0.5092},{"p":39,"w":0.5071},{"p":40,"w":0.5012},{"p":41,"w":0.498},{"p":42,"w":0.4941},{"p":43,"w":0.487},{"p":44,"w":0.4876},{"p":45,"w":0.4867},{"p":46,"w":0.4861},{"p":47,"w":0.4878},{"p":48,"w":0.488},{"p":49,"w":0.4888},{"p":50,"w":0.4851},{"p":51,"w":0.4835},{"p":52,"w":0.4818},{"p":53,"w":0.4806},{"p":54,"w":0.4806},{"p":55,"w":0.4749},{"p":56,"w":0.4736},{"p":57,"w":0.4753},{"p":58,"w":0.4758},{"p":59,"w":0.4717},{"p":60,"w":0.4684},{"p":61,"w":0.4616},{"p":62,"w":0.4608},{"p":63,"w":0.4587},{"p":64,"w":0.4547},{"p":65,"w":0.4494},{"p":66,"w":0.4492},{"p":67,"w":0.4532},{"p":68,"w":0.4522},{"p":69,"w":0.4529},{"p":70,"w":0.4494},{"p":71,"w":0.4453},{"p":72,"w":0.4435},{"p":73,"w":0.4414},{"p":74,"w":0.4388},{"p":75,"w":0.437},{"p":76,"w":0.4351},{"p":77,"w":0.435},{"p":78,"w":0.4329},{"p":79,"w":0.4262},{"p":80,"w":0.4225},{"p":81,"w":0.418},{"p":82,"w":0.4174},{"p":83,"w":0.4132},{"p":84,"w":0.4096},{"p":85,"w":0.4027},{"p":86,"w":0.4023},{"p":87,"w":0.3979},{"p":88,"w":0.3972},{"p":89,"w":0.3954},{"p":90,"w":0.3742},{"p":91,"w":0.3337},{"p":92,"w":0.303},{"p":93,"w":0.2847},{"p":94,"w":0.2667},{"p":95,"w":0.2528},{"p":96,"w":0.2412},{"p":97,"w":0.2284},{"p":98,"w":0.2061},{"p":99,"w":0.1724}]},{"videoId":"asT3GmPhL1g","title":"Why Beautiful Furniture Starts at the Lumber Yard","durationSec":355,"pub":1780200019000,"views":50779,"r50":0.4889,"avd":179.03288999999992,"wth":2525.3086448083322,"outlier":0.8,"curve":[{"p":0,"w":0.9436},{"p":1,"w":0.8779},{"p":2,"w":0.8519},{"p":3,"w":0.8358},{"p":4,"w":0.7688},{"p":5,"w":0.7194},{"p":6,"w":0.6966},{"p":7,"w":0.6772},{"p":8,"w":0.6551},{"p":9,"w":0.628},{"p":10,"w":0.6065},{"p":11,"w":0.6016},{"p":12,"w":0.5892},{"p":13,"w":0.5925},{"p":14,"w":0.5952},{"p":15,"w":0.5805},{"p":16,"w":0.5765},{"p":17,"w":0.5724},{"p":18,"w":0.5723},{"p":19,"w":0.5689},{"p":20,"w":0.5697},{"p":21,"w":0.5691},{"p":22,"w":0.5695},{"p":23,"w":0.5689},{"p":24,"w":0.5632},{"p":25,"w":0.5583},{"p":26,"w":0.5497},{"p":27,"w":0.5445},{"p":28,"w":0.5404},{"p":29,"w":0.533},{"p":30,"w":0.5308},{"p":31,"w":0.5321},{"p":32,"w":0.5306},{"p":33,"w":0.5286},{"p":34,"w":0.5293},{"p":35,"w":0.5257},{"p":36,"w":0.5192},{"p":37,"w":0.515},{"p":38,"w":0.512},{"p":39,"w":0.5051},{"p":40,"w":0.5038},{"p":41,"w":0.5065},{"p":42,"w":0.5014},{"p":43,"w":0.4999},{"p":44,"w":0.4964},{"p":45,"w":0.491},{"p":46,"w":0.4831},{"p":47,"w":0.4866},{"p":48,"w":0.4923},{"p":49,"w":0.4932},{"p":50,"w":0.4889},{"p":51,"w":0.4853},{"p":52,"w":0.4916},{"p":53,"w":0.4976},{"p":54,"w":0.5019},{"p":55,"w":0.4958},{"p":56,"w":0.4726},{"p":57,"w":0.4673},{"p":58,"w":0.4614},{"p":59,"w":0.4588},{"p":60,"w":0.4562},{"p":61,"w":0.4522},{"p":62,"w":0.4503},{"p":63,"w":0.4489},{"p":64,"w":0.4464},{"p":65,"w":0.4431},{"p":66,"w":0.4398},{"p":67,"w":0.4378},{"p":68,"w":0.4362},{"p":69,"w":0.4353},{"p":70,"w":0.4345},{"p":71,"w":0.4324},{"p":72,"w":0.4305},{"p":73,"w":0.4297},{"p":74,"w":0.4273},{"p":75,"w":0.4215},{"p":76,"w":0.4184},{"p":77,"w":0.4187},{"p":78,"w":0.419},{"p":79,"w":0.4165},{"p":80,"w":0.414},{"p":81,"w":0.4121},{"p":82,"w":0.4102},{"p":83,"w":0.4094},{"p":84,"w":0.4082},{"p":85,"w":0.4051},{"p":86,"w":0.4021},{"p":87,"w":0.4005},{"p":88,"w":0.3996},{"p":89,"w":0.3985},{"p":90,"w":0.3967},{"p":91,"w":0.391},{"p":92,"w":0.3833},{"p":93,"w":0.3764},{"p":94,"w":0.3719},{"p":95,"w":0.3657},{"p":96,"w":0.3541},{"p":97,"w":0.3441},{"p":98,"w":0.3325},{"p":99,"w":0.2817}]},{"videoId":"ZOci3cqFQw4","title":"Is making things by hand still worth it?","durationSec":526,"pub":1776010719000,"views":140176,"r50":0.3099,"avd":191.22835199999994,"wth":7446.0070749866645,"outlier":2.62,"curve":[{"p":0,"w":0.9775},{"p":1,"w":0.8481},{"p":2,"w":0.8218},{"p":3,"w":0.7159},{"p":4,"w":0.6588},{"p":5,"w":0.6201},{"p":6,"w":0.6018},{"p":7,"w":0.5709},{"p":8,"w":0.5179},{"p":9,"w":0.5033},{"p":10,"w":0.4781},{"p":11,"w":0.4608},{"p":12,"w":0.458},{"p":13,"w":0.4387},{"p":14,"w":0.4328},{"p":15,"w":0.4239},{"p":16,"w":0.4267},{"p":17,"w":0.423},{"p":18,"w":0.4188},{"p":19,"w":0.4107},{"p":20,"w":0.4058},{"p":21,"w":0.4022},{"p":22,"w":0.4016},{"p":23,"w":0.4016},{"p":24,"w":0.4018},{"p":25,"w":0.3975},{"p":26,"w":0.3944},{"p":27,"w":0.3903},{"p":28,"w":0.3893},{"p":29,"w":0.3871},{"p":30,"w":0.385},{"p":31,"w":0.3832},{"p":32,"w":0.3816},{"p":33,"w":0.382},{"p":34,"w":0.3807},{"p":35,"w":0.3798},{"p":36,"w":0.378},{"p":37,"w":0.374},{"p":38,"w":0.3716},{"p":39,"w":0.3652},{"p":40,"w":0.3642},{"p":41,"w":0.3552},{"p":42,"w":0.3449},{"p":43,"w":0.3367},{"p":44,"w":0.3266},{"p":45,"w":0.3217},{"p":46,"w":0.3213},{"p":47,"w":0.3266},{"p":48,"w":0.3151},{"p":49,"w":0.3136},{"p":50,"w":0.3099},{"p":51,"w":0.3101},{"p":52,"w":0.3086},{"p":53,"w":0.3063},{"p":54,"w":0.3063},{"p":55,"w":0.3068},{"p":56,"w":0.3082},{"p":57,"w":0.3051},{"p":58,"w":0.3056},{"p":59,"w":0.3057},{"p":60,"w":0.302},{"p":61,"w":0.2995},{"p":62,"w":0.2989},{"p":63,"w":0.2988},{"p":64,"w":0.2974},{"p":65,"w":0.2946},{"p":66,"w":0.2929},{"p":67,"w":0.2913},{"p":68,"w":0.2874},{"p":69,"w":0.2895},{"p":70,"w":0.2901},{"p":71,"w":0.2908},{"p":72,"w":0.288},{"p":73,"w":0.2896},{"p":74,"w":0.2887},{"p":75,"w":0.2966},{"p":76,"w":0.2986},{"p":77,"w":0.282},{"p":78,"w":0.2813},{"p":79,"w":0.2796},{"p":80,"w":0.2785},{"p":81,"w":0.2771},{"p":82,"w":0.2773},{"p":83,"w":0.2786},{"p":84,"w":0.2789},{"p":85,"w":0.2829},{"p":86,"w":0.2831},{"p":87,"w":0.2818},{"p":88,"w":0.2827},{"p":89,"w":0.2841},{"p":90,"w":0.2835},{"p":91,"w":0.283},{"p":92,"w":0.2772},{"p":93,"w":0.2745},{"p":94,"w":0.2715},{"p":95,"w":0.2655},{"p":96,"w":0.236},{"p":97,"w":0.1887},{"p":98,"w":0.1534},{"p":99,"w":0.1205}]},{"videoId":"wpoOzWGm7yU","title":"The Hardest Part of Woodworking","durationSec":1355,"pub":1771793021000,"views":75077,"r50":0.2852,"avd":436.42652999999984,"wth":9101.554053558331,"outlier":1.4,"curve":[{"p":0,"w":0.9197},{"p":1,"w":0.7657},{"p":2,"w":0.6395},{"p":3,"w":0.5204},{"p":4,"w":0.5023},{"p":5,"w":0.48},{"p":6,"w":0.464},{"p":7,"w":0.452},{"p":8,"w":0.4456},{"p":9,"w":0.4415},{"p":10,"w":0.4348},{"p":11,"w":0.4265},{"p":12,"w":0.421},{"p":13,"w":0.4124},{"p":14,"w":0.4064},{"p":15,"w":0.4008},{"p":16,"w":0.3916},{"p":17,"w":0.3868},{"p":18,"w":0.3827},{"p":19,"w":0.3804},{"p":20,"w":0.3768},{"p":21,"w":0.3719},{"p":22,"w":0.3673},{"p":23,"w":0.3667},{"p":24,"w":0.3644},{"p":25,"w":0.3601},{"p":26,"w":0.3621},{"p":27,"w":0.3629},{"p":28,"w":0.3449},{"p":29,"w":0.3395},{"p":30,"w":0.333},{"p":31,"w":0.3321},{"p":32,"w":0.33},{"p":33,"w":0.3293},{"p":34,"w":0.3294},{"p":35,"w":0.3273},{"p":36,"w":0.3211},{"p":37,"w":0.3179},{"p":38,"w":0.3197},{"p":39,"w":0.3151},{"p":40,"w":0.3085},{"p":41,"w":0.3058},{"p":42,"w":0.2986},{"p":43,"w":0.2955},{"p":44,"w":0.2941},{"p":45,"w":0.2935},{"p":46,"w":0.2891},{"p":47,"w":0.2864},{"p":48,"w":0.2885},{"p":49,"w":0.2888},{"p":50,"w":0.2852},{"p":51,"w":0.2774},{"p":52,"w":0.2736},{"p":53,"w":0.2681},{"p":54,"w":0.2763},{"p":55,"w":0.2674},{"p":56,"w":0.2662},{"p":57,"w":0.2639},{"p":58,"w":0.2607},{"p":59,"w":0.2595},{"p":60,"w":0.2596},{"p":61,"w":0.2596},{"p":62,"w":0.2581},{"p":63,"w":0.2562},{"p":64,"w":0.2557},{"p":65,"w":0.2537},{"p":66,"w":0.2602},{"p":67,"w":0.2593},{"p":68,"w":0.253},{"p":69,"w":0.2523},{"p":70,"w":0.2509},{"p":71,"w":0.2514},{"p":72,"w":0.2515},{"p":73,"w":0.2506},{"p":74,"w":0.2507},{"p":75,"w":0.2459},{"p":76,"w":0.2463},{"p":77,"w":0.2473},{"p":78,"w":0.2513},{"p":79,"w":0.246},{"p":80,"w":0.2449},{"p":81,"w":0.2445},{"p":82,"w":0.2451},{"p":83,"w":0.2432},{"p":84,"w":0.2413},{"p":85,"w":0.2414},{"p":86,"w":0.241},{"p":87,"w":0.2425},{"p":88,"w":0.2439},{"p":89,"w":0.2473},{"p":90,"w":0.2518},{"p":91,"w":0.2488},{"p":92,"w":0.2528},{"p":93,"w":0.2542},{"p":94,"w":0.2585},{"p":95,"w":0.2633},{"p":96,"w":0.2616},{"p":97,"w":0.2563},{"p":98,"w":0.2441},{"p":99,"w":0.2298}]},{"videoId":"75EJtFuDwzc","title":"Which Japanese Woodworking Tools Should You Buy First?","durationSec":374,"pub":1768712407000,"views":88431,"r50":0.3827,"avd":155.84243400000005,"wth":3828.1395225150013,"outlier":1.65,"curve":[{"p":0,"w":0.9201},{"p":1,"w":0.8482},{"p":2,"w":0.8342},{"p":3,"w":0.7986},{"p":4,"w":0.6989},{"p":5,"w":0.611},{"p":6,"w":0.5843},{"p":7,"w":0.5686},{"p":8,"w":0.5512},{"p":9,"w":0.5507},{"p":10,"w":0.5414},{"p":11,"w":0.5038},{"p":12,"w":0.4982},{"p":13,"w":0.4921},{"p":14,"w":0.484},{"p":15,"w":0.4821},{"p":16,"w":0.4772},{"p":17,"w":0.4797},{"p":18,"w":0.477},{"p":19,"w":0.4726},{"p":20,"w":0.4659},{"p":21,"w":0.4604},{"p":22,"w":0.4537},{"p":23,"w":0.4475},{"p":24,"w":0.4483},{"p":25,"w":0.4417},{"p":26,"w":0.4379},{"p":27,"w":0.4351},{"p":28,"w":0.4351},{"p":29,"w":0.4321},{"p":30,"w":0.4312},{"p":31,"w":0.4317},{"p":32,"w":0.428},{"p":33,"w":0.4225},{"p":34,"w":0.4235},{"p":35,"w":0.418},{"p":36,"w":0.4111},{"p":37,"w":0.4102},{"p":38,"w":0.4117},{"p":39,"w":0.4053},{"p":40,"w":0.4066},{"p":41,"w":0.3994},{"p":42,"w":0.4003},{"p":43,"w":0.3988},{"p":44,"w":0.394},{"p":45,"w":0.3949},{"p":46,"w":0.3975},{"p":47,"w":0.3957},{"p":48,"w":0.3924},{"p":49,"w":0.39},{"p":50,"w":0.3827},{"p":51,"w":0.3808},{"p":52,"w":0.3792},{"p":53,"w":0.3778},{"p":54,"w":0.38},{"p":55,"w":0.3803},{"p":56,"w":0.3769},{"p":57,"w":0.3751},{"p":58,"w":0.3744},{"p":59,"w":0.3737},{"p":60,"w":0.3735},{"p":61,"w":0.3694},{"p":62,"w":0.3663},{"p":63,"w":0.3632},{"p":64,"w":0.3594},{"p":65,"w":0.353},{"p":66,"w":0.3505},{"p":67,"w":0.3483},{"p":68,"w":0.3478},{"p":69,"w":0.3522},{"p":70,"w":0.3504},{"p":71,"w":0.3486},{"p":72,"w":0.3492},{"p":73,"w":0.3501},{"p":74,"w":0.3452},{"p":75,"w":0.3485},{"p":76,"w":0.3511},{"p":77,"w":0.3522},{"p":78,"w":0.3504},{"p":79,"w":0.346},{"p":80,"w":0.343},{"p":81,"w":0.337},{"p":82,"w":0.3385},{"p":83,"w":0.3403},{"p":84,"w":0.3391},{"p":85,"w":0.3396},{"p":86,"w":0.3421},{"p":87,"w":0.3392},{"p":88,"w":0.3348},{"p":89,"w":0.3348},{"p":90,"w":0.3342},{"p":91,"w":0.3312},{"p":92,"w":0.3276},{"p":93,"w":0.3227},{"p":94,"w":0.3164},{"p":95,"w":0.3087},{"p":96,"w":0.2957},{"p":97,"w":0.2706},{"p":98,"w":0.228},{"p":99,"w":0.195}]},{"videoId":"kCVcQwG9OE0","title":"A Modern Take on Shoji | Made with Japanese Hand Tools","durationSec":877,"pub":1760280381000,"views":12948,"r50":0.3703,"avd":348.0891930000001,"wth":1251.9607974900002,"outlier":0.19,"curve":[{"p":0,"w":0.9905},{"p":1,"w":0.8123},{"p":2,"w":0.6766},{"p":3,"w":0.615},{"p":4,"w":0.5669},{"p":5,"w":0.5308},{"p":6,"w":0.5177},{"p":7,"w":0.5055},{"p":8,"w":0.5075},{"p":9,"w":0.493},{"p":10,"w":0.4885},{"p":11,"w":0.4775},{"p":12,"w":0.4693},{"p":13,"w":0.4663},{"p":14,"w":0.4548},{"p":15,"w":0.4496},{"p":16,"w":0.438},{"p":17,"w":0.4437},{"p":18,"w":0.4361},{"p":19,"w":0.4395},{"p":20,"w":0.4326},{"p":21,"w":0.4308},{"p":22,"w":0.428},{"p":23,"w":0.4259},{"p":24,"w":0.4193},{"p":25,"w":0.4216},{"p":26,"w":0.4233},{"p":27,"w":0.4215},{"p":28,"w":0.4216},{"p":29,"w":0.4165},{"p":30,"w":0.409},{"p":31,"w":0.4077},{"p":32,"w":0.406},{"p":33,"w":0.395},{"p":34,"w":0.3993},{"p":35,"w":0.3989},{"p":36,"w":0.3884},{"p":37,"w":0.3816},{"p":38,"w":0.3772},{"p":39,"w":0.3744},{"p":40,"w":0.3685},{"p":41,"w":0.3711},{"p":42,"w":0.3721},{"p":43,"w":0.3729},{"p":44,"w":0.3738},{"p":45,"w":0.3645},{"p":46,"w":0.3642},{"p":47,"w":0.3567},{"p":48,"w":0.3583},{"p":49,"w":0.3572},{"p":50,"w":0.3703},{"p":51,"w":0.3487},{"p":52,"w":0.3407},{"p":53,"w":0.3363},{"p":54,"w":0.3338},{"p":55,"w":0.3324},{"p":56,"w":0.3324},{"p":57,"w":0.3335},{"p":58,"w":0.3303},{"p":59,"w":0.3348},{"p":60,"w":0.3378},{"p":61,"w":0.339},{"p":62,"w":0.3347},{"p":63,"w":0.3344},{"p":64,"w":0.3338},{"p":65,"w":0.3305},{"p":66,"w":0.3258},{"p":67,"w":0.3359},{"p":68,"w":0.3322},{"p":69,"w":0.3347},{"p":70,"w":0.3378},{"p":71,"w":0.3383},{"p":72,"w":0.3408},{"p":73,"w":0.3369},{"p":74,"w":0.3343},{"p":75,"w":0.3365},{"p":76,"w":0.333},{"p":77,"w":0.339},{"p":78,"w":0.3376},{"p":79,"w":0.3451},{"p":80,"w":0.3388},{"p":81,"w":0.3335},{"p":82,"w":0.3366},{"p":83,"w":0.3328},{"p":84,"w":0.3394},{"p":85,"w":0.3456},{"p":86,"w":0.3423},{"p":87,"w":0.3411},{"p":88,"w":0.3407},{"p":89,"w":0.347},{"p":90,"w":0.3521},{"p":91,"w":0.3588},{"p":92,"w":0.3562},{"p":93,"w":0.3605},{"p":94,"w":0.3702},{"p":95,"w":0.3974},{"p":96,"w":0.3855},{"p":97,"w":0.3711},{"p":98,"w":0.3409},{"p":99,"w":0.2721}]},{"videoId":"wKg0lMrBOiU","title":"No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life","durationSec":1580,"pub":1757270386000,"views":71036,"r50":0.267,"avd":508.0458399999999,"wth":10024.873413955553,"outlier":1.07,"curve":[{"p":0,"w":0.9103},{"p":1,"w":0.6749},{"p":2,"w":0.6021},{"p":3,"w":0.537},{"p":4,"w":0.508},{"p":5,"w":0.4856},{"p":6,"w":0.4724},{"p":7,"w":0.4572},{"p":8,"w":0.4502},{"p":9,"w":0.4459},{"p":10,"w":0.4414},{"p":11,"w":0.4372},{"p":12,"w":0.4333},{"p":13,"w":0.4309},{"p":14,"w":0.4244},{"p":15,"w":0.4236},{"p":16,"w":0.419},{"p":17,"w":0.4134},{"p":18,"w":0.4047},{"p":19,"w":0.3984},{"p":20,"w":0.3965},{"p":21,"w":0.3963},{"p":22,"w":0.3958},{"p":23,"w":0.3907},{"p":24,"w":0.3899},{"p":25,"w":0.3873},{"p":26,"w":0.3757},{"p":27,"w":0.3733},{"p":28,"w":0.3757},{"p":29,"w":0.375},{"p":30,"w":0.3743},{"p":31,"w":0.355},{"p":32,"w":0.3458},{"p":33,"w":0.3421},{"p":34,"w":0.335},{"p":35,"w":0.3296},{"p":36,"w":0.3247},{"p":37,"w":0.3216},{"p":38,"w":0.314},{"p":39,"w":0.3116},{"p":40,"w":0.3042},{"p":41,"w":0.3017},{"p":42,"w":0.2996},{"p":43,"w":0.299},{"p":44,"w":0.3},{"p":45,"w":0.3028},{"p":46,"w":0.293},{"p":47,"w":0.2798},{"p":48,"w":0.2707},{"p":49,"w":0.2685},{"p":50,"w":0.267},{"p":51,"w":0.2669},{"p":52,"w":0.2656},{"p":53,"w":0.256},{"p":54,"w":0.2506},{"p":55,"w":0.2491},{"p":56,"w":0.2465},{"p":57,"w":0.2487},{"p":58,"w":0.2517},{"p":59,"w":0.2499},{"p":60,"w":0.2493},{"p":61,"w":0.2523},{"p":62,"w":0.2537},{"p":63,"w":0.2541},{"p":64,"w":0.2544},{"p":65,"w":0.246},{"p":66,"w":0.2439},{"p":67,"w":0.2453},{"p":68,"w":0.2431},{"p":69,"w":0.2429},{"p":70,"w":0.2389},{"p":71,"w":0.2431},{"p":72,"w":0.2396},{"p":73,"w":0.2383},{"p":74,"w":0.2384},{"p":75,"w":0.241},{"p":76,"w":0.2416},{"p":77,"w":0.2386},{"p":78,"w":0.2366},{"p":79,"w":0.2344},{"p":80,"w":0.2347},{"p":81,"w":0.2303},{"p":82,"w":0.235},{"p":83,"w":0.237},{"p":84,"w":0.2416},{"p":85,"w":0.2443},{"p":86,"w":0.247},{"p":87,"w":0.2495},{"p":88,"w":0.2529},{"p":89,"w":0.2542},{"p":90,"w":0.2602},{"p":91,"w":0.2622},{"p":92,"w":0.2644},{"p":93,"w":0.2659},{"p":94,"w":0.2669},{"p":95,"w":0.2606},{"p":96,"w":0.2378},{"p":97,"w":0.2194},{"p":98,"w":0.1983},{"p":99,"w":0.166}]},{"videoId":"TSG8lMrqHQM","title":"This ONE skill will change how you woodwork","durationSec":430,"pub":1749914081000,"views":56260,"r50":0.3478,"avd":166.24015,"wth":2597.9641219444443,"outlier":1.29,"curve":[{"p":0,"w":0.8972},{"p":1,"w":0.8514},{"p":2,"w":0.8466},{"p":3,"w":0.7946},{"p":4,"w":0.6629},{"p":5,"w":0.6089},{"p":6,"w":0.5931},{"p":7,"w":0.5652},{"p":8,"w":0.5462},{"p":9,"w":0.5347},{"p":10,"w":0.4841},{"p":11,"w":0.4792},{"p":12,"w":0.4779},{"p":13,"w":0.4762},{"p":14,"w":0.4722},{"p":15,"w":0.4703},{"p":16,"w":0.4658},{"p":17,"w":0.4646},{"p":18,"w":0.463},{"p":19,"w":0.46},{"p":20,"w":0.4586},{"p":21,"w":0.4548},{"p":22,"w":0.455},{"p":23,"w":0.4507},{"p":24,"w":0.445},{"p":25,"w":0.4364},{"p":26,"w":0.4284},{"p":27,"w":0.4191},{"p":28,"w":0.4152},{"p":29,"w":0.408},{"p":30,"w":0.4023},{"p":31,"w":0.3943},{"p":32,"w":0.394},{"p":33,"w":0.3902},{"p":34,"w":0.3876},{"p":35,"w":0.3859},{"p":36,"w":0.3816},{"p":37,"w":0.3785},{"p":38,"w":0.3714},{"p":39,"w":0.3636},{"p":40,"w":0.3605},{"p":41,"w":0.3546},{"p":42,"w":0.3588},{"p":43,"w":0.3577},{"p":44,"w":0.3495},{"p":45,"w":0.347},{"p":46,"w":0.3499},{"p":47,"w":0.3495},{"p":48,"w":0.3503},{"p":49,"w":0.3471},{"p":50,"w":0.3478},{"p":51,"w":0.3434},{"p":52,"w":0.344},{"p":53,"w":0.342},{"p":54,"w":0.3411},{"p":55,"w":0.3437},{"p":56,"w":0.3428},{"p":57,"w":0.342},{"p":58,"w":0.3433},{"p":59,"w":0.3399},{"p":60,"w":0.3375},{"p":61,"w":0.3343},{"p":62,"w":0.3313},{"p":63,"w":0.3287},{"p":64,"w":0.3293},{"p":65,"w":0.3243},{"p":66,"w":0.3179},{"p":67,"w":0.3181},{"p":68,"w":0.313},{"p":69,"w":0.3087},{"p":70,"w":0.3043},{"p":71,"w":0.3012},{"p":72,"w":0.3027},{"p":73,"w":0.3004},{"p":74,"w":0.2939},{"p":75,"w":0.2974},{"p":76,"w":0.2926},{"p":77,"w":0.2884},{"p":78,"w":0.2895},{"p":79,"w":0.2911},{"p":80,"w":0.2972},{"p":81,"w":0.3071},{"p":82,"w":0.3058},{"p":83,"w":0.3026},{"p":84,"w":0.2936},{"p":85,"w":0.2905},{"p":86,"w":0.2867},{"p":87,"w":0.2836},{"p":88,"w":0.2899},{"p":89,"w":0.2901},{"p":90,"w":0.2894},{"p":91,"w":0.2888},{"p":92,"w":0.2865},{"p":93,"w":0.2902},{"p":94,"w":0.2929},{"p":95,"w":0.2907},{"p":96,"w":0.2834},{"p":97,"w":0.2611},{"p":98,"w":0.2419},{"p":99,"w":0.1943}]},{"videoId":"7Gt5nepmzDM","title":"Japanese Joinery is easier than you think...","durationSec":769,"pub":1746368939000,"views":12373,"r50":0.3315,"avd":268.530955,"wth":922.9259739486112,"outlier":0.2,"curve":[{"p":0,"w":0.9485},{"p":1,"w":0.8839},{"p":2,"w":0.8253},{"p":3,"w":0.7926},{"p":4,"w":0.7183},{"p":5,"w":0.6436},{"p":6,"w":0.5677},{"p":7,"w":0.5484},{"p":8,"w":0.5296},{"p":9,"w":0.5113},{"p":10,"w":0.5037},{"p":11,"w":0.4871},{"p":12,"w":0.4743},{"p":13,"w":0.4619},{"p":14,"w":0.4511},{"p":15,"w":0.444},{"p":16,"w":0.4332},{"p":17,"w":0.4251},{"p":18,"w":0.4169},{"p":19,"w":0.4132},{"p":20,"w":0.4065},{"p":21,"w":0.4026},{"p":22,"w":0.3994},{"p":23,"w":0.3968},{"p":24,"w":0.3859},{"p":25,"w":0.3825},{"p":26,"w":0.3781},{"p":27,"w":0.3759},{"p":28,"w":0.3712},{"p":29,"w":0.368},{"p":30,"w":0.3729},{"p":31,"w":0.3642},{"p":32,"w":0.3608},{"p":33,"w":0.3588},{"p":34,"w":0.3553},{"p":35,"w":0.3519},{"p":36,"w":0.347},{"p":37,"w":0.3414},{"p":38,"w":0.3378},{"p":39,"w":0.3379},{"p":40,"w":0.3359},{"p":41,"w":0.3334},{"p":42,"w":0.3322},{"p":43,"w":0.3304},{"p":44,"w":0.3307},{"p":45,"w":0.3279},{"p":46,"w":0.327},{"p":47,"w":0.3239},{"p":48,"w":0.319},{"p":49,"w":0.3183},{"p":50,"w":0.3315},{"p":51,"w":0.3069},{"p":52,"w":0.3048},{"p":53,"w":0.3005},{"p":54,"w":0.2972},{"p":55,"w":0.294},{"p":56,"w":0.287},{"p":57,"w":0.2846},{"p":58,"w":0.2845},{"p":59,"w":0.2821},{"p":60,"w":0.2804},{"p":61,"w":0.2779},{"p":62,"w":0.2748},{"p":63,"w":0.2726},{"p":64,"w":0.2681},{"p":65,"w":0.2661},{"p":66,"w":0.2656},{"p":67,"w":0.2641},{"p":68,"w":0.262},{"p":69,"w":0.2649},{"p":70,"w":0.2644},{"p":71,"w":0.2544},{"p":72,"w":0.2538},{"p":73,"w":0.2531},{"p":74,"w":0.2556},{"p":75,"w":0.2563},{"p":76,"w":0.2571},{"p":77,"w":0.2579},{"p":78,"w":0.2592},{"p":79,"w":0.2629},{"p":80,"w":0.2613},{"p":81,"w":0.2589},{"p":82,"w":0.255},{"p":83,"w":0.2535},{"p":84,"w":0.2504},{"p":85,"w":0.2461},{"p":86,"w":0.2326},{"p":87,"w":0.2244},{"p":88,"w":0.2161},{"p":89,"w":0.2135},{"p":90,"w":0.2077},{"p":91,"w":0.205},{"p":92,"w":0.2077},{"p":93,"w":0.2079},{"p":94,"w":0.2125},{"p":95,"w":0.2143},{"p":96,"w":0.217},{"p":97,"w":0.2172},{"p":98,"w":0.2142},{"p":99,"w":0.2066}]},{"videoId":"78ErGTAyFCY","title":"Making a Tea Cabinet | Sashimono Woodworking","durationSec":733,"pub":1738507498000,"views":66086,"r50":0.3616,"avd":297.72480900000005,"wth":5465.400479881667,"outlier":1.7,"curve":[{"p":0,"w":0.9511},{"p":1,"w":0.8062},{"p":2,"w":0.7099},{"p":3,"w":0.658},{"p":4,"w":0.6174},{"p":5,"w":0.6033},{"p":6,"w":0.5604},{"p":7,"w":0.5521},{"p":8,"w":0.5392},{"p":9,"w":0.5338},{"p":10,"w":0.5372},{"p":11,"w":0.5192},{"p":12,"w":0.5103},{"p":13,"w":0.5028},{"p":14,"w":0.4956},{"p":15,"w":0.4876},{"p":16,"w":0.4817},{"p":17,"w":0.4832},{"p":18,"w":0.4769},{"p":19,"w":0.4751},{"p":20,"w":0.4659},{"p":21,"w":0.4668},{"p":22,"w":0.4605},{"p":23,"w":0.4561},{"p":24,"w":0.451},{"p":25,"w":0.446},{"p":26,"w":0.443},{"p":27,"w":0.4351},{"p":28,"w":0.4304},{"p":29,"w":0.4227},{"p":30,"w":0.4081},{"p":31,"w":0.4152},{"p":32,"w":0.4074},{"p":33,"w":0.4049},{"p":34,"w":0.3935},{"p":35,"w":0.3916},{"p":36,"w":0.3914},{"p":37,"w":0.3856},{"p":38,"w":0.3779},{"p":39,"w":0.3729},{"p":40,"w":0.3736},{"p":41,"w":0.3696},{"p":42,"w":0.3644},{"p":43,"w":0.3652},{"p":44,"w":0.3767},{"p":45,"w":0.3676},{"p":46,"w":0.3668},{"p":47,"w":0.3661},{"p":48,"w":0.3629},{"p":49,"w":0.3606},{"p":50,"w":0.3616},{"p":51,"w":0.362},{"p":52,"w":0.3715},{"p":53,"w":0.3578},{"p":54,"w":0.3575},{"p":55,"w":0.358},{"p":56,"w":0.3531},{"p":57,"w":0.3456},{"p":58,"w":0.3436},{"p":59,"w":0.3463},{"p":60,"w":0.3439},{"p":61,"w":0.3491},{"p":62,"w":0.3511},{"p":63,"w":0.3477},{"p":64,"w":0.3486},{"p":65,"w":0.3445},{"p":66,"w":0.3415},{"p":67,"w":0.3427},{"p":68,"w":0.3431},{"p":69,"w":0.3413},{"p":70,"w":0.3429},{"p":71,"w":0.3395},{"p":72,"w":0.3425},{"p":73,"w":0.3568},{"p":74,"w":0.3448},{"p":75,"w":0.3357},{"p":76,"w":0.329},{"p":77,"w":0.3302},{"p":78,"w":0.3279},{"p":79,"w":0.3236},{"p":80,"w":0.3255},{"p":81,"w":0.3236},{"p":82,"w":0.3226},{"p":83,"w":0.3237},{"p":84,"w":0.3204},{"p":85,"w":0.3184},{"p":86,"w":0.3221},{"p":87,"w":0.3216},{"p":88,"w":0.3225},{"p":89,"w":0.3298},{"p":90,"w":0.332},{"p":91,"w":0.3364},{"p":92,"w":0.3469},{"p":93,"w":0.3593},{"p":94,"w":0.3688},{"p":95,"w":0.375},{"p":96,"w":0.3629},{"p":97,"w":0.3391},{"p":98,"w":0.3098},{"p":99,"w":0.273}]},{"videoId":"KHdX4xWH9YY","title":"A workbench can be as simple as this...","durationSec":569,"pub":1734922274000,"views":66380,"r50":0.3668,"avd":238.04570200000003,"wth":4389.298249655556,"outlier":1.71,"curve":[{"p":0,"w":0.9407},{"p":1,"w":0.8266},{"p":2,"w":0.7755},{"p":3,"w":0.6762},{"p":4,"w":0.6595},{"p":5,"w":0.6429},{"p":6,"w":0.629},{"p":7,"w":0.614},{"p":8,"w":0.5802},{"p":9,"w":0.5703},{"p":10,"w":0.5663},{"p":11,"w":0.5647},{"p":12,"w":0.5422},{"p":13,"w":0.515},{"p":14,"w":0.4896},{"p":15,"w":0.4767},{"p":16,"w":0.466},{"p":17,"w":0.4578},{"p":18,"w":0.445},{"p":19,"w":0.444},{"p":20,"w":0.4471},{"p":21,"w":0.439},{"p":22,"w":0.4393},{"p":23,"w":0.4266},{"p":24,"w":0.4262},{"p":25,"w":0.4173},{"p":26,"w":0.4163},{"p":27,"w":0.4084},{"p":28,"w":0.411},{"p":29,"w":0.4003},{"p":30,"w":0.4035},{"p":31,"w":0.3992},{"p":32,"w":0.3935},{"p":33,"w":0.3944},{"p":34,"w":0.3954},{"p":35,"w":0.3949},{"p":36,"w":0.3916},{"p":37,"w":0.3805},{"p":38,"w":0.3911},{"p":39,"w":0.3798},{"p":40,"w":0.372},{"p":41,"w":0.3786},{"p":42,"w":0.3721},{"p":43,"w":0.3715},{"p":44,"w":0.3643},{"p":45,"w":0.3641},{"p":46,"w":0.3633},{"p":47,"w":0.3656},{"p":48,"w":0.3685},{"p":49,"w":0.3674},{"p":50,"w":0.3668},{"p":51,"w":0.3691},{"p":52,"w":0.3767},{"p":53,"w":0.382},{"p":54,"w":0.3829},{"p":55,"w":0.3787},{"p":56,"w":0.3845},{"p":57,"w":0.3841},{"p":58,"w":0.3804},{"p":59,"w":0.3874},{"p":60,"w":0.3953},{"p":61,"w":0.398},{"p":62,"w":0.3952},{"p":63,"w":0.3953},{"p":64,"w":0.3918},{"p":65,"w":0.3922},{"p":66,"w":0.3822},{"p":67,"w":0.3785},{"p":68,"w":0.3754},{"p":69,"w":0.3727},{"p":70,"w":0.3734},{"p":71,"w":0.3725},{"p":72,"w":0.3701},{"p":73,"w":0.3676},{"p":74,"w":0.3676},{"p":75,"w":0.3685},{"p":76,"w":0.3648},{"p":77,"w":0.3638},{"p":78,"w":0.364},{"p":79,"w":0.3594},{"p":80,"w":0.3674},{"p":81,"w":0.3687},{"p":82,"w":0.3665},{"p":83,"w":0.3617},{"p":84,"w":0.359},{"p":85,"w":0.3587},{"p":86,"w":0.3554},{"p":87,"w":0.3533},{"p":88,"w":0.3512},{"p":89,"w":0.3532},{"p":90,"w":0.3559},{"p":91,"w":0.3521},{"p":92,"w":0.3509},{"p":93,"w":0.3462},{"p":94,"w":0.3339},{"p":95,"w":0.322},{"p":96,"w":0.3096},{"p":97,"w":0.2966},{"p":98,"w":0.2737},{"p":99,"w":0.2339}]},{"videoId":"na9e0Pl2Dow","title":"I built a Cabinet to store our memories | Full Build","durationSec":575,"pub":1730641946000,"views":21302,"r50":0.4537,"avd":283.89360000000016,"wth":1679.8615186666677,"outlier":0.35,"curve":[{"p":0,"w":0.9627},{"p":1,"w":0.791},{"p":2,"w":0.7315},{"p":3,"w":0.6555},{"p":4,"w":0.625},{"p":5,"w":0.6052},{"p":6,"w":0.5954},{"p":7,"w":0.5863},{"p":8,"w":0.5815},{"p":9,"w":0.5665},{"p":10,"w":0.5723},{"p":11,"w":0.5668},{"p":12,"w":0.5496},{"p":13,"w":0.5426},{"p":14,"w":0.5368},{"p":15,"w":0.5362},{"p":16,"w":0.5279},{"p":17,"w":0.5235},{"p":18,"w":0.5266},{"p":19,"w":0.5246},{"p":20,"w":0.526},{"p":21,"w":0.522},{"p":22,"w":0.5179},{"p":23,"w":0.51},{"p":24,"w":0.5124},{"p":25,"w":0.513},{"p":26,"w":0.5139},{"p":27,"w":0.5075},{"p":28,"w":0.4994},{"p":29,"w":0.4933},{"p":30,"w":0.4905},{"p":31,"w":0.4794},{"p":32,"w":0.4781},{"p":33,"w":0.4688},{"p":34,"w":0.4705},{"p":35,"w":0.4684},{"p":36,"w":0.4654},{"p":37,"w":0.4642},{"p":38,"w":0.4697},{"p":39,"w":0.474},{"p":40,"w":0.4679},{"p":41,"w":0.4654},{"p":42,"w":0.4707},{"p":43,"w":0.4636},{"p":44,"w":0.4566},{"p":45,"w":0.4599},{"p":46,"w":0.4608},{"p":47,"w":0.4505},{"p":48,"w":0.4576},{"p":49,"w":0.4554},{"p":50,"w":0.4537},{"p":51,"w":0.4534},{"p":52,"w":0.455},{"p":53,"w":0.448},{"p":54,"w":0.4448},{"p":55,"w":0.4459},{"p":56,"w":0.4535},{"p":57,"w":0.4508},{"p":58,"w":0.4536},{"p":59,"w":0.4524},{"p":60,"w":0.4486},{"p":61,"w":0.4468},{"p":62,"w":0.4423},{"p":63,"w":0.4443},{"p":64,"w":0.445},{"p":65,"w":0.4511},{"p":66,"w":0.4416},{"p":67,"w":0.447},{"p":68,"w":0.4465},{"p":69,"w":0.4466},{"p":70,"w":0.4487},{"p":71,"w":0.4414},{"p":72,"w":0.4528},{"p":73,"w":0.433},{"p":74,"w":0.4418},{"p":75,"w":0.4423},{"p":76,"w":0.4449},{"p":77,"w":0.4449},{"p":78,"w":0.4403},{"p":79,"w":0.4427},{"p":80,"w":0.4547},{"p":81,"w":0.4675},{"p":82,"w":0.463},{"p":83,"w":0.4543},{"p":84,"w":0.4479},{"p":85,"w":0.4476},{"p":86,"w":0.4565},{"p":87,"w":0.4624},{"p":88,"w":0.4738},{"p":89,"w":0.4746},{"p":90,"w":0.4866},{"p":91,"w":0.4963},{"p":92,"w":0.4983},{"p":93,"w":0.5117},{"p":94,"w":0.5142},{"p":95,"w":0.4998},{"p":96,"w":0.4881},{"p":97,"w":0.4661},{"p":98,"w":0.4417},{"p":99,"w":0.4037}]},{"videoId":"FofTq546kgM","title":"What is Japanese Woodworking? - An Introduction","durationSec":339,"pub":1728853214000,"views":1706,"r50":0.4738,"avd":165.1787669999999,"wth":78.27638236166662,"outlier":0.03,"curve":[{"p":0,"w":0.9458},{"p":1,"w":0.833},{"p":2,"w":0.7945},{"p":3,"w":0.7904},{"p":4,"w":0.7326},{"p":5,"w":0.6922},{"p":6,"w":0.676},{"p":7,"w":0.6563},{"p":8,"w":0.6382},{"p":9,"w":0.6181},{"p":10,"w":0.6095},{"p":11,"w":0.5762},{"p":12,"w":0.5687},{"p":13,"w":0.5672},{"p":14,"w":0.585},{"p":15,"w":0.5674},{"p":16,"w":0.5624},{"p":17,"w":0.554},{"p":18,"w":0.5453},{"p":19,"w":0.5414},{"p":20,"w":0.5338},{"p":21,"w":0.538},{"p":22,"w":0.5356},{"p":23,"w":0.5385},{"p":24,"w":0.5287},{"p":25,"w":0.5272},{"p":26,"w":0.5331},{"p":27,"w":0.5395},{"p":28,"w":0.5392},{"p":29,"w":0.5368},{"p":30,"w":0.5273},{"p":31,"w":0.5228},{"p":32,"w":0.5173},{"p":33,"w":0.5176},{"p":34,"w":0.5078},{"p":35,"w":0.5118},{"p":36,"w":0.5097},{"p":37,"w":0.5035},{"p":38,"w":0.5032},{"p":39,"w":0.4997},{"p":40,"w":0.4972},{"p":41,"w":0.5041},{"p":42,"w":0.4928},{"p":43,"w":0.491},{"p":44,"w":0.49},{"p":45,"w":0.4821},{"p":46,"w":0.4779},{"p":47,"w":0.4763},{"p":48,"w":0.477},{"p":49,"w":0.4701},{"p":50,"w":0.4738},{"p":51,"w":0.4689},{"p":52,"w":0.4687},{"p":53,"w":0.4648},{"p":54,"w":0.4607},{"p":55,"w":0.4607},{"p":56,"w":0.4572},{"p":57,"w":0.4599},{"p":58,"w":0.4557},{"p":59,"w":0.4541},{"p":60,"w":0.4502},{"p":61,"w":0.4475},{"p":62,"w":0.4488},{"p":63,"w":0.4413},{"p":64,"w":0.4428},{"p":65,"w":0.4395},{"p":66,"w":0.438},{"p":67,"w":0.4392},{"p":68,"w":0.435},{"p":69,"w":0.4338},{"p":70,"w":0.4267},{"p":71,"w":0.4281},{"p":72,"w":0.427},{"p":73,"w":0.4231},{"p":74,"w":0.4227},{"p":75,"w":0.4177},{"p":76,"w":0.4139},{"p":77,"w":0.4086},{"p":78,"w":0.4111},{"p":79,"w":0.4104},{"p":80,"w":0.4027},{"p":81,"w":0.4035},{"p":82,"w":0.3976},{"p":83,"w":0.3981},{"p":84,"w":0.3964},{"p":85,"w":0.3942},{"p":86,"w":0.3925},{"p":87,"w":0.3842},{"p":88,"w":0.3792},{"p":89,"w":0.3724},{"p":90,"w":0.3719},{"p":91,"w":0.3623},{"p":92,"w":0.3647},{"p":93,"w":0.3595},{"p":94,"w":0.3384},{"p":95,"w":0.3199},{"p":96,"w":0.2986},{"p":97,"w":0.28},{"p":98,"w":0.2566},{"p":99,"w":0.2389}]}]}</script>
+<script>window.__COHORT__={"videos":[{"videoId":"b7CZkbBJpZU","title":"The most important part of furniture making","durationSec":812,"pub":1787527863000,"views":40498,"r50":0.3468,"avd":298.5269279999998,"wth":3358.2620917066647,"outlier":null,"curve":[{"p":0,"w":0.9285},{"p":1,"w":0.8386},{"p":2,"w":0.7541},{"p":3,"w":0.6887},{"p":4,"w":0.639},{"p":5,"w":0.5411},{"p":6,"w":0.5267},{"p":7,"w":0.5137},{"p":8,"w":0.4995},{"p":9,"w":0.4919},{"p":10,"w":0.4805},{"p":11,"w":0.4745},{"p":12,"w":0.4655},{"p":13,"w":0.4556},{"p":14,"w":0.4543},{"p":15,"w":0.4461},{"p":16,"w":0.4439},{"p":17,"w":0.4484},{"p":18,"w":0.4351},{"p":19,"w":0.4329},{"p":20,"w":0.4309},{"p":21,"w":0.4258},{"p":22,"w":0.4198},{"p":23,"w":0.4111},{"p":24,"w":0.4109},{"p":25,"w":0.409},{"p":26,"w":0.4018},{"p":27,"w":0.4014},{"p":28,"w":0.3942},{"p":29,"w":0.3886},{"p":30,"w":0.3827},{"p":31,"w":0.3772},{"p":32,"w":0.3762},{"p":33,"w":0.373},{"p":34,"w":0.3695},{"p":35,"w":0.3693},{"p":36,"w":0.3684},{"p":37,"w":0.3579},{"p":38,"w":0.3599},{"p":39,"w":0.3588},{"p":40,"w":0.3532},{"p":41,"w":0.3533},{"p":42,"w":0.3488},{"p":43,"w":0.3488},{"p":44,"w":0.3495},{"p":45,"w":0.3447},{"p":46,"w":0.3436},{"p":47,"w":0.3376},{"p":48,"w":0.3368},{"p":49,"w":0.3359},{"p":50,"w":0.3468},{"p":51,"w":0.3297},{"p":52,"w":0.3247},{"p":53,"w":0.3252},{"p":54,"w":0.3247},{"p":55,"w":0.3222},{"p":56,"w":0.3192},{"p":57,"w":0.315},{"p":58,"w":0.3126},{"p":59,"w":0.3072},{"p":60,"w":0.3079},{"p":61,"w":0.3064},{"p":62,"w":0.3123},{"p":63,"w":0.3095},{"p":64,"w":0.306},{"p":65,"w":0.3055},{"p":66,"w":0.3059},{"p":67,"w":0.303},{"p":68,"w":0.3036},{"p":69,"w":0.3017},{"p":70,"w":0.3025},{"p":71,"w":0.3021},{"p":72,"w":0.2999},{"p":73,"w":0.2998},{"p":74,"w":0.2974},{"p":75,"w":0.294},{"p":76,"w":0.2943},{"p":77,"w":0.2949},{"p":78,"w":0.3023},{"p":79,"w":0.2954},{"p":80,"w":0.2945},{"p":81,"w":0.2963},{"p":82,"w":0.2954},{"p":83,"w":0.2972},{"p":84,"w":0.299},{"p":85,"w":0.2957},{"p":86,"w":0.3023},{"p":87,"w":0.306},{"p":88,"w":0.3077},{"p":89,"w":0.3105},{"p":90,"w":0.3052},{"p":91,"w":0.2991},{"p":92,"w":0.2872},{"p":93,"w":0.2751},{"p":94,"w":0.2393},{"p":95,"w":0.2148},{"p":96,"w":0.1902},{"p":97,"w":0.1726},{"p":98,"w":0.1602},{"p":99,"w":0.1472}]},{"videoId":"2HuaCh4wl3A","title":"Slowing Down Helped Me Become a Better Craftsman","durationSec":317,"pub":1784556000000,"views":36893,"r50":0.4851,"avd":158.51489899999996,"wth":1624.4694913352773,"outlier":0.58,"curve":[{"p":0,"w":0.9571},{"p":1,"w":0.8876},{"p":2,"w":0.8409},{"p":3,"w":0.8256},{"p":4,"w":0.7682},{"p":5,"w":0.7343},{"p":6,"w":0.709},{"p":7,"w":0.6983},{"p":8,"w":0.6901},{"p":9,"w":0.6715},{"p":10,"w":0.6682},{"p":11,"w":0.6625},{"p":12,"w":0.6478},{"p":13,"w":0.6122},{"p":14,"w":0.6048},{"p":15,"w":0.5996},{"p":16,"w":0.5937},{"p":17,"w":0.5857},{"p":18,"w":0.5781},{"p":19,"w":0.5714},{"p":20,"w":0.5676},{"p":21,"w":0.5639},{"p":22,"w":0.5594},{"p":23,"w":0.5581},{"p":24,"w":0.5506},{"p":25,"w":0.5485},{"p":26,"w":0.5457},{"p":27,"w":0.5466},{"p":28,"w":0.5427},{"p":29,"w":0.5418},{"p":30,"w":0.5341},{"p":31,"w":0.535},{"p":32,"w":0.5283},{"p":33,"w":0.5253},{"p":34,"w":0.5187},{"p":35,"w":0.5199},{"p":36,"w":0.5121},{"p":37,"w":0.5102},{"p":38,"w":0.5092},{"p":39,"w":0.5071},{"p":40,"w":0.5012},{"p":41,"w":0.498},{"p":42,"w":0.4941},{"p":43,"w":0.487},{"p":44,"w":0.4876},{"p":45,"w":0.4867},{"p":46,"w":0.4861},{"p":47,"w":0.4878},{"p":48,"w":0.488},{"p":49,"w":0.4888},{"p":50,"w":0.4851},{"p":51,"w":0.4835},{"p":52,"w":0.4818},{"p":53,"w":0.4806},{"p":54,"w":0.4806},{"p":55,"w":0.4749},{"p":56,"w":0.4736},{"p":57,"w":0.4753},{"p":58,"w":0.4758},{"p":59,"w":0.4717},{"p":60,"w":0.4684},{"p":61,"w":0.4616},{"p":62,"w":0.4608},{"p":63,"w":0.4587},{"p":64,"w":0.4547},{"p":65,"w":0.4494},{"p":66,"w":0.4492},{"p":67,"w":0.4532},{"p":68,"w":0.4522},{"p":69,"w":0.4529},{"p":70,"w":0.4494},{"p":71,"w":0.4453},{"p":72,"w":0.4435},{"p":73,"w":0.4414},{"p":74,"w":0.4388},{"p":75,"w":0.437},{"p":76,"w":0.4351},{"p":77,"w":0.435},{"p":78,"w":0.4329},{"p":79,"w":0.4262},{"p":80,"w":0.4225},{"p":81,"w":0.418},{"p":82,"w":0.4174},{"p":83,"w":0.4132},{"p":84,"w":0.4096},{"p":85,"w":0.4027},{"p":86,"w":0.4023},{"p":87,"w":0.3979},{"p":88,"w":0.3972},{"p":89,"w":0.3954},{"p":90,"w":0.3742},{"p":91,"w":0.3337},{"p":92,"w":0.303},{"p":93,"w":0.2847},{"p":94,"w":0.2667},{"p":95,"w":0.2528},{"p":96,"w":0.2412},{"p":97,"w":0.2284},{"p":98,"w":0.2061},{"p":99,"w":0.1724}]},{"videoId":"asT3GmPhL1g","title":"Why Beautiful Furniture Starts at the Lumber Yard","durationSec":355,"pub":1780200019000,"views":50779,"r50":0.4889,"avd":179.03288999999992,"wth":2525.3086448083322,"outlier":0.8,"curve":[{"p":0,"w":0.9436},{"p":1,"w":0.8779},{"p":2,"w":0.8519},{"p":3,"w":0.8358},{"p":4,"w":0.7688},{"p":5,"w":0.7194},{"p":6,"w":0.6966},{"p":7,"w":0.6772},{"p":8,"w":0.6551},{"p":9,"w":0.628},{"p":10,"w":0.6065},{"p":11,"w":0.6016},{"p":12,"w":0.5892},{"p":13,"w":0.5925},{"p":14,"w":0.5952},{"p":15,"w":0.5805},{"p":16,"w":0.5765},{"p":17,"w":0.5724},{"p":18,"w":0.5723},{"p":19,"w":0.5689},{"p":20,"w":0.5697},{"p":21,"w":0.5691},{"p":22,"w":0.5695},{"p":23,"w":0.5689},{"p":24,"w":0.5632},{"p":25,"w":0.5583},{"p":26,"w":0.5497},{"p":27,"w":0.5445},{"p":28,"w":0.5404},{"p":29,"w":0.533},{"p":30,"w":0.5308},{"p":31,"w":0.5321},{"p":32,"w":0.5306},{"p":33,"w":0.5286},{"p":34,"w":0.5293},{"p":35,"w":0.5257},{"p":36,"w":0.5192},{"p":37,"w":0.515},{"p":38,"w":0.512},{"p":39,"w":0.5051},{"p":40,"w":0.5038},{"p":41,"w":0.5065},{"p":42,"w":0.5014},{"p":43,"w":0.4999},{"p":44,"w":0.4964},{"p":45,"w":0.491},{"p":46,"w":0.4831},{"p":47,"w":0.4866},{"p":48,"w":0.4923},{"p":49,"w":0.4932},{"p":50,"w":0.4889},{"p":51,"w":0.4853},{"p":52,"w":0.4916},{"p":53,"w":0.4976},{"p":54,"w":0.5019},{"p":55,"w":0.4958},{"p":56,"w":0.4726},{"p":57,"w":0.4673},{"p":58,"w":0.4614},{"p":59,"w":0.4588},{"p":60,"w":0.4562},{"p":61,"w":0.4522},{"p":62,"w":0.4503},{"p":63,"w":0.4489},{"p":64,"w":0.4464},{"p":65,"w":0.4431},{"p":66,"w":0.4398},{"p":67,"w":0.4378},{"p":68,"w":0.4362},{"p":69,"w":0.4353},{"p":70,"w":0.4345},{"p":71,"w":0.4324},{"p":72,"w":0.4305},{"p":73,"w":0.4297},{"p":74,"w":0.4273},{"p":75,"w":0.4215},{"p":76,"w":0.4184},{"p":77,"w":0.4187},{"p":78,"w":0.419},{"p":79,"w":0.4165},{"p":80,"w":0.414},{"p":81,"w":0.4121},{"p":82,"w":0.4102},{"p":83,"w":0.4094},{"p":84,"w":0.4082},{"p":85,"w":0.4051},{"p":86,"w":0.4021},{"p":87,"w":0.4005},{"p":88,"w":0.3996},{"p":89,"w":0.3985},{"p":90,"w":0.3967},{"p":91,"w":0.391},{"p":92,"w":0.3833},{"p":93,"w":0.3764},{"p":94,"w":0.3719},{"p":95,"w":0.3657},{"p":96,"w":0.3541},{"p":97,"w":0.3441},{"p":98,"w":0.3325},{"p":99,"w":0.2817}]},{"videoId":"ZOci3cqFQw4","title":"Is making things by hand still worth it?","durationSec":526,"pub":1776010719000,"views":140176,"r50":0.3099,"avd":191.22835199999994,"wth":7446.0070749866645,"outlier":2.62,"curve":[{"p":0,"w":0.9775},{"p":1,"w":0.8481},{"p":2,"w":0.8218},{"p":3,"w":0.7159},{"p":4,"w":0.6588},{"p":5,"w":0.6201},{"p":6,"w":0.6018},{"p":7,"w":0.5709},{"p":8,"w":0.5179},{"p":9,"w":0.5033},{"p":10,"w":0.4781},{"p":11,"w":0.4608},{"p":12,"w":0.458},{"p":13,"w":0.4387},{"p":14,"w":0.4328},{"p":15,"w":0.4239},{"p":16,"w":0.4267},{"p":17,"w":0.423},{"p":18,"w":0.4188},{"p":19,"w":0.4107},{"p":20,"w":0.4058},{"p":21,"w":0.4022},{"p":22,"w":0.4016},{"p":23,"w":0.4016},{"p":24,"w":0.4018},{"p":25,"w":0.3975},{"p":26,"w":0.3944},{"p":27,"w":0.3903},{"p":28,"w":0.3893},{"p":29,"w":0.3871},{"p":30,"w":0.385},{"p":31,"w":0.3832},{"p":32,"w":0.3816},{"p":33,"w":0.382},{"p":34,"w":0.3807},{"p":35,"w":0.3798},{"p":36,"w":0.378},{"p":37,"w":0.374},{"p":38,"w":0.3716},{"p":39,"w":0.3652},{"p":40,"w":0.3642},{"p":41,"w":0.3552},{"p":42,"w":0.3449},{"p":43,"w":0.3367},{"p":44,"w":0.3266},{"p":45,"w":0.3217},{"p":46,"w":0.3213},{"p":47,"w":0.3266},{"p":48,"w":0.3151},{"p":49,"w":0.3136},{"p":50,"w":0.3099},{"p":51,"w":0.3101},{"p":52,"w":0.3086},{"p":53,"w":0.3063},{"p":54,"w":0.3063},{"p":55,"w":0.3068},{"p":56,"w":0.3082},{"p":57,"w":0.3051},{"p":58,"w":0.3056},{"p":59,"w":0.3057},{"p":60,"w":0.302},{"p":61,"w":0.2995},{"p":62,"w":0.2989},{"p":63,"w":0.2988},{"p":64,"w":0.2974},{"p":65,"w":0.2946},{"p":66,"w":0.2929},{"p":67,"w":0.2913},{"p":68,"w":0.2874},{"p":69,"w":0.2895},{"p":70,"w":0.2901},{"p":71,"w":0.2908},{"p":72,"w":0.288},{"p":73,"w":0.2896},{"p":74,"w":0.2887},{"p":75,"w":0.2966},{"p":76,"w":0.2986},{"p":77,"w":0.282},{"p":78,"w":0.2813},{"p":79,"w":0.2796},{"p":80,"w":0.2785},{"p":81,"w":0.2771},{"p":82,"w":0.2773},{"p":83,"w":0.2786},{"p":84,"w":0.2789},{"p":85,"w":0.2829},{"p":86,"w":0.2831},{"p":87,"w":0.2818},{"p":88,"w":0.2827},{"p":89,"w":0.2841},{"p":90,"w":0.2835},{"p":91,"w":0.283},{"p":92,"w":0.2772},{"p":93,"w":0.2745},{"p":94,"w":0.2715},{"p":95,"w":0.2655},{"p":96,"w":0.236},{"p":97,"w":0.1887},{"p":98,"w":0.1534},{"p":99,"w":0.1205}]},{"videoId":"wpoOzWGm7yU","title":"The Hardest Part of Woodworking","durationSec":1355,"pub":1771793021000,"views":75077,"r50":0.2852,"avd":436.42652999999984,"wth":9101.554053558331,"outlier":1.4,"curve":[{"p":0,"w":0.9197},{"p":1,"w":0.7657},{"p":2,"w":0.6395},{"p":3,"w":0.5204},{"p":4,"w":0.5023},{"p":5,"w":0.48},{"p":6,"w":0.464},{"p":7,"w":0.452},{"p":8,"w":0.4456},{"p":9,"w":0.4415},{"p":10,"w":0.4348},{"p":11,"w":0.4265},{"p":12,"w":0.421},{"p":13,"w":0.4124},{"p":14,"w":0.4064},{"p":15,"w":0.4008},{"p":16,"w":0.3916},{"p":17,"w":0.3868},{"p":18,"w":0.3827},{"p":19,"w":0.3804},{"p":20,"w":0.3768},{"p":21,"w":0.3719},{"p":22,"w":0.3673},{"p":23,"w":0.3667},{"p":24,"w":0.3644},{"p":25,"w":0.3601},{"p":26,"w":0.3621},{"p":27,"w":0.3629},{"p":28,"w":0.3449},{"p":29,"w":0.3395},{"p":30,"w":0.333},{"p":31,"w":0.3321},{"p":32,"w":0.33},{"p":33,"w":0.3293},{"p":34,"w":0.3294},{"p":35,"w":0.3273},{"p":36,"w":0.3211},{"p":37,"w":0.3179},{"p":38,"w":0.3197},{"p":39,"w":0.3151},{"p":40,"w":0.3085},{"p":41,"w":0.3058},{"p":42,"w":0.2986},{"p":43,"w":0.2955},{"p":44,"w":0.2941},{"p":45,"w":0.2935},{"p":46,"w":0.2891},{"p":47,"w":0.2864},{"p":48,"w":0.2885},{"p":49,"w":0.2888},{"p":50,"w":0.2852},{"p":51,"w":0.2774},{"p":52,"w":0.2736},{"p":53,"w":0.2681},{"p":54,"w":0.2763},{"p":55,"w":0.2674},{"p":56,"w":0.2662},{"p":57,"w":0.2639},{"p":58,"w":0.2607},{"p":59,"w":0.2595},{"p":60,"w":0.2596},{"p":61,"w":0.2596},{"p":62,"w":0.2581},{"p":63,"w":0.2562},{"p":64,"w":0.2557},{"p":65,"w":0.2537},{"p":66,"w":0.2602},{"p":67,"w":0.2593},{"p":68,"w":0.253},{"p":69,"w":0.2523},{"p":70,"w":0.2509},{"p":71,"w":0.2514},{"p":72,"w":0.2515},{"p":73,"w":0.2506},{"p":74,"w":0.2507},{"p":75,"w":0.2459},{"p":76,"w":0.2463},{"p":77,"w":0.2473},{"p":78,"w":0.2513},{"p":79,"w":0.246},{"p":80,"w":0.2449},{"p":81,"w":0.2445},{"p":82,"w":0.2451},{"p":83,"w":0.2432},{"p":84,"w":0.2413},{"p":85,"w":0.2414},{"p":86,"w":0.241},{"p":87,"w":0.2425},{"p":88,"w":0.2439},{"p":89,"w":0.2473},{"p":90,"w":0.2518},{"p":91,"w":0.2488},{"p":92,"w":0.2528},{"p":93,"w":0.2542},{"p":94,"w":0.2585},{"p":95,"w":0.2633},{"p":96,"w":0.2616},{"p":97,"w":0.2563},{"p":98,"w":0.2441},{"p":99,"w":0.2298}]},{"videoId":"75EJtFuDwzc","title":"Which Japanese Woodworking Tools Should You Buy First?","durationSec":374,"pub":1768712407000,"views":88431,"r50":0.3827,"avd":155.84243400000005,"wth":3828.1395225150013,"outlier":1.65,"curve":[{"p":0,"w":0.9201},{"p":1,"w":0.8482},{"p":2,"w":0.8342},{"p":3,"w":0.7986},{"p":4,"w":0.6989},{"p":5,"w":0.611},{"p":6,"w":0.5843},{"p":7,"w":0.5686},{"p":8,"w":0.5512},{"p":9,"w":0.5507},{"p":10,"w":0.5414},{"p":11,"w":0.5038},{"p":12,"w":0.4982},{"p":13,"w":0.4921},{"p":14,"w":0.484},{"p":15,"w":0.4821},{"p":16,"w":0.4772},{"p":17,"w":0.4797},{"p":18,"w":0.477},{"p":19,"w":0.4726},{"p":20,"w":0.4659},{"p":21,"w":0.4604},{"p":22,"w":0.4537},{"p":23,"w":0.4475},{"p":24,"w":0.4483},{"p":25,"w":0.4417},{"p":26,"w":0.4379},{"p":27,"w":0.4351},{"p":28,"w":0.4351},{"p":29,"w":0.4321},{"p":30,"w":0.4312},{"p":31,"w":0.4317},{"p":32,"w":0.428},{"p":33,"w":0.4225},{"p":34,"w":0.4235},{"p":35,"w":0.418},{"p":36,"w":0.4111},{"p":37,"w":0.4102},{"p":38,"w":0.4117},{"p":39,"w":0.4053},{"p":40,"w":0.4066},{"p":41,"w":0.3994},{"p":42,"w":0.4003},{"p":43,"w":0.3988},{"p":44,"w":0.394},{"p":45,"w":0.3949},{"p":46,"w":0.3975},{"p":47,"w":0.3957},{"p":48,"w":0.3924},{"p":49,"w":0.39},{"p":50,"w":0.3827},{"p":51,"w":0.3808},{"p":52,"w":0.3792},{"p":53,"w":0.3778},{"p":54,"w":0.38},{"p":55,"w":0.3803},{"p":56,"w":0.3769},{"p":57,"w":0.3751},{"p":58,"w":0.3744},{"p":59,"w":0.3737},{"p":60,"w":0.3735},{"p":61,"w":0.3694},{"p":62,"w":0.3663},{"p":63,"w":0.3632},{"p":64,"w":0.3594},{"p":65,"w":0.353},{"p":66,"w":0.3505},{"p":67,"w":0.3483},{"p":68,"w":0.3478},{"p":69,"w":0.3522},{"p":70,"w":0.3504},{"p":71,"w":0.3486},{"p":72,"w":0.3492},{"p":73,"w":0.3501},{"p":74,"w":0.3452},{"p":75,"w":0.3485},{"p":76,"w":0.3511},{"p":77,"w":0.3522},{"p":78,"w":0.3504},{"p":79,"w":0.346},{"p":80,"w":0.343},{"p":81,"w":0.337},{"p":82,"w":0.3385},{"p":83,"w":0.3403},{"p":84,"w":0.3391},{"p":85,"w":0.3396},{"p":86,"w":0.3421},{"p":87,"w":0.3392},{"p":88,"w":0.3348},{"p":89,"w":0.3348},{"p":90,"w":0.3342},{"p":91,"w":0.3312},{"p":92,"w":0.3276},{"p":93,"w":0.3227},{"p":94,"w":0.3164},{"p":95,"w":0.3087},{"p":96,"w":0.2957},{"p":97,"w":0.2706},{"p":98,"w":0.228},{"p":99,"w":0.195}]},{"videoId":"kCVcQwG9OE0","title":"A Modern Take on Shoji | Made with Japanese Hand Tools","durationSec":877,"pub":1760280381000,"views":12948,"r50":0.3703,"avd":348.0891930000001,"wth":1251.9607974900002,"outlier":0.19,"curve":[{"p":0,"w":0.9905},{"p":1,"w":0.8123},{"p":2,"w":0.6766},{"p":3,"w":0.615},{"p":4,"w":0.5669},{"p":5,"w":0.5308},{"p":6,"w":0.5177},{"p":7,"w":0.5055},{"p":8,"w":0.5075},{"p":9,"w":0.493},{"p":10,"w":0.4885},{"p":11,"w":0.4775},{"p":12,"w":0.4693},{"p":13,"w":0.4663},{"p":14,"w":0.4548},{"p":15,"w":0.4496},{"p":16,"w":0.438},{"p":17,"w":0.4437},{"p":18,"w":0.4361},{"p":19,"w":0.4395},{"p":20,"w":0.4326},{"p":21,"w":0.4308},{"p":22,"w":0.428},{"p":23,"w":0.4259},{"p":24,"w":0.4193},{"p":25,"w":0.4216},{"p":26,"w":0.4233},{"p":27,"w":0.4215},{"p":28,"w":0.4216},{"p":29,"w":0.4165},{"p":30,"w":0.409},{"p":31,"w":0.4077},{"p":32,"w":0.406},{"p":33,"w":0.395},{"p":34,"w":0.3993},{"p":35,"w":0.3989},{"p":36,"w":0.3884},{"p":37,"w":0.3816},{"p":38,"w":0.3772},{"p":39,"w":0.3744},{"p":40,"w":0.3685},{"p":41,"w":0.3711},{"p":42,"w":0.3721},{"p":43,"w":0.3729},{"p":44,"w":0.3738},{"p":45,"w":0.3645},{"p":46,"w":0.3642},{"p":47,"w":0.3567},{"p":48,"w":0.3583},{"p":49,"w":0.3572},{"p":50,"w":0.3703},{"p":51,"w":0.3487},{"p":52,"w":0.3407},{"p":53,"w":0.3363},{"p":54,"w":0.3338},{"p":55,"w":0.3324},{"p":56,"w":0.3324},{"p":57,"w":0.3335},{"p":58,"w":0.3303},{"p":59,"w":0.3348},{"p":60,"w":0.3378},{"p":61,"w":0.339},{"p":62,"w":0.3347},{"p":63,"w":0.3344},{"p":64,"w":0.3338},{"p":65,"w":0.3305},{"p":66,"w":0.3258},{"p":67,"w":0.3359},{"p":68,"w":0.3322},{"p":69,"w":0.3347},{"p":70,"w":0.3378},{"p":71,"w":0.3383},{"p":72,"w":0.3408},{"p":73,"w":0.3369},{"p":74,"w":0.3343},{"p":75,"w":0.3365},{"p":76,"w":0.333},{"p":77,"w":0.339},{"p":78,"w":0.3376},{"p":79,"w":0.3451},{"p":80,"w":0.3388},{"p":81,"w":0.3335},{"p":82,"w":0.3366},{"p":83,"w":0.3328},{"p":84,"w":0.3394},{"p":85,"w":0.3456},{"p":86,"w":0.3423},{"p":87,"w":0.3411},{"p":88,"w":0.3407},{"p":89,"w":0.347},{"p":90,"w":0.3521},{"p":91,"w":0.3588},{"p":92,"w":0.3562},{"p":93,"w":0.3605},{"p":94,"w":0.3702},{"p":95,"w":0.3974},{"p":96,"w":0.3855},{"p":97,"w":0.3711},{"p":98,"w":0.3409},{"p":99,"w":0.2721}]},{"videoId":"wKg0lMrBOiU","title":"No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life","durationSec":1580,"pub":1757270386000,"views":71036,"r50":0.267,"avd":508.0458399999999,"wth":10024.873413955553,"outlier":1.07,"curve":[{"p":0,"w":0.9103},{"p":1,"w":0.6749},{"p":2,"w":0.6021},{"p":3,"w":0.537},{"p":4,"w":0.508},{"p":5,"w":0.4856},{"p":6,"w":0.4724},{"p":7,"w":0.4572},{"p":8,"w":0.4502},{"p":9,"w":0.4459},{"p":10,"w":0.4414},{"p":11,"w":0.4372},{"p":12,"w":0.4333},{"p":13,"w":0.4309},{"p":14,"w":0.4244},{"p":15,"w":0.4236},{"p":16,"w":0.419},{"p":17,"w":0.4134},{"p":18,"w":0.4047},{"p":19,"w":0.3984},{"p":20,"w":0.3965},{"p":21,"w":0.3963},{"p":22,"w":0.3958},{"p":23,"w":0.3907},{"p":24,"w":0.3899},{"p":25,"w":0.3873},{"p":26,"w":0.3757},{"p":27,"w":0.3733},{"p":28,"w":0.3757},{"p":29,"w":0.375},{"p":30,"w":0.3743},{"p":31,"w":0.355},{"p":32,"w":0.3458},{"p":33,"w":0.3421},{"p":34,"w":0.335},{"p":35,"w":0.3296},{"p":36,"w":0.3247},{"p":37,"w":0.3216},{"p":38,"w":0.314},{"p":39,"w":0.3116},{"p":40,"w":0.3042},{"p":41,"w":0.3017},{"p":42,"w":0.2996},{"p":43,"w":0.299},{"p":44,"w":0.3},{"p":45,"w":0.3028},{"p":46,"w":0.293},{"p":47,"w":0.2798},{"p":48,"w":0.2707},{"p":49,"w":0.2685},{"p":50,"w":0.267},{"p":51,"w":0.2669},{"p":52,"w":0.2656},{"p":53,"w":0.256},{"p":54,"w":0.2506},{"p":55,"w":0.2491},{"p":56,"w":0.2465},{"p":57,"w":0.2487},{"p":58,"w":0.2517},{"p":59,"w":0.2499},{"p":60,"w":0.2493},{"p":61,"w":0.2523},{"p":62,"w":0.2537},{"p":63,"w":0.2541},{"p":64,"w":0.2544},{"p":65,"w":0.246},{"p":66,"w":0.2439},{"p":67,"w":0.2453},{"p":68,"w":0.2431},{"p":69,"w":0.2429},{"p":70,"w":0.2389},{"p":71,"w":0.2431},{"p":72,"w":0.2396},{"p":73,"w":0.2383},{"p":74,"w":0.2384},{"p":75,"w":0.241},{"p":76,"w":0.2416},{"p":77,"w":0.2386},{"p":78,"w":0.2366},{"p":79,"w":0.2344},{"p":80,"w":0.2347},{"p":81,"w":0.2303},{"p":82,"w":0.235},{"p":83,"w":0.237},{"p":84,"w":0.2416},{"p":85,"w":0.2443},{"p":86,"w":0.247},{"p":87,"w":0.2495},{"p":88,"w":0.2529},{"p":89,"w":0.2542},{"p":90,"w":0.2602},{"p":91,"w":0.2622},{"p":92,"w":0.2644},{"p":93,"w":0.2659},{"p":94,"w":0.2669},{"p":95,"w":0.2606},{"p":96,"w":0.2378},{"p":97,"w":0.2194},{"p":98,"w":0.1983},{"p":99,"w":0.166}]},{"videoId":"TSG8lMrqHQM","title":"This ONE skill will change how you woodwork","durationSec":430,"pub":1749914081000,"views":56260,"r50":0.3478,"avd":166.24015,"wth":2597.9641219444443,"outlier":1.29,"curve":[{"p":0,"w":0.8972},{"p":1,"w":0.8514},{"p":2,"w":0.8466},{"p":3,"w":0.7946},{"p":4,"w":0.6629},{"p":5,"w":0.6089},{"p":6,"w":0.5931},{"p":7,"w":0.5652},{"p":8,"w":0.5462},{"p":9,"w":0.5347},{"p":10,"w":0.4841},{"p":11,"w":0.4792},{"p":12,"w":0.4779},{"p":13,"w":0.4762},{"p":14,"w":0.4722},{"p":15,"w":0.4703},{"p":16,"w":0.4658},{"p":17,"w":0.4646},{"p":18,"w":0.463},{"p":19,"w":0.46},{"p":20,"w":0.4586},{"p":21,"w":0.4548},{"p":22,"w":0.455},{"p":23,"w":0.4507},{"p":24,"w":0.445},{"p":25,"w":0.4364},{"p":26,"w":0.4284},{"p":27,"w":0.4191},{"p":28,"w":0.4152},{"p":29,"w":0.408},{"p":30,"w":0.4023},{"p":31,"w":0.3943},{"p":32,"w":0.394},{"p":33,"w":0.3902},{"p":34,"w":0.3876},{"p":35,"w":0.3859},{"p":36,"w":0.3816},{"p":37,"w":0.3785},{"p":38,"w":0.3714},{"p":39,"w":0.3636},{"p":40,"w":0.3605},{"p":41,"w":0.3546},{"p":42,"w":0.3588},{"p":43,"w":0.3577},{"p":44,"w":0.3495},{"p":45,"w":0.347},{"p":46,"w":0.3499},{"p":47,"w":0.3495},{"p":48,"w":0.3503},{"p":49,"w":0.3471},{"p":50,"w":0.3478},{"p":51,"w":0.3434},{"p":52,"w":0.344},{"p":53,"w":0.342},{"p":54,"w":0.3411},{"p":55,"w":0.3437},{"p":56,"w":0.3428},{"p":57,"w":0.342},{"p":58,"w":0.3433},{"p":59,"w":0.3399},{"p":60,"w":0.3375},{"p":61,"w":0.3343},{"p":62,"w":0.3313},{"p":63,"w":0.3287},{"p":64,"w":0.3293},{"p":65,"w":0.3243},{"p":66,"w":0.3179},{"p":67,"w":0.3181},{"p":68,"w":0.313},{"p":69,"w":0.3087},{"p":70,"w":0.3043},{"p":71,"w":0.3012},{"p":72,"w":0.3027},{"p":73,"w":0.3004},{"p":74,"w":0.2939},{"p":75,"w":0.2974},{"p":76,"w":0.2926},{"p":77,"w":0.2884},{"p":78,"w":0.2895},{"p":79,"w":0.2911},{"p":80,"w":0.2972},{"p":81,"w":0.3071},{"p":82,"w":0.3058},{"p":83,"w":0.3026},{"p":84,"w":0.2936},{"p":85,"w":0.2905},{"p":86,"w":0.2867},{"p":87,"w":0.2836},{"p":88,"w":0.2899},{"p":89,"w":0.2901},{"p":90,"w":0.2894},{"p":91,"w":0.2888},{"p":92,"w":0.2865},{"p":93,"w":0.2902},{"p":94,"w":0.2929},{"p":95,"w":0.2907},{"p":96,"w":0.2834},{"p":97,"w":0.2611},{"p":98,"w":0.2419},{"p":99,"w":0.1943}]},{"videoId":"7Gt5nepmzDM","title":"Japanese Joinery is easier than you think...","durationSec":769,"pub":1746368939000,"views":12373,"r50":0.3315,"avd":268.530955,"wth":922.9259739486112,"outlier":0.2,"curve":[{"p":0,"w":0.9485},{"p":1,"w":0.8839},{"p":2,"w":0.8253},{"p":3,"w":0.7926},{"p":4,"w":0.7183},{"p":5,"w":0.6436},{"p":6,"w":0.5677},{"p":7,"w":0.5484},{"p":8,"w":0.5296},{"p":9,"w":0.5113},{"p":10,"w":0.5037},{"p":11,"w":0.4871},{"p":12,"w":0.4743},{"p":13,"w":0.4619},{"p":14,"w":0.4511},{"p":15,"w":0.444},{"p":16,"w":0.4332},{"p":17,"w":0.4251},{"p":18,"w":0.4169},{"p":19,"w":0.4132},{"p":20,"w":0.4065},{"p":21,"w":0.4026},{"p":22,"w":0.3994},{"p":23,"w":0.3968},{"p":24,"w":0.3859},{"p":25,"w":0.3825},{"p":26,"w":0.3781},{"p":27,"w":0.3759},{"p":28,"w":0.3712},{"p":29,"w":0.368},{"p":30,"w":0.3729},{"p":31,"w":0.3642},{"p":32,"w":0.3608},{"p":33,"w":0.3588},{"p":34,"w":0.3553},{"p":35,"w":0.3519},{"p":36,"w":0.347},{"p":37,"w":0.3414},{"p":38,"w":0.3378},{"p":39,"w":0.3379},{"p":40,"w":0.3359},{"p":41,"w":0.3334},{"p":42,"w":0.3322},{"p":43,"w":0.3304},{"p":44,"w":0.3307},{"p":45,"w":0.3279},{"p":46,"w":0.327},{"p":47,"w":0.3239},{"p":48,"w":0.319},{"p":49,"w":0.3183},{"p":50,"w":0.3315},{"p":51,"w":0.3069},{"p":52,"w":0.3048},{"p":53,"w":0.3005},{"p":54,"w":0.2972},{"p":55,"w":0.294},{"p":56,"w":0.287},{"p":57,"w":0.2846},{"p":58,"w":0.2845},{"p":59,"w":0.2821},{"p":60,"w":0.2804},{"p":61,"w":0.2779},{"p":62,"w":0.2748},{"p":63,"w":0.2726},{"p":64,"w":0.2681},{"p":65,"w":0.2661},{"p":66,"w":0.2656},{"p":67,"w":0.2641},{"p":68,"w":0.262},{"p":69,"w":0.2649},{"p":70,"w":0.2644},{"p":71,"w":0.2544},{"p":72,"w":0.2538},{"p":73,"w":0.2531},{"p":74,"w":0.2556},{"p":75,"w":0.2563},{"p":76,"w":0.2571},{"p":77,"w":0.2579},{"p":78,"w":0.2592},{"p":79,"w":0.2629},{"p":80,"w":0.2613},{"p":81,"w":0.2589},{"p":82,"w":0.255},{"p":83,"w":0.2535},{"p":84,"w":0.2504},{"p":85,"w":0.2461},{"p":86,"w":0.2326},{"p":87,"w":0.2244},{"p":88,"w":0.2161},{"p":89,"w":0.2135},{"p":90,"w":0.2077},{"p":91,"w":0.205},{"p":92,"w":0.2077},{"p":93,"w":0.2079},{"p":94,"w":0.2125},{"p":95,"w":0.2143},{"p":96,"w":0.217},{"p":97,"w":0.2172},{"p":98,"w":0.2142},{"p":99,"w":0.2066}]},{"videoId":"78ErGTAyFCY","title":"Making a Tea Cabinet | Sashimono Woodworking","durationSec":733,"pub":1738507498000,"views":66086,"r50":0.3616,"avd":297.72480900000005,"wth":5465.400479881667,"outlier":1.7,"curve":[{"p":0,"w":0.9511},{"p":1,"w":0.8062},{"p":2,"w":0.7099},{"p":3,"w":0.658},{"p":4,"w":0.6174},{"p":5,"w":0.6033},{"p":6,"w":0.5604},{"p":7,"w":0.5521},{"p":8,"w":0.5392},{"p":9,"w":0.5338},{"p":10,"w":0.5372},{"p":11,"w":0.5192},{"p":12,"w":0.5103},{"p":13,"w":0.5028},{"p":14,"w":0.4956},{"p":15,"w":0.4876},{"p":16,"w":0.4817},{"p":17,"w":0.4832},{"p":18,"w":0.4769},{"p":19,"w":0.4751},{"p":20,"w":0.4659},{"p":21,"w":0.4668},{"p":22,"w":0.4605},{"p":23,"w":0.4561},{"p":24,"w":0.451},{"p":25,"w":0.446},{"p":26,"w":0.443},{"p":27,"w":0.4351},{"p":28,"w":0.4304},{"p":29,"w":0.4227},{"p":30,"w":0.4081},{"p":31,"w":0.4152},{"p":32,"w":0.4074},{"p":33,"w":0.4049},{"p":34,"w":0.3935},{"p":35,"w":0.3916},{"p":36,"w":0.3914},{"p":37,"w":0.3856},{"p":38,"w":0.3779},{"p":39,"w":0.3729},{"p":40,"w":0.3736},{"p":41,"w":0.3696},{"p":42,"w":0.3644},{"p":43,"w":0.3652},{"p":44,"w":0.3767},{"p":45,"w":0.3676},{"p":46,"w":0.3668},{"p":47,"w":0.3661},{"p":48,"w":0.3629},{"p":49,"w":0.3606},{"p":50,"w":0.3616},{"p":51,"w":0.362},{"p":52,"w":0.3715},{"p":53,"w":0.3578},{"p":54,"w":0.3575},{"p":55,"w":0.358},{"p":56,"w":0.3531},{"p":57,"w":0.3456},{"p":58,"w":0.3436},{"p":59,"w":0.3463},{"p":60,"w":0.3439},{"p":61,"w":0.3491},{"p":62,"w":0.3511},{"p":63,"w":0.3477},{"p":64,"w":0.3486},{"p":65,"w":0.3445},{"p":66,"w":0.3415},{"p":67,"w":0.3427},{"p":68,"w":0.3431},{"p":69,"w":0.3413},{"p":70,"w":0.3429},{"p":71,"w":0.3395},{"p":72,"w":0.3425},{"p":73,"w":0.3568},{"p":74,"w":0.3448},{"p":75,"w":0.3357},{"p":76,"w":0.329},{"p":77,"w":0.3302},{"p":78,"w":0.3279},{"p":79,"w":0.3236},{"p":80,"w":0.3255},{"p":81,"w":0.3236},{"p":82,"w":0.3226},{"p":83,"w":0.3237},{"p":84,"w":0.3204},{"p":85,"w":0.3184},{"p":86,"w":0.3221},{"p":87,"w":0.3216},{"p":88,"w":0.3225},{"p":89,"w":0.3298},{"p":90,"w":0.332},{"p":91,"w":0.3364},{"p":92,"w":0.3469},{"p":93,"w":0.3593},{"p":94,"w":0.3688},{"p":95,"w":0.375},{"p":96,"w":0.3629},{"p":97,"w":0.3391},{"p":98,"w":0.3098},{"p":99,"w":0.273}]},{"videoId":"KHdX4xWH9YY","title":"A workbench can be as simple as this...","durationSec":569,"pub":1734922274000,"views":66380,"r50":0.3668,"avd":238.04570200000003,"wth":4389.298249655556,"outlier":1.71,"curve":[{"p":0,"w":0.9407},{"p":1,"w":0.8266},{"p":2,"w":0.7755},{"p":3,"w":0.6762},{"p":4,"w":0.6595},{"p":5,"w":0.6429},{"p":6,"w":0.629},{"p":7,"w":0.614},{"p":8,"w":0.5802},{"p":9,"w":0.5703},{"p":10,"w":0.5663},{"p":11,"w":0.5647},{"p":12,"w":0.5422},{"p":13,"w":0.515},{"p":14,"w":0.4896},{"p":15,"w":0.4767},{"p":16,"w":0.466},{"p":17,"w":0.4578},{"p":18,"w":0.445},{"p":19,"w":0.444},{"p":20,"w":0.4471},{"p":21,"w":0.439},{"p":22,"w":0.4393},{"p":23,"w":0.4266},{"p":24,"w":0.4262},{"p":25,"w":0.4173},{"p":26,"w":0.4163},{"p":27,"w":0.4084},{"p":28,"w":0.411},{"p":29,"w":0.4003},{"p":30,"w":0.4035},{"p":31,"w":0.3992},{"p":32,"w":0.3935},{"p":33,"w":0.3944},{"p":34,"w":0.3954},{"p":35,"w":0.3949},{"p":36,"w":0.3916},{"p":37,"w":0.3805},{"p":38,"w":0.3911},{"p":39,"w":0.3798},{"p":40,"w":0.372},{"p":41,"w":0.3786},{"p":42,"w":0.3721},{"p":43,"w":0.3715},{"p":44,"w":0.3643},{"p":45,"w":0.3641},{"p":46,"w":0.3633},{"p":47,"w":0.3656},{"p":48,"w":0.3685},{"p":49,"w":0.3674},{"p":50,"w":0.3668},{"p":51,"w":0.3691},{"p":52,"w":0.3767},{"p":53,"w":0.382},{"p":54,"w":0.3829},{"p":55,"w":0.3787},{"p":56,"w":0.3845},{"p":57,"w":0.3841},{"p":58,"w":0.3804},{"p":59,"w":0.3874},{"p":60,"w":0.3953},{"p":61,"w":0.398},{"p":62,"w":0.3952},{"p":63,"w":0.3953},{"p":64,"w":0.3918},{"p":65,"w":0.3922},{"p":66,"w":0.3822},{"p":67,"w":0.3785},{"p":68,"w":0.3754},{"p":69,"w":0.3727},{"p":70,"w":0.3734},{"p":71,"w":0.3725},{"p":72,"w":0.3701},{"p":73,"w":0.3676},{"p":74,"w":0.3676},{"p":75,"w":0.3685},{"p":76,"w":0.3648},{"p":77,"w":0.3638},{"p":78,"w":0.364},{"p":79,"w":0.3594},{"p":80,"w":0.3674},{"p":81,"w":0.3687},{"p":82,"w":0.3665},{"p":83,"w":0.3617},{"p":84,"w":0.359},{"p":85,"w":0.3587},{"p":86,"w":0.3554},{"p":87,"w":0.3533},{"p":88,"w":0.3512},{"p":89,"w":0.3532},{"p":90,"w":0.3559},{"p":91,"w":0.3521},{"p":92,"w":0.3509},{"p":93,"w":0.3462},{"p":94,"w":0.3339},{"p":95,"w":0.322},{"p":96,"w":0.3096},{"p":97,"w":0.2966},{"p":98,"w":0.2737},{"p":99,"w":0.2339}]},{"videoId":"na9e0Pl2Dow","title":"I built a Cabinet to store our memories | Full Build","durationSec":575,"pub":1730641946000,"views":21302,"r50":0.4537,"avd":283.89360000000016,"wth":1679.8615186666677,"outlier":0.35,"curve":[{"p":0,"w":0.9627},{"p":1,"w":0.791},{"p":2,"w":0.7315},{"p":3,"w":0.6555},{"p":4,"w":0.625},{"p":5,"w":0.6052},{"p":6,"w":0.5954},{"p":7,"w":0.5863},{"p":8,"w":0.5815},{"p":9,"w":0.5665},{"p":10,"w":0.5723},{"p":11,"w":0.5668},{"p":12,"w":0.5496},{"p":13,"w":0.5426},{"p":14,"w":0.5368},{"p":15,"w":0.5362},{"p":16,"w":0.5279},{"p":17,"w":0.5235},{"p":18,"w":0.5266},{"p":19,"w":0.5246},{"p":20,"w":0.526},{"p":21,"w":0.522},{"p":22,"w":0.5179},{"p":23,"w":0.51},{"p":24,"w":0.5124},{"p":25,"w":0.513},{"p":26,"w":0.5139},{"p":27,"w":0.5075},{"p":28,"w":0.4994},{"p":29,"w":0.4933},{"p":30,"w":0.4905},{"p":31,"w":0.4794},{"p":32,"w":0.4781},{"p":33,"w":0.4688},{"p":34,"w":0.4705},{"p":35,"w":0.4684},{"p":36,"w":0.4654},{"p":37,"w":0.4642},{"p":38,"w":0.4697},{"p":39,"w":0.474},{"p":40,"w":0.4679},{"p":41,"w":0.4654},{"p":42,"w":0.4707},{"p":43,"w":0.4636},{"p":44,"w":0.4566},{"p":45,"w":0.4599},{"p":46,"w":0.4608},{"p":47,"w":0.4505},{"p":48,"w":0.4576},{"p":49,"w":0.4554},{"p":50,"w":0.4537},{"p":51,"w":0.4534},{"p":52,"w":0.455},{"p":53,"w":0.448},{"p":54,"w":0.4448},{"p":55,"w":0.4459},{"p":56,"w":0.4535},{"p":57,"w":0.4508},{"p":58,"w":0.4536},{"p":59,"w":0.4524},{"p":60,"w":0.4486},{"p":61,"w":0.4468},{"p":62,"w":0.4423},{"p":63,"w":0.4443},{"p":64,"w":0.445},{"p":65,"w":0.4511},{"p":66,"w":0.4416},{"p":67,"w":0.447},{"p":68,"w":0.4465},{"p":69,"w":0.4466},{"p":70,"w":0.4487},{"p":71,"w":0.4414},{"p":72,"w":0.4528},{"p":73,"w":0.433},{"p":74,"w":0.4418},{"p":75,"w":0.4423},{"p":76,"w":0.4449},{"p":77,"w":0.4449},{"p":78,"w":0.4403},{"p":79,"w":0.4427},{"p":80,"w":0.4547},{"p":81,"w":0.4675},{"p":82,"w":0.463},{"p":83,"w":0.4543},{"p":84,"w":0.4479},{"p":85,"w":0.4476},{"p":86,"w":0.4565},{"p":87,"w":0.4624},{"p":88,"w":0.4738},{"p":89,"w":0.4746},{"p":90,"w":0.4866},{"p":91,"w":0.4963},{"p":92,"w":0.4983},{"p":93,"w":0.5117},{"p":94,"w":0.5142},{"p":95,"w":0.4998},{"p":96,"w":0.4881},{"p":97,"w":0.4661},{"p":98,"w":0.4417},{"p":99,"w":0.4037}]},{"videoId":"FofTq546kgM","title":"What is Japanese Woodworking? - An Introduction","durationSec":339,"pub":1728853214000,"views":1706,"r50":0.4738,"avd":165.1787669999999,"wth":78.27638236166662,"outlier":0.03,"curve":[{"p":0,"w":0.9458},{"p":1,"w":0.833},{"p":2,"w":0.7945},{"p":3,"w":0.7904},{"p":4,"w":0.7326},{"p":5,"w":0.6922},{"p":6,"w":0.676},{"p":7,"w":0.6563},{"p":8,"w":0.6382},{"p":9,"w":0.6181},{"p":10,"w":0.6095},{"p":11,"w":0.5762},{"p":12,"w":0.5687},{"p":13,"w":0.5672},{"p":14,"w":0.585},{"p":15,"w":0.5674},{"p":16,"w":0.5624},{"p":17,"w":0.554},{"p":18,"w":0.5453},{"p":19,"w":0.5414},{"p":20,"w":0.5338},{"p":21,"w":0.538},{"p":22,"w":0.5356},{"p":23,"w":0.5385},{"p":24,"w":0.5287},{"p":25,"w":0.5272},{"p":26,"w":0.5331},{"p":27,"w":0.5395},{"p":28,"w":0.5392},{"p":29,"w":0.5368},{"p":30,"w":0.5273},{"p":31,"w":0.5228},{"p":32,"w":0.5173},{"p":33,"w":0.5176},{"p":34,"w":0.5078},{"p":35,"w":0.5118},{"p":36,"w":0.5097},{"p":37,"w":0.5035},{"p":38,"w":0.5032},{"p":39,"w":0.4997},{"p":40,"w":0.4972},{"p":41,"w":0.5041},{"p":42,"w":0.4928},{"p":43,"w":0.491},{"p":44,"w":0.49},{"p":45,"w":0.4821},{"p":46,"w":0.4779},{"p":47,"w":0.4763},{"p":48,"w":0.477},{"p":49,"w":0.4701},{"p":50,"w":0.4738},{"p":51,"w":0.4689},{"p":52,"w":0.4687},{"p":53,"w":0.4648},{"p":54,"w":0.4607},{"p":55,"w":0.4607},{"p":56,"w":0.4572},{"p":57,"w":0.4599},{"p":58,"w":0.4557},{"p":59,"w":0.4541},{"p":60,"w":0.4502},{"p":61,"w":0.4475},{"p":62,"w":0.4488},{"p":63,"w":0.4413},{"p":64,"w":0.4428},{"p":65,"w":0.4395},{"p":66,"w":0.438},{"p":67,"w":0.4392},{"p":68,"w":0.435},{"p":69,"w":0.4338},{"p":70,"w":0.4267},{"p":71,"w":0.4281},{"p":72,"w":0.427},{"p":73,"w":0.4231},{"p":74,"w":0.4227},{"p":75,"w":0.4177},{"p":76,"w":0.4139},{"p":77,"w":0.4086},{"p":78,"w":0.4111},{"p":79,"w":0.4104},{"p":80,"w":0.4027},{"p":81,"w":0.4035},{"p":82,"w":0.3976},{"p":83,"w":0.3981},{"p":84,"w":0.3964},{"p":85,"w":0.3942},{"p":86,"w":0.3925},{"p":87,"w":0.3842},{"p":88,"w":0.3792},{"p":89,"w":0.3724},{"p":90,"w":0.3719},{"p":91,"w":0.3623},{"p":92,"w":0.3647},{"p":93,"w":0.3595},{"p":94,"w":0.3384},{"p":95,"w":0.3199},{"p":96,"w":0.2986},{"p":97,"w":0.28},{"p":98,"w":0.2566},{"p":99,"w":0.2389}]}],"refs":[{"key":"all","label":"All tracked channels (19)","short":"ALL TRACKED","curve":[{"p":0,"w":0.961},{"p":2,"w":0.756},{"p":4,"w":0.634},{"p":6,"w":0.577},{"p":8,"w":0.55},{"p":10,"w":0.53},{"p":12,"w":0.519},{"p":14,"w":0.499},{"p":16,"w":0.488},{"p":18,"w":0.476},{"p":20,"w":0.473},{"p":22,"w":0.468},{"p":24,"w":0.459},{"p":26,"w":0.453},{"p":28,"w":0.449},{"p":30,"w":0.441},{"p":32,"w":0.433},{"p":34,"w":0.43},{"p":36,"w":0.421},{"p":38,"w":0.418},{"p":40,"w":0.421},{"p":42,"w":0.417},{"p":44,"w":0.411},{"p":46,"w":0.409},{"p":48,"w":0.4},{"p":50,"w":0.393},{"p":52,"w":0.396},{"p":54,"w":0.395},{"p":56,"w":0.394},{"p":58,"w":0.392},{"p":60,"w":0.394},{"p":62,"w":0.388},{"p":64,"w":0.381},{"p":66,"w":0.374},{"p":68,"w":0.37},{"p":70,"w":0.37},{"p":72,"w":0.366},{"p":74,"w":0.363},{"p":76,"w":0.364},{"p":78,"w":0.363},{"p":80,"w":0.355},{"p":82,"w":0.353},{"p":84,"w":0.356},{"p":86,"w":0.349},{"p":88,"w":0.356},{"p":90,"w":0.341},{"p":92,"w":0.341},{"p":94,"w":0.335},{"p":96,"w":0.314},{"p":98,"w":0.277},{"p":100,"w":0.237}]}]}</script>
 <script>
 (function(){
   var D = window.__COHORT__; if(!D || !D.videos.length) return;
@@ -1299,6 +1843,9 @@ means two things move together on this channel, which is not the same as one cau
   var FLAT_H = 620, DEEP_H = 760;
   var H = FLAT_H;
   var axis = 'percent', colour = 'none', sel = null, depth = 'flat';
+  // Which reference curves are switched on. Off by default: a comparison the
+  // reader did not ask for is one more line on an already dense chart.
+  var refOn = {};
   // The window restricts WHICH videos are drawn. "all" is the default because a
   // filter that hides data by default is a way to mislead yourself. The same
   // rule governs the two range filters below: both start wide open.
@@ -1827,6 +2374,24 @@ means two things move together on this channel, which is not the same as one cau
           '" text-anchor="end">MEDIAN</text>');
       }
     }
+    // Reference curves: group medians on the % axis, drawn in every flat view
+    // (the band included, where "inside the pack or outside it" is exactly
+    // the question they answer). Never in 3D, for the median's reason.
+    if (axis === 'percent' && !threeD){
+      (D.refs || []).forEach(function(rf){
+        if (!refOn[rf.key] || !rf.curve || rf.curve.length < 2) return;
+        var rd = '';
+        for (var ri = 0; ri < rf.curve.length; ri++){
+          var rp = rf.curve[ri];
+          rd += (ri ? 'L' : 'M') + (L + xMap(rp.p/100)*plotW()).toFixed(1) + ' ' + yOf(rp.w,0).toFixed(1) + ' ';
+        }
+        parts.push('<path class="refcase" d="'+rd+'"/>');
+        parts.push('<path class="refcv ref-'+rf.key+'" d="'+rd+'"><title>'+esc(rf.label)+'</title></path>');
+        var rl = rf.curve[rf.curve.length-1];
+        parts.push('<text class="reflab ref-'+rf.key+'" x="'+(L + xMap(rl.p/100)*plotW() - 6).toFixed(1)+'" y="'+
+          (yOf(rl.w,0) + (rf.key === 'all' ? 14 : 26)).toFixed(1)+'" text-anchor="end">'+esc(rf.short)+'</text>');
+      });
+    }
     parts.push('</g>');
     parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0,0)+'" x2="'+(L+plotW())+'" y2="'+yOf(0,0)+'"/>');
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
@@ -1922,6 +2487,13 @@ means two things move together on this channel, which is not the same as one cau
       document.querySelectorAll('[data-col]').forEach(function(o){ o.disabled = depth==='band'; });
       invalidateBins();
       refreshPubRange();
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-ref]').forEach(function(b){
+    b.addEventListener('click', function(){
+      refOn[b.dataset.ref] = !refOn[b.dataset.ref];
+      b.setAttribute('aria-pressed', String(!!refOn[b.dataset.ref]));
       draw();
     });
   });

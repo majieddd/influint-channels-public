@@ -425,6 +425,16 @@ svg.cohortsvg .med{fill:none; stroke:#fff; stroke-width:2.4; stroke-dasharray:7 
 svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-weight:600;
                       font-family:ui-monospace,Menlo,monospace; pointer-events:none;
                       paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+/* Reference curves: group medians. Dotted, not dashed, so they never read as
+   the channel's own median; each with the same dark casing and an end label. */
+svg.cohortsvg .refcase{fill:none; stroke:#04100f; stroke-width:6; opacity:.85; pointer-events:none}
+svg.cohortsvg .refcv{fill:none; stroke-width:2.4; stroke-dasharray:2 5; stroke-linecap:round; pointer-events:none}
+svg.cohortsvg .refcv.ref-all{stroke:#f6c344}
+svg.cohortsvg .refcv.ref-niche{stroke:#b6d94c}
+svg.cohortsvg .reflab{font-size:10.5px; letter-spacing:.14em; font-weight:600; font-family:ui-monospace,Menlo,monospace;
+                      pointer-events:none; paint-order:stroke; stroke:#04100f; stroke-width:3.5}
+svg.cohortsvg .reflab.ref-all{fill:#f6c344}
+svg.cohortsvg .reflab.ref-niche{fill:#b6d94c}
 .cohort .ramp{display:flex; align-items:center; gap:9px; font-size:11.5px; color:var(--grey);
               margin:2px 0 0; font-variant-numeric:tabular-nums}
 .cohort .ramp i{display:block; height:9px; width:190px; border-radius:999px; border:1px solid var(--line)}
@@ -594,6 +604,140 @@ svg.cohortsvg .medlab{fill:#fff; font-size:10.5px; letter-spacing:.14em; font-we
 .dim-none{font-size:19px;font-weight:500;color:var(--grey)}
 .dim-why{font-size:11px;color:var(--grey);margin:6px 0 0;line-height:1.45;overflow-wrap:anywhere}
 .dim-foot{font-size:11px;color:var(--grey);margin:2px 0 20px;line-height:1.5}
+
+.dash{margin:24px 0 10px; min-width:0}
+.dash-top{display:flex; justify-content:space-between; align-items:flex-start; gap:14px 24px; flex-wrap:wrap; margin-bottom:16px}
+.dash-eyebrow{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--teal-mid)}
+.dash h2.dash-h{font-size:30px; line-height:1.1; margin:2px 0 6px; letter-spacing:-.02em; text-transform:none; color:var(--white); font-weight:600}
+.dash-sub{color:var(--grey); font-size:13.5px}
+.dash-right{display:flex; flex-direction:column; align-items:flex-end; gap:10px}
+.dash-win{display:inline-flex; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px; flex-wrap:wrap}
+.dw{background:none; border:0; color:var(--grey); font:inherit; font-size:12.5px; padding:7px 14px; border-radius:999px; cursor:pointer}
+.dw:hover{color:var(--white)}
+.dw[aria-pressed=true]{background:var(--panel-raised); color:var(--white); font-weight:600}
+.dash-through{font-size:12px; color:var(--grey); background:var(--panel); border:1px solid var(--line); border-radius:999px;
+              padding:7px 14px; display:inline-flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums}
+.dash-through i{width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; flex:none}
+@media(max-width:760px){ .dash-right{align-items:flex-start} }
+
+/* Headline tiles */
+.dash-tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(176px,1fr)); gap:12px}
+.dt{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 12px; min-width:0}
+.dt-k{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--grey); font-family:ui-monospace,Menlo,monospace}
+.dt-s{font-size:12px; color:var(--grey); margin-top:2px}
+.dt-v{font-size:30px; font-weight:600; margin:8px 0 6px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dt-none{color:var(--grey); font-weight:500; font-size:19px}
+.dt-c{font-size:11.5px; color:var(--grey); border-top:1px dashed var(--line); padding-top:6px; line-height:1.4; min-height:34px; overflow-wrap:anywhere}
+.dt-c.up{color:var(--hot)} .dt-c.down{color:var(--cold)}
+.dt-spark{width:100%; height:44px; display:block; margin-top:6px}
+.dt-spark path{fill:none; stroke:var(--teal); stroke-width:1.6; stroke-linejoin:round; stroke-linecap:round}
+.dt-spark .fill{fill:rgba(141,216,211,.14); stroke:none}
+
+/* The period, day by day */
+.dash-daily{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px 12px; margin-top:12px; min-width:0}
+.dash-daily-h{display:flex; justify-content:space-between; gap:12px 20px; flex-wrap:wrap; align-items:flex-start}
+.dash-daily-t{font-size:17px; font-weight:600}
+.dash-daily-s{font-size:12.5px; color:var(--grey); margin-top:3px}
+.dash-legend{display:flex; gap:16px; font-size:11.5px; color:var(--grey); flex-wrap:wrap}
+.dash-legend span{display:inline-flex; align-items:center; gap:6px}
+.dash-legend b.ln{width:16px; height:2px; background:var(--teal); display:inline-block}
+.dash-legend b.tk{width:2px; height:11px; background:var(--grey); display:inline-block}
+.dash-daily-sum{display:inline-block; font-size:12.5px; color:var(--grey); margin:14px 0 6px; padding-bottom:6px; border-bottom:1px dashed var(--line); font-variant-numeric:tabular-nums; min-height:18px}
+.dash-daily-wrap{position:relative}
+.dash-daily-svg{width:100%; height:auto; aspect-ratio:1000/300; display:block; overflow:visible}
+@media(max-width:760px){ .dash-daily-svg{aspect-ratio:5/3} }
+.dash-daily-svg .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dash-daily-svg .tick{fill:var(--grey); font-size:12.5px; font-family:ui-monospace,Menlo,monospace}
+.dash-daily-svg .area{fill:rgba(141,216,211,.16); stroke:none}
+.dash-daily-svg .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dash-daily-svg .upl{stroke:var(--grey); stroke-width:2; opacity:.85}
+.dash-daily-svg .upl.hot{stroke:var(--white)}
+.dash-daily-svg .cross{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:3 3; pointer-events:none}
+.dash-daily-svg .dot{fill:var(--white); stroke:var(--panel); stroke-width:2; pointer-events:none}
+.dash-daily-svg .hitrect{fill:transparent; cursor:crosshair}
+.dash-tip{position:absolute; pointer-events:none; background:#04100f; border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+          font-size:12px; line-height:1.45; color:var(--white); max-width:280px; z-index:2; box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.dash-tip .d{color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums}
+.dash-tip .r{color:var(--grey); font-variant-numeric:tabular-nums}
+.dash-tip .r b{color:var(--white); font-weight:600}
+.dash-tip .u{margin-top:4px; color:#cfe0de; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dash-daily-empty{color:var(--grey); font-size:13px; line-height:1.55; margin:12px 0 4px; max-width:78ch}
+
+/* The three dimensions */
+.dash-depts{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; margin-top:12px}
+.dept{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 14px; min-width:0; cursor:pointer;
+      transition:background .12s, border-color .12s; outline:none}
+.dept:hover{background:var(--panel-raised)}
+.dept:focus-visible{border-color:var(--teal)}
+.dept[aria-expanded=true]{border-color:var(--teal); background:var(--panel-raised)}
+.dept-k{display:flex; align-items:center; gap:8px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal);
+        font-family:ui-monospace,Menlo,monospace}
+.dept-k i{width:7px; height:7px; background:var(--teal); transform:rotate(45deg); display:inline-block; flex:none}
+.dept-k .chev{margin-left:auto; color:var(--grey); font-family:Poppins,ui-sans-serif,system-ui,sans-serif; font-size:14px; letter-spacing:0}
+.dept-v{font-size:28px; font-weight:600; margin:10px 0 2px; font-variant-numeric:tabular-nums; line-height:1.05; overflow-wrap:anywhere}
+.dept-v .none{color:var(--grey); font-weight:500; font-size:19px}
+.dept-s{font-size:12px; color:var(--grey); border-bottom:1px dashed var(--line); padding-bottom:6px; margin-bottom:8px}
+.dept-l{font-size:12px; color:#cfe0de; line-height:1.5; overflow-wrap:anywhere}
+.dept-l+.dept-l{margin-top:3px}
+.dept-more{display:block; margin-top:10px; font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:.12em}
+.dept-more::before{content:"\203A "; color:var(--teal)}
+/* Funnel */
+.fun{margin-top:8px; display:grid; gap:5px}
+.fun-r{display:grid; grid-template-columns:96px 1fr auto; gap:8px; align-items:center; font-size:12px; color:var(--grey)}
+.fun-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.fun-b{height:9px; border-radius:999px; background:rgba(141,216,211,.16); overflow:hidden; min-width:0}
+.fun-b i{display:block; height:100%; background:var(--teal); border-radius:999px; min-width:2px}
+.fun-r.n2 .fun-b i{background:var(--teal-mid)}
+.fun-r.n3 .fun-b i{background:var(--teal-deep)}
+/* Score comparisons */
+.cmp{margin-top:8px; display:grid; gap:4px}
+.cmp-r{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); align-items:baseline}
+.cmp-r b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
+.cmp-r em{font-style:normal; color:var(--teal-mid); font-variant-numeric:tabular-nums; margin-left:6px}
+.cmp-r .wh{color:var(--grey); font-weight:500; white-space:normal; text-align:right}
+/* Segment bar */
+.seg{margin-top:10px}
+.seg-b{display:flex; height:10px; border-radius:999px; overflow:hidden; background:rgba(141,216,211,.12)}
+.seg-b i{display:block; height:100%}
+.seg-b i.s0{background:var(--teal)} .seg-b i.s1{background:var(--teal-mid)} .seg-b i.s2{background:var(--teal-deep)}
+.seg-k{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; font-size:11.5px; color:var(--grey); font-variant-numeric:tabular-nums}
+.seg-k span::before{content:""; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; vertical-align:-1px}
+.seg-k span.s0::before{background:var(--teal)} .seg-k span.s1::before{background:var(--teal-mid)} .seg-k span.s2::before{background:var(--teal-deep)}
+.seg-basis{font-size:11px; color:var(--grey); margin-top:4px}
+
+/* The open dimension's panel, full width under the three cards */
+.dept-panel{background:var(--panel); border:1px solid var(--teal); border-radius:16px; padding:18px 20px 14px; margin-top:12px; min-width:0}
+.dept-panel-h{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.dept-panel-t{font-size:16px; font-weight:600}
+.dept-panel-w{font-size:12px; color:var(--grey)}
+.dept-close{margin-left:auto; background:none; border:1px solid var(--line); color:var(--grey); border-radius:999px; font:inherit;
+            font-size:12px; padding:5px 12px; cursor:pointer}
+.dept-close:hover{color:var(--white); border-color:var(--teal)}
+.dwin{margin-top:14px; overflow-x:auto}
+.dwin table{border-collapse:collapse; font-size:12.5px; min-width:420px}
+.dwin th,.dwin td{padding:5px 12px 5px 0; text-align:left; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums; white-space:nowrap}
+.dwin th{font-weight:500; color:var(--grey); font-size:11px; text-transform:uppercase; letter-spacing:.1em}
+.dwin td.cur{color:var(--teal); font-weight:600}
+.dwin-cap{font-size:11.5px; color:var(--grey); margin:6px 0 0}
+.dcharts{display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:14px 18px; margin-top:16px}
+@media(max-width:520px){ .dcharts{grid-template-columns:1fr} }
+.dchart{min-width:0}
+.dchart-h{display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); margin-bottom:4px}
+.dchart-h b{color:var(--white); font-weight:600; font-variant-numeric:tabular-nums}
+.dchart svg{width:100%; height:auto; aspect-ratio:600/170; display:block; overflow:visible}
+.dchart .grid{stroke:rgba(141,216,211,.13); stroke-width:1}
+.dchart .tick{fill:var(--grey); font-size:11px; font-family:ui-monospace,Menlo,monospace}
+.dchart .line{fill:none; stroke:var(--teal); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+.dchart .line.b{stroke:var(--warn)}
+.dchart .area{fill:rgba(141,216,211,.14); stroke:none}
+.dchart .bar{fill:var(--teal)} .dchart .bar.neg{fill:var(--cold)}
+.dchart .ref{stroke:rgba(255,255,255,.55); stroke-width:1; stroke-dasharray:4 4}
+.dchart .none{fill:var(--grey); font-size:12px}
+.dchart-k{display:flex; gap:12px; font-size:11px; color:var(--grey); margin-top:2px}
+.dchart-k span::before{content:""; display:inline-block; width:12px; height:2px; margin-right:5px; vertical-align:3px; background:var(--teal)}
+.dchart-k span.b::before{background:var(--warn)}
+.dept-note{font-size:12.5px; color:var(--grey); line-height:1.55; margin:14px 0 0; max-width:88ch}
+.dash-foot{font-size:11.5px; color:var(--grey); margin:10px 0 22px; line-height:1.5; max-width:96ch}
 
 .mcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
 .mcrow{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);min-width:0}
@@ -904,27 +1048,420 @@ table.obs td.no{color:#ff8f8f}
     <p class="lede" style="margin:0"><a href="https://www.youtube.com/@visual_thinker_yt" target="_blank" rel="noopener">@visual_thinker_yt</a> · 113K subscribers · knowledge base last updated 2026-09-02</p>
   </div>
 </div>
-<div class="dims">
-  <div class="dim ">
-    <div class="dim-h">Clickability</div>
-    <div class="dim-v">4.0%</div>
-    <div class="dim-2">14.7M impressions -&gt; 1.1M views -&gt; 999K engaged</div>
-    <p class="dim-note">Median video: 4.0% across 14</p>
+<section class="dash" id="dash" aria-label="Creator dashboard">
+  <div class="dash-top">
+    <div>
+      <div class="dash-eyebrow">Creator dashboard</div>
+      <h2 class="dash-h">Analytics</h2>
+      <div class="dash-sub"><span>Visual Thinker</span> · <span id="dash-winlab">Last 30 days</span></div>
+    </div>
+    <div class="dash-right">
+      <div class="dash-win" role="group" aria-label="Time window"><button type="button" class="dw" data-days="30" aria-pressed="true">30 days</button><button type="button" class="dw" data-days="90" aria-pressed="false">90 days</button><button type="button" class="dw" data-days="360" aria-pressed="false">Last year</button></div>
+      <div class="dash-through"><i></i>Studio pull Sep 1, 2026 · no day-by-day series stored yet</div>
+    </div>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Watchability</div>
-    <div class="dim-v">6:55</div>
-    <div class="dim-2">24.6% of each video watched</div>
-    <p class="dim-note">115K hours watched</p>
+  <div class="dash-tiles" id="dash-tiles"><div class="dt" data-tile="views">
+    <div class="dt-k">Views</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">493K</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="watch">
+    <div class="dt-k">Watch time</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">40K hours</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="subs">
+    <div class="dt-k">Net subscribers gained</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">+6,139</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="avd">
+    <div class="dt-k">Average view duration</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">6:12</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div><div class="dt" data-tile="impr">
+    <div class="dt-k">Impressions</div>
+    <div class="dt-s">Videos (long-form)</div>
+    <div class="dt-v">5.1M</div>
+    <div class="dt-c">No complete prior 30-day window yet</div>
+    <svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+  </div></div>
+  <div class="dash-daily">
+    <div class="dash-daily-h">
+      <div>
+        <div class="dash-daily-t">The period, day by day</div>
+        <div class="dash-daily-s">No day-by-day series stored for this channel yet.</div>
+        <div class="dash-daily-s">Videos (long-form)</div>
+      </div>
+      <div class="dash-legend"><span><b class="ln"></b>Daily views</span><span><b class="tk"></b>Published upload</span></div>
+    </div>
+    <div class="dash-daily-sum" id="dash-daily-sum"></div>
+    <div class="dash-daily-wrap"><svg class="dash-daily-svg" id="dash-daily-svg" viewBox="0 0 1000 300" role="img" aria-label="Daily views over the selected window"></svg><div class="dash-tip" id="dash-tip" hidden></div></div>
+    <p class="dash-daily-empty" id="dash-daily-empty">The next Studio pull captures the last 365 days day by day; until it runs, the tiles above are window totals and carry no comparison with the prior period.</p>
   </div>
-  <div class="dim ">
-    <div class="dim-h">Replayability</div>
-    <div class="dim-v">0%</div>
-    <div class="dim-2">of classified viewers are Regulars</div>
-    <p class="dim-note">185K returning vs 340K new · Casual 35% · New 65%</p>
+  <div class="dash-depts">
+    <div class="dept" data-dept="click" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Clickability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">4.3%</div>
+      <div class="dept-s">click-through, Studio&#39;s own figure</div>
+      <div class="fun"><div class="fun-r n1"><span>Impressions</span><span class="fun-b"><i style="width:100.0%"></i></span><b>5.1M</b></div><div class="fun-r n2"><span>Views</span><span class="fun-b"><i style="width:9.6%"></i></span><b>493K</b></div><div class="fun-r n3"><span>Engaged views</span><span class="fun-b"><i style="width:7.5%"></i></span><b>382K</b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="watch" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Watchability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">0.81×</div>
+      <div class="dept-s">retention score, length-adjusted</div>
+      <div class="dept-l">40K hours watched</div><div class="dept-l">6:12 average view duration · 26.2% of each video watched</div><div class="dept-l">Implied length 23:41 (duration ÷ percentage) · tracked channels hold 35.7% at that length</div>
+      <div class="cmp"><div class="cmp-r"><span>This channel, last 360 days</span><b>0.88×<em>−0.07</em></b></div><div class="cmp-r"><span>education median</span><b class="wh">withheld · 1 of 10 channels measured</b></div><div class="cmp-r"><span>All tracked channels, 19</span><b>0.98×<em>−0.17</em></b></div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
+    <div class="dept" data-dept="replay" role="button" tabindex="0" aria-expanded="false" aria-controls="dept-panel">
+      <div class="dept-k"><i></i>Replayability<span class="chev">&#8250;</span></div>
+      <div class="dept-face"><div class="dept-v">30%</div>
+      <div class="dept-s">of classified viewers returned</div>
+      <div class="dept-l">13K returning (30%) · 32K new (70%)</div><div class="dept-l">+6,139 net subscribers over 30 days</div>
+      <div class="seg"><div class="seg-b"><i class="s0" style="width:0.2%"><title>Regular</title></i><i class="s1" style="width:29.6%"><title>Casual</title></i><i class="s2" style="width:70.2%"><title>New</title></i></div><div class="seg-k"><span class="s0">Regular 0% · 80</span><span class="s1">Casual 30% · 13K</span><span class="s2">New 70% · 32K</span></div><div class="seg-basis">share of classified viewers; watch-time split not pulled yet</div></div></div>
+      <span class="dept-more">Over time</span>
+    </div>
   </div>
-</div>
-<p class="dim-foot">Studio figures over the last 90 days, pulled 2026-09-01. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better.</p>
+  <div class="dept-panel" id="dept-panel" hidden></div>
+  <p class="dash-foot">Studio figures for the selected window, long-form uploads only, pulled 2026-09-01. Average view duration and average view percentage are shown together on purpose: a longer cut raises one and lowers the other, so either alone can be moved without the video holding anyone better. Click a dimension to see its figures over time.</p>
+</section>
+<script>window.__DASH__={"channelId":"UCYFp9tOZEXOj0TSBqwKyxZQ","channel":"Visual Thinker","pulledAt":"2026-09-01","dataThrough":null,"dailyDays":0,"defaultDays":30,"windows":[{"days":30,"label":"30 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"493K","compare":"No complete prior 30-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"40K hours","compare":"No complete prior 30-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+6,139","compare":"No complete prior 30-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"6:12","compare":"No complete prior 30-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"5.1M","compare":"No complete prior 30-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.3%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":5105302,"text":"5.1M","share":1},{"key":"views","label":"Views","value":492544,"text":"493K","share":0.09647695670109231},{"key":"engaged","label":"Engaged views","value":382474,"text":"382K","share":0.07491701764165959}],"note":"5.1M impressions became 493K views, and 78% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.81×","sub":"retention score, length-adjusted","lines":["40K hours watched","6:12 average view duration · 26.2% of each video watched","Implied length 23:41 (duration ÷ percentage) · tracked channels hold 35.7% at that length"],"score":0.8099964656821346,"compare":[{"label":"This channel, last 360 days","value":"0.88×","delta":"−0.07"},{"label":"education median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"0.98×","delta":"−0.17"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 19% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"30%","sub":"of classified viewers returned","lines":["13K returning (30%) · 32K new (70%)","+6,139 net subscribers over 30 days"],"segments":[{"label":"Regular","share":0.0017763172502608966,"text":"0% · 80"},{"label":"Casual","share":0.2960232697559784,"text":"30% · 13K"},{"label":"New","share":0.7022004129937607,"text":"70% · 32K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 80 regulars."}},{"days":90,"label":"90 days","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"1.1M","compare":"No complete prior 90-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"115K hours","compare":"No complete prior 90-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+14,602","compare":"No complete prior 90-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"6:55","compare":"No complete prior 90-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"14.7M","compare":"No complete prior 90-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"4.0%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":14667211,"text":"14.7M","share":1},{"key":"views","label":"Views","value":1108931,"text":"1.1M","share":0.07560612579992201},{"key":"engaged","label":"Engaged views","value":998861,"text":"999K","share":0.06810163159171842}],"note":"14.7M impressions became 1.1M views, and 90% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.78×","sub":"retention score, length-adjusted","lines":["115K hours watched","6:55 average view duration · 24.6% of each video watched","Implied length 28:10 (duration ÷ percentage) · tracked channels hold 34.7% at that length"],"score":0.7826036314733135,"compare":[{"label":"This channel, last 360 days","value":"0.88×","delta":"−0.10"},{"label":"education median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.00×","delta":"−0.22"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 22% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"35%","sub":"of classified viewers returned","lines":["185K returning (35%) · 340K new (65%)","+14,602 net subscribers over 90 days"],"segments":[{"label":"Regular","share":0.0015814443858724301,"text":"0% · 831"},{"label":"Casual","share":0.35052115348384016,"text":"35% · 184K"},{"label":"New","share":0.6478974021302875,"text":"65% · 340K"}],"segmentsBasis":"viewers","sourceDays":null,"note":"Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 831 regulars."}},{"days":360,"label":"Last year","from":null,"to":null,"dailyMismatch":null,"tiles":[{"key":"views","name":"Views","sub":"Videos (long-form)","value":"3.5M","compare":"No complete prior 360-day window yet","spark":null,"unit":"views a day"},{"key":"watch","name":"Watch time","sub":"Videos (long-form)","value":"410K hours","compare":"No complete prior 360-day window yet","spark":null,"unit":"hours a day"},{"key":"subs","name":"Net subscribers gained","sub":"Videos (long-form)","value":"+60,164","compare":"No complete prior 360-day window yet","spark":null,"unit":"net subscribers a day"},{"key":"avd","name":"Average view duration","sub":"Videos (long-form)","value":"7:20","compare":"No complete prior 360-day window yet","spark":null,"unit":"average view duration by day"},{"key":"impr","name":"Impressions","sub":"Videos (long-form)","value":"59.5M","compare":"No complete prior 360-day window yet","spark":null,"unit":"impressions a day"}],"click":{"headline":"3.4%","sub":"click-through, Studio's own figure","funnel":[{"key":"impr","label":"Impressions","value":59457585,"text":"59.5M","share":1},{"key":"views","label":"Views","value":3462653,"text":"3.5M","share":0.05823736366016211},{"key":"engaged","label":"Engaged views","value":3352583,"text":"3.4M","share":0.056386128027231516}],"note":"59.5M impressions became 3.5M views, and 97% of those views were engaged views. Views include traffic that never had an impression, so the ratio of the two bars is not the click-through rate; Studio's figure above is."},"watch":{"headline":"0.88×","sub":"retention score, length-adjusted","lines":["410K hours watched","7:20 average view duration · 27.9% of each video watched","Implied length 26:16 (duration ÷ percentage) · tracked channels hold 35.1% at that length"],"score":0.8793984141220592,"compare":[{"label":"This channel, last 720 days","value":"0.80×","delta":"+0.08"},{"label":"education median","value":"withheld · 1 of 10 channels measured"},{"label":"All tracked channels, 19","value":"1.08×","delta":"−0.20"}],"note":"The score is average view percentage divided by what tracked channels' videos hold at the same length, scaled so the median tracked channel reads 1.00× (19 channels on the 90-day window): 12% less of each video kept here than that. The length curve is fitted over 3,813 videos on 19 channels, each channel weighted equally. A comparison, not a cause: it says where this channel sits, not why."},"replay":{"headline":"35%","sub":"of classified viewers returned","lines":["185K returning (35%) · 340K new (65%)","+60,164 net subscribers over 360 days"],"segments":[{"label":"Regular","share":0.0015814443858724301,"text":"0% · 831"},{"label":"Casual","share":0.35052115348384016,"text":"35% · 184K"},{"label":"New","share":0.6478974021302875,"text":"65% · 340K"}],"segmentsBasis":"viewers","sourceDays":90,"note":"Studio serves the viewer split for short windows only, so this is the 90-day split. Segment shares are of classified VIEWERS (Regular, Casual, New as Studio labels them); the watch-time split arrives with the next Studio pull. Shares divide by the classified audience (returning + new), not by unique viewers, which leaves a third of unique viewers in neither bucket on some channels. 831 regulars."}}],"daily":[],"uploads":[{"d":"2024-11-07","id":"2xB8OOCYJhA","t":"Starting our Backyard Office : Structure & Exterior"},{"d":"2024-11-29","id":"2Si2byHw40U","t":"Electrifying Our Backyard Office | DIY Installation"},{"d":"2024-12-27","id":"UC_gGzYa6jk","t":"Backyard Office & Workshop | Full DIY Interior Build (Insulation, Drywall, and Mini-Split)"},{"d":"2025-01-28","id":"phR7D5avqUg","t":"Expanding Our Home Network to the New Backyard Office"},{"d":"2025-02-28","id":"wkpyIQr2dAo","t":"How Air Conditioners & Heat Pumps Work | Installing a Mini Split in Our Office"},{"d":"2025-03-16","id":"3QHKAJNC8f0","t":"Building My Own Personal Makerspace"},{"d":"2025-04-12","id":"Dl-nDMVcje4","t":"170 Hours of 3D Printing For This"},{"d":"2025-05-17","id":"F15FolOyu5E","t":"My Laser Cutter Upgrade | A Virtual Tour Inside the Machines"},{"d":"2025-07-09","id":"gafJ8Y43bOE","t":"I Built a Coffee Table with a 3D Canyon Inside"},{"d":"2025-10-31","id":"jUUyRNADVA4","t":"A Custom PC Worth Hanging on The Wall"},{"d":"2025-12-12","id":"LZRjqpvWzGo","t":"I Fixed The Biggest Problem with 3D Printed Water Cooling"},{"d":"2026-04-01","id":"A7RZbCvgzz8","t":"What If the PC Case IS the Water Cooling Loop?"},{"d":"2026-07-02","id":"GlsoN2wKeiQ","t":"Turning a Concept Computer Case Into The Real Thing - Full Build"},{"d":"2026-08-20","id":"--Y7vgYxV6g","t":"Fluid Simulations Take Forever… So I Built This."}],"niche":"education","baseline":{"videos":3813,"channels":19}}</script>
+<script>
+(function(){
+  var M = window.__DASH__; if (!M || !M.windows || !M.windows.length) return;
+  var cur = M.defaultDays, openDept = null, hoverIdx = -1;
+  var byDays = {}; M.windows.forEach(function(w){ byDays[w.days] = w; });
+  function W(){ return byDays[cur] || M.windows[0]; }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function fmtN(n){
+    if (n == null || !isFinite(n)) return '\u2014';
+    var a = Math.abs(n), s = n < 0 ? '\u2212' : '';
+    if (a >= 1e9) return s + (a/1e9).toFixed(1) + 'B';
+    if (a >= 1e8) return s + Math.round(a/1e6) + 'M';
+    if (a >= 1e6) return s + (a/1e6).toFixed(1) + 'M';
+    if (a >= 1e3) return s + Math.round(a/1e3) + 'K';
+    return s + Math.round(a);
+  }
+  function fmtFull(n){ return n == null ? '\u2014' : Math.round(n).toLocaleString('en-US'); }
+  function fmtPct(x, dp){ return x == null ? '\u2014' : (x*100).toFixed(dp == null ? 1 : dp) + '%'; }
+  function mmss(sec){ if (sec == null) return '\u2014'; var s = Math.max(0, Math.round(sec)), m = Math.floor(s/60);
+    return (m >= 60 ? Math.floor(m/60) + ':' + String(m%60).padStart(2,'0') : String(m)) + ':' + String(s%60).padStart(2,'0'); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDay(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]); }
+  function fmtDayYear(iso){ var p = iso.split('-'); return MON[Number(p[1])-1] + ' ' + Number(p[2]) + ', ' + p[0]; }
+  function rowsIn(w){
+    if (!w.from || !w.to) return [];
+    return M.daily.filter(function(r){ return r.d >= w.from && r.d <= w.to; });
+  }
+  function finite(xs){ return xs.filter(function(x){ return x != null && isFinite(x); }); }
+  function niceStep(max, n){
+    var raw = max / n, p = Math.pow(10, Math.floor(Math.log(raw)/Math.LN10)), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p;
+  }
+
+  // ---- headline tiles ------------------------------------------------------
+  function tileHtml(t){
+    var cls = /^\+/.test(t.compare) ? ' up' : /^\u2212/.test(t.compare) ? ' down' : '';
+    return '<div class="dt" data-tile="' + t.key + '">' +
+      '<div class="dt-k">' + esc(t.name) + '</div><div class="dt-s">' + esc(t.sub) + '</div>' +
+      '<div class="dt-v">' + (t.value != null ? esc(t.value) : '<span class="dt-none">not pulled</span>') + '</div>' +
+      '<div class="dt-c' + cls + '">' + esc(t.compare) + '</div>' +
+      '<svg class="dt-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg></div>';
+  }
+  function sparkInto(svg, values, unit){
+    if (!svg) return;
+    var vals = values || [], fin = finite(vals);
+    if (fin.length < 2){ svg.innerHTML = ''; svg.style.display = 'none'; return; }
+    svg.style.display = '';
+    var lo = Math.min.apply(null, fin), hi = Math.max.apply(null, fin);
+    if (lo > 0) lo = 0;                       // a spark that hides its baseline exaggerates
+    if (hi === lo) hi = lo + 1;
+    var n = vals.length, d = '', first = null, last = null;
+    for (var i = 0; i < n; i++){
+      var v = vals[i]; if (v == null || !isFinite(v)) continue;
+      var x = (n > 1 ? i/(n-1) : 0.5) * 216 + 2, y = 40 - ((v - lo)/(hi - lo)) * 36;
+      d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+      if (first === null) first = x; last = x;
+    }
+    var area = d + 'L' + last.toFixed(1) + ' 42 L' + first.toFixed(1) + ' 42 Z';
+    svg.innerHTML = '<path class="fill" d="' + area + '"/><path d="' + d + '"><title>' + esc(unit) + '</title></path>';
+  }
+  function renderTiles(w){
+    var box = document.getElementById('dash-tiles'); if (!box) return;
+    box.innerHTML = w.tiles.map(tileHtml).join('');
+    w.tiles.forEach(function(t){
+      var el = box.querySelector('[data-tile="' + t.key + '"] .dt-spark');
+      sparkInto(el, t.spark, t.unit);
+    });
+  }
+
+  // ---- the period, day by day ---------------------------------------------
+  var DW = 1000, DH = 300, DL = 60, DR = 16, DT = 16, DB = 44;
+  var dayRows = [], dayMax = 1;
+  function xAt(i, n){ return DL + (n > 1 ? i/(n-1) : 0.5) * (DW - DL - DR); }
+  function yAt(v){ return DT + (1 - v/dayMax) * (DH - DT - DB); }
+  function renderDaily(w){
+    var svg = document.getElementById('dash-daily-svg'), sum = document.getElementById('dash-daily-sum'),
+        empty = document.getElementById('dash-daily-empty');
+    if (!svg) return;
+    dayRows = rowsIn(w).filter(function(r){ return r.v != null; });
+    hoverIdx = -1;
+    var tip = document.getElementById('dash-tip'); if (tip) tip.hidden = true;
+    if (dayRows.length < 2){
+      svg.innerHTML = ''; svg.style.display = 'none';
+      if (sum) sum.textContent = '';
+      if (empty) empty.hidden = false;
+      return;
+    }
+    svg.style.display = '';
+    if (empty) empty.hidden = true;
+    var total = 0; dayRows.forEach(function(r){ total += r.v; });
+    if (sum) sum.textContent = fmtN(total) + ' views across ' + dayRows.length + ' covered day' + (dayRows.length === 1 ? '' : 's') +
+      (dayRows.length < w.days ? ' of ' + w.days : '') + (w.dailyMismatch ? ' \u00b7 ' + w.dailyMismatch : '');
+    dayMax = Math.max.apply(null, dayRows.map(function(r){ return r.v; }));
+    var step = niceStep(dayMax, 4); dayMax = Math.ceil(dayMax / step) * step || 1;
+    var parts = [], n = dayRows.length;
+    for (var g = step; g <= dayMax + 1e-9; g += step){
+      var y = yAt(g);
+      parts.push('<line class="grid" x1="' + DL + '" y1="' + y.toFixed(1) + '" x2="' + (DW-DR) + '" y2="' + y.toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (DL-10) + '" y="' + (y+4).toFixed(1) + '" text-anchor="end">' + fmtN(g) + '</text>');
+    }
+    var d = '';
+    for (var i = 0; i < n; i++) d += (i ? 'L' : 'M') + xAt(i,n).toFixed(1) + ' ' + yAt(dayRows[i].v).toFixed(1) + ' ';
+    var base = yAt(0);
+    parts.push('<path class="area" d="' + d + 'L' + xAt(n-1,n).toFixed(1) + ' ' + base.toFixed(1) + ' L' + xAt(0,n).toFixed(1) + ' ' + base.toFixed(1) + ' Z"/>');
+    parts.push('<path class="line" d="' + d + '"/>');
+    // Uploads published inside the window, as ticks under the baseline.
+    var byDay = {}; dayRows.forEach(function(r, i){ byDay[r.d] = i; });
+    (M.uploads || []).forEach(function(u){
+      var i = byDay[u.d]; if (i == null) return;
+      var x = xAt(i, n);
+      parts.push('<line class="upl" x1="' + x.toFixed(1) + '" y1="' + (base+8) + '" x2="' + x.toFixed(1) + '" y2="' + (base+18) + '"><title>' + esc(u.t) + '</title></line>');
+    });
+    // Date labels: first, middle, last.
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      parts.push('<text class="tick" x="' + xAt(i,n).toFixed(1) + '" y="' + (DH-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(dayRows[i].d) + '</text>');
+    });
+    parts.push('<g id="dash-hover"></g>');
+    parts.push('<rect class="hitrect" x="' + DL + '" y="' + DT + '" width="' + (DW-DL-DR) + '" height="' + (DH-DT-DB) + '"/>');
+    svg.innerHTML = parts.join('');
+  }
+  function showHover(i){
+    var svg = document.getElementById('dash-daily-svg'), g = document.getElementById('dash-hover'), tip = document.getElementById('dash-tip');
+    if (!svg || !g || !tip) return;
+    if (i < 0 || i >= dayRows.length){ g.innerHTML = ''; tip.hidden = true; return; }
+    var r = dayRows[i], n = dayRows.length, x = xAt(i,n), y = yAt(r.v);
+    g.innerHTML = '<line class="cross" x1="' + x.toFixed(1) + '" y1="' + DT + '" x2="' + x.toFixed(1) + '" y2="' + yAt(0).toFixed(1) + '"/>' +
+                  '<circle class="dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4.5"/>';
+    var lines = ['<div class="d">' + fmtDayYear(r.d) + '</div>', '<div class="r"><b>' + fmtFull(r.v) + '</b> views</div>'];
+    if (r.h != null) lines.push('<div class="r"><b>' + fmtN(r.h) + '</b> hours watched</div>');
+    if (r.a != null) lines.push('<div class="r"><b>' + mmss(r.a) + '</b> average view duration</div>');
+    if (r.i != null) lines.push('<div class="r"><b>' + fmtN(r.i) + '</b> impressions' + (r.c != null ? ' at <b>' + fmtPct(r.c) + '</b>' : '') + '</div>');
+    if (r.s != null) lines.push('<div class="r"><b>' + (r.s > 0 ? '+' : '') + fmtFull(r.s) + '</b> net subscribers</div>');
+    (M.uploads || []).forEach(function(u){ if (u.d === r.d) lines.push('<div class="u">\u25B6 ' + esc(u.t) + '</div>'); });
+    tip.innerHTML = lines.join('');
+    tip.hidden = false;
+    var box = svg.getBoundingClientRect(), px = (x / DW) * box.width, py = (y / DH) * box.height;
+    var left = px + 14, tw = tip.offsetWidth || 220;
+    if (left + tw > box.width) left = px - tw - 14;
+    tip.style.left = Math.max(0, left) + 'px';
+    tip.style.top = Math.max(0, py - 16) + 'px';
+  }
+  (function wireHover(){
+    var svg = document.getElementById('dash-daily-svg'); if (!svg) return;
+    svg.addEventListener('pointermove', function(e){
+      if (!dayRows.length) return;
+      var box = svg.getBoundingClientRect();
+      var fx = ((e.clientX - box.left) / box.width) * DW;
+      var t = (fx - DL) / (DW - DL - DR), n = dayRows.length;
+      var i = Math.round(Math.max(0, Math.min(1, t)) * (n - 1));
+      if (i !== hoverIdx){ hoverIdx = i; showHover(i); }
+    });
+    svg.addEventListener('pointerleave', function(){ hoverIdx = -1; showHover(-1); });
+  })();
+
+  // ---- the three dimensions ------------------------------------------------
+  function faceClick(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div><div class="fun">';
+    c.funnel.forEach(function(f, i){
+      h += '<div class="fun-r n' + (i+1) + '"><span>' + esc(f.label) + '</span><span class="fun-b"><i style="width:' +
+           (f.share != null ? (f.share*100).toFixed(1) : 0) + '%"></i></span><b>' + esc(f.text) + '</b></div>';
+    });
+    return h + '</div>';
+  }
+  function faceWatch(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.compare.length){
+      h += '<div class="cmp">';
+      c.compare.forEach(function(r){
+        h += '<div class="cmp-r"><span>' + esc(r.label) + '</span>' +
+             (r.delta != null ? '<b>' + esc(r.value) + '<em>' + esc(r.delta) + '</em></b>' : '<b class="wh">' + esc(r.value) + '</b>') + '</div>';
+      });
+      h += '</div>';
+    }
+    return h;
+  }
+  function faceReplay(c){
+    var h = '<div class="dept-v">' + (c.headline != null ? esc(c.headline) : '<span class="none">not pulled</span>') + '</div>' +
+            '<div class="dept-s">' + esc(c.sub) + (c.sourceDays ? ' (' + c.sourceDays + '-day split)' : '') + '</div>';
+    c.lines.forEach(function(l){ h += '<div class="dept-l">' + esc(l) + '</div>'; });
+    if (c.segments.length){
+      h += '<div class="seg"><div class="seg-b">';
+      c.segments.forEach(function(s, i){ h += '<i class="s' + i + '" style="width:' + (s.share*100).toFixed(1) + '%"><title>' + esc(s.label) + '</title></i>'; });
+      h += '</div><div class="seg-k">';
+      c.segments.forEach(function(s, i){ h += '<span class="s' + i + '">' + esc(s.label) + ' ' + esc(s.text) + '</span>'; });
+      h += '</div><div class="seg-basis">' + (c.segmentsBasis === 'watch-time' ? 'share of total watch time hours' : 'share of classified viewers; watch-time split not pulled yet') + '</div></div>';
+    }
+    return h;
+  }
+  function renderDepts(w){
+    var faces = { click: faceClick(w.click), watch: faceWatch(w.watch), replay: faceReplay(w.replay) };
+    Object.keys(faces).forEach(function(k){
+      var el = document.querySelector('.dept[data-dept="' + k + '"] .dept-face');
+      if (el) el.innerHTML = faces[k];
+    });
+  }
+
+  // ---- the open dimension over time ---------------------------------------
+  // Small multiples are drawn at 600 units wide: a 1000-unit box in a
+  // half-width column scales its 11px ticks below legibility.
+  function chartHtml(id, title, right){
+    return '<div class="dchart"><div class="dchart-h"><span>' + esc(title) + '</span><b>' + esc(right || '') + '</b></div><svg viewBox="0 0 600 170" data-c="' + id + '"></svg></div>';
+  }
+  function drawSeries(svg, rows, keys, fmt, kind, opts){
+    if (!svg) return;
+    var L = 54, R = 10, T = 10, B = 26, Wd = 600, Hd = 170;
+    var series = keys.map(function(k){ return rows.map(function(r){ return r[k] == null ? null : r[k]; }); });
+    var all = finite([].concat.apply([], series));
+    if (all.length < 2){ svg.innerHTML = '<text class="none" x="' + L + '" y="' + (Hd/2) + '">Not in the stored day-by-day series.</text>'; return; }
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+    if (kind !== 'bars' && lo > 0) lo = 0;
+    if (opts && opts.ref != null){ lo = Math.min(lo, opts.ref); hi = Math.max(hi, opts.ref); }
+    if (kind === 'bars'){ lo = Math.min(0, lo); hi = Math.max(0, hi); }
+    if (hi === lo) hi = lo + 1;
+    var n = rows.length, parts = [];
+    function x(i){ return L + (n > 1 ? i/(n-1) : 0.5) * (Wd-L-R); }
+    function y(v){ return T + (1 - (v-lo)/(hi-lo)) * (Hd-T-B); }
+    var step = niceStep(hi - lo, 3);
+    for (var g = Math.ceil(lo/step)*step; g <= hi + 1e-9; g += step){
+      parts.push('<line class="grid" x1="' + L + '" y1="' + y(g).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(g).toFixed(1) + '"/>');
+      parts.push('<text class="tick" x="' + (L-8) + '" y="' + (y(g)+4).toFixed(1) + '" text-anchor="end">' + esc(fmt(g)) + '</text>');
+    }
+    if (opts && opts.ref != null){
+      parts.push('<line class="ref" x1="' + L + '" y1="' + y(opts.ref).toFixed(1) + '" x2="' + (Wd-R) + '" y2="' + y(opts.ref).toFixed(1) + '"><title>' + esc(opts.refLabel || '') + '</title></line>');
+    }
+    if (kind === 'bars'){
+      var bw = Math.max(1, (Wd-L-R)/n * 0.7);
+      series[0].forEach(function(v, i){
+        if (v == null) return;
+        var y0 = y(0), y1 = y(v);
+        parts.push('<rect class="bar' + (v < 0 ? ' neg' : '') + '" x="' + (x(i)-bw/2).toFixed(1) + '" y="' + Math.min(y0,y1).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(1, Math.abs(y0-y1)).toFixed(1) + '"><title>' + esc(fmtDay(rows[i].d) + ': ' + fmt(v)) + '</title></rect>');
+      });
+    } else {
+      series.forEach(function(s, si){
+        var d = '', last = null, first = null;
+        s.forEach(function(v, i){
+          if (v == null || !isFinite(v)) return;
+          d += (d ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1) + ' ';
+          if (first === null) first = x(i); last = x(i);
+        });
+        if (!d) return;
+        if (si === 0 && keys.length === 1) parts.push('<path class="area" d="' + d + 'L' + last.toFixed(1) + ' ' + y(lo).toFixed(1) + ' L' + first.toFixed(1) + ' ' + y(lo).toFixed(1) + ' Z"/>');
+        parts.push('<path class="line' + (si ? ' b' : '') + '" d="' + d + '"/>');
+      });
+    }
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i, k){
+      if (i < 0 || i >= n) return;
+      parts.push('<text class="tick" x="' + x(i).toFixed(1) + '" y="' + (Hd-8) + '" text-anchor="' + (k===0?'start':k===1?'middle':'end') + '">' + fmtDay(rows[i].d) + '</text>');
+    });
+    svg.innerHTML = parts.join('');
+  }
+  function last(rows, k){ for (var i = rows.length-1; i >= 0; i--) if (rows[i][k] != null) return rows[i][k]; return null; }
+  function windowTable(dept){
+    var cols = dept === 'click'
+      ? [['Impressions', function(w){ return w.click.funnel[0].text; }], ['Views', function(w){ return w.click.funnel[1].text; }],
+         ['Engaged', function(w){ return w.click.funnel[2].text; }], ['CTR', function(w){ return w.click.headline || '\u2014'; }]]
+      : dept === 'watch'
+      ? [['Watch time', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'watch'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['AVD', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'avd'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Retention score', function(w){ return w.watch.headline && w.watch.score != null ? w.watch.headline : '\u2014'; }]]
+      : [['Returning', function(w){ return w.replay.headline || '\u2014'; }],
+         ['Net subscribers', function(w){ var t = w.tiles.filter(function(t){ return t.key === 'subs'; })[0]; return t && t.value != null ? t.value : '\u2014'; }],
+         ['Split', function(w){ return w.replay.segments.map(function(s){ return s.label + ' ' + s.text.split(' \u00b7 ')[0]; }).join(', ') || '\u2014'; }]];
+    var h = '<div class="dwin"><table><thead><tr><th>Window</th>' + cols.map(function(c){ return '<th>' + esc(c[0]) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    M.windows.forEach(function(w){
+      h += '<tr><td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(w.label) + (w.label === 'Last year' ? ' (' + w.days + ' days)' : '') + '</td>' +
+           cols.map(function(c){ return '<td' + (w.days === cur ? ' class="cur"' : '') + '>' + esc(c[1](w)) + '</td>'; }).join('') + '</tr>';
+    });
+    return h + '</tbody></table><p class="dwin-cap">Each row is one trailing window from Studio, ending on the pull date; the selected window is highlighted. Longer windows contain the shorter ones, so read the drift between rows, not the sum.</p></div>';
+  }
+  function renderPanel(){
+    var panel = document.getElementById('dept-panel'); if (!panel) return;
+    document.querySelectorAll('.dept').forEach(function(d){ d.setAttribute('aria-expanded', String(d.dataset.dept === openDept)); });
+    if (!openDept){ panel.hidden = true; panel.innerHTML = ''; return; }
+    var w = W(), rows = rowsIn(w), names = { click: 'Clickability', watch: 'Watchability', replay: 'Replayability' };
+    var h = '<div class="dept-panel-h"><span class="dept-panel-t">' + names[openDept] + ' over time</span><span class="dept-panel-w">' +
+            (rows.length ? esc(fmtDayYear(w.from) + ' to ' + fmtDayYear(w.to)) : 'by trailing window') + '</span><button type="button" class="dept-close" id="dept-close">Close</button></div>';
+    h += windowTable(openDept);
+    var charts = [];
+    if (rows.length >= 2){
+      if (openDept === 'click'){
+        charts = [['i','Impressions a day', fmtN(last(rows,'i'))], ['v','Views a day', fmtN(last(rows,'v'))], ['e','Engaged views a day', fmtN(last(rows,'e'))], ['c','Click-through by day', fmtPct(last(rows,'c'))]];
+      } else if (openDept === 'watch'){
+        charts = [['h','Hours watched a day', fmtN(last(rows,'h'))], ['a','Average view duration by day', mmss(last(rows,'a'))], ['p','Average view percentage by day', fmtPct(last(rows,'p'))], ['q','Retention score by day', last(rows,'q') != null ? last(rows,'q').toFixed(2) + '\u00d7' : '\u2014']];
+      } else {
+        charts = [['rn','Returning and new viewers a day', fmtN(last(rows,'r')) + ' / ' + fmtN(last(rows,'n'))], ['s','Net subscribers a day', (last(rows,'s') > 0 ? '+' : '') + fmtFull(last(rows,'s'))]];
+      }
+      h += '<div class="dcharts">' + charts.map(function(c){ return chartHtml(c[0], c[1], c[2]); }).join('') + '</div>';
+    } else {
+      h += '<p class="dept-note">No day-by-day series is stored for this channel yet, so the figures above are per trailing window only. The next Studio pull captures the last 365 days day by day and these charts fill in.</p>';
+    }
+    h += '<p class="dept-note">' + esc(w[openDept].note) + '</p>';
+    panel.innerHTML = h;
+    panel.hidden = false;
+    charts.forEach(function(c){
+      var svg = panel.querySelector('svg[data-c="' + c[0] + '"]');
+      if (c[0] === 'rn'){ drawSeries(svg, rows, ['r','n'], fmtN, 'lines'); svg.insertAdjacentHTML('afterend', '<div class="dchart-k"><span>Returning</span><span class="b">New</span></div>'); }
+      else if (c[0] === 's') drawSeries(svg, rows, ['s'], fmtN, 'bars');
+      else if (c[0] === 'c' || c[0] === 'p') drawSeries(svg, rows, [c[0]], function(v){ return fmtPct(v, v < 0.2 ? 1 : 0); }, 'lines');
+      else if (c[0] === 'a') drawSeries(svg, rows, ['a'], mmss, 'lines');
+      else if (c[0] === 'q') drawSeries(svg, rows, ['q'], function(v){ return v.toFixed(2) + '\u00d7'; }, 'lines', { ref: 1, refLabel: '1.00\u00d7 = what tracked channels hold at this length' });
+      else drawSeries(svg, rows, [c[0]], fmtN, 'lines');
+    });
+    var close = document.getElementById('dept-close');
+    if (close) close.addEventListener('click', function(){ openDept = null; renderPanel(); });
+  }
+
+  // ---- wiring ---------------------------------------------------------------
+  function render(){
+    var w = W();
+    var lab = document.getElementById('dash-winlab');
+    if (lab) lab.textContent = w.label === 'Last year' ? 'Last year' : 'Last ' + w.label;
+    document.querySelectorAll('.dw').forEach(function(b){ b.setAttribute('aria-pressed', String(Number(b.dataset.days) === cur)); });
+    renderTiles(w); renderDaily(w); renderDepts(w); renderPanel();
+  }
+  document.querySelectorAll('.dw').forEach(function(b){
+    b.addEventListener('click', function(){ cur = Number(b.dataset.days); render(); });
+  });
+  document.querySelectorAll('.dept').forEach(function(d){
+    function toggle(){ openDept = openDept === d.dataset.dept ? null : d.dataset.dept; renderPanel();
+      if (openDept){ var p = document.getElementById('dept-panel'); if (p && p.scrollIntoView === undefined) return; } }
+    d.addEventListener('click', toggle);
+    d.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+  });
+  render();
+})();
+</script>
 <div class="stats">
   <div class="stat"><div class="v">148K</div><div class="k">Median views</div></div>
   <div class="stat"><div class="v">8</div><div class="k">Breakouts (2×+)</div></div>
@@ -1182,6 +1719,7 @@ means two things move together on this channel, which is not the same as one cau
       <button class="tgl" data-z="band" aria-pressed="false" type="button">Median band</button>
       <button class="tgl" data-z="time" aria-pressed="false" type="button">By upload date</button>
     </span>
+    <span class="grp"><span class="lab">Compare</span><button class="tgl" data-ref="all" aria-pressed="false" type="button" title="Median retention curve, one vote per channel, over 3240 videos">All tracked channels (19)</button><button class="tgl" disabled type="button" title="Withheld: 1 of 10 channels with curves">education · withheld (1 of 10 channels with curves)</button></span>
     <span class="spacer"></span>
     <span class="zoomnote" id="zoomnote">scroll to zoom, drag to pan</span>
     <button class="tgl" id="cohortreset" type="button">Reset</button>
@@ -1251,12 +1789,18 @@ means two things move together on this channel, which is not the same as one cau
     drawn grey rather than mid-ramp, and the ramp says how many. There is deliberately no returning-viewer
     encoding: that split is not fetched by any run here, and an option that quietly ranked on something else
     would be worse than its absence.</p>
+  <p class="cap"><strong>Compare</strong> draws a reference curve against this channel's own: the median retention curve
+    of every tracked channel, and of the channels in the same confirmed niche once ten or more of them carry
+    curves. Each channel contributes ONE curve (its own median), so a channel with six hundred analysed uploads
+    counts the same as one with twelve, and the line is a statement about the fleet rather than about its
+    largest member. Reference curves live on the % axis only, like the channel median, because clock time has
+    no shared x. The education reference is withheld: 1 of 10 channels with curves.</p>
   <details class="legwrap"><summary>All 14 videos</summary>
     <input class="legfind" id="legfind" type="search" placeholder="Filter this list by title" aria-label="Filter the video list">
     <div class="clegend"><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/--Y7vgYxV6g.html" data-i="0" title="Fluid Simulations Take Forever… So I Built This."><b></b><span>Fluid Simulations Take Forever… So I Built This.</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/GlsoN2wKeiQ.html" data-i="1" title="Turning a Concept Computer Case Into The Real Thing - Full Build"><b></b><span>Turning a Concept Computer Case Into The Real Thing - Full Build</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/A7RZbCvgzz8.html" data-i="2" title="What If the PC Case IS the Water Cooling Loop?"><b></b><span>What If the PC Case IS the Water Cooling Loop?</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/LZRjqpvWzGo.html" data-i="3" title="I Fixed The Biggest Problem with 3D Printed Water Cooling"><b></b><span>I Fixed The Biggest Problem with 3D Printed Water Cooling</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/jUUyRNADVA4.html" data-i="4" title="A Custom PC Worth Hanging on The Wall"><b></b><span>A Custom PC Worth Hanging on The Wall</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/gafJ8Y43bOE.html" data-i="5" title="I Built a Coffee Table with a 3D Canyon Inside"><b></b><span>I Built a Coffee Table with a 3D Canyon Inside</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/F15FolOyu5E.html" data-i="6" title="My Laser Cutter Upgrade | A Virtual Tour Inside the Machines"><b></b><span>My Laser Cutter Upgrade | A Virtual Tour Inside the Machines</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/Dl-nDMVcje4.html" data-i="7" title="170 Hours of 3D Printing For This"><b></b><span>170 Hours of 3D Printing For This</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/3QHKAJNC8f0.html" data-i="8" title="Building My Own Personal Makerspace"><b></b><span>Building My Own Personal Makerspace</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/wkpyIQr2dAo.html" data-i="9" title="How Air Conditioners &amp; Heat Pumps Work | Installing a Mini Split in Our Office"><b></b><span>How Air Conditioners &amp; Heat Pumps Work | Installing a Mini Split in Our Office</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/phR7D5avqUg.html" data-i="10" title="Expanding Our Home Network to the New Backyard Office"><b></b><span>Expanding Our Home Network to the New Backyard Office</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/UC_gGzYa6jk.html" data-i="11" title="Backyard Office &amp; Workshop | Full DIY Interior Build (Insulation, Drywall, and Mini-Split)"><b></b><span>Backyard Office &amp; Workshop | Full DIY Interior Build (Insulation, Drywall, and Mini-Split)</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/2Si2byHw40U.html" data-i="12" title="Electrifying Our Backyard Office | DIY Installation"><b></b><span>Electrifying Our Backyard Office | DIY Installation</span></a><a href="UCYFp9tOZEXOj0TSBqwKyxZQ/2xB8OOCYJhA.html" data-i="13" title="Starting our Backyard Office : Structure &amp; Exterior"><b></b><span>Starting our Backyard Office : Structure &amp; Exterior</span></a></div>
   </details>
 </div>
-<script>window.__COHORT__={"videos":[{"videoId":"--Y7vgYxV6g","title":"Fluid Simulations Take Forever… So I Built This.","durationSec":1087,"pub":1787230812000,"views":225124,"r50":0.3284,"avd":400.93342800000005,"wth":25072.14917918667,"outlier":null,"curve":[{"p":0,"w":0.9703},{"p":1,"w":0.8677},{"p":2,"w":0.7203},{"p":3,"w":0.6392},{"p":4,"w":0.5773},{"p":5,"w":0.5603},{"p":6,"w":0.5436},{"p":7,"w":0.5407},{"p":8,"w":0.5166},{"p":9,"w":0.5},{"p":10,"w":0.4849},{"p":11,"w":0.4794},{"p":12,"w":0.4761},{"p":13,"w":0.4614},{"p":14,"w":0.4556},{"p":15,"w":0.4575},{"p":16,"w":0.4437},{"p":17,"w":0.4375},{"p":18,"w":0.4327},{"p":19,"w":0.4296},{"p":20,"w":0.4223},{"p":21,"w":0.4229},{"p":22,"w":0.4185},{"p":23,"w":0.4153},{"p":24,"w":0.4131},{"p":25,"w":0.4092},{"p":26,"w":0.4037},{"p":27,"w":0.3915},{"p":28,"w":0.3929},{"p":29,"w":0.3632},{"p":30,"w":0.2817},{"p":31,"w":0.2186},{"p":32,"w":0.2165},{"p":33,"w":0.2164},{"p":34,"w":0.2241},{"p":35,"w":0.3801},{"p":36,"w":0.3929},{"p":37,"w":0.385},{"p":38,"w":0.3834},{"p":39,"w":0.3829},{"p":40,"w":0.3856},{"p":41,"w":0.3867},{"p":42,"w":0.3934},{"p":43,"w":0.3872},{"p":44,"w":0.3751},{"p":45,"w":0.3422},{"p":46,"w":0.3336},{"p":47,"w":0.3293},{"p":48,"w":0.3279},{"p":49,"w":0.3309},{"p":50,"w":0.3284},{"p":51,"w":0.3231},{"p":52,"w":0.3284},{"p":53,"w":0.3412},{"p":54,"w":0.3419},{"p":55,"w":0.3483},{"p":56,"w":0.3439},{"p":57,"w":0.3297},{"p":58,"w":0.3186},{"p":59,"w":0.3177},{"p":60,"w":0.2963},{"p":61,"w":0.2871},{"p":62,"w":0.2832},{"p":63,"w":0.2788},{"p":64,"w":0.2776},{"p":65,"w":0.2783},{"p":66,"w":0.2758},{"p":67,"w":0.2711},{"p":68,"w":0.2725},{"p":69,"w":0.2734},{"p":70,"w":0.276},{"p":71,"w":0.2921},{"p":72,"w":0.2863},{"p":73,"w":0.2911},{"p":74,"w":0.2948},{"p":75,"w":0.2983},{"p":76,"w":0.2988},{"p":77,"w":0.3025},{"p":78,"w":0.3078},{"p":79,"w":0.3157},{"p":80,"w":0.3197},{"p":81,"w":0.3224},{"p":82,"w":0.3263},{"p":83,"w":0.3184},{"p":84,"w":0.3154},{"p":85,"w":0.3253},{"p":86,"w":0.3312},{"p":87,"w":0.3295},{"p":88,"w":0.3342},{"p":89,"w":0.3274},{"p":90,"w":0.3215},{"p":91,"w":0.3154},{"p":92,"w":0.3164},{"p":93,"w":0.312},{"p":94,"w":0.3149},{"p":95,"w":0.3117},{"p":96,"w":0.3035},{"p":97,"w":0.2685},{"p":98,"w":0.2077},{"p":99,"w":0.1638}]},{"videoId":"GlsoN2wKeiQ","title":"Turning a Concept Computer Case Into The Real Thing - Full Build","durationSec":1972,"pub":1783028526000,"views":415329,"r50":0.2478,"avd":552.045624,"wth":63689.04360286,"outlier":3.27,"curve":[{"p":0,"w":0.929},{"p":1,"w":0.6346},{"p":2,"w":0.4862},{"p":3,"w":0.4232},{"p":4,"w":0.3835},{"p":5,"w":0.3715},{"p":6,"w":0.3731},{"p":7,"w":0.365},{"p":8,"w":0.3614},{"p":9,"w":0.3623},{"p":10,"w":0.3428},{"p":11,"w":0.3269},{"p":12,"w":0.3356},{"p":13,"w":0.3294},{"p":14,"w":0.3248},{"p":15,"w":0.3249},{"p":16,"w":0.3288},{"p":17,"w":0.3117},{"p":18,"w":0.3089},{"p":19,"w":0.3095},{"p":20,"w":0.3074},{"p":21,"w":0.3012},{"p":22,"w":0.2947},{"p":23,"w":0.2887},{"p":24,"w":0.2993},{"p":25,"w":0.298},{"p":26,"w":0.2921},{"p":27,"w":0.2843},{"p":28,"w":0.2774},{"p":29,"w":0.2732},{"p":30,"w":0.2703},{"p":31,"w":0.275},{"p":32,"w":0.2707},{"p":33,"w":0.2822},{"p":34,"w":0.2734},{"p":35,"w":0.269},{"p":36,"w":0.2653},{"p":37,"w":0.2635},{"p":38,"w":0.263},{"p":39,"w":0.2625},{"p":40,"w":0.2621},{"p":41,"w":0.2613},{"p":42,"w":0.2687},{"p":43,"w":0.2647},{"p":44,"w":0.2529},{"p":45,"w":0.2495},{"p":46,"w":0.2458},{"p":47,"w":0.2437},{"p":48,"w":0.2435},{"p":49,"w":0.2542},{"p":50,"w":0.2478},{"p":51,"w":0.2485},{"p":52,"w":0.2496},{"p":53,"w":0.2419},{"p":54,"w":0.2387},{"p":55,"w":0.2365},{"p":56,"w":0.2476},{"p":57,"w":0.2378},{"p":58,"w":0.2358},{"p":59,"w":0.236},{"p":60,"w":0.2367},{"p":61,"w":0.2344},{"p":62,"w":0.2337},{"p":63,"w":0.2322},{"p":64,"w":0.2315},{"p":65,"w":0.2392},{"p":66,"w":0.2354},{"p":67,"w":0.2347},{"p":68,"w":0.238},{"p":69,"w":0.2303},{"p":70,"w":0.238},{"p":71,"w":0.2307},{"p":72,"w":0.2314},{"p":73,"w":0.2309},{"p":74,"w":0.2284},{"p":75,"w":0.2264},{"p":76,"w":0.2255},{"p":77,"w":0.2256},{"p":78,"w":0.2375},{"p":79,"w":0.2382},{"p":80,"w":0.2441},{"p":81,"w":0.2472},{"p":82,"w":0.2457},{"p":83,"w":0.2556},{"p":84,"w":0.2489},{"p":85,"w":0.2471},{"p":86,"w":0.2428},{"p":87,"w":0.2392},{"p":88,"w":0.2338},{"p":89,"w":0.2425},{"p":90,"w":0.259},{"p":91,"w":0.2703},{"p":92,"w":0.259},{"p":93,"w":0.2593},{"p":94,"w":0.2484},{"p":95,"w":0.2456},{"p":96,"w":0.2353},{"p":97,"w":0.218},{"p":98,"w":0.2024},{"p":99,"w":0.1804}]},{"videoId":"A7RZbCvgzz8","title":"What If the PC Case IS the Water Cooling Loop?","durationSec":1521,"pub":1775048400000,"views":420758,"r50":0.3274,"avd":533.101374,"wth":62307.407755969994,"outlier":3.31,"curve":[{"p":0,"w":0.9278},{"p":1,"w":0.7},{"p":2,"w":0.6115},{"p":3,"w":0.5365},{"p":4,"w":0.5284},{"p":5,"w":0.5067},{"p":6,"w":0.4892},{"p":7,"w":0.4822},{"p":8,"w":0.4673},{"p":9,"w":0.4573},{"p":10,"w":0.4572},{"p":11,"w":0.4421},{"p":12,"w":0.4309},{"p":13,"w":0.4308},{"p":14,"w":0.4189},{"p":15,"w":0.4093},{"p":16,"w":0.4079},{"p":17,"w":0.4059},{"p":18,"w":0.4031},{"p":19,"w":0.3959},{"p":20,"w":0.3934},{"p":21,"w":0.3912},{"p":22,"w":0.3768},{"p":23,"w":0.3647},{"p":24,"w":0.3757},{"p":25,"w":0.3644},{"p":26,"w":0.3619},{"p":27,"w":0.3566},{"p":28,"w":0.3541},{"p":29,"w":0.358},{"p":30,"w":0.3523},{"p":31,"w":0.3511},{"p":32,"w":0.3493},{"p":33,"w":0.3493},{"p":34,"w":0.3532},{"p":35,"w":0.2711},{"p":36,"w":0.1879},{"p":37,"w":0.1869},{"p":38,"w":0.2969},{"p":39,"w":0.3352},{"p":40,"w":0.3452},{"p":41,"w":0.3383},{"p":42,"w":0.3344},{"p":43,"w":0.336},{"p":44,"w":0.3369},{"p":45,"w":0.3384},{"p":46,"w":0.3422},{"p":47,"w":0.3347},{"p":48,"w":0.328},{"p":49,"w":0.3252},{"p":50,"w":0.3274},{"p":51,"w":0.3231},{"p":52,"w":0.3271},{"p":53,"w":0.3185},{"p":54,"w":0.3158},{"p":55,"w":0.3128},{"p":56,"w":0.3108},{"p":57,"w":0.3085},{"p":58,"w":0.308},{"p":59,"w":0.3071},{"p":60,"w":0.3093},{"p":61,"w":0.3173},{"p":62,"w":0.3022},{"p":63,"w":0.2994},{"p":64,"w":0.2991},{"p":65,"w":0.2967},{"p":66,"w":0.2933},{"p":67,"w":0.2941},{"p":68,"w":0.2937},{"p":69,"w":0.2922},{"p":70,"w":0.2938},{"p":71,"w":0.2974},{"p":72,"w":0.2943},{"p":73,"w":0.2955},{"p":74,"w":0.3048},{"p":75,"w":0.2993},{"p":76,"w":0.2933},{"p":77,"w":0.2951},{"p":78,"w":0.2864},{"p":79,"w":0.2814},{"p":80,"w":0.2814},{"p":81,"w":0.2962},{"p":82,"w":0.2999},{"p":83,"w":0.2964},{"p":84,"w":0.2962},{"p":85,"w":0.294},{"p":86,"w":0.2982},{"p":87,"w":0.2997},{"p":88,"w":0.3023},{"p":89,"w":0.3143},{"p":90,"w":0.3435},{"p":91,"w":0.3396},{"p":92,"w":0.3471},{"p":93,"w":0.3451},{"p":94,"w":0.3258},{"p":95,"w":0.3039},{"p":96,"w":0.2888},{"p":97,"w":0.2664},{"p":98,"w":0.2385},{"p":99,"w":0.1762}]},{"videoId":"LZRjqpvWzGo","title":"I Fixed The Biggest Problem with 3D Printed Water Cooling","durationSec":1072,"pub":1765544448000,"views":436255,"r50":0.3131,"avd":379.1181599999998,"wth":45942.275802999975,"outlier":3.43,"curve":[{"p":0,"w":0.9522},{"p":1,"w":0.8554},{"p":2,"w":0.6965},{"p":3,"w":0.6613},{"p":4,"w":0.5902},{"p":5,"w":0.5768},{"p":6,"w":0.519},{"p":7,"w":0.5069},{"p":8,"w":0.4868},{"p":9,"w":0.474},{"p":10,"w":0.4651},{"p":11,"w":0.4621},{"p":12,"w":0.4605},{"p":13,"w":0.4535},{"p":14,"w":0.4474},{"p":15,"w":0.4462},{"p":16,"w":0.4385},{"p":17,"w":0.4344},{"p":18,"w":0.4271},{"p":19,"w":0.4211},{"p":20,"w":0.4154},{"p":21,"w":0.4142},{"p":22,"w":0.4198},{"p":23,"w":0.4036},{"p":24,"w":0.3888},{"p":25,"w":0.3759},{"p":26,"w":0.3725},{"p":27,"w":0.3711},{"p":28,"w":0.3764},{"p":29,"w":0.3746},{"p":30,"w":0.37},{"p":31,"w":0.3665},{"p":32,"w":0.3631},{"p":33,"w":0.3594},{"p":34,"w":0.3572},{"p":35,"w":0.3567},{"p":36,"w":0.3586},{"p":37,"w":0.3532},{"p":38,"w":0.3465},{"p":39,"w":0.3424},{"p":40,"w":0.3353},{"p":41,"w":0.3311},{"p":42,"w":0.3202},{"p":43,"w":0.23},{"p":44,"w":0.2046},{"p":45,"w":0.1973},{"p":46,"w":0.1902},{"p":47,"w":0.1886},{"p":48,"w":0.2778},{"p":49,"w":0.3075},{"p":50,"w":0.3131},{"p":51,"w":0.3145},{"p":52,"w":0.3097},{"p":53,"w":0.3075},{"p":54,"w":0.2971},{"p":55,"w":0.2953},{"p":56,"w":0.2956},{"p":57,"w":0.2972},{"p":58,"w":0.2978},{"p":59,"w":0.2974},{"p":60,"w":0.295},{"p":61,"w":0.2975},{"p":62,"w":0.2967},{"p":63,"w":0.2978},{"p":64,"w":0.298},{"p":65,"w":0.2936},{"p":66,"w":0.2921},{"p":67,"w":0.2903},{"p":68,"w":0.2898},{"p":69,"w":0.2924},{"p":70,"w":0.2871},{"p":71,"w":0.2841},{"p":72,"w":0.2797},{"p":73,"w":0.2775},{"p":74,"w":0.2756},{"p":75,"w":0.2766},{"p":76,"w":0.2774},{"p":77,"w":0.2776},{"p":78,"w":0.2853},{"p":79,"w":0.2841},{"p":80,"w":0.2798},{"p":81,"w":0.2803},{"p":82,"w":0.2821},{"p":83,"w":0.2832},{"p":84,"w":0.2858},{"p":85,"w":0.2881},{"p":86,"w":0.2872},{"p":87,"w":0.292},{"p":88,"w":0.2895},{"p":89,"w":0.2872},{"p":90,"w":0.2867},{"p":91,"w":0.2865},{"p":92,"w":0.2937},{"p":93,"w":0.2979},{"p":94,"w":0.3023},{"p":95,"w":0.3065},{"p":96,"w":0.3083},{"p":97,"w":0.3114},{"p":98,"w":0.2818},{"p":99,"w":0.2183}]},{"videoId":"jUUyRNADVA4","title":"A Custom PC Worth Hanging on The Wall","durationSec":1826,"pub":1761905379000,"views":428470,"r50":0.2838,"avd":590.6580459999998,"wth":70299.79249156108,"outlier":3.37,"curve":[{"p":0,"w":0.9475},{"p":1,"w":0.6608},{"p":2,"w":0.5553},{"p":3,"w":0.5052},{"p":4,"w":0.4729},{"p":5,"w":0.4496},{"p":6,"w":0.4419},{"p":7,"w":0.4279},{"p":8,"w":0.4175},{"p":9,"w":0.4099},{"p":10,"w":0.4093},{"p":11,"w":0.3934},{"p":12,"w":0.399},{"p":13,"w":0.3798},{"p":14,"w":0.3757},{"p":15,"w":0.3705},{"p":16,"w":0.3654},{"p":17,"w":0.3627},{"p":18,"w":0.3567},{"p":19,"w":0.3544},{"p":20,"w":0.352},{"p":21,"w":0.3478},{"p":22,"w":0.3498},{"p":23,"w":0.3473},{"p":24,"w":0.3526},{"p":25,"w":0.3392},{"p":26,"w":0.3299},{"p":27,"w":0.325},{"p":28,"w":0.3305},{"p":29,"w":0.3252},{"p":30,"w":0.3201},{"p":31,"w":0.3139},{"p":32,"w":0.3149},{"p":33,"w":0.3067},{"p":34,"w":0.3033},{"p":35,"w":0.3136},{"p":36,"w":0.3041},{"p":37,"w":0.3014},{"p":38,"w":0.2955},{"p":39,"w":0.2948},{"p":40,"w":0.2966},{"p":41,"w":0.2903},{"p":42,"w":0.2863},{"p":43,"w":0.2848},{"p":44,"w":0.2838},{"p":45,"w":0.2836},{"p":46,"w":0.2826},{"p":47,"w":0.2829},{"p":48,"w":0.2911},{"p":49,"w":0.2965},{"p":50,"w":0.2838},{"p":51,"w":0.2783},{"p":52,"w":0.2764},{"p":53,"w":0.2749},{"p":54,"w":0.274},{"p":55,"w":0.2751},{"p":56,"w":0.2692},{"p":57,"w":0.2721},{"p":58,"w":0.272},{"p":59,"w":0.272},{"p":60,"w":0.2713},{"p":61,"w":0.277},{"p":62,"w":0.2721},{"p":63,"w":0.2716},{"p":64,"w":0.2731},{"p":65,"w":0.2712},{"p":66,"w":0.271},{"p":67,"w":0.2668},{"p":68,"w":0.2657},{"p":69,"w":0.2666},{"p":70,"w":0.2667},{"p":71,"w":0.2732},{"p":72,"w":0.2731},{"p":73,"w":0.2751},{"p":74,"w":0.2769},{"p":75,"w":0.2787},{"p":76,"w":0.2842},{"p":77,"w":0.2848},{"p":78,"w":0.2849},{"p":79,"w":0.2839},{"p":80,"w":0.2793},{"p":81,"w":0.2854},{"p":82,"w":0.285},{"p":83,"w":0.2896},{"p":84,"w":0.2858},{"p":85,"w":0.2821},{"p":86,"w":0.2742},{"p":87,"w":0.2693},{"p":88,"w":0.2679},{"p":89,"w":0.2995},{"p":90,"w":0.304},{"p":91,"w":0.3002},{"p":92,"w":0.3172},{"p":93,"w":0.3243},{"p":94,"w":0.3155},{"p":95,"w":0.3012},{"p":96,"w":0.281},{"p":97,"w":0.2625},{"p":98,"w":0.2521},{"p":99,"w":0.2338}]},{"videoId":"gafJ8Y43bOE","title":"I Built a Coffee Table with a 3D Canyon Inside","durationSec":878,"pub":1752062481000,"views":5934,"r50":0.3793,"avd":379.01416200000006,"wth":624.7416770300001,"outlier":0.04,"curve":[{"p":0,"w":0.98},{"p":1,"w":0.8058},{"p":2,"w":0.7262},{"p":3,"w":0.6678},{"p":4,"w":0.6029},{"p":5,"w":0.5599},{"p":6,"w":0.5401},{"p":7,"w":0.5425},{"p":8,"w":0.5203},{"p":9,"w":0.5108},{"p":10,"w":0.4973},{"p":11,"w":0.4856},{"p":12,"w":0.4881},{"p":13,"w":0.4819},{"p":14,"w":0.4759},{"p":15,"w":0.4716},{"p":16,"w":0.4618},{"p":17,"w":0.4632},{"p":18,"w":0.4539},{"p":19,"w":0.4518},{"p":20,"w":0.45},{"p":21,"w":0.445},{"p":22,"w":0.4396},{"p":23,"w":0.431},{"p":24,"w":0.4285},{"p":25,"w":0.4225},{"p":26,"w":0.4211},{"p":27,"w":0.4345},{"p":28,"w":0.4208},{"p":29,"w":0.4144},{"p":30,"w":0.4111},{"p":31,"w":0.4088},{"p":32,"w":0.4037},{"p":33,"w":0.4039},{"p":34,"w":0.4009},{"p":35,"w":0.4018},{"p":36,"w":0.3958},{"p":37,"w":0.3969},{"p":38,"w":0.4004},{"p":39,"w":0.4003},{"p":40,"w":0.3988},{"p":41,"w":0.3915},{"p":42,"w":0.3884},{"p":43,"w":0.386},{"p":44,"w":0.4015},{"p":45,"w":0.3977},{"p":46,"w":0.3863},{"p":47,"w":0.3845},{"p":48,"w":0.3837},{"p":49,"w":0.3836},{"p":50,"w":0.3793},{"p":51,"w":0.3724},{"p":52,"w":0.3718},{"p":53,"w":0.3701},{"p":54,"w":0.3703},{"p":55,"w":0.3659},{"p":56,"w":0.3646},{"p":57,"w":0.3687},{"p":58,"w":0.3699},{"p":59,"w":0.3709},{"p":60,"w":0.3747},{"p":61,"w":0.3755},{"p":62,"w":0.3829},{"p":63,"w":0.3994},{"p":64,"w":0.3918},{"p":65,"w":0.3765},{"p":66,"w":0.3781},{"p":67,"w":0.3722},{"p":68,"w":0.3649},{"p":69,"w":0.3679},{"p":70,"w":0.367},{"p":71,"w":0.3637},{"p":72,"w":0.3624},{"p":73,"w":0.3657},{"p":74,"w":0.366},{"p":75,"w":0.363},{"p":76,"w":0.3805},{"p":77,"w":0.3791},{"p":78,"w":0.3772},{"p":79,"w":0.3805},{"p":80,"w":0.4036},{"p":81,"w":0.4031},{"p":82,"w":0.4047},{"p":83,"w":0.4095},{"p":84,"w":0.4099},{"p":85,"w":0.3973},{"p":86,"w":0.4069},{"p":87,"w":0.4174},{"p":88,"w":0.4188},{"p":89,"w":0.4177},{"p":90,"w":0.412},{"p":91,"w":0.4105},{"p":92,"w":0.4148},{"p":93,"w":0.4286},{"p":94,"w":0.4452},{"p":95,"w":0.4561},{"p":96,"w":0.4945},{"p":97,"w":0.4964},{"p":98,"w":0.4792},{"p":99,"w":0.4284}]},{"videoId":"F15FolOyu5E","title":"My Laser Cutter Upgrade | A Virtual Tour Inside the Machines","durationSec":802,"pub":1747476021000,"views":8365,"r50":0.4023,"avd":323.91496799999993,"wth":752.6524186999999,"outlier":0.1,"curve":[{"p":0,"w":0.9829},{"p":1,"w":0.87},{"p":2,"w":0.7545},{"p":3,"w":0.6758},{"p":4,"w":0.6279},{"p":5,"w":0.5593},{"p":6,"w":0.5237},{"p":7,"w":0.5064},{"p":8,"w":0.4976},{"p":9,"w":0.4965},{"p":10,"w":0.4846},{"p":11,"w":0.4748},{"p":12,"w":0.4636},{"p":13,"w":0.4545},{"p":14,"w":0.4496},{"p":15,"w":0.4426},{"p":16,"w":0.4456},{"p":17,"w":0.4409},{"p":18,"w":0.4247},{"p":19,"w":0.4189},{"p":20,"w":0.4105},{"p":21,"w":0.4059},{"p":22,"w":0.4093},{"p":23,"w":0.3977},{"p":24,"w":0.4027},{"p":25,"w":0.4},{"p":26,"w":0.4004},{"p":27,"w":0.3994},{"p":28,"w":0.3946},{"p":29,"w":0.3936},{"p":30,"w":0.3882},{"p":31,"w":0.3916},{"p":32,"w":0.3863},{"p":33,"w":0.3836},{"p":34,"w":0.3882},{"p":35,"w":0.3844},{"p":36,"w":0.3764},{"p":37,"w":0.3759},{"p":38,"w":0.3686},{"p":39,"w":0.3677},{"p":40,"w":0.3991},{"p":41,"w":0.3974},{"p":42,"w":0.3856},{"p":43,"w":0.3816},{"p":44,"w":0.3781},{"p":45,"w":0.3784},{"p":46,"w":0.376},{"p":47,"w":0.3803},{"p":48,"w":0.3818},{"p":49,"w":0.3794},{"p":50,"w":0.4023},{"p":51,"w":0.3976},{"p":52,"w":0.39},{"p":53,"w":0.3973},{"p":54,"w":0.3981},{"p":55,"w":0.3948},{"p":56,"w":0.3925},{"p":57,"w":0.3952},{"p":58,"w":0.3878},{"p":59,"w":0.3784},{"p":60,"w":0.3738},{"p":61,"w":0.3657},{"p":62,"w":0.3684},{"p":63,"w":0.3689},{"p":64,"w":0.366},{"p":65,"w":0.365},{"p":66,"w":0.3646},{"p":67,"w":0.3663},{"p":68,"w":0.3742},{"p":69,"w":0.3686},{"p":70,"w":0.3606},{"p":71,"w":0.359},{"p":72,"w":0.3604},{"p":73,"w":0.3636},{"p":74,"w":0.3606},{"p":75,"w":0.3617},{"p":76,"w":0.3579},{"p":77,"w":0.3532},{"p":78,"w":0.3514},{"p":79,"w":0.3532},{"p":80,"w":0.3514},{"p":81,"w":0.3484},{"p":82,"w":0.3462},{"p":83,"w":0.3467},{"p":84,"w":0.3506},{"p":85,"w":0.3439},{"p":86,"w":0.3416},{"p":87,"w":0.3437},{"p":88,"w":0.3459},{"p":89,"w":0.345},{"p":90,"w":0.3474},{"p":91,"w":0.3432},{"p":92,"w":0.3631},{"p":93,"w":0.366},{"p":94,"w":0.355},{"p":95,"w":0.3333},{"p":96,"w":0.2969},{"p":97,"w":0.2472},{"p":98,"w":0.2236},{"p":99,"w":0.1951}]},{"videoId":"Dl-nDMVcje4","title":"170 Hours of 3D Printing For This","durationSec":979,"pub":1744455626000,"views":17515,"r50":0.319,"avd":355.060783,"wth":1727.469337290278,"outlier":0.43,"curve":[{"p":0,"w":0.944},{"p":1,"w":0.8469},{"p":2,"w":0.6866},{"p":3,"w":0.5839},{"p":4,"w":0.5169},{"p":5,"w":0.4764},{"p":6,"w":0.4599},{"p":7,"w":0.4497},{"p":8,"w":0.4438},{"p":9,"w":0.4395},{"p":10,"w":0.4337},{"p":11,"w":0.4248},{"p":12,"w":0.4175},{"p":13,"w":0.4047},{"p":14,"w":0.3989},{"p":15,"w":0.3952},{"p":16,"w":0.3955},{"p":17,"w":0.3923},{"p":18,"w":0.3897},{"p":19,"w":0.3834},{"p":20,"w":0.3788},{"p":21,"w":0.3852},{"p":22,"w":0.3889},{"p":23,"w":0.3885},{"p":24,"w":0.384},{"p":25,"w":0.3725},{"p":26,"w":0.3679},{"p":27,"w":0.3626},{"p":28,"w":0.3588},{"p":29,"w":0.3551},{"p":30,"w":0.3461},{"p":31,"w":0.3453},{"p":32,"w":0.344},{"p":33,"w":0.3375},{"p":34,"w":0.34},{"p":35,"w":0.3417},{"p":36,"w":0.3444},{"p":37,"w":0.3489},{"p":38,"w":0.3441},{"p":39,"w":0.3485},{"p":40,"w":0.3579},{"p":41,"w":0.3483},{"p":42,"w":0.3487},{"p":43,"w":0.3488},{"p":44,"w":0.3404},{"p":45,"w":0.3398},{"p":46,"w":0.3512},{"p":47,"w":0.3455},{"p":48,"w":0.337},{"p":49,"w":0.3333},{"p":50,"w":0.319},{"p":51,"w":0.3195},{"p":52,"w":0.3304},{"p":53,"w":0.3278},{"p":54,"w":0.3331},{"p":55,"w":0.3162},{"p":56,"w":0.3105},{"p":57,"w":0.309},{"p":58,"w":0.3057},{"p":59,"w":0.3167},{"p":60,"w":0.3127},{"p":61,"w":0.3169},{"p":62,"w":0.3172},{"p":63,"w":0.3169},{"p":64,"w":0.3163},{"p":65,"w":0.3151},{"p":66,"w":0.3152},{"p":67,"w":0.3177},{"p":68,"w":0.3155},{"p":69,"w":0.3187},{"p":70,"w":0.3223},{"p":71,"w":0.3232},{"p":72,"w":0.3206},{"p":73,"w":0.3135},{"p":74,"w":0.3144},{"p":75,"w":0.3197},{"p":76,"w":0.3151},{"p":77,"w":0.3083},{"p":78,"w":0.3061},{"p":79,"w":0.3034},{"p":80,"w":0.3043},{"p":81,"w":0.3032},{"p":82,"w":0.3006},{"p":83,"w":0.3086},{"p":84,"w":0.3096},{"p":85,"w":0.3181},{"p":86,"w":0.3226},{"p":87,"w":0.3129},{"p":88,"w":0.3103},{"p":89,"w":0.3078},{"p":90,"w":0.311},{"p":91,"w":0.3428},{"p":92,"w":0.3609},{"p":93,"w":0.3574},{"p":94,"w":0.3497},{"p":95,"w":0.3463},{"p":96,"w":0.3199},{"p":97,"w":0.2921},{"p":98,"w":0.2601},{"p":99,"w":0.2158}]},{"videoId":"3QHKAJNC8f0","title":"Building My Own Personal Makerspace","durationSec":1076,"pub":1742131612000,"views":62584,"r50":0.3536,"avd":424.5196600000001,"wth":7380.038444844446,"outlier":3.46,"curve":[{"p":0,"w":0.9724},{"p":1,"w":0.8148},{"p":2,"w":0.6842},{"p":3,"w":0.6437},{"p":4,"w":0.5832},{"p":5,"w":0.5569},{"p":6,"w":0.5482},{"p":7,"w":0.5437},{"p":8,"w":0.5299},{"p":9,"w":0.5269},{"p":10,"w":0.5112},{"p":11,"w":0.4687},{"p":12,"w":0.4563},{"p":13,"w":0.4463},{"p":14,"w":0.4388},{"p":15,"w":0.4344},{"p":16,"w":0.4324},{"p":17,"w":0.4299},{"p":18,"w":0.4257},{"p":19,"w":0.42},{"p":20,"w":0.4271},{"p":21,"w":0.4272},{"p":22,"w":0.4246},{"p":23,"w":0.4219},{"p":24,"w":0.4202},{"p":25,"w":0.4157},{"p":26,"w":0.4106},{"p":27,"w":0.4206},{"p":28,"w":0.4167},{"p":29,"w":0.4081},{"p":30,"w":0.4081},{"p":31,"w":0.4037},{"p":32,"w":0.3938},{"p":33,"w":0.388},{"p":34,"w":0.3764},{"p":35,"w":0.3738},{"p":36,"w":0.3734},{"p":37,"w":0.3727},{"p":38,"w":0.3748},{"p":39,"w":0.3753},{"p":40,"w":0.3713},{"p":41,"w":0.3681},{"p":42,"w":0.3693},{"p":43,"w":0.3653},{"p":44,"w":0.3613},{"p":45,"w":0.3667},{"p":46,"w":0.3652},{"p":47,"w":0.3724},{"p":48,"w":0.3634},{"p":49,"w":0.3646},{"p":50,"w":0.3536},{"p":51,"w":0.3468},{"p":52,"w":0.341},{"p":53,"w":0.3426},{"p":54,"w":0.3409},{"p":55,"w":0.3525},{"p":56,"w":0.354},{"p":57,"w":0.3511},{"p":58,"w":0.3433},{"p":59,"w":0.3438},{"p":60,"w":0.3464},{"p":61,"w":0.3441},{"p":62,"w":0.3434},{"p":63,"w":0.3428},{"p":64,"w":0.3474},{"p":65,"w":0.3465},{"p":66,"w":0.356},{"p":67,"w":0.3458},{"p":68,"w":0.3406},{"p":69,"w":0.3386},{"p":70,"w":0.3334},{"p":71,"w":0.3293},{"p":72,"w":0.3287},{"p":73,"w":0.3301},{"p":74,"w":0.3314},{"p":75,"w":0.3318},{"p":76,"w":0.3309},{"p":77,"w":0.3302},{"p":78,"w":0.3324},{"p":79,"w":0.3315},{"p":80,"w":0.3488},{"p":81,"w":0.3422},{"p":82,"w":0.3355},{"p":83,"w":0.3144},{"p":84,"w":0.3127},{"p":85,"w":0.3144},{"p":86,"w":0.3073},{"p":87,"w":0.3196},{"p":88,"w":0.3235},{"p":89,"w":0.3235},{"p":90,"w":0.3265},{"p":91,"w":0.3294},{"p":92,"w":0.3282},{"p":93,"w":0.3499},{"p":94,"w":0.3626},{"p":95,"w":0.3622},{"p":96,"w":0.3578},{"p":97,"w":0.342},{"p":98,"w":0.333},{"p":99,"w":0.3212}]},{"videoId":"wkpyIQr2dAo","title":"How Air Conditioners & Heat Pumps Work | Installing a Mini Split in Our Office","durationSec":951,"pub":1740744087000,"views":191615,"r50":0.1842,"avd":250.0207530000001,"wth":13307.70182947084,"outlier":10.58,"curve":[{"p":0,"w":0.98},{"p":1,"w":0.879},{"p":2,"w":0.732},{"p":3,"w":0.6165},{"p":4,"w":0.5338},{"p":5,"w":0.4989},{"p":6,"w":0.4809},{"p":7,"w":0.466},{"p":8,"w":0.454},{"p":9,"w":0.4442},{"p":10,"w":0.436},{"p":11,"w":0.4317},{"p":12,"w":0.426},{"p":13,"w":0.4128},{"p":14,"w":0.402},{"p":15,"w":0.3951},{"p":16,"w":0.3855},{"p":17,"w":0.375},{"p":18,"w":0.3682},{"p":19,"w":0.3778},{"p":20,"w":0.3681},{"p":21,"w":0.3528},{"p":22,"w":0.342},{"p":23,"w":0.3387},{"p":24,"w":0.3253},{"p":25,"w":0.3172},{"p":26,"w":0.318},{"p":27,"w":0.315},{"p":28,"w":0.309},{"p":29,"w":0.3018},{"p":30,"w":0.2909},{"p":31,"w":0.2889},{"p":32,"w":0.2866},{"p":33,"w":0.2742},{"p":34,"w":0.2702},{"p":35,"w":0.2662},{"p":36,"w":0.2638},{"p":37,"w":0.2556},{"p":38,"w":0.2534},{"p":39,"w":0.2562},{"p":40,"w":0.2465},{"p":41,"w":0.2317},{"p":42,"w":0.2226},{"p":43,"w":0.2152},{"p":44,"w":0.2106},{"p":45,"w":0.2081},{"p":46,"w":0.2076},{"p":47,"w":0.198},{"p":48,"w":0.1934},{"p":49,"w":0.1887},{"p":50,"w":0.1842},{"p":51,"w":0.1811},{"p":52,"w":0.1795},{"p":53,"w":0.1792},{"p":54,"w":0.1917},{"p":55,"w":0.1943},{"p":56,"w":0.1951},{"p":57,"w":0.1936},{"p":58,"w":0.1933},{"p":59,"w":0.1908},{"p":60,"w":0.1888},{"p":61,"w":0.1866},{"p":62,"w":0.1876},{"p":63,"w":0.1857},{"p":64,"w":0.188},{"p":65,"w":0.1868},{"p":66,"w":0.1819},{"p":67,"w":0.1807},{"p":68,"w":0.178},{"p":69,"w":0.1779},{"p":70,"w":0.1763},{"p":71,"w":0.1814},{"p":72,"w":0.181},{"p":73,"w":0.1766},{"p":74,"w":0.1684},{"p":75,"w":0.1697},{"p":76,"w":0.1616},{"p":77,"w":0.1563},{"p":78,"w":0.1536},{"p":79,"w":0.1519},{"p":80,"w":0.1523},{"p":81,"w":0.1524},{"p":82,"w":0.15},{"p":83,"w":0.147},{"p":84,"w":0.1442},{"p":85,"w":0.1407},{"p":86,"w":0.1438},{"p":87,"w":0.1382},{"p":88,"w":0.134},{"p":89,"w":0.1326},{"p":90,"w":0.132},{"p":91,"w":0.1318},{"p":92,"w":0.131},{"p":93,"w":0.1298},{"p":94,"w":0.1279},{"p":95,"w":0.1275},{"p":96,"w":0.1261},{"p":97,"w":0.1256},{"p":98,"w":0.1143},{"p":99,"w":0.0958}]},{"videoId":"phR7D5avqUg","title":"Expanding Our Home Network to the New Backyard Office","durationSec":708,"pub":1738071832000,"views":105022,"r50":0.2885,"avd":302.29759199999984,"wth":8818.860474173329,"outlier":5.8,"curve":[{"p":0,"w":0.9628},{"p":1,"w":0.8518},{"p":2,"w":0.7412},{"p":3,"w":0.6675},{"p":4,"w":0.616},{"p":5,"w":0.6066},{"p":6,"w":0.5986},{"p":7,"w":0.5896},{"p":8,"w":0.5819},{"p":9,"w":0.5765},{"p":10,"w":0.565},{"p":11,"w":0.5609},{"p":12,"w":0.5457},{"p":13,"w":0.528},{"p":14,"w":0.5148},{"p":15,"w":0.5103},{"p":16,"w":0.518},{"p":17,"w":0.4977},{"p":18,"w":0.4935},{"p":19,"w":0.5007},{"p":20,"w":0.4929},{"p":21,"w":0.4896},{"p":22,"w":0.4864},{"p":23,"w":0.4877},{"p":24,"w":0.4942},{"p":25,"w":0.4728},{"p":26,"w":0.4755},{"p":27,"w":0.4732},{"p":28,"w":0.4652},{"p":29,"w":0.468},{"p":30,"w":0.4667},{"p":31,"w":0.4573},{"p":32,"w":0.4563},{"p":33,"w":0.4535},{"p":34,"w":0.4553},{"p":35,"w":0.4432},{"p":36,"w":0.4407},{"p":37,"w":0.4382},{"p":38,"w":0.4553},{"p":39,"w":0.4259},{"p":40,"w":0.4069},{"p":41,"w":0.3763},{"p":42,"w":0.3278},{"p":43,"w":0.3066},{"p":44,"w":0.2874},{"p":45,"w":0.2869},{"p":46,"w":0.289},{"p":47,"w":0.2971},{"p":48,"w":0.2873},{"p":49,"w":0.2821},{"p":50,"w":0.2885},{"p":51,"w":0.2823},{"p":52,"w":0.278},{"p":53,"w":0.2869},{"p":54,"w":0.2886},{"p":55,"w":0.3035},{"p":56,"w":0.4081},{"p":57,"w":0.4192},{"p":58,"w":0.415},{"p":59,"w":0.4106},{"p":60,"w":0.4033},{"p":61,"w":0.4058},{"p":62,"w":0.3938},{"p":63,"w":0.391},{"p":64,"w":0.3905},{"p":65,"w":0.3858},{"p":66,"w":0.3827},{"p":67,"w":0.3865},{"p":68,"w":0.3829},{"p":69,"w":0.3768},{"p":70,"w":0.3777},{"p":71,"w":0.3779},{"p":72,"w":0.3681},{"p":73,"w":0.3766},{"p":74,"w":0.3763},{"p":75,"w":0.3751},{"p":76,"w":0.3865},{"p":77,"w":0.3801},{"p":78,"w":0.3803},{"p":79,"w":0.3775},{"p":80,"w":0.3775},{"p":81,"w":0.3848},{"p":82,"w":0.3843},{"p":83,"w":0.384},{"p":84,"w":0.3806},{"p":85,"w":0.3769},{"p":86,"w":0.3758},{"p":87,"w":0.3743},{"p":88,"w":0.3785},{"p":89,"w":0.3846},{"p":90,"w":0.3889},{"p":91,"w":0.3861},{"p":92,"w":0.3845},{"p":93,"w":0.3828},{"p":94,"w":0.3683},{"p":95,"w":0.3585},{"p":96,"w":0.3256},{"p":97,"w":0.2871},{"p":98,"w":0.2611},{"p":99,"w":0.2249}]},{"videoId":"UC_gGzYa6jk","title":"Backyard Office & Workshop | Full DIY Interior Build (Insulation, Drywall, and Mini-Split)","durationSec":2036,"pub":1735318390000,"views":257321,"r50":0.2054,"avd":496.22817200000003,"wth":35469.42484644778,"outlier":14.21,"curve":[{"p":0,"w":0.9633},{"p":1,"w":0.6517},{"p":2,"w":0.48},{"p":3,"w":0.4127},{"p":4,"w":0.3772},{"p":5,"w":0.3678},{"p":6,"w":0.3459},{"p":7,"w":0.3326},{"p":8,"w":0.3354},{"p":9,"w":0.3216},{"p":10,"w":0.3178},{"p":11,"w":0.2996},{"p":12,"w":0.2931},{"p":13,"w":0.2854},{"p":14,"w":0.2795},{"p":15,"w":0.2725},{"p":16,"w":0.2671},{"p":17,"w":0.263},{"p":18,"w":0.2585},{"p":19,"w":0.2534},{"p":20,"w":0.2561},{"p":21,"w":0.263},{"p":22,"w":0.2604},{"p":23,"w":0.2592},{"p":24,"w":0.25},{"p":25,"w":0.2422},{"p":26,"w":0.2368},{"p":27,"w":0.2418},{"p":28,"w":0.2381},{"p":29,"w":0.236},{"p":30,"w":0.2381},{"p":31,"w":0.2316},{"p":32,"w":0.23},{"p":33,"w":0.2273},{"p":34,"w":0.2249},{"p":35,"w":0.2221},{"p":36,"w":0.2199},{"p":37,"w":0.2258},{"p":38,"w":0.2195},{"p":39,"w":0.2167},{"p":40,"w":0.2134},{"p":41,"w":0.21},{"p":42,"w":0.205},{"p":43,"w":0.2009},{"p":44,"w":0.1986},{"p":45,"w":0.2017},{"p":46,"w":0.2107},{"p":47,"w":0.2075},{"p":48,"w":0.2049},{"p":49,"w":0.2059},{"p":50,"w":0.2054},{"p":51,"w":0.2033},{"p":52,"w":0.2032},{"p":53,"w":0.2048},{"p":54,"w":0.2039},{"p":55,"w":0.2205},{"p":56,"w":0.2106},{"p":57,"w":0.2024},{"p":58,"w":0.1966},{"p":59,"w":0.1964},{"p":60,"w":0.1969},{"p":61,"w":0.1951},{"p":62,"w":0.194},{"p":63,"w":0.1987},{"p":64,"w":0.2033},{"p":65,"w":0.2014},{"p":66,"w":0.2003},{"p":67,"w":0.2006},{"p":68,"w":0.2005},{"p":69,"w":0.1976},{"p":70,"w":0.1959},{"p":71,"w":0.1921},{"p":72,"w":0.1911},{"p":73,"w":0.1952},{"p":74,"w":0.2065},{"p":75,"w":0.211},{"p":76,"w":0.2019},{"p":77,"w":0.1958},{"p":78,"w":0.1873},{"p":79,"w":0.1885},{"p":80,"w":0.1923},{"p":81,"w":0.1913},{"p":82,"w":0.1875},{"p":83,"w":0.1885},{"p":84,"w":0.2052},{"p":85,"w":0.207},{"p":86,"w":0.1969},{"p":87,"w":0.1899},{"p":88,"w":0.1903},{"p":89,"w":0.1908},{"p":90,"w":0.1911},{"p":91,"w":0.1935},{"p":92,"w":0.1929},{"p":93,"w":0.198},{"p":94,"w":0.2082},{"p":95,"w":0.2496},{"p":96,"w":0.2837},{"p":97,"w":0.2745},{"p":98,"w":0.2488},{"p":99,"w":0.2157}]},{"videoId":"2Si2byHw40U","title":"Electrifying Our Backyard Office | DIY Installation","durationSec":1110,"pub":1732892403000,"views":18699,"r50":0.3738,"avd":447.9915599999998,"wth":2326.942827899999,"outlier":0.47,"curve":[{"p":0,"w":0.9676},{"p":1,"w":0.7915},{"p":2,"w":0.6731},{"p":3,"w":0.6213},{"p":4,"w":0.5592},{"p":5,"w":0.5409},{"p":6,"w":0.5222},{"p":7,"w":0.5061},{"p":8,"w":0.4922},{"p":9,"w":0.4847},{"p":10,"w":0.4733},{"p":11,"w":0.4628},{"p":12,"w":0.4593},{"p":13,"w":0.454},{"p":14,"w":0.4426},{"p":15,"w":0.4405},{"p":16,"w":0.4567},{"p":17,"w":0.4561},{"p":18,"w":0.4467},{"p":19,"w":0.4427},{"p":20,"w":0.4411},{"p":21,"w":0.4371},{"p":22,"w":0.4361},{"p":23,"w":0.4312},{"p":24,"w":0.4391},{"p":25,"w":0.4331},{"p":26,"w":0.4257},{"p":27,"w":0.4203},{"p":28,"w":0.4215},{"p":29,"w":0.4148},{"p":30,"w":0.4071},{"p":31,"w":0.4054},{"p":32,"w":0.4046},{"p":33,"w":0.4018},{"p":34,"w":0.4044},{"p":35,"w":0.4022},{"p":36,"w":0.4023},{"p":37,"w":0.3944},{"p":38,"w":0.4025},{"p":39,"w":0.3947},{"p":40,"w":0.3908},{"p":41,"w":0.3884},{"p":42,"w":0.3884},{"p":43,"w":0.3827},{"p":44,"w":0.3787},{"p":45,"w":0.3784},{"p":46,"w":0.3752},{"p":47,"w":0.386},{"p":48,"w":0.3781},{"p":49,"w":0.3759},{"p":50,"w":0.3738},{"p":51,"w":0.3747},{"p":52,"w":0.3742},{"p":53,"w":0.3724},{"p":54,"w":0.37},{"p":55,"w":0.3708},{"p":56,"w":0.3715},{"p":57,"w":0.3683},{"p":58,"w":0.3695},{"p":59,"w":0.3679},{"p":60,"w":0.3646},{"p":61,"w":0.3661},{"p":62,"w":0.3918},{"p":63,"w":0.3783},{"p":64,"w":0.3656},{"p":65,"w":0.3586},{"p":66,"w":0.3582},{"p":67,"w":0.3577},{"p":68,"w":0.3702},{"p":69,"w":0.3663},{"p":70,"w":0.3658},{"p":71,"w":0.3625},{"p":72,"w":0.3589},{"p":73,"w":0.3597},{"p":74,"w":0.3576},{"p":75,"w":0.3568},{"p":76,"w":0.3587},{"p":77,"w":0.3635},{"p":78,"w":0.3531},{"p":79,"w":0.3486},{"p":80,"w":0.3441},{"p":81,"w":0.3404},{"p":82,"w":0.337},{"p":83,"w":0.3323},{"p":84,"w":0.3293},{"p":85,"w":0.3285},{"p":86,"w":0.3294},{"p":87,"w":0.3298},{"p":88,"w":0.3351},{"p":89,"w":0.3361},{"p":90,"w":0.3379},{"p":91,"w":0.3297},{"p":92,"w":0.3246},{"p":93,"w":0.3226},{"p":94,"w":0.3227},{"p":95,"w":0.3247},{"p":96,"w":0.3197},{"p":97,"w":0.319},{"p":98,"w":0.3149},{"p":99,"w":0.2906}]},{"videoId":"2xB8OOCYJhA","title":"Starting our Backyard Office : Structure & Exterior","durationSec":1652,"pub":1730946815000,"views":16918,"r50":0.3809,"avd":674.3480519999999,"wth":3169.061206593333,"outlier":0.42,"curve":[{"p":0,"w":1.0272},{"p":1,"w":0.728},{"p":2,"w":0.6619},{"p":3,"w":0.5948},{"p":4,"w":0.5668},{"p":5,"w":0.5351},{"p":6,"w":0.5165},{"p":7,"w":0.5062},{"p":8,"w":0.4981},{"p":9,"w":0.5007},{"p":10,"w":0.4917},{"p":11,"w":0.4827},{"p":12,"w":0.4748},{"p":13,"w":0.4724},{"p":14,"w":0.4713},{"p":15,"w":0.4851},{"p":16,"w":0.4819},{"p":17,"w":0.4692},{"p":18,"w":0.4615},{"p":19,"w":0.4764},{"p":20,"w":0.4657},{"p":21,"w":0.4545},{"p":22,"w":0.4475},{"p":23,"w":0.4455},{"p":24,"w":0.445},{"p":25,"w":0.4381},{"p":26,"w":0.4353},{"p":27,"w":0.4311},{"p":28,"w":0.4323},{"p":29,"w":0.4284},{"p":30,"w":0.43},{"p":31,"w":0.4213},{"p":32,"w":0.4111},{"p":33,"w":0.4079},{"p":34,"w":0.4191},{"p":35,"w":0.4188},{"p":36,"w":0.4177},{"p":37,"w":0.4183},{"p":38,"w":0.415},{"p":39,"w":0.4181},{"p":40,"w":0.4053},{"p":41,"w":0.3987},{"p":42,"w":0.3924},{"p":43,"w":0.3962},{"p":44,"w":0.3878},{"p":45,"w":0.3849},{"p":46,"w":0.3879},{"p":47,"w":0.3889},{"p":48,"w":0.3865},{"p":49,"w":0.5551},{"p":50,"w":0.3809},{"p":51,"w":0.3744},{"p":52,"w":0.3696},{"p":53,"w":0.3652},{"p":54,"w":0.3621},{"p":55,"w":0.3594},{"p":56,"w":0.3669},{"p":57,"w":0.3669},{"p":58,"w":0.3654},{"p":59,"w":0.3639},{"p":60,"w":0.3609},{"p":61,"w":0.356},{"p":62,"w":0.3579},{"p":63,"w":0.3573},{"p":64,"w":0.3679},{"p":65,"w":0.3647},{"p":66,"w":0.3557},{"p":67,"w":0.3526},{"p":68,"w":0.3508},{"p":69,"w":0.3603},{"p":70,"w":0.352},{"p":71,"w":0.3504},{"p":72,"w":0.348},{"p":73,"w":0.3562},{"p":74,"w":0.3525},{"p":75,"w":0.3446},{"p":76,"w":0.3486},{"p":77,"w":0.3448},{"p":78,"w":0.3436},{"p":79,"w":0.3399},{"p":80,"w":0.3376},{"p":81,"w":0.3328},{"p":82,"w":0.3309},{"p":83,"w":0.3267},{"p":84,"w":0.3246},{"p":85,"w":0.3221},{"p":86,"w":0.3215},{"p":87,"w":0.3251},{"p":88,"w":0.3232},{"p":89,"w":0.3342},{"p":90,"w":0.3293},{"p":91,"w":0.3258},{"p":92,"w":0.3222},{"p":93,"w":0.3226},{"p":94,"w":0.3228},{"p":95,"w":0.3244},{"p":96,"w":0.3334},{"p":97,"w":0.3241},{"p":98,"w":0.3272},{"p":99,"w":0.2835}]}]}</script>
+<script>window.__COHORT__={"videos":[{"videoId":"--Y7vgYxV6g","title":"Fluid Simulations Take Forever… So I Built This.","durationSec":1087,"pub":1787230812000,"views":225124,"r50":0.3284,"avd":400.93342800000005,"wth":25072.14917918667,"outlier":null,"curve":[{"p":0,"w":0.9703},{"p":1,"w":0.8677},{"p":2,"w":0.7203},{"p":3,"w":0.6392},{"p":4,"w":0.5773},{"p":5,"w":0.5603},{"p":6,"w":0.5436},{"p":7,"w":0.5407},{"p":8,"w":0.5166},{"p":9,"w":0.5},{"p":10,"w":0.4849},{"p":11,"w":0.4794},{"p":12,"w":0.4761},{"p":13,"w":0.4614},{"p":14,"w":0.4556},{"p":15,"w":0.4575},{"p":16,"w":0.4437},{"p":17,"w":0.4375},{"p":18,"w":0.4327},{"p":19,"w":0.4296},{"p":20,"w":0.4223},{"p":21,"w":0.4229},{"p":22,"w":0.4185},{"p":23,"w":0.4153},{"p":24,"w":0.4131},{"p":25,"w":0.4092},{"p":26,"w":0.4037},{"p":27,"w":0.3915},{"p":28,"w":0.3929},{"p":29,"w":0.3632},{"p":30,"w":0.2817},{"p":31,"w":0.2186},{"p":32,"w":0.2165},{"p":33,"w":0.2164},{"p":34,"w":0.2241},{"p":35,"w":0.3801},{"p":36,"w":0.3929},{"p":37,"w":0.385},{"p":38,"w":0.3834},{"p":39,"w":0.3829},{"p":40,"w":0.3856},{"p":41,"w":0.3867},{"p":42,"w":0.3934},{"p":43,"w":0.3872},{"p":44,"w":0.3751},{"p":45,"w":0.3422},{"p":46,"w":0.3336},{"p":47,"w":0.3293},{"p":48,"w":0.3279},{"p":49,"w":0.3309},{"p":50,"w":0.3284},{"p":51,"w":0.3231},{"p":52,"w":0.3284},{"p":53,"w":0.3412},{"p":54,"w":0.3419},{"p":55,"w":0.3483},{"p":56,"w":0.3439},{"p":57,"w":0.3297},{"p":58,"w":0.3186},{"p":59,"w":0.3177},{"p":60,"w":0.2963},{"p":61,"w":0.2871},{"p":62,"w":0.2832},{"p":63,"w":0.2788},{"p":64,"w":0.2776},{"p":65,"w":0.2783},{"p":66,"w":0.2758},{"p":67,"w":0.2711},{"p":68,"w":0.2725},{"p":69,"w":0.2734},{"p":70,"w":0.276},{"p":71,"w":0.2921},{"p":72,"w":0.2863},{"p":73,"w":0.2911},{"p":74,"w":0.2948},{"p":75,"w":0.2983},{"p":76,"w":0.2988},{"p":77,"w":0.3025},{"p":78,"w":0.3078},{"p":79,"w":0.3157},{"p":80,"w":0.3197},{"p":81,"w":0.3224},{"p":82,"w":0.3263},{"p":83,"w":0.3184},{"p":84,"w":0.3154},{"p":85,"w":0.3253},{"p":86,"w":0.3312},{"p":87,"w":0.3295},{"p":88,"w":0.3342},{"p":89,"w":0.3274},{"p":90,"w":0.3215},{"p":91,"w":0.3154},{"p":92,"w":0.3164},{"p":93,"w":0.312},{"p":94,"w":0.3149},{"p":95,"w":0.3117},{"p":96,"w":0.3035},{"p":97,"w":0.2685},{"p":98,"w":0.2077},{"p":99,"w":0.1638}]},{"videoId":"GlsoN2wKeiQ","title":"Turning a Concept Computer Case Into The Real Thing - Full Build","durationSec":1972,"pub":1783028526000,"views":415329,"r50":0.2478,"avd":552.045624,"wth":63689.04360286,"outlier":3.27,"curve":[{"p":0,"w":0.929},{"p":1,"w":0.6346},{"p":2,"w":0.4862},{"p":3,"w":0.4232},{"p":4,"w":0.3835},{"p":5,"w":0.3715},{"p":6,"w":0.3731},{"p":7,"w":0.365},{"p":8,"w":0.3614},{"p":9,"w":0.3623},{"p":10,"w":0.3428},{"p":11,"w":0.3269},{"p":12,"w":0.3356},{"p":13,"w":0.3294},{"p":14,"w":0.3248},{"p":15,"w":0.3249},{"p":16,"w":0.3288},{"p":17,"w":0.3117},{"p":18,"w":0.3089},{"p":19,"w":0.3095},{"p":20,"w":0.3074},{"p":21,"w":0.3012},{"p":22,"w":0.2947},{"p":23,"w":0.2887},{"p":24,"w":0.2993},{"p":25,"w":0.298},{"p":26,"w":0.2921},{"p":27,"w":0.2843},{"p":28,"w":0.2774},{"p":29,"w":0.2732},{"p":30,"w":0.2703},{"p":31,"w":0.275},{"p":32,"w":0.2707},{"p":33,"w":0.2822},{"p":34,"w":0.2734},{"p":35,"w":0.269},{"p":36,"w":0.2653},{"p":37,"w":0.2635},{"p":38,"w":0.263},{"p":39,"w":0.2625},{"p":40,"w":0.2621},{"p":41,"w":0.2613},{"p":42,"w":0.2687},{"p":43,"w":0.2647},{"p":44,"w":0.2529},{"p":45,"w":0.2495},{"p":46,"w":0.2458},{"p":47,"w":0.2437},{"p":48,"w":0.2435},{"p":49,"w":0.2542},{"p":50,"w":0.2478},{"p":51,"w":0.2485},{"p":52,"w":0.2496},{"p":53,"w":0.2419},{"p":54,"w":0.2387},{"p":55,"w":0.2365},{"p":56,"w":0.2476},{"p":57,"w":0.2378},{"p":58,"w":0.2358},{"p":59,"w":0.236},{"p":60,"w":0.2367},{"p":61,"w":0.2344},{"p":62,"w":0.2337},{"p":63,"w":0.2322},{"p":64,"w":0.2315},{"p":65,"w":0.2392},{"p":66,"w":0.2354},{"p":67,"w":0.2347},{"p":68,"w":0.238},{"p":69,"w":0.2303},{"p":70,"w":0.238},{"p":71,"w":0.2307},{"p":72,"w":0.2314},{"p":73,"w":0.2309},{"p":74,"w":0.2284},{"p":75,"w":0.2264},{"p":76,"w":0.2255},{"p":77,"w":0.2256},{"p":78,"w":0.2375},{"p":79,"w":0.2382},{"p":80,"w":0.2441},{"p":81,"w":0.2472},{"p":82,"w":0.2457},{"p":83,"w":0.2556},{"p":84,"w":0.2489},{"p":85,"w":0.2471},{"p":86,"w":0.2428},{"p":87,"w":0.2392},{"p":88,"w":0.2338},{"p":89,"w":0.2425},{"p":90,"w":0.259},{"p":91,"w":0.2703},{"p":92,"w":0.259},{"p":93,"w":0.2593},{"p":94,"w":0.2484},{"p":95,"w":0.2456},{"p":96,"w":0.2353},{"p":97,"w":0.218},{"p":98,"w":0.2024},{"p":99,"w":0.1804}]},{"videoId":"A7RZbCvgzz8","title":"What If the PC Case IS the Water Cooling Loop?","durationSec":1521,"pub":1775048400000,"views":420758,"r50":0.3274,"avd":533.101374,"wth":62307.407755969994,"outlier":3.31,"curve":[{"p":0,"w":0.9278},{"p":1,"w":0.7},{"p":2,"w":0.6115},{"p":3,"w":0.5365},{"p":4,"w":0.5284},{"p":5,"w":0.5067},{"p":6,"w":0.4892},{"p":7,"w":0.4822},{"p":8,"w":0.4673},{"p":9,"w":0.4573},{"p":10,"w":0.4572},{"p":11,"w":0.4421},{"p":12,"w":0.4309},{"p":13,"w":0.4308},{"p":14,"w":0.4189},{"p":15,"w":0.4093},{"p":16,"w":0.4079},{"p":17,"w":0.4059},{"p":18,"w":0.4031},{"p":19,"w":0.3959},{"p":20,"w":0.3934},{"p":21,"w":0.3912},{"p":22,"w":0.3768},{"p":23,"w":0.3647},{"p":24,"w":0.3757},{"p":25,"w":0.3644},{"p":26,"w":0.3619},{"p":27,"w":0.3566},{"p":28,"w":0.3541},{"p":29,"w":0.358},{"p":30,"w":0.3523},{"p":31,"w":0.3511},{"p":32,"w":0.3493},{"p":33,"w":0.3493},{"p":34,"w":0.3532},{"p":35,"w":0.2711},{"p":36,"w":0.1879},{"p":37,"w":0.1869},{"p":38,"w":0.2969},{"p":39,"w":0.3352},{"p":40,"w":0.3452},{"p":41,"w":0.3383},{"p":42,"w":0.3344},{"p":43,"w":0.336},{"p":44,"w":0.3369},{"p":45,"w":0.3384},{"p":46,"w":0.3422},{"p":47,"w":0.3347},{"p":48,"w":0.328},{"p":49,"w":0.3252},{"p":50,"w":0.3274},{"p":51,"w":0.3231},{"p":52,"w":0.3271},{"p":53,"w":0.3185},{"p":54,"w":0.3158},{"p":55,"w":0.3128},{"p":56,"w":0.3108},{"p":57,"w":0.3085},{"p":58,"w":0.308},{"p":59,"w":0.3071},{"p":60,"w":0.3093},{"p":61,"w":0.3173},{"p":62,"w":0.3022},{"p":63,"w":0.2994},{"p":64,"w":0.2991},{"p":65,"w":0.2967},{"p":66,"w":0.2933},{"p":67,"w":0.2941},{"p":68,"w":0.2937},{"p":69,"w":0.2922},{"p":70,"w":0.2938},{"p":71,"w":0.2974},{"p":72,"w":0.2943},{"p":73,"w":0.2955},{"p":74,"w":0.3048},{"p":75,"w":0.2993},{"p":76,"w":0.2933},{"p":77,"w":0.2951},{"p":78,"w":0.2864},{"p":79,"w":0.2814},{"p":80,"w":0.2814},{"p":81,"w":0.2962},{"p":82,"w":0.2999},{"p":83,"w":0.2964},{"p":84,"w":0.2962},{"p":85,"w":0.294},{"p":86,"w":0.2982},{"p":87,"w":0.2997},{"p":88,"w":0.3023},{"p":89,"w":0.3143},{"p":90,"w":0.3435},{"p":91,"w":0.3396},{"p":92,"w":0.3471},{"p":93,"w":0.3451},{"p":94,"w":0.3258},{"p":95,"w":0.3039},{"p":96,"w":0.2888},{"p":97,"w":0.2664},{"p":98,"w":0.2385},{"p":99,"w":0.1762}]},{"videoId":"LZRjqpvWzGo","title":"I Fixed The Biggest Problem with 3D Printed Water Cooling","durationSec":1072,"pub":1765544448000,"views":436255,"r50":0.3131,"avd":379.1181599999998,"wth":45942.275802999975,"outlier":3.43,"curve":[{"p":0,"w":0.9522},{"p":1,"w":0.8554},{"p":2,"w":0.6965},{"p":3,"w":0.6613},{"p":4,"w":0.5902},{"p":5,"w":0.5768},{"p":6,"w":0.519},{"p":7,"w":0.5069},{"p":8,"w":0.4868},{"p":9,"w":0.474},{"p":10,"w":0.4651},{"p":11,"w":0.4621},{"p":12,"w":0.4605},{"p":13,"w":0.4535},{"p":14,"w":0.4474},{"p":15,"w":0.4462},{"p":16,"w":0.4385},{"p":17,"w":0.4344},{"p":18,"w":0.4271},{"p":19,"w":0.4211},{"p":20,"w":0.4154},{"p":21,"w":0.4142},{"p":22,"w":0.4198},{"p":23,"w":0.4036},{"p":24,"w":0.3888},{"p":25,"w":0.3759},{"p":26,"w":0.3725},{"p":27,"w":0.3711},{"p":28,"w":0.3764},{"p":29,"w":0.3746},{"p":30,"w":0.37},{"p":31,"w":0.3665},{"p":32,"w":0.3631},{"p":33,"w":0.3594},{"p":34,"w":0.3572},{"p":35,"w":0.3567},{"p":36,"w":0.3586},{"p":37,"w":0.3532},{"p":38,"w":0.3465},{"p":39,"w":0.3424},{"p":40,"w":0.3353},{"p":41,"w":0.3311},{"p":42,"w":0.3202},{"p":43,"w":0.23},{"p":44,"w":0.2046},{"p":45,"w":0.1973},{"p":46,"w":0.1902},{"p":47,"w":0.1886},{"p":48,"w":0.2778},{"p":49,"w":0.3075},{"p":50,"w":0.3131},{"p":51,"w":0.3145},{"p":52,"w":0.3097},{"p":53,"w":0.3075},{"p":54,"w":0.2971},{"p":55,"w":0.2953},{"p":56,"w":0.2956},{"p":57,"w":0.2972},{"p":58,"w":0.2978},{"p":59,"w":0.2974},{"p":60,"w":0.295},{"p":61,"w":0.2975},{"p":62,"w":0.2967},{"p":63,"w":0.2978},{"p":64,"w":0.298},{"p":65,"w":0.2936},{"p":66,"w":0.2921},{"p":67,"w":0.2903},{"p":68,"w":0.2898},{"p":69,"w":0.2924},{"p":70,"w":0.2871},{"p":71,"w":0.2841},{"p":72,"w":0.2797},{"p":73,"w":0.2775},{"p":74,"w":0.2756},{"p":75,"w":0.2766},{"p":76,"w":0.2774},{"p":77,"w":0.2776},{"p":78,"w":0.2853},{"p":79,"w":0.2841},{"p":80,"w":0.2798},{"p":81,"w":0.2803},{"p":82,"w":0.2821},{"p":83,"w":0.2832},{"p":84,"w":0.2858},{"p":85,"w":0.2881},{"p":86,"w":0.2872},{"p":87,"w":0.292},{"p":88,"w":0.2895},{"p":89,"w":0.2872},{"p":90,"w":0.2867},{"p":91,"w":0.2865},{"p":92,"w":0.2937},{"p":93,"w":0.2979},{"p":94,"w":0.3023},{"p":95,"w":0.3065},{"p":96,"w":0.3083},{"p":97,"w":0.3114},{"p":98,"w":0.2818},{"p":99,"w":0.2183}]},{"videoId":"jUUyRNADVA4","title":"A Custom PC Worth Hanging on The Wall","durationSec":1826,"pub":1761905379000,"views":428470,"r50":0.2838,"avd":590.6580459999998,"wth":70299.79249156108,"outlier":3.37,"curve":[{"p":0,"w":0.9475},{"p":1,"w":0.6608},{"p":2,"w":0.5553},{"p":3,"w":0.5052},{"p":4,"w":0.4729},{"p":5,"w":0.4496},{"p":6,"w":0.4419},{"p":7,"w":0.4279},{"p":8,"w":0.4175},{"p":9,"w":0.4099},{"p":10,"w":0.4093},{"p":11,"w":0.3934},{"p":12,"w":0.399},{"p":13,"w":0.3798},{"p":14,"w":0.3757},{"p":15,"w":0.3705},{"p":16,"w":0.3654},{"p":17,"w":0.3627},{"p":18,"w":0.3567},{"p":19,"w":0.3544},{"p":20,"w":0.352},{"p":21,"w":0.3478},{"p":22,"w":0.3498},{"p":23,"w":0.3473},{"p":24,"w":0.3526},{"p":25,"w":0.3392},{"p":26,"w":0.3299},{"p":27,"w":0.325},{"p":28,"w":0.3305},{"p":29,"w":0.3252},{"p":30,"w":0.3201},{"p":31,"w":0.3139},{"p":32,"w":0.3149},{"p":33,"w":0.3067},{"p":34,"w":0.3033},{"p":35,"w":0.3136},{"p":36,"w":0.3041},{"p":37,"w":0.3014},{"p":38,"w":0.2955},{"p":39,"w":0.2948},{"p":40,"w":0.2966},{"p":41,"w":0.2903},{"p":42,"w":0.2863},{"p":43,"w":0.2848},{"p":44,"w":0.2838},{"p":45,"w":0.2836},{"p":46,"w":0.2826},{"p":47,"w":0.2829},{"p":48,"w":0.2911},{"p":49,"w":0.2965},{"p":50,"w":0.2838},{"p":51,"w":0.2783},{"p":52,"w":0.2764},{"p":53,"w":0.2749},{"p":54,"w":0.274},{"p":55,"w":0.2751},{"p":56,"w":0.2692},{"p":57,"w":0.2721},{"p":58,"w":0.272},{"p":59,"w":0.272},{"p":60,"w":0.2713},{"p":61,"w":0.277},{"p":62,"w":0.2721},{"p":63,"w":0.2716},{"p":64,"w":0.2731},{"p":65,"w":0.2712},{"p":66,"w":0.271},{"p":67,"w":0.2668},{"p":68,"w":0.2657},{"p":69,"w":0.2666},{"p":70,"w":0.2667},{"p":71,"w":0.2732},{"p":72,"w":0.2731},{"p":73,"w":0.2751},{"p":74,"w":0.2769},{"p":75,"w":0.2787},{"p":76,"w":0.2842},{"p":77,"w":0.2848},{"p":78,"w":0.2849},{"p":79,"w":0.2839},{"p":80,"w":0.2793},{"p":81,"w":0.2854},{"p":82,"w":0.285},{"p":83,"w":0.2896},{"p":84,"w":0.2858},{"p":85,"w":0.2821},{"p":86,"w":0.2742},{"p":87,"w":0.2693},{"p":88,"w":0.2679},{"p":89,"w":0.2995},{"p":90,"w":0.304},{"p":91,"w":0.3002},{"p":92,"w":0.3172},{"p":93,"w":0.3243},{"p":94,"w":0.3155},{"p":95,"w":0.3012},{"p":96,"w":0.281},{"p":97,"w":0.2625},{"p":98,"w":0.2521},{"p":99,"w":0.2338}]},{"videoId":"gafJ8Y43bOE","title":"I Built a Coffee Table with a 3D Canyon Inside","durationSec":878,"pub":1752062481000,"views":5934,"r50":0.3793,"avd":379.01416200000006,"wth":624.7416770300001,"outlier":0.04,"curve":[{"p":0,"w":0.98},{"p":1,"w":0.8058},{"p":2,"w":0.7262},{"p":3,"w":0.6678},{"p":4,"w":0.6029},{"p":5,"w":0.5599},{"p":6,"w":0.5401},{"p":7,"w":0.5425},{"p":8,"w":0.5203},{"p":9,"w":0.5108},{"p":10,"w":0.4973},{"p":11,"w":0.4856},{"p":12,"w":0.4881},{"p":13,"w":0.4819},{"p":14,"w":0.4759},{"p":15,"w":0.4716},{"p":16,"w":0.4618},{"p":17,"w":0.4632},{"p":18,"w":0.4539},{"p":19,"w":0.4518},{"p":20,"w":0.45},{"p":21,"w":0.445},{"p":22,"w":0.4396},{"p":23,"w":0.431},{"p":24,"w":0.4285},{"p":25,"w":0.4225},{"p":26,"w":0.4211},{"p":27,"w":0.4345},{"p":28,"w":0.4208},{"p":29,"w":0.4144},{"p":30,"w":0.4111},{"p":31,"w":0.4088},{"p":32,"w":0.4037},{"p":33,"w":0.4039},{"p":34,"w":0.4009},{"p":35,"w":0.4018},{"p":36,"w":0.3958},{"p":37,"w":0.3969},{"p":38,"w":0.4004},{"p":39,"w":0.4003},{"p":40,"w":0.3988},{"p":41,"w":0.3915},{"p":42,"w":0.3884},{"p":43,"w":0.386},{"p":44,"w":0.4015},{"p":45,"w":0.3977},{"p":46,"w":0.3863},{"p":47,"w":0.3845},{"p":48,"w":0.3837},{"p":49,"w":0.3836},{"p":50,"w":0.3793},{"p":51,"w":0.3724},{"p":52,"w":0.3718},{"p":53,"w":0.3701},{"p":54,"w":0.3703},{"p":55,"w":0.3659},{"p":56,"w":0.3646},{"p":57,"w":0.3687},{"p":58,"w":0.3699},{"p":59,"w":0.3709},{"p":60,"w":0.3747},{"p":61,"w":0.3755},{"p":62,"w":0.3829},{"p":63,"w":0.3994},{"p":64,"w":0.3918},{"p":65,"w":0.3765},{"p":66,"w":0.3781},{"p":67,"w":0.3722},{"p":68,"w":0.3649},{"p":69,"w":0.3679},{"p":70,"w":0.367},{"p":71,"w":0.3637},{"p":72,"w":0.3624},{"p":73,"w":0.3657},{"p":74,"w":0.366},{"p":75,"w":0.363},{"p":76,"w":0.3805},{"p":77,"w":0.3791},{"p":78,"w":0.3772},{"p":79,"w":0.3805},{"p":80,"w":0.4036},{"p":81,"w":0.4031},{"p":82,"w":0.4047},{"p":83,"w":0.4095},{"p":84,"w":0.4099},{"p":85,"w":0.3973},{"p":86,"w":0.4069},{"p":87,"w":0.4174},{"p":88,"w":0.4188},{"p":89,"w":0.4177},{"p":90,"w":0.412},{"p":91,"w":0.4105},{"p":92,"w":0.4148},{"p":93,"w":0.4286},{"p":94,"w":0.4452},{"p":95,"w":0.4561},{"p":96,"w":0.4945},{"p":97,"w":0.4964},{"p":98,"w":0.4792},{"p":99,"w":0.4284}]},{"videoId":"F15FolOyu5E","title":"My Laser Cutter Upgrade | A Virtual Tour Inside the Machines","durationSec":802,"pub":1747476021000,"views":8365,"r50":0.4023,"avd":323.91496799999993,"wth":752.6524186999999,"outlier":0.1,"curve":[{"p":0,"w":0.9829},{"p":1,"w":0.87},{"p":2,"w":0.7545},{"p":3,"w":0.6758},{"p":4,"w":0.6279},{"p":5,"w":0.5593},{"p":6,"w":0.5237},{"p":7,"w":0.5064},{"p":8,"w":0.4976},{"p":9,"w":0.4965},{"p":10,"w":0.4846},{"p":11,"w":0.4748},{"p":12,"w":0.4636},{"p":13,"w":0.4545},{"p":14,"w":0.4496},{"p":15,"w":0.4426},{"p":16,"w":0.4456},{"p":17,"w":0.4409},{"p":18,"w":0.4247},{"p":19,"w":0.4189},{"p":20,"w":0.4105},{"p":21,"w":0.4059},{"p":22,"w":0.4093},{"p":23,"w":0.3977},{"p":24,"w":0.4027},{"p":25,"w":0.4},{"p":26,"w":0.4004},{"p":27,"w":0.3994},{"p":28,"w":0.3946},{"p":29,"w":0.3936},{"p":30,"w":0.3882},{"p":31,"w":0.3916},{"p":32,"w":0.3863},{"p":33,"w":0.3836},{"p":34,"w":0.3882},{"p":35,"w":0.3844},{"p":36,"w":0.3764},{"p":37,"w":0.3759},{"p":38,"w":0.3686},{"p":39,"w":0.3677},{"p":40,"w":0.3991},{"p":41,"w":0.3974},{"p":42,"w":0.3856},{"p":43,"w":0.3816},{"p":44,"w":0.3781},{"p":45,"w":0.3784},{"p":46,"w":0.376},{"p":47,"w":0.3803},{"p":48,"w":0.3818},{"p":49,"w":0.3794},{"p":50,"w":0.4023},{"p":51,"w":0.3976},{"p":52,"w":0.39},{"p":53,"w":0.3973},{"p":54,"w":0.3981},{"p":55,"w":0.3948},{"p":56,"w":0.3925},{"p":57,"w":0.3952},{"p":58,"w":0.3878},{"p":59,"w":0.3784},{"p":60,"w":0.3738},{"p":61,"w":0.3657},{"p":62,"w":0.3684},{"p":63,"w":0.3689},{"p":64,"w":0.366},{"p":65,"w":0.365},{"p":66,"w":0.3646},{"p":67,"w":0.3663},{"p":68,"w":0.3742},{"p":69,"w":0.3686},{"p":70,"w":0.3606},{"p":71,"w":0.359},{"p":72,"w":0.3604},{"p":73,"w":0.3636},{"p":74,"w":0.3606},{"p":75,"w":0.3617},{"p":76,"w":0.3579},{"p":77,"w":0.3532},{"p":78,"w":0.3514},{"p":79,"w":0.3532},{"p":80,"w":0.3514},{"p":81,"w":0.3484},{"p":82,"w":0.3462},{"p":83,"w":0.3467},{"p":84,"w":0.3506},{"p":85,"w":0.3439},{"p":86,"w":0.3416},{"p":87,"w":0.3437},{"p":88,"w":0.3459},{"p":89,"w":0.345},{"p":90,"w":0.3474},{"p":91,"w":0.3432},{"p":92,"w":0.3631},{"p":93,"w":0.366},{"p":94,"w":0.355},{"p":95,"w":0.3333},{"p":96,"w":0.2969},{"p":97,"w":0.2472},{"p":98,"w":0.2236},{"p":99,"w":0.1951}]},{"videoId":"Dl-nDMVcje4","title":"170 Hours of 3D Printing For This","durationSec":979,"pub":1744455626000,"views":17515,"r50":0.319,"avd":355.060783,"wth":1727.469337290278,"outlier":0.43,"curve":[{"p":0,"w":0.944},{"p":1,"w":0.8469},{"p":2,"w":0.6866},{"p":3,"w":0.5839},{"p":4,"w":0.5169},{"p":5,"w":0.4764},{"p":6,"w":0.4599},{"p":7,"w":0.4497},{"p":8,"w":0.4438},{"p":9,"w":0.4395},{"p":10,"w":0.4337},{"p":11,"w":0.4248},{"p":12,"w":0.4175},{"p":13,"w":0.4047},{"p":14,"w":0.3989},{"p":15,"w":0.3952},{"p":16,"w":0.3955},{"p":17,"w":0.3923},{"p":18,"w":0.3897},{"p":19,"w":0.3834},{"p":20,"w":0.3788},{"p":21,"w":0.3852},{"p":22,"w":0.3889},{"p":23,"w":0.3885},{"p":24,"w":0.384},{"p":25,"w":0.3725},{"p":26,"w":0.3679},{"p":27,"w":0.3626},{"p":28,"w":0.3588},{"p":29,"w":0.3551},{"p":30,"w":0.3461},{"p":31,"w":0.3453},{"p":32,"w":0.344},{"p":33,"w":0.3375},{"p":34,"w":0.34},{"p":35,"w":0.3417},{"p":36,"w":0.3444},{"p":37,"w":0.3489},{"p":38,"w":0.3441},{"p":39,"w":0.3485},{"p":40,"w":0.3579},{"p":41,"w":0.3483},{"p":42,"w":0.3487},{"p":43,"w":0.3488},{"p":44,"w":0.3404},{"p":45,"w":0.3398},{"p":46,"w":0.3512},{"p":47,"w":0.3455},{"p":48,"w":0.337},{"p":49,"w":0.3333},{"p":50,"w":0.319},{"p":51,"w":0.3195},{"p":52,"w":0.3304},{"p":53,"w":0.3278},{"p":54,"w":0.3331},{"p":55,"w":0.3162},{"p":56,"w":0.3105},{"p":57,"w":0.309},{"p":58,"w":0.3057},{"p":59,"w":0.3167},{"p":60,"w":0.3127},{"p":61,"w":0.3169},{"p":62,"w":0.3172},{"p":63,"w":0.3169},{"p":64,"w":0.3163},{"p":65,"w":0.3151},{"p":66,"w":0.3152},{"p":67,"w":0.3177},{"p":68,"w":0.3155},{"p":69,"w":0.3187},{"p":70,"w":0.3223},{"p":71,"w":0.3232},{"p":72,"w":0.3206},{"p":73,"w":0.3135},{"p":74,"w":0.3144},{"p":75,"w":0.3197},{"p":76,"w":0.3151},{"p":77,"w":0.3083},{"p":78,"w":0.3061},{"p":79,"w":0.3034},{"p":80,"w":0.3043},{"p":81,"w":0.3032},{"p":82,"w":0.3006},{"p":83,"w":0.3086},{"p":84,"w":0.3096},{"p":85,"w":0.3181},{"p":86,"w":0.3226},{"p":87,"w":0.3129},{"p":88,"w":0.3103},{"p":89,"w":0.3078},{"p":90,"w":0.311},{"p":91,"w":0.3428},{"p":92,"w":0.3609},{"p":93,"w":0.3574},{"p":94,"w":0.3497},{"p":95,"w":0.3463},{"p":96,"w":0.3199},{"p":97,"w":0.2921},{"p":98,"w":0.2601},{"p":99,"w":0.2158}]},{"videoId":"3QHKAJNC8f0","title":"Building My Own Personal Makerspace","durationSec":1076,"pub":1742131612000,"views":62584,"r50":0.3536,"avd":424.5196600000001,"wth":7380.038444844446,"outlier":3.46,"curve":[{"p":0,"w":0.9724},{"p":1,"w":0.8148},{"p":2,"w":0.6842},{"p":3,"w":0.6437},{"p":4,"w":0.5832},{"p":5,"w":0.5569},{"p":6,"w":0.5482},{"p":7,"w":0.5437},{"p":8,"w":0.5299},{"p":9,"w":0.5269},{"p":10,"w":0.5112},{"p":11,"w":0.4687},{"p":12,"w":0.4563},{"p":13,"w":0.4463},{"p":14,"w":0.4388},{"p":15,"w":0.4344},{"p":16,"w":0.4324},{"p":17,"w":0.4299},{"p":18,"w":0.4257},{"p":19,"w":0.42},{"p":20,"w":0.4271},{"p":21,"w":0.4272},{"p":22,"w":0.4246},{"p":23,"w":0.4219},{"p":24,"w":0.4202},{"p":25,"w":0.4157},{"p":26,"w":0.4106},{"p":27,"w":0.4206},{"p":28,"w":0.4167},{"p":29,"w":0.4081},{"p":30,"w":0.4081},{"p":31,"w":0.4037},{"p":32,"w":0.3938},{"p":33,"w":0.388},{"p":34,"w":0.3764},{"p":35,"w":0.3738},{"p":36,"w":0.3734},{"p":37,"w":0.3727},{"p":38,"w":0.3748},{"p":39,"w":0.3753},{"p":40,"w":0.3713},{"p":41,"w":0.3681},{"p":42,"w":0.3693},{"p":43,"w":0.3653},{"p":44,"w":0.3613},{"p":45,"w":0.3667},{"p":46,"w":0.3652},{"p":47,"w":0.3724},{"p":48,"w":0.3634},{"p":49,"w":0.3646},{"p":50,"w":0.3536},{"p":51,"w":0.3468},{"p":52,"w":0.341},{"p":53,"w":0.3426},{"p":54,"w":0.3409},{"p":55,"w":0.3525},{"p":56,"w":0.354},{"p":57,"w":0.3511},{"p":58,"w":0.3433},{"p":59,"w":0.3438},{"p":60,"w":0.3464},{"p":61,"w":0.3441},{"p":62,"w":0.3434},{"p":63,"w":0.3428},{"p":64,"w":0.3474},{"p":65,"w":0.3465},{"p":66,"w":0.356},{"p":67,"w":0.3458},{"p":68,"w":0.3406},{"p":69,"w":0.3386},{"p":70,"w":0.3334},{"p":71,"w":0.3293},{"p":72,"w":0.3287},{"p":73,"w":0.3301},{"p":74,"w":0.3314},{"p":75,"w":0.3318},{"p":76,"w":0.3309},{"p":77,"w":0.3302},{"p":78,"w":0.3324},{"p":79,"w":0.3315},{"p":80,"w":0.3488},{"p":81,"w":0.3422},{"p":82,"w":0.3355},{"p":83,"w":0.3144},{"p":84,"w":0.3127},{"p":85,"w":0.3144},{"p":86,"w":0.3073},{"p":87,"w":0.3196},{"p":88,"w":0.3235},{"p":89,"w":0.3235},{"p":90,"w":0.3265},{"p":91,"w":0.3294},{"p":92,"w":0.3282},{"p":93,"w":0.3499},{"p":94,"w":0.3626},{"p":95,"w":0.3622},{"p":96,"w":0.3578},{"p":97,"w":0.342},{"p":98,"w":0.333},{"p":99,"w":0.3212}]},{"videoId":"wkpyIQr2dAo","title":"How Air Conditioners & Heat Pumps Work | Installing a Mini Split in Our Office","durationSec":951,"pub":1740744087000,"views":191615,"r50":0.1842,"avd":250.0207530000001,"wth":13307.70182947084,"outlier":10.58,"curve":[{"p":0,"w":0.98},{"p":1,"w":0.879},{"p":2,"w":0.732},{"p":3,"w":0.6165},{"p":4,"w":0.5338},{"p":5,"w":0.4989},{"p":6,"w":0.4809},{"p":7,"w":0.466},{"p":8,"w":0.454},{"p":9,"w":0.4442},{"p":10,"w":0.436},{"p":11,"w":0.4317},{"p":12,"w":0.426},{"p":13,"w":0.4128},{"p":14,"w":0.402},{"p":15,"w":0.3951},{"p":16,"w":0.3855},{"p":17,"w":0.375},{"p":18,"w":0.3682},{"p":19,"w":0.3778},{"p":20,"w":0.3681},{"p":21,"w":0.3528},{"p":22,"w":0.342},{"p":23,"w":0.3387},{"p":24,"w":0.3253},{"p":25,"w":0.3172},{"p":26,"w":0.318},{"p":27,"w":0.315},{"p":28,"w":0.309},{"p":29,"w":0.3018},{"p":30,"w":0.2909},{"p":31,"w":0.2889},{"p":32,"w":0.2866},{"p":33,"w":0.2742},{"p":34,"w":0.2702},{"p":35,"w":0.2662},{"p":36,"w":0.2638},{"p":37,"w":0.2556},{"p":38,"w":0.2534},{"p":39,"w":0.2562},{"p":40,"w":0.2465},{"p":41,"w":0.2317},{"p":42,"w":0.2226},{"p":43,"w":0.2152},{"p":44,"w":0.2106},{"p":45,"w":0.2081},{"p":46,"w":0.2076},{"p":47,"w":0.198},{"p":48,"w":0.1934},{"p":49,"w":0.1887},{"p":50,"w":0.1842},{"p":51,"w":0.1811},{"p":52,"w":0.1795},{"p":53,"w":0.1792},{"p":54,"w":0.1917},{"p":55,"w":0.1943},{"p":56,"w":0.1951},{"p":57,"w":0.1936},{"p":58,"w":0.1933},{"p":59,"w":0.1908},{"p":60,"w":0.1888},{"p":61,"w":0.1866},{"p":62,"w":0.1876},{"p":63,"w":0.1857},{"p":64,"w":0.188},{"p":65,"w":0.1868},{"p":66,"w":0.1819},{"p":67,"w":0.1807},{"p":68,"w":0.178},{"p":69,"w":0.1779},{"p":70,"w":0.1763},{"p":71,"w":0.1814},{"p":72,"w":0.181},{"p":73,"w":0.1766},{"p":74,"w":0.1684},{"p":75,"w":0.1697},{"p":76,"w":0.1616},{"p":77,"w":0.1563},{"p":78,"w":0.1536},{"p":79,"w":0.1519},{"p":80,"w":0.1523},{"p":81,"w":0.1524},{"p":82,"w":0.15},{"p":83,"w":0.147},{"p":84,"w":0.1442},{"p":85,"w":0.1407},{"p":86,"w":0.1438},{"p":87,"w":0.1382},{"p":88,"w":0.134},{"p":89,"w":0.1326},{"p":90,"w":0.132},{"p":91,"w":0.1318},{"p":92,"w":0.131},{"p":93,"w":0.1298},{"p":94,"w":0.1279},{"p":95,"w":0.1275},{"p":96,"w":0.1261},{"p":97,"w":0.1256},{"p":98,"w":0.1143},{"p":99,"w":0.0958}]},{"videoId":"phR7D5avqUg","title":"Expanding Our Home Network to the New Backyard Office","durationSec":708,"pub":1738071832000,"views":105022,"r50":0.2885,"avd":302.29759199999984,"wth":8818.860474173329,"outlier":5.8,"curve":[{"p":0,"w":0.9628},{"p":1,"w":0.8518},{"p":2,"w":0.7412},{"p":3,"w":0.6675},{"p":4,"w":0.616},{"p":5,"w":0.6066},{"p":6,"w":0.5986},{"p":7,"w":0.5896},{"p":8,"w":0.5819},{"p":9,"w":0.5765},{"p":10,"w":0.565},{"p":11,"w":0.5609},{"p":12,"w":0.5457},{"p":13,"w":0.528},{"p":14,"w":0.5148},{"p":15,"w":0.5103},{"p":16,"w":0.518},{"p":17,"w":0.4977},{"p":18,"w":0.4935},{"p":19,"w":0.5007},{"p":20,"w":0.4929},{"p":21,"w":0.4896},{"p":22,"w":0.4864},{"p":23,"w":0.4877},{"p":24,"w":0.4942},{"p":25,"w":0.4728},{"p":26,"w":0.4755},{"p":27,"w":0.4732},{"p":28,"w":0.4652},{"p":29,"w":0.468},{"p":30,"w":0.4667},{"p":31,"w":0.4573},{"p":32,"w":0.4563},{"p":33,"w":0.4535},{"p":34,"w":0.4553},{"p":35,"w":0.4432},{"p":36,"w":0.4407},{"p":37,"w":0.4382},{"p":38,"w":0.4553},{"p":39,"w":0.4259},{"p":40,"w":0.4069},{"p":41,"w":0.3763},{"p":42,"w":0.3278},{"p":43,"w":0.3066},{"p":44,"w":0.2874},{"p":45,"w":0.2869},{"p":46,"w":0.289},{"p":47,"w":0.2971},{"p":48,"w":0.2873},{"p":49,"w":0.2821},{"p":50,"w":0.2885},{"p":51,"w":0.2823},{"p":52,"w":0.278},{"p":53,"w":0.2869},{"p":54,"w":0.2886},{"p":55,"w":0.3035},{"p":56,"w":0.4081},{"p":57,"w":0.4192},{"p":58,"w":0.415},{"p":59,"w":0.4106},{"p":60,"w":0.4033},{"p":61,"w":0.4058},{"p":62,"w":0.3938},{"p":63,"w":0.391},{"p":64,"w":0.3905},{"p":65,"w":0.3858},{"p":66,"w":0.3827},{"p":67,"w":0.3865},{"p":68,"w":0.3829},{"p":69,"w":0.3768},{"p":70,"w":0.3777},{"p":71,"w":0.3779},{"p":72,"w":0.3681},{"p":73,"w":0.3766},{"p":74,"w":0.3763},{"p":75,"w":0.3751},{"p":76,"w":0.3865},{"p":77,"w":0.3801},{"p":78,"w":0.3803},{"p":79,"w":0.3775},{"p":80,"w":0.3775},{"p":81,"w":0.3848},{"p":82,"w":0.3843},{"p":83,"w":0.384},{"p":84,"w":0.3806},{"p":85,"w":0.3769},{"p":86,"w":0.3758},{"p":87,"w":0.3743},{"p":88,"w":0.3785},{"p":89,"w":0.3846},{"p":90,"w":0.3889},{"p":91,"w":0.3861},{"p":92,"w":0.3845},{"p":93,"w":0.3828},{"p":94,"w":0.3683},{"p":95,"w":0.3585},{"p":96,"w":0.3256},{"p":97,"w":0.2871},{"p":98,"w":0.2611},{"p":99,"w":0.2249}]},{"videoId":"UC_gGzYa6jk","title":"Backyard Office & Workshop | Full DIY Interior Build (Insulation, Drywall, and Mini-Split)","durationSec":2036,"pub":1735318390000,"views":257321,"r50":0.2054,"avd":496.22817200000003,"wth":35469.42484644778,"outlier":14.21,"curve":[{"p":0,"w":0.9633},{"p":1,"w":0.6517},{"p":2,"w":0.48},{"p":3,"w":0.4127},{"p":4,"w":0.3772},{"p":5,"w":0.3678},{"p":6,"w":0.3459},{"p":7,"w":0.3326},{"p":8,"w":0.3354},{"p":9,"w":0.3216},{"p":10,"w":0.3178},{"p":11,"w":0.2996},{"p":12,"w":0.2931},{"p":13,"w":0.2854},{"p":14,"w":0.2795},{"p":15,"w":0.2725},{"p":16,"w":0.2671},{"p":17,"w":0.263},{"p":18,"w":0.2585},{"p":19,"w":0.2534},{"p":20,"w":0.2561},{"p":21,"w":0.263},{"p":22,"w":0.2604},{"p":23,"w":0.2592},{"p":24,"w":0.25},{"p":25,"w":0.2422},{"p":26,"w":0.2368},{"p":27,"w":0.2418},{"p":28,"w":0.2381},{"p":29,"w":0.236},{"p":30,"w":0.2381},{"p":31,"w":0.2316},{"p":32,"w":0.23},{"p":33,"w":0.2273},{"p":34,"w":0.2249},{"p":35,"w":0.2221},{"p":36,"w":0.2199},{"p":37,"w":0.2258},{"p":38,"w":0.2195},{"p":39,"w":0.2167},{"p":40,"w":0.2134},{"p":41,"w":0.21},{"p":42,"w":0.205},{"p":43,"w":0.2009},{"p":44,"w":0.1986},{"p":45,"w":0.2017},{"p":46,"w":0.2107},{"p":47,"w":0.2075},{"p":48,"w":0.2049},{"p":49,"w":0.2059},{"p":50,"w":0.2054},{"p":51,"w":0.2033},{"p":52,"w":0.2032},{"p":53,"w":0.2048},{"p":54,"w":0.2039},{"p":55,"w":0.2205},{"p":56,"w":0.2106},{"p":57,"w":0.2024},{"p":58,"w":0.1966},{"p":59,"w":0.1964},{"p":60,"w":0.1969},{"p":61,"w":0.1951},{"p":62,"w":0.194},{"p":63,"w":0.1987},{"p":64,"w":0.2033},{"p":65,"w":0.2014},{"p":66,"w":0.2003},{"p":67,"w":0.2006},{"p":68,"w":0.2005},{"p":69,"w":0.1976},{"p":70,"w":0.1959},{"p":71,"w":0.1921},{"p":72,"w":0.1911},{"p":73,"w":0.1952},{"p":74,"w":0.2065},{"p":75,"w":0.211},{"p":76,"w":0.2019},{"p":77,"w":0.1958},{"p":78,"w":0.1873},{"p":79,"w":0.1885},{"p":80,"w":0.1923},{"p":81,"w":0.1913},{"p":82,"w":0.1875},{"p":83,"w":0.1885},{"p":84,"w":0.2052},{"p":85,"w":0.207},{"p":86,"w":0.1969},{"p":87,"w":0.1899},{"p":88,"w":0.1903},{"p":89,"w":0.1908},{"p":90,"w":0.1911},{"p":91,"w":0.1935},{"p":92,"w":0.1929},{"p":93,"w":0.198},{"p":94,"w":0.2082},{"p":95,"w":0.2496},{"p":96,"w":0.2837},{"p":97,"w":0.2745},{"p":98,"w":0.2488},{"p":99,"w":0.2157}]},{"videoId":"2Si2byHw40U","title":"Electrifying Our Backyard Office | DIY Installation","durationSec":1110,"pub":1732892403000,"views":18699,"r50":0.3738,"avd":447.9915599999998,"wth":2326.942827899999,"outlier":0.47,"curve":[{"p":0,"w":0.9676},{"p":1,"w":0.7915},{"p":2,"w":0.6731},{"p":3,"w":0.6213},{"p":4,"w":0.5592},{"p":5,"w":0.5409},{"p":6,"w":0.5222},{"p":7,"w":0.5061},{"p":8,"w":0.4922},{"p":9,"w":0.4847},{"p":10,"w":0.4733},{"p":11,"w":0.4628},{"p":12,"w":0.4593},{"p":13,"w":0.454},{"p":14,"w":0.4426},{"p":15,"w":0.4405},{"p":16,"w":0.4567},{"p":17,"w":0.4561},{"p":18,"w":0.4467},{"p":19,"w":0.4427},{"p":20,"w":0.4411},{"p":21,"w":0.4371},{"p":22,"w":0.4361},{"p":23,"w":0.4312},{"p":24,"w":0.4391},{"p":25,"w":0.4331},{"p":26,"w":0.4257},{"p":27,"w":0.4203},{"p":28,"w":0.4215},{"p":29,"w":0.4148},{"p":30,"w":0.4071},{"p":31,"w":0.4054},{"p":32,"w":0.4046},{"p":33,"w":0.4018},{"p":34,"w":0.4044},{"p":35,"w":0.4022},{"p":36,"w":0.4023},{"p":37,"w":0.3944},{"p":38,"w":0.4025},{"p":39,"w":0.3947},{"p":40,"w":0.3908},{"p":41,"w":0.3884},{"p":42,"w":0.3884},{"p":43,"w":0.3827},{"p":44,"w":0.3787},{"p":45,"w":0.3784},{"p":46,"w":0.3752},{"p":47,"w":0.386},{"p":48,"w":0.3781},{"p":49,"w":0.3759},{"p":50,"w":0.3738},{"p":51,"w":0.3747},{"p":52,"w":0.3742},{"p":53,"w":0.3724},{"p":54,"w":0.37},{"p":55,"w":0.3708},{"p":56,"w":0.3715},{"p":57,"w":0.3683},{"p":58,"w":0.3695},{"p":59,"w":0.3679},{"p":60,"w":0.3646},{"p":61,"w":0.3661},{"p":62,"w":0.3918},{"p":63,"w":0.3783},{"p":64,"w":0.3656},{"p":65,"w":0.3586},{"p":66,"w":0.3582},{"p":67,"w":0.3577},{"p":68,"w":0.3702},{"p":69,"w":0.3663},{"p":70,"w":0.3658},{"p":71,"w":0.3625},{"p":72,"w":0.3589},{"p":73,"w":0.3597},{"p":74,"w":0.3576},{"p":75,"w":0.3568},{"p":76,"w":0.3587},{"p":77,"w":0.3635},{"p":78,"w":0.3531},{"p":79,"w":0.3486},{"p":80,"w":0.3441},{"p":81,"w":0.3404},{"p":82,"w":0.337},{"p":83,"w":0.3323},{"p":84,"w":0.3293},{"p":85,"w":0.3285},{"p":86,"w":0.3294},{"p":87,"w":0.3298},{"p":88,"w":0.3351},{"p":89,"w":0.3361},{"p":90,"w":0.3379},{"p":91,"w":0.3297},{"p":92,"w":0.3246},{"p":93,"w":0.3226},{"p":94,"w":0.3227},{"p":95,"w":0.3247},{"p":96,"w":0.3197},{"p":97,"w":0.319},{"p":98,"w":0.3149},{"p":99,"w":0.2906}]},{"videoId":"2xB8OOCYJhA","title":"Starting our Backyard Office : Structure & Exterior","durationSec":1652,"pub":1730946815000,"views":16918,"r50":0.3809,"avd":674.3480519999999,"wth":3169.061206593333,"outlier":0.42,"curve":[{"p":0,"w":1.0272},{"p":1,"w":0.728},{"p":2,"w":0.6619},{"p":3,"w":0.5948},{"p":4,"w":0.5668},{"p":5,"w":0.5351},{"p":6,"w":0.5165},{"p":7,"w":0.5062},{"p":8,"w":0.4981},{"p":9,"w":0.5007},{"p":10,"w":0.4917},{"p":11,"w":0.4827},{"p":12,"w":0.4748},{"p":13,"w":0.4724},{"p":14,"w":0.4713},{"p":15,"w":0.4851},{"p":16,"w":0.4819},{"p":17,"w":0.4692},{"p":18,"w":0.4615},{"p":19,"w":0.4764},{"p":20,"w":0.4657},{"p":21,"w":0.4545},{"p":22,"w":0.4475},{"p":23,"w":0.4455},{"p":24,"w":0.445},{"p":25,"w":0.4381},{"p":26,"w":0.4353},{"p":27,"w":0.4311},{"p":28,"w":0.4323},{"p":29,"w":0.4284},{"p":30,"w":0.43},{"p":31,"w":0.4213},{"p":32,"w":0.4111},{"p":33,"w":0.4079},{"p":34,"w":0.4191},{"p":35,"w":0.4188},{"p":36,"w":0.4177},{"p":37,"w":0.4183},{"p":38,"w":0.415},{"p":39,"w":0.4181},{"p":40,"w":0.4053},{"p":41,"w":0.3987},{"p":42,"w":0.3924},{"p":43,"w":0.3962},{"p":44,"w":0.3878},{"p":45,"w":0.3849},{"p":46,"w":0.3879},{"p":47,"w":0.3889},{"p":48,"w":0.3865},{"p":49,"w":0.5551},{"p":50,"w":0.3809},{"p":51,"w":0.3744},{"p":52,"w":0.3696},{"p":53,"w":0.3652},{"p":54,"w":0.3621},{"p":55,"w":0.3594},{"p":56,"w":0.3669},{"p":57,"w":0.3669},{"p":58,"w":0.3654},{"p":59,"w":0.3639},{"p":60,"w":0.3609},{"p":61,"w":0.356},{"p":62,"w":0.3579},{"p":63,"w":0.3573},{"p":64,"w":0.3679},{"p":65,"w":0.3647},{"p":66,"w":0.3557},{"p":67,"w":0.3526},{"p":68,"w":0.3508},{"p":69,"w":0.3603},{"p":70,"w":0.352},{"p":71,"w":0.3504},{"p":72,"w":0.348},{"p":73,"w":0.3562},{"p":74,"w":0.3525},{"p":75,"w":0.3446},{"p":76,"w":0.3486},{"p":77,"w":0.3448},{"p":78,"w":0.3436},{"p":79,"w":0.3399},{"p":80,"w":0.3376},{"p":81,"w":0.3328},{"p":82,"w":0.3309},{"p":83,"w":0.3267},{"p":84,"w":0.3246},{"p":85,"w":0.3221},{"p":86,"w":0.3215},{"p":87,"w":0.3251},{"p":88,"w":0.3232},{"p":89,"w":0.3342},{"p":90,"w":0.3293},{"p":91,"w":0.3258},{"p":92,"w":0.3222},{"p":93,"w":0.3226},{"p":94,"w":0.3228},{"p":95,"w":0.3244},{"p":96,"w":0.3334},{"p":97,"w":0.3241},{"p":98,"w":0.3272},{"p":99,"w":0.2835}]}],"refs":[{"key":"all","label":"All tracked channels (19)","short":"ALL TRACKED","curve":[{"p":0,"w":0.961},{"p":2,"w":0.756},{"p":4,"w":0.634},{"p":6,"w":0.577},{"p":8,"w":0.55},{"p":10,"w":0.53},{"p":12,"w":0.519},{"p":14,"w":0.499},{"p":16,"w":0.488},{"p":18,"w":0.476},{"p":20,"w":0.473},{"p":22,"w":0.468},{"p":24,"w":0.459},{"p":26,"w":0.453},{"p":28,"w":0.449},{"p":30,"w":0.441},{"p":32,"w":0.433},{"p":34,"w":0.43},{"p":36,"w":0.421},{"p":38,"w":0.418},{"p":40,"w":0.421},{"p":42,"w":0.417},{"p":44,"w":0.411},{"p":46,"w":0.409},{"p":48,"w":0.4},{"p":50,"w":0.393},{"p":52,"w":0.396},{"p":54,"w":0.395},{"p":56,"w":0.394},{"p":58,"w":0.392},{"p":60,"w":0.394},{"p":62,"w":0.388},{"p":64,"w":0.381},{"p":66,"w":0.374},{"p":68,"w":0.37},{"p":70,"w":0.37},{"p":72,"w":0.366},{"p":74,"w":0.363},{"p":76,"w":0.364},{"p":78,"w":0.363},{"p":80,"w":0.355},{"p":82,"w":0.353},{"p":84,"w":0.356},{"p":86,"w":0.349},{"p":88,"w":0.356},{"p":90,"w":0.341},{"p":92,"w":0.341},{"p":94,"w":0.335},{"p":96,"w":0.314},{"p":98,"w":0.277},{"p":100,"w":0.237}]}]}</script>
 <script>
 (function(){
   var D = window.__COHORT__; if(!D || !D.videos.length) return;
@@ -1274,6 +1818,9 @@ means two things move together on this channel, which is not the same as one cau
   var FLAT_H = 620, DEEP_H = 760;
   var H = FLAT_H;
   var axis = 'percent', colour = 'none', sel = null, depth = 'flat';
+  // Which reference curves are switched on. Off by default: a comparison the
+  // reader did not ask for is one more line on an already dense chart.
+  var refOn = {};
   // The window restricts WHICH videos are drawn. "all" is the default because a
   // filter that hides data by default is a way to mislead yourself. The same
   // rule governs the two range filters below: both start wide open.
@@ -1802,6 +2349,24 @@ means two things move together on this channel, which is not the same as one cau
           '" text-anchor="end">MEDIAN</text>');
       }
     }
+    // Reference curves: group medians on the % axis, drawn in every flat view
+    // (the band included, where "inside the pack or outside it" is exactly
+    // the question they answer). Never in 3D, for the median's reason.
+    if (axis === 'percent' && !threeD){
+      (D.refs || []).forEach(function(rf){
+        if (!refOn[rf.key] || !rf.curve || rf.curve.length < 2) return;
+        var rd = '';
+        for (var ri = 0; ri < rf.curve.length; ri++){
+          var rp = rf.curve[ri];
+          rd += (ri ? 'L' : 'M') + (L + xMap(rp.p/100)*plotW()).toFixed(1) + ' ' + yOf(rp.w,0).toFixed(1) + ' ';
+        }
+        parts.push('<path class="refcase" d="'+rd+'"/>');
+        parts.push('<path class="refcv ref-'+rf.key+'" d="'+rd+'"><title>'+esc(rf.label)+'</title></path>');
+        var rl = rf.curve[rf.curve.length-1];
+        parts.push('<text class="reflab ref-'+rf.key+'" x="'+(L + xMap(rl.p/100)*plotW() - 6).toFixed(1)+'" y="'+
+          (yOf(rl.w,0) + (rf.key === 'all' ? 14 : 26)).toFixed(1)+'" text-anchor="end">'+esc(rf.short)+'</text>');
+      });
+    }
     parts.push('</g>');
     parts.push('<line class="axis" x1="'+L+'" y1="'+yOf(0,0)+'" x2="'+(L+plotW())+'" y2="'+yOf(0,0)+'"/>');
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
@@ -1897,6 +2462,13 @@ means two things move together on this channel, which is not the same as one cau
       document.querySelectorAll('[data-col]').forEach(function(o){ o.disabled = depth==='band'; });
       invalidateBins();
       refreshPubRange();
+      draw();
+    });
+  });
+  document.querySelectorAll('[data-ref]').forEach(function(b){
+    b.addEventListener('click', function(){
+      refOn[b.dataset.ref] = !refOn[b.dataset.ref];
+      b.setAttribute('aria-pressed', String(!!refOn[b.dataset.ref]));
       draw();
     });
   });

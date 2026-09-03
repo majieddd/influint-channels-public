@@ -1022,6 +1022,22 @@ table.obs td.no{color:#ff8f8f}
 .tr-pick select{max-width:100%;font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit}
 .tr-section{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;background:var(--panel)}
 .tr-section h3{margin:0 0 8px;font-size:15px;color:var(--teal)}
+details.tr-section>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+details.tr-section>summary::-webkit-details-marker{display:none}
+details.tr-section>summary::before{content:"▾";color:var(--grey);font-size:13px;transition:transform .15s}
+details.tr-section:not([open])>summary::before{transform:rotate(-90deg)}
+details.tr-section>summary h3{margin:0}
+details.tr-section[open]>summary h3{margin-bottom:8px}
+.tr-fold{margin-left:12px;display:inline-flex;gap:6px}
+.tr-fold button{font:inherit;font-size:12px;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:inherit;cursor:pointer}
+.is-list details>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.is-list details>summary::-webkit-details-marker{display:none}
+.is-list details>summary::before{content:"▸";color:var(--grey);font-size:12px}
+.is-list details[open]>summary::before{content:"▾"}
+.is-list details ul{list-style:none;margin:6px 0 4px 22px;padding:0}
+.is-list details ul li{border:0;padding:3px 0;font-size:13px}
+.is-list details ul li a{color:var(--teal)}
+.is-list .open-trace{margin-left:auto;font-size:12px;color:var(--teal)}
 .tr-section h4{margin:12px 0 4px;font-size:13px}
 .tr-step{border-left:3px solid var(--teal-deep);padding:6px 12px;margin:8px 0;font-size:13px;line-height:1.5}
 .tr-step .tr-fig{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--grey)}
@@ -1043,12 +1059,13 @@ table.obs td.no{color:#ff8f8f}
 
 <h1>Studio NOHA · analyst trace</h1>
 <p class="lede">The method, video by video. Pick a video to see how its retention was broken down, what evidence each note rested on, where its moments sit in the channel's census, which shape it belongs to, and what it fed the ledger. The channel-level sections (ideas, action list) follow.</p>
-<div class="tr-pick"><label>Video <select id="tr-select"><option value="b7CZkbBJpZU">2026-08-23 · The most important part of furniture making</option><option value="2HuaCh4wl3A">2026-07-20 · Slowing Down Helped Me Become a Better Craftsman</option><option value="asT3GmPhL1g">2026-05-31 · Why Beautiful Furniture Starts at the Lumber Yard</option><option value="ZOci3cqFQw4">2026-04-12 · Is making things by hand still worth it?</option><option value="wpoOzWGm7yU">2026-02-22 · The Hardest Part of Woodworking</option><option value="75EJtFuDwzc">2026-01-18 · Which Japanese Woodworking Tools Should You Buy First?</option><option value="kCVcQwG9OE0">2025-10-12 · A Modern Take on Shoji | Made with Japanese Hand Tools</option><option value="wKg0lMrBOiU">2025-09-07 · No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life</option><option value="TSG8lMrqHQM">2025-06-14 · This ONE skill will change how you woodwork</option><option value="7Gt5nepmzDM">2025-05-04 · Japanese Joinery is easier than you think...</option><option value="78ErGTAyFCY">2025-02-02 · Making a Tea Cabinet | Sashimono Woodworking</option><option value="KHdX4xWH9YY">2024-12-23 · A workbench can be as simple as this...</option><option value="na9e0Pl2Dow">2024-11-03 · I built a Cabinet to store our memories | Full Build</option><option value="FofTq546kgM">2024-10-13 · What is Japanese Woodworking? - An Introduction</option></select></label></div>
+<div class="tr-pick"><label>Video <select id="tr-select"><option value="b7CZkbBJpZU">2026-08-23 · The most important part of furniture making</option><option value="2HuaCh4wl3A">2026-07-20 · Slowing Down Helped Me Become a Better Craftsman</option><option value="asT3GmPhL1g">2026-05-31 · Why Beautiful Furniture Starts at the Lumber Yard</option><option value="ZOci3cqFQw4">2026-04-12 · Is making things by hand still worth it?</option><option value="wpoOzWGm7yU">2026-02-22 · The Hardest Part of Woodworking</option><option value="75EJtFuDwzc">2026-01-18 · Which Japanese Woodworking Tools Should You Buy First?</option><option value="kCVcQwG9OE0">2025-10-12 · A Modern Take on Shoji | Made with Japanese Hand Tools</option><option value="wKg0lMrBOiU">2025-09-07 · No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life</option><option value="TSG8lMrqHQM">2025-06-14 · This ONE skill will change how you woodwork</option><option value="7Gt5nepmzDM">2025-05-04 · Japanese Joinery is easier than you think...</option><option value="78ErGTAyFCY">2025-02-02 · Making a Tea Cabinet | Sashimono Woodworking</option><option value="KHdX4xWH9YY">2024-12-23 · A workbench can be as simple as this...</option><option value="na9e0Pl2Dow">2024-11-03 · I built a Cabinet to store our memories | Full Build</option><option value="FofTq546kgM">2024-10-13 · What is Japanese Woodworking? - An Introduction</option></select></label>
+  <span class="tr-fold"><button type="button" id="tr-expand">Expand all steps</button><button type="button" id="tr-collapse">Collapse all steps</button></span></div>
 <div id="tr-traces"><div class="tr-video" id="tr-b7CZkbBJpZU" hidden>
       <h2>The most important part of furniture making</h2>
       <p class="tr-dim">published 2026-08-23 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>13:32</span>
@@ -1061,8 +1078,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,21.6 L43.7,36.1 L51.5,49.8 L59.2,60.4 L67.0,68.5 L74.7,84.3 L82.4,86.7 L90.2,88.8 L97.9,91.1 L105.7,92.3 L113.4,94.2 L121.1,95.1 L128.9,96.6 L136.6,98.2 L144.4,98.4 L152.1,99.7 L159.8,100.1 L167.6,99.4 L175.3,101.5 L183.1,101.9 L190.8,102.2 L198.5,103.0 L206.3,104.0 L214.0,105.4 L221.8,105.4 L229.5,105.7 L237.2,106.9 L245.0,107.0 L252.7,108.1 L260.5,109.0 L268.2,110.0 L275.9,110.9 L283.7,111.1 L291.4,111.6 L299.2,112.1 L306.9,112.2 L314.6,112.3 L322.4,114.0 L330.1,113.7 L337.9,113.9 L345.6,114.8 L353.3,114.8 L361.1,115.5 L368.8,115.5 L376.6,115.4 L384.3,116.2 L392.0,116.3 L399.8,117.3 L407.5,117.4 L415.3,117.6 L423.0,115.8 L430.7,118.6 L438.5,119.4 L446.2,119.3 L454.0,119.4 L461.7,119.8 L469.4,120.3 L477.2,121.0 L484.9,121.4 L492.7,122.2 L500.4,122.1 L508.1,122.4 L515.9,121.4 L523.6,121.9 L531.4,122.4 L539.1,122.5 L546.8,122.4 L554.6,122.9 L562.3,122.8 L570.1,123.1 L577.8,123.0 L585.5,123.1 L593.3,123.4 L601.0,123.4 L608.8,123.8 L616.5,124.4 L624.2,124.3 L632.0,124.2 L639.7,123.0 L647.5,124.1 L655.2,124.3 L662.9,124.0 L670.7,124.1 L678.4,123.9 L686.2,123.6 L693.9,124.1 L701.6,123.0 L709.4,122.4 L717.1,122.2 L724.9,121.7 L732.6,122.6 L740.3,123.5 L748.1,125.5 L755.8,127.4 L763.6,133.2 L771.3,137.2 L779.0,141.2 L786.8,144.0 L794.5,146.0 L802.3,148.2" class="tr-curve"/><line x1="725.2" y1="10" x2="725.2" y2="172" class="tr-mk-drop"><title>12:03 drop: A 49-second music-and-monologue coda purges nearly a third of the remaining audience (*5.7x the surrounding stop rate, 7</title></line><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening frame sheds viewers at the channel's usual rate for a first second (*10.19% stop, 1.2x the channel norm, 2,3</title></line><line x1="423.0" y1="10" x2="423.0" y2="172" class="tr-mk-drop"><title>6:46 drop: A short pause at the halfway mark loses viewers at nearly ten times the surrounding rate (*9.6x spike, 2.9x the channel </title></line><line x1="639.4" y1="10" x2="639.4" y2="172" class="tr-mk-peak"><title>10:33 peak: The audience ticks up mid-monologue about designing for the buyer (*2.5% of viewers present, 300 regained*).</title></line><line x1="701.3" y1="10" x2="701.3" y2="172" class="tr-mk-peak"><title>11:38 peak: The audience rises and holds for five samples across the thesis delivery (*2.2% of viewers present, 267 regained, held 5</title></line><line x1="678.5" y1="10" x2="678.5" y2="172" class="tr-mk-peak"><title>11:14 peak: A small sustained rewatch across the 'why behind what I'm making' beat (*0.6% of viewers present, 73 regained, held 8 sa</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1125,21 +1142,21 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;I've spent over a decade learning how to build furniture. For most of my adult life, I've chased perfection in craftsmanship. I always felt like if I could just get better at cutting joinery or sharpening tools, my work would be better. But I feel like I may have been missing the most important part. What I really wanted to make is something that moves the human heart. Does a high level of craft a…&rdquo;</p><p class="tr-dim">first word at 1.7s · 292 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.109</div>
       <div>11:38 <span class="tr-tag tr-peak">peak</span> The audience rises and holds for five samples across the thesis delivery (*2.2% of viewers present, 267 regained, held 5 samples*).</div><div>6:46 <span class="tr-tag tr-drop">drop</span> A short pause at the halfway mark loses viewers at nearly ten times the surrounding rate (*9.6x spike, 2.9x the channel norm, 620 viewers*).</div><div>11:14 <span class="tr-tag tr-peak">peak</span> A small sustained rewatch across the 'why behind what I'm making' beat (*0.6% of viewers present, 73 regained, held 8 samples*).</div><div>12:03 <span class="tr-tag tr-drop">drop</span> A 49-second music-and-monologue coda purges nearly a third of the remaining audience (*5.7x the surrounding stop rate, 7.2x the channel norm here, 2,772 viewers*).</div><div>10:33 <span class="tr-tag tr-peak">peak</span> The audience ticks up mid-monologue about designing for the buyer (*2.5% of viewers present, 300 regained*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>812.000</td><td>0.347</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.639</td><td>0.347</td></tr><tr><td>recency-vs-retention-half</td><td>1787527863000.000</td><td>0.347</td></tr><tr><td>duration-vs-intro-hold</td><td>812.000</td><td>0.639</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.347</td></tr><tr><td>ctr-vs-retention-half</td><td>0.042</td><td>0.347</td></tr><tr><td>duration-vs-ctr</td><td>812.000</td><td>0.042</td></tr><tr><td>title-length-vs-ctr</td><td>7.000</td><td>0.042</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-2HuaCh4wl3A" hidden>
       <h2>Slowing Down Helped Me Become a Better Craftsman</h2>
       <p class="tr-dim">published 2026-07-20 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>5:17</span>
@@ -1152,8 +1169,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,16.9 L43.7,28.2 L51.5,35.8 L59.2,38.3 L67.0,47.6 L74.7,53.0 L82.4,57.1 L90.2,58.9 L97.9,60.2 L105.7,63.2 L113.4,63.8 L121.1,64.7 L128.9,67.1 L136.6,72.8 L144.4,74.0 L152.1,74.9 L159.8,75.8 L167.6,77.1 L175.3,78.3 L183.1,79.4 L190.8,80.0 L198.5,80.6 L206.3,81.4 L214.0,81.6 L221.8,82.8 L229.5,83.1 L237.2,83.6 L245.0,83.5 L252.7,84.1 L260.5,84.2 L268.2,85.5 L275.9,85.3 L283.7,86.4 L291.4,86.9 L299.2,88.0 L306.9,87.8 L314.6,89.0 L322.4,89.3 L330.1,89.5 L337.9,89.8 L345.6,90.8 L353.3,91.3 L361.1,92.0 L368.8,93.1 L376.6,93.0 L384.3,93.2 L392.0,93.3 L399.8,93.0 L407.5,92.9 L415.3,92.8 L423.0,93.4 L430.7,93.7 L438.5,93.9 L446.2,94.1 L454.0,94.1 L461.7,95.1 L469.4,95.3 L477.2,95.0 L484.9,94.9 L492.7,95.6 L500.4,96.1 L508.1,97.2 L515.9,97.4 L523.6,97.7 L531.4,98.3 L539.1,99.2 L546.8,99.2 L554.6,98.6 L562.3,98.7 L570.1,98.6 L577.8,99.2 L585.5,99.9 L593.3,100.2 L601.0,100.5 L608.8,100.9 L616.5,101.2 L624.2,101.5 L632.0,101.5 L639.7,101.9 L647.5,103.0 L655.2,103.6 L662.9,104.3 L670.7,104.4 L678.4,105.1 L686.2,105.6 L693.9,106.8 L701.6,106.8 L709.4,107.5 L717.1,107.7 L724.9,107.9 L732.6,111.4 L740.3,117.9 L748.1,122.9 L755.8,125.9 L763.6,128.8 L771.3,131.0 L779.0,132.9 L786.8,135.0 L794.5,138.6 L802.3,144.1" class="tr-curve"/><line x1="724.5" y1="10" x2="724.5" y2="172" class="tr-mk-drop"><title>4:42 drop: The outro sheds nearly a quarter of remaining viewers in ten seconds, dropping from 39.5% to 30.3% (*7.6x the surroundin</title></line><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening second loses 4.3% of viewers, below the channel's typical first-second bleed (*5.14% stop rate versus 8.17% </title></line><line x1="128.8" y1="10" x2="128.8" y2="172" class="tr-mk-drop"><title>0:38 drop: A small bump at the transition into the wabi-sabi thesis, losing 3.6 points of audience across three seconds (*3.7x surr</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1186,21 +1203,21 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;Lately, I've been thinking about how hard it is to slow down right now. And maybe that's part of why I keep coming back to woodworking. Because when I'm working with a piece of wood, none of that seems to matter very much. The wood grain doesn't care how productive I've been today. It only asks that I pay attention. After more than a decade of chasing perfection in my work, there's a Japanese idea…&rdquo;</p><p class="tr-dim">first word at 0s · 139 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>4:42 <span class="tr-tag tr-drop">drop</span> The outro sheds nearly a quarter of remaining viewers in ten seconds, dropping from 39.5% to 30.3% (*7.6x the surrounding stop rate, 2,667 viewers, 8.1x the channel norm*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>317.000</td><td>0.485</td></tr><tr><td>duration-vs-views</td><td>317.000</td><td>0.580</td></tr><tr><td>retention-half-vs-views</td><td>0.485</td><td>0.580</td></tr><tr><td>intro-hold-vs-views</td><td>0.668</td><td>0.580</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.668</td><td>0.485</td></tr><tr><td>recency-vs-retention-half</td><td>1784556000000.000</td><td>0.485</td></tr><tr><td>recency-vs-views</td><td>1784556000000.000</td><td>0.580</td></tr><tr><td>title-length-vs-views</td><td>48.000</td><td>0.580</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.580</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.580</td></tr><tr><td>duration-vs-intro-hold</td><td>317.000</td><td>0.668</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.580</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.485</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>0.580</td></tr><tr><td>ctr-vs-views</td><td>0.044</td><td>0.580</td></tr><tr><td>ctr-vs-retention-half</td><td>0.044</td><td>0.485</td></tr><tr><td>duration-vs-ctr</td><td>317.000</td><td>0.044</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.044</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-asT3GmPhL1g" hidden>
       <h2>Why Beautiful Furniture Starts at the Lumber Yard</h2>
       <p class="tr-dim">published 2026-05-31 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>5:55</span>
@@ -1213,8 +1230,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,19.1 L43.7,29.8 L51.5,34.0 L59.2,36.6 L67.0,47.5 L74.7,55.5 L82.4,59.2 L90.2,62.3 L97.9,65.9 L105.7,70.3 L113.4,73.7 L121.1,74.5 L128.9,76.5 L136.6,76.0 L144.4,75.6 L152.1,78.0 L159.8,78.6 L167.6,79.3 L175.3,79.3 L183.1,79.8 L190.8,79.7 L198.5,79.8 L206.3,79.7 L214.0,79.8 L221.8,80.8 L229.5,81.6 L237.2,82.9 L245.0,83.8 L252.7,84.5 L260.5,85.7 L268.2,86.0 L275.9,85.8 L283.7,86.0 L291.4,86.4 L299.2,86.3 L306.9,86.8 L314.6,87.9 L322.4,88.6 L330.1,89.1 L337.9,90.2 L345.6,90.4 L353.3,89.9 L361.1,90.8 L368.8,91.0 L376.6,91.6 L384.3,92.5 L392.0,93.7 L399.8,93.2 L407.5,92.2 L415.3,92.1 L423.0,92.8 L430.7,93.4 L438.5,92.4 L446.2,91.4 L454.0,90.7 L461.7,91.7 L469.4,95.4 L477.2,96.3 L484.9,97.3 L492.7,97.7 L500.4,98.1 L508.1,98.7 L515.9,99.1 L523.6,99.3 L531.4,99.7 L539.1,100.2 L546.8,100.8 L554.6,101.1 L562.3,101.3 L570.1,101.5 L577.8,101.6 L585.5,102.0 L593.3,102.3 L601.0,102.4 L608.8,102.8 L616.5,103.7 L624.2,104.2 L632.0,104.2 L639.7,104.1 L647.5,104.5 L655.2,104.9 L662.9,105.2 L670.7,105.5 L678.4,105.7 L686.2,105.9 L693.9,106.4 L701.6,106.9 L709.4,107.1 L717.1,107.3 L724.9,107.4 L732.6,107.7 L740.3,108.7 L748.1,109.9 L755.8,111.0 L763.6,111.8 L771.3,112.8 L779.0,114.6 L786.8,116.3 L794.5,118.1 L802.3,126.4" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening frame sheds viewers slower than the channel usually does at this mark (*5.25% stop rate vs 8.17% channel nor</title></line><line x1="454.6" y1="10" x2="454.6" y2="172" class="tr-mk-drop"><title>3:12 drop: A 7-second stretch past halfway loses viewers at nearly four times the channel's usual rate for this position (*12.0x sp</title></line><line x1="214.8" y1="10" x2="214.8" y2="172" class="tr-mk-drop"><title>1:22 drop: An 11-second stretch early in the video loses viewers at about half the channel's usual rate for this position (*0.42% s</title></line><line x1="439.4" y1="10" x2="439.4" y2="172" class="tr-mk-peak"><title>3:05 peak: Viewers scrub back and the audience rises for three samples just before the video's one anomalous drop (*+1.3% of audien</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1257,24 +1274,24 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>1:22 <span class="tr-tag tr-drop">drop</span> An 11-second stretch early in the video loses viewers at about half the channel's usual rate for this position (*0.42% stop rate vs 0.79% channel norm, 733 viewers*).</div><div>3:12 <span class="tr-tag tr-drop">drop</span> A 7-second stretch past halfway loses viewers at nearly four times the channel's usual rate for this position (*12.0x spike, 3.7x channel norm, 1,308 viewers*).</div>
     </div><div class="tr-step"><b>Mid-build reflection on effort</b> <span class="tr-dim">Beats where the creator pauses mid-project to reflect on grind, fatigue, or staying motivated through the work.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.219</div>
       <div>3:05 <span class="tr-tag tr-peak">peak</span> Viewers scrub back and the audience rises for three samples just before the video's one anomalous drop (*+1.3% of audience, 320 viewers regained, held 3 samples*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>355.000</td><td>0.489</td></tr><tr><td>duration-vs-views</td><td>355.000</td><td>0.798</td></tr><tr><td>retention-half-vs-views</td><td>0.489</td><td>0.798</td></tr><tr><td>intro-hold-vs-views</td><td>0.628</td><td>0.798</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.628</td><td>0.489</td></tr><tr><td>recency-vs-retention-half</td><td>1780200019000.000</td><td>0.489</td></tr><tr><td>recency-vs-views</td><td>1780200019000.000</td><td>0.798</td></tr><tr><td>title-length-vs-views</td><td>49.000</td><td>0.798</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.798</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.798</td></tr><tr><td>duration-vs-intro-hold</td><td>355.000</td><td>0.628</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.798</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.489</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>0.798</td></tr><tr><td>ctr-vs-views</td><td>0.051</td><td>0.798</td></tr><tr><td>ctr-vs-retention-half</td><td>0.051</td><td>0.489</td></tr><tr><td>duration-vs-ctr</td><td>355.000</td><td>0.051</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.051</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-ZOci3cqFQw4" hidden>
       <h2>Is making things by hand still worth it?</h2>
       <p class="tr-dim">published 2026-04-12 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>8:46</span>
@@ -1287,8 +1304,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,13.6 L43.7,34.6 L51.5,38.9 L59.2,56.0 L67.0,65.3 L74.7,71.5 L82.4,74.5 L90.2,79.5 L97.9,88.1 L105.7,90.5 L113.4,94.5 L121.1,97.4 L128.9,97.8 L136.6,100.9 L144.4,101.9 L152.1,103.3 L159.8,102.9 L167.6,103.5 L175.3,104.2 L183.1,105.5 L190.8,106.3 L198.5,106.8 L206.3,106.9 L214.0,106.9 L221.8,106.9 L229.5,107.6 L237.2,108.1 L245.0,108.8 L252.7,108.9 L260.5,109.3 L268.2,109.6 L275.9,109.9 L283.7,110.2 L291.4,110.1 L299.2,110.3 L306.9,110.5 L314.6,110.8 L322.4,111.4 L330.1,111.8 L337.9,112.8 L345.6,113.0 L353.3,114.5 L361.1,116.1 L368.8,117.5 L376.6,119.1 L384.3,119.9 L392.0,119.9 L399.8,119.1 L407.5,121.0 L415.3,121.2 L423.0,121.8 L430.7,121.8 L438.5,122.0 L446.2,122.4 L454.0,122.4 L461.7,122.3 L469.4,122.1 L477.2,122.6 L484.9,122.5 L492.7,122.5 L500.4,123.1 L508.1,123.5 L515.9,123.6 L523.6,123.6 L531.4,123.8 L539.1,124.3 L546.8,124.6 L554.6,124.8 L562.3,125.4 L570.1,125.1 L577.8,125.0 L585.5,124.9 L593.3,125.3 L601.0,125.1 L608.8,125.2 L616.5,124.0 L624.2,123.6 L632.0,126.3 L639.7,126.4 L647.5,126.7 L655.2,126.9 L662.9,127.1 L670.7,127.1 L678.4,126.9 L686.2,126.8 L693.9,126.2 L701.6,126.1 L709.4,126.3 L717.1,126.2 L724.9,126.0 L732.6,126.1 L740.3,126.2 L748.1,127.1 L755.8,127.5 L763.6,128.0 L771.3,129.0 L779.0,133.8 L786.8,141.4 L794.5,147.1 L802.3,152.5" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening 16 seconds shed 28 points of audience, in line with the channel's own intro habit (*5.9x spike, 24,483 viewe</title></line><line x1="762.9" y1="10" x2="762.9" y2="172" class="tr-mk-drop"><title>8:14 drop: The outro loses a third of remaining viewers in 16 seconds, more than triple the channel's usual outro loss (*8.5x spike</title></line><line x1="314.1" y1="10" x2="314.1" y2="172" class="tr-mk-drop"><title>3:09 drop: A 32-second stretch flagged as a spike actually held slightly better than the channel typically does here (*3.6x local r</title></line><line x1="617.2" y1="10" x2="617.2" y2="172" class="tr-mk-peak"><title>6:35 peak: Audience rose 2.7% for a single sample at the 75% mark, bringing 1,107 viewers back (*audience here 29.7%*).</title></line><line x1="693.8" y1="10" x2="693.8" y2="172" class="tr-mk-peak"><title>7:27 peak: Audience rose 1.4% and held for six samples across the closing thesis (*561 viewers regained, audience here 28.3%*).</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1341,8 +1358,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;This is my favorite part of every project. But a lot of work looks like this. But how much do I do with hand tools? And does any of it even matter? I've gone back and forth for years on how much machinery is efficient, but not too much that it begins to take away from my work. So today, I'll be exploring what that looks like for me. I'll be making an entryway coat rack. The style will be heavily i…&rdquo;</p><p class="tr-dim">first word at 4.4s · 128 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.219</div>
       <div>3:09 <span class="tr-tag tr-drop">drop</span> A 32-second stretch flagged as a spike actually held slightly better than the channel typically does here (*3.6x local ratio but 0.83% stop rate vs 0.95% channel norm, 2,681 viewers*).</div>
     </div><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
@@ -1354,17 +1371,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>8:14 <span class="tr-tag tr-drop">drop</span> The outro loses a third of remaining viewers in 16 seconds, more than triple the channel's usual outro loss (*8.5x spike, 3.2x channel norm, 9,626 viewers*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>526.000</td><td>0.310</td></tr><tr><td>duration-vs-views</td><td>526.000</td><td>2.619</td></tr><tr><td>retention-half-vs-views</td><td>0.310</td><td>2.619</td></tr><tr><td>intro-hold-vs-views</td><td>0.602</td><td>2.619</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.602</td><td>0.310</td></tr><tr><td>recency-vs-retention-half</td><td>1776010719000.000</td><td>0.310</td></tr><tr><td>recency-vs-views</td><td>1776010719000.000</td><td>2.619</td></tr><tr><td>title-length-vs-views</td><td>40.000</td><td>2.619</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>2.619</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>2.619</td></tr><tr><td>duration-vs-intro-hold</td><td>526.000</td><td>0.602</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>2.619</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.310</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>2.619</td></tr><tr><td>ctr-vs-views</td><td>0.041</td><td>2.619</td></tr><tr><td>ctr-vs-retention-half</td><td>0.041</td><td>0.310</td></tr><tr><td>duration-vs-ctr</td><td>526.000</td><td>0.041</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.041</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-wpoOzWGm7yU" hidden>
       <h2>The Hardest Part of Woodworking</h2>
       <p class="tr-dim">published 2026-02-22 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>22:35</span>
@@ -1377,8 +1394,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,23.0 L43.7,48.0 L51.5,68.4 L59.2,87.7 L67.0,90.6 L74.7,94.2 L82.4,96.8 L90.2,98.8 L97.9,99.8 L105.7,100.5 L113.4,101.6 L121.1,102.9 L128.9,103.8 L136.6,105.2 L144.4,106.2 L152.1,107.1 L159.8,108.6 L167.6,109.3 L175.3,110.0 L183.1,110.4 L190.8,111.0 L198.5,111.8 L206.3,112.5 L214.0,112.6 L221.8,113.0 L229.5,113.7 L237.2,113.3 L245.0,113.2 L252.7,116.1 L260.5,117.0 L268.2,118.1 L275.9,118.2 L283.7,118.5 L291.4,118.7 L299.2,118.6 L306.9,119.0 L314.6,120.0 L322.4,120.5 L330.1,120.2 L337.9,121.0 L345.6,122.0 L353.3,122.5 L361.1,123.6 L368.8,124.1 L376.6,124.4 L384.3,124.5 L392.0,125.2 L399.8,125.6 L407.5,125.3 L415.3,125.2 L423.0,125.8 L430.7,127.1 L438.5,127.7 L446.2,128.6 L454.0,127.2 L461.7,128.7 L469.4,128.9 L477.2,129.2 L484.9,129.8 L492.7,130.0 L500.4,129.9 L508.1,129.9 L515.9,130.2 L523.6,130.5 L531.4,130.6 L539.1,130.9 L546.8,129.8 L554.6,130.0 L562.3,131.0 L570.1,131.1 L577.8,131.4 L585.5,131.3 L593.3,131.3 L601.0,131.4 L608.8,131.4 L616.5,132.2 L624.2,132.1 L632.0,131.9 L639.7,131.3 L647.5,132.1 L655.2,132.3 L662.9,132.4 L670.7,132.3 L678.4,132.6 L686.2,132.9 L693.9,132.9 L701.6,133.0 L709.4,132.7 L717.1,132.5 L724.9,131.9 L732.6,131.2 L740.3,131.7 L748.1,131.0 L755.8,130.8 L763.6,130.1 L771.3,129.3 L779.0,129.6 L786.8,130.5 L794.5,132.5 L802.3,134.8" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The first 14 seconds shed nearly a quarter of the audience (*11,122 viewers, stop rate 11.95% vs the channel's 8.17%*).</title></line><line x1="245.1" y1="10" x2="245.1" y2="172" class="tr-mk-drop"><title>6:06 drop: A 14-second stretch loses 1,244 viewers at twice the channel norm (*spikeRatio 12.6x, stop rate 1.69% vs 0.86%*).</title></line><line x1="330.2" y1="10" x2="330.2" y2="172" class="tr-mk-drop"><title>8:35 drop: A 54-second stretch loses 729 viewers at 1.4x the channel norm (*spikeRatio 2.2x, audience falls 32.0% to 29.9%*).</title></line><line x1="546.7" y1="10" x2="546.7" y2="172" class="tr-mk-peak"><title>14:54 peak: The audience rises 2.6% and 488 viewers scrub back at the 66% mark (*audience here 26.0%*).</title></line><line x1="771.2" y1="10" x2="771.2" y2="172" class="tr-mk-peak"><title>21:27 peak: The audience rises 1.9% and 360 viewers scrub back with 74 seconds left (*audience here 26.3%*).</title></line><line x1="732.9" y1="10" x2="732.9" y2="172" class="tr-mk-peak"><title>20:20 peak: The audience rises 1.8% and holds for 7 samples as 338 viewers scrub back near the finish (*audience here 25.2%*).</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1441,24 +1458,24 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;[snorts] &gt;&gt; Working with my hand is hard. I had limited tools, limited time, limited space. It gets harder. But that's not the hardest part. The hardest part is finishing the work well when I'm tired and over it. I set out to make something beautiful using only the basic Japanese tool kit I talked about in my last video. And about 3/4 of the way through, I didn't really feel like finishing it. The…&rdquo;</p><p class="tr-dim">first word at 4.6s · 302 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.219</div>
       <div>8:35 <span class="tr-tag tr-drop">drop</span> A 54-second stretch loses 729 viewers at 1.4x the channel norm (*spikeRatio 2.2x, audience falls 32.0% to 29.9%*).</div><div>6:06 <span class="tr-tag tr-drop">drop</span> A 14-second stretch loses 1,244 viewers at twice the channel norm (*spikeRatio 12.6x, stop rate 1.69% vs 0.86%*).</div>
     </div><div class="tr-step"><b>Mid-build reflection on effort</b> <span class="tr-dim">Beats where the creator pauses mid-project to reflect on grind, fatigue, or staying motivated through the work.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.219</div>
       <div>20:20 <span class="tr-tag tr-peak">peak</span> The audience rises 1.8% and holds for 7 samples as 338 viewers scrub back near the finish (*audience here 25.2%*).</div><div>21:27 <span class="tr-tag tr-peak">peak</span> The audience rises 1.9% and 360 viewers scrub back with 74 seconds left (*audience here 26.3%*).</div><div>14:54 <span class="tr-tag tr-peak">peak</span> The audience rises 2.6% and 488 viewers scrub back at the 66% mark (*audience here 26.0%*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>1355.000</td><td>0.285</td></tr><tr><td>duration-vs-views</td><td>1355.000</td><td>1.403</td></tr><tr><td>retention-half-vs-views</td><td>0.285</td><td>1.403</td></tr><tr><td>intro-hold-vs-views</td><td>0.520</td><td>1.403</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.520</td><td>0.285</td></tr><tr><td>recency-vs-retention-half</td><td>1771793021000.000</td><td>0.285</td></tr><tr><td>recency-vs-views</td><td>1771793021000.000</td><td>1.403</td></tr><tr><td>title-length-vs-views</td><td>31.000</td><td>1.403</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.403</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.403</td></tr><tr><td>duration-vs-intro-hold</td><td>1355.000</td><td>0.520</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.403</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.285</td></tr><tr><td>title-word-count-vs-views</td><td>5.000</td><td>1.403</td></tr><tr><td>ctr-vs-views</td><td>0.047</td><td>1.403</td></tr><tr><td>ctr-vs-retention-half</td><td>0.047</td><td>0.285</td></tr><tr><td>duration-vs-ctr</td><td>1355.000</td><td>0.047</td></tr><tr><td>title-length-vs-ctr</td><td>5.000</td><td>0.047</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-75EJtFuDwzc" hidden>
       <h2>Which Japanese Woodworking Tools Should You Buy First?</h2>
       <p class="tr-dim">published 2026-01-18 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>6:14</span>
@@ -1471,8 +1488,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,22.9 L43.7,34.6 L51.5,36.9 L59.2,42.6 L67.0,58.8 L74.7,73.0 L82.4,77.3 L90.2,79.9 L97.9,82.7 L105.7,82.8 L113.4,84.3 L121.1,90.4 L128.9,91.3 L136.6,92.3 L144.4,93.6 L152.1,93.9 L159.8,94.7 L167.6,94.3 L175.3,94.7 L183.1,95.4 L190.8,96.5 L198.5,97.4 L206.3,98.5 L214.0,99.5 L221.8,99.4 L229.5,100.4 L237.2,101.1 L245.0,101.5 L252.7,101.5 L260.5,102.0 L268.2,102.1 L275.9,102.1 L283.7,102.7 L291.4,103.6 L299.2,103.4 L306.9,104.3 L314.6,105.4 L322.4,105.5 L330.1,105.3 L337.9,106.3 L345.6,106.1 L353.3,107.3 L361.1,107.2 L368.8,107.4 L376.6,108.2 L384.3,108.0 L392.0,107.6 L399.8,107.9 L407.5,108.4 L415.3,108.8 L423.0,110.0 L430.7,110.3 L438.5,110.6 L446.2,110.8 L454.0,110.4 L461.7,110.4 L469.4,110.9 L477.2,111.2 L484.9,111.3 L492.7,111.5 L500.4,111.5 L508.1,112.2 L515.9,112.7 L523.6,113.2 L531.4,113.8 L539.1,114.8 L546.8,115.2 L554.6,115.6 L562.3,115.7 L570.1,114.9 L577.8,115.2 L585.5,115.5 L593.3,115.4 L601.0,115.3 L608.8,116.1 L616.5,115.5 L624.2,115.1 L632.0,114.9 L639.7,115.2 L647.5,115.9 L655.2,116.4 L662.9,117.4 L670.7,117.2 L678.4,116.9 L686.2,117.1 L693.9,117.0 L701.6,116.6 L709.4,117.0 L717.1,117.8 L724.9,117.8 L732.6,117.9 L740.3,118.3 L748.1,118.9 L755.8,119.7 L763.6,120.7 L771.3,122.0 L779.0,124.1 L786.8,128.2 L794.5,135.1 L802.3,140.4" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening frame shed viewers at the channel's usual first-second rate (*7.3x surrounding, 6,095 viewers, holds 92.0%*)</title></line><line x1="58.8" y1="10" x2="58.8" y2="172" class="tr-mk-drop"><title>0:11 drop: Ten points fall away in four seconds as the premise is restated (*2.3x surrounding, 4,981 viewers, 79.9% to 69.9%*).</title></line><line x1="747.9" y1="10" x2="747.9" y2="172" class="tr-mk-drop"><title>5:44 drop: The outro sheds nearly six points across nineteen seconds (*3.8x surrounding, 3,303 viewers, 32.8% to 27.1%, 1.7x channe</title></line><line x1="569.9" y1="10" x2="569.9" y2="172" class="tr-mk-peak"><title>4:18 peak: Viewers scrubbed back as the marking gauge was named (*audience rose 1.3%, 389 regained, held four samples at 35.2%*).</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1515,24 +1532,24 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;If you're just starting out with woodworking, it can feel like you need a huge shop and lots of machinery to make something beautiful. But with Japanese tools, you can make almost anything with just a few tools. Today, I'm going to walk you through the essential Japanese hand tool kit. Just the tools you actually need to get started [music] and why each one matters. These tools are designed to wor…&rdquo;</p><p class="tr-dim">first word at 0.2s · 167 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Naming and explaining a tool or principle</b> <span class="tr-dim">Moments where a specific tool, jig, or design principle is introduced, named, or demonstrated in isolation.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Naming and explaining a tool or principle</b> <span class="tr-dim">Moments where a specific tool, jig, or design principle is introduced, named, or demonstrated in isolation.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>4:18 <span class="tr-tag tr-peak">peak</span> Viewers scrubbed back as the marking gauge was named (*audience rose 1.3%, 389 regained, held four samples at 35.2%*).</div>
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>5:44 <span class="tr-tag tr-drop">drop</span> The outro sheds nearly six points across nineteen seconds (*3.8x surrounding, 3,303 viewers, 32.8% to 27.1%, 1.7x channel norm*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>374.000</td><td>0.383</td></tr><tr><td>duration-vs-views</td><td>374.000</td><td>1.652</td></tr><tr><td>retention-half-vs-views</td><td>0.383</td><td>1.652</td></tr><tr><td>intro-hold-vs-views</td><td>0.551</td><td>1.652</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.551</td><td>0.383</td></tr><tr><td>recency-vs-retention-half</td><td>1768712407000.000</td><td>0.383</td></tr><tr><td>recency-vs-views</td><td>1768712407000.000</td><td>1.652</td></tr><tr><td>title-length-vs-views</td><td>54.000</td><td>1.652</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.652</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.652</td></tr><tr><td>duration-vs-intro-hold</td><td>374.000</td><td>0.551</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.652</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.383</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>1.652</td></tr><tr><td>ctr-vs-views</td><td>0.040</td><td>1.652</td></tr><tr><td>ctr-vs-retention-half</td><td>0.040</td><td>0.383</td></tr><tr><td>duration-vs-ctr</td><td>374.000</td><td>0.040</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.040</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-kCVcQwG9OE0" hidden>
       <h2>A Modern Take on Shoji | Made with Japanese Hand Tools</h2>
       <p class="tr-dim">published 2025-10-12 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>14:37</span>
@@ -1545,8 +1562,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,11.5 L43.7,40.4 L51.5,62.4 L59.2,72.4 L67.0,80.2 L74.7,86.0 L82.4,88.1 L90.2,90.1 L97.9,89.8 L105.7,92.1 L113.4,92.9 L121.1,94.6 L128.9,96.0 L136.6,96.5 L144.4,98.3 L152.1,99.2 L159.8,101.0 L167.6,100.1 L175.3,101.4 L183.1,100.8 L190.8,101.9 L198.5,102.2 L206.3,102.7 L214.0,103.0 L221.8,104.1 L229.5,103.7 L237.2,103.4 L245.0,103.7 L252.7,103.7 L260.5,104.5 L268.2,105.7 L275.9,106.0 L283.7,106.2 L291.4,108.0 L299.2,107.3 L306.9,107.4 L314.6,109.1 L322.4,110.2 L330.1,110.9 L337.9,111.3 L345.6,112.3 L353.3,111.9 L361.1,111.7 L368.8,111.6 L376.6,111.4 L384.3,113.0 L392.0,113.0 L399.8,114.2 L407.5,114.0 L415.3,114.1 L423.0,112.0 L430.7,115.5 L438.5,116.8 L446.2,117.5 L454.0,117.9 L461.7,118.2 L469.4,118.2 L477.2,118.0 L484.9,118.5 L492.7,117.8 L500.4,117.3 L508.1,117.1 L515.9,117.8 L523.6,117.8 L531.4,117.9 L539.1,118.5 L546.8,119.2 L554.6,117.6 L562.3,118.2 L570.1,117.8 L577.8,117.3 L585.5,117.2 L593.3,116.8 L601.0,117.4 L608.8,117.8 L616.5,117.5 L624.2,118.1 L632.0,117.1 L639.7,117.3 L647.5,116.1 L655.2,117.1 L662.9,118.0 L670.7,117.5 L678.4,118.1 L686.2,117.0 L693.9,116.0 L701.6,116.5 L709.4,116.7 L717.1,116.8 L724.9,115.8 L732.6,115.0 L740.3,113.9 L748.1,114.3 L755.8,113.6 L763.6,112.0 L771.3,107.6 L779.0,109.5 L786.8,111.9 L794.5,116.8 L802.3,127.9" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The first 9 seconds shed nearly a fifth of viewers, running 1.4x the channel's own opening stop rate (*18.9x spike, 2,18</title></line><line x1="771.2" y1="10" x2="771.2" y2="172" class="tr-mk-drop"><title>13:53 drop: A brief 18-second dip at 96% actually runs BELOW this channel's typical outro loss (*9.4x local spike but 0.7x channel n</title></line><line x1="423.4" y1="10" x2="423.4" y2="172" class="tr-mk-drop"><title>7:19 drop: A 9-second window at the exact midpoint loses viewers at 4.1x the channel's usual rate here (*11.9x local spike, 256 vie</title></line><line x1="771.2" y1="10" x2="771.2" y2="172" class="tr-mk-peak"><title>13:53 peak: Audience rises 7.3% in the closing minute, pulling 352 viewers back for a two-sample hold (*audience climbs to 39.7% at </title></line><line x1="554.9" y1="10" x2="554.9" y2="172" class="tr-mk-peak"><title>9:48 peak: Audience rises 3.1% and holds for 31 samples — an unusually sustained lift for a mid-video peak (*131 viewers regained, </title></line><line x1="763.2" y1="10" x2="763.2" y2="172" class="tr-mk-peak"><title>13:44 peak: A 3-sample lift right before the final reveal pulls back 126 viewers (*audience rises 2.7% to 37.0% at the 94% mark*).</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1609,8 +1626,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>9:48 <span class="tr-tag tr-peak">peak</span> Audience rises 3.1% and holds for 31 samples — an unusually sustained lift for a mid-video peak (*131 viewers regained, audience at 33.6%*).</div><div>7:19 <span class="tr-tag tr-drop">drop</span> A 9-second window at the exact midpoint loses viewers at 4.1x the channel's usual rate here (*11.9x local spike, 256 viewers, 2.12% vs 0.51% typical*).</div>
     </div><div class="tr-step"><b>Finishing and final-piece reveal</b> <span class="tr-dim">The application of finish and the buildup to seeing the completed piece on camera.</span>
@@ -1619,17 +1636,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>13:53 <span class="tr-tag tr-drop">drop</span> A brief 18-second dip at 96% actually runs BELOW this channel's typical outro loss (*9.4x local spike but 0.7x channel norm, 287 viewers, 3.36% vs 4.92% typical*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>877.000</td><td>0.370</td></tr><tr><td>duration-vs-views</td><td>877.000</td><td>0.189</td></tr><tr><td>retention-half-vs-views</td><td>0.370</td><td>0.189</td></tr><tr><td>intro-hold-vs-views</td><td>0.567</td><td>0.189</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.567</td><td>0.370</td></tr><tr><td>recency-vs-retention-half</td><td>1760280381000.000</td><td>0.370</td></tr><tr><td>recency-vs-views</td><td>1760280381000.000</td><td>0.189</td></tr><tr><td>title-length-vs-views</td><td>54.000</td><td>0.189</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.189</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.189</td></tr><tr><td>duration-vs-intro-hold</td><td>877.000</td><td>0.567</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.189</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.370</td></tr><tr><td>title-word-count-vs-views</td><td>11.000</td><td>0.189</td></tr><tr><td>ctr-vs-views</td><td>0.050</td><td>0.189</td></tr><tr><td>ctr-vs-retention-half</td><td>0.050</td><td>0.370</td></tr><tr><td>duration-vs-ctr</td><td>877.000</td><td>0.050</td></tr><tr><td>title-length-vs-ctr</td><td>11.000</td><td>0.050</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-wKg0lMrBOiU" hidden>
       <h2>No Nails. No Screws. Just Joinery - Watch a Japanese Style Space Come to Life</h2>
       <p class="tr-dim">published 2025-09-07 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>26:20</span>
@@ -1642,8 +1659,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,24.5 L43.7,62.7 L51.5,74.5 L59.2,85.0 L67.0,89.7 L74.7,93.3 L82.4,95.5 L90.2,97.9 L97.9,99.1 L105.7,99.8 L113.4,100.5 L121.1,101.2 L128.9,101.8 L136.6,102.2 L144.4,103.2 L152.1,103.4 L159.8,104.1 L167.6,105.0 L175.3,106.4 L183.1,107.5 L190.8,107.8 L198.5,107.8 L206.3,107.9 L214.0,108.7 L221.8,108.8 L229.5,109.3 L237.2,111.1 L245.0,111.5 L252.7,111.1 L260.5,111.3 L268.2,111.4 L275.9,114.5 L283.7,116.0 L291.4,116.6 L299.2,117.7 L306.9,118.6 L314.6,119.4 L322.4,119.9 L330.1,121.1 L337.9,121.5 L345.6,122.7 L353.3,123.1 L361.1,123.5 L368.8,123.6 L376.6,123.4 L384.3,122.9 L392.0,124.5 L399.8,126.7 L407.5,128.1 L415.3,128.5 L423.0,128.7 L430.7,128.8 L438.5,129.0 L446.2,130.5 L454.0,131.4 L461.7,131.6 L469.4,132.1 L477.2,131.7 L484.9,131.2 L492.7,131.5 L500.4,131.6 L508.1,131.1 L515.9,130.9 L523.6,130.8 L531.4,130.8 L539.1,132.1 L546.8,132.5 L554.6,132.3 L562.3,132.6 L570.1,132.7 L577.8,133.3 L585.5,132.6 L593.3,133.2 L601.0,133.4 L608.8,133.4 L616.5,133.0 L624.2,132.9 L632.0,133.3 L639.7,133.7 L647.5,134.0 L655.2,134.0 L662.9,134.7 L670.7,133.9 L678.4,133.6 L686.2,132.9 L693.9,132.4 L701.6,132.0 L709.4,131.6 L717.1,131.0 L724.9,130.8 L732.6,129.8 L740.3,129.5 L748.1,129.2 L755.8,128.9 L763.6,128.8 L771.3,129.8 L779.0,133.5 L786.8,136.5 L794.5,139.9 L802.3,145.1" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening 16 seconds shed nearly a third of viewers, at 1.4x the channel's normal stop rate here (*7.1x spike, 16,395 </title></line><line x1="763.5" y1="10" x2="763.5" y2="172" class="tr-mk-drop"><title>24:45 drop: The closing reflection loses viewers at 1.7x the channel's typical stop rate for this position (*18.5x spike, 2,852 lost</title></line><line x1="384.3" y1="10" x2="384.3" y2="172" class="tr-mk-drop"><title>11:51 drop: A 47-second stretch mid-video quits at 4.7x the channel's typical stop rate here (*9.4x spike, 1,719 lost, 30.3%→27.1%*)</title></line><line x1="732.6" y1="10" x2="732.6" y2="172" class="tr-mk-peak"><title>23:42 peak: The audience rises and holds for five samples late in the video (*+2.4% present, 426 regained, 26.0% audience*).</title></line><line x1="716.9" y1="10" x2="716.9" y2="172" class="tr-mk-peak"><title>23:10 peak: A sustained rise across seven samples on the run-up to the reveal (*+1.4% present, 242 regained, 25.3% audience*).</title></line><line x1="508.2" y1="10" x2="508.2" y2="172" class="tr-mk-peak"><title>16:04 peak: A short rise across three samples on the dovetail-mortise explanation (*+1.2% present, 213 regained, 25.2% audience*).</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1706,8 +1723,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;So much of woodworking today feels completely disconnected from wood. That's not how I want my work to feel. So, I've set out to find a gentler path to work with nature, not against it. Something deeply rooted in tradition and a love of trees. So, with this project, I'm going to continue the search for this different way of working. And the foundation to this approach is all wood joinery. [Music] …&rdquo;</p><p class="tr-dim">first word at 1.4s · 260 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.219</div>
       <div>11:51 <span class="tr-tag tr-drop">drop</span> A 47-second stretch mid-video quits at 4.7x the channel's typical stop rate here (*9.4x spike, 1,719 lost, 30.3%→27.1%*).</div>
     </div><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
@@ -1716,17 +1733,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Finishing and final-piece reveal</b> <span class="tr-dim">The application of finish and the buildup to seeing the completed piece on camera.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=1.000</div>
       <div>23:42 <span class="tr-tag tr-peak">peak</span> The audience rises and holds for five samples late in the video (*+2.4% present, 426 regained, 26.0% audience*).</div><div>23:10 <span class="tr-tag tr-peak">peak</span> A sustained rise across seven samples on the run-up to the reveal (*+1.4% present, 242 regained, 25.3% audience*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>1580.000</td><td>0.267</td></tr><tr><td>duration-vs-views</td><td>1580.000</td><td>1.073</td></tr><tr><td>retention-half-vs-views</td><td>0.267</td><td>1.073</td></tr><tr><td>intro-hold-vs-views</td><td>0.602</td><td>1.073</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.602</td><td>0.267</td></tr><tr><td>recency-vs-retention-half</td><td>1757270386000.000</td><td>0.267</td></tr><tr><td>recency-vs-views</td><td>1757270386000.000</td><td>1.073</td></tr><tr><td>title-length-vs-views</td><td>77.000</td><td>1.073</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.073</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.073</td></tr><tr><td>duration-vs-intro-hold</td><td>1580.000</td><td>0.602</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.073</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.267</td></tr><tr><td>title-word-count-vs-views</td><td>15.000</td><td>1.073</td></tr><tr><td>ctr-vs-views</td><td>0.038</td><td>1.073</td></tr><tr><td>ctr-vs-retention-half</td><td>0.038</td><td>0.267</td></tr><tr><td>duration-vs-ctr</td><td>1580.000</td><td>0.038</td></tr><tr><td>title-length-vs-ctr</td><td>15.000</td><td>0.038</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-TSG8lMrqHQM" hidden>
       <h2>This ONE skill will change how you woodwork</h2>
       <p class="tr-dim">published 2025-06-14 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>7:10</span>
@@ -1739,8 +1756,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,26.7 L43.7,34.1 L51.5,34.9 L59.2,43.3 L67.0,64.6 L74.7,73.4 L82.4,75.9 L90.2,80.4 L97.9,83.5 L105.7,85.4 L113.4,93.6 L121.1,94.4 L128.9,94.6 L136.6,94.9 L144.4,95.5 L152.1,95.8 L159.8,96.5 L167.6,96.7 L175.3,97.0 L183.1,97.5 L190.8,97.7 L198.5,98.3 L206.3,98.3 L214.0,99.0 L221.8,99.9 L229.5,101.3 L237.2,102.6 L245.0,104.1 L252.7,104.7 L260.5,105.9 L268.2,106.8 L275.9,108.1 L283.7,108.2 L291.4,108.8 L299.2,109.2 L306.9,109.5 L314.6,110.2 L322.4,110.7 L330.1,111.8 L337.9,113.1 L345.6,113.6 L353.3,114.6 L361.1,113.9 L368.8,114.1 L376.6,115.4 L384.3,115.8 L392.0,115.3 L399.8,115.4 L407.5,115.3 L415.3,115.8 L423.0,115.7 L430.7,116.4 L438.5,116.3 L446.2,116.6 L454.0,116.7 L461.7,116.3 L469.4,116.5 L477.2,116.6 L484.9,116.4 L492.7,116.9 L500.4,117.3 L508.1,117.8 L515.9,118.3 L523.6,118.8 L531.4,118.7 L539.1,119.5 L546.8,120.5 L554.6,120.5 L562.3,121.3 L570.1,122.0 L577.8,122.7 L585.5,123.2 L593.3,123.0 L601.0,123.3 L608.8,124.4 L616.5,123.8 L624.2,124.6 L632.0,125.3 L639.7,125.1 L647.5,124.8 L655.2,123.9 L662.9,122.2 L670.7,122.5 L678.4,123.0 L686.2,124.4 L693.9,124.9 L701.6,125.6 L709.4,126.1 L717.1,125.0 L724.9,125.0 L732.6,125.1 L740.3,125.2 L748.1,125.6 L755.8,125.0 L763.6,124.6 L771.3,124.9 L779.0,126.1 L786.8,129.7 L794.5,132.8 L802.3,140.5" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening frame loses about a tenth of viewers before the video really starts (*10.0x spike, 5,203 viewers, 100% down </title></line><line x1="59.4" y1="10" x2="59.4" y2="172" class="tr-mk-drop"><title>0:13 drop: Viewers drop from 79.5% to 66.3% across four seconds as the setup extends (*3.0x spike, 4,941 viewers*).</title></line><line x1="106.2" y1="10" x2="106.2" y2="172" class="tr-mk-drop"><title>0:39 drop: A smaller but above-baseline exit as the stone-prep aside lands (*2.3x spike, 1,589 viewers, 53.5% to 48.4%*).</title></line><line x1="662.4" y1="10" x2="662.4" y2="172" class="tr-mk-peak"><title>5:48 peak: The audience rises and holds as the finishing stone appears (*+3.3% of viewers present, 557 regained, held 2 samples*).</title></line><line x1="716.4" y1="10" x2="716.4" y2="172" class="tr-mk-peak"><title>6:18 peak: Audience climbs and stays up for seven samples as the finish check is described (*+2.2%, 354 regained, held 7 samples*).</title></line><line x1="655.2" y1="10" x2="655.2" y2="172" class="tr-mk-peak"><title>5:44 peak: A shorter rise immediately before the 5:48 peak as the finishing sequence begins (*+2.1%, 343 regained, held 4 samples*)</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1803,24 +1820,24 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;High quality woodworking starts with sharp tools. So, if you want to make amazing things out of wood, you first need to learn how to sharpen well. In this video, I'll show you what my process looks like. This chisel is quite dull, so I'll need to sharpen until the edge is fully sharp and polished. I've got a few different types of stones here, but for chisels, I usually just use a 1,00 grit and 60…&rdquo;</p><p class="tr-dim">first word at 1.3s · 110 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Finishing and final-piece reveal</b> <span class="tr-dim">The application of finish and the buildup to seeing the completed piece on camera.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Finishing and final-piece reveal</b> <span class="tr-dim">The application of finish and the buildup to seeing the completed piece on camera.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=1.000</div>
       <div>6:18 <span class="tr-tag tr-peak">peak</span> Audience climbs and stays up for seven samples as the finish check is described (*+2.2%, 354 regained, held 7 samples*).</div><div>5:44 <span class="tr-tag tr-peak">peak</span> A shorter rise immediately before the 5:48 peak as the finishing sequence begins (*+2.1%, 343 regained, held 4 samples*).</div>
     </div><div class="tr-step"><b>Naming and explaining a tool or principle</b> <span class="tr-dim">Moments where a specific tool, jig, or design principle is introduced, named, or demonstrated in isolation.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>5:48 <span class="tr-tag tr-peak">peak</span> The audience rises and holds as the finishing stone appears (*+3.3% of viewers present, 557 regained, held 2 samples*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>430.000</td><td>0.348</td></tr><tr><td>duration-vs-views</td><td>430.000</td><td>1.288</td></tr><tr><td>retention-half-vs-views</td><td>0.348</td><td>1.288</td></tr><tr><td>intro-hold-vs-views</td><td>0.565</td><td>1.288</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.565</td><td>0.348</td></tr><tr><td>recency-vs-retention-half</td><td>1749914081000.000</td><td>0.348</td></tr><tr><td>recency-vs-views</td><td>1749914081000.000</td><td>1.288</td></tr><tr><td>title-length-vs-views</td><td>43.000</td><td>1.288</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.288</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.288</td></tr><tr><td>duration-vs-intro-hold</td><td>430.000</td><td>0.565</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.288</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.348</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>1.288</td></tr><tr><td>ctr-vs-views</td><td>0.064</td><td>1.288</td></tr><tr><td>ctr-vs-retention-half</td><td>0.064</td><td>0.348</td></tr><tr><td>duration-vs-ctr</td><td>430.000</td><td>0.064</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.064</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-7Gt5nepmzDM" hidden>
       <h2>Japanese Joinery is easier than you think...</h2>
       <p class="tr-dim">published 2025-05-04 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>12:49</span>
@@ -1833,8 +1850,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,18.3 L43.7,28.8 L51.5,38.3 L59.2,43.6 L67.0,55.6 L74.7,67.7 L82.4,80.0 L90.2,83.2 L97.9,86.2 L105.7,89.2 L113.4,90.4 L121.1,93.1 L128.9,95.2 L136.6,97.2 L144.4,98.9 L152.1,100.1 L159.8,101.8 L167.6,103.1 L175.3,104.5 L183.1,105.1 L190.8,106.1 L198.5,106.8 L206.3,107.3 L214.0,107.7 L221.8,109.5 L229.5,110.0 L237.2,110.7 L245.0,111.1 L252.7,111.9 L260.5,112.4 L268.2,111.6 L275.9,113.0 L283.7,113.6 L291.4,113.9 L299.2,114.4 L306.9,115.0 L314.6,115.8 L322.4,116.7 L330.1,117.3 L337.9,117.3 L345.6,117.6 L353.3,118.0 L361.1,118.2 L368.8,118.5 L376.6,118.4 L384.3,118.9 L392.0,119.0 L399.8,119.5 L407.5,120.3 L415.3,120.4 L423.0,118.3 L430.7,122.3 L438.5,122.6 L446.2,123.3 L454.0,123.9 L461.7,124.4 L469.4,125.5 L477.2,125.9 L484.9,125.9 L492.7,126.3 L500.4,126.6 L508.1,127.0 L515.9,127.5 L523.6,127.8 L531.4,128.6 L539.1,128.9 L546.8,129.0 L554.6,129.2 L562.3,129.6 L570.1,129.1 L577.8,129.2 L585.5,130.8 L593.3,130.9 L601.0,131.0 L608.8,130.6 L616.5,130.5 L624.2,130.3 L632.0,130.2 L639.7,130.0 L647.5,129.4 L655.2,129.7 L662.9,130.1 L670.7,130.7 L678.4,130.9 L686.2,131.4 L693.9,132.1 L701.6,134.3 L709.4,135.6 L717.1,137.0 L724.9,137.4 L732.6,138.4 L740.3,138.8 L748.1,138.4 L755.8,138.3 L763.6,137.6 L771.3,137.3 L779.0,136.8 L786.8,136.8 L794.5,137.3 L802.3,138.5" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The first-second drop runs slightly gentler than this channel usually sees at frame one (*0.9x the channel norm, 488 vie</title></line><line x1="423.5" y1="10" x2="423.5" y2="172" class="tr-mk-drop"><title>6:25 drop: An eight-second stretch loses viewers at 4.6x the channel's usual rate for this position (*12.6x the surrounding stop ra</title></line><line x1="694.3" y1="10" x2="694.3" y2="172" class="tr-mk-drop"><title>10:54 drop: An eight-second beat sheds viewers at 8.8x the channel's usual rate for this late-video position (*4.6x the surrounding </title></line><line x1="763.7" y1="10" x2="763.7" y2="172" class="tr-mk-peak"><title>12:03 peak: The audience rises and holds through the closing reflection (*+2.2% of viewers present, 57 regained, held for 4 samples,</title></line><line x1="648.0" y1="10" x2="648.0" y2="172" class="tr-mk-peak"><title>10:08 peak: A brief rise sits on the Ming-chair aside (*+1.4% of viewers present, 46 regained, held for 1 sample, 26.3% present*).</title></line><line x1="778.8" y1="10" x2="778.8" y2="172" class="tr-mk-peak"><title>12:18 peak: A second small rise sits on the closing encouragement (*+1.3% of viewers present, 33 regained, held for 1 sample, 21.7% </title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -1897,8 +1914,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;This is a kawatsuki joint or a halfb blind tenoned dadoed and rabbited scarf joint. Japanese joinery may seem very complex and difficult which it is. But these joints are made with simple skills built one on top of another. The skills that go into a joint like this are simply accurate layout, sharp tools, and being able to cut to a line with a saw, plane, and a chisel. All of the joinery is laid o…&rdquo;</p><p class="tr-dim">first word at 1.2s · 179 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.219</div>
       <div>6:25 <span class="tr-tag tr-drop">drop</span> An eight-second stretch loses viewers at 4.6x the channel's usual rate for this position (*12.6x the surrounding stop rate, 280 viewers, 33.1%→30.7%*).</div>
     </div><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
@@ -1913,17 +1930,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>10:54 <span class="tr-tag tr-drop">drop</span> An eight-second beat sheds viewers at 8.8x the channel's usual rate for this late-video position (*4.6x the surrounding stop rate, 131 viewers, 24.6%→23.3%*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>769.000</td><td>0.332</td></tr><tr><td>duration-vs-views</td><td>769.000</td><td>0.202</td></tr><tr><td>retention-half-vs-views</td><td>0.332</td><td>0.202</td></tr><tr><td>intro-hold-vs-views</td><td>0.718</td><td>0.202</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.718</td><td>0.332</td></tr><tr><td>recency-vs-retention-half</td><td>1746368939000.000</td><td>0.332</td></tr><tr><td>recency-vs-views</td><td>1746368939000.000</td><td>0.202</td></tr><tr><td>title-length-vs-views</td><td>44.000</td><td>0.202</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.202</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.202</td></tr><tr><td>duration-vs-intro-hold</td><td>769.000</td><td>0.718</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.202</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.332</td></tr><tr><td>title-word-count-vs-views</td><td>7.000</td><td>0.202</td></tr><tr><td>ctr-vs-views</td><td>0.060</td><td>0.202</td></tr><tr><td>ctr-vs-retention-half</td><td>0.060</td><td>0.332</td></tr><tr><td>duration-vs-ctr</td><td>769.000</td><td>0.060</td></tr><tr><td>title-length-vs-ctr</td><td>7.000</td><td>0.060</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-78ErGTAyFCY" hidden>
       <h2>Making a Tea Cabinet | Sashimono Woodworking</h2>
       <p class="tr-dim">published 2025-02-02 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>12:13</span>
@@ -1936,8 +1953,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,17.9 L43.7,41.4 L51.5,57.0 L59.2,65.4 L67.0,72.0 L74.7,74.3 L82.4,81.2 L90.2,82.6 L97.9,84.6 L105.7,85.5 L113.4,85.0 L121.1,87.9 L128.9,89.3 L136.6,90.5 L144.4,91.7 L152.1,93.0 L159.8,94.0 L167.6,93.7 L175.3,94.7 L183.1,95.0 L190.8,96.5 L198.5,96.4 L206.3,97.4 L214.0,98.1 L221.8,98.9 L229.5,99.7 L237.2,100.2 L245.0,101.5 L252.7,102.3 L260.5,103.5 L268.2,105.9 L275.9,104.7 L283.7,106.0 L291.4,106.4 L299.2,108.3 L306.9,108.6 L314.6,108.6 L322.4,109.5 L330.1,110.8 L337.9,111.6 L345.6,111.5 L353.3,112.1 L361.1,113.0 L368.8,112.8 L376.6,111.0 L384.3,112.4 L392.0,112.6 L399.8,112.7 L407.5,113.2 L415.3,113.6 L423.0,113.4 L430.7,113.4 L438.5,111.8 L446.2,114.0 L454.0,114.1 L461.7,114.0 L469.4,114.8 L477.2,116.0 L484.9,116.3 L492.7,115.9 L500.4,116.3 L508.1,115.4 L515.9,115.1 L523.6,115.7 L531.4,115.5 L539.1,116.2 L546.8,116.7 L554.6,116.5 L562.3,116.4 L570.1,116.7 L577.8,116.5 L585.5,117.0 L593.3,116.5 L601.0,114.2 L608.8,116.1 L616.5,117.6 L624.2,118.7 L632.0,118.5 L639.7,118.9 L647.5,119.6 L655.2,119.3 L662.9,119.6 L670.7,119.7 L678.4,119.6 L686.2,120.1 L693.9,120.4 L701.6,119.8 L709.4,119.9 L717.1,119.8 L724.9,118.6 L732.6,118.2 L740.3,117.5 L748.1,115.8 L755.8,113.8 L763.6,112.3 L771.3,111.3 L779.0,113.2 L786.8,117.1 L794.5,121.8 L802.3,127.8" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening seven seconds lose nearly a fifth of viewers (*3.6x the surrounding stop rate, 8,836 viewers, 100.0% down to</title></line><line x1="770.9" y1="10" x2="770.9" y2="172" class="tr-mk-drop"><title>11:36 drop: A 15-second stretch near the outro drops audience from 37.5% to 33.9% (*10.2x the surrounding stop rate, 2,134 viewers*)</title></line><line x1="600.9" y1="10" x2="600.9" y2="172" class="tr-mk-drop"><title>8:55 drop: A 15-second window sheds 1,116 viewers at 2.7x the channel's typical rate for this position (*9.9x the surrounding stop </title></line><line x1="600.9" y1="10" x2="600.9" y2="172" class="tr-mk-peak"><title>8:55 peak: Audience rises 4.2% at this mark, regaining 945 viewers for one sample (*35.7% present, coincides with a 2.7x-norm drop </title></line><line x1="756.1" y1="10" x2="756.1" y2="172" class="tr-mk-peak"><title>11:22 peak: Audience rises 3.6% and holds for three samples (*819 viewers regained, 35.9% present at 93% through*).</title></line><line x1="377.1" y1="10" x2="377.1" y2="172" class="tr-mk-peak"><title>5:23 peak: Audience rises 3.1% and holds for three samples near the midpoint (*760 viewers regained, 37.7% present at 44% through*)</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -2000,8 +2017,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Early-video setup and framing</b> <span class="tr-dim">Opening stretches where the project and its stakes are being introduced before hands-on work begins.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>8:55 <span class="tr-tag tr-drop">drop</span> A 15-second window sheds 1,116 viewers at 2.7x the channel's typical rate for this position (*9.9x the surrounding stop rate, 35.7% down to 33.6%*).</div><div>5:23 <span class="tr-tag tr-peak">peak</span> Audience rises 3.1% and holds for three samples near the midpoint (*760 viewers regained, 37.7% present at 44% through*).</div>
     </div><div class="tr-step"><b>Finishing and final-piece reveal</b> <span class="tr-dim">The application of finish and the buildup to seeing the completed piece on camera.</span>
@@ -2013,17 +2030,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>11:36 <span class="tr-tag tr-drop">drop</span> A 15-second stretch near the outro drops audience from 37.5% to 33.9% (*10.2x the surrounding stop rate, 2,134 viewers*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>733.000</td><td>0.362</td></tr><tr><td>duration-vs-views</td><td>733.000</td><td>1.704</td></tr><tr><td>retention-half-vs-views</td><td>0.362</td><td>1.704</td></tr><tr><td>intro-hold-vs-views</td><td>0.603</td><td>1.704</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.603</td><td>0.362</td></tr><tr><td>recency-vs-retention-half</td><td>1738507498000.000</td><td>0.362</td></tr><tr><td>recency-vs-views</td><td>1738507498000.000</td><td>1.704</td></tr><tr><td>title-length-vs-views</td><td>44.000</td><td>1.704</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.704</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.704</td></tr><tr><td>duration-vs-intro-hold</td><td>733.000</td><td>0.603</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.704</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.362</td></tr><tr><td>title-word-count-vs-views</td><td>7.000</td><td>1.704</td></tr><tr><td>ctr-vs-views</td><td>0.041</td><td>1.704</td></tr><tr><td>ctr-vs-retention-half</td><td>0.041</td><td>0.362</td></tr><tr><td>duration-vs-ctr</td><td>733.000</td><td>0.041</td></tr><tr><td>title-length-vs-ctr</td><td>7.000</td><td>0.041</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-KHdX4xWH9YY" hidden>
       <h2>A workbench can be as simple as this...</h2>
       <p class="tr-dim">published 2024-12-23 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>9:29</span>
@@ -2036,8 +2053,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,19.6 L43.7,38.1 L51.5,46.4 L59.2,62.5 L67.0,65.2 L74.7,67.9 L82.4,70.1 L90.2,72.5 L97.9,78.0 L105.7,79.6 L113.4,80.3 L121.1,80.5 L128.9,84.2 L136.6,88.6 L144.4,92.7 L152.1,94.8 L159.8,96.5 L167.6,97.8 L175.3,99.9 L183.1,100.1 L190.8,99.6 L198.5,100.9 L206.3,100.8 L214.0,102.9 L221.8,103.0 L229.5,104.4 L237.2,104.6 L245.0,105.8 L252.7,105.4 L260.5,107.2 L268.2,106.6 L275.9,107.3 L283.7,108.3 L291.4,108.1 L299.2,107.9 L306.9,108.0 L314.6,108.6 L322.4,110.4 L330.1,108.6 L337.9,110.5 L345.6,111.7 L353.3,110.7 L361.1,111.7 L368.8,111.8 L376.6,113.0 L384.3,113.0 L392.0,113.1 L399.8,112.8 L407.5,112.3 L415.3,112.5 L423.0,112.6 L430.7,112.2 L438.5,111.0 L446.2,110.1 L454.0,110.0 L461.7,110.7 L469.4,109.7 L477.2,109.8 L484.9,110.4 L492.7,109.2 L500.4,108.0 L508.1,107.5 L515.9,108.0 L523.6,108.0 L531.4,108.5 L539.1,108.5 L546.8,110.1 L554.6,110.7 L562.3,111.2 L570.1,111.6 L577.8,111.5 L585.5,111.7 L593.3,112.0 L601.0,112.4 L608.8,112.4 L616.5,112.3 L624.2,112.9 L632.0,113.1 L639.7,113.0 L647.5,113.8 L655.2,112.5 L662.9,112.3 L670.7,112.6 L678.4,113.4 L686.2,113.8 L693.9,113.9 L701.6,114.4 L709.4,114.8 L717.1,115.1 L724.9,114.8 L732.6,114.3 L740.3,115.0 L748.1,115.2 L755.8,115.9 L763.6,117.9 L771.3,119.8 L779.0,121.8 L786.8,124.0 L794.5,127.7 L802.3,134.1" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The first six seconds actually lose fewer viewers than this channel normally does at the open (*7.22% stop rate versus 8</title></line><line x1="128.5" y1="10" x2="128.5" y2="172" class="tr-mk-drop"><title>1:08 drop: A roadmap beat one-eighth in loses nearly twice the viewers this channel normally loses here (*3.37% stop rate versus 1.</title></line><line x1="732.5" y1="10" x2="732.5" y2="172" class="tr-mk-drop"><title>8:32 drop: The philosophy wrap-up sheds viewers at over twice the channel's typical rate for this position (*1.97% stop rate versus</title></line><line x1="654.9" y1="10" x2="654.9" y2="172" class="tr-mk-peak"><title>7:35 peak: Audience rises as the narrator shows the movable plane stops accommodating a longer board (*+2.2% of audience present, 5</title></line><line x1="499.9" y1="10" x2="499.9" y2="172" class="tr-mk-peak"><title>5:41 peak: Audience climbs as the narrator demonstrates the pull-against principle of the bench (*+2.0% of audience present, 524 vi</title></line><line x1="438.6" y1="10" x2="438.6" y2="172" class="tr-mk-peak"><title>4:56 peak: Audience rises and holds for twenty samples as the narrator frames the trade-off of hand-tool work (*+2.1% of audience p</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -2100,24 +2117,24 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;I've always been attracted to a different way of working so the ultimate workbench never appealed to me instead I moved towards something more minimalist there's not much space here in the New York City area so I needed a modular setup that works in a tight corner of my living room thankfully Japanese tools are designed to be used in small spaces this was my first workbench I used it every day in …&rdquo;</p><p class="tr-dim">first word at 2s · 142 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.109</div>
       <div>8:32 <span class="tr-tag tr-drop">drop</span> The philosophy wrap-up sheds viewers at over twice the channel's typical rate for this position (*1.97% stop rate versus 0.93% typical, 6.5x spike, 1,572 viewers*).</div>
     </div><div class="tr-step"><b>Naming and explaining a tool or principle</b> <span class="tr-dim">Moments where a specific tool, jig, or design principle is introduced, named, or demonstrated in isolation.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.0pp · sign test p=0.688</div>
       <div>4:56 <span class="tr-tag tr-peak">peak</span> Audience rises and holds for twenty samples as the narrator frames the trade-off of hand-tool work (*+2.1% of audience present, 504 viewers regained*).</div><div>5:41 <span class="tr-tag tr-peak">peak</span> Audience climbs as the narrator demonstrates the pull-against principle of the bench (*+2.0% of audience present, 524 viewers regained, held five samples*).</div><div>7:35 <span class="tr-tag tr-peak">peak</span> Audience rises as the narrator shows the movable plane stops accommodating a longer board (*+2.2% of audience present, 531 viewers regained*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>569.000</td><td>0.367</td></tr><tr><td>duration-vs-views</td><td>569.000</td><td>1.712</td></tr><tr><td>retention-half-vs-views</td><td>0.367</td><td>1.712</td></tr><tr><td>intro-hold-vs-views</td><td>0.629</td><td>1.712</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.629</td><td>0.367</td></tr><tr><td>recency-vs-retention-half</td><td>1734922274000.000</td><td>0.367</td></tr><tr><td>recency-vs-views</td><td>1734922274000.000</td><td>1.712</td></tr><tr><td>title-length-vs-views</td><td>39.000</td><td>1.712</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>1.712</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>1.712</td></tr><tr><td>duration-vs-intro-hold</td><td>569.000</td><td>0.629</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>1.712</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.367</td></tr><tr><td>title-word-count-vs-views</td><td>8.000</td><td>1.712</td></tr><tr><td>ctr-vs-views</td><td>0.046</td><td>1.712</td></tr><tr><td>ctr-vs-retention-half</td><td>0.046</td><td>0.367</td></tr><tr><td>duration-vs-ctr</td><td>569.000</td><td>0.046</td></tr><tr><td>title-length-vs-ctr</td><td>8.000</td><td>0.046</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-na9e0Pl2Dow" hidden>
       <h2>I built a Cabinet to store our memories | Full Build</h2>
       <p class="tr-dim">published 2024-11-03 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>9:35</span>
@@ -2130,8 +2147,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,16.0 L43.7,43.9 L51.5,53.5 L59.2,65.8 L67.0,70.8 L74.7,74.0 L82.4,75.5 L90.2,77.0 L97.9,77.8 L105.7,80.2 L113.4,79.3 L121.1,80.2 L128.9,83.0 L136.6,84.1 L144.4,85.0 L152.1,85.1 L159.8,86.5 L167.6,87.2 L175.3,86.7 L183.1,87.0 L190.8,86.8 L198.5,87.4 L206.3,88.1 L214.0,89.4 L221.8,89.0 L229.5,88.9 L237.2,88.7 L245.0,89.8 L252.7,91.1 L260.5,92.1 L268.2,92.5 L275.9,94.3 L283.7,94.5 L291.4,96.1 L299.2,95.8 L306.9,96.1 L314.6,96.6 L322.4,96.8 L330.1,95.9 L337.9,95.2 L345.6,96.2 L353.3,96.6 L361.1,95.7 L368.8,96.9 L376.6,98.0 L384.3,97.5 L392.0,97.4 L399.8,99.0 L407.5,97.9 L415.3,98.2 L423.0,98.5 L430.7,98.5 L438.5,98.3 L446.2,99.4 L454.0,99.9 L461.7,99.8 L469.4,98.5 L477.2,99.0 L484.9,98.5 L492.7,98.7 L500.4,99.3 L508.1,99.6 L515.9,100.3 L523.6,100.0 L531.4,99.9 L539.1,98.9 L546.8,100.5 L554.6,99.6 L562.3,99.7 L570.1,99.7 L577.8,99.3 L585.5,100.5 L593.3,98.6 L601.0,101.9 L608.8,100.4 L616.5,100.3 L624.2,99.9 L632.0,99.9 L639.7,100.7 L647.5,100.3 L655.2,98.3 L662.9,96.3 L670.7,97.0 L678.4,98.4 L686.2,99.4 L693.9,99.5 L701.6,98.0 L709.4,97.1 L717.1,95.2 L724.9,95.1 L732.6,93.2 L740.3,91.6 L748.1,91.3 L755.8,89.1 L763.6,88.7 L771.3,91.0 L779.0,92.9 L786.8,96.5 L794.5,100.4 L802.3,106.6" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening six seconds shed roughly a fifth of viewers before the premise lands (*4.8x spike, 3,414 viewers lost, 100% </title></line><line x1="764.2" y1="10" x2="764.2" y2="172" class="tr-mk-drop"><title>9:01 drop: The outro sheds viewers as the voiceover resolves into a music-only tail (*8.7x spike, 823 viewers lost, 51.4% to 46.6%*</title></line><line x1="578.5" y1="10" x2="578.5" y2="172" class="tr-mk-drop"><title>6:43 drop: A quiet reflective beat before the hand-plane work loses viewers at more than double the channel norm (*12.6x spike, 501</title></line><line x1="756.2" y1="10" x2="756.2" y2="172" class="tr-mk-peak"><title>8:55 peak: Viewers scrub back to the thematic resolution moments before the outro (*2.7% rose, 285 viewers regained, held 2 samples</title></line><line x1="663.3" y1="10" x2="663.3" y2="172" class="tr-mk-peak"><title>7:46 peak: Viewers rewind to the finish-application segment (*2.8% rose, 273 viewers regained, held 1 sample, 46.8% present*).</title></line><line x1="655.2" y1="10" x2="655.2" y2="172" class="tr-mk-peak"><title>7:40 peak: A sustained rewatch holds across the finish reveal for seventeen samples (*2.7% rose, 256 viewers regained, held 17 samp</title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -2194,8 +2211,8 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;I love that ordinary objects can spark little bursts of Feeling by simply touching or seeing something a memory can rise up like the small pile of shoes by our front door I see my wife's shoes and think about all the places she walked that day and what she saw or felt or maybe I think back to a special date we had while wearing my dirty sneakers because I got glue on my nice shoes but as much as I…&rdquo;</p><p class="tr-dim">first word at 1s · 100 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Hands-on process narration</b> <span class="tr-dim">The creator describes or performs a specific woodworking step, tool use, or technique in the middle of the build.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm +0.0pp · sign test p=0.219</div>
       <div>6:43 <span class="tr-tag tr-drop">drop</span> A quiet reflective beat before the hand-plane work loses viewers at more than double the channel norm (*12.6x spike, 501 viewers lost, 1.20% vs 0.52% typical*).</div>
     </div><div class="tr-step"><b>Closing philosophical thesis</b> <span class="tr-dim">Monologue passages where the creator delivers the video's big-picture takeaway about craft, meaning, or approach.</span>
@@ -2207,17 +2224,17 @@ table.obs td.no{color:#ff8f8f}
     </div><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>9:01 <span class="tr-tag tr-drop">drop</span> The outro sheds viewers as the voiceover resolves into a music-only tail (*8.7x spike, 823 viewers lost, 51.4% to 46.6%*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>575.000</td><td>0.454</td></tr><tr><td>duration-vs-views</td><td>575.000</td><td>0.348</td></tr><tr><td>retention-half-vs-views</td><td>0.454</td><td>0.348</td></tr><tr><td>intro-hold-vs-views</td><td>0.595</td><td>0.348</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.595</td><td>0.454</td></tr><tr><td>recency-vs-retention-half</td><td>1730641946000.000</td><td>0.454</td></tr><tr><td>recency-vs-views</td><td>1730641946000.000</td><td>0.348</td></tr><tr><td>title-length-vs-views</td><td>52.000</td><td>0.348</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.348</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.348</td></tr><tr><td>duration-vs-intro-hold</td><td>575.000</td><td>0.595</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.348</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.454</td></tr><tr><td>title-word-count-vs-views</td><td>11.000</td><td>0.348</td></tr><tr><td>ctr-vs-views</td><td>0.042</td><td>0.348</td></tr><tr><td>ctr-vs-retention-half</td><td>0.042</td><td>0.454</td></tr><tr><td>duration-vs-ctr</td><td>575.000</td><td>0.042</td></tr><tr><td>title-length-vs-ctr</td><td>11.000</td><td>0.042</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-FofTq546kgM" hidden>
       <h2>What is Japanese Woodworking? - An Introduction</h2>
       <p class="tr-dim">published 2024-10-13 · in the recent-cohort window the advice is computed over · analysed 2026-08-31</p>
       
-<div class="tr-section"><h3>1 · Retention breakdown</h3>
+<details class="tr-section" open><summary><h3>1 · Retention breakdown</h3></summary>
   <div class="tr-kv">
     <b>curve</b><span>100 samples, stored one per percent</span>
     <b>runtime</b><span>5:39</span>
@@ -2230,8 +2247,8 @@ table.obs td.no{color:#ff8f8f}
     <path d="M36.0,18.8 L43.7,37.1 L51.5,43.3 L59.2,44.0 L67.0,53.3 L74.7,59.9 L82.4,62.5 L90.2,65.7 L97.9,68.6 L105.7,71.9 L113.4,73.3 L121.1,78.7 L128.9,79.9 L136.6,80.1 L144.4,77.2 L152.1,80.1 L159.8,80.9 L167.6,82.3 L175.3,83.7 L183.1,84.3 L190.8,85.5 L198.5,84.8 L206.3,85.2 L214.0,84.8 L221.8,86.4 L229.5,86.6 L237.2,85.6 L245.0,84.6 L252.7,84.6 L260.5,85.0 L268.2,86.6 L275.9,87.3 L283.7,88.2 L291.4,88.1 L299.2,89.7 L306.9,89.1 L314.6,89.4 L322.4,90.4 L330.1,90.5 L337.9,91.0 L345.6,91.5 L353.3,90.3 L361.1,92.2 L368.8,92.5 L376.6,92.6 L384.3,93.9 L392.0,94.6 L399.8,94.8 L407.5,94.7 L415.3,95.8 L423.0,95.2 L430.7,96.0 L438.5,96.1 L446.2,96.7 L454.0,97.4 L461.7,97.4 L469.4,97.9 L477.2,97.5 L484.9,98.2 L492.7,98.4 L500.4,99.1 L508.1,99.5 L515.9,99.3 L523.6,100.5 L531.4,100.3 L539.1,100.8 L546.8,101.0 L554.6,100.8 L562.3,101.5 L570.1,101.7 L577.8,102.9 L585.5,102.6 L593.3,102.8 L601.0,103.5 L608.8,103.5 L616.5,104.3 L624.2,104.9 L632.0,105.8 L639.7,105.4 L647.5,105.5 L655.2,106.8 L662.9,106.6 L670.7,107.6 L678.4,107.5 L686.2,107.8 L693.9,108.1 L701.6,108.4 L709.4,109.8 L717.1,110.6 L724.9,111.7 L732.6,111.8 L740.3,113.3 L748.1,112.9 L755.8,113.8 L763.6,117.2 L771.3,120.2 L779.0,123.6 L786.8,126.6 L794.5,130.4 L802.3,133.3" class="tr-curve"/><line x1="36.0" y1="10" x2="36.0" y2="172" class="tr-mk-drop"><title>0:00 drop: The opening three seconds shed roughly one in six viewers, but less than the channel usually loses here (*5.98% stop rat</title></line><line x1="755.2" y1="10" x2="755.2" y2="172" class="tr-mk-drop"><title>5:15 drop: The outro loses viewers at 3.3x the channel's usual rate for this position (*3.07% vs 0.93% typical, 68 viewers over 10 </title></line><line x1="113.6" y1="10" x2="113.6" y2="172" class="tr-mk-drop"><title>0:34 drop: A small bump three seconds wide runs just above the channel's norm for this position (*2.01% vs 1.78% typical, 2.2x the </title></line><text x="36.0" y="192" class="tr-tick">0%</text><text x="229.5" y="192" class="tr-tick">25%</text><text x="423.0" y="192" class="tr-tick">50%</text><text x="616.5" y="192" class="tr-tick">75%</text><text x="810.0" y="192" class="tr-tick">100%</text><text x="4" y="176.0" class="tr-tick">0%</text><text x="4" y="95.0" class="tr-tick">50%</text><text x="4" y="14.0" class="tr-tick">100%</text>
   </svg>
   <p class="tr-dim">Red marks are flagged drops, green are earned rewinds. Hover a mark for its note.</p>
-</div>
-<div class="tr-section"><h3>2 · Each flagged moment: from curve to note</h3>
+</details>
+<details class="tr-section" open><summary><h3>2 · Each flagged moment: from curve to note</h3></summary>
   <div class="tr-step">
     <div><span class="tr-tag tr-drop">drop</span><b>0:00</b></div>
     <div class="tr-kv">
@@ -2264,21 +2281,21 @@ table.obs td.no{color:#ff8f8f}
     </div>
   </div>
   <h4>The spoken opening (first 60s, stored for the opening probes)</h4><p class="tr-quote">&ldquo;[Music] I want to live at peace with the natural world to live close to Nature and to craft things of beauty using my hands Japanese woodworking has opened a path for this in my life so I'd love to share with you a few things that make this way of working unique in Japan there's a strong reverence for nature working with the trees utilizing the material in the way that it wants to&rdquo;</p><p class="tr-dim">first word at 0.2s · 119 caption segments</p>
-</div>
-<div class="tr-section"><h3>3 · Where these moments sit in the channel's census</h3><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
+</details>
+<details class="tr-section" open><summary><h3>3 · Where these moments sit in the channel's census</h3></summary><div class="tr-step"><b>Outro sign-off and end-card</b> <span class="tr-dim">The narrator wraps up, thanks viewers, teases the next video, or asks for likes as the video closes out.</span>
       <div class="tr-fig">category verdict: mixed · median excess vs its kind's band norm -0.1pp · sign test p=0.289</div>
       <div>5:15 <span class="tr-tag tr-drop">drop</span> The outro loses viewers at 3.3x the channel's usual rate for this position (*3.07% vs 0.93% typical, 68 viewers over 10 seconds*).</div>
-    </div></div>
-<div class="tr-section"><h3>4 · Format assignment</h3><p class="tr-empty">No format library on this channel yet.</p></div>
-<div class="tr-section"><h3>5 · What this video contributed to the measurement ledger</h3><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
+    </div></details>
+<details class="tr-section" open><summary><h3>4 · Format assignment</h3></summary><p class="tr-empty">No format library on this channel yet.</p></details>
+<details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
     <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>339.000</td><td>0.474</td></tr><tr><td>duration-vs-views</td><td>339.000</td><td>0.028</td></tr><tr><td>retention-half-vs-views</td><td>0.474</td><td>0.028</td></tr><tr><td>intro-hold-vs-views</td><td>0.618</td><td>0.028</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.618</td><td>0.474</td></tr><tr><td>recency-vs-retention-half</td><td>1728853214000.000</td><td>0.474</td></tr><tr><td>recency-vs-views</td><td>1728853214000.000</td><td>0.028</td></tr><tr><td>title-length-vs-views</td><td>47.000</td><td>0.028</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>0.028</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>0.028</td></tr><tr><td>duration-vs-intro-hold</td><td>339.000</td><td>0.618</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>0.028</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.474</td></tr><tr><td>title-word-count-vs-views</td><td>7.000</td><td>0.028</td></tr><tr><td>ctr-vs-views</td><td>0.113</td><td>0.028</td></tr><tr><td>ctr-vs-retention-half</td><td>0.113</td><td>0.474</td></tr><tr><td>duration-vs-ctr</td><td>339.000</td><td>0.113</td></tr><tr><td>title-length-vs-ctr</td><td>7.000</td><td>0.113</td></tr></tbody></table></div>
-    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></div>
+    <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div></div>
 <p class="tr-dim" id="tr-loading" hidden>Loading that video's trace&hellip;</p>
-<div class="tr-section"><h3>Channel · Ideas and how they were assembled</h3><p class="tr-empty">No published idea set on this channel.</p></div>
-<div class="tr-section"><h3>Channel · Action list derivation</h3><p class="tr-dim">No model is involved: the same data twice gives the same list. Window: the 40 most recent analysed uploads. Each action's confidence is read off the evidence ladder (a signed Law with no observations reads as theory).</p>
+<details class="tr-section" open><summary><h3>Channel · Ideas and how they were assembled</h3></summary><p class="tr-empty">No published idea set on this channel.</p></details>
+<details class="tr-section" open><summary><h3>Channel · Action list derivation</h3></summary><p class="tr-dim">No model is involved: the same data twice gives the same list. Window: the 40 most recent analysed uploads. Each action's confidence is read off the evidence ladder (a signed Law with no observations reads as theory).</p>
   <div class="tr-step"><b></b> <span class="tr-tag">measured</span><div class="tr-dim"> · evidence type: correlation</div></div><div class="tr-step"><b></b> <span class="tr-tag">measured-law</span><div class="tr-dim"> · evidence type: observation</div></div>
-  <h4>Checked and healthy</h4><div class="tr-dim"></div><div class="tr-dim"></div></div>
+  <h4>Checked and healthy</h4><div class="tr-dim"></div><div class="tr-dim"></div></details>
 <p class="tr-dim"><a href="../intelligence-system.html">&larr; Intelligence system</a> &middot; <a href="../channels/UCsF-SfQ6_7UZZgNrO-E6qxA.html">channel page</a></p>
 <script>
 (function(){var s=document.getElementById('tr-select');var host=document.getElementById('tr-traces');var loading=document.getElementById('tr-loading');var lazy=null;
@@ -2287,6 +2304,9 @@ function show(){var id=s.value;if(document.getElementById('tr-'+id)){reveal(id);
 loading.hidden=false;var p=lazy?Promise.resolve(lazy):fetch('UCsF-SfQ6_7UZZgNrO-E6qxA.traces.json').then(function(r){return r.json();}).then(function(j){lazy=j;return j;});
 p.then(function(j){var html=j[id];if(html){var d=document.createElement('div');d.innerHTML=html;host.appendChild(d.firstElementChild);}loading.hidden=true;reveal(id);}).catch(function(){loading.textContent='Could not load that trace.';});}
 var h=location.hash.slice(1);if(h&&Array.prototype.some.call(s.options,function(o){return o.value===h;})){s.value=h;}
+function fold(open){document.querySelectorAll('details.tr-section').forEach(function(d){d.open=open;});}
+var ex=document.getElementById('tr-expand'),co=document.getElementById('tr-collapse');
+if(ex)ex.addEventListener('click',function(){fold(true);});if(co)co.addEventListener('click',function(){fold(false);});
 s.addEventListener('change',show);show();})();
 </script>
 <footer>Generated from the yt-audit pipeline · every figure traces to a Slides deck or workbook linked above.</footer>

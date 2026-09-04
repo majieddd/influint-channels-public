@@ -1,0 +1,85 @@
+# Influint channel intelligence
+
+An evidence base about what actually moves YouTube performance, built from measured
+retention curves rather than from advice. 237 channels are tracked and
+19 carry per-video retention analysis. Every claim carries how well it has
+held up, on how many independent channels, and what it does not establish.
+
+READ THIS FIRST. Most of this knowledge base has never been quantified. That is the
+honest state of it, not a gap being papered over: the probes reach retention curves,
+runtime, views, titles, click-through where a Studio pull exists, and detected video
+segments. Claims about thumbnails and audience psychology sit outside that reach and
+are on the record because a practitioner asserted them. Never present a claim as
+established without checking its standing and its limits.
+
+## Connect over MCP (recommended)
+
+One file, no dependencies, Node 18 or newer.
+
+1. Download: https://majieddd.github.io/influint-channels-public/yt-intelligence-mcp.mjs
+2. Ask your contact at Influint for an API key. It is read-only.
+3. Add to your MCP client config:
+
+{
+  "mcpServers": {
+    "yt-intelligence": {
+      "command": "node",
+      "args": ["/absolute/path/to/yt-intelligence-mcp.mjs"],
+      "env": {
+        "YT_INTELLIGENCE_URL": "<ask Influint for the API host>",
+        "YT_INTELLIGENCE_KEY": "<your key>"
+      }
+    }
+  }
+}
+
+For Claude Code: claude mcp add yt-intelligence --env YT_INTELLIGENCE_URL=<ask Influint for the API host> --env YT_INTELLIGENCE_KEY=<your key> -- node /absolute/path/to/yt-intelligence-mcp.mjs
+
+## Connect over HTTP
+
+NOTE: this build has no API host configured, so the address below is a
+placeholder. Ask your contact at Influint for the host as well as the key.
+
+Every endpoint is GET, returns JSON, and needs a bearer token:
+
+  curl -H "Authorization: Bearer <your key>" "<ask Influint for the API host>/state"
+
+- GET /api/intelligence/state
+  tool name: intelligence_state
+  params: none
+  How much of the knowledge base is measured, how many claims share one test, and what is waiting on a human. Call it first.
+- GET /api/intelligence/claims
+  tool name: intelligence_claims
+  params: niche, category, standing, measuredOnly, limit
+  The claims that apply to a channel, routed by niche, WITH the prohibitions: things our own data refuted. Says what it omitted.
+- GET /api/intelligence/claim?id=<id>
+  tool name: intelligence_claim_evidence
+  params: id (required)
+  One claim's full record: the probe, every per-channel reading, the niche breakdown, and an explicit list of what it does NOT establish.
+- GET /api/intelligence/actions?channelId=<UC...>
+  tool name: channel_action_list
+  params: channelId (required)
+  The prioritised moves for one channel, ordered by viewers recoverable, each with the confidence behind it.
+- GET /api/intelligence/channels
+  tool name: list_channels
+  params: none
+  Every channel in the knowledge base, with niche, scale band and analysis depth.
+
+A 503 means the API is switched off on that deployment, not that your key is wrong.
+A 401 means the key is missing or wrong. Both responses say which.
+
+## How to read an answer
+
+- standing: Where a claim sits on the evidence ladder. theory = nobody has measured it. candidate-law = measured once with a real effect. law = reproduced across channels AND signed by a person. warning = a known failure mode. Standing moves DOWN as well as up.
+- evidence.units / unitNoun: How many INDEPENDENT things the reading rests on, and what kind of thing. Three readings from one crawl are not three channels, so the noun is never assumed.
+- evidence.causalRung: What kind of claim the evidence can support: correlation, consistent, dose-response, temporal, intervention. Earned by the DESIGN of the test, never read off the effect size. A hundred consistent correlations are still a correlation.
+- evidence.grade: How much the evidence supports ACTING: untested, weak, moderate, strong. Separate axis from causalRung, deliberately.
+- limits: What this claim does NOT establish, generated from its own record. Read it before repeating the claim as fact.
+- prohibitions: Claims our data refuted. These travel with every answer because they are the most valuable thing here and the easiest to leave behind.
+
+## What it will not do
+
+It is read-only, and that is the safety boundary rather than a limitation. It cannot
+start an analysis, publish anything, or move a claim's standing. Standing moves on a
+measurement or on a human signature; an endpoint that let a caller edit it would make
+both meaningless.

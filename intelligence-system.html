@@ -1185,6 +1185,275 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 <p class="lede">Every layer the pipeline runs through, what each one does, and the gate it has to clear.
 This page exists so the logic can be read and challenged by a person, separately from the findings
 it produces. The analyst traces below show the same method applied to a specific video.</p>
+<style>
+.sd-fig{margin:26px 0 34px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 0 0}
+.sd-scroll{overflow-x:auto;padding:0 18px}
+/* The tower needs five lanes; below that width the stack says the same thing
+   in one column instead of opening on two empty guide rails. */
+.sd-compact{display:none}
+@media (max-width:900px){
+  .sd-scroll{display:none}
+  .sd-compact{display:block;list-style:none;margin:0;padding:0 18px 4px}
+  .sd-compact li{display:grid;grid-template-columns:26px 1fr;gap:2px 10px;
+    padding:11px 0;border-top:1px solid var(--line)}
+  .sd-compact li:first-child{border-top:0}
+  .sd-c-n{font:10px/1.6 ui-monospace,Menlo,monospace;color:var(--teal-deep);grid-row:span 2}
+  .sd-c-name{font:600 13px Poppins,system-ui,sans-serif;color:var(--white)}
+  .sd-c-name i{font:9.5px ui-monospace,Menlo,monospace;font-style:normal;
+    letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
+  .sd-c-gate{font:10.5px/1.45 ui-monospace,Menlo,monospace;color:var(--grey)}
+}
+.sd-fig svg{max-width:none;height:auto;color:var(--teal-mid)}
+.sd-lane{font:600 11px Poppins,system-ui,sans-serif;letter-spacing:.14em}
+.sd-lanesub{font:9.5px ui-monospace,Menlo,monospace;fill:var(--grey);letter-spacing:.04em}
+.sd-num{font:10px ui-monospace,Menlo,monospace;fill:var(--teal-deep)}
+.sd-name{font:600 12.5px Poppins,system-ui,sans-serif;fill:var(--white)}
+.sd-gate{font:9.5px ui-monospace,Menlo,monospace;fill:var(--grey)}
+.sd-span{font:9px ui-monospace,Menlo,monospace;fill:#5ad8a6;letter-spacing:.03em}
+.sd-ret{font:9px ui-monospace,Menlo,monospace;fill:var(--teal);letter-spacing:.06em}
+.sd-badge{font:600 9.5px ui-monospace,Menlo,monospace;fill:var(--teal)}
+.sd-legend{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin:16px 0 0;padding:0 20px}
+.sd-legend li{font:11px/1.5 ui-monospace,Menlo,monospace;color:var(--grey);display:flex;align-items:center;gap:7px}
+.sd-legend span{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;
+  border:1px solid var(--teal);border-radius:50%;color:var(--teal);font-size:9.5px;flex:none}
+.sd-legend b{color:var(--teal);font-weight:600}
+.sd-cap{font-size:12.5px;line-height:1.6;color:var(--grey);padding:14px 20px 18px;margin:0;max-width:96ch}
+.sd-cap b{color:var(--white);font-weight:600}
+</style>
+<figure class="sd-fig">
+<ol class="sd-compact"><li><span class="sd-c-n">18</span><span class="sd-c-name">Client API and MCP<i style="color:var(--white)">out</i></span><span class="sd-c-gate">read-only; unset key means off</span></li><li><span class="sd-c-n">17</span><span class="sd-c-name">Daily cycle<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">refuses while an analysis runs</span></li><li><span class="sd-c-n">16</span><span class="sd-c-name">Did it work?<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">silence until five uploads each side</span></li><li><span class="sd-c-n">15</span><span class="sd-c-name">Brief back in<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">routing stamped; nothing truncates</span></li><li><span class="sd-c-n">14</span><span class="sd-c-name">Adjudication<i style="color:var(--warn)">human</i></span><span class="sd-c-gate">resolution requires a name</span></li><li><span class="sd-c-n">13</span><span class="sd-c-name">Self-checks<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">files, never moves a standing</span></li><li><span class="sd-c-n">12</span><span class="sd-c-name">Re-measure<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">idempotent; never costs the ingest</span></li><li><span class="sd-c-n">11</span><span class="sd-c-name">Binding audit<i style="color:#5ad8a6">model + code</i></span><span class="sd-c-gate">reject by default; one-way</span></li><li><span class="sd-c-n">10</span><span class="sd-c-name">Ledger and ladder<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">one basis per track; killing costs as much</span></li><li><span class="sd-c-n">09</span><span class="sd-c-name">Probes<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">null below minN</span></li><li><span class="sd-c-n">08</span><span class="sd-c-name">Action list<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">absences are rendered</span></li><li><span class="sd-c-n">07</span><span class="sd-c-name">Formats and ideas<i style="color:#5ad8a6">model + code</i></span><span class="sd-c-gate">era-confounded gets no multiplier</span></li><li><span class="sd-c-n">06</span><span class="sd-c-name">Moment census<i style="color:#5ad8a6">model + code</i></span><span class="sd-c-gate">kind-blind grouping; sign-test p</span></li><li><span class="sd-c-n">05</span><span class="sd-c-name">Guards<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">adjusts and records, never invents</span></li><li><span class="sd-c-n">04</span><span class="sd-c-name">Written notes<i style="color:#5ad8a6">model</i></span><span class="sd-c-gate">must carry the channel comparison</span></li><li><span class="sd-c-n">03</span><span class="sd-c-name">Evidence<i style="color:var(--teal)">data</i></span><span class="sd-c-gate">no timestamp, no note</span></li><li><span class="sd-c-n">02</span><span class="sd-c-name">Retention arithmetic<i style="color:var(--teal-mid)">code</i></span><span class="sd-c-gate">floored baseline; rank by excess lost</span></li><li><span class="sd-c-n">01</span><span class="sd-c-name">Data in<i style="color:var(--teal)">data</i></span><span class="sd-c-gate">field-by-field; the set is a union</span></li></ol>
+<div class="sd-scroll">
+<svg viewBox="0 0 972 1452" width="972" height="1452" role="img"
+     aria-label="The pipeline drawn as a tower: eighteen floors stacked bottom to top, placed in lanes by who owns each step, with the return paths that make it a loop."
+     xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="sd-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+<path d="M0 0 L8 4 L0 8 z" fill="currentColor"/></marker>
+<marker id="sd-arrow-teal" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+<path d="M0 0 L8 4 L0 8 z" fill="var(--teal)"/></marker>
+</defs>
+<rect x="42" y="44" width="150" height="1374" rx="10" fill="rgba(141,216,211,.015)"/>
+<text class="sd-lane" x="117" y="20" text-anchor="middle" fill="var(--teal)">DATA</text>
+<text class="sd-lanesub" x="117" y="36" text-anchor="middle">what arrives</text>
+<rect x="204" y="44" width="150" height="1374" rx="10" fill="rgba(141,216,211,.015)"/>
+<text class="sd-lane" x="279" y="20" text-anchor="middle" fill="#5ad8a6">MODEL</text>
+<text class="sd-lanesub" x="279" y="36" text-anchor="middle">picks the question</text>
+<rect x="366" y="44" width="150" height="1374" rx="10" fill="rgba(141,216,211,.035)"/>
+<text class="sd-lane" x="441" y="20" text-anchor="middle" fill="var(--teal-mid)">CODE</text>
+<text class="sd-lanesub" x="441" y="36" text-anchor="middle">owns every number</text>
+<rect x="528" y="44" width="150" height="1374" rx="10" fill="rgba(141,216,211,.015)"/>
+<text class="sd-lane" x="603" y="20" text-anchor="middle" fill="var(--warn)">HUMAN</text>
+<text class="sd-lanesub" x="603" y="36" text-anchor="middle">the only signature</text>
+<rect x="690" y="44" width="150" height="1374" rx="10" fill="rgba(141,216,211,.015)"/>
+<text class="sd-lane" x="765" y="20" text-anchor="middle" fill="var(--white)">OUT</text>
+<text class="sd-lanesub" x="765" y="36" text-anchor="middle">what leaves</text>
+<path d="M117 1350 L117 1346 Q117 1338 125 1338 L433 1338 Q441 1338 441 1330 L441 1326" fill="none" stroke="var(--teal-mid)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="279" cy="1338" r="3.4" fill="var(--teal-mid)"/>
+<path d="M441 1274 L441 1270 Q441 1262 433 1262 L125 1262 Q117 1262 117 1254 L117 1250" fill="none" stroke="var(--teal)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="279" cy="1262" r="3.4" fill="var(--teal)"/>
+<path d="M117 1198 L117 1194 Q117 1186 125 1186 L271 1186 Q279 1186 279 1178 L279 1174" fill="none" stroke="#5ad8a6" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="198" cy="1186" r="3.4" fill="#5ad8a6"/>
+<path d="M279 1122 L279 1118 Q279 1110 287 1110 L433 1110 Q441 1110 441 1102 L441 1098" fill="none" stroke="var(--teal-mid)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="360" cy="1110" r="3.4" fill="var(--teal-mid)"/>
+<path d="M441 1046 L441 1042 Q441 1034 433 1034 L368 1034 Q360 1034 360 1026 L360 1022" fill="none" stroke="#5ad8a6" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="400.5" cy="1034" r="3.4" fill="#5ad8a6"/>
+<path d="M360 970 L 360 946" fill="none" stroke="#5ad8a6" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M360 894 L360 890 Q360 882 368 882 L433 882 Q441 882 441 874 L441 870" fill="none" stroke="var(--teal-mid)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="400.5" cy="882" r="3.4" fill="var(--teal-mid)"/>
+<path d="M441 818 L 441 794" fill="none" stroke="var(--teal-mid)" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M441 742 L 441 718" fill="none" stroke="var(--teal-mid)" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M441 666 L441 662 Q441 654 433 654 L368 654 Q360 654 360 646 L360 642" fill="none" stroke="#5ad8a6" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="400.5" cy="654" r="3.4" fill="#5ad8a6"/>
+<path d="M360 590 L360 586 Q360 578 368 578 L433 578 Q441 578 441 570 L441 566" fill="none" stroke="var(--teal-mid)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="400.5" cy="578" r="3.4" fill="var(--teal-mid)"/>
+<path d="M441 514 L 441 490" fill="none" stroke="var(--teal-mid)" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M441 438 L441 434 Q441 426 449 426 L595 426 Q603 426 603 418 L603 414" fill="none" stroke="var(--warn)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="522" cy="426" r="3.4" fill="var(--warn)"/>
+<path d="M603 362 L603 358 Q603 350 595 350 L449 350 Q441 350 441 342 L441 338" fill="none" stroke="var(--teal-mid)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="522" cy="350" r="3.4" fill="var(--teal-mid)"/>
+<path d="M441 286 L 441 262" fill="none" stroke="var(--teal-mid)" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M441 210 L 441 186" fill="none" stroke="var(--teal-mid)" stroke-width="1" opacity=".4" marker-end="url(#sd-arrow)"/>
+<path d="M441 134 L441 130 Q441 122 449 122 L757 122 Q765 122 765 114 L765 110" fill="none" stroke="var(--white)" stroke-width="1.5" opacity=".9" marker-end="url(#sd-arrow)"/>
+<circle cx="603" cy="122" r="3.4" fill="var(--white)"/>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1380" text-anchor="end">01</text>
+<rect x="42" y="1350" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="42" y="1350" width="3" height="52" rx="1.5" fill="var(--teal)"/>
+<text class="sd-name" x="55" y="1370">Data in</text>
+<text class="sd-gate" x="55" y="1384">field-by-field; the</text>
+<text class="sd-gate" x="55" y="1395">set is a union</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1304" text-anchor="end">02</text>
+<rect x="366" y="1274" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="1274" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="1294">Retention arithmetic</text>
+<text class="sd-gate" x="379" y="1308">floored baseline;</text>
+<text class="sd-gate" x="379" y="1319">rank by excess lost</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1228" text-anchor="end">03</text>
+<rect x="42" y="1198" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="42" y="1198" width="3" height="52" rx="1.5" fill="var(--teal)"/>
+<text class="sd-name" x="55" y="1218">Evidence</text>
+<text class="sd-gate" x="55" y="1232">no timestamp, no note</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1152" text-anchor="end">04</text>
+<rect x="204" y="1122" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="204" y="1122" width="3" height="52" rx="1.5" fill="#5ad8a6"/>
+<text class="sd-name" x="217" y="1142">Written notes</text>
+<text class="sd-gate" x="217" y="1156">must carry the</text>
+<text class="sd-gate" x="217" y="1167">channel comparison</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1076" text-anchor="end">05</text>
+<rect x="366" y="1046" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="1046" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="1066">Guards</text>
+<text class="sd-gate" x="379" y="1080">adjusts and records,</text>
+<text class="sd-gate" x="379" y="1091">never invents</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="1000" text-anchor="end">06</text>
+<rect x="204" y="970" width="312" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="204" y="970" width="3" height="52" rx="1.5" fill="#5ad8a6"/>
+<text class="sd-name" x="217" y="990">Moment census</text>
+<text class="sd-gate" x="217" y="1004">kind-blind grouping; sign-test p</text>
+<text class="sd-span" x="505" y="990" text-anchor="end">model groups &middot; code measures</text>
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="924" text-anchor="end">07</text>
+<rect x="204" y="894" width="312" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="204" y="894" width="3" height="52" rx="1.5" fill="#5ad8a6"/>
+<text class="sd-name" x="217" y="914">Formats and ideas</text>
+<text class="sd-gate" x="217" y="928">era-confounded gets no multiplier</text>
+<text class="sd-span" x="505" y="914" text-anchor="end">model groups &middot; code measures</text>
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="848" text-anchor="end">08</text>
+<rect x="366" y="818" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="818" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="838">Action list</text>
+<text class="sd-gate" x="379" y="852">absences are rendered</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="772" text-anchor="end">09</text>
+<rect x="366" y="742" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="742" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="762">Probes</text>
+<text class="sd-gate" x="379" y="776">null below minN</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="696" text-anchor="end">10</text>
+<rect x="366" y="666" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="666" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="686">Ledger and ladder</text>
+<text class="sd-gate" x="379" y="700">one basis per track;</text>
+<text class="sd-gate" x="379" y="711">killing costs as much</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="620" text-anchor="end">11</text>
+<rect x="204" y="590" width="312" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="204" y="590" width="3" height="52" rx="1.5" fill="#5ad8a6"/>
+<text class="sd-name" x="217" y="610">Binding audit</text>
+<text class="sd-gate" x="217" y="624">reject by default; one-way</text>
+<text class="sd-span" x="505" y="610" text-anchor="end">model groups &middot; code measures</text>
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="544" text-anchor="end">12</text>
+<rect x="366" y="514" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="514" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="534">Re-measure</text>
+<text class="sd-gate" x="379" y="548">idempotent; never</text>
+<text class="sd-gate" x="379" y="559">costs the ingest</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="468" text-anchor="end">13</text>
+<rect x="366" y="438" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="438" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="458">Self-checks</text>
+<text class="sd-gate" x="379" y="472">files, never moves a</text>
+<text class="sd-gate" x="379" y="483">standing</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="392" text-anchor="end">14</text>
+<rect x="528" y="362" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="528" y="362" width="3" height="52" rx="1.5" fill="var(--warn)"/>
+<text class="sd-name" x="541" y="382">Adjudication</text>
+<text class="sd-gate" x="541" y="396">resolution requires a</text>
+<text class="sd-gate" x="541" y="407">name</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="316" text-anchor="end">15</text>
+<rect x="366" y="286" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="286" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="306">Brief back in</text>
+<text class="sd-gate" x="379" y="320">routing stamped;</text>
+<text class="sd-gate" x="379" y="331">nothing truncates</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="240" text-anchor="end">16</text>
+<rect x="366" y="210" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="210" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="230">Did it work?</text>
+<text class="sd-gate" x="379" y="244">silence until five</text>
+<text class="sd-gate" x="379" y="255">uploads each side</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="164" text-anchor="end">17</text>
+<rect x="366" y="134" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="366" y="134" width="3" height="52" rx="1.5" fill="var(--teal-mid)"/>
+<text class="sd-name" x="379" y="154">Daily cycle</text>
+<text class="sd-gate" x="379" y="168">refuses while an</text>
+<text class="sd-gate" x="379" y="179">analysis runs</text>
+
+</g>
+<g class="sd-floor">
+<text class="sd-num" x="30" y="88" text-anchor="end">18</text>
+<rect x="690" y="58" width="150" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+<rect x="690" y="58" width="3" height="52" rx="1.5" fill="var(--white)"/>
+<text class="sd-name" x="703" y="78">Client API and MCP</text>
+<text class="sd-gate" x="703" y="92">read-only; unset key</text>
+<text class="sd-gate" x="703" y="103">means off</text>
+
+</g>
+<path d="M516 160 H925 Q934 160 934 169 V1367 Q934 1376 925 1376 H192" fill="none" stroke="var(--teal)" stroke-width="1.1" stroke-dasharray="4 4" opacity=".75" marker-end="url(#sd-arrow-teal)"/>
+<circle cx="934" cy="768" r="8.5" fill="var(--ink)" stroke="var(--teal)" stroke-width="1"/>
+<text class="sd-badge" x="934" y="771.5" text-anchor="middle">4</text>
+<path d="M516 312 H901 Q910 312 910 321 V1139 Q910 1148 901 1148 H354" fill="none" stroke="var(--teal)" stroke-width="1.1" stroke-dasharray="4 4" opacity=".75" marker-end="url(#sd-arrow-teal)"/>
+<circle cx="910" cy="730" r="8.5" fill="var(--ink)" stroke="var(--teal)" stroke-width="1"/>
+<text class="sd-badge" x="910" y="733.5" text-anchor="middle">1</text>
+<path d="M516 236 H877 Q886 236 886 245 V835 Q886 844 877 844 H516" fill="none" stroke="var(--teal)" stroke-width="1.1" stroke-dasharray="4 4" opacity=".75" marker-end="url(#sd-arrow-teal)"/>
+<circle cx="886" cy="540" r="8.5" fill="var(--ink)" stroke="var(--teal)" stroke-width="1"/>
+<text class="sd-badge" x="886" y="543.5" text-anchor="middle">3</text>
+<path d="M516 540 H853 Q862 540 862 549 V683 Q862 692 853 692 H516" fill="none" stroke="var(--teal)" stroke-width="1.1" stroke-dasharray="4 4" opacity=".75" marker-end="url(#sd-arrow-teal)"/>
+<circle cx="862" cy="616" r="8.5" fill="var(--ink)" stroke="var(--teal)" stroke-width="1"/>
+<text class="sd-badge" x="862" y="619.5" text-anchor="middle">2</text>
+</svg>
+</div>
+<ol class="sd-legend"><li><span>1</span><b>15 &rarr; 04</b> what we know rides in the prompt</li><li><span>2</span><b>12 &rarr; 10</b> new data re-measures every claim</li><li><span>3</span><b>16 &rarr; 08</b> did the advice move the metric?</li><li><span>4</span><b>17 &rarr; 01</b> and again tomorrow</li></ol>
+<figcaption class="sd-cap">
+Read bottom to top, the way a tower is built. <b>Eleven of the seventeen hand-offs change owner</b>, and the
+longest run inside one lane is three floors &mdash; the work almost never stays in one pair of hands, and every
+crossing (marked with a dot) is a point where something with a different failure mode looks at it. The dashed
+paths on the right are what make this a loop rather than a line: what leaves at the top comes back down to be
+measured again, and a claim can move lane as the evidence behind it changes.
+</figcaption>
+</figure>
 <div class="is-flow"><span>Data in</span><i>&rarr;</i><span>Retention arithmetic</span><i>&rarr;</i><span>Evidence</span><i>&rarr;</i><span>Written notes (the only model step in analysis)</span><i>&rarr;</i><span>Guards over the model's answer</span><i>&rarr;</i><span>Census: which beat works</span><i>&rarr;</i><span>Formats and ideas</span><i>&rarr;</i><span>Action list</span><i>&rarr;</i><span>Probes: code owns the number</span><i>&rarr;</i><span>Ledger and the evidence ladder</span><i>&rarr;</i><span>Binding audit</span><i>&rarr;</i><span>Re-measure when new data lands</span><i>&rarr;</i><span>Checks the record runs on itself</span><i>&rarr;</i><span>Adjudication queue and memory</span><i>&rarr;</i><span>The brief back into the tools</span><i>&rarr;</i><span>Did it work?</span><i>&rarr;</i><span>The daily cycle</span><i>&rarr;</i><span>Handing it to a client</span></div>
 <div class="is-layer">
       <div><h3>1 · Data in</h3><p>Retention curves, per-video stats, CTR and viewer cohorts arrive from the Analytics API, a Studio session, a data sheet, or a public seed. Every video is stored field by field (a run never erases what another run measured) and the video SET is a union.</p></div>

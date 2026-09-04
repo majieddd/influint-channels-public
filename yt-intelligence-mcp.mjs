@@ -104,6 +104,29 @@ const TOOLS = [
     path: "channels",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
   },
+  {
+    name: "list_workflows",
+    description:
+      "The ways this system is operated: channel audit, retention notes, video suggestion, packaging concept, autoresearch and more. Each says what it looks at and the ONLY modes it may apply a claim in. Read this before asking for claims, so you use them the way the matching workflow would.",
+    path: "workflows",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+  },
+  {
+    name: "workflow_intelligence",
+    description:
+      "The claims one workflow may apply, bucketed by mode: rules (laws, enforce them), priors (measured candidates, weight them, evidence attached), hypotheses (theories, test them, never assert them), prohibitions (warnings, do not recommend), do-not-repeat (refuted, do not re-derive). A theory can never arrive as a rule.",
+    path: "workflow",
+    inputSchema: {
+      type: "object",
+      properties: {
+        id: { type: "string", description: "A workflow id from list_workflows, e.g. video-suggestion." },
+        niche: { type: "string" },
+        limit: { type: "number" },
+      },
+      required: ["id"],
+      additionalProperties: false,
+    },
+  },
 ];
 
 const byName = new Map(TOOLS.map((t) => [t.name, t]));

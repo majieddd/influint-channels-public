@@ -64,6 +64,14 @@ Every endpoint is GET, returns JSON, and needs a bearer token:
   tool name: list_channels
   params: none
   Every channel in the knowledge base, with niche, scale band and analysis depth.
+- GET /api/intelligence/workflows
+  tool name: list_workflows
+  params: none
+  The ways this system is operated, each with what it looks at and the ONLY modes it may apply a claim in. Read this first.
+- GET /api/intelligence/workflow?id=<id>
+  tool name: workflow_intelligence
+  params: id (required), niche, limit
+  The claims one workflow may apply, bucketed by mode: rules, priors (with evidence), hypotheses, prohibitions, do-not-repeat. A theory never arrives as a rule.
 
 A 503 means the API is switched off on that deployment, not that your key is wrong.
 A 401 means the key is missing or wrong. Both responses say which.

@@ -1198,12 +1198,12 @@ allowed to edit.</p>
 
 <h2>What the loop has proposed</h2>
 <div class="ar-stats">
-  <div><div class="v">3</div><div class="k">Runs</div></div>
-  <div><div class="v">42</div><div class="k">Iterations</div></div>
+  <div><div class="v">4</div><div class="k">Runs</div></div>
+  <div><div class="v">54</div><div class="k">Iterations</div></div>
   <div><div class="v">0</div><div class="k">Kept and not audit-rejected</div></div>
   <div><div class="v">4</div><div class="k">Reproduced, wrong thing</div></div>
   <div><div class="v">2</div><div class="k">Evidence against a claim</div></div>
-  <div><div class="v">27</div><div class="k">Declined as out of reach</div></div>
+  <div><div class="v">34</div><div class="k">Declined as out of reach</div></div>
 </div>
 <p class="legend">A declined iteration is a RESULT, not a failure. Most of this knowledge base is about
 thumbnails, packaging and audience psychology, and the honest answer for those is that nothing in the
@@ -1365,6 +1365,34 @@ the loop produces: it is a build queue for the accessor vocabulary, written by s
 to use it and found it short. An accessor is a code change with a test, so the queue is read by a person and
 never acted on by the loop.</p>
 <div class="ar-gaps"><div class="ar-gap">
+  <p class="ar-k-claim">AVD and APV normally move inversely (longer videos buy duration at the cost of percentage). When BOTH rise in the same window, that is the specific signature of genuine retention improvement, and it is the condition that licenses lengthening videos.</p>
+  <p class="ar-k-why">Declined. The first half of this claim is an identity, not an empirical relationship: average percentage viewed IS average view duration divided by runtime, so 'AVD and APV move inversely as videos get longer' is arithmetic rather than a finding, and every accessor that could express it (runtime, avd-sec, apv) shares the runtime series with the others. The same-series gate would reject the pairing and it should. The second half, that both rising together is the signature of genuine retention improvement, is a claim about a WINDOW moving over time, and every accessor here is a per-video figure with no before-and-after.</p>
+  <p class="ar-k-ev">212c8f43726b · law · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">A retention drop must be measured as a share of the audience still present (relative drop), not as percentage points on the chart, so a 50%→40% fall is exactly as severe as 100%→80% and late drops that look small are routinely underweighted.</p>
+  <p class="ar-k-why">Declined. This is a rule about how a drop must be COMPUTED, not a claim that some trigger moves some metric. It asserts that a fall should be read as a share of the audience still present rather than as percentage points on the chart. There is no lever and no outcome to correlate; the way to check it is to read the hazard arithmetic in the retention analyser, which already implements exactly this, not to measure anything. Filing it as a gap would be misleading: the vocabulary is not short here, the claim simply is not of the shape a probe tests.</p>
+  <p class="ar-k-ev">7f250a432f57 · law · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">A fixed 'last N videos' analysis window is invalid across channels: 30 videos is 30 days for a daily uploader and three years for a monthly one, so the window must be normalised by upload cadence.</p>
+  <p class="ar-k-why">Declined. The claim is that a fixed last-N-videos window is invalid across channels because N videos is a different span of time for a daily uploader than for a monthly one. That is a statement about the comparability of an ANALYSIS WINDOW, and the unit it speaks about is a channel, not a video. gap-before reads days since the previous upload per video and could show that cadence varies enormously between channels, but demonstrating that variance exists is not the same as testing whether a window built on it is invalid. What would reach this is a probe whose unit is a channel and whose outcome is the stability of a figure under two different windowing rules.</p>
+  <p class="ar-k-ev">1e02ab9bdbff · law · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">There is no universal CTR target: half of all channels and videos fall anywhere between 2% and 10%, and low-view or new videos vary more widely, so a fixed threshold produces false diagnoses and invites clickbait.</p>
+  <p class="ar-k-why">Declined, and worth naming precisely because the data IS present. The claim is that no universal click-through target exists, since half of all channels and videos land anywhere between 2% and 10%. That is a claim about the SPREAD of a single accessor, not about a relationship between two, and every probe in this battery correlates a pair. ctr is populated from the Studio pull, so the check is available and cheap; it needs a probe shape that reports a distribution and its interquartile range rather than a correlation.</p>
+  <p class="ar-k-ev">2e43d71ef393 · warning · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Upload consistency matters far less once traffic comes from search or recommendations - it primarily matters for subscription-fed channels and for producing comparable metrics.</p>
+  <p class="ar-k-why">Declined. The claim is conditional on traffic source: upload consistency matters far less once views arrive from search or recommendations, and primarily matters for subscription-fed channels. gap-before against views would test whether consistency matters at all, which is a different and weaker question, and a null reading would be unattributable between 'consistency does not matter' and 'these channels are search-fed'. Nothing in this vocabulary reads where a view came from. A traffic-source accessor is the missing piece, and it is available from both the Studio pull and the public Analytics API.</p>
+  <p class="ar-k-ev">3d7710fb7636 · warning · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Packaging outweighs retention as a driver of views by a very large margin: a high-retention video with weak packaging can be dwarfed by a low-retention video with strong packaging. Part of this is the system itself — YouTube recommends to people it predicts will click, so an extremely niche premise may barely be pushed at all.</p>
+  <p class="ar-k-why">Declined as a single pairing. The claim is COMPARATIVE: packaging outweighs retention as a driver of views by a large margin. Testing it needs two correlations measured on the same videos, ctr against views and hold-half against views, and then a comparison of their strengths. Each half is individually proposable and the comparison is the claim, so scoring either half alone and recording it against this claim would file a partial answer as a whole one. What would reach it is a probe that takes two pairings and reports the difference between them, which is a shape this battery does not have.</p>
+  <p class="ar-k-ev">63223d2e9878 · law · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">An early retention dip is NOT automatically a content defect — notifications, chapter-skipping, mismatched traffic sources and accidental autoplay all distort the curve, so the dip must be matched to the exact footage and script before diagnosis.</p>
+  <p class="ar-k-why">Declined. The claim is that an early retention dip is not automatically a content defect, because notifications, chapter-skipping, mismatched traffic sources and accidental autoplay all distort the opening of the curve. Every one of those alternative causes is unobservable here: no accessor reads traffic source, chapter markers, notification delivery or autoplay. hold-30s would measure the dip and say nothing about its cause, and a probe that measured the dip while the claim is about its ATTRIBUTION would look like a test and not be one.</p>
+  <p class="ar-k-ev">b0870674306d · warning · declined by opus-5 (file driver, 27-accessor vocabulary)</p>
+</div><div class="ar-gap">
   <p class="ar-k-claim">Retention dips consistently at the END of build videos, and the fix is to hold a genuinely uncertain experimental payoff for the final segment and cut out mid-moment, so anticipation is never released before the video ends.</p>
   <p class="ar-k-why">The lever is an editorial choice about the final segment — holding a genuinely uncertain payoff back and cutting out mid-moment — and nothing observes it; the widening did not help, because the outcome it predicts (end retention) lives only in curve accessors, and any curve-vs-curve pairing is refused as one series' own arithmetic. biggest-rewind-position would be a stretch: a late rise can equally be a skip landing or an outro artefact, and the claim never asserts that late peaks earn views.</p>
   <p class="ar-k-ev">4da98b83767d · law · declined by opus-5 (effort: max, 27-accessor vocabulary)</p>
@@ -1478,6 +1506,204 @@ never acted on by the loop.</p>
 <p class="legend">Open one to read the proposal in the proposer's own words, the reading code took on every
 channel, and why it was kept or dropped.</p>
 <details class="ar-run" open>
+  <summary><b>opus-vocab27</b><span class="ar-m">opus-5 (file driver, 27-accessor vocabulary) · 12 iterations · 0 kept, 3 discarded, 7 out of reach</span></summary>
+  
+  <p class="ar-runmeta">Started 2026-09-04 01:10:19, finished 01:10:22 · driver file · metric: measurement frontier: claims the ledger can grade</p>
+  <p class="ar-sum">12 iterations, 0 kept, 7 declined by the proposer as out of reach, 2 refused by the gates before running, 3 discarded on the evidence. The frontier metric does not move until a person binds a kept proposal: this loop proposes, the lever audit still decides.</p>
+  <div class="ar-its"><details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">1</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">title-chars → views <i>(null-result)</i></span>
+    <span class="ar-cl">Ideal title length is a myth — character count creates neither relevance, clarity, nor desire, …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 576870c5a845</b> · warning · Ideal title length is a myth — character count creates neither relevance, clarity, nor desire, and different surfaces truncate differently; the correct test is the complete package judged at realistic feed size.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim is that ideal title length is a myth: character count on its own creates neither relevance nor desire. Stated that way it is a claim that a specific relationship is ABSENT, which is exactly what the null-result direction exists for, and it is the cleanest such claim in the queue. title-chars is a pure lever read off the title, views is the outcome on the set's own basis, and they share no series. A real correlation of either sign refutes it; a reading near zero across channels holds it. Note what this cannot settle: the claim also says different surfaces truncate differently and that the package must be judged whole, and no accessor here reads a thumbnail or a feed rendering.</p>
+    <p class="ar-why"><b>What the code decided:</b> the battery already measures this pair as title-length-vs-views; bind the claim to that probe instead</p>
+    
+    <p class="ar-meta">0 channels cleared the floor · median effect — · no sign to agree on · proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">2</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">title-is-question → ctr <i>(up)</i></span>
+    <span class="ar-cl">'Familiar + mysterious' titles — a question about something everyone already knows ('What Actua…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 5f7da5d4578d</b> · law · 'Familiar + mysterious' titles — a question about something everyone already knows ('What Actually Is Blue Raspberry?') — convert well because they expose a knowledge gap in an object the viewer already has an established relationship with, requiring no new interest to be built.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim is that a question about something the viewer already recognises converts well, because it opens a knowledge gap in a familiar object. Click-through is the conversion it names, and title-is-question is the only accessor that reads the interrogative form. The proxy is partial and the rationale should say so: the accessor detects that a title IS a question, not that its subject is FAMILIAR, and familiarity is half the claim. So a positive reading supports the weaker statement that questions convert, and a null reading cannot separate 'questions do not convert' from 'these questions were not about familiar things'.</p>
+    <p class="ar-why"><b>What the code decided:</b> the battery already measures this pair as title-question-vs-ctr; bind the claim to that probe instead</p>
+    
+    <p class="ar-meta">0 channels cleared the floor · median effect — · no sign to agree on · proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">3</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">ctr → hold-half <i>(down)</i></span>
+    <span class="ar-cl">'Payoff debt' — the package creating a larger question than the video resolves — is a distinct …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 571e8b5eb24c</b> · warning · 'Payoff debt' — the package creating a larger question than the video resolves — is a distinct failure from a weak idea, and shows up as satisfied clicks with unsatisfied viewers.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Payoff debt is defined as satisfied clicks with unsatisfied viewers: the package promises a larger question than the video answers. At population level that predicts a negative relationship between click-through and how much of the audience is still there at the halfway mark. Both sides come from different series (ctr from the Studio pull, hold-half from the curve), so the pairing is not an identity. The honest caveat is that the claim describes a SUBSET of videos with a specific defect, not a population trend, so a null reading would not refute it; only a positive reading would be surprising, and a negative one is consistent without being proof.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect 0.16 is inside the noise floor of 0.2; the channels disagree on the sign (74% agreement); the effect is real but points the other way: 2 of 19 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">19 channels cleared the floor · median effect 0.16 · 74% agree on the sign · proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.7s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Mind Of A Criminal</td><td class="n">0.51</td><td class="n">32</td><td class="n">0.003</td><td>did not hold</td></tr><tr><td>Coffey Custom Builds</td><td class="n">0.47</td><td class="n">33</td><td class="n">0.005</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.41</td><td class="n">302</td><td class="n">0.000</td><td>held</td></tr><tr><td>Zac Builds</td><td class="n">-0.37</td><td class="n">72</td><td class="n">0.001</td><td>held</td></tr><tr><td>Morley Kert</td><td class="n">0.32</td><td class="n">224</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Studio NOHA</td><td class="n">0.30</td><td class="n">14</td><td class="n">0.303</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">0.28</td><td class="n">147</td><td class="n">0.001</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">0.27</td><td class="n">104</td><td class="n">0.006</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">0.24</td><td class="n">258</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">0.20</td><td class="n">593</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>The Mountain Maker</td><td class="n">0.18</td><td class="n">149</td><td class="n">0.029</td><td>did not hold</td></tr><tr><td>Man Made</td><td class="n">0.16</td><td class="n">10</td><td class="n">0.662</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">0.15</td><td class="n">286</td><td class="n">0.009</td><td>did not hold</td></tr><tr><td>Visual Thinker</td><td class="n">0.15</td><td class="n">14</td><td class="n">0.623</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.07</td><td class="n">470</td><td class="n">0.115</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">0.06</td><td class="n">60</td><td class="n">0.630</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">0.06</td><td class="n">196</td><td class="n">0.388</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">-0.06</td><td class="n">133</td><td class="n">0.480</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">-0.03</td><td class="n">27</td><td class="n">0.881</td><td>did not hold</td></tr></tbody></table><p class="ar-none">71 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">4</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">curve-flatness → impressions <i>(null-result)</i></span>
+    <span class="ar-cl">A high, flat retention chart is evidence of NARROW appeal only when impressions or views on tha…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim eb9447a562fd</b> · law · A high, flat retention chart is evidence of NARROW appeal only when impressions or views on that video are also low — it then suggests YouTube did not judge the video broadly appealing enough to push. High retention and wide appeal do genuinely co-occur, so the chart alone cannot carry the diagnosis; it needs impression and view context first.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim's structure is conditional: a high flat retention chart indicates NARROW appeal only when impressions are also low. The load-bearing part for this vocabulary is that flatness ALONE says nothing about how widely the video was served, which is a null-result on curve-flatness against impressions. If flatness on its own predicted impressions in either direction, the conditional would be unnecessary and the claim would be wrong about needing the second signal. This pairing may duplicate one an earlier iteration measured as a discard; if the battery already holds it, the gate should say so rather than the loop counting one arithmetic twice.</p>
+    <p class="ar-why"><b>What the code decided:</b> the effect is real but points the other way: 9 of 19 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">19 channels cleared the floor · median effect -0.07 · 53% agree on the sign · proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.7s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Visual Thinker</td><td class="n">-0.72</td><td class="n">14</td><td class="n">0.002</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.63</td><td class="n">258</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.49</td><td class="n">60</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Man Made</td><td class="n">-0.47</td><td class="n">10</td><td class="n">0.181</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">-0.40</td><td class="n">32</td><td class="n">0.023</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.38</td><td class="n">72</td><td class="n">0.001</td><td>did not hold</td></tr><tr><td>Studio NOHA</td><td class="n">-0.36</td><td class="n">14</td><td class="n">0.214</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">0.34</td><td class="n">224</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">-0.32</td><td class="n">27</td><td class="n">0.100</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">0.24</td><td class="n">104</td><td class="n">0.013</td><td>did not hold</td></tr><tr><td>Coffey Custom Builds</td><td class="n">-0.19</td><td class="n">33</td><td class="n">0.305</td><td>held</td></tr><tr><td>Phoebe Taylor</td><td class="n">0.17</td><td class="n">147</td><td class="n">0.039</td><td>held</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.16</td><td class="n">302</td><td class="n">0.005</td><td>held</td></tr><tr><td>The Carpenters Daughter</td><td class="n">0.12</td><td class="n">286</td><td class="n">0.040</td><td>held</td></tr><tr><td>Jonny Builds</td><td class="n">0.11</td><td class="n">133</td><td class="n">0.206</td><td>held</td></tr><tr><td>The Mountain Maker</td><td class="n">0.09</td><td class="n">149</td><td class="n">0.289</td><td>held</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.07</td><td class="n">470</td><td class="n">0.150</td><td>held</td></tr><tr><td>Hannah's Happy Home</td><td class="n">0.05</td><td class="n">593</td><td class="n">0.237</td><td>held</td></tr><tr><td>Isabella Demarko</td><td class="n">0.02</td><td class="n">196</td><td class="n">0.737</td><td>held</td></tr></tbody></table><p class="ar-none">71 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">5</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">format-run-depth → views <i>(down)</i></span>
+    <span class="ar-cl">'Format without variables' is a named failure mode: branding repeats while episodes contain no …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim cd5c43fc4889</b> · warning · 'Format without variables' is a named failure mode: branding repeats while episodes contain no meaningfully different inputs or results — the audience contract survives but the uncertainty that justified watching does not.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Format without variables is described as branding that repeats while the episodes stop containing meaningfully different inputs, so the audience contract survives and the uncertainty that justified watching does not. format-run-depth counts how many immediately preceding uploads shared this video's shape, which is the closest measurable stand-in for a shape being run without variation. The mismatch to declare: run depth measures back-to-back SAMENESS, and this knowledge base has already established that is a different question from whether a format wears out over its lifetime. A shape used twenty times across two years and never twice running has no run depth at all, so this tests the burst case only.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect -0.05 is inside the noise floor of 0.2; the effect is real but points the other way: 2 of 21 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">21 channels cleared the floor · median effect -0.05 · 76% agree on the sign · proposed by opus-5 (file driver, 27-accessor vocabulary) in 1.1s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>The BlackVeil Files</td><td class="n">0.30</td><td class="n">14</td><td class="n">0.309</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.24</td><td class="n">29</td><td class="n">0.203</td><td>held</td></tr><tr><td>Emma Shaye</td><td class="n">-0.21</td><td class="n">96</td><td class="n">0.044</td><td>held</td></tr><tr><td>The Mountain Maker</td><td class="n">-0.19</td><td class="n">75</td><td class="n">0.099</td><td>did not hold</td></tr><tr><td>MrBeast Gaming</td><td class="n">-0.19</td><td class="n">64</td><td class="n">0.143</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.15</td><td class="n">100</td><td class="n">0.133</td><td>did not hold</td></tr><tr><td>PrestonPlayz</td><td class="n">-0.14</td><td class="n">59</td><td class="n">0.283</td><td>did not hold</td></tr><tr><td>SSundee</td><td class="n">0.14</td><td class="n">53</td><td class="n">0.323</td><td>did not hold</td></tr><tr><td>Unspeakable</td><td class="n">-0.13</td><td class="n">60</td><td class="n">0.307</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">0.11</td><td class="n">26</td><td class="n">0.593</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.11</td><td class="n">33</td><td class="n">0.547</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.09</td><td class="n">98</td><td class="n">0.355</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">-0.08</td><td class="n">63</td><td class="n">0.514</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">-0.06</td><td class="n">190</td><td class="n">0.395</td><td>did not hold</td></tr><tr><td>Stokes Twins</td><td class="n">-0.05</td><td class="n">102</td><td class="n">0.610</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.04</td><td class="n">220</td><td class="n">0.605</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.03</td><td class="n">159</td><td class="n">0.751</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.02</td><td class="n">340</td><td class="n">0.655</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">-0.02</td><td class="n">119</td><td class="n">0.859</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">0.01</td><td class="n">61</td><td class="n">0.939</td><td>did not hold</td></tr><tr><td>Matt Cremona</td><td class="n">-0.01</td><td class="n">462</td><td class="n">0.878</td><td>did not hold</td></tr></tbody></table><p class="ar-none">69 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">6</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">AVD and APV normally move inversely (longer videos buy duration at the cost of percentage). Whe…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 212c8f43726b</b> · law · AVD and APV normally move inversely (longer videos buy duration at the cost of percentage). When BOTH rise in the same window, that is the specific signature of genuine retention improvement, and it is the condition that licenses lengthening videos.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined. The first half of this claim is an identity, not an empirical relationship: average percentage viewed IS average view duration divided by runtime, so 'AVD and APV move inversely as videos get longer' is arithmetic rather than a finding, and every accessor that could express it (runtime, avd-sec, apv) shares the runtime series with the others. The same-series gate would reject the pairing and it should. The second half, that both rising together is the signature of genuine retention improvement, is a claim about a WINDOW moving over time, and every accessor here is a per-video figure with no before-and-after.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">7</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">A retention drop must be measured as a share of the audience still present (relative drop), not…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 7f250a432f57</b> · law · A retention drop must be measured as a share of the audience still present (relative drop), not as percentage points on the chart, so a 50%→40% fall is exactly as severe as 100%→80% and late drops that look small are routinely underweighted.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined. This is a rule about how a drop must be COMPUTED, not a claim that some trigger moves some metric. It asserts that a fall should be read as a share of the audience still present rather than as percentage points on the chart. There is no lever and no outcome to correlate; the way to check it is to read the hazard arithmetic in the retention analyser, which already implements exactly this, not to measure anything. Filing it as a gap would be misleading: the vocabulary is not short here, the claim simply is not of the shape a probe tests.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">8</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">A fixed 'last N videos' analysis window is invalid across channels: 30 videos is 30 days for a …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 1e02ab9bdbff</b> · law · A fixed 'last N videos' analysis window is invalid across channels: 30 videos is 30 days for a daily uploader and three years for a monthly one, so the window must be normalised by upload cadence.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined. The claim is that a fixed last-N-videos window is invalid across channels because N videos is a different span of time for a daily uploader than for a monthly one. That is a statement about the comparability of an ANALYSIS WINDOW, and the unit it speaks about is a channel, not a video. gap-before reads days since the previous upload per video and could show that cadence varies enormously between channels, but demonstrating that variance exists is not the same as testing whether a window built on it is invalid. What would reach this is a probe whose unit is a channel and whose outcome is the stability of a figure under two different windowing rules.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">9</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">There is no universal CTR target: half of all channels and videos fall anywhere between 2% and …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 2e43d71ef393</b> · warning · There is no universal CTR target: half of all channels and videos fall anywhere between 2% and 10%, and low-view or new videos vary more widely, so a fixed threshold produces false diagnoses and invites clickbait.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined, and worth naming precisely because the data IS present. The claim is that no universal click-through target exists, since half of all channels and videos land anywhere between 2% and 10%. That is a claim about the SPREAD of a single accessor, not about a relationship between two, and every probe in this battery correlates a pair. ctr is populated from the Studio pull, so the check is available and cheap; it needs a probe shape that reports a distribution and its interquartile range rather than a correlation.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">10</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Upload consistency matters far less once traffic comes from search or recommendations - it prim…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 3d7710fb7636</b> · warning · Upload consistency matters far less once traffic comes from search or recommendations - it primarily matters for subscription-fed channels and for producing comparable metrics.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined. The claim is conditional on traffic source: upload consistency matters far less once views arrive from search or recommendations, and primarily matters for subscription-fed channels. gap-before against views would test whether consistency matters at all, which is a different and weaker question, and a null reading would be unattributable between 'consistency does not matter' and 'these channels are search-fed'. Nothing in this vocabulary reads where a view came from. A traffic-source accessor is the missing piece, and it is available from both the Studio pull and the public Analytics API.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">11</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Packaging outweighs retention as a driver of views by a very large margin: a high-retention vid…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 63223d2e9878</b> · law · Packaging outweighs retention as a driver of views by a very large margin: a high-retention video with weak packaging can be dwarfed by a low-retention video with strong packaging. Part of this is the system itself — YouTube recommends to people it predicts will click, so an extremely niche premise may barely be pushed at all.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined as a single pairing. The claim is COMPARATIVE: packaging outweighs retention as a driver of views by a large margin. Testing it needs two correlations measured on the same videos, ctr against views and hold-half against views, and then a comparison of their strengths. Each half is individually proposable and the comparison is the claim, so scoring either half alone and recording it against this claim would file a partial answer as a whole one. What would reach it is a probe that takes two pairings and reports the difference between them, which is a shape this battery does not have.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">12</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">An early retention dip is NOT automatically a content defect — notifications, chapter-skipping,…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim b0870674306d</b> · warning · An early retention dip is NOT automatically a content defect — notifications, chapter-skipping, mismatched traffic sources and accidental autoplay all distort the curve, so the dip must be matched to the exact footage and script before diagnosis.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Declined. The claim is that an early retention dip is not automatically a content defect, because notifications, chapter-skipping, mismatched traffic sources and accidental autoplay all distort the opening of the curve. Every one of those alternative causes is unobservable here: no accessor reads traffic source, chapter markers, notification delivery or autoplay. hold-30s would measure the dip and say nothing about its cause, and a probe that measured the dip while the claim is about its ATTRIBUTION would look like a test and not be one.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by opus-5 (file driver, 27-accessor vocabulary) in 0.0s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details></div>
+</details>
+<details class="ar-run">
   <summary><b>opus-wide</b><span class="ar-m">opus-5 (effort: max, 27-accessor vocabulary) · 14 iterations · 1 kept, 4 discarded, 9 out of reach</span></summary>
   <p class="ar-sum"><b>Relevance audit:</b> 0 of 1 kept proposals also test their claim's own variables; 1 reproduced but measure something the claim does not assert.</p>
   <p class="ar-runmeta">Started 2026-09-03 16:28:52, finished 16:28:54 · driver file · metric: measurement frontier: claims the ledger can grade</p>

@@ -1185,7 +1185,7 @@ details.tr-section[open]>summary h3{margin-bottom:8px}
 <p class="lede">Every layer the pipeline runs through, what each one does, and the gate it has to clear.
 This page exists so the logic can be read and challenged by a person, separately from the findings
 it produces. The analyst traces below show the same method applied to a specific video.</p>
-<div class="is-flow"><span>Data in</span><i>&rarr;</i><span>Retention arithmetic</span><i>&rarr;</i><span>Evidence</span><i>&rarr;</i><span>Written notes (the only model step in analysis)</span><i>&rarr;</i><span>Census: which beat works</span><i>&rarr;</i><span>Formats and ideas</span><i>&rarr;</i><span>Action list</span><i>&rarr;</i><span>Probes: code owns the number</span><i>&rarr;</i><span>Ledger and the evidence ladder</span><i>&rarr;</i><span>Binding audit</span><i>&rarr;</i><span>Checks the record runs on itself</span><i>&rarr;</i><span>Adjudication queue and memory</span><i>&rarr;</i><span>The brief back into the tools</span><i>&rarr;</i><span>Did it work?</span></div>
+<div class="is-flow"><span>Data in</span><i>&rarr;</i><span>Retention arithmetic</span><i>&rarr;</i><span>Evidence</span><i>&rarr;</i><span>Written notes (the only model step in analysis)</span><i>&rarr;</i><span>Guards over the model's answer</span><i>&rarr;</i><span>Census: which beat works</span><i>&rarr;</i><span>Formats and ideas</span><i>&rarr;</i><span>Action list</span><i>&rarr;</i><span>Probes: code owns the number</span><i>&rarr;</i><span>Ledger and the evidence ladder</span><i>&rarr;</i><span>Binding audit</span><i>&rarr;</i><span>Re-measure when new data lands</span><i>&rarr;</i><span>Checks the record runs on itself</span><i>&rarr;</i><span>Adjudication queue and memory</span><i>&rarr;</i><span>The brief back into the tools</span><i>&rarr;</i><span>Did it work?</span><i>&rarr;</i><span>The daily cycle</span><i>&rarr;</i><span>Handing it to a client</span></div>
 <div class="is-layer">
       <div><h3>1 · Data in</h3><p>Retention curves, per-video stats, CTR and viewer cohorts arrive from the Analytics API, a Studio session, a data sheet, or a public seed. Every video is stored field by field (a run never erases what another run measured) and the video SET is a union.</p></div>
       <p class="is-gate"><b>Gate:</b> Non-public videos are pruned against the public Data API. Public seeds carry LIFETIME views and are stamped as such.</p>
@@ -1207,54 +1207,74 @@ it produces. The analyst traces below show the same method applied to a specific
       <p class="is-where">src/lib/insights/video-retention.ts · src/lib/intelligence/brief.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>5 · Census: which beat works</h3><p>Every flagged moment across the recent cohort is grouped by WHAT IS HAPPENING (the model groups, blind to whether it was a drop or a peak), then each group is measured against its own kind's band norm.</p></div>
+      <div><h3>5 · Guards over the model's answer</h3><p>Every written note passes a fixed set of code checks before it can reach a deck or a page: figures against the data block the model was actually given, edit spans against the flagged window, the destination of a move against the video's own rewinds, verbs against what a curve can support, and the notes against EACH OTHER.</p></div>
+      <p class="is-gate"><b>Gate:</b> Guards ADJUST and RECORD; they never invent and never drop a note. A rule stated only in the prompt holds most of the time, and most of the time is how a fabricated spec card reaches a client, so peaks run every gate drops do. Each fire is persisted per video, because it is the one mechanical measurement this system takes of its own output.</p>
+      <p class="is-where">src/lib/insights/note-guards.ts</p>
+    </div>
+<div class="is-layer">
+      <div><h3>6 · Census: which beat works</h3><p>Every flagged moment across the recent cohort is grouped by WHAT IS HAPPENING (the model groups, blind to whether it was a drop or a peak), then each group is measured against its own kind's band norm.</p></div>
       <p class="is-gate"><b>Gate:</b> Categories holding over half the moments or built from contiguous rows are rejected; instances before 0:30 never rank; a sign test p is reported.</p>
       <p class="is-where">src/lib/analysis/moment-census.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>6 · Formats and ideas</h3><p>Statistics first: recurring title frames are mined; then one model call assigns every video to a repeatable shape; arithmetic last computes each shape's median outlier score. Ideas cross a proven shape with a surging subject; the projection is channel median × the format's observed lift, never a model's number.</p></div>
+      <div><h3>7 · Formats and ideas</h3><p>Statistics first: recurring title frames are mined; then one model call assigns every video to a repeatable shape; arithmetic last computes each shape's median outlier score. Ideas cross a proven shape with a surging subject; the projection is channel median × the format's observed lift, never a model's number.</p></div>
       <p class="is-gate"><b>Gate:</b> Formats echoing the prompt's examples, holding over a share cap, or built from contiguous input rows are rejected. Era-confounded formats get no multiplier. Cited evidence ids that were not supplied are dropped and counted.</p>
       <p class="is-where">src/lib/site/channel-formats.ts · src/lib/ideas/*</p>
     </div>
 <div class="is-layer">
-      <div><h3>7 · Action list</h3><p>Curves, formats and cadence collapse into an ordered list of moves with NO model involved: the same data twice gives the same list. Each action carries its chart and its confidence read off the evidence ladder.</p></div>
+      <div><h3>8 · Action list</h3><p>Curves, formats and cadence collapse into an ordered list of moves with NO model involved: the same data twice gives the same list. Each action carries its chart and its confidence read off the evidence ladder.</p></div>
       <p class="is-gate"><b>Gate:</b> Absences are rendered (what was checked and came back healthy). A bimodal cadence reports the spread instead of a false rhythm.</p>
       <p class="is-where">src/lib/insights/action-list.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>8 · Probes: code owns the number</h3><p>A fixed battery of measurable predicates runs over the data every analysis already has: Spearman rank correlations, delta-medians with per-side floors, proportions, calibration against a claim's own asserted number.</p></div>
+      <div><h3>9 · Probes: code owns the number</h3><p>A fixed battery of measurable predicates runs over the data every analysis already has: Spearman rank correlations, delta-medians with per-side floors, proportions, calibration against a claim's own asserted number.</p></div>
       <p class="is-gate"><b>Gate:</b> Null below minN (silence is the honest answer). Views are age-normalised against temporal neighbours. Each result carries its views basis and probe version.</p>
       <p class="is-where">src/lib/intelligence/probes.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>9 · Ledger and the evidence ladder</h3><p>Each claim's own evidence database: one observation per channel per day, stamped with the channel's strata. Standing derives from it: theory → candidate-law → law (human-signed only), warning, rejected. Standing moves both ways.</p></div>
+      <div><h3>10 · Ledger and the evidence ladder</h3><p>Each claim's own evidence database: one observation per channel per day, stamped with the channel's strata. Standing derives from it: theory → candidate-law → law (human-signed only), warning, rejected. Standing moves both ways.</p></div>
       <p class="is-gate"><b>Gate:</b> Only first-28d-basis, current-version rows feed the figures standing derives from. The lifetime-basis rows public seeds produce are read as a SECOND track, never pooled: where the two bases agree that is the strongest corroboration short of an intervention, and where they disagree it says whether an effect is about how a video launches or about what it has had time to accumulate. Killing takes as much evidence as promoting (3+ channels), and a corpus-unit reading cannot do either. Niched claims grade in-niche. A signature is never erased by data; disagreement is flagged, not resolved silently, and the flag clears when the disagreement does.</p>
       <p class="is-where">src/lib/intelligence/ledger.ts · store.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>10 · Binding audit</h3><p>A model proposes which probe tests each claim; a second, adversarial pass re-judges each binding one at a time against the probe's exact arithmetic, told to reject by default.</p></div>
+      <div><h3>11 · Binding audit</h3><p>A model proposes which probe tests each claim; a second, adversarial pass re-judges each binding one at a time against the probe's exact arithmetic, told to reject by default.</p></div>
       <p class="is-gate"><b>Gate:</b> One-way gate: a passed binding is never re-litigated unless the arithmetic changes. Wrongly bound is worse than unbound.</p>
       <p class="is-where">scripts/bind-levers.ts · scripts/audit-levers.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>11 · Checks the record runs on itself</h3><p>Consistency (contradictions, redundancies), depth-vs-count (video-weighted, effect intervals, risk asymmetry, niche make-up per side), niche divergence, refinement of asserted numbers, discovery of unclaimed patterns.</p></div>
+      <div><h3>12 · Re-measure when new data lands</h3><p>An upload refresh, a curve backfill, a Studio pull, a notes pass and a format classification each end by re-running the probe battery for the channel they touched, so the ladder reads the evidence that exists now rather than the evidence that existed at the last full pass.</p></div>
+      <p class="is-gate"><b>Gate:</b> Idempotent by construction: a channel's own reading for the day is REPLACED, so a path that runs several times a day cannot inflate n. Wrapped, because the data is already on disk and a probe throwing must not cost an hour-long pull. Below the catalogue floor it reports why and measures nothing.</p>
+      <p class="is-where">src/lib/intelligence/on-new-data.ts</p>
+    </div>
+<div class="is-layer">
+      <div><h3>13 · Checks the record runs on itself</h3><p>Consistency (contradictions, redundancies), depth-vs-count (video-weighted, effect intervals, risk asymmetry, niche make-up per side), niche divergence, refinement of asserted numbers, discovery of unclaimed patterns.</p></div>
       <p class="is-gate"><b>Gate:</b> Every check FILES; none moves a standing. Discoveries enter as candidate-law with the binding pre-audited because the claim was written from the probe's own result.</p>
       <p class="is-where">src/lib/intelligence/consistency.ts · depth.ts · scoped-strength.ts · refine.ts · scripts/discover-patterns.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>12 · Adjudication queue and memory</h3><p>Everything only a person may settle, with full context: claim wording, bars per reading, sides with depth, per-channel chart, prior decisions on the same subject, the gate that fired and the concrete action. Recurring resolution reasons are proposed as principles.</p></div>
+      <div><h3>14 · Adjudication queue and memory</h3><p>Everything only a person may settle, with full context: claim wording, bars per reading, sides with depth, per-channel chart, prior decisions on the same subject, the gate that fired and the concrete action. Recurring resolution reasons are proposed as principles.</p></div>
       <p class="is-gate"><b>Gate:</b> Items lapse when undetected (lapsed is not settled); resolution requires a name; events never lapse. Usage heat orders theories; archive means out-of-briefs only.</p>
       <p class="is-where">src/lib/intelligence/adjudication.ts · scripts/intel-sync.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>13 · The brief back into the tools</h3><p>Every surface that RECOMMENDS receives the store as instructions: the client audit deck, the cohort narrative, per-video notes, the segment strategist, idea generation and rating. Laws first, standings stated, contested claims flagged whatever their rung, refuted claims as prohibitions, claims bound to the run's own measurements listed first. Surfaces that only compute do not receive it. The action list reads the ladder directly instead, for the confidence on each move.</p></div>
+      <div><h3>15 · The brief back into the tools</h3><p>Every surface that RECOMMENDS receives the store as instructions: the client audit deck, the cohort narrative, per-video notes, the segment strategist, idea generation and rating. Laws first, standings stated, contested claims flagged whatever their rung, refuted claims as prohibitions, claims bound to the run's own measurements listed first. Surfaces that only compute do not receive it. The action list reads the ladder directly instead, for the confidence on each move.</p></div>
       <p class="is-gate"><b>Gate:</b> Routing mode is stamped in the header so a widened pool never masquerades as a routed one. Every measured line carries derived provenance, and its noun comes from the observation unit. The channel's CONFIRMED niche routes the pool; an unconfirmed one routes general-only rather than every niche at once. Category sets live beside the routes and a test fails when a category reaches no brief. Nothing truncates silently.</p>
       <p class="is-where">src/lib/intelligence/brief.ts</p>
     </div>
 <div class="is-layer">
-      <div><h3>14 · Did it work?</h3><p>Every action list appends what this channel was told, and when, keyed on the kind of move and the imperative itself. The outcome check reads that back: the channel's OWN metric for the dimension the advice targeted, on uploads before the advice against uploads published a week or more after it.</p></div>
+      <div><h3>16 · Did it work?</h3><p>Every action list appends what this channel was told, and when, keyed on the kind of move and the imperative itself. The outcome check reads that back: the channel's OWN metric for the dimension the advice targeted, on uploads before the advice against uploads published a week or more after it.</p></div>
       <p class="is-gate"><b>Gate:</b> Silence until five uploads sit on each side. A temporal design, NOT an intervention: nobody randomised anything, a creator may change several things at once, and a channel improving anyway looks identical. It writes to no ledger — binding &quot;the metric moved&quot; to &quot;our advice moved it&quot; is a claim a person signs. What it CAN catch, and no correlation can, is advice followed by the metric getting worse.</p>
       <p class="is-where">src/lib/insights/action-list.ts · scripts/advice-outcome.ts</p>
+    </div>
+<div class="is-layer">
+      <div><h3>17 · The daily cycle</h3><p>One unattended pass ties the loop together: new evidence, re-measure, check the record against itself, propose the next measurement, ask whether earlier advice worked, then rebuild and publish. It is deliberately lighter than the post-run pass, so it can run every day rather than after an analysis.</p></div>
+      <p class="is-gate"><b>Gate:</b> Refuses to start while an analysis is running, because every step read-modify-writes the same files. Each step is non-fatal: a day with no analytics access still has a sync and an autoresearch iteration worth running, and a loop that stops at the first failure stops for good the first time a grant lapses. It FILES questions for a person; it never answers them.</p>
+      <p class="is-where">scripts/daily.sh</p>
+    </div>
+<div class="is-layer">
+      <div><h3>18 · Handing it to a client</h3><p>The same answers as structured data, over HTTP and over MCP, from one shared module so the surfaces cannot drift. A discovery document and a dependency-free connector are published beside the site, so a client passes on one link and their own agent does the rest.</p></div>
+      <p class="is-gate"><b>Gate:</b> READ-ONLY, and that is the safety boundary rather than a limitation: standing moves on a measurement or a human signature, and an endpoint that let a caller edit it would make both meaningless. An unset key means the API is OFF, not open. Every claim travels with its unit, its causal rung, what it does NOT establish, and the prohibitions.</p>
+      <p class="is-where">src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · public/yt-intelligence-mcp.mjs · src/lib/site/connect.ts</p>
     </div>
 <h2>Processes by deliverable</h2>
 <p class="lede">The layers above are the order of the logic. The work is shaped by what is being delivered: each

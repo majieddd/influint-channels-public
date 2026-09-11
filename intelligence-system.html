@@ -1202,6 +1202,46 @@ table.vc .vc-one{color:var(--grey); font-size:12px; white-space:nowrap}
 .report th,.report td{padding:6px 10px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap}
 .report th:first-child,.report td:first-child{text-align:left}
 .report th{color:var(--grey); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.08em}
+
+.ce-boundary{background:var(--panel,#081c1c); border:1px solid var(--line); border-left:3px solid var(--warn,#f6c344); border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.5}
+.ce-fresh{color:var(--grey); font-size:13px}
+.ce-dim{color:var(--grey); font-size:13px}
+.ce-m{color:var(--grey); font-size:12px; font-weight:400; margin-left:8px}
+.ce-chip{display:inline-block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:2px 8px; border-radius:999px; border:1px solid var(--line); margin-left:6px; vertical-align:middle}
+.ce-chip.ce-done{color:var(--hot,#5ad8a6); border-color:var(--hot,#5ad8a6)}
+.ce-chip.ce-doing,.ce-chip.ce-review{color:var(--teal,#8dd8d3)}
+.ce-chip.ce-waiting{color:var(--warn,#f6c344); border-color:var(--warn,#f6c344)}
+.ce-chip.ce-todo{color:var(--grey)}
+.ce-chip.ce-verified{color:var(--hot,#5ad8a6)}
+.ce-pipeline{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:10px 0; counter-reset:ce}
+.ce-pipeline li{background:var(--panel,#081c1c); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; counter-increment:ce}
+.ce-pipeline li::before{content:counter(ce) " · "; color:var(--grey)}
+.ce-module{background:var(--panel,#081c1c); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin:16px 0}
+.ce-module h3{margin:0 0 6px; font-size:18px}
+.ce-job{margin:0 0 12px; font-size:15px}
+.ce-def{display:grid; grid-template-columns:minmax(90px,140px) 1fr; gap:6px 14px; margin:0 0 12px; font-size:14px; line-height:1.5}
+.ce-def dt{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.08em; padding-top:3px}
+.ce-def dd{margin:0; overflow-wrap:anywhere}
+.ce-steps{margin:0; padding-left:20px}
+.ce-maps{margin:0; padding-left:18px}
+.ce-policy summary,.ce-rules summary,.ce-task summary{cursor:pointer}
+.ce-policy,.ce-rules{margin:8px 0 12px; font-size:14px}
+.ce-tasks{display:grid; gap:6px}
+.ce-task{border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:14px}
+.ce-task summary{list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:6px}
+.ce-task summary::-webkit-details-marker{display:none}
+.ce-task summary code{color:var(--teal,#8dd8d3)}
+.ce-task dl{margin:10px 0 0; display:grid; grid-template-columns:minmax(90px,140px) 1fr; gap:6px 14px; line-height:1.5}
+.ce-task dt{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.08em; padding-top:3px}
+.ce-task dd{margin:0; overflow-wrap:anywhere}
+.ce-task dd ul{margin:0; padding-left:18px}
+.ce-notes{white-space:pre-wrap}
+.ce-wrap{overflow-x:auto}
+table.ce{width:100%; border-collapse:collapse; font-size:13px; margin:10px 0 22px}
+table.ce th,table.ce td{padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; overflow-wrap:anywhere; min-width:90px}
+table.ce th{color:var(--grey); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.08em}
+.ce-list{padding-left:18px; font-size:14px}
+@media (max-width:640px){.ce-def,.ce-task dl{grid-template-columns:1fr}}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -1742,7 +1782,7 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
 </div></div>
 <h2>The daily cycle, step by step</h2>
 <p class="is-lede">The light loop that runs every day without anyone deciding to improve the store: new evidence in, the claims re-measured against it, the record checked against itself, the next measurement proposed, the advice read back, the site published. It files questions for a person and answers none. Scheduled on this machine as the Windows task <code>yt-audit daily</code> at 05:20, run when available if the machine was asleep; log in <code>tmp/daily.log</code>.</p>
-<ol class="daily-steps"><li><b>1.</b> new uploads, curves and snapshots</li><li><b>2.</b> spoken openings for anything analysed without one</li><li><b>3.</b> sync: standings, consistency, contested niche splits, memory</li><li><b>4.</b> autoresearch</li><li><b>5.</b> outcome of advice already given</li><li><b>6.</b> rebuild and verify the site</li><li><b>7.</b> publish</li></ol>
+<ol class="daily-steps"><li><b>1.</b> new uploads, curves and snapshots</li><li><b>2.</b> spoken openings for anything analysed without one</li><li><b>3.</b> sync: standings, consistency, contested niche splits, memory</li><li><b>4.</b> autoresearch</li><li><b>5.</b> outcome of advice already given</li><li><b>6.</b> content engine state, then rebuild and verify the site</li><li><b>7.</b> publish</li></ol>
 <p class="is-dim">The steps above are read from <code>scripts/daily.sh</code> when this page is built, and the flow below is generated from the same lines; <code>npm run site:map-check</code> fails when the script and the diagram disagree.</p>
 <iframe class="map-embed" src="system-map/daily-cycle-run.html" title="The daily cycle as a flow" loading="lazy"></iframe>
 <p class="is-dim"><a href="system-map/daily-cycle-run.html">Open the flow on its own</a> · <a href="system-map/daily-cycle.html">where the cycle touches the tower</a> · <a href="system-map.html">the overall map</a></p>

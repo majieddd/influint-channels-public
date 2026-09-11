@@ -1202,6 +1202,46 @@ table.vc .vc-one{color:var(--grey); font-size:12px; white-space:nowrap}
 .report th,.report td{padding:6px 10px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap}
 .report th:first-child,.report td:first-child{text-align:left}
 .report th{color:var(--grey); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.08em}
+
+.ce-boundary{background:var(--panel,#081c1c); border:1px solid var(--line); border-left:3px solid var(--warn,#f6c344); border-radius:10px; padding:12px 16px; font-size:14px; line-height:1.5}
+.ce-fresh{color:var(--grey); font-size:13px}
+.ce-dim{color:var(--grey); font-size:13px}
+.ce-m{color:var(--grey); font-size:12px; font-weight:400; margin-left:8px}
+.ce-chip{display:inline-block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:2px 8px; border-radius:999px; border:1px solid var(--line); margin-left:6px; vertical-align:middle}
+.ce-chip.ce-done{color:var(--hot,#5ad8a6); border-color:var(--hot,#5ad8a6)}
+.ce-chip.ce-doing,.ce-chip.ce-review{color:var(--teal,#8dd8d3)}
+.ce-chip.ce-waiting{color:var(--warn,#f6c344); border-color:var(--warn,#f6c344)}
+.ce-chip.ce-todo{color:var(--grey)}
+.ce-chip.ce-verified{color:var(--hot,#5ad8a6)}
+.ce-pipeline{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:10px 0; counter-reset:ce}
+.ce-pipeline li{background:var(--panel,#081c1c); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; counter-increment:ce}
+.ce-pipeline li::before{content:counter(ce) " · "; color:var(--grey)}
+.ce-module{background:var(--panel,#081c1c); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin:16px 0}
+.ce-module h3{margin:0 0 6px; font-size:18px}
+.ce-job{margin:0 0 12px; font-size:15px}
+.ce-def{display:grid; grid-template-columns:minmax(90px,140px) 1fr; gap:6px 14px; margin:0 0 12px; font-size:14px; line-height:1.5}
+.ce-def dt{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.08em; padding-top:3px}
+.ce-def dd{margin:0; overflow-wrap:anywhere}
+.ce-steps{margin:0; padding-left:20px}
+.ce-maps{margin:0; padding-left:18px}
+.ce-policy summary,.ce-rules summary,.ce-task summary{cursor:pointer}
+.ce-policy,.ce-rules{margin:8px 0 12px; font-size:14px}
+.ce-tasks{display:grid; gap:6px}
+.ce-task{border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:14px}
+.ce-task summary{list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:6px}
+.ce-task summary::-webkit-details-marker{display:none}
+.ce-task summary code{color:var(--teal,#8dd8d3)}
+.ce-task dl{margin:10px 0 0; display:grid; grid-template-columns:minmax(90px,140px) 1fr; gap:6px 14px; line-height:1.5}
+.ce-task dt{color:var(--grey); font-size:12px; text-transform:uppercase; letter-spacing:.08em; padding-top:3px}
+.ce-task dd{margin:0; overflow-wrap:anywhere}
+.ce-task dd ul{margin:0; padding-left:18px}
+.ce-notes{white-space:pre-wrap}
+.ce-wrap{overflow-x:auto}
+table.ce{width:100%; border-collapse:collapse; font-size:13px; margin:10px 0 22px}
+table.ce th,table.ce td{padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; overflow-wrap:anywhere; min-width:90px}
+table.ce th{color:var(--grey); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.08em}
+.ce-list{padding-left:18px; font-size:14px}
+@media (max-width:640px){.ce-def,.ce-task dl{grid-template-columns:1fr}}
 </style>
 </head><body><div class="wrap">
 <header class="site">
@@ -1555,7 +1595,7 @@ table.vc .vc-one{color:var(--grey); font-size:12px; white-space:nowrap}
       <b>median outlier score</b><span>1.11x (views ÷ the median of the 8 nearest uploads in time)</span>
     </div></div></details>
 <details class="tr-section" open><summary><h3>5 · What this video contributed to the measurement ledger</h3></summary><div class="obswrap" tabindex="0" role="region" aria-label="Probe inputs (scrolls sideways)"><table class="obs">
-    <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>1830.000</td><td>0.256</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.541</td><td>0.256</td></tr><tr><td>recency-vs-retention-half</td><td>1786669262000.000</td><td>0.256</td></tr><tr><td>duration-vs-intro-hold</td><td>1830.000</td><td>0.541</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.256</td></tr><tr><td>ctr-vs-retention-half</td><td>0.061</td><td>0.256</td></tr><tr><td>duration-vs-ctr</td><td>1830.000</td><td>0.061</td></tr><tr><td>title-length-vs-ctr</td><td>16.000</td><td>0.061</td></tr><tr><td>duration-vs-avd</td><td>1830.000</td><td>507.628</td></tr><tr><td>duration-vs-apv</td><td>1830.000</td><td>0.277</td></tr></tbody></table></div>
+    <thead><tr><th>Probe</th><th>x (this video)</th><th>y (this video)</th></tr></thead><tbody><tr><td>duration-vs-retention-half</td><td>1830.000</td><td>0.256</td></tr><tr><td>duration-vs-views</td><td>1830.000</td><td>3.403</td></tr><tr><td>retention-half-vs-views</td><td>0.256</td><td>3.403</td></tr><tr><td>intro-hold-vs-views</td><td>0.541</td><td>3.403</td></tr><tr><td>intro-hold-vs-retention-half</td><td>0.541</td><td>0.256</td></tr><tr><td>recency-vs-retention-half</td><td>1786669262000.000</td><td>0.256</td></tr><tr><td>recency-vs-views</td><td>1786669262000.000</td><td>3.403</td></tr><tr><td>title-length-vs-views</td><td>84.000</td><td>3.403</td></tr><tr><td>flagged-drops-vs-views</td><td>0.000</td><td>3.403</td></tr><tr><td>rewinds-vs-views</td><td>0.000</td><td>3.403</td></tr><tr><td>duration-vs-intro-hold</td><td>1830.000</td><td>0.541</td></tr><tr><td>sticky-zones-vs-views</td><td>0.000</td><td>3.403</td></tr><tr><td>skips-vs-retention-half</td><td>0.000</td><td>0.256</td></tr><tr><td>title-word-count-vs-views</td><td>16.000</td><td>3.403</td></tr><tr><td>ctr-vs-views</td><td>0.061</td><td>3.403</td></tr><tr><td>ctr-vs-retention-half</td><td>0.061</td><td>0.256</td></tr><tr><td>duration-vs-ctr</td><td>1830.000</td><td>0.061</td></tr><tr><td>title-length-vs-ctr</td><td>16.000</td><td>0.061</td></tr><tr><td>duration-vs-avd</td><td>1830.000</td><td>507.628</td></tr><tr><td>duration-vs-apv</td><td>1830.000</td><td>0.277</td></tr><tr><td>avd-vs-views</td><td>507.628</td><td>3.403</td></tr><tr><td>apv-vs-views</td><td>0.277</td><td>3.403</td></tr></tbody></table></div>
     <p class="tr-dim">Each probe correlates x against y across the channel's videos (Spearman, rank-based); this row is one point of that scatter. Views are the age-normalised outlier score, never raw counts.</p></details>
     </div>
 <div class="tr-video" id="tr-zMOgvD7uLZo" hidden>

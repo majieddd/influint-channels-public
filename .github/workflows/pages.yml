@@ -2,7 +2,7 @@
 #
 # The legacy "build from branch" path hung indefinitely on a publish with ~30
 # nested pages, leaving a week-old site live while reporting "building". This
-# workflow uploads the repo as-is and deploys it, which fails loudly instead.
+# workflow restores supplementary thumbnails and deploys the static output.
 name: Deploy Pages
 on:
   push:
@@ -27,7 +27,62 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      # The site is already static HTML — there is nothing to build.
+      # Recover supplementary images removed by the external site publisher.
+      - name: Preserve the 100 Nizar IRL thumbnails
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const {execFileSync} = require('node:child_process');
+          const snapshot = '1996a74c363d637b43a12f2e673ade4eea33d897';
+          const study = 'studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
+          let snapshotReady = false;
+          const git = args => execFileSync('git', args, {stdio: ['ignore', 'pipe', 'pipe']});
+          function restoreMissing(files) {
+            const missing = files.filter(file => !fs.existsSync(file) || fs.statSync(file).size === 0);
+            if (!missing.length) return;
+            if (!snapshotReady) {
+              try { git(['cat-file', '-e', snapshot + '^{commit}']); }
+              catch { git(['fetch', '--no-tags', '--depth=1', '--filter=blob:none', 'origin', snapshot]); }
+              snapshotReady = true;
+            }
+            git(['restore', '--source=' + snapshot, '--worktree', '--', ...missing]);
+            console.log('Recovered ' + missing.length + ' missing thumbnail files.');
+          }
+          restoreMissing([
+            'scripts/apply-irl-thumbnails.mjs',
+            study + '/thumbnail-manifest.json',
+            study + '/thumbnails.css',
+            study + '/thumbnails.js',
+            study + '/nizarisaqtirl-100-thumbnails.zip'
+          ]);
+          const manifest = JSON.parse(fs.readFileSync(study + '/thumbnail-manifest.json', 'utf8'));
+          if (manifest.items.length !== 100 || new Set(manifest.items.map(item => item.id)).size !== 100) {
+            throw new Error('Expected 100 unique thumbnail records.');
+          }
+          const assets = manifest.items.flatMap(item => [item.image, item.preview]);
+          if (assets.some(asset => !/^generated-thumbnails\/[a-z0-9-]+\.(jpg|webp)$/.test(asset))) {
+            throw new Error('Unexpected thumbnail asset path.');
+          }
+          restoreMissing(assets.map(asset => study + '/' + asset));
+          for (const item of manifest.items) {
+            const hash = crypto.createHash('sha256').update(fs.readFileSync(study + '/' + item.image)).digest('hex');
+            if (hash !== item.sha256) throw new Error('Thumbnail checksum mismatch: ' + item.id);
+          }
+          execFileSync(process.execPath, ['scripts/apply-irl-thumbnails.mjs'], {stdio: 'inherit'});
+          const ideasPath = study + '/ideas.json';
+          const data = JSON.parse(fs.readFileSync(ideasPath, 'utf8'));
+          for (const item of manifest.items) {
+            const idea = data.ideas.find(idea => idea.id === item.id);
+            if (!idea || idea.title !== item.title) throw new Error('Idea mapping changed: ' + item.id);
+            const {id, title, ...thumbnail} = item;
+            idea.thumbnail = thumbnail;
+          }
+          data.thumbnails_updated = manifest.updated;
+          fs.writeFileSync(ideasPath, JSON.stringify(data, null, 1) + '\n');
+          console.log('Verified all 100 thumbnails and their idea mappings.');
+          NODE
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

@@ -6,11 +6,37 @@ retention curves rather than from advice. 246 channels are tracked and
 held up, on how many independent channels, and what it does not establish.
 
 READ THIS FIRST. Most of this knowledge base has never been quantified. That is the
-honest state of it, not a gap being papered over: the probes reach retention curves,
-runtime, views, titles, click-through where a Studio pull exists, and detected video
-segments. Claims about thumbnails and audience psychology sit outside that reach and
-are on the record because a practitioner asserted them. Never present a claim as
-established without checking its standing and its limits.
+honest state of it, not a gap being papered over. A claim the battery cannot measure
+sits on the record because a practitioner asserted it, and is labelled as such.
+
+The probe battery reaches retention curves, runtime, publish dates and upload cadence,
+view counts, titles, the first minute of speech, format libraries, click-through rate,
+average view duration and average percentage viewed, the position of a detected
+sponsor read or payoff and the last 8% of the curve as an outro. Outside it: the
+thumbnail as an image, anything else on screen, revenue and a viewer's internal
+motive. Neither reachable nor out of reach, and published as exactly that — in the
+store, read by no probe: impressions, net subscriber change, engaged views and watch
+time. impressions: 3,702 videos across 19 channels carry a first-28-day impression
+count beside their CTR (measured 2026-09-11). Read by the autoresearch vocabulary, not
+the battery: frontier.ts registers an `impressions` accessor and the harness has
+scored with it. net subscriber change: 3,937 videos carry a first-28-day net
+subscriber change and 3,939 carry a lifetime one, across the 19 Studio-pulled channels
+(measured 2026-09-11). Read by the autoresearch vocabulary, not the battery:
+frontier.ts registers `subs-per-view` over the same field, with views declared as its
+denominator so the same-series gate refuses the rate against its own divisor. engaged
+views: 3,937 videos carry a first-28-day engaged-view count beside their view count,
+on the same 19 channels (measured 2026-09-11). Read by the autoresearch vocabulary,
+not the battery: frontier.ts registers `engaged-share`, and it is a near-constant
+column — the frontier's tie-mass ceiling discards it on all but two channels, so the
+quantity is present and nearly always carries no variation to measure. watch time:
+3,937 videos carry first-28-day watch-time hours and 3,939 carry the lifetime figure,
+on the same 19 channels (measured 2026-09-11). Read by the autoresearch vocabulary,
+not the battery: frontier.ts registers `watch-time-hours`. It is the one of the four
+closest to a duplicate of something measured — watch time is views times average view
+duration, and the battery reads AVD directly — so an accessor here needs a reason it
+is not the identity.
+
+Never present a claim as established without checking its standing and its limits.
 
 ## Connect over MCP (recommended)
 
@@ -45,36 +71,152 @@ Every endpoint is GET, returns JSON, and needs a bearer token:
   curl -H "Authorization: Bearer <your key>" "<ask Influint for the API host>/state"
 
 - GET /api/intelligence/state
-  tool name: intelligence_state
+  tool name: intelligence_state (over HTTP the path segment is `state`; both spellings resolve)
+  category: orient
   params: none
-  How much of the knowledge base is measured, how many claims share one test, and what is waiting on a human. Call it first.
+  How much of the knowledge base is measured, how many claims share one test, and
+  what is waiting on a human. Call it first.
+  returns: One object of counts, plus the sentence saying what is measurable at all.
+
+- GET /api/intelligence/catalogue
+  tool name: intelligence_catalogue (over HTTP the path segment is `catalogue`; both spellings resolve)
+  category: channels
+  params: none
+  What is here, how good it is, and how it may be used: state, every channel and the
+  workflow register, in one call.
+  returns: The state answer, the channel list and the workflow register, verbatim.
+
+- GET /api/intelligence/vocabulary
+  tool name: intelligence_vocabulary (over HTTP the path segment is `vocabulary`; both spellings resolve)
+  category: orient
+  params: none
+  Every legal value: standings, categories, niches, probe ids, unit nouns, and each
+  tool's caps with the reason.
+  returns: The legal values of every parameter, the ladder's thresholds, the caps,
+  and the refusal rules.
+
 - GET /api/intelligence/claims
-  tool name: intelligence_claims
-  params: niche, category, standing, measuredOnly, limit
-  The claims that apply to a channel, routed by niche, WITH the prohibitions: things our own data refuted. Says what it omitted.
+  tool name: intelligence_claims (over HTTP the path segment is `claims`; both spellings resolve)
+  category: claims
+  params: niche, category, standing, measuredOnly, limit, prohibitionLimit
+    niche (string) — The channel's marketplace, e.g. maker-build, vlog-lifestyle,
+      true-crime. Dialects are canonicalised (woodworking becomes maker-build).
+      Open: the legal set is the niches the store actually carries, which this table
+      cannot enumerate without reading it — the vocabulary tool does. An unknown
+      niche is NOT refused, because most confirmed marketplaces carry no niched
+      claim and refusing would reject valid ones; it matches nothing niched and the
+      `routing` line on the answer says so in those words.
+    category (string) — One claim category, e.g. retention, packaging, ideation,
+      production. Open: the legal set is the categories present in the store, which
+      the vocabulary tool lists with a count each. An unknown one is not refused —
+      the `routing` line says no claim carries it, which is worth reading, because
+      an unmatched category empties the prohibitions too.
+    standing (string) — Return only claims at one rung of the evidence ladder. One
+      of: law, candidate-law, warning, theory.
+    measuredOnly (boolean) — Only claims with a reading behind them. Accepts
+      true/1/yes or false/0/no; anything else is refused. Default false.
+    limit (number) — How many claims come back. Default 60.
+    prohibitionLimit (number) — How many refuted claims come back. Separate from
+      `limit`, which never reached them: on the live store 15 of 40 were unreachable
+      at any `limit` until this parameter existed. Default 25.
+  The claims that apply to a channel, routed by niche, WITH the prohibitions: things
+  our own data refuted. Says what it omitted.
+  returns: The matching claims, the prohibitions that travel with every answer, and
+  a line naming anything a cap dropped.
+
 - GET /api/intelligence/claim?id=<id>
-  tool name: intelligence_claim_evidence
+  tool name: intelligence_claim_evidence (over HTTP the path segment is `claim`; both spellings resolve)
+  category: claims
   params: id (required)
-  One claim's full record: the probe, every per-channel reading, the niche breakdown, and an explicit list of what it does NOT establish.
-- GET /api/intelligence/actions?channelId=<UC...>
-  tool name: channel_action_list
-  params: channelId (required)
-  The prioritised moves for one channel, ordered by viewers recoverable, each with the confidence behind it.
+    id (string) — The claim id, from the claims tool. Required.
+  One claim's full record: the probe, every per-unit reading, the niche breakdown,
+  and an explicit list of what it does NOT establish.
+  returns: The claim, its probe, every counted reading, the niche split, and its
+  limits.
+
 - GET /api/intelligence/channels
-  tool name: list_channels
+  tool name: list_channels (over HTTP the path segment is `channels`; both spellings resolve)
+  category: channels
   params: none
   Every channel in the knowledge base, with niche, scale band and analysis depth.
+  returns: One row per channel, largest catalogue first.
+
+- GET /api/intelligence/actions?channelId=<UC...>
+  tool name: channel_action_list (over HTTP the path segment is `actions`; both spellings resolve)
+  category: channels
+  params: channelId (required)
+    channelId (string) — A YouTube channel id. Required.
+  The prioritised moves for one channel, ordered by viewers recoverable, each with
+  the confidence behind it.
+  returns: The channel, what the advice rests on, the ordered actions, and the
+  dimensions that came back clean.
+
+- GET /api/intelligence/channelBrief?channelId=<UC...>
+  tool name: channel_brief (over HTTP the path segment is `channelBrief`; both spellings resolve)
+  category: channels
+  params: channelId (required)
+    channelId (string) — A YouTube channel id. Required.
+  The action list with every cited claim's evidence and limits already attached. One
+  call instead of one per claim.
+  returns: The action list, each action carrying the claim it cites, plus a note on
+  what the attached evidence covers.
+
 - GET /api/intelligence/workflows
-  tool name: list_workflows
+  tool name: list_workflows (over HTTP the path segment is `workflows`; both spellings resolve)
+  category: workflows
   params: none
-  The ways this system is operated, each with what it looks at and the ONLY modes it may apply a claim in. Read this first.
+  The ways this system is operated, each with what it looks at and the ONLY modes it
+  may apply a claim in. Read this first.
+  returns: The register, one row per workflow.
+
 - GET /api/intelligence/workflow?id=<id>
-  tool name: workflow_intelligence
+  tool name: workflow_intelligence (over HTTP the path segment is `workflow`; both spellings resolve)
+  category: workflows
   params: id (required), niche, limit
-  The claims one workflow may apply, bucketed by mode: rules, priors (with evidence), hypotheses, prohibitions, do-not-repeat. A theory never arrives as a rule.
+    id (string) — A workflow id from the workflows tool, e.g. video-suggestion.
+      Required.
+    niche (string) — The channel's marketplace, so the claims are routed the way
+      the workflow would route them. Open: the legal set is the niches the store
+      carries, which the vocabulary tool lists. An unknown one is not refused; it
+      simply matches no niched claim. To route by a CHANNEL's own confirmed
+      marketplace rather than one you chose, use the workflow-context tool instead
+      of this parameter.
+    limit (number) — How many claims come back in each bucket. Default 40.
+  The claims one workflow may apply, bucketed by mode: rules, priors (with
+  evidence), hypotheses, prohibitions, do-not-repeat.
+  returns: Five buckets by application mode, what was left out, and what standing
+  withheld.
+
+- GET /api/intelligence/workflowContext?channelId=<UC...>&workflowId=<id>
+  tool name: workflow_context (over HTTP the path segment is `workflowContext`; both spellings resolve)
+  category: channels
+  params: channelId (required), workflowId (required), limit
+    channelId (string) — A YouTube channel id. Required.
+    workflowId (string) — A workflow id from the workflows tool, e.g.
+      video-suggestion. Required.
+    limit (number) — How many claims come back in each bucket. Default 40.
+  One workflow, routed by a channel's OWN confirmed niche, with the registry row and
+  the mode contract. Three calls in one.
+  returns: The channel row, how it was routed, the registry entry, the bucketed
+  claims, and the mode contract.
 
 A 503 means the API is switched off on that deployment, not that your key is wrong.
 A 401 means the key is missing or wrong. Both responses say which.
+
+A 400 means a parameter was refused, and it names the value, the legal values and
+the tool's own parameter list. Nothing here answers 200 with an empty list because
+a value was mistyped: a guess that looks like an answer is the expensive failure.
+
+A 404 on a tool hands back this whole catalogue, so a wrong name costs one call.
+
+Tools are grouped in categories and this API serves only the read ones: `orient`,
+`channels`, `claims`, `workflows`. The `derive` and `remeasure` categories are never
+mounted over HTTP at all, whichever file a tool in them is added to:
+
+  derive — Writes a derived artefact (one local-model call, idempotent,
+    reversible) beside the evidence rather than into it.
+  remeasure — Re-derives standings from stored curves. Pure arithmetic, no API and
+    no model calls — and it MOVES standings.
 
 ## How to read an answer
 

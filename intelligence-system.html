@@ -1639,9 +1639,9 @@ the evidence ladder, where a person is required, what makes it a loop, and what 
       <p class="is-where">scripts/daily.sh</p>
     </div>
 <div class="is-layer">
-      <div><h3>18 · Handing it to a client</h3><p>The same answers as structured data, over HTTP and over MCP, from one shared module so the surfaces cannot drift. A discovery document and a dependency-free connector are published beside the site, so a client passes on one link and their own agent does the rest.</p></div>
-      <p class="is-gate"><b>Gate:</b> READ-ONLY, and that is the safety boundary rather than a limitation: standing moves on a measurement or a human signature, and an endpoint that let a caller edit it would make both meaningless. An unset key means the API is OFF, not open. Every claim travels with its unit, its causal rung, what it does NOT establish, and the prohibitions.</p>
-      <p class="is-where">src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · public/yt-intelligence-mcp.mjs · src/lib/site/connect.ts</p>
+      <div><h3>18 · Handing it to a client</h3><p>The same answers as structured data, over HTTP and over MCP, from ONE table — every tool's name, parameters, caps, output schema and the function that answers it — so no surface carries its own list and none can drift. The table renders the data layer; the route, the stdio server and the client documents render the table. A discovery document and a dependency-free connector are published beside the site, so a client passes on one link and their own agent does the rest.</p></div>
+      <p class="is-gate"><b>Gate:</b> READ-ONLY over the network, and that is the safety boundary rather than a limitation: standing moves on a measurement or a human signature, and an endpoint that let a caller edit it would make both meaningless. The boundary is STRUCTURAL now rather than conventional — a category carries the write bit, and the route mounts only the categories that do not, so a write tool wired in by hand still cannot reach the network. The three tools that write stay on local stdio, and no tool anywhere takes a human signature. An unset key means the API is OFF, not open. Every claim travels with its unit, its causal rung, what it does NOT establish, and the prohibitions.</p>
+      <p class="is-where">src/lib/intelligence/tools.ts · src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · scripts/mcp-server.ts · public/yt-intelligence-mcp.mjs · src/lib/site/connect.ts</p>
     </div>
 <h2>Workflows: how each way of operating applies what we know</h2>
 <p class="lede">A deliverable is a department. A workflow is one way of working inside it, and two workflows in the
@@ -1661,7 +1661,7 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
     <dt>Never</dt><dd><ul><li>state a figure the sheet does not hold</li><li>present a theory as a finding</li><li>ship without the do-not-repeat list</li></ul></dd>
     
   </dl>
-  <p class="is-where">POST /api/audit (pipeline) or /audits/from-studio &middot; src/lib/insights/v3.ts · src/lib/output/slides.ts · src/lib/jobs/pipeline.ts</p>
+  <p class="is-where">POST /api/audits then POST /api/audits/&lt;id&gt;/start (pipeline), or /audits/from-studio &middot; src/lib/insights/v3.ts · src/lib/output/slides.ts · src/lib/jobs/pipeline.ts</p>
 </div>
 <div class="wf">
   <div class="wf-head"><h3>Per-video retention notes</h3><span class="wf-dept">Retention audit (creative and content)</span><a class="wf-map" href="system-map/retention-notes.html">its map, joined to the tower</a><a class="wf-map" href="system-map/retention-notes-flow.html">as a flow</a></div>
@@ -1674,7 +1674,7 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
     <dt>Never</dt><dd><ul><li>invent a timestamp</li><li>quote a figure the data block did not hold</li><li>prescribe on a lift that held under five samples</li><li>rewrite a sentence, only a word</li></ul></dd>
     <dt>Probes consulted</dt><dd><code>intro-is-the-largest-bleed</code> <code>ad-position-vs-ad-loss</code> <code>reveal-position-vs-retention-after</code></dd>
   </dl>
-  <p class="is-where">npm run regression, or CHANNEL_ID=... scripts/analyse-from-curves.ts &middot; src/lib/insights/video-retention.ts · src/lib/insights/note-guards.ts · scripts/analyse-from-curves.ts</p>
+  <p class="is-where">POST /api/regression, or CHANNEL_ID=... npx tsx scripts/analyse-from-curves.ts &middot; src/lib/insights/video-retention.ts · src/lib/insights/note-guards.ts · scripts/analyse-from-curves.ts</p>
 </div>
 <div class="wf">
   <div class="wf-head"><h3>Cohort retention narrative</h3><span class="wf-dept">Retention audit (creative and content)</span><a class="wf-map" href="system-map/cohort-narrative.html">its map, joined to the tower</a><a class="wf-map" href="system-map/cohort-narrative-flow.html">as a flow</a></div>
@@ -1778,7 +1778,7 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
     <dt>Never</dt><dd><ul><li>move a standing</li><li>start an analysis</li><li>answer with a cap applied before the filters</li></ul></dd>
     
   </dl>
-  <p class="is-where">GET /api/intelligence/&lt;tool&gt;; yt-intelligence-mcp.mjs &middot; src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · public/yt-intelligence-mcp.mjs</p>
+  <p class="is-where">GET /api/intelligence/&lt;tool&gt;; public/yt-intelligence-mcp.mjs &middot; src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · public/yt-intelligence-mcp.mjs</p>
 </div></div>
 <h2>The daily cycle, step by step</h2>
 <p class="is-lede">The light loop that runs every day without anyone deciding to improve the store: new evidence in, the claims re-measured against it, the record checked against itself, the next measurement proposed, the advice read back, the site published. It files questions for a person and answers none. Scheduled on this machine as the Windows task <code>yt-audit daily</code> at 05:20, run when available if the machine was asleep; log in <code>tmp/daily.log</code>.</p>

@@ -2022,7 +2022,7 @@ const TOOLS = [
           "items": {
             "type": "string"
           },
-          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-15 it removes between 53 and 875 of the 998 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
+          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 988 of the 1,116 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
         },
         "withheld": {
           "type": "object",
@@ -2194,7 +2194,7 @@ const TOOLS = [
               "items": {
                 "type": "string"
               },
-              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-15 it removes between 53 and 875 of the 998 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
+              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 988 of the 1,116 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
             },
             "withheld": {
               "type": "object",

@@ -1247,12 +1247,88 @@ table.ce th,table.ce td{padding:8px 10px; border-bottom:1px solid var(--line); t
 table.ce th{color:var(--grey); font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.08em}
 .ce-list{padding-left:18px; font-size:14px}
 @media (max-width:640px){.ce-def,.ce-task dl{grid-template-columns:1fr}}
+
+.bhead{display:flex;gap:18px;align-items:center;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:14px 18px;margin:18px 0}
+.bhead.ok{border-color:var(--teal-mid);background:rgba(0,190,180,.06)}
+.bhead.bad{border-color:#d9534f;background:rgba(217,83,79,.08)}
+.bverdict{font-size:26px;font-weight:700;letter-spacing:.04em}
+.bhead.ok .bverdict{color:var(--teal-mid)}
+.bhead.bad .bverdict{color:#e8827f}
+.bmeta{font-size:13px;line-height:1.6}
+.bsub{color:var(--grey);font-size:12px}
+.bfix,.bstore{font-size:12px;color:var(--grey);margin:6px 0;line-height:1.6}
+.bmoved{border-left:3px solid;padding:10px 14px;margin:16px 0;border-radius:0 6px 6px 0}
+.bmoved.ok{border-color:var(--teal-mid);background:rgba(0,190,180,.05)}
+.bmoved.bad{border-color:#d9534f;background:rgba(217,83,79,.07)}
+.bmoved h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.bmoved ul{margin:0;padding-left:18px;font-size:12px;line-height:1.7}
+.bwhy{color:var(--grey)}
+.bd{border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:12px 16px;margin:12px 0;background:rgba(255,255,255,.02)}
+.bd-skip{opacity:.8;border-style:dashed}
+.bskip{font-size:12px;color:var(--grey);margin:4px 0 0}
+.bd h3{margin:0 0 8px;font-size:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.bgate{font-size:11px;font-weight:600;padding:1px 7px;border-radius:9px}
+.bgate.ok{color:var(--teal-mid);background:rgba(0,190,180,.12)}
+.bgate.bad{color:#e8827f;background:rgba(217,83,79,.15)}
+.bgate.none{color:var(--grey);background:rgba(255,255,255,.06)}
+.btab{width:100%;border-collapse:collapse;font-size:12px}
+.btab td{padding:3px 6px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
+.btab tr.bad td{background:rgba(217,83,79,.1)}
+.bv{text-align:right;width:76px;font-variant-numeric:tabular-nums;font-weight:600}
+.bl{line-height:1.5}
+.bs{width:80px;text-align:right}
+.bk{font-size:10px;padding:0 5px;border-radius:8px;margin-left:4px;white-space:nowrap}
+.bk-gate{color:var(--teal-mid);background:rgba(0,190,180,.12)}
+.bk-model{color:var(--grey);background:rgba(255,255,255,.07)}
+.spk{width:76px;height:18px;overflow:visible}
+.spk path{fill:none;stroke:var(--teal-mid);stroke-width:1.4}
+.spk circle{fill:var(--teal-mid)}
+.spk.flat path{stroke:rgba(255,255,255,.25)}
+.bnotes{margin:8px 0 0;padding-left:18px;font-size:11px;color:var(--grey);line-height:1.6}
+.bruns{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+.bruns th{text-align:left;font-weight:600;color:var(--grey);padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.12)}
+.bruns td{padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.05)}
+.bruns .ok{color:var(--teal-mid);font-weight:600}
+.bruns .bad{color:#e8827f;font-weight:600}
+@media (max-width:640px){.bhead{flex-direction:column;align-items:flex-start;gap:8px}.bs,.spk{display:none}}
+
+.pk-wall{margin:18px 0 26px}
+.pk-card .thumb{background:#0d1117}
+.pk-card .t{font-weight:600}
+.pk-more{margin-top:8px}
+.pk-more>summary,.pk-sub>summary{cursor:pointer;font-size:12px;color:var(--teal-mid);padding:3px 0;list-style:none}
+.pk-more>summary::-webkit-details-marker,.pk-sub>summary::-webkit-details-marker{display:none}
+.pk-more>summary::before,.pk-sub>summary::before{content:"▸ ";display:inline-block;transition:transform .12s}
+.pk-more[open]>summary::before,.pk-sub[open]>summary::before{transform:rotate(90deg)}
+.pk-more h4{margin:12px 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--grey)}
+.pk-tag{font-size:9.5px;text-transform:none;letter-spacing:0;padding:1px 6px;border-radius:8px;background:rgba(255,255,255,.07);color:var(--grey);margin-left:5px}
+.pk-tag.ok{color:var(--teal-mid);background:rgba(0,190,180,.12)}
+.pk-list{margin:0;padding-left:16px;font-size:11.5px;line-height:1.6}
+.pk-list li{margin-bottom:4px}
+.pk-ev{color:var(--teal-mid);font-size:10.5px;white-space:nowrap}
+.pk-none{font-size:11.5px;color:var(--grey);margin:2px 0;line-height:1.55}
+.pk-fw{font-size:11.5px;line-height:1.55;margin:2px 0}
+.pk-with,.pk-render{font-size:10.5px;color:var(--grey);margin:8px 0 0;line-height:1.5}
+.pk-sub{margin-top:8px;border-left:2px solid rgba(255,255,255,.1);padding-left:10px}
+.pk-story{margin-top:12px}
+.pk-beats h4{margin:10px 0 4px}
+.pk-beat{margin:0 0 6px}
+.pk-beat b{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--grey);display:block}
+.pk-beat p{margin:1px 0 0;font-size:11.5px;line-height:1.55}
+.pk-payoff b{color:var(--teal-mid)}
+.pk-segs{margin:0;padding-left:16px}
+.pk-seg{margin-bottom:10px}
+.pk-seg h5{margin:0 0 4px;font-size:12px;font-weight:600}
+.pk-gate{font-size:11px;margin:8px 0 0;line-height:1.55;padding:5px 8px;border-radius:4px}
+.pk-gate.ok{color:var(--teal-mid);background:rgba(0,190,180,.07)}
+.pk-gate.bad{color:#e8827f;background:rgba(217,83,79,.1)}
+.pk-warn{font-size:10.5px;color:var(--grey);margin:6px 0 0;line-height:1.55}
 </style>
 </head><body><div class="wrap">
 <header class="site">
   <img src="../assets/brand/influint-mark.png" alt="Influint">
   <span class="word">Influint · Channel Intelligence</span>
-  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a><a href="../autoresearch.html">Autoresearch</a></nav>
+  <nav><a href="../index.html">All channels</a><a href="../intelligence.html">Intelligence</a><a href="../intelligence-system.html">System</a><a href="../autoresearch.html">Autoresearch</a><a href="../benchmark.html">Benchmark</a></nav>
 </header>
 
 <h1><span class="pill s-law">Law</span></h1>
@@ -1512,7 +1588,7 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
     <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
-    <span class="num">held 100% of 108 measurements</span>
+    <span class="num">held 100% of 120 measurements</span>
     <span class="num">12 channels</span>
   </div>
   <div class="txt">Titles of 3 to 9 words (roughly 10 to 49 characters) do not cost click-through, and on this store they sit a little above the channel&#39;s own median CTR: 11 of 12 Studio channels read the band above their longer titles, median +7%, with the lift under 20% on all but two maker-build channels (+26% and +28%). The best single buckets are 3 words (1.11x own-channel CTR over 344 titles on 96 channels) and 10-19 characters (1.11x over 399 on 106). By marketplace: maker-build reads highest (4 words 1.24x over 309 titles on 50 channels; the band above its rest on 5 of 5), vlog-lifestyle 1.07x on 3 of 3, gaming and motorcycle-travel about 1.04-1.09x on one channel each, and homemaking is the one marketplace where the band reads below (0.93x on its one channel; its best bucket is 100-109 characters at 1.11x). No title length in the store moves click-through by 20% or more on a typical channel, so the range is a safe default rather than a lever.</div>
@@ -1608,98 +1684,98 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
     hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
     direction but too small to build a decision on.
     Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
-    One dot per channel &mdash; 96 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+    One dot per channel &mdash; 108 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
 </div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
+        <td>Hannah&#39;s Happy Home</td>
+        <td class="ok">held</td>
+        <td>-0.07</td>
+        <td>595 <span class="dim">(smaller side 20)</span></td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
         <td>Tropical Russian</td>
         <td class="ok">held</td>
         <td>+0.01</td>
         <td>60 <span class="dim">(smaller side 16)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>The Mountain Maker</td>
         <td class="ok">held</td>
         <td>+0.04</td>
         <td>149 <span class="dim">(smaller side 57)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>The Carpenters Daughter</td>
         <td class="ok">held</td>
         <td>+0.07</td>
         <td>296 <span class="dim">(smaller side 74)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Phoebe Taylor</td>
         <td class="ok">held</td>
         <td>+0.06</td>
         <td>148 <span class="dim">(smaller side 73)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel F</td>
         <td class="ok">held</td>
         <td>+0.27</td>
         <td>230 <span class="dim">(smaller side 78)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel A</td>
         <td class="ok">held</td>
         <td>+0.04</td>
         <td>475 <span class="dim">(smaller side 22)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel I</td>
         <td class="ok">held</td>
         <td>+0.11</td>
         <td>579 <span class="dim">(smaller side 183)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel H</td>
         <td class="ok">held</td>
         <td>+0.28</td>
         <td>133 <span class="dim">(smaller side 61)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Isabella Demarko</td>
         <td class="ok">held</td>
         <td>+0.07</td>
         <td>196 <span class="dim">(smaller side 75)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel D</td>
         <td class="ok">held</td>
         <td>+0.09</td>
         <td>528 <span class="dim">(smaller side 248)</span></td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>Hannah&#39;s Happy Home</td>
-        <td class="ok">held</td>
-        <td>-0.07</td>
-        <td>595 <span class="dim">(smaller side 20)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel C</td>
         <td class="ok">held</td>
         <td>+0.18</td>
         <td>112 <span class="dim">(smaller side 44)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr></tbody>
       </table>
     </div>
-    <p class="capnote">Showing the 12 most recent of 108 readings on the record. 108 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
+    <p class="capnote">Showing the 12 most recent of 120 readings on the record. 120 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are differences of medians, scaled by the pooled median.</p>
@@ -1745,7 +1821,7 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
     <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
-    <span class="num">held 100% of 108 measurements</span>
+    <span class="num">held 100% of 120 measurements</span>
     <span class="num">12 channels</span>
   </div>
   <div class="txt">Titles of 3 to 9 words (roughly 10 to 49 characters) earn the same first-28-day views as a channel&#39;s longer titles: on all 12 windowed Studio channels the band sits within 20% of the rest, median 1% below. If anything, the tilt is the other way. On lifetime counts, age-adjusted, the band reads below the rest on 79 of 119 channels (median 0.95x), and the buckets with the highest median score are the long ones: 15-16 words at 1.03-1.04x over 1,784 titles on up to 137 channels, and 80-99 characters at 1.03-1.04x over 3,169 titles on up to 154. The tilt differs by marketplace, and these are pooled bucket medians rather than per-channel reproduced effects: maker-build 16 words 1.31x (100 titles, 24 channels) and 80-89 characters 1.16x (245, 32), the short band above its rest on only 12 of 33 channels; vanlife-travel 16 words 1.15x and 80-89 characters 1.19x (105, 12), band above on 1 of 14; outdoors-homestead 15 words 1.19x (27, 7); commentary 11 words 1.14x (61, 9); vlog-lifestyle 12 words 1.09x (149, 10); motorcycle-travel 12 words 1.12x with the short band at 0.76x on 0 of 3; restoration 90-99 characters 1.96x on 20 titles across 5 channels, too few to lean on. Gaming is the exception: 8-9 words read 1.08x over 606 titles on 13 channels and the short band beats the rest on 5 of 6. Beauty-fashion&#39;s best bucket is 7 words at 1.31x, on 29 titles. The reproduced finding is that title length does not move first-28-day views by 20% either way; where a long title is above, it is a niche&#39;s pooled median, not a law.</div>
@@ -1788,8 +1864,8 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
 </circle>
 <line class="ebase" x1="116" y1="70" x2="602" y2="70"/>
 <text class="elabel" x="108" y="73.5" text-anchor="end">Channel A</text>
-<circle class="edot eheld" cx="359.3" cy="70" r="5">
-  <title>Channel A: +0.00 over 450 videos — held</title>
+<circle class="edot eheld" cx="359.5" cy="70" r="5">
+  <title>Channel A: +0.00 over 451 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="90" x2="602" y2="90"/>
 <text class="elabel" x="108" y="93.5" text-anchor="end">The Carpenters Dau</text>
@@ -1803,8 +1879,8 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
 </circle>
 <line class="ebase" x1="116" y1="130" x2="602" y2="130"/>
 <text class="elabel" x="108" y="133.5" text-anchor="end">Channel I</text>
-<circle class="edot eheld" cx="355.3" cy="130" r="5">
-  <title>Channel I: -0.02 over 580 videos — held</title>
+<circle class="edot eheld" cx="355.4" cy="130" r="5">
+  <title>Channel I: -0.01 over 581 videos — held</title>
 </circle>
 <line class="ebase" x1="116" y1="150" x2="602" y2="150"/>
 <text class="elabel" x="108" y="153.5" text-anchor="end">Channel C</text>
@@ -1833,111 +1909,111 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
 </circle>
 <line class="ebase" x1="116" y1="250" x2="602" y2="250"/>
 <text class="elabel" x="108" y="253.5" text-anchor="end">Hannah&#39;s Happy Hom</text>
-<circle class="edot eheld" cx="317.3" cy="250" r="5">
-  <title>Hannah&#39;s Happy Home: -0.17 over 664 videos — held</title>
+<circle class="edot eheld" cx="317.4" cy="250" r="5">
+  <title>Hannah&#39;s Happy Home: -0.17 over 665 videos — held</title>
 </circle>
   </svg>
   <p class="echartcap">Each dot is one channel. Filled green held in the direction the claim predicts;
     hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
     direction but too small to build a decision on.
     Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
-    One dot per channel &mdash; 96 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+    One dot per channel &mdash; 108 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
 </div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
+        <td>The Marlon Report <span class="basis-tag">lifetime views &middot; not in figures</span></td>
+        <td class="no">did not hold</td>
+        <td>+0.21</td>
+        <td>79 <span class="dim">(smaller side 39)</span></td>
+        <td>2026-09-16</td>
+      </tr>
+<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
+        <td>Bus Grease Monkey <span class="basis-tag">lifetime views &middot; not in figures</span></td>
+        <td class="ok">held</td>
+        <td>-0.08</td>
+        <td>60 <span class="dim">(smaller side 24)</span></td>
+        <td>2026-09-16</td>
+      </tr>
+<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
+        <td>Mercanthony <span class="basis-tag">lifetime views &middot; not in figures</span></td>
+        <td class="ok">held</td>
+        <td>+0.10</td>
+        <td>420 <span class="dim">(smaller side 88)</span></td>
+        <td>2026-09-16</td>
+      </tr>
+<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Max &amp; Occy <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>-0.03</td>
         <td>113 <span class="dim">(smaller side 55)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Cambriea &amp; Bobby <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>+0.06</td>
         <td>409 <span class="dim">(smaller side 138)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Cody &amp; Kellie <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>-0.14</td>
         <td>168 <span class="dim">(smaller side 59)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Lucca <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>+0.02</td>
         <td>718 <span class="dim">(smaller side 119)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>ANJA <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="no">did not hold</td>
         <td>-0.54</td>
         <td>96 <span class="dim">(smaller side 20)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>small retired life <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>-0.15</td>
         <td>115 <span class="dim">(smaller side 49)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Galatea &amp; Acis <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>+0.04</td>
         <td>97 <span class="dim">(smaller side 29)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Becky &quot;Axel&quot; Goebel <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="no">did not hold</td>
         <td>-0.30</td>
         <td>50 <span class="dim">(smaller side 20)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
         <td>Monica Rose <span class="basis-tag">lifetime views &middot; not in figures</span></td>
         <td class="ok">held</td>
         <td>-0.15</td>
         <td>394 <span class="dim">(smaller side 58)</span></td>
-        <td>2026-09-15</td>
-      </tr>
-<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
-        <td>SpringSims <span class="basis-tag">lifetime views &middot; not in figures</span></td>
-        <td class="ok">held</td>
-        <td>+0.15</td>
-        <td>1000 <span class="dim">(smaller side 212)</span></td>
-        <td>2026-09-15</td>
-      </tr>
-<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
-        <td>Channel K - Channel K <span class="basis-tag">lifetime views &middot; not in figures</span></td>
-        <td class="ok">held</td>
-        <td>-0.04</td>
-        <td>59 <span class="dim">(smaller side 15)</span></td>
-        <td>2026-09-15</td>
-      </tr>
-<tr class="obs-lifetime" title="Not counted in the figures above: a superseded arithmetic, a channel outside the claim's marketplace, a different views basis, or a different segment population">
-        <td>Timber Biscuit Woodworks <span class="basis-tag">lifetime views &middot; not in figures</span></td>
-        <td class="no">did not hold</td>
-        <td>+0.46</td>
-        <td>93 <span class="dim">(smaller side 36)</span></td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr></tbody>
       </table>
     </div>
-    <p class="capnote">Showing the 12 most recent of 574 readings on the record. 108 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
+    <p class="capnote">Showing the 12 most recent of 599 readings on the record. 120 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are differences of medians, scaled by the pooled median.</p>
     <p class="rungnote"><b>Reproduced.</b> The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</p>
-    <div class="caveats"><b>What this does not tell you</b><ul><li>466 readings from public-seeded channels (lifetime views, no analytics grant) are shown in the table but excluded from every figure here — swapping views bases flipped 1 in 5 verdicts when tested, so the two are not pooled.</li>
+    <div class="caveats"><b>What this does not tell you</b><ul><li>479 readings from public-seeded channels (lifetime views, no analytics grant) are shown in the table but excluded from every figure here — swapping views bases flipped 1 in 5 verdicts when tested, so the two are not pooled.</li>
 <li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li></ul></div>
   </div><div class="basis b-agree"><b>Both views bases</b><p>Both views bases agree: held 100% on 12 windowed channels and 68% on 122 lifetime ones. Two independent measurements landing together is the strongest corroboration short of an intervention.</p></div><div class="scoped">
     <p class="scomp"><b>Evidence composition:</b> 134 channels — 33 maker-build, 17 outdoors-homestead, 14 vanlife-travel, 10 vlog-lifestyle, 7 home-renovation, 7 commentary, 7 gaming, 6 restoration, 5 beauty-fashion, 3 homemaking, 3 product-review, 3 motorcycle-travel, 2 fishing, 2 true-crime, 1 reselling, 1 cryptozoology, 1 small-business, 1 thrift-flip, 1 hiking-backpacking, 10 with no confirmed niche. <span class="dim">(10 channels pooled but not stratified — niche unconfirmed)</span></p>
@@ -1994,7 +2070,7 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
     <span class="grade g-weak">weak</span>
     <span class="rung" title="The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.">Reproduced</span>
     <span class="vh">The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</span>
-    <span class="num">held 88% of 232 measurements</span>
+    <span class="num">held 88% of 252 measurements</span>
     <span class="num">20 channels</span>
   </div>
   <div class="txt">The first 30 seconds is the most important stretch of a long-form video: across our measured channels a median 35.1% of viewers are gone by 0:30 (middle half of channels 29.3-37.5%) and 44.7% by 1:00, so a fixed diagnostic pass belongs on the 0-60s window of every video.</div>
@@ -2130,105 +2206,105 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
     hollow red did not. The dashed line is the threshold &mdash; an effect smaller than that is real in
     direction but too small to build a decision on.
     Signed toward the claim, so positive always means the claim&rsquo;s own prediction showed up.
-    One dot per channel &mdash; 212 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
+    One dot per channel &mdash; 232 earlier readings were superseded by a later re-measurement of the same channel and are not drawn.</p>
 </div>
     <div class="obswrap" tabindex="0" role="region" aria-label="Per-channel measurement readings (scrolls sideways)">
       <table class="obs">
         <thead><tr><th>Channel</th><th>Result</th><th>Effect</th><th>Videos</th><th>Measured</th></tr></thead>
         <tbody><tr>
-        <td>Channel G</td>
-        <td class="ok">held</td>
-        <td>-0.03</td>
-        <td>97</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>Visual Thinker</td>
-        <td class="ok">held</td>
-        <td>+0.11</td>
-        <td>14</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>Tropical Russian</td>
-        <td class="ok">held</td>
-        <td>+0.07</td>
-        <td>60</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>The Mountain Maker</td>
-        <td class="ok">held</td>
-        <td>+0.06</td>
-        <td>149</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>The Carpenters Daughter</td>
-        <td class="ok">held</td>
-        <td>+0.07</td>
-        <td>399</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>The BlackVeil Files</td>
-        <td class="ok">held</td>
-        <td>-0.04</td>
-        <td>29</td>
-        <td>2026-09-15</td>
+        <td>Mercanthony</td>
+        <td class="no">did not hold</td>
+        <td>+0.36</td>
+        <td>67</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Studio NOHA</td>
         <td class="ok">held</td>
         <td>+0.13</td>
         <td>14</td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>Hannah&#39;s Happy Home</td>
+        <td class="ok">held</td>
+        <td>+0.02</td>
+        <td>666</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>Channel G</td>
+        <td class="ok">held</td>
+        <td>-0.03</td>
+        <td>97</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>Visual Thinker</td>
+        <td class="ok">held</td>
+        <td>+0.11</td>
+        <td>14</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>Tropical Russian</td>
+        <td class="ok">held</td>
+        <td>+0.07</td>
+        <td>60</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>The Mountain Maker</td>
+        <td class="ok">held</td>
+        <td>+0.06</td>
+        <td>149</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>The Carpenters Daughter</td>
+        <td class="ok">held</td>
+        <td>+0.07</td>
+        <td>399</td>
+        <td>2026-09-16</td>
+      </tr>
+<tr>
+        <td>The BlackVeil Files</td>
+        <td class="ok">held</td>
+        <td>-0.04</td>
+        <td>29</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Phoebe Taylor</td>
         <td class="ok">held</td>
         <td>+0.00</td>
         <td>150</td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel F</td>
         <td class="ok">held</td>
         <td>+0.05</td>
         <td>232</td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr>
 <tr>
         <td>Channel A</td>
         <td class="ok">held</td>
         <td>-0.24</td>
         <td>475</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>Mind Of A Criminal</td>
-        <td class="ok">held</td>
-        <td>-0.19</td>
-        <td>32</td>
-        <td>2026-09-15</td>
-      </tr>
-<tr>
-        <td>Mercanthony</td>
-        <td class="no">did not hold</td>
-        <td>+0.36</td>
-        <td>67</td>
-        <td>2026-09-15</td>
+        <td>2026-09-16</td>
       </tr></tbody>
       </table>
     </div>
-    <p class="capnote">Showing the 12 most recent of 232 readings on the record. 232 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
+    <p class="capnote">Showing the 12 most recent of 252 readings on the record. 252 of them feed the figures above; the rest are tagged in the table with why they do not.</p>
     <p class="signnote">Effect is signed <b>toward the claim</b>: a positive number means the claim's own
       prediction showed up, whichever way the raw statistic pointed.
       Figures are calibration.</p>
     <p class="rungnote"><b>Reproduced.</b> The same relationship showed up on independent channels. Much harder to explain as coincidence — still not a demonstrated cause.</p>
     <div class="caveats"><b>What this does not tell you</b><ul><li>The smallest group behind this is 10 videos. At that size a couple of unusual uploads can carry the whole result.</li>
 <li>The effect is real in direction but small. It is not wrong, it is just not big enough to be worth building a decision on by itself.</li>
-<li>It did NOT hold on Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel E, Channel I, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
+<li>It did NOT hold on Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel E, Channel I, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony, Channel I, Channel E, Mercanthony. Those channels are the interesting ones: whatever they do differently is the missing context.</li></ul></div>
   </div><div class="basis b-agree"><b>Both views bases</b><p>Both views bases agree: held 88% on 20 windowed channels and 88% on 20 lifetime ones. Two independent measurements landing together is the strongest corroboration short of an intervention.</p></div><div class="scoped">
     <p class="scomp"><b>Evidence composition:</b> 20 channels — 9 maker-build, 3 vlog-lifestyle, 2 true-crime, 2 gaming, 1 vanlife-travel, 1 education, 1 motorcycle-travel, 1 homemaking.</p>
     <div class="obswrap" tabindex="0" role="region" aria-label="Strength within each stratum (scrolls sideways)">
@@ -2242,7 +2318,7 @@ if(c)c.addEventListener('click',function(){fold(false);});})();
 <tr class="sbelow"><td>By niche</td><td>education</td><td>1</td><td><i>below floor — no figure</i></td></tr>
 <tr class="sbelow"><td>By niche</td><td>motorcycle-travel</td><td>1</td><td><i>below floor — no figure</i></td></tr>
 <tr class="sbelow"><td>By niche</td><td>homemaking</td><td>1</td><td><i>below floor — no figure</i></td></tr>
-<tr class=""><td>By channel size</td><td>50k-250k</td><td>7</td><td>|effect| 0.13 · held 79%</td></tr>
+<tr class=""><td>By channel size</td><td>50k-250k</td><td>7</td><td>|effect| 0.13 · held 78%</td></tr>
 <tr class=""><td>By channel size</td><td>250k-1m</td><td>7</td><td>|effect| 0.13 · held 100%</td></tr>
 <tr class=""><td>By channel size</td><td>under-50k</td><td>4</td><td>|effect| 0.07 · held 100%</td></tr>
 <tr class="sbelow"><td>By channel size</td><td>over-1m</td><td>2</td><td><i>below floor — no figure</i></td></tr>

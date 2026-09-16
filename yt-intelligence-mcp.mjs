@@ -1498,6 +1498,149 @@ const TOOLS = [
     }
   },
   {
+    "name": "channel_facts",
+    "canonicalName": "channelFacts",
+    "category": "channels",
+    "path": "channelFacts",
+    "description": "The only tool that answers a COMPARISON rather than a belief. Every other tool here says what this system holds and how well it is evidenced; this says where one channel actually stands, which is the half a creative or production brief cannot do without and which no claim can supply — 'longer videos carry a higher average view duration' is a law on 19 of 19 channels and tells a writer nothing until it is set beside this channel's own median against its marketplace's. Read it BESIDE the claims tools, never instead of them: these are medians and positions in a distribution, not verdicts, and nothing here decides whether a claim holds. Figures come from a warehouse rebuilt from the canonical store daily, so every answer carries when it was built and whether the store has moved since. A marketplace below ten confirmed channels is withheld rather than estimated, and `withheld` names each one and why.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string",
+          "description": "A YouTube channel id. Required."
+        }
+      },
+      "required": [
+        "channelId"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "niche": {
+          "type": "string",
+          "description": "The CONFIRMED marketplace. Null when a person has not confirmed one: a proposal tags nothing."
+        },
+        "nicheChannels": {
+          "type": "number",
+          "description": "Confirmed channels in that marketplace. Below ten, its median is withheld."
+        },
+        "videos": {
+          "type": "number"
+        },
+        "curves": {
+          "type": "number",
+          "description": "Videos carrying a retention curve. The curve comparisons rest only on these."
+        },
+        "viewsBasis": {
+          "type": "string",
+          "description": "Which views quantity this channel's own comparisons rest on: first28d or lifetime. The two are never pooled."
+        },
+        "freshness": {
+          "type": "object",
+          "description": "When the warehouse was built, and whether the canonical store has moved since.",
+          "properties": {
+            "builtAt": {
+              "type": "string"
+            },
+            "stale": {
+              "type": "boolean"
+            },
+            "behindMinutes": {
+              "type": "number",
+              "description": "Minutes behind the store, or null when current."
+            }
+          }
+        },
+        "comparisons": {
+          "type": "array",
+          "description": "One per measure. A null channel figure means too few videos carry it, never zero.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string",
+                "description": "seconds, share, ratio, words, characters or count. A share and a ratio are 0..1."
+              },
+              "channel": {
+                "type": "number",
+                "description": "This channel's median, or null when fewer than eight videos carry the measure."
+              },
+              "n": {
+                "type": "number",
+                "description": "Videos behind the channel figure."
+              },
+              "niche": {
+                "type": "number",
+                "description": "The marketplace median, one vote per channel, or null when withheld."
+              },
+              "nicheWithheld": {
+                "type": "string",
+                "description": "Why the marketplace figure is absent. Present only when it is."
+              },
+              "fleet": {
+                "type": "number",
+                "description": "The fleet median, one vote per channel."
+              },
+              "fleetChannels": {
+                "type": "number"
+              },
+              "percentile": {
+                "type": "number",
+                "description": "Where the channel sits among channels carrying this measure, 0..1. Against the FLEET, never the marketplace."
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "unit",
+              "channel",
+              "n",
+              "fleet",
+              "fleetChannels"
+            ]
+          }
+        },
+        "withheld": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Comparisons that could not be made, and why. Never silent."
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What these figures do not establish. Read before quoting one as a reason."
+        }
+      },
+      "required": [
+        "channelId",
+        "comparisons",
+        "withheld",
+        "limits",
+        "freshness"
+      ],
+      "description": "One row per measure, each carrying the channel's own figure, its marketplace's, the fleet's, and how many things each rests on."
+    }
+  },
+  {
     "name": "list_workflows",
     "canonicalName": "workflows",
     "category": "workflows",
@@ -1879,7 +2022,7 @@ const TOOLS = [
           "items": {
             "type": "string"
           },
-          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-11 it removes between 140 and 721 of the 998 live claims, except for the one workflow that declares no categories and therefore narrows by nothing. Read this list rather than assuming a bucket is the whole store."
+          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-15 it removes between 53 and 875 of the 998 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
         },
         "withheld": {
           "type": "object",
@@ -2051,7 +2194,7 @@ const TOOLS = [
               "items": {
                 "type": "string"
               },
-              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-11 it removes between 140 and 721 of the 998 live claims, except for the one workflow that declares no categories and therefore narrows by nothing. Read this list rather than assuming a bucket is the whole store."
+              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-15 it removes between 53 and 875 of the 998 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
             },
             "withheld": {
               "type": "object",

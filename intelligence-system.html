@@ -974,6 +974,11 @@ table.obs td.no{color:#ff8f8f}
 .claim .cat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em}
 .claim .txt{font-size:14.5px;line-height:1.55}
 .claim .src{margin-top:8px;font-size:12px;color:var(--teal-mid)}
+.lineage{margin-top:10px;padding:8px 10px;border-left:2px solid var(--teal-mid);background:rgba(255,255,255,.03);border-radius:0 4px 4px 0}
+.lineage p{margin:0 0 6px;font-size:12px;line-height:1.5}
+.lineage p:last-child{margin-bottom:0}
+.lineage .snote{margin-top:2px}
+.lineage code{font-size:11px;opacity:.8}
 .claim details{margin-top:10px}
 .claim summary{cursor:pointer;color:var(--teal);font-size:12.5px;list-style:none}
 .claim summary::-webkit-details-marker{display:none}
@@ -1289,6 +1294,13 @@ it produces. The analyst traces below show the same method applied to a specific
 .sd-cap{font-size:12.5px;line-height:1.6;color:var(--grey);padding:14px 20px 18px;margin:0;max-width:96ch}
 .sd-cap b{color:var(--white);font-weight:600}
 .wf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin:0 0 40px}
+.is-axis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0 26px}
+.ax{border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:12px 14px;background:rgba(255,255,255,.02)}
+.ax-grade{border-color:var(--teal-mid);background:rgba(0,190,180,.06)}
+.ax h3{margin:0 0 6px;font-size:13px;letter-spacing:.02em;text-transform:uppercase}
+.ax p{margin:0;font-size:12px;line-height:1.55;color:var(--grey)}
+.ax-can{margin-top:8px !important;font-size:11px !important;font-weight:600;color:var(--teal-mid) !important}
+.ax:not(.ax-grade) .ax-can{color:var(--grey) !important;opacity:.75}
 .wf{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
 .wf-head{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;margin:0 0 6px}
 .wf-head h3{margin:0;font-size:15px}
@@ -1643,6 +1655,52 @@ the evidence ladder, where a person is required, what makes it a loop, and what 
       <p class="is-gate"><b>Gate:</b> READ-ONLY over the network, and that is the safety boundary rather than a limitation: standing moves on a measurement or a human signature, and an endpoint that let a caller edit it would make both meaningless. The boundary is STRUCTURAL now rather than conventional — a category carries the write bit, and the route mounts only the categories that do not, so a write tool wired in by hand still cannot reach the network. The three tools that write stay on local stdio, and no tool anywhere takes a human signature. An unset key means the API is OFF, not open. Every claim travels with its unit, its causal rung, what it does NOT establish, and the prohibitions.</p>
       <p class="is-where">src/lib/intelligence/tools.ts · src/lib/intelligence/api.ts · src/app/api/intelligence/[tool]/route.ts · scripts/mcp-server.ts · public/yt-intelligence-mcp.mjs · src/lib/site/connect.ts</p>
     </div>
+<h2>Where beliefs that are not measurements come from</h2>
+<p class="lede">A retention curve is not the only thing this system learns from. A course, a book, a
+workshop or a transcript can be dropped in whole, and what it asserts is read out, sorted, pinned to the
+sentence it came from and filed for a person &mdash; who decides what enters the store. <b>Nothing from a
+document writes a claim on its own.</b> A merge needs a signature, a niche needs a signature, an override
+needs a signature, and a persuasive document arriving from outside is the last place to make an exception.</p>
+
+<p class="lede">The reason to be careful is not that practitioners are wrong. It is that a good document is
+persuasive by construction &mdash; written by people who are good at persuading &mdash; and it reads
+exactly as authoritative whether or not anything has ever tested it. So everything that comes through this
+door enters as a <b>theory</b> with its source attributed: the standing that says out loud that nobody has
+measured it yet. The ladder moves it from there, or it does not.</p>
+
+<div class="is-axis">
+  <div class="ax ax-grade">
+    <h3>falsifiable</h3>
+    <p>names an outcome and a direction, so a measurement could contradict it</p>
+    <p class="ax-can">May be measured and promoted</p>
+  </div><div class="ax ">
+    <h3>taste</h3>
+    <p>a judgement about how something should look or feel — real craft, and not a thing data can settle</p>
+    <p class="ax-can">Kept and attributed, never graded</p>
+  </div><div class="ax ">
+    <h3>procedural</h3>
+    <p>an instruction for doing the work, which is a method rather than a belief about what works</p>
+    <p class="ax-can">Kept and attributed, never graded</p>
+  </div><div class="ax ">
+    <h3>definitional</h3>
+    <p>explains what a term means, so there is nothing in it to be right or wrong about</p>
+    <p class="ax-can">Kept and attributed, never graded</p>
+  </div>
+</div>
+
+<p class="lede"><b>Only falsifiable may ever reach the ladder</b>, and the gate is in code:
+a binding is refused outright for anything else, with no partial escape. That is not because
+taste, procedural, definitional assertions are worth less. It is that measurement cannot judge them, and a system
+that recorded only what it can measure would quietly throw away the half of a practitioner&rsquo;s knowledge
+that is hardest to rebuild. What taste may never do is arrive dressed as evidence.</p>
+
+<p class="lede"><b>The quote under a claim is chosen by code, not by the model.</b> Whether a sentence
+appears in a document is a fact about that document, so the model&rsquo;s suggestion is treated as a hint
+about where to look and the value that ships is a verbatim window cut from the passage around the sentence
+the claim actually came from &mdash; with its neighbours, so a claim that opens &ldquo;This is best
+when&hellip;&rdquo; carries the sentence saying what <i>this</i> is. A claim that cannot be found anywhere in
+its own passage is <b>flagged for a person</b> rather than given the passage&rsquo;s opening lines: either it
+was paraphrased past what the arithmetic can follow, or the source does not say it.</p>
 <h2>Workflows: how each way of operating applies what we know</h2>
 <p class="lede">A deliverable is a department. A workflow is one way of working inside it, and two workflows in the
 same department can use the same evidence in completely different ways. So each one states what it LOOKS AT and
@@ -1655,7 +1713,7 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
   <p class="wf-q">Which of clickability, watchability and replayability is this channel's priority, and what is the next move on each?</p>
   <p class="wf-modes"><span class="on">rule</span><span class="on">prior</span><span class="off">hypothesis</span><span class="on">prohibition</span><span class="on">do-not-repeat</span></p>
   <dl>
-    <dt>Looks at</dt><dd><ul><li>the channel's Studio or Analytics rollups per trailing window</li><li>its per-video first-28-day figures</li><li>the format library</li><li>the store, routed by niche</li></ul></dd>
+    <dt>Looks at</dt><dd><ul><li>the channel's Studio or Analytics rollups per trailing window</li><li>its per-video first-28-day figures</li><li>the format library</li><li>the store, routed by niche — including what is held about how the platform distributes a video and who the audience on the far end of the funnel is</li></ul></dd>
     <dt>Produces</dt><dd>The V3 deck and sheet: dimensions, charts, leaderboards, WHAT / WHY / HOW per dimension, six insight blocks.</dd>
     <dt>Writes back</dt><dd>A channel-audit output record; CTR and impressions onto each video.</dd>
     <dt>Never</dt><dd><ul><li>state a figure the sheet does not hold</li><li>present a theory as a finding</li><li>ship without the do-not-repeat list</li></ul></dd>
@@ -1729,6 +1787,32 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
   <p class="is-where">npm run ideas:run; /tools/ideas &middot; src/lib/ideas/generate.ts · src/lib/ideas/recombine.ts · src/lib/ideas/rate.ts</p>
 </div>
 <div class="wf">
+  <div class="wf-head"><h3>Creative outline, hook and segments</h3><span class="wf-dept">Retention audit (creative and content)</span><a class="wf-map" href="system-map/creative-outline.html">its map, joined to the tower</a><a class="wf-map" href="system-map/creative-outline-flow.html">as a flow</a></div>
+  <p class="wf-q">For this idea on this channel, what is the hook, and what are the segments — each opening on a problem and closing on a payoff?</p>
+  <p class="wf-modes"><span class="on">rule</span><span class="on">prior</span><span class="off">hypothesis</span><span class="on">prohibition</span><span class="on">do-not-repeat</span></p>
+  <dl>
+    <dt>Looks at</dt><dd><ul><li>the supplied scriptwriting method as a checkable structure: three steps, two hook structures, three levels</li><li>where THIS channel loses people, from its own curve compared with its marketplace and the fleet</li><li>the retention claims: laws as constraints on structure, warnings as beats not to write</li></ul></dd>
+    <dt>Produces</dt><dd>An outline whose structure code has checked: a hook of one declared kind, segments that each end on a payoff, and the drafting mistakes the method names flagged as suspicions.</dd>
+    <dt>Writes back</dt><dd>The outline and its sidecar under the channel's studies. Nothing to the ledger: an outline is a plan, not a measurement.</dd>
+    <dt>Never</dt><dd><ul><li>blend the two hook structures — an education hook promises a lesson, an entertainment hook a character, and a video given the wrong one promises what it does not deliver</li><li>demand setup and tension at level 1, which is ~10% scripted by design for experience-led videos</li><li>ask the last segment for a transition, because there is nothing to transition to</li><li>present a drafting warning as a defect: it is a suspicion about prose for a person to confirm or dismiss</li><li>attach a projected retention figure to an outline</li></ul></dd>
+    <dt>Probes consulted</dt><dd><code>duration-vs-retention-half</code> <code>intro-hold-vs-retention-half</code> <code>opening-and-density-vs-minute-loss</code></dd>
+  </dl>
+  <p class="is-where">CHANNEL_ID=... IDEA=&quot;...&quot; npm run creative:outline &middot; src/lib/ideas/script-outline.ts · scripts/creative-outline.ts</p>
+</div>
+<div class="wf">
+  <div class="wf-head"><h3>Production and post plan</h3><span class="wf-dept">Production and post-production</span><a class="wf-map" href="system-map/production-plan.html">its map, joined to the tower</a><a class="wf-map" href="system-map/production-plan-flow.html">as a flow</a></div>
+  <p class="wf-q">What will this video cost to make, how long should it run, and where does the sponsor read sit?</p>
+  <p class="wf-modes"><span class="on">rule</span><span class="on">prior</span><span class="off">hypothesis</span><span class="on">prohibition</span><span class="on">do-not-repeat</span></p>
+  <dl>
+    <dt>Looks at</dt><dd><ul><li>this channel's own runtime, cadence and average view duration against its marketplace and the fleet</li><li>the moment census: which kind of beat works on this channel, measured against its own kind</li><li>the production and editing claims, which today are warnings and theories rather than laws</li></ul></dd>
+    <dt>Produces</dt><dd>A plan filed against the dimension each item moves: a target runtime from the channel's own distribution, a cadence, and a sponsor position with the reason it sits there.</dd>
+    <dt>Writes back</dt><dd>The plan under the channel's studies. Nothing to the ledger: a plan is a cost estimate, not a measurement.</dd>
+    <dt>Never</dt><dd><ul><li>recommend moving an ad to after a reveal or payoff — viewers feel released and leave. This is OPERATOR DIRECTION carried in the segment prompts, not a measured law, and it is stated as such</li><li>quote average view duration without its average percentage viewed: they trade off as runtime grows, so either can be moved by re-cutting length without holding anyone a second longer</li><li>give a runtime target from a fleet median when the channel has its own distribution</li><li>state a cadence for a channel whose uploads are bursty, where the median is an artefact of a bimodal spread</li></ul></dd>
+    <dt>Probes consulted</dt><dd><code>duration-vs-avd</code> <code>duration-vs-apv</code> <code>ad-position-vs-ad-loss</code> <code>upload-gap-vs-views</code></dd>
+  </dl>
+  <p class="is-where">CHANNEL_ID=... npm run production:plan &middot; scripts/production-plan.ts · src/lib/warehouse/facts.ts</p>
+</div>
+<div class="wf">
   <div class="wf-head"><h3>Packaging concept</h3><span class="wf-dept">Packaging audit</span><a class="wf-map" href="system-map/packaging-concept.html">its map, joined to the tower</a><a class="wf-map" href="system-map/packaging-concept-flow.html">as a flow</a></div>
   <p class="wf-q">For this idea on this channel, what would a package look like that obeys every packaging rule we hold, and which rules did it obey?</p>
   <p class="wf-modes"><span class="on">rule</span><span class="off">prior</span><span class="off">hypothesis</span><span class="on">prohibition</span><span class="on">do-not-repeat</span></p>
@@ -1756,13 +1840,13 @@ receives laws and nothing else, so a theory can never reach a creator dressed as
 </div>
 <div class="wf">
   <div class="wf-head"><h3>Daily cycle</h3><span class="wf-dept">The system itself</span><a class="wf-map" href="system-map/daily-cycle.html">its map, joined to the tower</a><a class="wf-map" href="system-map/daily-cycle-flow.html">as a flow</a></div>
-  <p class="wf-q">What changed since yesterday, and does the record still agree with itself?</p>
-  <p class="wf-modes"><span class="off">rule</span><span class="off">prior</span><span class="off">hypothesis</span><span class="off">prohibition</span><span class="off">do-not-repeat</span></p>
+  <p class="wf-q">Which theory can be settled against data today, and does the record still agree with itself after it moves?</p>
+  <p class="wf-modes"><span class="off">rule</span><span class="off">prior</span><span class="on">hypothesis</span><span class="off">prohibition</span><span class="off">do-not-repeat</span></p>
   <dl>
-    <dt>Looks at</dt><dd><ul><li>new uploads and curves</li><li>the ledger after re-measurement</li><li>the adjudication queue</li><li>the advice log</li></ul></dd>
-    <dt>Produces</dt><dd>A re-measured ledger, a synced queue, an autoresearch iteration, an outcome read, a published site.</dd>
+    <dt>Looks at</dt><dd><ul><li>every theory the ladder has not graded, which is the backlog this cycle exists to work down</li><li>new uploads and curves — the evidence that arrived since yesterday</li><li>the ledger after re-measurement, and the adjudication queue it fills</li><li>the advice log, for whether what was recommended changed anything</li></ul></dd>
+    <dt>Produces</dt><dd>A re-measured ledger, a synced queue, an autoresearch iteration, an accessor proposal when the vocabulary is the thing in the way, an outcome read, a published site.</dd>
     <dt>Writes back</dt><dd>research-state.json: standings snapshot and diff, niche coverage, the top of the crawl queue.</dd>
-    <dt>Never</dt><dd><ul><li>start while an analysis runs</li><li>answer a question that needs a name</li><li>stop at the first failed step</li></ul></dd>
+    <dt>Never</dt><dd><ul><li>start while an analysis runs</li><li>answer a question that needs a name — those go to the adjudication queue</li><li>stop at the first failed step</li><li>promote a claim on its own: standing moves on a measurement or a signature, and a cycle is neither</li></ul></dd>
     
   </dl>
   <p class="is-where">npm run intel:daily &middot; scripts/daily.sh · src/lib/intelligence/on-new-data.ts</p>

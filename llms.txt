@@ -161,6 +161,16 @@ Every endpoint is GET, returns JSON, and needs a bearer token:
   returns: The action list, each action carrying the claim it cites, plus a note on
   what the attached evidence covers.
 
+- GET /api/intelligence/channelFacts?channelId=<UC...>
+  tool name: channel_facts (over HTTP the path segment is `channelFacts`; both spellings resolve)
+  category: channels
+  params: channelId (required)
+    channelId (string) — A YouTube channel id. Required.
+  Where this channel sits against its marketplace and the fleet: runtime, title
+  length, click-through, watch duration and the retention curve at four marks.
+  returns: One row per measure, each carrying the channel's own figure, its
+  marketplace's, the fleet's, and how many things each rests on.
+
 - GET /api/intelligence/workflows
   tool name: list_workflows (over HTTP the path segment is `workflows`; both spellings resolve)
   category: workflows

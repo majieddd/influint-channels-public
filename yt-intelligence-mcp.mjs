@@ -568,7 +568,7 @@ const TOOLS = [
         },
         "prohibitionLimit": {
           "type": "number",
-          "description": "How many refuted claims come back. Separate from `limit`, which never reached them: on the live store 11 of 36 were unreachable at any `limit` until this parameter existed. Default 25.",
+          "description": "How many refuted claims come back. Separate from `limit`, which never reached them: on the live store 9 of 34 were unreachable at any `limit` until this parameter existed. Default 25.",
           "default": 25,
           "minimum": 1
         }
@@ -2022,7 +2022,7 @@ const TOOLS = [
           "items": {
             "type": "string"
           },
-          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 988 of the 1,116 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
+          "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 990 of the 1,118 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
         },
         "withheld": {
           "type": "object",
@@ -2194,7 +2194,7 @@ const TOOLS = [
               "items": {
                 "type": "string"
               },
-              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 988 of the 1,116 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
+              "description": "Everything removed and why, narrowings first and caps last: the workflow's categories, its topic, the same two over the refuted claims, then any cap. The category narrowing is the large one and the workflow decides it — measured on the store on 2026-09-16 it removes between 64 and 990 of the 1,118 live claims, and every workflow now declares categories, so every one of them narrows. Read this list rather than assuming a bucket is the whole store."
             },
             "withheld": {
               "type": "object",

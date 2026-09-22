@@ -1356,12 +1356,12 @@ allowed to edit.</p>
 
 <h2>What the loop has proposed</h2>
 <div class="ar-stats">
-  <div><div class="v">35</div><div class="k">Runs</div></div>
-  <div><div class="v">261</div><div class="k">Iterations</div></div>
+  <div><div class="v">36</div><div class="k">Runs</div></div>
+  <div><div class="v">269</div><div class="k">Iterations</div></div>
   <div><div class="v">1</div><div class="k">Kept and not audit-rejected</div></div>
   <div><div class="v">4</div><div class="k">Reproduced, wrong thing</div></div>
   <div><div class="v">3</div><div class="k">Evidence against a claim</div></div>
-  <div><div class="v">155</div><div class="k">Declined as out of reach</div></div>
+  <div><div class="v">159</div><div class="k">Declined as out of reach</div></div>
 </div>
 <p class="legend">A declined iteration is a RESULT, not a failure. Most of this knowledge base is about
 thumbnails, packaging and audience psychology, and the honest answer for those is that nothing in the
@@ -1536,6 +1536,22 @@ the loop produces: it is a build queue for the accessor vocabulary, written by s
 to use it and found it short. An accessor is a code change with a test, so the queue is read by a person and
 never acted on by the loop.</p>
 <div class="ar-gaps"><div class="ar-gap">
+  <p class="ar-k-claim">Thumbnail carries the overwhelming share of the click decision and the title is secondary - Netflix measured artwork at over 80% of browsing attention with titles getting under two seconds.</p>
+  <p class="ar-k-why">The vocabulary lacks any thumbnail quality or attention metric (impressions only counts serves), so it cannot test whether artwork rather than title drives CTR.</p>
+  <p class="ar-k-ev">95814f31ec16 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">A 20% better title does not produce 20% more views — because YouTube's distribution is exponential and self-reinforcing, it can produce 10x or 100x more views, which is why title selection deserves disproportionate effort relative to its apparent size.</p>
+  <p class="ar-k-why">The vocabulary has no measure of title quality or a 20% title improvement, only surface title features; none honestly tests the claim's own variables.</p>
+  <p class="ar-k-ev">ab6443eca979 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Review and product/tool spotlight formats win clickability but lose replayability: they produce the channel's highest CTR and views while producing its LOWEST new-viewer-return rate and lowest APV — they buy an audience that does not come back.</p>
+  <p class="ar-k-why">The vocabulary lacks a variable identifying review/product/tool spotlight formats or new-viewer-return, so the format-specific CTR/APV tradeoff cannot be tested honestly; correlating ctr with apv would only test a general inverse relationship.</p>
+  <p class="ar-k-ev">7ad2f833c056 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">A compelling thumbnail concept is a VALIDATION TEST for a video idea: if you cannot invent a compelling thumbnail for an idea before production, the idea should not be made. This is stated identically in the appendix of all seven audits, making it house doctrine rather than channel-specific advice.</p>
+  <p class="ar-k-why">No vocabulary variable measures whether a compelling thumbnail concept was invented before production or its quality; the closest metrics like impressions and CTR are post-production exposure/performance proxies, not the claim's own pre-production validation lever.</p>
+  <p class="ar-k-ev">f4cc0976876e · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
   <p class="ar-k-claim">Extreme weather as a subject broadens reach beyond a channel's niche because it is globally legible — it produced the channel's top-viewed video at 7.8% CTR in a motorcycle-travel niche.</p>
   <p class="ar-k-why">No vocabulary variable marks a video as an extreme-weather subject or measures niche-broadening content, so the specific causal claim cannot be tested without inventing a topic metric.</p>
   <p class="ar-k-ev">26e14026c916 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
@@ -2161,6 +2177,141 @@ never acted on by the loop.</p>
 <p class="legend">Open one to read the proposal in the proposer's own words, the reading code took on every
 channel, and why it was kept or dropped.</p>
 <details class="ar-run" open>
+  <summary><b>run-2026-09-21T11-26-31</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 4 discarded, 4 out of reach</span></summary>
+  
+  <p class="ar-runmeta">Started 2026-09-21 11:26:31, finished 11:33:55 · driver local · metric: measurement frontier: claims the ledger can grade</p>
+  <p class="ar-runmeta">Vocabulary <code>v32-yw4rlu</code>: 32 accessors, 2 of them proposed by the loop itself (title-word-length, outlier-adjusted-tam-to-current-views) · 98 claims open to a fresh attempt, 63 held back by what earlier runs already settled (139 attempts on record before this run)</p>
+  <p class="ar-sum">8 iterations, 0 kept, 4 declined by the proposer as out of reach, 0 refused by the gates before running, 4 discarded on the evidence. The frontier metric does not move until a person binds a kept proposal: this loop proposes, the lever audit still decides.</p>
+  <div class="ar-its"><details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">1</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">title-word-length → ctr <i>(down)</i></span>
+    <span class="ar-cl">Uncommon or technical vocabulary in a title suppresses clicks independently of the video's qual…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim ab21fcc2e3d7</b> · theory · Uncommon or technical vocabulary in a title suppresses clicks independently of the video's quality; replacing the category term with the recognisable brand names the viewer already knows raises the share of NEW viewers.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Mean characters per word is the closest available proxy for uncommon or technical title vocabulary; if such terms suppress clicks, CTR should be lower when titles use longer words.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect -0.04 is inside the noise floor of 0.2; the channels disagree on the sign (53% agreement); the effect is real but points the other way: 2 of 19 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">19 channels cleared the floor · median effect -0.04 · 53% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 75.5s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Coffey Custom Builds</td><td class="n">-0.43</td><td class="n">33</td><td class="n">0.012</td><td>held</td></tr><tr><td>Visual Thinker</td><td class="n">0.34</td><td class="n">14</td><td class="n">0.239</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">0.29</td><td class="n">32</td><td class="n">0.105</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">0.28</td><td class="n">148</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>The Mountain Maker</td><td class="n">-0.27</td><td class="n">149</td><td class="n">0.001</td><td>held</td></tr><tr><td>Morley Kert</td><td class="n">-0.13</td><td class="n">230</td><td class="n">0.044</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">-0.12</td><td class="n">296</td><td class="n">0.039</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">0.12</td><td class="n">595</td><td class="n">0.005</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.11</td><td class="n">528</td><td class="n">0.012</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.10</td><td class="n">581</td><td class="n">0.020</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.09</td><td class="n">196</td><td class="n">0.199</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">0.08</td><td class="n">475</td><td class="n">0.067</td><td>did not hold</td></tr><tr><td>Man Made</td><td class="n">-0.08</td><td class="n">10</td><td class="n">0.834</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.05</td><td class="n">73</td><td class="n">0.665</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">-0.05</td><td class="n">29</td><td class="n">0.813</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.04</td><td class="n">60</td><td class="n">0.752</td><td>did not hold</td></tr><tr><td>Studio NOHA</td><td class="n">0.02</td><td class="n">14</td><td class="n">0.953</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">0.01</td><td class="n">112</td><td class="n">0.894</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">0.01</td><td class="n">133</td><td class="n">0.923</td><td>did not hold</td></tr></tbody></table><p class="ar-none">217 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">2</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">format-run-depth → avd-sec <i>(up)</i></span>
+    <span class="ar-cl">Serialised formats produce the highest new-viewer-return rates and the highest AVD of any forma…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 11d4f227f7ea</b> · theory · Serialised formats produce the highest new-viewer-return rates and the highest AVD of any format on a channel, but do not acquire new viewers — the first episode and the culmination episode carry disproportionate weight within the series.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Higher format-run-depth proxies serialised content, and the claim predicts these videos have higher average view duration than non-serialised uploads.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect 0.00 is inside the noise floor of 0.2; the channels disagree on the sign (54% agreement); the effect is real but points the other way: 2 of 13 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">13 channels cleared the floor · median effect 0.00 · 54% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 113.8s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Phoebe Taylor</td><td class="n">-0.48</td><td class="n">65 <span class="ar-sm">(smaller side 7)</span></td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">-0.47</td><td class="n">53 <span class="ar-sm">(smaller side 20)</span></td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">0.44</td><td class="n">29 <span class="ar-sm">(smaller side 12)</span></td><td class="n">0.017</td><td>held</td></tr><tr><td>Jonny Builds</td><td class="n">-0.29</td><td class="n">61 <span class="ar-sm">(smaller side 11)</span></td><td class="n">0.025</td><td>did not hold</td></tr><tr><td>Mercanthony</td><td class="n">0.22</td><td class="n">41 <span class="ar-sm">(smaller side 15)</span></td><td class="n">0.160</td><td>held</td></tr><tr><td>Her Two Wheels</td><td class="n">0.19</td><td class="n">223 <span class="ar-sm">(smaller side 51)</span></td><td class="n">0.004</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.14</td><td class="n">101 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.165</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">-0.12</td><td class="n">96</td><td class="n">0.236</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">0.11</td><td class="n">17</td><td class="n">0.669</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">0.07</td><td class="n">170 <span class="ar-sm">(smaller side 25)</span></td><td class="n">0.341</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">0.07</td><td class="n">98 <span class="ar-sm">(smaller side 16)</span></td><td class="n">0.525</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.05</td><td class="n">340</td><td class="n">0.351</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">0.00</td><td class="n">121 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.965</td><td>did not hold</td></tr></tbody></table><p class="ar-none">223 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">3</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Thumbnail carries the overwhelming share of the click decision and the title is secondary - Net…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 95814f31ec16</b> · theory · Thumbnail carries the overwhelming share of the click decision and the title is secondary - Netflix measured artwork at over 80% of browsing attention with titles getting under two seconds.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary lacks any thumbnail quality or attention metric (impressions only counts serves), so it cannot test whether artwork rather than title drives CTR.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 32.6s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">4</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">A 20% better title does not produce 20% more views — because YouTube's distribution is exponent…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim ab6443eca979</b> · theory · A 20% better title does not produce 20% more views — because YouTube's distribution is exponential and self-reinforcing, it can produce 10x or 100x more views, which is why title selection deserves disproportionate effort relative to its apparent size.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary has no measure of title quality or a 20% title improvement, only surface title features; none honestly tests the claim's own variables.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 19.6s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">5</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Review and product/tool spotlight formats win clickability but lose replayability: they produce…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 7ad2f833c056</b> · theory · Review and product/tool spotlight formats win clickability but lose replayability: they produce the channel's highest CTR and views while producing its LOWEST new-viewer-return rate and lowest APV — they buy an audience that does not come back.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary lacks a variable identifying review/product/tool spotlight formats or new-viewer-return, so the format-specific CTR/APV tradeoff cannot be tested honestly; correlating ctr with apv would only test a general inverse relationship.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 63.3s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">6</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">format-run-depth → ctr <i>(up)</i></span>
+    <span class="ar-cl">Formats work as a 'roulette wheel': a fixed clause ('I survived…', 'Overnight at…', 'I survived…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 695fc6b79f11</b> · theory · Formats work as a 'roulette wheel': a fixed clause ('I survived…', 'Overnight at…', 'I survived on a penny') plus a rotating variable, so half the title is already solved and ideation reduces to enumerating plug-in subjects — which means ideas can come from effort rather than creativity.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Longer consecutive runs of the same format are a direct proxy for relying on a roulette-wheel template; if that template-based ideation works, those videos should earn higher click-through rates.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect -0.03 is inside the noise floor of 0.2; the channels disagree on the sign (58% agreement); the effect is real but points the other way: 0 of 12 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">12 channels cleared the floor · median effect -0.03 · 58% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 84.7s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Phoebe Taylor</td><td class="n">-0.35</td><td class="n">64 <span class="ar-sm">(smaller side 7)</span></td><td class="n">0.005</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.20</td><td class="n">29 <span class="ar-sm">(smaller side 12)</span></td><td class="n">0.309</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">0.17</td><td class="n">17</td><td class="n">0.511</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">-0.13</td><td class="n">57 <span class="ar-sm">(smaller side 8)</span></td><td class="n">0.322</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">0.13</td><td class="n">170 <span class="ar-sm">(smaller side 25)</span></td><td class="n">0.090</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.11</td><td class="n">101 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.290</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.08</td><td class="n">34 <span class="ar-sm">(smaller side 8)</span></td><td class="n">0.665</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">0.05</td><td class="n">223 <span class="ar-sm">(smaller side 51)</span></td><td class="n">0.447</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.05</td><td class="n">339</td><td class="n">0.364</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">-0.04</td><td class="n">98</td><td class="n">0.720</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">0.03</td><td class="n">121 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.720</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.02</td><td class="n">97 <span class="ar-sm">(smaller side 16)</span></td><td class="n">0.881</td><td>did not hold</td></tr></tbody></table><p class="ar-none">224 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">7</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">title-has-number → ctr <i>(up)</i></span>
+    <span class="ar-cl">Adding specificity (measured quantities, named conditions, exact counts) increases relevance ev…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 9ec8c856fde2</b> · theory · Adding specificity (measured quantities, named conditions, exact counts) increases relevance even though it narrows the nominal audience — 'Camping Packing Tips' loses to '18 Items for a 3-Day Motorcycle Camp - 42 Liters Total'.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Title presence of a digit is the closest available proxy for specificity via measured quantities or exact counts, and CTR measures whether viewers find the packaging relevant enough to click. The claim predicts that such specific titles should have higher CTR.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect -0.02 is inside the noise floor of 0.2; the channels disagree on the sign (59% agreement); the effect is real but points the other way: 0 of 17 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">17 channels cleared the floor · median effect -0.02 · 59% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 36.2s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Emma Shaye</td><td class="n">-0.43</td><td class="n">112 <span class="ar-sm">(smaller side 55)</span></td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.20</td><td class="n">528 <span class="ar-sm">(smaller side 135)</span></td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">0.17</td><td class="n">230 <span class="ar-sm">(smaller side 98)</span></td><td class="n">0.008</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">0.15</td><td class="n">133 <span class="ar-sm">(smaller side 36)</span></td><td class="n">0.081</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.15</td><td class="n">475 <span class="ar-sm">(smaller side 90)</span></td><td class="n">0.001</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">-0.15</td><td class="n">73 <span class="ar-sm">(smaller side 12)</span></td><td class="n">0.217</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.11</td><td class="n">581 <span class="ar-sm">(smaller side 258)</span></td><td class="n">0.008</td><td>did not hold</td></tr><tr><td>Visual Thinker</td><td class="n">0.11</td><td class="n">14 <span class="ar-sm">(smaller side 3)</span></td><td class="n">0.719</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">0.08</td><td class="n">595 <span class="ar-sm">(smaller side 248)</span></td><td class="n">0.066</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">0.07</td><td class="n">60 <span class="ar-sm">(smaller side 19)</span></td><td class="n">0.622</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">0.06</td><td class="n">196 <span class="ar-sm">(smaller side 57)</span></td><td class="n">0.392</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">-0.06</td><td class="n">296 <span class="ar-sm">(smaller side 59)</span></td><td class="n">0.316</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">-0.04</td><td class="n">32 <span class="ar-sm">(smaller side 3)</span></td><td class="n">0.827</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">-0.03</td><td class="n">148 <span class="ar-sm">(smaller side 41)</span></td><td class="n">0.702</td><td>did not hold</td></tr><tr><td>Coffey Custom Builds</td><td class="n">-0.02</td><td class="n">33 <span class="ar-sm">(smaller side 6)</span></td><td class="n">0.892</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">0.01</td><td class="n">29 <span class="ar-sm">(smaller side 6)</span></td><td class="n">0.959</td><td>did not hold</td></tr><tr><td>The Mountain Maker</td><td class="n">-0.01</td><td class="n">149 <span class="ar-sm">(smaller side 40)</span></td><td class="n">0.937</td><td>did not hold</td></tr></tbody></table><p class="ar-none">219 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">8</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">A compelling thumbnail concept is a VALIDATION TEST for a video idea: if you cannot invent a co…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim f4cc0976876e</b> · theory · A compelling thumbnail concept is a VALIDATION TEST for a video idea: if you cannot invent a compelling thumbnail for an idea before production, the idea should not be made. This is stated identically in the appendix of all seven audits, making it house doctrine rather than channel-specific advice.</p>
+    <p class="ar-think"><b>What it was thinking:</b> No vocabulary variable measures whether a compelling thumbnail concept was invented before production or its quality; the closest metrics like impressions and CTR are post-production exposure/performance proxies, not the claim's own pre-production validation lever.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 17.9s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details></div>
+</details>
+<details class="ar-run">
   <summary><b>run-2026-09-21T10-27-59</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 2 discarded, 5 out of reach</span></summary>
   
   <p class="ar-runmeta">Started 2026-09-21 10:27:59, finished 10:41:52 · driver local · metric: measurement frontier: claims the ledger can grade</p>

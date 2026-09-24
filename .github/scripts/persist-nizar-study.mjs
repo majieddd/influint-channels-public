@@ -3,10 +3,11 @@
 // including stale generated HTML, from a reviewed immutable content snapshot.
 // When editing this study, commit its content first, then advance this pin.
 import {execFileSync} from 'node:child_process';
-import {existsSync,readFileSync} from 'node:fs';
+import {existsSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
+import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 
-const PIN=process.env.NIZAR_STUDY_PIN || 'CONTENT_SNAPSHOT_PENDING';
+const PIN=process.env.NIZAR_STUDY_PIN || 'c62714b57ffdc7ce51ab8e600ba26c1f48aa1813';
 const stem='studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
 const git=args=>execFileSync('git',['-c','core.autocrlf=false',...args],{stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024});
 const hash=(bytes,algorithm='sha256')=>createHash(algorithm).update(bytes).digest('hex');
@@ -19,8 +20,20 @@ const entries=git(['ls-tree','-r','-z',PIN,'--',stem+'.html',stem]).toString().s
  return {oid:m[1],file:m[2]};
 });
 if(entries.length<210)throw Error('Content pin does not contain the complete study.');
-const changed=entries.filter(e=>!existsSync(e.file)||blob(readFileSync(e.file))!==e.oid).map(e=>e.file);
-for(let i=0;i<changed.length;i+=100)git(['restore','--source='+PIN,'--worktree','--',...changed.slice(i,i+100)]);
+const changed=entries.filter(e=>!existsSync(e.file)||blob(readFileSync(e.file))!==e.oid);
+// Read raw Git blobs so Windows checkout newline conversion cannot alter the pin.
+for(let i=0;i<changed.length;i+=100){
+ const batch=changed.slice(i,i+100);
+ const raw=execFileSync('git',['cat-file','--batch'],{input:batch.map(e=>e.oid).join('\n')+'\n',maxBuffer:128*1024*1024});
+ let offset=0;
+ for(const e of batch){
+  const end=raw.indexOf(10,offset),header=raw.subarray(offset,end).toString().match(/^([a-f0-9]{40}) blob (\d+)$/);
+  if(!header||header[1]!==e.oid)throw Error('Unexpected Git blob response');
+  const size=Number(header[2]),bytes=raw.subarray(end+1,end+1+size);
+  if(bytes.length!==size||blob(bytes)!==e.oid)throw Error('Incomplete Git blob: '+e.file);
+  mkdirSync(dirname(e.file),{recursive:true});writeFileSync(e.file,bytes);offset=end+size+2;
+ }
+}
 for(const e of entries)if(blob(readFileSync(e.file))!==e.oid)throw Error('Restore verification failed: '+e.file);
 const read=name=>JSON.parse(readFileSync(stem+'/'+name,'utf8'));
 const manifest=read('thumbnail-manifest.json'),ideas=read('ideas.json').ideas,data=read('strategy-data.json');

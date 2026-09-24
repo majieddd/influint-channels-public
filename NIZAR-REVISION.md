@@ -10,7 +10,8 @@ Owner: Codex. Branch: `codex/nizar-study-seven-sections`.
 - Complete: 28 MoreNizarisaqt retention curves and annotated moments, four editorial case studies, nine moment categories, and measured findings separated from proposed edits.
 - Complete: 17 incremental production budgets and seven Shorts formats informed by a 96-video sample from creators in Niz's niche. Owned camera equipment is excluded.
 - Complete: Local checks at 375, 768 and 1280 px; search, filters, direct links, keyboard gallery, focus return, downloads, retention controls, budget totals and 100 JPEG hashes. No page errors, failed requests or horizontal page overflow.
-- Active: Complete-study publisher recovery fixture, immutable content pin, publication and live verification.
+- Complete: Recovery restored all 752 protected files into a blank fixture, then repaired stale HTML, missing research data, one corrupted JPEG and one missing WebP. Both repeated runs restored zero files. The portable page builder reproduced identical HTML and idea JSON.
+- Active: Publication and live verification. Reviewed content snapshot: `c62714b57ffdc7ce51ab8e600ba26c1f48aa1813`.
 
 ## Evidence and limits
 
@@ -23,3 +24,5 @@ The expanded 2,307-video pool supports two distinct outlier channels for 33 titl
 The complete ZIP contains 100 JPEGs, 100 prompts and the manifest; SHA-256 `be6f4e97736a6f8b8b9881e78b00e5b23dc34fbca5a9db4229254edf6ed27494`. JPEGs are 1280 x 720 and individually below 2 MB. Historical assets remain available.
 
 Local work and verification records: `../outputs/nizar-study-revision/`.
+
+Recovery first exposed a Windows checkout newline-conversion mismatch. The guard now reads exact Git blobs, verifies their identity before writing and checks the entire protected tree. Failed and passing local evidence is retained. The deployment pin protects only this study and its assets; the Sam Bananas recovery workflow remains intact.

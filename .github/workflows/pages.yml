@@ -83,6 +83,11 @@ jobs:
           fs.writeFileSync(ideasPath, JSON.stringify(data, null, 1) + '\n');
           console.log('Verified all 100 thumbnails and their idea mappings.');
           NODE
+      # Restore the Sam Bananas repackaging study if the publisher sweep removed it,
+      # and re-insert the marker-guarded Studies/Analyses blocks into the channel page.
+      - name: Preserve the Sam Bananas repackaging study
+        shell: bash
+        run: node .github/scripts/persist-study.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

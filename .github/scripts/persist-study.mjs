@@ -11,7 +11,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
 
 const CHANNEL_ID = "UCDKQlnsHrUcrYH3B9v7XUAg";
-const PIN = process.env.SAMBANANAS_STUDY_PIN || "79cf7c4b18996d3e5ccacf222aab6ae4efe92ce9";
+const PIN = process.env.SAMBANANAS_STUDY_PIN || "51cfd314b9b61b3d0b7c394576f5fc32f2b52289";
 const STUDY_STEM = `${CHANNEL_ID}-repackaging-2026-09`;
 const STUDY_FILES = [`studies/${STUDY_STEM}.html`, `studies/${STUDY_STEM}.md`, `studies/${STUDY_STEM}`];
 const MARK_STUDIES = `studies:sambananas-repackaging-2026-09`;

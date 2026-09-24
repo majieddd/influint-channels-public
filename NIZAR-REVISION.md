@@ -11,7 +11,7 @@ Owner: Codex. Branch: `codex/nizar-study-seven-sections`.
 - Complete: 17 incremental production budgets and seven Shorts formats informed by a 96-video sample from creators in Niz's niche. Owned camera equipment is excluded.
 - Complete: Local checks at 375, 768 and 1280 px; search, filters, direct links, keyboard gallery, focus return, downloads, retention controls, budget totals and 100 JPEG hashes. No page errors, failed requests or horizontal page overflow.
 - Complete: Recovery restored all 752 protected files into a blank fixture, then repaired stale HTML, missing research data, one corrupted JPEG and one missing WebP. Both repeated runs restored zero files. The portable page builder reproduced identical HTML and idea JSON.
-- Active: Publication and live verification. Reviewed content snapshot: `c62714b57ffdc7ce51ab8e600ba26c1f48aa1813`.
+- Complete: Published and verified at the existing GitHub Pages URL. Reviewed content snapshot: `c62714b57ffdc7ce51ab8e600ba26c1f48aa1813`; deployment commit: `20bbffb0ed6884ec748f2f1909f20cdb24067840`.
 
 ## Evidence and limits
 
@@ -26,3 +26,11 @@ The complete ZIP contains 100 JPEGs, 100 prompts and the manifest; SHA-256 `be6f
 Local work and verification records: `../outputs/nizar-study-revision/`.
 
 Recovery first exposed a Windows checkout newline-conversion mismatch. The guard now reads exact Git blobs, verifies their identity before writing and checks the entire protected tree. Failed and passing local evidence is retained. The deployment pin protects only this study and its assets; the Sam Bananas recovery workflow remains intact.
+
+## Live verification
+
+[Deploy Pages run 36074604338](https://github.com/majieddd/influint-channels-public/actions/runs/36074604338) completed successfully on 2026-09-24. The public page passed the same 375/768/1280 px browser checks, including filters, deep links, gallery navigation, focus return, a real JPEG download and retention controls, with no page errors or failed browser requests.
+
+All 307 requested public files matched local SHA-256 values: the page, CSS, JavaScript, research JSON, idea JSON, manifest, ZIP and all 300 JPEG/preview/prompt files. The downloaded ZIP passed archive integrity and every image/prompt checksum. One initial 503 response for prompt 004 immediately after deployment was retained in the evidence; the complete subsequent verification passed without further transient responses. Local evidence: `review/live-verification.json`, `review/live-assets-verification.json`, `review/recovery-verification.json` and `review/deployment.log` under the work folder above.
+
+This final documentation-only record uses a skipped deployment; the verified site content and immutable recovery pin are unchanged.

@@ -1,7 +1,7 @@
 # Influint channel intelligence
 
 An evidence base about what actually moves YouTube performance, built from measured
-retention curves rather than from advice. 246 channels are tracked and
+retention curves rather than from advice. 245 channels are tracked and
 19 carry per-video retention analysis. Every claim carries how well it has
 held up, on how many independent channels, and what it does not establish.
 
@@ -12,29 +12,30 @@ sits on the record because a practitioner asserted it, and is labelled as such.
 The probe battery reaches retention curves, runtime, publish dates and upload cadence,
 view counts, titles, the first minute of speech, format libraries, click-through rate,
 average view duration and average percentage viewed, the position of a detected
-sponsor read or payoff and the last 8% of the curve as an outro. Outside it: the
-thumbnail as an image, anything else on screen, revenue and a viewer's internal
-motive. Neither reachable nor out of reach, and published as exactly that — in the
-store, read by no probe: impressions, net subscriber change, engaged views and watch
-time. impressions: 3,702 videos across 19 channels carry a first-28-day impression
-count beside their CTR (measured 2026-09-11). Read by the autoresearch vocabulary, not
-the battery: frontier.ts registers an `impressions` accessor and the harness has
-scored with it. net subscriber change: 3,937 videos carry a first-28-day net
-subscriber change and 3,939 carry a lifetime one, across the 19 Studio-pulled channels
-(measured 2026-09-11). Read by the autoresearch vocabulary, not the battery:
-frontier.ts registers `subs-per-view` over the same field, with views declared as its
-denominator so the same-series gate refuses the rate against its own divisor. engaged
-views: 3,937 videos carry a first-28-day engaged-view count beside their view count,
-on the same 19 channels (measured 2026-09-11). Read by the autoresearch vocabulary,
-not the battery: frontier.ts registers `engaged-share`, and it is a near-constant
-column — the frontier's tie-mass ceiling discards it on all but two channels, so the
-quantity is present and nearly always carries no variation to measure. watch time:
-3,937 videos carry first-28-day watch-time hours and 3,939 carry the lifetime figure,
-on the same 19 channels (measured 2026-09-11). Read by the autoresearch vocabulary,
-not the battery: frontier.ts registers `watch-time-hours`. It is the one of the four
-closest to a duplicate of something measured — watch time is views times average view
-duration, and the battery reads AVD directly — so an accessor here needs a reason it
-is not the identity.
+sponsor read or payoff, the last 8% of the curve as an outro and thumbnail pixel
+statistics: brightness, contrast, colour and edge density. Outside it: what a
+thumbnail depicts: faces, text and focal points, anything else on screen, revenue and
+a viewer's internal motive. Neither reachable nor out of reach, and published as
+exactly that — in the store, read by no probe: impressions, net subscriber change,
+engaged views and watch time. impressions: 3,702 videos across 19 channels carry a
+first-28-day impression count beside their CTR (measured 2026-09-11). Read by the
+autoresearch vocabulary, not the battery: frontier.ts registers an `impressions`
+accessor and the harness has scored with it. net subscriber change: 3,937 videos carry
+a first-28-day net subscriber change and 3,939 carry a lifetime one, across the 19
+Studio-pulled channels (measured 2026-09-11). Read by the autoresearch vocabulary, not
+the battery: frontier.ts registers `subs-per-view` over the same field, with views
+declared as its denominator so the same-series gate refuses the rate against its own
+divisor. engaged views: 3,937 videos carry a first-28-day engaged-view count beside
+their view count, on the same 19 channels (measured 2026-09-11). Read by the
+autoresearch vocabulary, not the battery: frontier.ts registers `engaged-share`, and
+it is a near-constant column — the frontier's tie-mass ceiling discards it on all but
+two channels, so the quantity is present and nearly always carries no variation to
+measure. watch time: 3,937 videos carry first-28-day watch-time hours and 3,939 carry
+the lifetime figure, on the same 19 channels (measured 2026-09-11). Read by the
+autoresearch vocabulary, not the battery: frontier.ts registers `watch-time-hours`. It
+is the one of the four closest to a duplicate of something measured — watch time is
+views times average view duration, and the battery reads AVD directly — so an accessor
+here needs a reason it is not the identity.
 
 Never present a claim as established without checking its standing and its limits.
 
@@ -43,7 +44,9 @@ Never present a claim as established without checking its standing and its limit
 One file, no dependencies, Node 18 or newer.
 
 1. Download: https://majieddd.github.io/influint-channels-public/yt-intelligence-mcp.mjs
-2. Ask your contact at Influint for an API key. It is read-only.
+2. Ask your contact at Influint for an API key. It is read-only, and a creator's
+   key is scoped to that creator's own channels: `list_channels` returns exactly
+   the channels your key may ask about.
 3. Add to your MCP client config:
 
 {
@@ -117,7 +120,7 @@ Every endpoint is GET, returns JSON, and needs a bearer token:
       true/1/yes or false/0/no; anything else is refused. Default false.
     limit (number) — How many claims come back. Default 60.
     prohibitionLimit (number) — How many refuted claims come back. Separate from
-      `limit`, which never reached them: on the live store 9 of 34 were unreachable
+      `limit`, which never reached them: on the live store 11 of 36 were unreachable
       at any `limit` until this parameter existed. Default 25.
   The claims that apply to a channel, routed by niche, WITH the prohibitions: things
   our own data refuted. Says what it omitted.
@@ -210,8 +213,24 @@ Every endpoint is GET, returns JSON, and needs a bearer token:
   returns: The channel row, how it was routed, the registry entry, the bucketed
   claims, and the mode contract.
 
+- GET /api/intelligence/deliverable?channelId=<UC...>&kind=<kind>
+  tool name: channel_deliverable (over HTTP the path segment is `deliverable`; both spellings resolve)
+  category: channels
+  params: channelId (required), kind (required), workflowId
+    channelId (string) — A YouTube channel id. Required.
+    kind (string) — Which document to build. One of: action-plan, production-plan,
+      packaging-brief, channel-standing, workflow-brief. Required.
+    workflowId (string) — For kind=workflow-brief only: a workflow id from the
+      workflows tool, e.g. video-suggestion.
+  A finished document for one channel — action plan, production plan, packaging
+  brief, standing report or workflow brief — as Markdown, with its structure.
+  returns: The document as Markdown, and the structure it was rendered from.
+
 A 503 means the API is switched off on that deployment, not that your key is wrong.
-A 401 means the key is missing or wrong. Both responses say which.
+A 401 means the key is missing, wrong or revoked. Both responses say which.
+A 403 means your key is valid and scoped: it names the category or channel your key
+does not cover, and which ones it does. In a claim's evidence, readings from channels
+outside your scope are labelled as such rather than named, and still counted.
 
 A 400 means a parameter was refused, and it names the value, the legal values and
 the tool's own parameter list. Nothing here answers 200 with an empty list because

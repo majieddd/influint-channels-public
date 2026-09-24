@@ -568,7 +568,7 @@ const TOOLS = [
         },
         "prohibitionLimit": {
           "type": "number",
-          "description": "How many refuted claims come back. Separate from `limit`, which never reached them: on the live store 9 of 34 were unreachable at any `limit` until this parameter existed. Default 25.",
+          "description": "How many refuted claims come back. Separate from `limit`, which never reached them: on the live store 11 of 36 were unreachable at any `limit` until this parameter existed. Default 25.",
           "default": 25,
           "minimum": 1
         }
@@ -2224,6 +2224,183 @@ const TOOLS = [
         "modes"
       ],
       "description": "The channel row, how it was routed, the registry entry, the bucketed claims, and the mode contract."
+    }
+  },
+  {
+    "name": "channel_deliverable",
+    "canonicalName": "deliverable",
+    "category": "channels",
+    "path": "deliverable",
+    "description": "A finished, hand-over-ready document for one channel, built by code with no model, so the same data twice gives the same document. Every kind opens with what it rests on, files each item against the dimension it moves (clickability, watchability, replayability, or cost), cites each claim with its standing and the mode it may be applied in, and ends with what it does NOT establish. Use it when the output is for a person: hand over `markdown` as it is rather than re-summarising it, because a summary is where a figure loses the basis it rests on. Kinds: action-plan (the channel audit's ordered moves), production-plan (runtime, the watch pair and the curve against the channel's own norm), packaging-brief (click-through, the channel's shapes and the title frameworks it has used, scored on its own uploads, and the packaging claims), channel-standing (where it sits against its marketplace and the fleet), workflow-brief (what one registered workflow may apply to this channel; needs workflowId).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string",
+          "description": "A YouTube channel id. Required."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Which document to build. One of: action-plan, production-plan, packaging-brief, channel-standing, workflow-brief. Required.",
+          "enum": [
+            "action-plan",
+            "production-plan",
+            "packaging-brief",
+            "channel-standing",
+            "workflow-brief"
+          ]
+        },
+        "workflowId": {
+          "type": "string",
+          "description": "For kind=workflow-brief only: a workflow id from the workflows tool, e.g. video-suggestion."
+        }
+      },
+      "required": [
+        "channelId",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "markdown": {
+          "type": "string",
+          "description": "The whole document, ready to hand over. It already carries every basis, citation and limit; do not strip them."
+        },
+        "deliverable": {
+          "type": "object",
+          "description": "The structure the Markdown was rendered from.",
+          "properties": {
+            "channel": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "niche": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The channel's CONFIRMED marketplace, or null when no person has confirmed one; claims were routed by it."
+                }
+              }
+            },
+            "generatedAt": {
+              "type": "string"
+            },
+            "restsOn": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "What the document rests on: windows, counts, freshness. Read before any instruction."
+            },
+            "sections": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "heading": {
+                    "type": "string"
+                  },
+                  "intro": {
+                    "type": "string"
+                  },
+                  "empty": {
+                    "type": "string",
+                    "description": "Said instead of an empty list, so an absence is not mistaken for an oversight."
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        },
+                        "dimension": {
+                          "type": "string",
+                          "description": "clickability, watchability, replayability, or cost."
+                        },
+                        "basis": {
+                          "type": "string",
+                          "description": "The arithmetic behind the item, in full."
+                        },
+                        "confidence": {
+                          "type": "string",
+                          "description": "What backs it: a measured law, this channel's own arithmetic, a lead, a hypothesis, a warning, a refuted claim, or operator direction."
+                        },
+                        "caveat": {
+                          "type": "string"
+                        },
+                        "citation": {
+                          "type": "object",
+                          "properties": {
+                            "claimId": {
+                              "type": "string"
+                            },
+                            "standing": {
+                              "type": "string",
+                              "description": "The claim's standing on the evidence ladder when the document was built."
+                            },
+                            "mode": {
+                              "type": "string",
+                              "description": "How this workflow was permitted to apply it: rule, prior, hypothesis, prohibition or do-not-repeat."
+                            },
+                            "measured": {
+                              "type": "string",
+                              "description": "Its measurement in words, or the sentence saying it is not measured."
+                            },
+                            "crossedFrom": {
+                              "type": "string",
+                              "description": "Set when the claim was earned in a neighbouring marketplace: a suggestion here, never a rule."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "limits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "What the document does not establish. Never empty; keep it with the document."
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The functions and stores every figure came from."
+            }
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "title",
+        "markdown",
+        "deliverable"
+      ],
+      "description": "The document as Markdown, and the structure it was rendered from."
     }
   }
 ];

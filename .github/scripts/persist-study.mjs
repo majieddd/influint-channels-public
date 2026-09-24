@@ -46,7 +46,7 @@ function git(args) { return execFileSync("git", args, { stdio: ["ignore", "pipe"
 // checkout does not carry it, then restore straight from that tree.
 let pinFetched = false;
 function restoreFromPin(rel) {
-  if (existsSync(rel) && !(fs_statIsDir(rel) && fs_readdirLen(rel) === 0)) return "present";
+  if (existsSync(rel) && statSync(rel).isFile() && statSync(rel).size > 0) return "present";
   try {
     if (!pinFetched) {
       try { git(["cat-file", "-e", PIN]); }
@@ -63,12 +63,22 @@ function restoreFromPin(rel) {
 function fs_statIsDir(p) { try { return statSync(p).isDirectory(); } catch { return false; } }
 function fs_readdirLen(p) { try { return readdirSync(p).length; } catch { return 0; } }
 
-// 1. study files (html, md source, thumbnail folder)
-for (const f of STUDY_FILES) {
-  console.log(`${f}: ${restoreFromPin(f)}`);
+// Enumerate individual files so a partly deleted folder is repaired too.
+// Existing nonempty files are preserved, including current editorial changes.
+try { git(["cat-file", "-e", PIN]); }
+catch { git(["fetch", "--no-tags", "--depth=1", "--filter=blob:none", "origin", PIN]); }
+pinFetched = true;
+const expected = git(["ls-tree", "-r", "--name-only", PIN, "--", ...STUDY_FILES]).trim().split("\n").filter(Boolean);
+if (!expected.includes(`studies/${STUDY_STEM}/packages.json`)) {
+  throw new Error("Study recovery pin must contain the complete 23-package revision.");
 }
-
-const stillMissing = STUDY_FILES.filter(f => !existsSync(f) || (fs_statIsDir(f) && fs_readdirLen(f) === 0));
+let restored = 0;
+for (const f of expected) {
+  const state = restoreFromPin(f);
+  if (state !== "present") { restored++; console.log(`${f}: ${state}`); }
+}
+console.log(`Study recovery checked ${expected.length} files; restored ${restored}.`);
+const stillMissing = expected.filter(f => !existsSync(f) || statSync(f).size === 0);
 if (stillMissing.length) {
   console.error("FATAL, study content missing and could not be restored: " + stillMissing.join(", "));
   process.exit(1);
@@ -110,3 +120,11 @@ if (/[\u2014\u2013]/.test(STUDIES_SECTION + ANALYSES_BLOCK)) {
 }
 if (html !== before) writeFileSync(page, html);
 console.log("channel page ok");
+
+// Rebuild from current structured inputs if an external publisher wrote an old
+// HTML page over the current one. This preserves updated package decisions.
+const studyPage = `studies/${STUDY_STEM}.html`;
+if (!readFileSync(studyPage, "utf8").includes('id="comparisons"')) {
+  execFileSync(process.execPath, [`studies/${STUDY_STEM}/build.mjs`], {stdio:"inherit"});
+}
+execFileSync(process.execPath, [".github/scripts/verify-sam-study.mjs"], {stdio:"inherit"});

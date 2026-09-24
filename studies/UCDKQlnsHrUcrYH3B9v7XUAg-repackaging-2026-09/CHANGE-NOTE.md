@@ -32,3 +32,15 @@ Owner note for this study folder. Every file shipped here and what it carries.
 All files are restored at deploy time from the pinned commit recorded in
 `.github/scripts/persist-study.mjs`, so the daily publisher sweep does not
 remove them.
+
+## Round 3 (2026-09-24): complete before/after review
+
+- Eight collapsible evidence tiles retain the channel numbers at the top.
+- All 23 videos have original and proposed thumbnail/title packages with the real channel avatar, Roboto video typography, recorded views, upload age and runtime.
+- Added 23 individually generated 1280x720 concepts, prompts in packages.json, a checksum manifest, downloads, search and priority filters.
+- All titles were reviewed against the original titles and images. Removed unsupported weather, prices, timing and survival claims. Corrected the tutorial/TEMU comparison, cabin/winter mismatch and Rain Forests weather classification. Separate priorities: eight test first, twelve next, three review format fit.
+- Original data and research citations remain expandable. The previous report is archived with its superseded recommendations labeled.
+- Concepts are AI reconstructions, not footage or tested outcomes. No predicted view counts are shown.
+- Recovery checks every file individually, including partial folder loss; verifies mappings and image hashes; rebuilds an overwritten legacy page from the current structured inputs.
+
+Validation: 23 complete pairs, 50 image/style/script URLs return HTTP 200 locally, all concepts are 1280x720, no missing internal links. Browser checks cover 375px, 768px and 1280px, all priority filters, search and reset, eight-tile expansion/collapse, keyboard activation, and no horizontal overflow. Measured visible text contrast minimum: 8.32:1.

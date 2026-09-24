@@ -214,6 +214,57 @@ Screen: outlier below 0.70x (the package underperformed its contemporaries), old
 Pulled from public video pages: shortlist n=23 at median 0.059919 like/view against breakouts n=15 at 0.023244. SUPPORTED: individually weak videos inside strong formats show high satisfaction among those who clicked. Like per view for the repackage shortlist (n=23, median 0.0599) runs 2.6 times the breakout comparison set (n=15, median 0.0232), and inside the four strong formats the weak-out videos (n=10, median out 0.475) still post 0.0595 likes per view versus 0.0232 (n=11) for the high-out videos in those same formats (2.6 times). The weak videos are not disliked; they are under-distributed.
 
 
+## Which videos need a packaging switch
+
+All 23 shortlisted uploads need a packaging switch: the video stays where it is, the package around it changes. The two right-hand columns are proposals drafted from the format's own winners, not measurements. Videos outside this list (dog-in-title, named-guest, the off-niche trips) are not packaging problems and should not be switched; the plan at the end says why.
+
+| # | Out | Views | Original title (as shipped) | Switched title (proposed) |
+|---|---|---|---|---|
+| 1 | 0.37x | 27,391 | Solo RAIN CAMPING in the Mountains \| Car Camping at the top of a Waterfall | Solo RAIN CAMPING at the Top of a WATERFALL |
+| 2 | 0.51x | 33,696 | Wet and Rainy Solo Camping in the Great Lakes | Wet GREAT LAKES Camping \| Shoreline Camp in a Cold Storm |
+| 3 | 0.52x | 32,982 | 3 Days Camping at a Mountain Lake \| Wet and Rainy Backcountry Camping Trip | 3 Days on a Mountain Lake \| WET and Rainy Backcountry Camp |
+| 4 | 0.54x | 15,035 | Solo CAMPING in the MOUNTAINS \| Overnight RAIN Storm \| Bushcraft Spoon | Solo CAMPING in the Mountains \| OVERNIGHT Rain Storm |
+| 5 | 0.41x | 27,067 | How to go Winter Camping with CHEAP GEAR \| Walmart/Amazon \| Beginner's Guide to Winter Camping Gear | Winter Camping with CHEAP GEAR vs a REAL Snowstorm |
+| 6 | 0.34x | 16,075 | Camping in an INFLATABLE CABIN \| One More Camp for My Old Dog | One More CAMP for My Old Dog \| INFLATABLE Cabin Night |
+| 7 | 0.44x | 25,099 | Hot Tent Camping in an Inflatable Tent with My Dog | INFLATABLE Hot Tent with My Dog \| One Storm, One Dog |
+| 8 | 0.38x | 40,187 | Solo Bushcraft Overnight \| Tarp Under a Fallen Tree \| Camping Riverside | TARP Under a Fallen Tree \| Solo Bushcraft in the Rain |
+| 9 | 0.52x | 37,687 | Camping on a Beach \| Tarp and Bivvy \| SUDDEN STORM | Tarp and Bivvy on a Beach \| A SUDDEN STORM Hits at Sundown |
+| 10 | 0.57x | 61,422 | Camping with my dog under a Blue Home Depot Tarp \| MORNING RAIN | Morning RAIN with My Dog under a Blue Tarp \| Solo Camp |
+| 11 | 0.45x | 21,287 | 3 Days River Camping on the Allegheny River \| Big Rain Storm | Allegheny River Camping in a BIG RAIN STORM \| 3 Days |
+| 12 | 0.41x | 18,635 | Winter Stealth Camping in SNOW next to a hospital | Winter STEALTH CAMPING in SNOW next to a Hospital |
+| 13 | 0.46x | 22,011 | STEALTH CAMPING next to Chili's \| MORNING RAIN | Stealth Camping behind Chili's \| MORNING RAIN |
+| 14 | 0.57x | 30,140 | Solo Camping in the RAIN in a Bushcraft Shelter \| Morning Snow | Solo Camping in the RAIN \| Bushcraft Shelter in Snow |
+| 15 | 0.12x | 7,615 | The Most Iconic Drive in Hawaii: THE ROAD TO HANA \| Rain Forests, Waterfalls and Camping | THE ROAD TO HANA \| Waterfalls on Hawaii's Iconic Drive |
+| 16 | 0.25x | 17,129 | Urban Camping in an Abandoned Barn during a SNOW STORM | Urban Camping in an Abandoned BARN in a SNOW STORM |
+| 17 | 0.35x | 17,511 | Winter Hot Tent Camping In Snow | Winter HOT TENT Camping in the Snow \| Solo Overnight |
+| 18 | 0.41x | 23,821 | Hot Tent Winter Camping in SNOW \| Buschraft Build | Winter Camping: Building a Shelter in the SNOW |
+| 19 | 0.43x | 29,024 | Winter Hot Tent Camping in DEEP SNOW and Freezing Temps \| Morning Snowfall | Winter Hot Tent in DEEP SNOW \| Morning Snowfall Camp |
+| 20 | 0.54x | 16,052 | RACOONS STOLE OUR FOOD! 3 Day Backcountry Rainy Camp with My Nephews | Raccoons Stole Our Food \| 3 Day Backcountry Rain Camp |
+| 21 | 0.55x | 56,620 | Winter Tarp Camping in a Snowy Valley | Winter Tarp Camping in a Snowy Valley \| Solo Overnight |
+| 22 | 0.59x | 34,347 | Emergency Shelter with Survival Tarp next to Frozen Lake \| Long Fire \| MORNING SNOW | Survival Tarp Shelter by a Frozen Lake \| MORNING SNOW |
+| 23 | 0.67x | 46,152 | Hot Tent Camping in the Snow at a Secret Campsite | Hot Tent Camping at a Secret SNOW Campsite \| Solo |
+
+*All 23 videos that need the packaging switch, worst format gap first (Observed)*
+
+
+### Three worked examples: original against switched
+
+
+### "Solo RAIN CAMPING in the Mountains | Car Camping at the top of a Waterfall"
+
+<div class="st-two"><div><figure class="st-thumb"><img src="UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09/HAUbswYVfw8.jpg" alt="Current thumbnail: Solo RAIN CAMPING in the Mountains | Car Camping at the top of a Waterfall" loading="lazy"><figcaption><b>As shipped, 2023-11-19:</b> Solo RAIN CAMPING in the Mountains | Car Camping at the top of a Waterfall</figcaption></figure><p><b>Now:</b> scored 0.37x against contemporaries on 27,391 lifetime views. What the shelf sees first: weak. The camper is a small mid ground figure crouched at a light tent; at shelf size the frame resolves to "generic forest with rain" and the human disappears. Three competing elements (text, tent+person, fire) split attention.</p></div><div class="st-switch-to"><p><b>Switch the title to:</b> "Solo RAIN CAMPING at the Top of a WATERFALL"</p><p><b>Rebuild the thumbnail as:</b> one dominant group only. Tight crop on the camper hunched under the rain beside the dome tent, human large in frame (fills right two thirds), face or bright jacket as the single accent color (yellow or red shell against the green). Rain streaks kept and pushed heavier. The waterfall or cliff edge visible as one background band behind, so "top of a waterfall" is the unanswered question. No text, or at most 3 words "TOP OF THE FALLS" in a corner away from the bottom right timestamp zone, under 10 percent area.</p></div></div>
+
+
+### "Wet and Rainy Solo Camping in the Great Lakes"
+
+<div class="st-two"><div><figure class="st-thumb"><img src="UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09/FXPmSMVvlAI.jpg" alt="Current thumbnail: Wet and Rainy Solo Camping in the Great Lakes" loading="lazy"><figcaption><b>As shipped, 2022-12-12:</b> Wet and Rainy Solo Camping in the Great Lakes</figcaption></figure><p><b>Now:</b> scored 0.51x against contemporaries on 33,696 lifetime views. What the shelf sees first: moderate but generic. The tent reads, the man blurs, and the leafy brown background merges into noise. Nothing in the frame says "Great Lakes"; it could be any eastern forest.</p></div><div class="st-switch-to"><p><b>Switch the title to:</b> "Wet GREAT LAKES Camping | Shoreline Camp in a Cold Storm"</p><p><b>Rebuild the thumbnail as:</b> two visual groups only. Foreground: the man large in frame inside the tent opening or under the tarp edge, one bright shell or the green tent as accent. Background band: actual Great Lakes shoreline with choppy grey water filling the upper third so the lake reads at a glance. Rain streaks retained. One question: can this tarp camp survive the lakeshore wind and rain. No copy; if any, "STORM ON THE SHORE" top left, clear of bottom right, under 10 percent area.</p></div></div>
+
+
+### "3 Days Camping at a Mountain Lake | Wet and Rainy Backcountry Camping Trip"
+
+<div class="st-two"><div><figure class="st-thumb"><img src="UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09/Hqw0pjZi94I.jpg" alt="Current thumbnail: 3 Days Camping at a Mountain Lake | Wet and Rainy Backcountry Camping Trip" loading="lazy"><figcaption><b>As shipped, 2023-11-26:</b> 3 Days Camping at a Mountain Lake | Wet and Rainy Backcountry Camping Trip</figcaption></figure><p><b>Now:</b> scored 0.52x against contemporaries on 32,982 lifetime views. What the shelf sees first: decent for landscape, weak for story. Tent plus lake/mountain silhouette reads, but there is no human and no event. It is a postcard of a campsite.</p></div><div class="st-switch-to"><p><b>Switch the title to:</b> "3 Days on a Mountain Lake | WET and Rainy Backcountry Camp"</p><p><b>Rebuild the thumbnail as:</b> two groups. Rain-lashed lake in the upper band with visible rain streaks and wind-chopped water (the storm is the co-star). Foreground: the camper at the tent entrance in a rain shell, large enough to read at 160px, tugging the tent fly closed. Keep the mountain in silhouette behind. One question: will this tiny tent hold against the lake storm. No text; if copy, "DAY 2: THE STORM" top left, under 10 percent area, clear of bottom right.</p></div></div>
+
+
 ## Candidate by candidate: what to do
 
 All 23 screened candidates, worst format gap first. Each line carries its public proxies, the like-per-view figure where it was pulled, and the vision diagnosis with its repackage direction where a thumbnail pass ran.

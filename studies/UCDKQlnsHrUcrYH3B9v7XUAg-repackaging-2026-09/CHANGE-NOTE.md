@@ -1,21 +1,34 @@
-# Change note: Sam Bananas repackaging analysis (2026-09-24)
+# Change note: UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09
 
-Added by the agent session on 2026-09-24. Every file this change touches:
+Owner note for this study folder. Every file shipped here and what it carries.
 
-## New files
+## Round 1 (2026-09-24, commits 79cf7c4b on influint-channels-public)
 
-- `studies/UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.html` - the full repackaging analysis for Camping with Sam Bananas (channel UCDKQlnsHrUcrYH3B9v7XUAg). 188 uploads measured, 23 candidates shortlisted, each with title grammar bands, format medians, like-per-100-views pulls (yt-dlp, 39 public pulls, 0 failures), a vision thumbnail diagnosis with a repackage direction, cross-channel cohort context (245 channel pages read, 33 kept), and the intelligence claim citations backing every rule used. Evidence chips label every figure Observed or Correlation.
-- `studies/UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.md` - markdown source of record, generated from the same data structure as the HTML so no number can drift between them.
-- `studies/UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09/*.jpg` - 27 channel thumbnails the analysis references (candidates plus the format winners they were read against).
-- `studies/UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09/CHANGE-NOTE.md` - this file.
+- `UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.html` - published study page: 23 repackage candidates, thumbnail
+  diagnosis, cohort check, intelligence citations, plan sections.
+- `UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.md` - markdown source of the same content (one data structure,
+  both renderers).
+- `CHANGE-NOTE.md` - this file.
+- 27 `<videoid>.jpg` thumbnails - candidate screenshots referenced by the
+  page, pulled from i.ytimg.com.
 
-## Modified files
+## Round 2 (2026-09-24, same day)
 
-- `channels/UCDKQlnsHrUcrYH3B9v7XUAg.html` - two insertions, both marker-guarded and idempotent:
-  1. A `Studies` section before the `Analyses` heading, native `st-list` markup, linking the study.
-  2. The Analyses empty state replaced by one entry with 7 headline findings plus a warning block stating the basis (lifetime views against time-neighbours, 0 retention curves, one Studio pull needed to confirm).
-  Markers: `studies:sambananas-repackaging-2026-09` and `analyses:sambananas-repackaging-2026-09`.
+- `UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.html` / `UCDKQlnsHrUcrYH3B9v7XUAg-repackaging-2026-09.md` - added two sections the owner asked for:
+  "Which videos need a packaging switch" (all 23 ranked with original vs
+  proposed title columns) and "Example: original versus switched package"
+  (three worked side-by-side examples: thumbnail as shipped, score, switch
+  the title to, rebuild the thumbnail as).
+- `DESIGN.md` - Google design.md token spec (name Influint Study) governing
+  the page's visual layer: colors, typography, rounded scale, spacing,
+  components. Linted with `npx @google/design.md designmd lint` (0 errors,
+  0 warnings).
+- Page CSS updated to the DESIGN.md token layer: section rhythm 64/18,
+  body line-height 1.6, tightened H2 tracking, raised table headers,
+  numeric columns right-aligned with tabular figures, sticky H3
+  sub-headers, 12px figures, 8px switch panels with teal accent edge,
+  focus-visible outlines.
 
-## Not modified
-
-No other channel page, no intelligence pages, no store data, no index or llms.txt.
+All files are restored at deploy time from the pinned commit recorded in
+`.github/scripts/persist-study.mjs`, so the daily publisher sweep does not
+remove them.

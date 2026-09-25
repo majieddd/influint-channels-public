@@ -2,6 +2,13 @@
 
 Owner: Codex. Branch: `codex/nizar-study-seven-sections`.
 
+## Solo format expansion
+
+- Verified locally: Five formats with five new video briefs each, IDs 101-125. Every setup requires Niz only, including filming, judging and resetting. No helper, guest, live coach, public participant or online opponent is required.
+- Verified locally: Ideation briefs plus Creative and Production cross-links, 75 opening beats, title/ingredient logic, solo blocking, payoffs and additive cash budgets. Original 100-image gallery preserved; the 25 additions include written thumbnail directions.
+- Verified locally: Counts, unique IDs, one-person fields, budgets, direct links, keyboard expansion, JSON download and no overflow at 375/768/1280. Original gallery, filtering, downloads and retention checks also passed. Broad shape references qualify in four formats; learning examples remain explicitly below the outlier threshold.
+- Active: Update the immutable content pin, verify recovery of the solo addition, publish and check the live page.
+
 ## Scope and acceptance
 
 - Complete: Seven sections in the requested order, with Ideation first and historical research preserved under Data Analysis.

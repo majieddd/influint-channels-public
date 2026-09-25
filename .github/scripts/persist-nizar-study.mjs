@@ -50,4 +50,12 @@ const chapters=['ideation','packaging','creative','production','post-production'
 if(!html.includes('data-study-version="seven-sections-v1"') || (html.match(/<article class="idea" /g)||[]).length!==100)throw Error('Study revision or 100 cards missing');
 let prior=-1;for(const id of chapters){const at=html.indexOf('<section id="'+id+'"');if(at<=prior)throw Error('Chapter missing or reordered: '+id);prior=at;}
 if(data.retention.cases.length!==28 || data.shorts.sample.length!==96)throw Error('Research data incomplete');
+const solo=read('solo-formats.json');
+if(solo.formats.length!==5 || solo.video_count!==25 || solo.required_people!==1)throw Error('Solo format expansion incomplete');
+const soloVideos=solo.formats.flatMap(f=>f.videos);
+if(soloVideos.length!==25 || new Set(soloVideos.map(v=>v.id)).size!==25 || (html.match(/<article class="solo-video" /g)||[]).length!==25)throw Error('Expected 25 unique solo briefs');
+for(const f of solo.formats){
+ if(f.required_people!==1 || f.videos.length!==5)throw Error('Invalid solo format: '+f.id);
+ for(const v of f.videos)if(v.required_people!==1 || v.intro.length!==3 || v.id<101 || v.id>125 || v.cost_low!==v.cost_lines.reduce((s,c)=>s+c[1],0) || v.cost_high!==v.cost_lines.reduce((s,c)=>s+c[2],0))throw Error('Invalid solo brief: '+v.id);
+}
 console.log(JSON.stringify({study:stem,pin:PIN,protectedFiles:entries.length,restoredFiles:changed.length,ideas:100,chapters:7,retentionCases:28}));

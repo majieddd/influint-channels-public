@@ -7,7 +7,8 @@ Owner: Codex. Branch: `codex/nizar-study-seven-sections`.
 - Verified locally: Five formats with five new video briefs each, IDs 101-125. Every setup requires Niz only, including filming, judging and resetting. No helper, guest, live coach, public participant or online opponent is required.
 - Verified locally: Ideation briefs plus Creative and Production cross-links, 75 opening beats, title/ingredient logic, solo blocking, payoffs and additive cash budgets. Original 100-image gallery preserved; the 25 additions include written thumbnail directions.
 - Verified locally: Counts, unique IDs, one-person fields, budgets, direct links, keyboard expansion, JSON download and no overflow at 375/768/1280. Original gallery, filtering, downloads and retention checks also passed. Broad shape references qualify in four formats; learning examples remain explicitly below the outlier threshold.
-- Active: Update the immutable content pin, verify recovery of the solo addition, publish and check the live page.
+- Verified locally: Portable builder reproduced identical HTML. Recovery upgraded the prior fixture, repaired stale HTML plus missing solo JSON, verified all 25 briefs and made no changes on both repeated runs. Protected snapshot: `7bba540a7670dc4d56d7dbe379e94dc0881a16f9` (754 files).
+- Active: Publish and check the live page. Local evidence: `review/solo-verification.json` and `review/solo-recovery-verification.json` in the work folder below. The initial duplicate-download rendering failure is retained in `review/solo-failed-verification.json`; the builder now inserts the addendum only after the outer Data Analysis section content.
 
 ## Scope and acceptance
 

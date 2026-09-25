@@ -7,7 +7,7 @@ import {existsSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 
-const PIN=process.env.NIZAR_STUDY_PIN || 'c62714b57ffdc7ce51ab8e600ba26c1f48aa1813';
+const PIN=process.env.NIZAR_STUDY_PIN || '7bba540a7670dc4d56d7dbe379e94dc0881a16f9';
 const stem='studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
 const git=args=>execFileSync('git',['-c','core.autocrlf=false',...args],{stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024});
 const hash=(bytes,algorithm='sha256')=>createHash(algorithm).update(bytes).digest('hex');
@@ -58,4 +58,4 @@ for(const f of solo.formats){
  if(f.required_people!==1 || f.videos.length!==5)throw Error('Invalid solo format: '+f.id);
  for(const v of f.videos)if(v.required_people!==1 || v.intro.length!==3 || v.id<101 || v.id>125 || v.cost_low!==v.cost_lines.reduce((s,c)=>s+c[1],0) || v.cost_high!==v.cost_lines.reduce((s,c)=>s+c[2],0))throw Error('Invalid solo brief: '+v.id);
 }
-console.log(JSON.stringify({study:stem,pin:PIN,protectedFiles:entries.length,restoredFiles:changed.length,ideas:100,chapters:7,retentionCases:28}));
+console.log(JSON.stringify({study:stem,pin:PIN,protectedFiles:entries.length,restoredFiles:changed.length,ideas:125,thumbnails:100,soloFormats:5,soloIdeas:25,chapters:7,retentionCases:28}));

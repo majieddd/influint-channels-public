@@ -7,7 +7,7 @@ import {existsSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 
-const PIN=process.env.NIZAR_STUDY_PIN || 'bca1b69e8194bc670426d7b40458c3a87ee9255d';
+const PIN=process.env.NIZAR_STUDY_PIN || 'c5b911199bb39625c8e21a11bf6afb9186563099';
 const stem='studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
 const git=args=>execFileSync('git',['-c','core.autocrlf=false',...args],{stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024});
 const hash=(bytes,algorithm='sha256')=>createHash(algorithm).update(bytes).digest('hex');

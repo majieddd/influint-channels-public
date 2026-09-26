@@ -7,7 +7,7 @@ import {existsSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 
-const PIN=process.env.NIZAR_STUDY_PIN || '7bba540a7670dc4d56d7dbe379e94dc0881a16f9';
+const PIN=process.env.NIZAR_STUDY_PIN || 'bca1b69e8194bc670426d7b40458c3a87ee9255d';
 const stem='studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
 const git=args=>execFileSync('git',['-c','core.autocrlf=false',...args],{stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024});
 const hash=(bytes,algorithm='sha256')=>createHash(algorithm).update(bytes).digest('hex');
@@ -58,4 +58,18 @@ for(const f of solo.formats){
  if(f.required_people!==1 || f.videos.length!==5)throw Error('Invalid solo format: '+f.id);
  for(const v of f.videos)if(v.required_people!==1 || v.intro.length!==3 || v.id<101 || v.id>125 || v.cost_low!==v.cost_lines.reduce((s,c)=>s+c[1],0) || v.cost_high!==v.cost_lines.reduce((s,c)=>s+c[2],0))throw Error('Invalid solo brief: '+v.id);
 }
-console.log(JSON.stringify({study:stem,pin:PIN,protectedFiles:entries.length,restoredFiles:changed.length,ideas:125,thumbnails:100,soloFormats:5,soloIdeas:25,chapters:7,retentionCases:28}));
+const soloThumbs=read('solo-thumbnail-manifest.json');
+if(soloThumbs.items.length!==25 || soloThumbs.generated_count!==25 || new Set(soloThumbs.items.map(t=>t.idea_id)).size!==25)throw Error('Expected 25 generated solo thumbnails.');
+const hashFile=file=>hash(readFileSync(stem+'/'+file));
+for(const t of soloThumbs.items){
+ const v=soloVideos.find(v=>v.id===t.idea_id),s=t.video_source;
+ if(!v || t.title!==v.title || s.video_id!==v.video_source?.video_id || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]+$/.test(s.url) || !new Set(['generated']).has(t.render_status))throw Error('Invalid solo thumbnail/source mapping: '+t.idea_id);
+ if(t.prompt_path!==v.thumbnail_plan.prompt || hashFile(t.prompt_path)!==t.prompt_sha256)throw Error('Solo prompt checksum mismatch: '+t.idea_id);
+ if(t.generated_image!==v.thumbnail_plan.generated_image || !/^generated-thumbnails\/solo-(10[1-9]|1[12][0-9]|125)\.jpg$/.test(t.generated_image) || hashFile(t.generated_image)!==t.generated_image_sha256)throw Error('Solo generated image checksum mismatch: '+t.idea_id);
+ if(t.preview_image!==v.thumbnail_plan.preview_image || !/^generated-thumbnails\/solo-(10[1-9]|1[12][0-9]|125)-preview\.webp$/.test(t.preview_image) || hashFile(t.preview_image)!==t.preview_image_sha256)throw Error('Solo WebP checksum mismatch: '+t.idea_id);
+ const sourceThumb=s.thumbnail_path;
+ if(sourceThumb!==`solo-reference-thumbnails/${s.video_id}.jpg` || hashFile(sourceThumb)!==s.thumbnail_sha256)throw Error('Solo source-video thumbnail checksum mismatch: '+t.idea_id);
+ if(!html.includes(t.generated_image) || !html.includes(t.preview_image) || !html.includes(s.url))throw Error('Solo image or source link missing from the study page: '+t.idea_id);
+}
+if(new Set(soloThumbs.items.map(t=>t.video_source.video_id)).size!==25)throw Error('Solo reference videos are not unique.');
+console.log(JSON.stringify({study:stem,pin:PIN,protectedFiles:entries.length,restoredFiles:changed.length,ideas:125,thumbnails:100,soloFormats:5,soloIdeas:25,soloGeneratedThumbnails:25,soloSourceVideos:25,chapters:7,retentionCases:28}));

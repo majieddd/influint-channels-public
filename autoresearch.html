@@ -1356,12 +1356,12 @@ allowed to edit.</p>
 
 <h2>What the loop has proposed</h2>
 <div class="ar-stats">
-  <div><div class="v">46</div><div class="k">Runs</div></div>
-  <div><div class="v">343</div><div class="k">Iterations</div></div>
+  <div><div class="v">47</div><div class="k">Runs</div></div>
+  <div><div class="v">351</div><div class="k">Iterations</div></div>
   <div><div class="v">1</div><div class="k">Kept and not audit-rejected</div></div>
   <div><div class="v">4</div><div class="k">Reproduced, wrong thing</div></div>
   <div><div class="v">3</div><div class="k">Evidence against a claim</div></div>
-  <div><div class="v">204</div><div class="k">Declined as out of reach</div></div>
+  <div><div class="v">208</div><div class="k">Declined as out of reach</div></div>
 </div>
 <p class="legend">A declined iteration is a RESULT, not a failure. Most of this knowledge base is about
 thumbnails, packaging and audience psychology, and the honest answer for those is that nothing in the
@@ -1536,6 +1536,22 @@ the loop produces: it is a build queue for the accessor vocabulary, written by s
 to use it and found it short. An accessor is a code change with a test, so the queue is read by a person and
 never acted on by the loop.</p>
 <div class="ar-gaps"><div class="ar-gap">
+  <p class="ar-k-claim">Attaching the current year to a title ('New Tax Rules for 2025 (MUST KNOW)') raises clicks by signalling freshness, and performs best at the start and end of the calendar year — meaning the same title has a seasonally varying value.</p>
+  <p class="ar-k-why">The claim requires testing whether titles containing the current year get higher CTR near January/December versus mid-year. The vocabulary lacks a current-year/title-year variable and cannot express that interaction with publish-date in a single bivariate correlation.</p>
+  <p class="ar-k-ev">85ff13b2b0c5 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Returning viewers are manufactured by 'buckets' — near-identical formats with deliberately near-identical titles and metadata — because that similarity is what tells the algorithm whom to re-serve.</p>
+  <p class="ar-k-why">The claim's dependent variable is returning/repeat viewers, but the vocabulary has no repeat-viewer or audience-overlap metric; format-run-depth can proxy bucketing, while views/impressions cannot distinguish returning from new viewers.</p>
+  <p class="ar-k-ev">a0a1b043f81c · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Saying &quot;watch until the end&quot; does not work and there is no data supporting it — Joos states he has never seen any and would change his mind if shown some.</p>
+  <p class="ar-k-why">The vocabulary has no lever measuring whether a video tells viewers to watch until the end, so no honest pairing can test this specific claim.</p>
+  <p class="ar-k-ev">eaa73de420ac · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Retention curves are not directly comparable across channels — each audience has its own viewing habits, so the primary benchmark must be channel-internal. Cross-channel comparison is still useful once the variables are aligned (similar length, format and audience composition); it is weaker evidence, not worthless evidence.</p>
+  <p class="ar-k-why">The claim is about channel-internal benchmarking and cross-channel comparability, not a simple lever-outcome association; the vocabulary lacks any channel-relative retention baseline or controlled alignment variable to test that directly.</p>
+  <p class="ar-k-ev">90ab4955b236 · law · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
   <p class="ar-k-claim">Adding chapter timestamps changes the shape of the retention graph because viewers jump to the marked segments - so timestamped videos' curves must be read differently from unmarked ones.</p>
   <p class="ar-k-why">The vocabulary contains retention-shape outcomes such as rewind-count but no lever for whether a video includes chapter timestamps, so the claim's own variable cannot be tested honestly.</p>
   <p class="ar-k-ev">1e0a761bd420 · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
@@ -2357,6 +2373,141 @@ never acted on by the loop.</p>
 <p class="legend">Open one to read the proposal in the proposer's own words, the reading code took on every
 channel, and why it was kept or dropped.</p>
 <details class="ar-run" open>
+  <summary><b>run-2026-10-02T10-28-09</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 1 discarded, 4 out of reach</span></summary>
+  
+  <p class="ar-runmeta">Started 2026-10-02 10:28:09, finished 10:40:17 · driver local · metric: measurement frontier: claims the ledger can grade</p>
+  <p class="ar-runmeta">Vocabulary <code>v38-h9cb06</code>: 38 accessors, 2 of them proposed by the loop itself (title-word-length, outlier-adjusted-tam-to-current-views) · 112 claims open to a fresh attempt, 49 held back by what earlier runs already settled (219 attempts on record before this run)</p>
+  <p class="ar-sum">8 iterations, 0 kept, 4 declined by the proposer as out of reach, 2 refused by the gates before running, 1 discarded on the evidence, 1 where the proposer failed to answer. The frontier metric does not move until a person binds a kept proposal: this loop proposes, the lever audit still decides.</p>
+  <div class="ar-its"><details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">1</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Attaching the current year to a title ('New Tax Rules for 2025 (MUST KNOW)') raises clicks by s…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 85ff13b2b0c5</b> · theory · Attaching the current year to a title ('New Tax Rules for 2025 (MUST KNOW)') raises clicks by signalling freshness, and performs best at the start and end of the calendar year — meaning the same title has a seasonally varying value.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim requires testing whether titles containing the current year get higher CTR near January/December versus mid-year. The vocabulary lacks a current-year/title-year variable and cannot express that interaction with publish-date in a single bivariate correlation.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 85.8s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">2</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">format-run-depth → subs-per-view <i>(up)</i></span>
+    <span class="ar-cl">Running several content types on one channel to serve different fan tiers alienates all of them…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim eea7a75276b9</b> · warning · Running several content types on one channel to serve different fan tiers alienates all of them; superfan content belongs on a separate platform once a core audience exists.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Higher consecutive same-format uploads proxy a channel not mixing content types for different fan tiers, which the claim predicts should convert viewers into subscribers better than mixed-format channels.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect -0.05 is inside the noise floor of 0.2; the channels disagree on the sign (67% agreement); the effect is real but points the other way: 1 of 12 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">12 channels cleared the floor · median effect -0.05 · 67% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 71.2s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Kelly Hays</td><td class="n">-0.54</td><td class="n">339</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">0.37</td><td class="n">61 <span class="ar-sm">(smaller side 11)</span></td><td class="n">0.003</td><td>held</td></tr><tr><td>The BlackVeil Files</td><td class="n">0.18</td><td class="n">17</td><td class="n">0.505</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.17</td><td class="n">29 <span class="ar-sm">(smaller side 12)</span></td><td class="n">0.391</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.16</td><td class="n">34 <span class="ar-sm">(smaller side 7)</span></td><td class="n">0.374</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.11</td><td class="n">98 <span class="ar-sm">(smaller side 16)</span></td><td class="n">0.269</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">-0.11</td><td class="n">98</td><td class="n">0.286</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.11</td><td class="n">170 <span class="ar-sm">(smaller side 25)</span></td><td class="n">0.164</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">-0.06</td><td class="n">64 <span class="ar-sm">(smaller side 7)</span></td><td class="n">0.633</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.04</td><td class="n">101 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.681</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">0.03</td><td class="n">223 <span class="ar-sm">(smaller side 51)</span></td><td class="n">0.612</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">-0.01</td><td class="n">121 <span class="ar-sm">(smaller side 29)</span></td><td class="n">0.879</td><td>did not hold</td></tr></tbody></table><p class="ar-none">225 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">3</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">A single video's retention spike is not evidence of enjoyment, because it can be a rewatch, a s…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim b7b168df90ba</b> · warning · A single video's retention spike is not evidence of enjoyment, because it can be a rewatch, a share, a skip target, a surprising result, or a dense explanation</p>
+    <p class="ar-think"><b>What it was thinking:</b> <i>it returned no reasoning</i></p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer returned nothing parseable</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 191.9s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">4</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">runtime → apv <i>(down)</i></span>
+    <span class="ar-cl">Average view duration and average percentage viewed can diverge sharply, and YouTube keeps reco…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 72184fe7ce69</b> · law · Average view duration and average percentage viewed can diverge sharply, and YouTube keeps recommending on the strength of AVD even at low APV - a 44-minute video with 20.4% APV kept being served because its AVD was 8:57.</p>
+    <p class="ar-think"><b>What it was thinking:</b> Longer runtimes mechanically reduce the share of a video watched for a given absolute watch time, so high AVD can coexist with low APV. This tests the length-driven divergence behind serving on AVD despite low percentage viewed.</p>
+    <p class="ar-why"><b>What the code decided:</b> both are computed from the same runtime, so a correlation between them measures that series' own arithmetic rather than a relationship anyone could act on</p>
+    
+    <p class="ar-meta">0 channels cleared the floor · median effect — · no sign to agree on · proposed by qwen3.8-27b-nvfp4-mtp in 122.3s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">5</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Returning viewers are manufactured by 'buckets' — near-identical formats with deliberately near…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim a0a1b043f81c</b> · theory · Returning viewers are manufactured by 'buckets' — near-identical formats with deliberately near-identical titles and metadata — because that similarity is what tells the algorithm whom to re-serve.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim's dependent variable is returning/repeat viewers, but the vocabulary has no repeat-viewer or audience-overlap metric; format-run-depth can proxy bucketing, while views/impressions cannot distinguish returning from new viewers.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 41.3s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">6</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">hold-60s → avd-sec <i>(up)</i></span>
+    <span class="ar-cl">Any viewer lost in the first minute is mathematically excluded from finishing, so first-minute …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 3bbd57437810</b> · law · Any viewer lost in the first minute is mathematically excluded from finishing, so first-minute retention caps AVD — which justifies spending ~25% of total production time on the first minute alone.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim's testable core is that viewers who survive the first minute are the only ones who can finish, so higher one-minute retention should be associated with longer average view duration.</p>
+    <p class="ar-why"><b>What the code decided:</b> both are computed from the same retention curve, so a correlation between them measures that series' own arithmetic rather than a relationship anyone could act on</p>
+    
+    <p class="ar-meta">0 channels cleared the floor · median effect — · no sign to agree on · proposed by qwen3.8-27b-nvfp4-mtp in 14.3s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">7</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Saying &quot;watch until the end&quot; does not work and there is no data supporting it — Joos states he …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim eaa73de420ac</b> · warning · Saying &quot;watch until the end&quot; does not work and there is no data supporting it — Joos states he has never seen any and would change his mind if shown some.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary has no lever measuring whether a video tells viewers to watch until the end, so no honest pairing can test this specific claim.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 6.7s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">8</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Retention curves are not directly comparable across channels — each audience has its own viewin…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 90ab4955b236</b> · law · Retention curves are not directly comparable across channels — each audience has its own viewing habits, so the primary benchmark must be channel-internal. Cross-channel comparison is still useful once the variables are aligned (similar length, format and audience composition); it is weaker evidence, not worthless evidence.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim is about channel-internal benchmarking and cross-channel comparability, not a simple lever-outcome association; the vocabulary lacks any channel-relative retention baseline or controlled alignment variable to test that directly.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 193.8s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details></div>
+</details>
+<details class="ar-run">
   <summary><b>run-2026-10-01T10-23-04</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 1 discarded, 6 out of reach</span></summary>
   
   <p class="ar-runmeta">Started 2026-10-01 10:23:04, finished 10:31:34 · driver local · metric: measurement frontier: claims the ledger can grade</p>

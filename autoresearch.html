@@ -1356,12 +1356,12 @@ allowed to edit.</p>
 
 <h2>What the loop has proposed</h2>
 <div class="ar-stats">
-  <div><div class="v">47</div><div class="k">Runs</div></div>
-  <div><div class="v">351</div><div class="k">Iterations</div></div>
+  <div><div class="v">48</div><div class="k">Runs</div></div>
+  <div><div class="v">359</div><div class="k">Iterations</div></div>
   <div><div class="v">1</div><div class="k">Kept and not audit-rejected</div></div>
   <div><div class="v">4</div><div class="k">Reproduced, wrong thing</div></div>
-  <div><div class="v">3</div><div class="k">Evidence against a claim</div></div>
-  <div><div class="v">208</div><div class="k">Declined as out of reach</div></div>
+  <div><div class="v">4</div><div class="k">Evidence against a claim</div></div>
+  <div><div class="v">213</div><div class="k">Declined as out of reach</div></div>
 </div>
 <p class="legend">A declined iteration is a RESULT, not a failure. Most of this knowledge base is about
 thumbnails, packaging and audience psychology, and the honest answer for those is that nothing in the
@@ -1374,6 +1374,11 @@ for. Nothing here changes a standing: refuting a claim is a human decision, and 
 would weigh. Read each one with the same caution as a keep, since a proposal that measures the wrong thing
 can contradict a claim it never tested.</p>
 <div class="ar-kept"><div class="ar-k ar-k-ref">
+  <p class="ar-k-claim">The standard fix for weak retention — cutting the video shorter — is the wrong remedy</p>
+  <p class="ar-k-spec"><code>runtime</code> → <code>hold-90pct</code> <i>(claim predicts not-down)</i></p>
+  <p class="ar-k-ev">20 channels · median -0.42 · 95% agree on the sign</p>
+  <p class="ar-k-why">the effect is real but points the other way: 2 of 20 readings held the claim's asserted direction</p>
+</div><div class="ar-k ar-k-ref">
   <p class="ar-k-claim">Retention and views are correlated but not causal — higher retention does not cause more views, so treating retention as a growth lever in isolation misattributes the mechanism.</p>
   <p class="ar-k-spec"><code>hold-60s</code> → <code>views</code> <i>(claim predicts up)</i></p>
   <p class="ar-k-ev">20 channels · median -0.23 · 80% agree on the sign</p>
@@ -1536,6 +1541,26 @@ the loop produces: it is a build queue for the accessor vocabulary, written by s
 to use it and found it short. An accessor is a code change with a test, so the queue is read by a person and
 never acted on by the loop.</p>
 <div class="ar-gaps"><div class="ar-gap">
+  <p class="ar-k-claim">Upload consistency matters far less once traffic comes from search or recommendations - it primarily matters for subscription-fed channels and for producing comparable metrics.</p>
+  <p class="ar-k-why">The claim hinges on a traffic-source moderator—search/recommendation versus subscription-fed views—that is absent from the vocabulary. Without that variable, pairing gap-before with any performance outcome would only test general upload cadence, not whether consistency matters less under discovery traffic.</p>
+  <p class="ar-k-ev">3d7710fb7636 · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Judging a video by its first 24 hours is actively deceptive, because different videos require different numbers of impressions before the SAME viewer clicks — one video converts on the second showing, another on the fifth.</p>
+  <p class="ar-k-why">The vocabulary lacks both a first-24-hour performance metric and any per-viewer repeated-impression or time-to-click variable, so aggregate CTR/impressions cannot test whether the same viewer needs multiple shows before clicking.</p>
+  <p class="ar-k-ev">50379959652e · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Riza herself flags her own 10% allocation to title and thumbnail as a mistake — packaging deserves more than a tenth of the effort budget even on a craft-first channel.</p>
+  <p class="ar-k-why">The vocabulary contains no measure of time or effort allocated to title and thumbnail work, so it cannot directly test the claim that packaging deserves more than 10% of the effort budget.</p>
+  <p class="ar-k-ev">9a3eaeb7b168 · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Narrowly-scoped videos answering one question outperform broad omnibus videos, and splitting a broad topic into several specific videos multiplies discovery surface rather than cannibalising it.</p>
+  <p class="ar-k-why">The vocabulary lacks any variable for topic breadth, number of topics covered per video, or channel-level splitting of a broad topic into specific videos; title/runtime/format proxies would not test the claim's own scope variable.</p>
+  <p class="ar-k-ev">c8e31e560b0a · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
+  <p class="ar-k-claim">Stated audience preference does not predict behaviour and can flatly contradict it — usage data must override survey and comment sentiment when the two disagree.</p>
+  <p class="ar-k-why">The vocabulary contains no variable measuring stated audience preference, survey responses, or comment sentiment; it only has production and usage metrics, so the claim's contrast between stated preference and actual behaviour cannot be tested.</p>
+  <p class="ar-k-ev">df30b717c956 · warning · declined by qwen3.8-27b-nvfp4-mtp</p>
+</div><div class="ar-gap">
   <p class="ar-k-claim">Attaching the current year to a title ('New Tax Rules for 2025 (MUST KNOW)') raises clicks by signalling freshness, and performs best at the start and end of the calendar year — meaning the same title has a seasonally varying value.</p>
   <p class="ar-k-why">The claim requires testing whether titles containing the current year get higher CTR near January/December versus mid-year. The vocabulary lacks a current-year/title-year variable and cannot express that interaction with publish-date in a single bivariate correlation.</p>
   <p class="ar-k-ev">85ff13b2b0c5 · theory · declined by qwen3.8-27b-nvfp4-mtp</p>
@@ -2373,6 +2398,141 @@ never acted on by the loop.</p>
 <p class="legend">Open one to read the proposal in the proposer's own words, the reading code took on every
 channel, and why it was kept or dropped.</p>
 <details class="ar-run" open>
+  <summary><b>run-2026-10-03T10-23-24</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 2 discarded, 5 out of reach</span></summary>
+  
+  <p class="ar-runmeta">Started 2026-10-03 10:23:24, finished 10:31:02 · driver local · metric: measurement frontier: claims the ledger can grade</p>
+  <p class="ar-runmeta">Vocabulary <code>v38-h9cb06</code>: 38 accessors, 2 of them proposed by the loop itself (title-word-length, outlier-adjusted-tam-to-current-views) · 107 claims open to a fresh attempt, 54 held back by what earlier runs already settled (227 attempts on record before this run)</p>
+  <p class="ar-sum">8 iterations, 0 kept, 5 declined by the proposer as out of reach, 1 refused by the gates before running, 2 discarded on the evidence. The frontier metric does not move until a person binds a kept proposal: this loop proposes, the lever audit still decides.</p>
+  <div class="ar-its"><details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">1</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Upload consistency matters far less once traffic comes from search or recommendations - it prim…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 3d7710fb7636</b> · warning · Upload consistency matters far less once traffic comes from search or recommendations - it primarily matters for subscription-fed channels and for producing comparable metrics.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The claim hinges on a traffic-source moderator—search/recommendation versus subscription-fed views—that is absent from the vocabulary. Without that variable, pairing gap-before with any performance outcome would only test general upload cadence, not whether consistency matters less under discovery traffic.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 78.8s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">2</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Judging a video by its first 24 hours is actively deceptive, because different videos require d…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 50379959652e</b> · warning · Judging a video by its first 24 hours is actively deceptive, because different videos require different numbers of impressions before the SAME viewer clicks — one video converts on the second showing, another on the fifth.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary lacks both a first-24-hour performance metric and any per-viewer repeated-impression or time-to-click variable, so aggregate CTR/impressions cannot test whether the same viewer needs multiple shows before clicking.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 36.6s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">3</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">title-promise-delay → hold-30s <i>(down)</i></span>
+    <span class="ar-cl">A steep early cliff ('hockey stick') in retention is specifically diagnostic of a mismatch betw…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 5daf9928f76b</b> · theory · A steep early cliff ('hockey stick') in retention is specifically diagnostic of a mismatch between the packaging promise and what the first 15 seconds actually shows - it is a packaging defect, not a pacing defect.</p>
+    <p class="ar-think"><b>What it was thinking:</b> A larger delay before the title's distinctive promise appears in the opening indicates a packaging mismatch with the first moments, which should depress early retention. The predicted test is that delayed promise lowers the share still watching at 30 seconds.</p>
+    <p class="ar-why"><b>What the code decided:</b> median effect 0.04 is inside the noise floor of 0.2; the channels disagree on the sign (60% agreement); the effect is real but points the other way: 3 of 20 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">20 channels cleared the floor · median effect 0.04 · 60% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 26.5s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Man Made</td><td class="n">0.44</td><td class="n">10</td><td class="n">0.214</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">-0.33</td><td class="n">148</td><td class="n">0.000</td><td>held</td></tr><tr><td>The BlackVeil Files</td><td class="n">-0.30</td><td class="n">29</td><td class="n">0.119</td><td>held</td></tr><tr><td>Visual Thinker</td><td class="n">-0.20</td><td class="n">14</td><td class="n">0.492</td><td>held</td></tr><tr><td>Tropical Russian</td><td class="n">-0.15</td><td class="n">58</td><td class="n">0.260</td><td>did not hold</td></tr><tr><td>Mercanthony</td><td class="n">0.14</td><td class="n">66</td><td class="n">0.270</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">0.12</td><td class="n">133</td><td class="n">0.167</td><td>did not hold</td></tr><tr><td>Coffey Custom Builds</td><td class="n">0.11</td><td class="n">33</td><td class="n">0.552</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.10</td><td class="n">214</td><td class="n">0.155</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">0.10</td><td class="n">88</td><td class="n">0.375</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">0.09</td><td class="n">576</td><td class="n">0.025</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">0.08</td><td class="n">518</td><td class="n">0.071</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">0.08</td><td class="n">384</td><td class="n">0.129</td><td>did not hold</td></tr><tr><td>The Mountain Maker</td><td class="n">-0.07</td><td class="n">147</td><td class="n">0.393</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.07</td><td class="n">200</td><td class="n">0.319</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">-0.06</td><td class="n">31 <span class="ar-sm">(smaller side 11)</span></td><td class="n">0.734</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">0.06</td><td class="n">475</td><td class="n">0.167</td><td>did not hold</td></tr><tr><td>Studio NOHA</td><td class="n">0.05</td><td class="n">13</td><td class="n">0.882</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">0.03</td><td class="n">648</td><td class="n">0.477</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">0.00</td><td class="n">123</td><td class="n">0.958</td><td>did not hold</td></tr></tbody></table><p class="ar-none">217 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">4</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Riza herself flags her own 10% allocation to title and thumbnail as a mistake — packaging deser…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 9a3eaeb7b168</b> · warning · Riza herself flags her own 10% allocation to title and thumbnail as a mistake — packaging deserves more than a tenth of the effort budget even on a craft-first channel.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary contains no measure of time or effort allocated to title and thumbnail work, so it cannot directly test the claim that packaging deserves more than 10% of the effort budget.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 19.4s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">5</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">ctr → views <i>(not-up)</i></span>
+    <span class="ar-cl">Raising CTR and AVD in isolation may not raise views at all — the funnel is the object of optim…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 8f41c03b8963</b> · law · Raising CTR and AVD in isolation may not raise views at all — the funnel is the object of optimisation, not either metric individually.</p>
+    <p class="ar-think"><b>What it was thinking:</b> This pairs the named lever ctr with views to check whether higher CTR alone fails to show a positive view lift, matching the claim that individual funnel metrics need not raise views.</p>
+    <p class="ar-why"><b>What the code decided:</b> the battery already measures this pair as ctr-vs-views; bind the claim to that probe instead</p>
+    
+    <p class="ar-meta">0 channels cleared the floor · median effect — · no sign to agree on · proposed by qwen3.8-27b-nvfp4-mtp in 77.7s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-discard">
+  <summary>
+    <span class="ar-n">6</span>
+    <span class="ar-v ar-v-discard">discarded</span>
+    <span class="ar-pair">runtime → hold-90pct <i>(not-down)</i></span>
+    <span class="ar-cl">The standard fix for weak retention — cutting the video shorter — is the wrong remedy</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim 63d19591cf7f</b> · warning · The standard fix for weak retention — cutting the video shorter — is the wrong remedy</p>
+    <p class="ar-think"><b>What it was thinking:</b> If shortening were the real fix, longer videos should show worse late-stage retention; the claim predicts that length alone does not depress hold at 90%, so telling it better can sustain long videos.</p>
+    <p class="ar-why"><b>What the code decided:</b> the effect is real but points the other way: 2 of 20 readings held the claim's asserted direction</p>
+    
+    <p class="ar-meta">20 channels cleared the floor · median effect -0.42 · 95% agree on the sign · proposed by qwen3.8-27b-nvfp4-mtp in 148.8s</p>
+    <table class="ar-tbl"><thead><tr><th>Channel</th><th class="n">Effect</th><th class="n">n</th><th class="n">p</th><th>Against the claim</th></tr></thead><tbody><tr><td>Mercanthony</td><td class="n">-0.71</td><td class="n">67</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Kelly Hays</td><td class="n">-0.66</td><td class="n">587</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>The BlackVeil Files</td><td class="n">-0.61</td><td class="n">29</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Studio NOHA</td><td class="n">-0.60</td><td class="n">14</td><td class="n">0.022</td><td>did not hold</td></tr><tr><td>Emma Shaye</td><td class="n">0.54</td><td class="n">170</td><td class="n">0.000</td><td>held</td></tr><tr><td>Man Made</td><td class="n">-0.50</td><td class="n">10</td><td class="n">0.148</td><td>did not hold</td></tr><tr><td>Visual Thinker</td><td class="n">-0.49</td><td class="n">14</td><td class="n">0.072</td><td>did not hold</td></tr><tr><td>Mind Of A Criminal</td><td class="n">-0.49</td><td class="n">32</td><td class="n">0.004</td><td>did not hold</td></tr><tr><td>Tropical Russian</td><td class="n">-0.44</td><td class="n">60</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Coffey Custom Builds</td><td class="n">-0.44</td><td class="n">33</td><td class="n">0.010</td><td>did not hold</td></tr><tr><td>MoreNizarisaqt</td><td class="n">-0.42</td><td class="n">475</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Phoebe Taylor</td><td class="n">-0.41</td><td class="n">150</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Her Two Wheels</td><td class="n">-0.27</td><td class="n">539</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Hannah's Happy Home</td><td class="n">-0.23</td><td class="n">666</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>The Mountain Maker</td><td class="n">-0.18</td><td class="n">149</td><td class="n">0.026</td><td>did not hold</td></tr><tr><td>The Carpenters Daughter</td><td class="n">-0.18</td><td class="n">403</td><td class="n">0.000</td><td>did not hold</td></tr><tr><td>Morley Kert</td><td class="n">-0.18</td><td class="n">232</td><td class="n">0.006</td><td>did not hold</td></tr><tr><td>Zac Builds</td><td class="n">-0.14</td><td class="n">129</td><td class="n">0.103</td><td>did not hold</td></tr><tr><td>Jonny Builds</td><td class="n">-0.10</td><td class="n">140</td><td class="n">0.225</td><td>did not hold</td></tr><tr><td>Isabella Demarko</td><td class="n">-0.08</td><td class="n">205</td><td class="n">0.273</td><td>held</td></tr></tbody></table><p class="ar-none">217 more channels had too few videos carrying both figures to say anything.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">7</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Narrowly-scoped videos answering one question outperform broad omnibus videos, and splitting a …</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim c8e31e560b0a</b> · theory · Narrowly-scoped videos answering one question outperform broad omnibus videos, and splitting a broad topic into several specific videos multiplies discovery surface rather than cannibalising it.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary lacks any variable for topic breadth, number of topics covered per video, or channel-level splitting of a broad topic into specific videos; title/runtime/format proxies would not test the claim's own scope variable.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 58.3s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details>
+<details class="ar-it ar-invalid">
+  <summary>
+    <span class="ar-n">8</span>
+    <span class="ar-v ar-v-invalid">not run</span>
+    <span class="ar-pair">no proposal</span>
+    <span class="ar-cl">Stated audience preference does not predict behaviour and can flatly contradict it — usage data…</span>
+  </summary>
+  <div class="ar-body">
+    <p class="ar-claim"><b>Claim df30b717c956</b> · warning · Stated audience preference does not predict behaviour and can flatly contradict it — usage data must override survey and comment sentiment when the two disagree.</p>
+    <p class="ar-think"><b>What it was thinking:</b> The vocabulary contains no variable measuring stated audience preference, survey responses, or comment sentiment; it only has production and usage metrics, so the claim's contrast between stated preference and actual behaviour cannot be tested.</p>
+    <p class="ar-why"><b>What the code decided:</b> the proposer declined: nothing in the vocabulary reaches this claim</p>
+    
+    <p class="ar-meta">proposed by qwen3.8-27b-nvfp4-mtp in 11.5s</p>
+    <p class="ar-none">No channel cleared the sample floor, so there is no reading to show. Silence is the honest answer here, not a zero.</p>
+  </div>
+</details></div>
+</details>
+<details class="ar-run">
   <summary><b>run-2026-10-02T10-28-09</b><span class="ar-m">qwen3.8-27b-nvfp4-mtp · 8 iterations · 0 kept, 1 discarded, 4 out of reach</span></summary>
   
   <p class="ar-runmeta">Started 2026-10-02 10:28:09, finished 10:40:17 · driver local · metric: measurement frontier: claims the ledger can grade</p>

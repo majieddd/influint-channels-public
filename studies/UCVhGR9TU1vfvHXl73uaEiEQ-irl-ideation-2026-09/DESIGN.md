@@ -18,7 +18,7 @@ Type: Roboto, with Arial as an intentional fallback. Sizes: 12, 14, 16, 20, 28, 
 
 Every card has the same native disclosures: “Why this Idea” explains the title shape plus ingredients and shows the evidence; “Thumbnail: source → Niz” pairs the real source with the generated adaptation. Solo cards add “Solo shoot and payoff” for blocking, payoff and incremental expenses. Shoot time and people appear at the bottom. Keep all 25 solo ideas Niz-only.
 
-The original 100-card catalogue retains search, family/evidence filters and pagination. Solo cards stay grouped in five formats. All 125 thumbnails share one dialog with previous/next navigation, keyboard arrows, Escape, focus return and JPG download. Deep links reveal the appropriate original gallery page or solo card.
+All 125 cards belong to one `#ideas-grid` catalogue with shared search, family/evidence filters and pagination. There are no separate solo thumbnail sections. The five Niz-only formats appear alongside the original ten families in the family filter. All 125 thumbnails share one dialog with previous/next navigation, keyboard arrows, Escape, focus return and JPG download, plus one bulk ZIP. Deep links reveal the appropriate gallery page for any idea. Existing solo-format links select the corresponding family within the shared gallery.
 
 ## Verification
 

@@ -7,7 +7,7 @@ import {existsSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 
-const PIN=process.env.NIZAR_STUDY_PIN || '7a64c638966b0fb242ff52700afb8c21f716b2a0';
+const PIN=process.env.NIZAR_STUDY_PIN || '8396ffb93b64e1ef9d6468c7b1fd6d9dc7200468';
 const stem='studies/UCVhGR9TU1vfvHXl73uaEiEQ-irl-ideation-2026-09';
 const git=args=>execFileSync('git',['-c','core.autocrlf=false',...args],{stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024});
 const hash=(bytes,algorithm='sha256')=>createHash(algorithm).update(bytes).digest('hex');
@@ -48,7 +48,9 @@ for(const t of manifest.items){
 const html=readFileSync(stem+'.html','utf8');
 const chapters=['ideation','packaging','creative','production','post-production','shorts-strategy','data-analysis'];
 if(!html.includes('data-study-version="seven-sections-v1"') || (html.match(/<article class="idea" /g)||[]).length!==100)throw Error('Study revision or 100 cards missing');
-if(!html.includes('data-ui-version="youtube-cards-20261004"') || (html.match(/data-thumbnail-id="\d+"/g)||[]).length!==125)throw Error('Expected the shared YouTube-style layout and 125 main thumbnails.');
+if(!html.includes('data-ui-version="unified-gallery-20261005"') || (html.match(/data-thumbnail-id="\d+"/g)||[]).length!==125)throw Error('Expected the unified gallery and 125 main thumbnails.');
+const gallery=html.match(/<div id="ideas-grid">([\s\S]*?)<\/div><div class="pagination">/);
+if(!gallery || (gallery[1].match(/data-thumbnail-id="\d+"/g)||[]).length!==125 || html.includes('class="solo-expansion"') || html.includes('class="solo-videos"') || !html.includes('nizarisaqtirl-125-thumbnails.zip') || !existsSync(stem+'/nizarisaqtirl-125-thumbnails.zip'))throw Error('All 125 cards and their download must be in the shared gallery.');
 const ideaCards=html.match(/<article class="(?:idea|solo-video)" [\s\S]*?<\/article>/g)||[];
 if(ideaCards.length!==125)throw Error('Expected 125 original and solo idea cards.');
 for(const card of ideaCards){

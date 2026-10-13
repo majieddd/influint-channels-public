@@ -140,7 +140,7 @@ Content evidence: Public description names a fixer-upper hot tub and complete pa
 
 Check: Do not invent the tub's price, free acquisition, repair cost or scale. Keep the original outdoor space and hot tub design.
 
-[Original video](https://www.youtube.com/watch?v=XMxZUUwq8IA) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/XMxZUUwq8IA.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=XMxZUUwq8IA) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/XMxZUUwq8IA.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/XMxZUUwq8IA.jpg)
 
 ### 3. Christmas Prep With Me | Gift Wrapping, Decor & Baking
 
@@ -300,7 +300,7 @@ Content evidence: Public description names landscaping shopping, DIY planter box
 
 Check: Do not imply a full yard transformation, current project or water-saving claim. Preserve the real planter, trellis and plants.
 
-[Original video](https://www.youtube.com/watch?v=JySGmO_fZrI) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/JySGmO_fZrI.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=JySGmO_fZrI) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/JySGmO_fZrI.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/JySGmO_fZrI.jpg)
 
 ### 18. Turning Our Sunroom Into an Office | Drywall, Doors & Progress
 
@@ -316,7 +316,7 @@ Content evidence: Public description confirms sunroom-to-office conversion, dryw
 
 Check: This is construction progress. No final-office reveal or completed-room imagery from a different episode.
 
-[Original video](https://www.youtube.com/watch?v=uH5yEQp8hCQ) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/uH5yEQp8hCQ.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=uH5yEQp8hCQ) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/uH5yEQp8hCQ.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/uH5yEQp8hCQ.jpg)
 
 ### 20. Our Alaska Family Road Trip | Exploring the Kenai Peninsula
 
@@ -332,7 +332,7 @@ Content evidence: Public description confirms a Kenai Peninsula road trip, Girdw
 
 Check: Do not turn this trip into a home-organization episode. Keep the family's real photos, locations and trip framing.
 
-[Original video](https://www.youtube.com/watch?v=W90Qn8r7TsM) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/W90Qn8r7TsM.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=W90Qn8r7TsM) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/W90Qn8r7TsM.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/W90Qn8r7TsM.jpg)
 
 ### 21. Six Days in Hawaii With Our Family | Maui & the Big Island
 
@@ -348,7 +348,7 @@ Content evidence: Public description names a six-day trip to Maui and the Big Is
 
 Check: The public description says six days. Keep the real trip; no invented luxury, private beach, budget or year refresh.
 
-[Original video](https://www.youtube.com/watch?v=pVe5CH_Eb3o) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/pVe5CH_Eb3o.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=pVe5CH_Eb3o) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/pVe5CH_Eb3o.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/pVe5CH_Eb3o.jpg)
 
 ### 22. A Week in an RV With Our Family | Washington & Oregon Road Trip
 
@@ -364,7 +364,7 @@ Content evidence: Stored opening and public description say a family of five spe
 
 Check: Do not imply full-time RV living, financial hardship or an RV makeover. Keep the same motorhome and destinations.
 
-[Original video](https://www.youtube.com/watch?v=VJU_3Syqd3k) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/VJU_3Syqd3k.jpg) · After thumbnail in progress
+[Original video](https://www.youtube.com/watch?v=VJU_3Syqd3k) · [Before thumbnail](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/original/VJU_3Syqd3k.jpg) · [After concept](UC1STjuGMAzbdmv0YRyAkl1w-repackaging-2026-10/after/VJU_3Syqd3k.jpg)
 
 ## Sources and testing
 

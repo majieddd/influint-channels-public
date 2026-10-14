@@ -63,6 +63,18 @@ section = f'''{START}
 </section>
 {END}'''
 
+if data.get('studioSource'):
+    studio = json.loads((ROOT/'channels'/data['studioSource']).read_text(encoding='utf-8'))
+    paid = next(x for x in studio['trafficEvidence'] if x['id']=='channel-paid-28')
+    section = section.replace('The Studio dashboard below retains its September 5 pull.', f"The Analytics dashboard now uses the {studio['pulledAt']} Studio export, with core data through {studio['dataThrough']}.")
+    section = section.replace('<b>September 3</b> last Studio data-through date', f"<b>{studio['dataThrough']}</b> Studio data through")
+    paid_copy = f'''<p><strong>The makeover's headline includes substantial paid distribution.</strong> Part 2 had {number(part2['publicLifetimeViews'])} public lifetime views at the October 13 snapshot. The signed-in Studio video overview read that day showed 78.6% from YouTube advertising, a rounded lifetime figure. Separately, the completed September 15 to October 12 channel export has {number(paid['advertisingViews'])} paid views, {paid['advertisingShare']*100:.1f}% of {number(paid['totalViews'])} total views. Its organic row has {number(paid['organicViews'])} views. Treat the makeover as a mixed-distribution result, not a measured organic packaging win.</p>'''
+    section = re.sub(r'<p><strong>The A-frame makeover is the clearest new signal\.</strong>.*?</p>',lambda _:paid_copy,section,count=1,flags=re.S)
+    section = section.replace('Today’s restock upload is too young to judge.', 'The October 13 restock was too young to judge at the public capture.')
+    section = section.replace('Today’s upload is excluded from performance conclusions.', 'The October 13 upload was too young at capture and is excluded from performance conclusions.')
+    section = section.replace('The new Part 2 result challenges a blanket rule against renovation or numbered episodes.', 'Part 2 received substantial advertising traffic. Separate organic performance from paid reach before judging a makeover format or package.')
+    section = section.replace('<strong>Stored:</strong> the dashboard was pulled September 5, with data through September 3. The historical breakdown recomputes the saved scored catalogue. No October private CTR, impressions, traffic sources or retention have been retrieved for this update.', f"<strong>Studio refresh:</strong> eight dated exports cover the current and prior 7, 28, 90 and 365-day windows. Core data runs through {studio['dataThrough']}; daily audience classifications run through {studio['audienceDataThrough']}. Exact Studio CTR, average view duration, average percentage viewed, impressions and viewer classifications populate the dashboard. The 200-video format breakdown and shortlisted per-video retention remain historical. <a href=\"{data['studioSource']}\">Inspect the Studio capture and exports</a>.")
+
 css = '''/* hannah-channel-update:start */
 .hc-update{--hc-text:#eaf5f3;--hc-muted:#bacdca;--hc-gap:18px;--hc-radius:12px;--hc-body:14px;--hc-small:12px;--hc-rule:1px solid var(--line);margin:32px 0 48px;padding-top:26px;border-top:var(--hc-rule);color:var(--hc-text)}
 .hc-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--hc-gap);flex-wrap:wrap}

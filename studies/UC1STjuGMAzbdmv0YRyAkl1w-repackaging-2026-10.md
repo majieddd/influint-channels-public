@@ -10,7 +10,7 @@
 - 19 core candidates: below 0.85x reach, at least 3 points above runtime-peer halfway retention, at least ten minutes long, published before 15 July 2026. Three travel examples are separate fit reviews.
 - First tests: verified tasks and completed payoffs, with familiar photographic collage styling. No measured title/thumbnail lift.
 
-Stored retention and 28-day scores are historical; no new Studio pull occurred in this task. Public counts are lifetime totals and are displayed separately. After images are AI-generated review concepts based on original thumbnails.
+Stored candidate retention and 28-day scores are historical. The companion channel dashboard was subsequently refreshed from October 13 Studio exports with core data through October 12; the study cohort remains unchanged. Public counts are lifetime totals and are displayed separately. After images are AI-generated review concepts based on original thumbnails.
 
 ## Packages
 

@@ -157,6 +157,14 @@ if 'data-hannah-repackaging="2026-10"' not in page:
             page = page[:boundary] + studies + page[boundary:]
         else:
             page = page.replace(END, END + '\n' + studies, 1)
+current_dash = re.search(r'window\.__DASH__=(.*?);?</script>',page,re.S)
+if current_dash and data.get('studioSource'):
+    current_model=json.loads(current_dash.group(1).rstrip(';'))
+    if (current_model.get('dataThrough',''),current_model.get('pulledAt','')) > (studio['dataThrough'],studio['pulledAt']):
+        earlier=f"The Analytics dashboard now uses the {studio['pulledAt']} Studio export, with core data through {studio['dataThrough']}."
+        latest=f"The Analytics dashboard carries a newer {current_model['pulledAt']} Studio pull, with core data through {current_model['dataThrough']}. The discussion here retains its dated October 13 snapshot."
+        page=page.replace(earlier,latest)
+        page=page.replace(f"<b>{studio['dataThrough']}</b> Studio data through",f"<b>{current_model['dataThrough']}</b> Studio data through")
 PAGE.write_text(page, encoding='utf-8')
 (ROOT / 'channels' / 'hannah-channel-update-section.html').write_text(section + '\n', encoding='utf-8')
 (ROOT / 'channels' / 'hannah-channel-update.css').write_text(css + '\n', encoding='utf-8')
